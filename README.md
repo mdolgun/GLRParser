@@ -4,13 +4,13 @@ A GLR Parser for Natural Language Processing and Translation
 All functionality is provided by main class: `Parser`  
 The input grammar should be a list of rules in the form:  
 ```
-    NonTerminal "->" (SourceTerminal|NonTerminal)* [ ":" (DestTerminal|NonTerminal) ] [ # comment ]
+    NonTerminal "->" (SourceTerminal | NonTerminal)* [ ":" (DestTerminal | NonTerminal) ] [ # comment ]
 ```
 empty lines and any characters after "#" are ignored 
 
 Sample usage of the Parser class should be like:
 
-```
+```python
     parser = Parser()
     try:
         parser.load_grammar("sample.grm")
@@ -66,7 +66,8 @@ The semantic interpretations are:
 ```    
 ToDo:  
     1. Morphological Processing  
-    2. Feature sets  
-    3. Interactive GUI  
-    4. A better grammar parser  
-    5. Dictionary  
+    2. Feature sets 
+    3. A more comprehensive grammar
+    4. Interactive GUI  
+    5. A better grammar parser  
+    6. Dictionary  
