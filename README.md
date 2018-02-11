@@ -66,8 +66,8 @@ The semantic interpretations are:
 ```    
 ToDo:  
     1. Morphological Processing  
-    2. Feature sets 
-    3. A more comprehensive grammar
+    2. Feature sets  
+    3. A more comprehensive grammar  
     4. Interactive GUI  
     5. A better grammar parser  
     6. Dictionary  
