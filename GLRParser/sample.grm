@@ -1,0 +1,11 @@
+# this is a sample grammar
+S -> NP VP : NP VP
+S -> S in NP : S NP -de
+S -> S with NP : S NP -la
+NP -> i : 
+NP -> the man : adam
+NP -> the telescope : teleskop
+NP -> the house : ev
+NP -> NP-1 in NP-2 : NP-2 -deki NP-1
+NP -> NP-1 with NP-2 : NP-2 -lu NP-1
+VP -> saw NP : NP -ý gördüm
