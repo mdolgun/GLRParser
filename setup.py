@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='GLRParser',
-      version='0.1.0',
+      version='0.1.1',
       description='A GLR Parser for Natural Language Processing and Translation',
       url='https://github.com/mdolgun/GLRParser',
       author='Mehmet Dolgun',
