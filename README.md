@@ -4,7 +4,7 @@ A GLR Parser for Natural Language Processing and Translation
 All functionality is provided by main class: `Parser`  
 The input grammar should be a list of rules in the form:  
 ```
-    NonTerminal "->" (SourceTerminal|NonTerminal)* ":" (DestTerminal|NonTerminal) # comment*  
+    NonTerminal "->" (SourceTerminal|NonTerminal)* [ ":" (DestTerminal|NonTerminal) ] [ # comment ]
 ```
 empty lines and any characters after "#" are ignored 
 
@@ -57,12 +57,13 @@ It produces 5 alternative parse trees and 5 alternative translations (of which t
 5 teleskoplu evdeki adamı gördüm
 ```
 The semantic interpretations are:
-    1. saw(in the house) saw(with the telescope)
-    2. man(in the house) saw(with telescope) 
-    3. saw(in the house) house(with the telescope)
-    4. man(in the house) man(with telescope)
-    5. man(in the house) house(with the telescope)
-    
+```
+1. saw(in the house) saw(with the telescope)
+2. man(in the house) saw(with telescope) 
+3. saw(in the house) house(with the telescope)
+4. man(in the house) man(with telescope)
+5. man(in the house) house(with the telescope)
+```    
 ToDo:  
     1. Morphological Processing  
     2. Feature sets  
