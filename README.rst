@@ -3,7 +3,7 @@ GLRParser
 
 A GLR Parser for Natural Language Processing and Translation
 
-| All functionality is provided by main class: ``Parser``
+| All functionality is provided by main class: Parser
 | The input grammar should be a list of rules in the form:
 
 ::
@@ -83,6 +83,4 @@ The semantic interpretations are:
 | 4. Interactive GUI
 | 5. A better grammar parser
 | 6. Dictionary
-pandoc 2.1.1
 
-© 2013–2015 John MacFarlane
