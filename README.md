@@ -4,44 +4,44 @@ A GLR Parser for Natural Language Processing and Translation
 All functionality is provided by main class: `Parser`  
 The input grammar should be a list of rules in the form:  
 ```
-    NonTerminal "->" (SourceTerminal | NonTerminal)* [ ":" (DestTerminal | NonTerminal) ] [ # comment ]
+    NonTerminal "->" (SourceTerminal | NonTerminal)* [ ":" (DestTerminal | NonTerminal) ] [ "#" Comment ]
 ```
 empty lines and any characters after "#" are ignored 
 
 Sample usage of the Parser class should be like:
 
 ```python
-	from GLRParser import Parser, ParseError, GrammarError
-    parser = Parser()
-    try:
-        parser.load_grammar("sample.grm")
-        sent = "i saw the man in the house with the telescope"
+from GLRParser import Parser, ParseError, GrammarError
+parser = Parser()
+try:
+    parser.load_grammar("sample.grm")
+    sent = "i saw the man in the house with the telescope"
 
-        parser.compile()
-        parser.parse(sent)
-        tree = parser.make_tree()
-        ttree = parser.trans_tree(tree)
+    parser.compile()
+    parser.parse(sent)
+    tree = parser.make_tree()
+    ttree = parser.trans_tree(tree)
 
-        for no,alt in enumerate(Parser.gen_tree(ttree)):
-            print(no+1, alt.replace(" -",""))
-    except ParseError as pe:
-        print(pe.args)
-    except GrammarError as ge:
-        print(ge.args)
+    for no,alt in enumerate(Parser.gen_tree(ttree)):
+        print(no+1, alt.replace(" -",""))
+except ParseError as pe:
+    print(pe.args)
+except GrammarError as ge:
+    print(ge.args)
 ```
 
 Sample grammar for English -> Turkish translation (see sample.grm) 
 ```
-    S -> NP VP : NP VP  
-    S -> S in NP : S NP -de  
-    S -> S with NP : S NP -la  
-    NP -> i :   
-    NP -> the man : adam  
-    NP -> the telescope : teleskop  
-    NP -> the house : ev  
-    NP -> NP-1 in NP-2 : NP-2 -deki NP-1  
-    NP -> NP-1 with NP-2 : NP-2 -lu NP-1  
-    VP -> saw NP : NP -ı gördüm  
+S -> NP VP : NP VP  
+S -> S in NP : S NP -de  
+S -> S with NP : S NP -la  
+NP -> i :   
+NP -> the man : adam  
+NP -> the telescope : teleskop  
+NP -> the house : ev  
+NP -> NP-1 in NP-2 : NP-2 -deki NP-1  
+NP -> NP-1 with NP-2 : NP-2 -lu NP-1  
+VP -> saw NP : NP -ı gördüm  
 ```
 
 Given the above grammar and input string:
