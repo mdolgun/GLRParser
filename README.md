@@ -4,7 +4,7 @@ A GLR Parser for Natural Language Processing and Translation
 All functionality is provided by main class: `Parser`  
 The input grammar should be a list of rules in the form:  
 ```
-    NonTerminal "->" (SourceTerminal | NonTerminal)* [ ":" (DestTerminal | NonTerminal) ] [ "#" Comment ]
+    NonTerminal "->" (SourceTerminal | NonTerminal)* [ ":" (DestTerminal | NonTerminal)* ] [ "#" Comment ]
 ```
 empty lines and any characters after "#" are ignored 
 
