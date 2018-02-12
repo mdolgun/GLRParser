@@ -13,6 +13,6 @@ setup(name='GLRParser',
 	],
 	keywords = 'NLP MachineTranslation Parser GLR Turkish',
 	license='MIT',
-	packages=['GLRParser']
+	packages=['GLRParser'],
 	package_data = { 'GLRParser': ['*.grm'] }
 )
