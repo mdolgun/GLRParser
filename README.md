@@ -60,9 +60,9 @@ It produces 5 alternative parse trees and 5 alternative translations (of which t
 The semantic interpretations are:
 ```
 1. saw(in the house) saw(with the telescope)
-2. man(in the house) saw(with telescope) 
+2. man(in the house) saw(with the telescope) 
 3. saw(in the house) house(with the telescope)
-4. man(in the house) man(with telescope)
+4. man(in the house) man(with the telescope)
 5. man(in the house) house(with the telescope)
 ```    
 ToDo:  
