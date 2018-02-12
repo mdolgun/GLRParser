@@ -16,7 +16,7 @@ Sample usage of the Parser class should be like:
 
 .. code:: python
 
-    from GLRParser import Parser, ParseError, GrammarError
+    from GLRParser.parser import Parser, ParseError, GrammarError
     parser = Parser()
     try:
         parser.load_grammar("sample.grm")
