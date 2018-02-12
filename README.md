@@ -11,6 +11,7 @@ empty lines and any characters after "#" are ignored
 Sample usage of the Parser class should be like:
 
 ```python
+	from GLRParser import Parser, ParseError, GrammarError
     parser = Parser()
     try:
         parser.load_grammar("sample.grm")
@@ -22,7 +23,7 @@ Sample usage of the Parser class should be like:
         ttree = parser.trans_tree(tree)
 
         for no,alt in enumerate(Parser.gen_tree(ttree)):
-            print(no+1,alt.replace(" -",""))
+            print(no+1, alt.replace(" -",""))
     except ParseError as pe:
         print(pe.args)
     except GrammarError as ge:

@@ -4,7 +4,7 @@
 
 All functionality is provided by main class: Parser
 The input grammar should be a list of rules in the form:
-    NonTerminal "->" (SourceTerminal|NonTerminal)* ":" (DestTerminal|NonTerminal)*
+    NonTerminal "->" (SourceTerminal | NonTerminal)* [ ":" (DestTerminal|NonTerminal)* ] "#" Comment
 empty lines and any characters after "#" are ignored
     
 Sample grammar for English -> Turkish translation (see sample.grm)
@@ -18,14 +18,7 @@ NP -> the house : ev
 NP -> NP-1 in NP-2 : NP-2 -deki NP-1
 NP -> NP-1 with NP-2 : NP-2 -lu NP-1
 VP -> saw NP : NP -ı gördüm
-
-ToDo:
-    1. Morphological Processing
-    2. Feature sets
-    3. Interactive GUI
-    4. A better grammar parser
-    5. Dictionary
-    
+   
 """
 import logging
 from collections import defaultdict
@@ -41,22 +34,7 @@ class GrammarError(Exception):
 class Parser:
     """ A GLR Parser for Natural Language Processing and Translation
 
-        In order to parse a string with a given grammar:
-        try:
-            parser = Parser()
-            parser.load_grammar("my.grm")
-            parser.compile()
-            parser.parse_sent()
-            for result 
-            parser.print_parse_tables()
-            tree = parser.make_tree()
-            ttree = parser.trans_tree(tree)
-            for no,alt in enumerate(Parser.gen_tree(ttree)):
-                print(no+1,alt)
-        except GrammarError as ge:
-            print(ge.args)  
-        except ParseError as pe:
-            print(pe.args)        
+		see main() for sample usage
 
         internal data:
             rules : list of rules as tuples (head,body,trans) for a rule "head -> body : trans"
@@ -498,7 +476,7 @@ def main():
         print(parser.xlate_tree(tree))
 
         for no,alt in enumerate(Parser.gen_tree(ttree)):
-            print(no+1,alt.replace(" -",""))
+            print(no+1, alt.replace(" -",""))
             #print(no+1,alt)
     except ParseError as pe:
         print(pe.args)
