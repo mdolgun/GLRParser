@@ -4,7 +4,7 @@
 
 Grammar Rules:
 Rule ::= Head "->" Prod [ ":" Prod ] [ Feat ] [ "#" Comment ]
-Prod ::= ( Terminal | NonTerminal [ "-" Suffix ] [ FParam ] )*
+Prod ::= ( Terminal | NonTerminal [ "-" Suffix ] [ FParam ] )* [ "{" Cost "}" ] 
 Feat ::= "[" [ Name "=" Value ( "," Name "=" Value )* ] "]"
 FParam ::= "(" [ Name [ "=" Value ] ( "," Name [ "=" Value ] )* ")"
 where 
@@ -34,10 +34,12 @@ def format_feat(fdict,par='[]'):
     return par[0] + ",".join(["=".join(item) if item[1] else item[0] for item in fdict.items()]) + par[1]
 
 def format_rule(self):
-    return "%s -> %s : %s %s" % (
+    return "%s -> %s {%d}: %s {%d} %s" % (
         self.head, 
         " ".join( ['"'+symbol+'"' if fparam is False else symbol+format_feat(fparam,'()') for symbol,fparam in zip(self.left,self.lparam)] ),
+        self.lcost,
         " ".join( ['"'+symbol+'"' if fparam is False else str(symbol)+format_feat(fparam,'()') for symbol,fparam in zip(self.right,self.rparam)] ),
+        self.rcost,
         format_feat(self.feat,'[]')
     )
 
@@ -47,6 +49,7 @@ class Grammar:
     NONTERM = re.compile('[_A-Z][-_A-Za-z0-9]*')
     TERM = re.compile('".*"|[-a-zıüöçğşðþý][-\'A-Za-zıüöçğşðþý]*')
     FEAT = re.compile('\*?[a-z0-9_]*')
+    INTEGER = re.compile('-?[1-9][0-9]*')
     def add_range(chars,start,end):
         for ch in range(ord(start),ord(end)+1):
             chars.add(chr(ch))
@@ -127,6 +130,14 @@ class Grammar:
             if ensure:
                 raise GrammarError("Line:%d Pos:%d FeatId expected but found '%s'" % (self.line,self.pos,word))
 
+    def get_integer(self,ensure=True,skip_ws=True):
+        word = self.get_word(ensure,skip_ws)
+        if word:
+            if Grammar.INTEGER.fullmatch(word):
+                return int(word)
+            if ensure:
+                raise GrammarError("Line:%d Pos:%d Integer expected but found '%s'" % (self.line,self.pos,word))
+
     def parse_rule(self,reverse=False):
         """ parses a rule and return an object of type Rule """
         if self.get_eof(False):
@@ -136,19 +147,16 @@ class Grammar:
 
         self.get_token('->')
 
-        left,lparam = self.parse_prod()
+        left,lparam,lcost = self.parse_prod()
         if self.get_token(':',False):
-            right,rparam = self.parse_prod()
+            right,rparam,rcost = self.parse_prod()
         else:
-            right,rparam = empty_list,empty_list
+            right,rparam,rcost = empty_list,empty_list,0
         if self.get_token('[',False):
             feat = self.parse_feat()
         else:
             feat = empty_dict
         self.get_eof()
-
-        lcost = 0
-        rcost = 0
 
         if reverse:
             left,lparam,lcost,right,rparam,rcost = right,rparam,rcost,left,lparam,lcost
@@ -184,7 +192,13 @@ class Grammar:
             prod.append(symbol)
             param_list.append(param)
             symbol,stype = self.get_symbol(False)
-        return prod,param_list
+        if self.get_token('{',False):
+            cost = self.get_integer()
+            self.get_token('}')
+        else:
+            cost = 0
+
+        return prod,param_list,cost
 
     def parse_feat(self):
         """ Parses feature list returns dict of name=value """
@@ -271,7 +285,7 @@ def main():
             print('    ',pe.args[0])
 
 def fmain():
-    rules = Grammar.load_grammar("tenses.grm")
+    rules = Grammar.load_grammar("test.grm")
     for rule in rules:
         print(rule.format())
 if __name__ == "__main__":
