@@ -1,0 +1,16 @@
+# this is a simple grammar
+S -> hello world [flag=0]
+S -> hello world [flag=1]
+S -> A world 
+A -> hello
+A -> hi
+S -> NP VP
+S -> S PP
+NP -> i 
+NP -> the man
+NP -> the telescope 
+NP -> the house 
+NP -> NP PP 
+PP -> in NP 
+PP -> with NP
+VP -> saw NP

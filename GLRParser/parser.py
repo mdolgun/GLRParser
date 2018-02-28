@@ -9,8 +9,81 @@ empty lines and any characters after "#" are ignored
       
 """
 import logging, re
-from collections import defaultdict
-from morpher import TurkishPostProcessor
+from collections import defaultdict,namedtuple
+
+if __name__ == "__main__":
+    from morpher import TurkishPostProcessor
+    from grammar import Grammar,GrammarError,Rule,format_feat
+else:
+    from .morpher import TurkishPostProcessor
+    from .grammar import Grammar,GrammarError,Rule,format_feat
+
+Tree = namedtuple('Tree', 'head, ruleno, left, right, feat')
+
+def format_tree(self,tree_type=2):
+    """ returnes single-line formatted string representation of a tree """
+    return " ".join([
+        item if type(item)==str
+        else "{}({})".format(item[0].head,"|".join([format_tree(alt,tree_type) for alt in item]))
+        for item in self[tree_type]
+        ])
+
+def str_tree(self,tree_type=2):
+    """ return string representation of terminals where alternative strings are in the form: (alt1|alt2|...) """
+    return " ".join([
+        item if type(item)==str 
+        else str_tree(item[0]) if len(item)==1
+        else "("+"|".join([str_tree(alt,tree_type) for alt in item])+")"
+        for item in self[tree_type]
+        ])
+indenter = "    "
+def pformat_tree(self,tree_type=2,level=0):
+    """ return prety formatted (indented multiline) string representation of a tree """
+    indent = indenter*level
+    return "".join([
+        "{}{}\n".format(indent,item) if type(item)==str
+        else "{indent}{head}({body})\n".format(
+            indent=indent,
+            head=item[0].head,
+            body=" ".join(item[0][tree_type])    
+        ) if len(item)==1 and all(map(lambda x:type(x)==str,item[0][tree_type]))
+        else "{indent}{head}(\n{body}{indent})\n".format(
+            indent=indent,
+            head=item[0].head,
+            body=(indent+"|\n").join([pformat_tree(alt,tree_type,level+1) for alt in item])  
+        )
+        for item in self[tree_type]
+    ])
+
+def pformat_tree_ext(self,tree_type=2,level=0):
+    """ return prety formatted (indented multiline) string representation of a tree with extended information(rule no, feature list) """
+    indent = indenter*level
+    if len(self[tree_type])==0: # empty production
+        return ""
+    if all(map(lambda x:type(x)==str,self[tree_type])): # terminal-only production
+        return  indent+" ".join(self[tree_type])+"\n"
+    return "".join([
+        "{}{}\n".format(indent,item) if type(item)==str
+        else "{indent}{head}(\n{body}{indent})\n".format(
+            indent=indent,
+            head=item[0].head,
+            body=(indent+"|\n").join([
+                "{indent}#{ruleno}{feat}\n{body}".format(
+                    indent=indent,
+                    ruleno=alt.ruleno,
+                    feat=format_feat(alt.feat),
+                    body = pformat_tree_ext(alt,tree_type,level+1)
+                )
+                for alt in item
+            ])    
+        )
+        for item in self[tree_type]
+    ])
+
+Tree.format = format_tree
+Tree.pformat = pformat_tree
+Tree.pformat_ext = pformat_tree_ext
+Tree.str_format = str_tree
 
 empty_dict = dict()
 empty_set = set()
@@ -18,10 +91,6 @@ empty_list = list()
 
 class ParseError(Exception):
     """ Raised when a sentence cannot be parsed with current grammar """
-    pass
-
-class GrammarError(Exception):
-    """ Raised when a grammar cannot be parsed """
     pass
 
 class UnifyError(ParseError):
@@ -72,6 +141,8 @@ class DummyProcessor:
         
     def __call__(self,sent):
         return self.regex.sub(' ',sent).strip()  
+
+
 
 class Parser:
     """ A GLR Parser for Natural Language Processing and Translation
@@ -124,37 +195,8 @@ class Parser:
             except IndexError: # there is no more symbols in the rule (i.e. A->x.)
                 pass
 
-    def format_fdict(fdict):
-        return ",".join(["=".join(item) for item in fdict.items()])
-
-    def format_fset(fset):
-        return ",".join(fset)
-
-    def format_fparam(fparam):
-        if fparam is None:
-            return ""
-        return "[" + ",".join((Parser.format_fdict(fparam[0]),Parser.format_fset(fparam[1]))) + "]"
-           
     def format_rules(self):
-        frules = []
-        for head,src,dst,(fdict,srcflist,dstflist) in self.rules:
-            """            logging.debug("src=%s", src);
-            logging.debug("dst=%s", dst);
-            logging.debug("srcflist=%s", srcflist);
-            logging.debug("dstflist=%s", dstflist); """
-            src = [symbol+Parser.format_fparam(fparam) for symbol,fparam in zip(src,srcflist)]
-            dst = [str(symbol)+Parser.format_fparam(fparam) for symbol,fparam in zip(dst,dstflist)]
-            """
-            logging.debug("src2=%s", src);
-            logging.debug("dst2=%s", dst);
-            """
-            frules.append("{} -> {} : {} [{}]".format(
-                head,
-                " ".join(src),
-                " ".join(dst),
-                Parser.format_fdict(fdict)
-            ))
-        return "\n".join(frules)
+         return "\n".join([rule.format() for rule in self.rules])
          
     def get_items(self,stateset):
         """ get string repr of "items" in state set in dotted fomat  e.g "{ S -> NP . VP ; VP -> . V  ; VP -> . V NP }" """
@@ -170,7 +212,7 @@ class Parser:
     def compile(self):
         """ compile rule list "rules" to a DFA
 
-        produces dfa, reduce and ereduce from rules
+        produces dfa, reduce and ereduce tables(dictionaries) from rules
         """
 
         rules = self.rules
@@ -237,119 +279,20 @@ class Parser:
             for stateno,stateset in enumerate(states):
                 logging.debug("%s : %s REDUCE: %s EREDUCE: %s", stateno, self.get_items(stateset), self.get_items(reduce.get(stateno,set())), self.get_items(ereduce.get(stateno,set())))
    
-
-    def parse_feat(flist,param=False):
-        """ parses a feature list and/or feature setof the form: (name ["=" val] )* "]"
-        if param=True then returns flist,fset pair, otherwise return flist """
-
-        flist = flist.split("]")
-        if len(flist)==1:
-            raise GrammarError("] expected")
-        if param:
-            fset = set()
-        fdict = dict()
-        for feat in flist[0].split(","):
-            feat = feat.split("=")
-            if len(feat)==1:
-                if not param:
-                    raise GrammarError("= expected")
-                fset.add(feat[0])
-            else:
-                fdict[feat[0]]=feat[1]
-        if not fdict:
-            fdict = empty_dict
-        if param:
-            if not fset:
-                fset = empty_set
-            return fdict,fset
-        else:
-            return fdict     
-        
-    def split_grammar(self,iterator,reverse=False):
-        """ get a list of grammar rules from iterator, splits and transforms it into list "rules"
-
-        e.g. each rule S -> A B c : d B A becomes [S, [A, B, c], [d, 1, 0]],  where A,B is Non-Terminal c,d is Terminal
-        todo: write a full parser with error detection
-        """
-
-        rules = [ ( "S'", ["S"], [0], (empty_dict,[None],[None]) ) ]
-        for rule in iterator:
-            rule = rule.split("#")
-            rule = rule[0].strip()
-            if not rule: # skip blank rules
-                continue
-            rule = rule.split("->")
-            if len(rule)!=2:
-                raise GrammarError("Invalid Grammar Rule", rule)
-            body = rule[1].split(":")
-            if reverse:
-                if len(body)==2:
-                    body[0],body[1] = body[1],body[0]
-                else:
-                    body.append(body[0])
-                    body[0] = body[1]
-            src = [] # e.g NP and NP
-            src2 = [] # e.g NP-1 and NP-2
-            srcflist = []
-            dstflist = []
-            fdict = empty_dict
-            for symbol in body[0].split(" "):
-                if not symbol: continue
-                
-                param = None
-                symbol = symbol.split("[")
-                if len(symbol)==2:
-                    if symbol[0]:
-                        param = Parser.parse_feat(symbol[1],True) 
-                    else:
-                        fdict = Parser.parse_feat(symbol[1]) # todo: error check for correct position
-                        continue
-                symbol = symbol[0]
-
-                sparts = symbol.split("-")
-                src.append(sparts[0])
-                src2.append(symbol)
-                srcflist.append(param)
-            
-            dst = []
-            if len(body)==2: # there is a translation        
-                for symbol in body[1].split(" "):
-                    if not symbol: continue
-                    
-                    param = None
-                    symbol = symbol.split("[")
-                    if len(symbol)==2:
-                        if symbol[0]:
-                            param = Parser.parse_feat(symbol[1],True) 
-                        else:
-                            fdict = Parser.parse_feat(symbol[1]) # todo: error check for correct position
-                            continue
-                        
-                    symbol = symbol[0]
-                    try:                   
-                        dst.append(src2.index(symbol))
-                       
-                    except ValueError:
-                        dst.append(symbol)
-                    dstflist.append(param)
-            rules.append((rule[0].strip(), src, dst, (fdict,srcflist,dstflist)))
-            
-        self.rules = rules
+    def load_grammar(self,fname=None,reverse=False,text=None):
+        """ loads a grammar file and parse it """
+        self.rules = Grammar.load_grammar(fname,reverse,text)
         if logging.getLogger().isEnabledFor(logging.INFO):
             logging.info("rules=%s",self.format_rules())
-
-    def load_grammar(self,filename,reverse=False):
-        """ loads a grammar file and parse it """
-        with open(filename, "r") as f:
-            self.split_grammar(f,reverse)
-
+    '''
     def get_prod(tree):
         """ tree = [head, ruleno, symbol*]
 
         return string representation in the form "head ruleno(sub1 sub2...)
-        """
+        
         if type(tree) == str: # if a terminal node
             return tree
+        """
         return tree[0] + str(tree[1]) + "(" + " ".join([Parser.get_tree(sub) for sub in tree[2:]]) + ")"
   
     def get_tree(tree):
@@ -381,7 +324,7 @@ class Parser:
             return self.xlate_prod(tree[0])
         else:
             return "(" + "|".join([self.xlate_prod(alt) for alt in tree]) + ")"
-
+    '''
     def unify(dst,param,src):
         """ unification of "src" features into "dst" features, using filtering of "param", if unification fails raises UnifyError
 
@@ -393,11 +336,12 @@ class Parser:
         if param is None:
             keys = src.keys()
         else:
-            pdict,pset = param
-            for key in pdict.keys() & src.keys():
-                if src[key] != pdict[key]:
-                    raise UnifyError(key, src[key], pdict[key])
-            keys = pset & src.keys()
+            keys = set()
+            for key in param.keys() & src.keys():
+                if param[key] is None:
+                    keys.add(key)
+                elif param[key] != src[key]:
+                    raise UnifyError(key, src[key], param[key])
 
         for key in keys & dst.keys():
             if  src[key] != dst[key]:
@@ -409,9 +353,10 @@ class Parser:
             for key in newkeys:
                 dst[key] = src[key]
         return dst
-    
+    """
     def unify_prod(self,prod):
-        fdict,srcflist,_ = self.rules[prod[1]][3]
+        rule = self.rules[prod[1]]
+        fdict,srcflist = rule[3:5]
         stack = [(fdict,[])]
         for item,param in zip(prod[2],srcflist):
             if type(item)==str:
@@ -453,43 +398,100 @@ class Parser:
         if not ntree:
             raise UnifyError("Empty result")
         return ntree
+    """
+
+    def unify_tree(self,tree):
+        # tree.left=[(str|subtree+)*]
+        rule = self.rules[tree.ruleno]
+        fdict,srcflist = rule.feat, rule.lparam
+        stack = [(fdict,[])]
+        for item,param in zip(tree.left,srcflist):
+            if type(item)==str:
+                for fdict,seq in stack:
+                    seq.append(item)
+            else:
+                nstack = []
+                for fdict,seq in stack:
+                    nkeys = []
+                    nvals = []
+                    for alt in item:
+                        for subtree in self.unify_tree(alt):               
+                            try:
+                                _fdict = Parser.unify(fdict,param,subtree.feat)
+                                try:
+                                    idx = nkeys.index(_fdict)
+                                    nvals[idx].append(subtree) 
+                                except ValueError:
+                                    nkeys.append(_fdict)
+                                    nvals.append([subtree])
+                            except UnifyError as ue:
+                                pass
+                    for key,val in zip(nkeys,nvals):
+                        nstack.append((key,seq+[val]))
+                stack = nstack
+                if not stack:
+                    raise UnifyError("Empty result")
+        ntree = []
+        for fdict,seq in stack:
+            ntree.append(Tree(tree.head,tree.ruleno,seq,tree.right,fdict))
+        return ntree
 
     def make_trans_tree(self,symbol,feat,fparam):
         """ generate a tree for dst-only non-terminal tree """
         ntree = []
         for ruleno in self.ruledict[symbol]:
-            rule = self.rules[ruleno] # (head,src,dst,(feat,srcparamlist,dstparamlist))
+            rule = self.rules[ruleno] # (head,src,dst,feat,lparam,rparam,lcost,rcost)
             try:
-                fdict = Parser.unify(feat,fparam,rule[3][0])
-                logging.debug("make_trans_tree: %s unify(%s,%s,%s)->%s", symbol, Parser.format_fdict(feat), Parser.format_fparam(fparam), Parser.format_fdict(rule[3][0]), Parser.format_fdict(fdict))
+                fdict = Parser.unify(feat,fparam,rule.feat)
+                logging.debug("make_trans_tree: %s unify(%s,%s,%s)->%s", symbol, format_feat(feat), format_feat(fparam,'()'), format_feat(rule.feat), format_feat(fdict))
                 sub = []
-                for item,param in zip(rule[2],rule[3][2]):
+                for item,param in zip(rule.right,rule.rparam):
                     assert type(item) != int
-                    if item[0].isupper():
-                        sub.append( self.make_trans_tree(item,fdict,param) )
-                    else:
+                    if param is False: # Terminal
                         sub.append(item)
-                ntree.append([symbol,ruleno,[],sub,fdict]) # [head, ruleno, [symbol*], [tsymbol*], featdict]
+                    else: # NonTerminal
+                        sub.append( self.make_trans_tree(item,fdict,param) )      
+                ntree.append(Tree(symbol,ruleno,[],sub,fdict)) # [head, ruleno, [symbol*], [tsymbol*], featdict]
             except UnifyError:
                 pass
         if not ntree:
             raise UnifyError("empty make_trans_tree")
         return ntree
-                   
+
+    def trans_tree(self,tree,feat=empty_dict,fparam=None):
+        # in  = [head, ruleno, [symbol*], None, featdict]
+        # out = [head, ruleno, [symbol*], [tsymbol*], featdict]
+        assert type(tree)==Tree
+        fdict = Parser.unify(tree.feat,fparam,feat)
+        logging.debug("trans_prod: %s unify(%s,%s,%s)->%s", tree.head, format_feat(tree.feat), format_feat(fparam,'()'), format_feat(feat), format_feat(fdict))                       
+        rule = self.rules[tree.ruleno]
+        trans = []
+        for item,param in zip(rule.right,rule.rparam):
+            if param is False: # Terminal
+                trans.append(item)
+            elif type(item)==str: # Unmatched (Right-Only) NT
+                assert item[0].isupper()
+                trans.append( self.make_trans_tree(item,fdict,param) ) 
+            else: # Matched (Left&Right) NT
+                assert type(item)==int
+                trans.append([self.trans_tree(alt,fdict,param) for alt in tree.left[item]])
+        return tree._replace(right=trans)
+    '''               
     def trans_prod(self,tree,feat,fparam):
         # in  = [head, ruleno, [symbol*], None, featdict]
         # out = [head, ruleno, [symbol*], [tsymbol*], featdict]
         fdict = Parser.unify(tree[4],fparam,feat)
-        logging.debug("trans_prod: %s unify(%s,%s,%s)->%s", tree[0], Parser.format_fdict(tree[4]), Parser.format_fparam(fparam), Parser.format_fdict(feat), Parser.format_fdict(fdict))                
+        logging.debug("trans_prod: %s unify(%s,%s,%s)->%s", tree[0], format_feat(tree[4]), format_feat(fparam,'()'), format_feat(feat), format_feat(fdict))                
         trans = []
         rule = self.rules[tree[1]]
-        for item,param in zip(rule[2],rule[3][2]):
-            if type(item)==str:
-                if item[0].isupper(): # dst-only NT
-                    trans.append( self.make_trans_tree(item,fdict,param) ) 
-                else:
-                    trans.append(item)
-            else:
+        for item,param in zip(rule.right,rule.rparam):
+            if param is False: # Terminal
+                trans.append(item)
+            elif type(item)==str: # Unmatched (Right-Only) NT
+                assert item[0].isupper()
+                trans.append( self.make_trans_tree(item,fdict,param) ) 
+            else: # Matched (Left&Right) NT
+                assert type(item)==int
                 trans.append(self.trans_tree(tree[2][item],fdict,param))
         if tree[3]:
             logger.info("trans  already exists OLD: %s NEW: %s ", tree[3], trans)
@@ -505,27 +507,27 @@ class Parser:
         #return [self.trans_prod(alt) for alt in tree]
 
          
-    def pformat_tree(tree,ttype=2,indent=""):
+    def pformat_tree(tree,ttype=2,indent="",indenter="    "): # indenter="+---"
         """ pretty format (multiple lines with identationa) a tree 
         tree = [prod*] list of alternative productions """
         if type(tree) == str:
             return indent + tree
-        def pformat_prod(prod,ttype,indent):
+        def pformat_prod(prod,ttype,indent,indenter):
             """ prod = [head, ruleno, srcsymbol*, dstsymbol*, feats]  """
             if type(prod) == str:
                 return indent + prod
             if not prod[ttype]: # empty production
-                return indent + prod[0] + "[" + Parser.format_fdict(prod[4]) + "]()"
+                return indent + prod[0] + format_feat(prod[4]) + "()"
             else:
-                return indent + prod[0] + "[" + Parser.format_fdict(prod[4]) + "](\n"+ "\n".join([Parser.pformat_tree(sub, ttype, indent + "+---") for sub in prod[ttype]]) + "\n" + indent + ")"
-        return ("\n"+ indent + "|\n").join([pformat_prod(prod,ttype,indent) for prod in tree])
-
+                return indent + prod[0] + format_feat(prod[4]) + "(\n"+ "\n".join([Parser.pformat_tree(sub, ttype, indent + indenter, indenter) for sub in prod[ttype]]) + "\n" + indent + ")"
+        return ("\n"+ indent + "|\n").join([pformat_prod(prod,ttype,indent,indenter) for prod in tree])
+    '''
     def format_edge_item(alts):
-        """ format an edge item to str (used internally for logging/debugging) """
+        """ internal: format an edge item to str (used internally for logging/debugging) """
         return " ".join(["{2}({0},{1};{3},{4})".format(*alt) for alt in alts[1:]])
       
     def format_edge(self,edge):
-        """ format an edge into str (used internally for logging/debugging) """
+        """ internal: format an edge into str (used internally for logging/debugging) """
         if edge not in self.edges:
             return "{2}({0},{1};{3},{4}) -> None".format(*edge)
         return  "{2}({0},{1};{3},{4}) -> ".format(*edge) + " | ".join( [ " ".join(["{2}({0},{1};{3},{4})".format(*alt) for alt in alts[1:]]) for alts in self.edges[edge]] )       
@@ -551,6 +553,7 @@ class Parser:
             yield from Parser.gen_prod(alt[3])  
   
     def print_parse_tables(self):
+        """ internal: print parse tables after parse """
         indent = 7
         space = " "*indent
         for pos,token in enumerate(self.instr):
@@ -559,32 +562,53 @@ class Parser:
         for (epos,estate,symbol),startset in sorted(self.nodes.items()):
             for spos,sstate in startset:
                 print(space*spos, str(sstate).rjust(2), symbol.center((epos-spos)*indent-2,"="), str(estate).rjust(2,"="), " ", self.format_edge((spos,sstate,symbol,epos,estate)), sep="")
- 
-    def make_tree(self,edge=None):
-        """ generates a tree (which is a recursive list of lists) from edges
-        
-        tree: [alt*] alt: [head,ruleno,[sub*],[trans*],[feat*]]
-        """
 
-        if edge is None:
-            edge = self.top_edge
+    '''
+    def make_tree(self,edge):
+        """ generates a tree (which is a recursive list of lists) from edges """
         if edge not in self.edges:
             return edge[2]
-        alts = self.edges[edge]
-        talt = []
-        for alt in alts:
-            rule = self.rules[alt[0]] 
-            t = [edge[2],alt[0]] # head,ruleno
-            t.append([self.make_tree(alt_edge) for alt_edge in alt[1:]])
-            t.append([]) # place-holder for translation
-            t.append(rule[3][0]) # place-holder for features
-            talt.append(t)
-        return talt;
+        alt = []
+        for sub in self.edges[edge]:
+            rule = self.rules[sub[0]] 
+            tree = Tree(
+                head = edge[2],
+                ruleno = sub[0],
+                left = [self.make_tree(alt_edge) for alt_edge in sub[1:]],
+                right = [],
+                feat = rule.feat
+            )
+            alt.append(tree)
+        return alt
+    '''
+    def get_tree(self):
+        self.tree = Tree(
+            head = "S'",
+            ruleno = 0,
+            left = [self.make_tree(self.top_edge)],
+            right = empty_list,
+            feat = empty_dict
+        )
+        return self.tree
 
-       
-           
+    def make_tree(self,edge):
+        """ generates a tree (which is a recursive list of lists) from edges """
+        if edge not in self.edges:
+            return edge[2]
+        alt = []
+        for alt_edge in self.edges[edge]: 
+            rule = self.rules[alt_edge[0]] 
+            alt.append( Tree(
+                head = edge[2],
+                ruleno = alt_edge[0],
+                left = [self.make_tree(sub_edge) for sub_edge in alt_edge[1:]],
+                right = [],
+                feat = rule.feat
+            ) )
+        return alt
+
     def print_dfa(self):
-        """ prints dfa, reduce and e-reduce in a tabular format """
+        """ internal: prints dfa, reduce and e-reduce in a tabular format after compile """
         width = 5
         symbols = sorted({symbol for (state,symbol),nstate in self.dfa.items()})
         states = {nstate for (state,symbol),nstate in self.dfa.items()}
@@ -598,7 +622,7 @@ class Parser:
             for symbol in symbols:
                 print(str(self.dfa.get((state,symbol),"")).rjust(width),",",end="")
             print(self.reduce.get(state,""),self.ereduce.get(state,""))
-
+    '''
     def parse_feat(flist,param=False):
         """ if param=False, parses a feature list: (feat"="val)*"]", else parses a parameter list: (param["="val])*"]"  """
         flist = flist.split("]")
@@ -623,7 +647,7 @@ class Parser:
             return fdict,fset
         else:
             return fdict
-
+    '''
     def parse(self,instr):
         """ parses input string using current grammar, throwing ParseError if parsing fails, the parse tree can be later retrieved from "edges" """
         
@@ -734,6 +758,7 @@ class Parser:
                 active = nactive
 
     def trans_sent(self,sent):
+        """ translates a sentence, returns a list of possible translations or an error """
         try:
             sent = self.pre_processor(sent)
             self.parse(sent)
@@ -812,28 +837,28 @@ def main():
             try:
                 parser.parse(sent)
                 #parser.print_parse_tables()
-                tree = parser.make_tree()
-                print(tree)
-                print(Parser.pformat_tree(tree))
+                tree = parser.get_tree()
+                print(tree.pformat())
                 tree2 = parser.unify_tree(tree)
+                assert len(tree2)==1
+                print(tree2[0].pformat_ext())
+                tree3 = parser.trans_tree(tree2[0])
+                print(tree3.pformat(tree_type=3))
+                print(tree3.str_format(tree_type=3))
+                """print(tree2)
+                print(len(tree2))
+               
                 print(Parser.pformat_tree(tree2,2))
                 parser.trans_tree(tree2)
                 print(Parser.pformat_tree(tree2,3))
-                """
-                print(Parser.get_tree(tree))
-                print(Parser.get_tree(ttree))       
-                print(parser.xlate_tree(tree))
-             
 
-                morpher = Morpher()
-                """
                 print("==================================")
                 print("input:", sent)
                 print("output:")
                 for no,alt in enumerate(Parser.gen_tree(tree2)):
                     print(no+1, alt, " ==> ", parser.post_processor(alt))
                     #print(no+1,alt)
-
+                """
             except ParseError as pe:
                 print(pe.args)
             except UnifyError as ue:
@@ -849,6 +874,7 @@ def file_main():
     parser.post_processor = TurkishPostProcessor()
 
     parser.load_grammar("tenses.grm")
+    #print(parser.format_rules())
     parser.compile()
 
     parser.trans_file("tenses.in.txt","tenses.out.txt")

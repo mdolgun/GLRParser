@@ -17,6 +17,7 @@ import re
 from collections import namedtuple
 
 class GrammarError(Exception):
+    """ Raised when a grammar cannot be parsed """
     pass
 
 empty_list = list()
@@ -25,7 +26,7 @@ empty_dict = dict()
 Rule = namedtuple('Rule', 'head, left, right, feat, lparam, rparam, lcost, rcost')
 #print(Rule._source)
 
-def format_feat(fdict,par):
+def format_feat(fdict,par='[]'):
     if not fdict:
         if type(fdict)==dict: # empty dict
             return par
@@ -157,7 +158,7 @@ class Grammar:
         for idx,(symbol,param) in enumerate(zip(right,rparam)):
             if param is not False: # NonTerminal
                 try:
-                    right[idx] = right.index(symbol)
+                    right[idx] = left.index(symbol)
                 except ValueError:
                     right[idx] = symbol.split('-')[0]
 
@@ -224,20 +225,28 @@ class Grammar:
         self.get_token(')')
         return fdict
 
-    def load_grammar(fname,reverse=False):
+    def load_grammar(fname=None,reverse=False,text=None):
         """ loads a grammar file and parse it """
-        rules = []
-        rules.append(Grammar("_S_ -> S : S").parse_rule())
-        with open(fname, "r") as f:
-            line = 0
-            for s in  f:
-                line += 1
-                rule = Grammar(s,line).parse_rule()
-                if rule is None: # empty/comment line
-                    continue
-                rules.append(rule)
-        return rules
+        if bool(fname) == bool(text):
+            raise GrammarError("load_grammar: either fname or text should be provided")
+        if text is None:
+            with open(fname, "r") as f:
+                return Grammar.parse_grammar(f,reverse)
+        else:
+            return Grammar.parse_grammar(text.split('\n'),reverse)
+        
 
+    def parse_grammar(iterator,reverse=False):
+        rules = []
+        rules.append(Grammar("_S_ -> S() : S()").parse_rule())
+        line_no = 0
+        for s in iterator:
+            line_no += 1
+            rule = Grammar(s,line_no).parse_rule()
+            if rule is None: # empty/comment line
+                continue
+            rules.append(rule)
+        return rules
 
 
 def main():

@@ -1,0 +1,146 @@
+S -> NP VP : NP VP
+S -> Aux 
+
+
+
+Not -> not : -mA [neg=1]
+Not ->           [neg=0]
+
+AuxBe -> am Not   [tense=pres,numb=sing,pers=1]
+AuxBe -> -'m Not  [tense=pres,numb=sing,pers=1]
+AuxBe -> are Not  [tense=pres,numb=sing,pers=2]
+AuxBe -> -'re Not [tense=pres,numb=sing,pers=2]
+AuxBe -> is Not   [tense=pres,numb=sing,pers=3]
+AuxBe -> -'s Not  [tense=pres,numb=sing,pers=3]
+AuxBe -> are Not  [tense=pres,numb=plur]
+AuxBe -> -'re Not [tense=pres,numb=plur]
+
+AuxBe -> aren't   [tense=pres,neg=1,numb=sing,pers=2]
+AuxBe -> aren't   [tense=pres,neg=1,numb=sing,pers=2]
+AuxBe -> isn't    [tense=pres,neg=1,numb=plur]
+
+AuxBe -> was Not  [tense=past,numb=sing,pers=1]
+AuxBe -> were Not [tense=past,numb=sing,pers=2]
+AuxBe -> was Not  [tense=past,numb=sing,pers=3]
+AuxBe -> were Not [tense=past,numb=plur]
+
+AuxBe -> wasn't   [tense=past,neg=1,numb=sing,pers=1]
+AuxBe -> weren't  [tense=past,neg=1,numb=sing,pers=2]
+AuxBe -> wasn't   [tense=past,neg=1,numb=sing,pers=3]
+AuxBe -> weren't  [tense=past,neg=1,numb=plur]
+
+AuxHave -> have Not [tense=pres,numb=sing,pers=1]
+AuxHave -> -'ve Not [tense=pres,numb=sing,pers=2]
+AuxHave -> has Not  [tense=pres,numb=sing,pers=3]
+AuxHave -> -'s Not  [tense=pres,numb=sing,pers=3]
+AuxHave -> have Not [tense=pres,numb=plur]
+AuxHave -> -'ve Not [tense=pres,numb=plur]
+AuxHave -> haven't  [tense=pres,neg=1,numb=sing,pers=1]
+AuxHave -> haven't  [tense=pres,neg=1,numb=sing,pers=2]
+AuxHave -> hasn't   [tense=pres,neg=1,numb=sing,pers=3]
+AuxHave -> haven't  [tense=pres,neg=1,numb=plur]
+
+AuxHave -> had Not  [tense=past]
+AuxHave -> -'d Not  [tense=past]
+AuxHave -> hadn't   [tense=past,neg=1]
+
+Modal   -> will Not   : Not -YAcAk Pers1   
+Modal   -> won't      : Not -YAcAk Pers1      [neg=1]
+Modal   -> shall Not  : Not -YAcAk Pers1 
+Modal   -> -'ll Not   : Not -YAcAk Pers1    
+Modal   -> would Not  : Not -YAcAktH Pers2   
+Modal   -> wouldn't   : Not -YAcAktH Pers2    [neg=1]
+Modal   -> -'d Not    : Not -YAcAk Pers1    
+Modal   -> can        : -YAbilir Pers1        [neg=0]
+Modal   -> can not    : -YAmA Pers3			  [neg=1]
+Modal   -> cannot     : -YAmA Pers3			  [neg=1]
+Modal   -> can't      : -YAmA Pers3           [neg=1]
+Modal   -> could      : -YAbilirdi Pers2      [neg=0]
+Modal   -> could not  : -YAmAzdH Pers2        [neg=1]
+Modal   -> couldn't   : -YAmAzdH Pers2        [neg=1] 
+Modal   -> may Not    : Not -YAbilir Pers1   
+Modal   -> might Not  : Not -YAbilirdi Pers2
+Modal   -> should Not : Not -mAlH Pers1     
+Modal   -> shouldn't  : Not -mAlH Pers1       [neg=1] 
+Modal   -> must Not   : Not -mAlH Pers1
+Modal   -> mustn't    : Not -mAlH Pers1       [neg=1] 
+
+VP -> AuxBe Ving            : Ving -Hyor Tense 
+VP -> AuxHave been Ving     : Ving -Hyor Tense 
+VP -> Modal be Ving         : Ving -Hyor ol Modal 
+VP -> Modal have been Ving  : Ving -mHþ ol Modal
+VP -> Modal V               : V Modal
+VP -> AuxBe going to V : V -yAcAk Tense 
+
+VP -> V          : V -Ar Pers1   [tense=pres,mode=simp,numb=sing,pers=1]
+VP -> V          : V -Ar Pers1   [tense=pres,mode=simp,numb=sing,pers=2]
+VP -> Vs         : Vs -Ar Pers1  [tense=pres,mode=simp,numb=sing,pers=3]
+VP -> V          : V -Ar Pers1   [tense=pres,mode=simp]
+
+VP -> don't V           : V -mA Pers3   [numb=sing,pers=1]
+VP -> do Not V          : V Not Pers3   [numb=sing,pers=2]
+VP -> don't V           : V -mA Pers3   [numb=sing,pers=2]
+VP -> does Not V        : Vs Not Pers3  [numb=sing,pers=3]
+VP -> doesn't V         : V -mA Pers3   [numb=sing,pers=3]
+
+VP -> Ved        : Ved -dH Pers2     [neg=0]
+VP -> did Not    : Ved Not -dH Pers2
+VP -> didn't     : Ved Not -dH Pers2 [neg=1]
+
+
+VP -> AuxHave Ven    : Ven Tense [mode=perf]
+VP -> Modal have Ven : Ven Modal Tense [mode=futr_perf]
+
+Tense -> :           [tense=pres]
+Tense -> : -DH       [tense=past]
+
+
+Pers1 -> : -Hm      [numb=sing,pers=1]
+Pers1 -> : -sHn     [numb=sing,pers=2]
+Pers1 -> :          [numb=sing,pers=3]
+Pers1 -> : -Hz      [numb=plur,pers=1]
+Pers1 -> : -sHnHz   [numb=plur,pers=2]
+Pers1 -> : -lAr     [numb=plur,pers=3]
+
+Pers2 -> : -m       [numb=sing,pers=1]
+Pers2 -> : -n       [numb=sing,pers=2]
+Pers2 -> :          [numb=sing,pers=3]
+Pers2 -> : -k       [numb=plur,pers=1]
+Pers2 -> : -nHz     [numb=plur,pers=2]
+Pers2 -> : -lAr     [numb=plur,pers=3]
+
+Pers2 -> : -m       [numb=sing,pers=1]
+Pers2 -> : -zSHn    [numb=sing,pers=2]
+Pers2 -> : -z       [numb=sing,pers=3]
+Pers2 -> : -yHz     [numb=plur,pers=1]
+Pers2 -> : -zsHnHz  [numb=plur,pers=2]
+Pers2 -> : -zlAr    [numb=plur,pers=3]
+
+V    -> sleep    : uyu
+Vs   -> sleeps   : uyu
+Ving -> sleeping : uyu
+Ved  -> slept    : uyu
+Ven  -> slept    : uyu
+
+V    -> go       : git
+Vs   -> goes     : git
+Ving -> going    : git
+Ved  -> went     : git
+Ven  -> gone     : git
+
+NP -> Pron : Pron
+NP -> Pron
+NP -> NPlur : NPlur -lAr [numb=plur,pers=3]
+NP -> NSing : NSing      [numb=sing,pers=3]
+
+Pron -> i    : ben     [numb=sing,pers=1]
+Pron -> you  : sen     [numb=sing,pers=2]
+Pron -> he   : o       [numb=sing,pers=3]
+Pron -> she  : o       [numb=sing,pers=3]
+Pron -> it   : o       [numb=sing,pers=3]
+Pron -> we   : biz     [numb=plur,pers=1]
+Pron -> you  : siz     [numb=plur,pers=2]
+Pron -> they : onlar   [numb=plur,pers=3]
+
+NPSing -> man  : adam   
+NPPlur -> men  : adam 
