@@ -103,3 +103,4 @@ ENV/
 .pypirc
 *.sqlite
 *.sqlite
+GLRParser/.vs/
