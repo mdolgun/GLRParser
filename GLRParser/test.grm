@@ -1,0 +1,124 @@
+S -> SentNorm  : SentNorm [quest=0]
+S -> SentInv   : SentInv  [quest=1]
+
+# affirmative 
+SentNorm -> Subj AuxBePos Not StBe      : Subj StBe Tense
+SentNorm -> Subj AuxBeCont Not StBe     : Subj StBe Tense
+SentNorm -> Subj AuxBeNeg StBe          : Subj StBe Tense      [neg=1]
+SentNorm -> Subj AuxHavePos Not StHave  : Subj StHave Tense
+SentNorm -> Subj AuxHaveCont Not StHave : Subj StHave Tense
+SentNorm -> Subj AuxHaveNeg StHave      : Subj StHave Tense    [neg=1]
+SentNorm -> Subj AuxDoPos Not StDo      : Subj StDo Tense
+SentNorm -> Subj AuxDoNeg StDo          : Subj StDo Tense      [neg=1]
+SentNorm -> Subj ModalPos Not StModal   : Subj StModal TenseModal
+SentNorm -> Subj ModalCont Not StModal  : Subj StModal TenseModal
+SentNorm -> Subj ModalNeg StModal       : Subj StModal TenseModal   [neg=1]
+SentNorm -> Subj Vs                     : Subj Vs Tense        [pass=0,neg=0,mode=simp,tense=pres,numb=sing,pers=3]
+SentNorm -> Subj V                      : Subj V Tense         [pass=0,neg=0,mode=simp,tense=pres,numb=sing,pers=1]
+SentNorm -> Subj V                      : Subj V Tense         [pass=0,neg=0,mode=simp,tense=pres,numb=plur]
+SentNorm -> Subj Ved                    : Subj Ved Tense       [pass=0,neg=0,mode=simp,tense=past]
+
+# question
+SentInv -> AuxBePos Subj Not StBe      : Subj StBe Tense
+SentInv -> AuxBeNeg Subj StBe          : Subj StBe Tense      [neg=1]
+SentInv -> AuxHavePos Subj Not StHave  : Subj StHave Tense
+SentInv -> AuxHaveNeg Subj StHave      : Subj StHave Tense    [neg=1]
+SentInv -> AuxDoPos Subj Not StDo      : Subj StDo Tense
+SentInv -> AuxDoNeg Subj StDo          : Subj StDo Tense      [neg=1]
+SentInv -> ModalPos Subj Not StModal   : Subj StModal TenseModal
+SentInv -> ModalNeg Subj StModal       : Subj StModal TenseModal   [neg=1]
+
+AuxBePos   -> am      [tense=pres,pers=1,numb=sing]
+AuxBePos   -> are     [tense=pres,pers=2,numb=sing]
+AuxBePos   -> is      [tense=pres,pers=3,numb=sing]
+AuxBePos   -> are     [tense=pres,numb=plur]
+AuxBePos   -> was     [tense=past,numb=sing,pers=1]
+AuxBePos   -> were    [tense=past,numb=sing,pers=2]
+AuxBePos   -> was     [tense=past,numb=sing,pers=3]
+AuxBePos   -> were    [tense=past,numb=plur]
+AuxBeCont  -> 'm      [tense=pres,pers=1,numb=sing]
+AuxBeCont  -> 're     [tense=pres,pers=2,numb=sing]
+AuxBeCont  -> 's      [tense=pres,pers=3,numb=sing]
+AuxBeCont  -> 're     [tense=pres,numb=plur]
+AuxBeNeg   -> isn't   [tense=pres,pers=3,numb=sing]
+AuxBeNeg   -> aren't  [tense=pres,numb=plur]
+AuxBeNeg   -> wasn't  [tense=past,numb=sing,pers=1]
+AuxBeNeg   -> weren't [tense=past,numb=sing,pers=2]
+AuxBeNeg   -> wasn't  [tense=past,numb=sing,pers=3]
+AuxBeNeg   -> weren't [tense=past,numb=plur]
+AuxHavePos -> have    [tense=pres,numb=sing,pers=1]
+AuxHavePos -> have    [tense=pres,numb=sing,pers=2]
+AuxHavePos -> has     [tense=pres,numb=sing,pers=3]
+AuxHavePos -> have    [tense=pres,numb=plur]
+AuxHavePos -> had     [tense=past]
+AuxHaveCont -> 've    [tense=pres,numb=sing,pers=1]
+AuxHaveCont -> 've    [tense=pres,numb=sing,pers=2]
+AuxHaveCont -> 's     [tense=pres,numb=sing,pers=3]
+AuxHaveCont -> 've    [tense=pres,numb=plur]
+AuxHaveCont -> 'd     [tense=past]
+AuxHaveNeg -> haven't [tense=pres,numb=sing,pers=1]
+AuxHaveNeg -> haven't [tense=pres,numb=sing,pers=2]
+AuxHaveNeg -> haven't [tense=pres,numb=plur]
+AuxHaveNeg -> hasn't  [tense=pres,numb=sing,pers=3]
+AuxHaveNeg -> hadn't  [tense=past]
+AuxDoPos   -> do      [tense=pres,numb=sing,pers=1]
+AuxDoPos   -> do      [tense=pres,numb=sing,pers=2]
+AuxDoPos   -> do      [tense=pres,numb=plur]
+AuxDoPos   -> does    [tense=pres,numb=sing,pers=3]
+AuxDoPos   -> did     [tense=past]
+AuxDoNeg   -> don't   [tense=pres,numb=sing,pers=1]
+AuxDoNeg   -> don't   [tense=pres,numb=sing,pers=2]
+AuxDoNeg   -> don't   [tense=pres,numb=plur]
+AuxDoNeg   -> doesn't [tense=pres,numb=sing,pers=3]
+AuxDoNeg   -> didn't  [tense=past]
+ModalPos -> can       [modal=can,tense=pres]
+ModalPos -> could     [modal=can,tense=past]
+ModalPos -> will      [modal=will,tense=pres]
+ModalPos -> shall     [modal=will,tense=pres]
+ModalPos -> would     [modal=will,tense=past]
+ModalPos -> must      [modal=must]
+ModalPos -> may       [modal=can,tense=pres]
+ModalPos -> might     [modal=can,tense=pres]
+ModalPos -> should    [modal=must]
+ModalCont -> 'll      [modal=will,tense=pres]
+ModalCont -> 'd       [modal=will,tense=past]
+ModalNeg -> can't     [modal=can,tense=pres]
+ModalNeg -> couldn't  [modal=can,tense=past]
+ModalNeg -> won't     [modal=will,tense=pres]
+ModalNeg -> wouldn't  [modal=will,tense=past]
+ModalNeg -> mustn't   [modal=must]
+ModalNeg -> mayn't    [modal=can,tense=pres]
+ModalNeg -> mightn't  [modal=can,tense=pres]
+ModalNeg -> shouldn't [modal=must]
+
+StBe    -> Ving {1}      : Ving ProgTense          [pass=0,mode=prog]
+StBe    -> being Ven     : Ven Pass ProgTense      [pass=1,mode=prog]
+StBe    -> Ven           : Ven Pass PresTense      [pass=1,mode=simp]
+StBe    -> Pred          : Pred      [mode=simp]
+StBe    -> being Pred    : Pred      [mode=prog]
+StHave  -> Ven       {1} : Ven PastTense     [pass=0,mode=perf]
+StHave  -> been Ving {1} : Ving	ProgTense     [pass=0,mode=prog]
+StHave  -> been Pred     : Pred      [mode=perf]
+StHave  -> been Ven      : Ven Pass PastTense [pass=1,mode=perf]
+StDo    -> V             : V         [pass=0,mode=simp]
+StModal -> be StBe       : StBe
+StModal -> have StHave   : StHave
+StModal -> V             : V         [pass=0,mode=simp]
+
+ProgTense -> : -Hyor Pers1
+ProgTense -> : -Hyordu Pers2
+
+PresTense -> : -Ar Pers1
+PresTense -> : -Hr Pers1
+
+
+Pred -> NP  : NP
+Pred -> Adj : Adj
+
+Adj -> happy  : mutlu
+
+NP -> NSing
+NP -> NPlur -lAr
+
+NSing -> man : adam
+NPlur -> men : adam

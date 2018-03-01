@@ -300,11 +300,11 @@ class Parser:
                 if param[key] is None:
                     keys.add(key)
                 elif param[key] != src[key]:
-                    raise UnifyError(key, src[key], param[key])
+                    raise UnifyError("Unify error feat=%s src=%s param=%s" % (key, src[key], param[key]))
 
         for key in keys & dst.keys():
             if  src[key] != dst[key]:
-                raise UnifyError(key, src[key], dst[key])
+                raise UnifyError("Unify error feat=%s src=%s param=%s" % (key, src[key], dst[key]))
 
         newkeys = keys - dst.keys()
         if newkeys:
@@ -338,15 +338,18 @@ class Parser:
                                     nkeys.append(_fdict)
                                     nvals.append([subtree])
                             except UnifyError as ue:
-                                pass
+                                last_error = "%s super=%s#%d sub=%s#%d" % (ue.args[0], tree.head, tree.ruleno, subtree.head, subtree.ruleno)
                     for key,val in zip(nkeys,nvals):
                         nstack.append((key,seq+[val]))
                 stack = nstack
                 if not stack:
-                    raise UnifyError("Empty result")
+                    raise UnifyError(last_error)
         ntree = []
         for fdict,seq in stack:
             ntree.append(Tree(tree.head,tree.ruleno,seq,tree.right,fdict))
+        if tree.head=="S'":
+            assert len(ntree)==1
+            return ntree[0]
         return ntree
 
     def make_trans_tree(self,symbol,feat,fparam):
@@ -665,9 +668,8 @@ def main():
                 tree = parser.make_tree()
                 print(tree.pformat())
                 tree2 = parser.unify_tree(tree)
-                assert len(tree2)==1
-                print(tree2[0].pformat_ext())
-                tree3 = parser.trans_tree(tree2[0])
+                print(tree2.pformat_ext())
+                tree3 = parser.trans_tree(tree2)
                 print(tree3.pformat(tree_type=3))
                 print(tree3.str_format(tree_type=2))
                 print(tree3.str_format(tree_type=3))

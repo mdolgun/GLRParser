@@ -46,7 +46,7 @@ def format_rule(self):
 Rule.format = format_rule
 
 class Grammar:
-    NONTERM = re.compile('[_A-Z][-_A-Za-z0-9]*')
+    NONTERM = re.compile("[_A-Z][-_A-Za-z0-9]*'*")
     TERM = re.compile('".*"|[-a-zıüöçğşðþý][-\'A-Za-zıüöçğşðþý]*')
     FEAT = re.compile('\*?[a-z0-9_]*')
     INTEGER = re.compile('-?[1-9][0-9]*')
@@ -252,7 +252,7 @@ class Grammar:
 
     def parse_grammar(iterator,reverse=False):
         rules = []
-        rules.append(Grammar("_S_ -> S() : S()").parse_rule())
+        rules.append(Grammar("S' -> S() : S()").parse_rule())
         line_no = 0
         for s in iterator:
             line_no += 1
