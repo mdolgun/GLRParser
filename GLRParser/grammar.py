@@ -31,7 +31,7 @@ def format_feat(fdict,par='[]'):
         if type(fdict)==dict: # empty dict
             return par
         return ""
-    return par[0] + ",".join(["=".join(item) if item[1] else item[0] for item in fdict.items()]) + par[1]
+    return par[0] + ",".join(["=".join(item) if item[1] else item[0] for item in sorted(fdict.items())]) + par[1]
 
 def format_rule(self):
     return "%s -> %s {%d}: %s {%d} %s" % (

@@ -15,7 +15,8 @@ class TestParse(unittest.TestCase):
         PP -> with NP
         VP -> saw NP"""
 
-    pformat = """        S(
+    pformat = """\
+        S(
             S(
                 S(
                     NP(i)
@@ -96,7 +97,8 @@ class TestParse(unittest.TestCase):
         )
         """
 
-    pformat_ext = """        S(
+    pformat_ext = """\
+        S(
         #2[]
             S(
             #2[]
