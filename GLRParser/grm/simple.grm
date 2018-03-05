@@ -1,9 +1,4 @@
-# this is a simple grammar
-S -> hello world [flag=0]
-S -> hello world [flag=1]
-S -> A world 
-A -> hello
-A -> hi
+# this is a very simple grammar with high ambiguity
 S -> NP VP
 S -> S PP
 NP -> i 

@@ -1,0 +1,48 @@
+# This is an example grammar demonstrating feature unification for English. It demonstrates:
+#   1.Subject-Verb Agreement e.g. "the man is watching", but not "the men is watching"
+#   2.Determiner-Noun Agreement e.g. "a man is watching" but not "two man is watching"
+#   3.Subject-Object Case Enforcement  e.g. "i watch her", but not "me watch she" 
+
+S -> NP(case=nom,numb,pers) VP NP(case=acc)
+
+NP -> i     [case=nom,numb=sing,pers=1] 
+NP -> he    [case=nom,numb=sing,pers=3] 
+NP -> she   [case=nom,numb=sing,pers=3]
+NP -> it    [numb=sing,pers=3]
+NP -> we    [case=nom,numb=plur,pers=1]
+NP -> you   [numb=plur,pers=2]
+NP -> they  [case=nom,numb=plur,pers=3]
+NP -> me    [case=acc,numb=sing,pers=1]
+NP -> him   [case=acc,numb=sing,pers=3]
+NP -> her   [case=acc,numb=sing,pers=3]
+NP -> us    [case=acc,numb=plur,pers=1]
+NP -> them  [case=acc,numb=plur,pers=3]
+
+NP -> Det Noun  [pers=3]
+
+Det -> this   [numb=sing]
+Det -> these  [numb=plur]
+Det -> a      [numb=sing]
+Det -> two    [numb=plur]
+Det -> the
+Det ->
+
+Noun -> man   [numb=sing]
+Noun -> men   [numb=plur]
+
+VP -> am  Ving  [numb=sing,pers=1]
+VP -> is  Ving  [numb=sing,pers=3]
+VP -> are Ving  [numb=plur]
+
+VP -> was  Ving [numb=sing]
+VP -> were Ving [numb=plur]
+
+VP -> Ved
+VP -> V         [numb=sing,pers=1]
+VP -> Vs        [numb=sing,pers=3]
+VP -> V         [numb=plur]
+
+V    -> watch
+Vs   -> watches
+Ving -> watching
+Ved  -> watched

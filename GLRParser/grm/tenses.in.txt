@@ -1,0 +1,148 @@
+i am going @ gidiyorum
+i'm going @ gidiyorum
+you are going @ gidiyorsun
+you're going @ gidiyorsun
+he is going @ gidiyor
+he's going @ gidiyor
+she is going @ gidiyor
+it is going @ gidiyor
+we are going @ gidiyoruz
+you are going @ gidiyorsunuz
+they are going @ gidiyorlar
+
+i was going @ gidiyordum
+i have been going @ gidiyorum
+i've been going @ gidiyorum
+i had been going @ gidiyordum
+i go @ giderim
+i went @ gittim
+i have gone @ gittim
+i've gone @ gittim
+i had gone @ gitmiþtim
+i'd gone @ gitmiþtim
+i am going to go @ gideceðim
+i was going to go @ gidecektim
+
+i will go @ gideceðim
+i'll go @ gideceðim
+i would go @ gidecektim
+i'd go @ gidecektim
+i will be going @ gidiyor olacaðým
+i would be going @ gidiyor olacaktým
+i will have gone @ gitmiþ olacaðým
+i would have gone @ gitmiþ olacaktým
+i can go @ gidebilirim
+i could go @ gidebilirdim
+i can be going @ gidiyor olabilirim
+i could be going @ gidiyor olabilirdim
+i can have gone @ gitmiþ olabilirim
+i could have gone @ girmiþ olabilirdim
+i may go @ gidebilirim
+i might go @ gidebilirdim
+i must go @ gitmeliyim
+i must be going @ gidiyor olmalýyým
+i must have gone @ gimiþ olmalýyým
+i should go @ gitmeliyim
+i shall go @ gideceðim
+
+i am not going @ gitmiyorum
+you are not going @ gitmiyorsun
+you're not going @ gitmiyorsun
+you aren't going @ gitmiyorsun
+he is not going @ gitmiyor
+he's not going @ gitmiyor
+he isn't going @ gitmiyor
+we are not going @ gitmiyoruz
+you are not going @ gitmiyorsunuz
+they are not going @ gitmiyorlar
+
+i was not going @ gitmiyordum
+i wasn't going @ gitmiyordum
+we were not going @ gitmiyoruz
+we weren't going @ gitmiyoruz
+i wasn't going to go @ gitmeyecektim
+i was not going to go @ gitmeyecektim
+
+i have not gone @ gitmedim
+i've not gone @ gitmedim
+i haven't gone @ gitmedim
+he has not gone @ gitmedi
+he's not gone @ gitmedi 
+he hasn't gone @ gitmedi
+
+i have not been going @ gitmiyorum
+i had not been going @ gitmiyordum
+i do not go @ gitmem
+i don't go @ gitmem
+he does not go @ gitmez
+he doesn't go @ gitmez
+i did not go @ gitmedim
+i didn't go @ gitmedim
+
+i will not go @ gitmeyeceðim
+i'll not go @ gitmeyeceðim
+i won't go @ gitmeyeceðim
+i would not go @ gitmeyecektim
+i'd not go @ gitmeyecektim
+i wouldn't go @ gitmeyecektim
+i can not go @ gidemem
+i can't go @ gidemem
+i could not go @ gidemezdim
+i couldn't go @ gidemezdim
+i shall not go @ gitmeyeceðim
+i shan't go @ gitmeyeceðim
+i may not go @ gidemezdim
+i might not go @ gidemezdim
+i should not go @ gitmemeliyim
+i shouldn't go @ gitmemeliyim
+i must not go @ gitmemeliyim
+i mustn't go @ gitmemeliyim 
+i won't be going @ gidiyor olmayacaðým
+i wouldn't be going @ gidiyor olmayacaðým
+i won't have gone @ gitmiþ olmayacaðým
+i wouldn't have gone @ gitmiþ olmayacaktým
+i may not be going @ gidiyor olmayabilirim
+i might not be going @ gidiyor olmayabilirim
+i mustn't be going @ gidiyor olmamalýyým
+i mustn't have gone @ gitmiþ olmamalýyým
+
+am i going @ gidiyor muyum
+am i not going @ gitmiyor muyum
+was she going @ gidiyor mu
+wasn't she going @ gitmiyor muydu
+was she not going @ gitmiyor muydu
+
+did we go @ gittik mi
+didn't we go @ gitmedik mi
+did we not go @ gitmedik mi
+do we go @ gider miyiz
+don't we go @ gitmez miyiz
+do we not go @ gitmez miyiz
+have we gone @ gittik mi
+haven't we gone @ gitmedik mi
+have we not gone @ gitmedik mi
+had we gone @ gitmiþ miydik
+hadn't we gone @ gitmemiþ miydik
+will we go @ gidecek miyiz
+won't we go @ gitmeyecek miyiz
+are we going to go @ gidecek miyiz
+aren't we going to go @ gitmeyecek
+can we go @ gidebilir miyiz
+can't we go @ gidemez miyiz
+could we go @ gidebilir miydik
+couldn't we go @ gidemez miydik
+must we go @ gitmeli miyiz
+mustn't we go @ gitmemeli miyiz
+
+
+
+
+
+
+
+
+
+
+
+
+

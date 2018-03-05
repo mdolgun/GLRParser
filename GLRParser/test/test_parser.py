@@ -2,7 +2,7 @@ import sys, unittest, textwrap
 sys.path.append("../..")
 from GLRParser import Parser, ParseError, GrammarError, Tree
 
-class TestParse(unittest.TestCase):
+class TestParseSimple(unittest.TestCase):
     grammar = """
         S -> NP VP
         S -> S PP
@@ -289,5 +289,547 @@ class TestParse(unittest.TestCase):
     def test_pformat_ext(self):
         self.assertEqual(self.tree.pformat_ext(), textwrap.dedent(self.pformat_ext))
 
+class TestParseSimpleEmpty(unittest.TestCase):
+    grammar = """
+        S -> NP VP PPS
+        VP -> saw NP
+        NP -> BNP PPS
+        PPS -> PP PPS
+        PPS ->
+        PP -> in NP
+        PP -> with NP
+        BNP -> i
+        BNP -> man
+        BNP -> tel
+        BNP -> apt"""
+
+    pformat = """\
+        S(
+            NP(
+                BNP(i)
+                PPS()
+            )
+            VP(
+                saw
+                NP(
+                    BNP(man)
+                    PPS(
+                        PP(
+                            in
+                            NP(
+                                BNP(apt)
+                                PPS()
+                            )
+                        )
+                        PPS()
+                    )
+                )
+            )
+            PPS(
+                PP(
+                    with
+                    NP(
+                        BNP(tel)
+                        PPS()
+                    )
+                )
+                PPS()
+            )
+        |
+            NP(
+                BNP(i)
+                PPS()
+            )
+            VP(
+                saw
+                NP(
+                    BNP(man)
+                    PPS()
+                )
+            )
+            PPS(
+                PP(
+                    in
+                    NP(
+                        BNP(apt)
+                        PPS()
+                    )
+                )
+                PPS(
+                    PP(
+                        with
+                        NP(
+                            BNP(tel)
+                            PPS()
+                        )
+                    )
+                    PPS()
+                )
+            |
+                PP(
+                    in
+                    NP(
+                        BNP(apt)
+                        PPS(
+                            PP(
+                                with
+                                NP(
+                                    BNP(tel)
+                                    PPS()
+                                )
+                            )
+                            PPS()
+                        )
+                    )
+                )
+                PPS()
+            )
+        |
+            NP(
+                BNP(i)
+                PPS()
+            )
+            VP(
+                saw
+                NP(
+                    BNP(man)
+                    PPS(
+                        PP(
+                            in
+                            NP(
+                                BNP(apt)
+                                PPS()
+                            )
+                        )
+                        PPS(
+                            PP(
+                                with
+                                NP(
+                                    BNP(tel)
+                                    PPS()
+                                )
+                            )
+                            PPS()
+                        )
+                    |
+                        PP(
+                            in
+                            NP(
+                                BNP(apt)
+                                PPS(
+                                    PP(
+                                        with
+                                        NP(
+                                            BNP(tel)
+                                            PPS()
+                                        )
+                                    )
+                                    PPS()
+                                )
+                            )
+                        )
+                        PPS()
+                    )
+                )
+            )
+            PPS()
+        )
+        """
+    pformat_ext = """\
+        S(
+        #1[]
+            NP(
+            #3[]
+                BNP(
+                #8[]
+                    i
+                )
+                PPS(
+                #5[]
+                )
+            )
+            VP(
+            #2[]
+                saw
+                NP(
+                #3[]
+                    BNP(
+                    #9[]
+                        man
+                    )
+                    PPS(
+                    #4[]
+                        PP(
+                        #6[]
+                            in
+                            NP(
+                            #3[]
+                                BNP(
+                                #11[]
+                                    apt
+                                )
+                                PPS(
+                                #5[]
+                                )
+                            )
+                        )
+                        PPS(
+                        #5[]
+                        )
+                    )
+                )
+            )
+            PPS(
+            #4[]
+                PP(
+                #7[]
+                    with
+                    NP(
+                    #3[]
+                        BNP(
+                        #10[]
+                            tel
+                        )
+                        PPS(
+                        #5[]
+                        )
+                    )
+                )
+                PPS(
+                #5[]
+                )
+            )
+        |
+        #1[]
+            NP(
+            #3[]
+                BNP(
+                #8[]
+                    i
+                )
+                PPS(
+                #5[]
+                )
+            )
+            VP(
+            #2[]
+                saw
+                NP(
+                #3[]
+                    BNP(
+                    #9[]
+                        man
+                    )
+                    PPS(
+                    #5[]
+                    )
+                )
+            )
+            PPS(
+            #4[]
+                PP(
+                #6[]
+                    in
+                    NP(
+                    #3[]
+                        BNP(
+                        #11[]
+                            apt
+                        )
+                        PPS(
+                        #5[]
+                        )
+                    )
+                )
+                PPS(
+                #4[]
+                    PP(
+                    #7[]
+                        with
+                        NP(
+                        #3[]
+                            BNP(
+                            #10[]
+                                tel
+                            )
+                            PPS(
+                            #5[]
+                            )
+                        )
+                    )
+                    PPS(
+                    #5[]
+                    )
+                )
+            |
+            #4[]
+                PP(
+                #6[]
+                    in
+                    NP(
+                    #3[]
+                        BNP(
+                        #11[]
+                            apt
+                        )
+                        PPS(
+                        #4[]
+                            PP(
+                            #7[]
+                                with
+                                NP(
+                                #3[]
+                                    BNP(
+                                    #10[]
+                                        tel
+                                    )
+                                    PPS(
+                                    #5[]
+                                    )
+                                )
+                            )
+                            PPS(
+                            #5[]
+                            )
+                        )
+                    )
+                )
+                PPS(
+                #5[]
+                )
+            )
+        |
+        #1[]
+            NP(
+            #3[]
+                BNP(
+                #8[]
+                    i
+                )
+                PPS(
+                #5[]
+                )
+            )
+            VP(
+            #2[]
+                saw
+                NP(
+                #3[]
+                    BNP(
+                    #9[]
+                        man
+                    )
+                    PPS(
+                    #4[]
+                        PP(
+                        #6[]
+                            in
+                            NP(
+                            #3[]
+                                BNP(
+                                #11[]
+                                    apt
+                                )
+                                PPS(
+                                #5[]
+                                )
+                            )
+                        )
+                        PPS(
+                        #4[]
+                            PP(
+                            #7[]
+                                with
+                                NP(
+                                #3[]
+                                    BNP(
+                                    #10[]
+                                        tel
+                                    )
+                                    PPS(
+                                    #5[]
+                                    )
+                                )
+                            )
+                            PPS(
+                            #5[]
+                            )
+                        )
+                    |
+                    #4[]
+                        PP(
+                        #6[]
+                            in
+                            NP(
+                            #3[]
+                                BNP(
+                                #11[]
+                                    apt
+                                )
+                                PPS(
+                                #4[]
+                                    PP(
+                                    #7[]
+                                        with
+                                        NP(
+                                        #3[]
+                                            BNP(
+                                            #10[]
+                                                tel
+                                            )
+                                            PPS(
+                                            #5[]
+                                            )
+                                        )
+                                    )
+                                    PPS(
+                                    #5[]
+                                    )
+                                )
+                            )
+                        )
+                        PPS(
+                        #5[]
+                        )
+                    )
+                )
+            )
+            PPS(
+            #5[]
+            )
+        )
+        """
+
+    format = "S(NP(BNP(i) PPS()) VP(saw NP(BNP(man) PPS(PP(in NP(BNP(apt) PPS())) PPS()))) PPS(PP(with NP(BNP(tel) PPS())) PPS())|NP(BNP(i) PPS()) VP(saw NP(BNP(man) PPS())) PPS(PP(in NP(BNP(apt) PPS())) PPS(PP(with NP(BNP(tel) PPS())) PPS())|PP(in NP(BNP(apt) PPS(PP(with NP(BNP(tel) PPS())) PPS()))) PPS())|NP(BNP(i) PPS()) VP(saw NP(BNP(man) PPS(PP(in NP(BNP(apt) PPS())) PPS(PP(with NP(BNP(tel) PPS())) PPS())|PP(in NP(BNP(apt) PPS(PP(with NP(BNP(tel) PPS())) PPS()))) PPS()))) PPS())"
+    str_format = "(i  saw man in apt   with tel  |i  saw man  (in apt  with tel  |in apt with tel   )|i  saw man (in apt  with tel  |in apt with tel   ) )"
+
+    def setUp(self):
+        parser = Parser()
+        grammar = textwrap.dedent(self.grammar)
+
+        parser.load_grammar(text=grammar)
+        sent = "i saw man in apt with tel"
+
+        parser.compile()
+        parser.parse(sent)
+
+        self.parser = parser
+        self.tree = parser.make_tree()
+        self.maxDiff = None
+
+    def test_format(self):
+        self.assertEqual(self.tree.format(), self.format)
+
+    def test_str_format(self):
+        self.assertEqual(self.tree.str_format(), self.str_format)
+
+    def test_pformat(self):
+        self.assertEqual(self.tree.pformat(), textwrap.dedent(self.pformat))
+                         
+    def test_pformat_ext(self):
+        self.assertEqual(self.tree.pformat_ext(), textwrap.dedent(self.pformat_ext))
+
+class TestParseMiddleEmpty(unittest.TestCase):
+    grammar = """
+        S -> a B c
+        B -> b
+        B ->
+    """
+
+    pformat = """\
+        S(
+            a
+            B()
+            c
+        )
+        """
+
+    pformat_ext = """\
+        S(
+        #1[]
+            a
+            B(
+            #3[]
+            )
+            c
+        )
+        """
+
+    format = "S(a B() c)"
+    str_format = "a  c"
+
+    def setUp(self):
+        parser = Parser()
+        grammar = textwrap.dedent(self.grammar)
+
+        parser.load_grammar(text=grammar)
+        sent = "a c"
+
+        parser.compile()
+        parser.parse(sent)
+
+        self.parser = parser
+        self.tree = parser.make_tree()
+        self.maxDiff = None
+
+    def test_format(self):
+        self.assertEqual(self.tree.format(), self.format)
+
+    def test_str_format(self):
+        self.assertEqual(self.tree.str_format(), self.str_format)
+
+    def test_pformat(self):
+        self.assertEqual(self.tree.pformat(), textwrap.dedent(self.pformat))
+                         
+    def test_pformat_ext(self):
+        self.assertEqual(self.tree.pformat_ext(), textwrap.dedent(self.pformat_ext))
+
+
+def gen_TestParseSimple():
+    parser = Parser()
+    grammar = textwrap.dedent(TestParseSimple.grammar)
+
+    parser.load_grammar(text=grammar)
+    sent = "i saw the man in the house with the telescope"
+
+    parser.compile()
+    parser.parse(sent)
+    tree = parser.make_tree()
+    print(tree.format())
+    print(tree.str_format())
+    print(tree.pformat())
+    print(tree.pformat_ext())
+
+def gen_TestParseSimpleEmpty():
+    parser = Parser()
+    grammar = textwrap.dedent(TestParseSimpleEmpty.grammar)
+
+    parser.load_grammar(text=grammar)
+    sent = "i saw man in apt with tel"
+
+    parser.compile()
+    parser.parse(sent)
+    tree = parser.make_tree()
+    print(tree.format())
+    print(tree.str_format())
+    print(tree.pformat())
+    print(tree.pformat_ext())
+
+def gen_TestParseMiddleEmpty():
+    parser = Parser()
+    grammar = textwrap.dedent(TestParseMiddleEmpty.grammar)
+
+    parser.load_grammar(text=grammar)
+    sent = "a c"
+
+    parser.compile()
+    parser.parse(sent)
+    tree = parser.make_tree()
+    print(tree.format())
+    print(tree.str_format())
+    print(tree.pformat())
+    print(tree.pformat_ext())
+
 if __name__ == '__main__':
     unittest.main()
+    #gen_TestParseSimpleEmpty()

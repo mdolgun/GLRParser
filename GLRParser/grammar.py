@@ -47,7 +47,7 @@ Rule.format = format_rule
 
 class Grammar:
     NONTERM = re.compile("[_A-Z][-_A-Za-z0-9]*'*")
-    TERM = re.compile('".*"|[-a-zıüöçğşðþý][-\'A-Za-zıüöçğşðþý]*')
+    TERM = re.compile('".*"|[-\'a-zıüöçğşðþý][-\'A-Za-zıüöçğşðþý]*')
     FEAT = re.compile('\*?[a-z0-9_]*')
     INTEGER = re.compile('-?[1-9][0-9]*')
     def add_range(chars,start,end):
