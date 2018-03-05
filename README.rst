@@ -8,6 +8,8 @@ GLRParser is not just a parser. It's
 * Unification Engine which handles unification of features
 * Translation Engine for Syntax-Based Translation of Natural Languages
 
+For detailed information, you can refer to wiki page: https://github.com/mdolgun/GLRParser/wiki
+
 
 Sample code for parsing and translation should be like:
 
@@ -57,16 +59,16 @@ Given the above grammar and input string:
 
     i saw the man in the house with the telescope
 
-It produces 5 alternative parse trees and 5 alternative translations (of
+It produces a parse forest, and 5 alternative translations (of
 which two are identical):
 
 ::
 
-        teleskopla evde adamı gördüm
-        teleskopla evdeki adamı gördüm
-        teleskoplu evde adamı gördüm
-        teleskoplu evdeki adamı gördüm
-        teleskoplu evdeki adamı gördüm
+    1. teleskopla evde adamı gördüm
+    2. teleskopla evdeki adamı gördüm
+    3. teleskoplu evde adamı gördüm
+    4. teleskoplu evdeki adamı gördüm
+    5. teleskoplu evdeki adamı gördüm
 
 The semantic interpretations are:
 
@@ -78,11 +80,4 @@ The semantic interpretations are:
     4. man(in the house) man(with the telescope)
     5. man(in the house) house(with the telescope)
 
-| ToDo:
-| 1. Morphological Processing
-| 2. Feature sets
-| 3. A more comprehensive grammar
-| 4. Interactive GUI
-| 5. A better grammar parser
-| 6. Dictionary
 
