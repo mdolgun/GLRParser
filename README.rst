@@ -2,6 +2,7 @@ GLRParser
 =========
 
 A GLR Parser for Natural Language Processing and Translation
+
 GLRParser is not just a parser. It's
 
 * Natural Language Parser which handles ambiguous grammars
