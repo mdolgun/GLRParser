@@ -100,6 +100,7 @@ def pformat_tree_ext(self,tree_type=2,level=0):
     ])
       
 def enum_tree(tree,idx=0):
+    """ a generator for enumerating all translations in a parse forest """
     try:
         item = tree.right[idx]
     except IndexError:
@@ -127,6 +128,8 @@ Tree.str_format = str_tree
 Tree.list_format = list_tree
 Tree.convert_tree = convert_tree
 Tree.enum = enum_tree
+Tree.left_tree = 2
+Tree.right_tree = 3
 
 empty_dict = dict()
 empty_set = set()

@@ -1,7 +1,7 @@
 # this is an EN-TR translation version of the simple grammar
 S -> NP VP : NP VP
-S -> S in NP : S NP -de
-S -> S with NP : S NP -la
+S -> S in NP : NP -de S
+S -> S with NP : NP -la S
 NP -> i
 NP -> the man : adam
 NP -> the telescope : teleskop
