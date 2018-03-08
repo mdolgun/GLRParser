@@ -12,19 +12,27 @@ def test1():
 
 def test2():
     grammar = """
-    S -> Subj AuxBe Not Ving : Subj Ving -Hyor Pers
-    Subj -> i : ben
-    AuxBe -> am
-    Not -> not
-    Not ->
-    Ving -> going : git
-    Pers -> -Hm
+    S -> Subj V                      : Subj V SimpTense         	[numb=sing,pers=1]
+    S -> Subj V                      : Subj V SimpTense         	[numb=plur]
+    Subj -> i [numb=sing,pers=1]
+    V -> go : git
+    SimpTense -> : -Ar Pers1	[tense=pres,neg=0]
+    Pers1 -> : -YHm     [numb=sing,pers=1]
+    Pers1 -> : -sHn     [numb=sing,pers=2]
+    Pers1 -> :          [numb=sing,pers=3]
+    Pers1 -> : -YHz     [numb=plur,pers=1]
+    Pers1 -> : -sHnHz   [numb=plur,pers=2]
+    Pers1 -> : -lAr     [numb=plur,pers=3]
     """
 
     parser = Parser("EN","TR")
     parser.load_grammar(text=grammar)
     parser.compile()
-    print(parser.trans_sent("i am going"))
+    parser.parse("i go")
+    tree = parser.make_tree()
+    print(tree.pformat_ext())
+    utree = parser.unify_tree(tree)
+    print(utree.pformat_ext())
 
 
 test1()

@@ -200,5 +200,24 @@ class TestUnify(unittest.TestCase):
                     out = str(pe)
                 self.assertEqual(out, textwrap.dedent(self.cases[idx][1]))
 
+def gen_TestUnify():
+    parser = Parser()
+
+    parser.load_grammar(text=TestUnify.grammar)
+    parser.compile()
+    sents = ["i am watching her", "she is watching me", "these men are watching us", "me am watching you", "she is watching i", "two man is watching it",
+             "a man watch us", "they watch us", "he watches the men", "he watches a men", "i watch him"]
+    for sent in sents:
+        print(sent)
+        try:
+            parser.parse(sent)
+            tree = parser.make_tree()
+            tree2 = parser.unify_tree(tree)
+            print(tree2.pformat_ext())
+        except UnifyError as ue:
+            print(ue)
+        except ParseError as pe:
+            print(pe)
 if __name__ == '__main__':
     unittest.main(verbosity=2)
+    #gen_TestUnify()

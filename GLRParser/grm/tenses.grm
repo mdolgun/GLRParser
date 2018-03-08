@@ -2,22 +2,25 @@ S -> SentNorm  : SentNorm [quest=0]
 S -> SentInv   : SentInv  [quest=1]
 S -> SentCmd   : SentCmd
 
-SentCmd -> don't V 	: V  [neg=1]
-SentCmd -> do Not V 	: V
-SentCmd -> V 		: V  [neg=0]
+Neg -> : -mA 	[neg=1]
+Neg -> : 	[neg=0]
+
+SentCmd -> don't V 	: V -mA [neg=1]
+SentCmd -> do Not V 	: V Neg
+SentCmd -> V 		: V  	[neg=0]
 
 # affirmative 
-SentNorm -> Subj AuxBePos Not StBe      : Subj StBe 
-SentNorm -> Subj AuxBeCont Not StBe     : Subj StBe 
-SentNorm -> Subj AuxBeNeg StBe          : Subj StBe           		[neg=1]
-SentNorm -> Subj AuxHavePos Not StHave  : Subj StHave
-SentNorm -> Subj AuxHaveCont Not StHave : Subj StHave 
-SentNorm -> Subj AuxHaveNeg StHave      : Subj StHave         		[neg=1]
-SentNorm -> Subj AuxDoPos Not StDo      : Subj StDo 
-SentNorm -> Subj AuxDoNeg StDo          : Subj StDo           		[neg=1]
-SentNorm -> Subj ModalPos Not StModal   : Subj StModal 
-SentNorm -> Subj ModalCont Not StModal  : Subj StModal 
-SentNorm -> Subj ModalNeg StModal       : Subj StModal 		  	[neg=1]
+SentNorm -> Subj AuxBePos Not StBe      : Subj StBe Tense 
+SentNorm -> Subj AuxBeCont Not StBe     : Subj StBe Tense
+SentNorm -> Subj AuxBeNeg StBe          : Subj StBe Tense           	[neg=1]
+SentNorm -> Subj AuxHavePos Not StHave  : Subj StHave Tense
+SentNorm -> Subj AuxHaveCont Not StHave : Subj StHave Tense
+SentNorm -> Subj AuxHaveNeg StHave      : Subj StHave Tense        	[neg=1]
+SentNorm -> Subj AuxDoPos Not StDo      : Subj StDo Tense
+SentNorm -> Subj AuxDoNeg StDo          : Subj StDo Tense          	[neg=1]
+SentNorm -> Subj ModalPos Not StModal   : Subj StModal ModalTense
+SentNorm -> Subj ModalCont Not StModal  : Subj StModal ModalTense
+SentNorm -> Subj ModalNeg StModal       : Subj StModal ModalTense  	[neg=1]
 SentNorm -> Subj Vs                     : Subj Vs SimpTense	   	[pass=0,neg=0,mode=simp,tense=pres,numb=sing,pers=3]
 SentNorm -> Subj V                      : Subj V SimpTense         	[pass=0,neg=0,mode=simp,tense=pres,numb=sing,pers=1]
 SentNorm -> Subj V                      : Subj V SimpTense         	[pass=0,neg=0,mode=simp,tense=pres,numb=plur]
@@ -91,25 +94,28 @@ ModalNeg -> can't     [modal=can,tense=pres]
 ModalNeg -> couldn't  [modal=can,tense=past]
 ModalNeg -> won't     [modal=will,tense=pres]
 ModalNeg -> wouldn't  [modal=will,tense=past]
+ModalNeg -> shan't    [modal=will,tense=pres]
 ModalNeg -> mustn't   [modal=must]
 ModalNeg -> mayn't    [modal=can,tense=pres]
 ModalNeg -> mightn't  [modal=can,tense=pres]
 ModalNeg -> shouldn't [modal=must]
 
-StBe    -> going to StModal : StModal 		[modal=will]
-StBe    -> Ving {1}      : Ving ProgTense       [pass=0,mode=prog]
-StBe    -> being Ven     : Ven Pass ProgTense   [pass=1,mode=prog]
-StBe    -> Ven           : Ven Pass SimpTense   [pass=1,mode=simp]
-StBe    -> Pred          : Pred      		[mode=simp]
-StBe    -> being Pred    : Pred      		[mode=prog]
-StHave  -> Ven       {1} : Ven PerfTense      	[pass=0,mode=perf]
-StHave  -> been Ving {1} : Ving	ProgTense     	[pass=0,mode=prog]
-StHave  -> been Pred     : Pred      		[mode=perf]
-StHave  -> been Ven      : Ven Pass PerfTense 	[pass=1,mode=perf]
-StDo    -> V             : V         		[pass=0,mode=simp]
-StModal -> be StBe       : StBe ol ModalTense
-StModal -> have StHave   : StHave ol ModalTense
-StModal -> V             : V ModalTense		[pass=0,mode=simp]
+StBe    -> going to StModal : StModal   [modal=will,mode=0]
+StBe    -> Ving {1}      : Ving      	[pass=0,mode=prog]
+StBe    -> being Ven     : Ven Pass  	[pass=1,mode=prog]
+StBe    -> Ven           : Ven Pass  	[pass=1,mode=simp]
+StBe    -> Pred          : Pred      	[mode=simp]
+StBe    -> being Pred    : Pred      	[mode=prog]
+StHave  -> Ven       {1} : Ven       	[pass=0,mode=perf]
+StHave  -> been Ving {1} : Ving	    	[pass=0,mode=prog]
+StHave  -> been Pred     : Pred      	[mode=perf]
+StHave  -> been Ven      : Ven Pass 	[pass=1,mode=perf]
+StDo    -> V             : V         	[pass=0,mode=simp]
+StModal -> be Ving       : Ving -Hyor ol 
+StModal -> be Pred       : Pred ol
+StModal -> be Ven        : Ven Pass 
+StModal -> have StHave   : StHave -mHþ ol 
+StModal -> V             : V 		[pass=0,mode=simp]
 
 Not -> not [neg=1]
 Not ->     [neg=0]
@@ -132,22 +138,30 @@ Ving -> watching : seyret
 Ved  -> watched  : seyret
 Ven  -> watched  : seyret
 
-ProgTense -> : -Hyor Pers1	[tense=pres]
-ProgTense -> : -Hyordu Pers2    [tense=past]
+Tense -> : ProgTense 	[mode=prog]
+Tense -> : SimpTense 	[mode=simp]
+Tense -> : PerfTense 	[mode=perf]
+Tense -> : ModalTense 	[mode=0]
 
-SimpTense -> : -Ar Pers1	[tense=pres]
-SimpTense -> : -dH Pers2	[tense=past]
+ProgTense -> : Neg -Hyor Pers1	[tense=pres]
+ProgTense -> : Neg -Hyordu Pers2    [tense=past]
+
+SimpTense -> : -Ar Pers1	[tense=pres,neg=0]
+SimpTense -> : -mA Pers3	[tense=pres,neg=1]
+SimpTense -> : Neg -dH Pers2	[tense=past]
 
 Pass -> : -Hl
 
-PerfTense -> : -dH Pers2 	[tense=pres]
-PerfTense -> : -mHþtH Pers2	[tense=past]
+PerfTense -> : Neg -dH Pers2 	[tense=pres]
+PerfTense -> : Neg -mHþtH Pers2	[tense=past]
 
-ModalTense -> : -YAcAk Pers1	[modal=will,tense=pres]
-ModalTense -> : -YAcAktH Pers2	[modal=will,tense=past]
-ModalTense -> : -Abilir Pers1	[modal=can,tense=pres]
-ModalTense -> : -Abilirdi Pers2	[modal=can,tense=past]
-ModalTense -> : -mAlH Pers1	[modal=must]
+ModalTense -> : Neg -YAcAk Pers1	[modal=will,tense=pres]
+ModalTense -> : Neg -YAcAktH Pers2	[modal=will,tense=past]
+ModalTense -> : -Abilir Pers1		[modal=can,tense=pres,neg=0]
+ModalTense -> : -Abilirdi Pers2		[modal=can,tense=past,neg=0]
+ModalTense -> : -AmA Pers3		[modal=can,tense=pres,neg=1]
+ModalTense -> : -AmAzdH Pers2		[modal=can,tense=past,neg=1]
+ModalTense -> : -mAlH Pers1		[modal=must]
 
 Pers1 -> : -YHm     [numb=sing,pers=1]
 Pers1 -> : -sHn     [numb=sing,pers=2]

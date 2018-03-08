@@ -36,7 +36,7 @@ i could go @ gidebilirdim
 i can be going @ gidiyor olabilirim
 i could be going @ gidiyor olabilirdim
 i can have gone @ gitmiþ olabilirim
-i could have gone @ girmiþ olabilirdim
+i could have gone @ gitmiþ olabilirdim
 i may go @ gidebilirim
 i might go @ gidebilirdim
 i must go @ gitmeliyim
@@ -58,8 +58,8 @@ they are not going @ gitmiyorlar
 
 i was not going @ gitmiyordum
 i wasn't going @ gitmiyordum
-we were not going @ gitmiyoruz
-we weren't going @ gitmiyoruz
+we were not going @ gitmiyorduk
+we weren't going @ gitmiyorduk
 i wasn't going to go @ gitmeyecektim
 i was not going to go @ gitmeyecektim
 
@@ -108,7 +108,7 @@ i mustn't have gone @ gitmiþ olmamalýyým
 
 am i going @ gidiyor muyum
 am i not going @ gitmiyor muyum
-was she going @ gidiyor mu
+was she going @ gidiyor muydu
 wasn't she going @ gitmiyor muydu
 was she not going @ gitmiyor muydu
 
@@ -134,6 +134,54 @@ couldn't we go @ gidemez miydik
 must we go @ gitmeli miyiz
 mustn't we go @ gitmemeli miyiz
 
+i am happy @ mutluyum
+he is happy @ mutlu
+we are happy @ mutluyuz
+you are happy @ mutlusunuz
+they are happy @ mutlular
+
+i was happy @ mutluydum
+he was happy @ mutluydu
+we were happy @ mutluyduk
+you were happy @ mutluydunuz
+they were happy @ mutluydular
+
+
+am i happy @ mutlu muyum
+is he happy @ mutlu mu
+are we happy @ mutlu muyuz
+are you happy @ mutlu musunuz
+are they happy @ mutlular mý
+
+i am not happy @ mutlu deðilim
+he is not happy @ mutlu deðil
+we are not happy @ mutlu deðiliz
+you are not happy @ mutlu deðilsiniz
+they are not happy @ mutlu deðiller
+
+am i not happy @ mutlu deðil miyim
+is he not happy @ mutlu deðil mi
+are we not happy @ mutlu deðil miyiz
+are you not happy @ mutlu deðil misiniz
+are they not happy @ mutlu deðil miler
+
+was i happy @ mutlu muydum
+was he happy @ mutlu muydu
+were we happy @ mutlu muyduk
+were you happy @ mutlu muydunuz
+were they happy @ mutlular muydunuz
+
+i was not happy @ mutlu deðildim
+he was not happy @ mutlu deðildi
+we were not happy @ mutlu deðildik
+you were not happy @ mutlu deðildiniz
+they were not happy @ mutlu deðillerdi
+
+was i not happy @ mutlu deðil miydim
+was he not happy @ mutlu deðil miydi
+were we not happy @ mutlu deðil miydik
+were you not happy @ mutlu deðil miydiniz
+were they not happy @ mutlu deðiller miydi
 
 
 

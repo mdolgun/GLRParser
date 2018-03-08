@@ -117,7 +117,7 @@ def main():
             print(nword, morpher(nword))
 
     words = [ "gel", "git", "oku", "ara" ]
-    suffixes = [ "-dH-m", "-dH-n", "-dH-k", "-dH-nHz", "-Hyor-Hm", "-Hyor-sHn", "-Hyor-Hz", "-Hyor-sHnHz", "-YAcAk-Hm", "-YAcAk-sHn", "-YAcAk-Hz", "-YAcAk-sHnHz" ]
+    suffixes = [ "-dH-m", "-dH-n", "-dH-k", "-dH-nHz", "-Hyor-YHm", "-Hyor-sHn", "-Hyor-YHz", "-Hyor-sHnHz", "-YAcAk-YHm", "-YAcAk-sHn", "-YAcAk-YHz", "-YAcAk-sHnHz", "-mAlH-YHm", "-mAlH-sHn", "-mAlH-yHz", "-mAlH-sHnHz" ]
 
     for word in words:
         for suffix in suffixes:

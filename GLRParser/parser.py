@@ -235,7 +235,6 @@ class Parser:
                     if nextstate not in stateset: 
                         stateset.add(nextstate)
                         todo.append(nextstate)
-############ 
                 """               
                 while symbol in self.nullable:
                     rulepos += 1
@@ -245,7 +244,6 @@ class Parser:
                         todo.append(nextstate)              
                     symbol = self.rules[ruleno][1][rulepos]
                 """
-############                 
             except IndexError: # there is no more symbols in the rule (i.e. A->x.)
                 pass
 
@@ -369,7 +367,7 @@ class Parser:
         return dst
  
     def unify_tree(self,tree):
-        # tree.left=[(str|subtree+)*]
+        """ bottom-up unifies a tree and returns a new tree """
         rule = self.rules[tree.ruleno]
         fdict,srcflist = rule.feat, rule.lparam
         stack = [(fdict,[])]
@@ -383,21 +381,31 @@ class Parser:
                     nkeys = []
                     nvals = []
                     for alt in item:
-                        for subtree in self.unify_tree(alt):               
-                            try:
+                        try:
+                            subtrees = self.unify_tree(alt)
+                        except UnifyError as ue:
+                            last_error = ue.args[0]
+                            continue
+                        for subtree in subtrees:
+                            logging.debug("Unify feat=%s param=%s subfeat=%s ", format_feat(fdict), format_feat(param), format_feat(subtree.feat))
+                            try:      
                                 _fdict = Parser.unify(fdict,param,subtree.feat)
+                                logging.debug("Unify Success=%s", format_feat(_fdict))
                                 try:
                                     idx = nkeys.index(_fdict)
                                     nvals[idx].append(subtree) 
                                 except ValueError:
                                     nkeys.append(_fdict)
                                     nvals.append([subtree])
+                                #print("nkeys=%s nvals=%s" % (nkeys,nvals))
                             except UnifyError as ue:
+                                logging.debug("Unify Failure dst=%s param=%s src=%s ", format_feat(fdict), format_feat(param), format_feat(subtree.feat))
                                 last_error = "%s super=%s#%d sub=%s#%d" % (ue.args[0], tree.head, tree.ruleno, subtree.head, subtree.ruleno)
                     for key,val in zip(nkeys,nvals):
                         nstack.append((key,seq+[val]))
                 stack = nstack
                 if not stack: # if unification of all alternative sub-trees fails, re-raises the last error
+                    logging.debug("Re-raising UnifyError %s" % last_error)
                     raise UnifyError(last_error)
         ntree = []
         for fdict,seq in stack:
@@ -666,16 +674,20 @@ class Parser:
                     sent = parts[0]
                     trans = None
                         
-                print("input:"," @ ".join([sent,trans]),file=fout)
-                print("output:",file=fout)
+                print("input:"," @ ".join([sent.strip(),trans]),file=fout)
+                print("output:",file=fout,end=" ")
                 trans_list = self.trans_sent(sent)
-                print(sent, trans_list)
+                #print(sent, trans_list)
                 if type(trans_list)==str: # an error occured
+                    print("ERROR",file=fout)
                     print(trans_list,file=fout)
                 else:
                     trans_cnt += 1
                     if trans and trans in trans_list:
-                        match_cnt += 1                    
+                        print("OK",file=fout)
+                        match_cnt += 1  
+                    else:
+                        print("NOK",file=fout)
                     for idx, alt in enumerate(trans_list):
                         print(idx+1,alt,file=fout)
                 print(file=fout)
@@ -731,7 +743,7 @@ def file_main():
     parser.pre_processor = EnglishPreProcessor()
     parser.post_processor = TurkishPostProcessor()
 
-    parser.load_grammar("grm/test.grm")
+    parser.load_grammar("grm/tenses.grm")
     #print(parser.format_rules())
     parser.compile()
 
