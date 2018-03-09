@@ -11,7 +11,7 @@ All functionality is provided by main class: TurkishPostProcessor
     A : low,unrounded vowels, using harmony rules aIuo->a, eiUO->e e.g. ev-lAr -> evler yol-lAr -> yollar
     Consonants
     N : used as last char of same suffixes (e.g. 3d sing possesive), realized to n only if it is followed by a vowel e.g. tereyağıN-ı->tereyağını, tereyağıN-ım ->tereyağım
-    $ : drops the next vowel if it takes a vowel-starting suffix e.g. bur$un-u -> burnu, bur$un-da -> burunda
+    @ : drops the next vowel if it takes a vowel-starting suffix e.g. bur@un-u -> burnu, bur@un-da -> burunda
     + : duplicates previous letter if it takes a vowel-starting suffix e.g. hak+-ı -> hakkı, hak+-ta -> hakta
     ! : prevents softening of previous consonant e.g. kitap-ı -> kitabı, hap!-ı -> hapı
 	
@@ -33,25 +33,26 @@ class TurkishPostProcessor:
         ( "(\$[IiuU])(?=[^aIeiouOU]-(?:[snHA]|y[aIeiouOUHA]))", ""),
         ( "(enk)-(?=[snHA]|y[aIeiouOUHA])", "eng"),
         ( "(N)-", "n"),
-        ( "(?<=[pCtkSfsh]-)(d)","t"),
-        ( "(?<=[pCtkSfsh][\+!]-)(d)","t"),
+        ( "(?<=[pCtkSfsh]-)(Y?d)","t"),
+        ( "(?<=[pCtkSfsh][\+!]-)(Y?d)","t"),
         ( "([-\$\+!]|N$)", "")
     ]
     """
     rules = [
+        ( "(?<=[pCtkSfsh]-)(Y?d)","t"),
+        ( "(?<=[pCtkSfsh][\+!]-)(Y?d)","t"),
+        ( "(@[IiuU])(?=[^aIeiouOU]-(?:[ZNHA]|Y[aIeiouOUHA]))", ""),
+        ( "([aIeiouOUA]-H)(?=yor)" , "H" ),
         ( "(?<=[aIeiouOU]-)(H)" , "" ),
-        ( "(?<=[^aIeiouOU]-)([NZY])", "" ),
-        ( "(?<=[aIeiouOU]-)([NZY])", {'N':'n', 'Z':'s', 'Y':'y'} ),
-        ( "(N-Y)(?=[aIeiouOUHA])", "n" ),
-        ( "(N-Y)(?=[^aIeiouOUHA])", "y" ),
+        ( "(?<=[^aIeiouOUAH]-)([NZY])" , "" ),
+        ( "(?<=[aIeiouOUAH]-)([NZY])", {'N':'n', 'Z':'s', 'Y':'y'} ),
+        ( "(N-Y)(?=[^aIeiouOUAH])", "y" ),
+        ( "(N-Y)(?=[AH])", "n" ),
+        ( "(N)-(?=[^Y])", "n"),
+        ( "(enk)-(?=[ZNHA]|Y[aIeiouOUHA])", "eng"),
         ( "([pCtk])-(?=[ZNHA]|Y[aIeiouOUHA])", {'p':'b', 'C':'c', 't':'d', 'k':'G'} ),
         ( "([pbctdk]\+)-(?=[ZNHA]|Y[aIeiouOUHA])", {'p+':'bb', 'b+':'bb', 'c+':'cc', 't+':'tt', 'd+':'dd', 'k+':'kk' } ),
-        ( "(\$[IiuU])(?=[^aIeiouOU]-(?:[ZNYHA]|Y[aIeiouOUHA]))", ""),
-        ( "(enk)-(?=[ZNHA]|Y[aIeiouOUHA])", "eng"),
-        ( "(N)-", "n"),
-        ( "(?<=[pCtkSfsh]-)(d)","t"),
-        ( "(?<=[pCtkSfsh][\+!]-)(d)","t"),
-        ( "([-\$\+!]|N$)", "")
+        ( "([-@\+!]|N$)", "")
     ]
 
     vowel = { 'a': 0, 'I':0 , 'e':1, 'i':1, 'o':2, 'u':2 , 'O':3, 'U':3 }
@@ -101,15 +102,15 @@ class TurkishPostProcessor:
         return TurkishPostProcessor.vowel_harmony(
             self.rx.sub(
                 self.handle_match,
-                text.replace(' -','-').translate(TurkishPostProcessor.intab)
+                text.replace(' -','-').translate(self.intab)
             )
-        ).translate(TurkishPostProcessor.outtab)
+        ).translate(self.outtab)
 
 def main():
     morpher = TurkishPostProcessor()
 
-    words = [ "ev", "araba", "kitap", "hak+", "tank!", "yatak", "bur$un", "renk", "ro^l" ]
-    suffixes = [ "-Hm", "-YH", "-YlA", "-dA", "-NHn", "-ZHN", "-ZHN-YH", "-ZHN-YlA", "-ZHN-dA", "-ZHN-NHn" ]
+    words = [ "ev", "araba", "kitap", "hak+", "tank!", "yatak", "bur@un", "renk", "ro^l" ]
+    suffixes = [ "-Hm", "-YHm", "-YdHm", "-YH", "-YlA", "-dA", "-NHn", "-ZHN", "-ZHN-YH", "-ZHN-YlA", "-ZHN-dA", "-ZHN-NHn" ]
 
     for word in words:
         for suffix in suffixes:
@@ -117,7 +118,7 @@ def main():
             print(nword, morpher(nword))
 
     words = [ "gel", "git", "oku", "ara" ]
-    suffixes = [ "-dH-m", "-dH-n", "-dH-k", "-dH-nHz", "-Hyor-YHm", "-Hyor-sHn", "-Hyor-YHz", "-Hyor-sHnHz", "-YAcAk-YHm", "-YAcAk-sHn", "-YAcAk-YHz", "-YAcAk-sHnHz", "-mAlH-YHm", "-mAlH-sHn", "-mAlH-yHz", "-mAlH-sHnHz" ]
+    suffixes = [ "-dH-m", "-dH-n", "-dH-k", "-dH-nHz", "-Hyor-YHm", "-Hyor-sHn", "-Hyor-YHz", "-Hyor-sHnHz", "-YAcAk-YHm", "-YAcAk-sHn", "-YAcAk-YHz", "-YAcAk-sHnHz", "-mAlH-YHm", "-mAlH-sHn", "-mAlH-YHz", "-mAlH-sHnHz" ]
 
     for word in words:
         for suffix in suffixes:

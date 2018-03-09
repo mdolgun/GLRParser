@@ -1,855 +1,1485 @@
 input: i am going @ gidiyorum
 output: OK
-1 ben gidiyorum
-2 gidiyorum
+1 gidiyorum
+2 ben gidiyorum
 
 input: i'm going @ gidiyorum
 output: OK
-1 ben gidiyorum
-2 gidiyorum
+1 gidiyorum
+2 ben gidiyorum
 
 input: you are going @ gidiyorsun
 output: OK
-1 siz gidiyorsunuz
-2 gidiyorsunuz
-3 sen gidiyorsun
-4 gidiyorsun
+1 gidiyorsun
+2 sen gidiyorsun
+3 gidiyorsunuz
+4 siz gidiyorsunuz
 
 input: you're going @ gidiyorsun
 output: OK
-1 siz gidiyorsunuz
-2 gidiyorsunuz
-3 sen gidiyorsun
-4 gidiyorsun
+1 gidiyorsun
+2 sen gidiyorsun
+3 gidiyorsunuz
+4 siz gidiyorsunuz
 
 input: he is going @ gidiyor
 output: OK
-1 o gidiyor
-2 gidiyor
+1 gidiyor
+2 o gidiyor
 
 input: he's going @ gidiyor
 output: OK
-1 o gidiyor
-2 gidiyor
+1 gidiyor
+2 o gidiyor
 
 input: she is going @ gidiyor
 output: OK
-1 o gidiyor
-2 gidiyor
+1 gidiyor
+2 o gidiyor
 
 input: it is going @ gidiyor
 output: OK
-1 o gidiyor
-2 gidiyor
+1 gidiyor
+2 o gidiyor
 
 input: we are going @ gidiyoruz
 output: OK
-1 biz gidiyoruz
-2 gidiyoruz
+1 gidiyoruz
+2 biz gidiyoruz
 
 input: you are going @ gidiyorsunuz
 output: OK
-1 siz gidiyorsunuz
-2 gidiyorsunuz
-3 sen gidiyorsun
-4 gidiyorsun
+1 gidiyorsun
+2 sen gidiyorsun
+3 gidiyorsunuz
+4 siz gidiyorsunuz
 
 input: they are going @ gidiyorlar
 output: OK
-1 onlar gidiyorlar
-2 gidiyorlar
+1 gidiyorlar
+2 onlar gidiyorlar
 
 input: i was going @ gidiyordum
 output: OK
-1 ben gidiyordum
-2 gidiyordum
+1 gidiyordum
+2 ben gidiyordum
 
 input: i have been going @ gidiyorum
 output: OK
-1 ben gidiyorum
-2 gidiyorum
+1 gidiyorum
+2 ben gidiyorum
 
 input: i've been going @ gidiyorum
 output: OK
-1 ben gidiyorum
-2 gidiyorum
+1 gidiyorum
+2 ben gidiyorum
 
 input: i had been going @ gidiyordum
 output: OK
-1 ben gidiyordum
-2 gidiyordum
+1 gidiyordum
+2 ben gidiyordum
 
 input: i go @ giderim
 output: OK
-1 ben giderim
-2 giderim
+1 giderim
+2 ben giderim
 
 input: i went @ gittim
 output: OK
-1 ben gittim
-2 gittim
+1 gittim
+2 ben gittim
 
 input: i have gone @ gittim
 output: OK
-1 ben gittim
-2 gittim
+1 gittim
+2 ben gittim
 
 input: i've gone @ gittim
 output: OK
-1 ben gittim
-2 gittim
+1 gittim
+2 ben gittim
 
 input: i had gone @ gitmiþtim
 output: OK
-1 ben gitmiþtim
-2 gitmiþtim
+1 gitmiþtim
+2 ben gitmiþtim
 
 input: i'd gone @ gitmiþtim
 output: OK
-1 ben gitmiþtim
-2 gitmiþtim
+1 gitmiþtim
+2 ben gitmiþtim
 
 input: i am going to go @ gideceðim
-output: ERROR
-Unify error feat=mode src=simp param=0 super=StBe#95 sub=StModal#109
+output: OK
+1 gideceðim
+2 ben gideceðim
 
 input: i was going to go @ gidecektim
-output: ERROR
-Unify error feat=mode src=simp param=0 super=StBe#95 sub=StModal#109
+output: OK
+1 gidecektim
+2 ben gidecektim
 
 input: i will go @ gideceðim
 output: OK
-1 ben gideceðim
-2 gideceðim
+1 gideceðim
+2 ben gideceðim
 
 input: i'll go @ gideceðim
 output: OK
-1 ben gideceðim
-2 gideceðim
+1 gideceðim
+2 ben gideceðim
 
 input: i would go @ gidecektim
 output: OK
-1 ben gidecektim
-2 gidecektim
+1 gidecektim
+2 ben gidecektim
 
 input: i'd go @ gidecektim
 output: OK
-1 ben gidecektim
-2 gidecektim
+1 gidecektim
+2 ben gidecektim
 
 input: i will be going @ gidiyor olacaðým
 output: OK
-1 ben gidiyor olacaðým
-2 gidiyor olacaðým
+1 gidiyor olacaðým
+2 ben gidiyor olacaðým
 
 input: i would be going @ gidiyor olacaktým
 output: OK
-1 ben gidiyor olacaktým
-2 gidiyor olacaktým
+1 gidiyor olacaktým
+2 ben gidiyor olacaktým
 
 input: i will have gone @ gitmiþ olacaðým
 output: OK
-1 ben gitmiþ olacaðým
-2 gitmiþ olacaðým
+1 gitmiþ olacaðým
+2 ben gitmiþ olacaðým
 
 input: i would have gone @ gitmiþ olacaktým
 output: OK
-1 ben gitmiþ olacaktým
-2 gitmiþ olacaktým
+1 gitmiþ olacaktým
+2 ben gitmiþ olacaktým
 
 input: i can go @ gidebilirim
 output: OK
-1 ben gidebilirim
-2 gidebilirim
+1 gidebilirim
+2 ben gidebilirim
 
 input: i could go @ gidebilirdim
 output: OK
-1 ben gidebilirdim
-2 gidebilirdim
+1 gidebilirdim
+2 ben gidebilirdim
 
 input: i can be going @ gidiyor olabilirim
 output: OK
-1 ben gidiyor olabilirim
-2 gidiyor olabilirim
+1 gidiyor olabilirim
+2 ben gidiyor olabilirim
 
 input: i could be going @ gidiyor olabilirdim
 output: OK
-1 ben gidiyor olabilirdim
-2 gidiyor olabilirdim
+1 gidiyor olabilirdim
+2 ben gidiyor olabilirdim
 
 input: i can have gone @ gitmiþ olabilirim
 output: OK
-1 ben gitmiþ olabilirim
-2 gitmiþ olabilirim
+1 gitmiþ olabilirim
+2 ben gitmiþ olabilirim
 
 input: i could have gone @ gitmiþ olabilirdim
 output: OK
-1 ben gitmiþ olabilirdim
-2 gitmiþ olabilirdim
+1 gitmiþ olabilirdim
+2 ben gitmiþ olabilirdim
 
 input: i may go @ gidebilirim
 output: OK
-1 ben gidebilirim
-2 gidebilirim
+1 gidebilirim
+2 ben gidebilirim
 
 input: i might go @ gidebilirdim
-output: NOK
-1 ben gidebilirim
-2 gidebilirim
+output: OK
+1 gidebilirdim
+2 ben gidebilirdim
 
 input: i must go @ gitmeliyim
-output: NOK
-1 ben gitmeliim
-2 gitmeliim
+output: OK
+1 gitmeliyim
+2 ben gitmeliyim
 
 input: i must be going @ gidiyor olmalýyým
-output: NOK
-1 ben gidiyor olmalýým
-2 gidiyor olmalýým
+output: OK
+1 gidiyor olmalýyým
+2 ben gidiyor olmalýyým
 
-input: i must have gone @ gimiþ olmalýyým
-output: NOK
-1 ben gitmiþ olmalýým
-2 gitmiþ olmalýým
+input: i must have gone @ gitmiþ olmalýyým
+output: OK
+1 gitmiþ olmalýyým
+2 ben gitmiþ olmalýyým
 
 input: i should go @ gitmeliyim
-output: NOK
-1 ben gitmeliim
-2 gitmeliim
+output: OK
+1 gitmeliyim
+2 ben gitmeliyim
 
 input: i shall go @ gideceðim
 output: OK
-1 ben gideceðim
-2 gideceðim
+1 gideceðim
+2 ben gideceðim
 
 input: i am not going @ gitmiyorum
-output: NOK
-1 ben gitmeiyorum
-2 gitmeiyorum
+output: OK
+1 gitmiyorum
+2 ben gitmiyorum
 
 input: you are not going @ gitmiyorsun
-output: NOK
-1 siz gitmeiyorsunuz
-2 gitmeiyorsunuz
-3 sen gitmeiyorsun
-4 gitmeiyorsun
+output: OK
+1 gitmiyorsun
+2 sen gitmiyorsun
+3 gitmiyorsunuz
+4 siz gitmiyorsunuz
 
 input: you're not going @ gitmiyorsun
-output: NOK
-1 siz gitmeiyorsunuz
-2 gitmeiyorsunuz
-3 sen gitmeiyorsun
-4 gitmeiyorsun
+output: OK
+1 gitmiyorsun
+2 sen gitmiyorsun
+3 gitmiyorsunuz
+4 siz gitmiyorsunuz
 
 input: you aren't going @ gitmiyorsun
-output: NOK
-1 siz gitmeiyorsunuz
-2 gitmeiyorsunuz
+output: OK
+1 gitmiyorsun
+2 sen gitmiyorsun
+3 gitmiyorsunuz
+4 siz gitmiyorsunuz
 
 input: he is not going @ gitmiyor
-output: NOK
-1 o gitmeiyor
-2 gitmeiyor
+output: OK
+1 gitmiyor
+2 o gitmiyor
 
 input: he's not going @ gitmiyor
-output: NOK
-1 o gitmeiyor
-2 gitmeiyor
+output: OK
+1 gitmiyor
+2 o gitmiyor
 
 input: he isn't going @ gitmiyor
-output: NOK
-1 o gitmeiyor
-2 gitmeiyor
+output: OK
+1 gitmiyor
+2 o gitmiyor
 
 input: we are not going @ gitmiyoruz
-output: NOK
-1 biz gitmeiyoruz
-2 gitmeiyoruz
+output: OK
+1 gitmiyoruz
+2 biz gitmiyoruz
 
 input: you are not going @ gitmiyorsunuz
-output: NOK
-1 siz gitmeiyorsunuz
-2 gitmeiyorsunuz
-3 sen gitmeiyorsun
-4 gitmeiyorsun
+output: OK
+1 gitmiyorsun
+2 sen gitmiyorsun
+3 gitmiyorsunuz
+4 siz gitmiyorsunuz
 
 input: they are not going @ gitmiyorlar
-output: NOK
-1 onlar gitmeiyorlar
-2 gitmeiyorlar
+output: OK
+1 gitmiyorlar
+2 onlar gitmiyorlar
 
 input: i was not going @ gitmiyordum
-output: NOK
-1 ben gitmeiyordum
-2 gitmeiyordum
+output: OK
+1 gitmiyordum
+2 ben gitmiyordum
 
 input: i wasn't going @ gitmiyordum
-output: NOK
-1 ben gitmeiyordum
-2 gitmeiyordum
+output: OK
+1 gitmiyordum
+2 ben gitmiyordum
 
 input: we were not going @ gitmiyorduk
-output: NOK
-1 biz gitmeiyorduk
-2 gitmeiyorduk
+output: OK
+1 gitmiyorduk
+2 biz gitmiyorduk
 
 input: we weren't going @ gitmiyorduk
-output: NOK
-1 biz gitmeiyorduk
-2 gitmeiyorduk
+output: OK
+1 gitmiyorduk
+2 biz gitmiyorduk
 
 input: i wasn't going to go @ gitmeyecektim
-output: ERROR
-Unify error feat=mode src=simp param=0 super=StBe#95 sub=StModal#109
+output: OK
+1 gitmeyecektim
+2 ben gitmeyecektim
 
 input: i was not going to go @ gitmeyecektim
-output: ERROR
-Unify error feat=mode src=simp param=0 super=StBe#95 sub=StModal#109
+output: OK
+1 gitmeyecektim
+2 ben gitmeyecektim
 
 input: i have not gone @ gitmedim
 output: OK
-1 ben gitmedim
-2 gitmedim
+1 gitmedim
+2 ben gitmedim
 
 input: i've not gone @ gitmedim
 output: OK
-1 ben gitmedim
-2 gitmedim
+1 gitmedim
+2 ben gitmedim
 
 input: i haven't gone @ gitmedim
 output: OK
-1 ben gitmedim
-2 gitmedim
+1 gitmedim
+2 ben gitmedim
 
 input: he has not gone @ gitmedi
 output: OK
-1 o gitmedi
-2 gitmedi
+1 gitmedi
+2 o gitmedi
 
 input: he's not gone @ gitmedi
 output: OK
-1 o gitmedi
-2 gitmedi
-3 o gidilmez
-4 gidilmez
+1 gidilmez
+2 o gidilmez
+3 gitmedi
+4 o gitmedi
 
 input: he hasn't gone @ gitmedi
 output: OK
-1 o gitmedi
-2 gitmedi
+1 gitmedi
+2 o gitmedi
 
 input: i have not been going @ gitmiyorum
-output: NOK
-1 ben gitmeiyorum
-2 gitmeiyorum
+output: OK
+1 gitmiyorum
+2 ben gitmiyorum
 
 input: i had not been going @ gitmiyordum
-output: NOK
-1 ben gitmeiyordum
-2 gitmeiyordum
+output: OK
+1 gitmiyordum
+2 ben gitmiyordum
 
 input: i do not go @ gitmem
 output: OK
-1 ben gitmem
-2 gitmem
+1 gitmem
+2 ben gitmem
 
 input: i don't go @ gitmem
 output: OK
-1 ben gitmem
-2 gitmem
+1 gitmem
+2 ben gitmem
 
 input: he does not go @ gitmez
 output: OK
-1 o gitmez
-2 gitmez
+1 gitmez
+2 o gitmez
 
 input: he doesn't go @ gitmez
 output: OK
-1 o gitmez
-2 gitmez
+1 gitmez
+2 o gitmez
 
 input: i did not go @ gitmedim
 output: OK
-1 ben gitmedim
-2 gitmedim
+1 gitmedim
+2 ben gitmedim
 
 input: i didn't go @ gitmedim
 output: OK
-1 ben gitmedim
-2 gitmedim
+1 gitmedim
+2 ben gitmedim
 
 input: i will not go @ gitmeyeceðim
-output: NOK
-1 ben gitmeeceðim
-2 gitmeeceðim
+output: OK
+1 gitmeyeceðim
+2 ben gitmeyeceðim
 
 input: i'll not go @ gitmeyeceðim
-output: NOK
-1 ben gitmeeceðim
-2 gitmeeceðim
+output: OK
+1 gitmeyeceðim
+2 ben gitmeyeceðim
 
 input: i won't go @ gitmeyeceðim
-output: NOK
-1 ben gitmeeceðim
-2 gitmeeceðim
+output: OK
+1 gitmeyeceðim
+2 ben gitmeyeceðim
 
 input: i would not go @ gitmeyecektim
-output: NOK
-1 ben gitmeecektim
-2 gitmeecektim
+output: OK
+1 gitmeyecektim
+2 ben gitmeyecektim
 
 input: i'd not go @ gitmeyecektim
-output: NOK
-1 ben gitmeecektim
-2 gitmeecektim
+output: OK
+1 gitmeyecektim
+2 ben gitmeyecektim
 
 input: i wouldn't go @ gitmeyecektim
-output: NOK
-1 ben gitmeecektim
-2 gitmeecektim
+output: OK
+1 gitmeyecektim
+2 ben gitmeyecektim
 
 input: i can not go @ gidemem
 output: OK
-1 ben gidemem
-2 gidemem
+1 gidemem
+2 ben gidemem
 
 input: i can't go @ gidemem
 output: OK
-1 ben gidemem
-2 gidemem
+1 gidemem
+2 ben gidemem
 
 input: i could not go @ gidemezdim
 output: OK
-1 ben gidemezdim
-2 gidemezdim
+1 gidemezdim
+2 ben gidemezdim
 
 input: i couldn't go @ gidemezdim
 output: OK
-1 ben gidemezdim
-2 gidemezdim
+1 gidemezdim
+2 ben gidemezdim
 
 input: i shall not go @ gitmeyeceðim
-output: NOK
-1 ben gitmeeceðim
-2 gitmeeceðim
+output: OK
+1 gitmeyeceðim
+2 ben gitmeyeceðim
 
 input: i shan't go @ gitmeyeceðim
-output: NOK
-1 ben gitmeeceðim
-2 gitmeeceðim
+output: OK
+1 gitmeyeceðim
+2 ben gitmeyeceðim
 
-input: i may not go @ gidemezdim
-output: NOK
-1 ben gidemem
-2 gidemem
+input: i may not go @ gitmeyebilirim
+output: OK
+1 gitmeyebilirim
+2 ben gitmeyebilirim
 
-input: i might not go @ gidemezdim
-output: NOK
-1 ben gidemem
-2 gidemem
+input: i might not go @ gitmeyebilirdim
+output: OK
+1 gitmeyebilirdim
+2 ben gitmeyebilirdim
 
 input: i should not go @ gitmemeliyim
-output: NOK
-1 ben gitmeliim
-2 gitmeliim
+output: OK
+1 gitmemeliyim
+2 ben gitmemeliyim
 
 input: i shouldn't go @ gitmemeliyim
-output: NOK
-1 ben gitmeliim
-2 gitmeliim
+output: OK
+1 gitmemeliyim
+2 ben gitmemeliyim
 
 input: i must not go @ gitmemeliyim
-output: NOK
-1 ben gitmeliim
-2 gitmeliim
+output: OK
+1 gitmemeliyim
+2 ben gitmemeliyim
 
 input: i mustn't go @ gitmemeliyim
-output: NOK
-1 ben gitmeliim
-2 gitmeliim
+output: OK
+1 gitmemeliyim
+2 ben gitmemeliyim
 
 input: i won't be going @ gidiyor olmayacaðým
-output: NOK
-1 ben gidiyor olmaacaðým
-2 gidiyor olmaacaðým
+output: OK
+1 gidiyor olmayacaðým
+2 ben gidiyor olmayacaðým
 
-input: i wouldn't be going @ gidiyor olmayacaðým
-output: NOK
-1 ben gidiyor olmaacaktým
-2 gidiyor olmaacaktým
+input: i wouldn't be going @ gidiyor olmayacaktým
+output: OK
+1 gidiyor olmayacaktým
+2 ben gidiyor olmayacaktým
 
 input: i won't have gone @ gitmiþ olmayacaðým
-output: NOK
-1 ben gitmiþ olmaacaðým
-2 gitmiþ olmaacaðým
+output: OK
+1 gitmiþ olmayacaðým
+2 ben gitmiþ olmayacaðým
 
 input: i wouldn't have gone @ gitmiþ olmayacaktým
-output: NOK
-1 ben gitmiþ olmaacaktým
-2 gitmiþ olmaacaktým
+output: OK
+1 gitmiþ olmayacaktým
+2 ben gitmiþ olmayacaktým
 
 input: i may not be going @ gidiyor olmayabilirim
-output: NOK
-1 ben gidiyor olamam
-2 gidiyor olamam
+output: OK
+1 gidiyor olmayabilirim
+2 ben gidiyor olmayabilirim
 
-input: i might not be going @ gidiyor olmayabilirim
-output: NOK
-1 ben gidiyor olamam
-2 gidiyor olamam
+input: i might not be going @ gidiyor olmayabilirdim
+output: OK
+1 gidiyor olmayabilirdim
+2 ben gidiyor olmayabilirdim
 
 input: i mustn't be going @ gidiyor olmamalýyým
-output: NOK
-1 ben gidiyor olmalýým
-2 gidiyor olmalýým
+output: OK
+1 gidiyor olmamalýyým
+2 ben gidiyor olmamalýyým
 
 input: i mustn't have gone @ gitmiþ olmamalýyým
-output: NOK
-1 ben gitmiþ olmalýým
-2 gitmiþ olmalýým
+output: OK
+1 gitmiþ olmamalýyým
+2 ben gitmiþ olmamalýyým
 
 input: am i going @ gidiyor muyum
-output: NOK
-1 ben git
-2 git
+output: OK
+1 gidiyor muyum
+2 ben gidiyor muyum
 
 input: am i not going @ gitmiyor muyum
-output: NOK
-1 ben git
-2 git
+output: OK
+1 gitmiyor muyum
+2 ben gitmiyor muyum
 
 input: was she going @ gidiyor muydu
-output: NOK
-1 o git
-2 git
+output: OK
+1 gidiyor muydu
+2 o gidiyor muydu
 
 input: wasn't she going @ gitmiyor muydu
-output: NOK
-1 o git
-2 git
+output: OK
+1 gitmiyor muydu
+2 o gitmiyor muydu
 
 input: was she not going @ gitmiyor muydu
-output: NOK
-1 o git
-2 git
+output: OK
+1 gitmiyor muydu
+2 o gitmiyor muydu
 
 input: did we go @ gittik mi
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gittik mi
+2 biz gittik mi
 
 input: didn't we go @ gitmedik mi
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gitmedik mi
+2 biz gitmedik mi
 
 input: did we not go @ gitmedik mi
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gitmedik mi
+2 biz gitmedik mi
 
 input: do we go @ gider miyiz
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gider miyiz
+2 biz gider miyiz
+3 gidir miyiz
+4 biz gidir miyiz
 
 input: don't we go @ gitmez miyiz
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gitmez miyiz
+2 biz gitmez miyiz
 
 input: do we not go @ gitmez miyiz
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gitmez miyiz
+2 biz gitmez miyiz
 
 input: have we gone @ gittik mi
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gittik mi
+2 biz gittik mi
 
 input: haven't we gone @ gitmedik mi
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gitmedik mi
+2 biz gitmedik mi
 
 input: have we not gone @ gitmedik mi
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gitmedik mi
+2 biz gitmedik mi
 
 input: had we gone @ gitmiþ miydik
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gitmiþ miydik
+2 biz gitmiþ miydik
 
 input: hadn't we gone @ gitmemiþ miydik
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gitmemiþ miydik
+2 biz gitmemiþ miydik
 
 input: will we go @ gidecek miyiz
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gidecek miyiz
+2 biz gidecek miyiz
 
 input: won't we go @ gitmeyecek miyiz
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gitmeyecek miyiz
+2 biz gitmeyecek miyiz
 
 input: are we going to go @ gidecek miyiz
-output: ERROR
-Unify error feat=mode src=simp param=0 super=StBe#95 sub=StModal#109
+output: OK
+1 gidecek miyiz
+2 biz gidecek miyiz
 
-input: aren't we going to go @ gitmeyecek
-output: ERROR
-Unify error feat=mode src=simp param=0 super=StBe#95 sub=StModal#109
+input: aren't we going to go @ gitmeyecek miyiz
+output: OK
+1 gitmeyecek miyiz
+2 biz gitmeyecek miyiz
 
 input: can we go @ gidebilir miyiz
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gidebilir miyiz
+2 biz gidebilir miyiz
 
 input: can't we go @ gidemez miyiz
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gidemez miyiz
+2 biz gidemez miyiz
 
 input: could we go @ gidebilir miydik
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gidebilir miydik
+2 biz gidebilir miydik
 
 input: couldn't we go @ gidemez miydik
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gidemez miydik
+2 biz gidemez miydik
+
+input: may we go @ gidebilir miyiz
+output: OK
+1 gidebilir miyiz
+2 biz gidebilir miyiz
+
+input: mayn't we go @ gitmeyebilir miyiz
+output: OK
+1 gitmeyebilir miyiz
+2 biz gitmeyebilir miyiz
+
+input: might we go @ gidebilir miydik
+output: OK
+1 gidebilir miydik
+2 biz gidebilir miydik
+
+input: mightn't we go @ gitmeyebilir miydik
+output: OK
+1 gitmeyebilir miydik
+2 biz gitmeyebilir miydik
 
 input: must we go @ gitmeli miyiz
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gitmeli miyiz
+2 biz gitmeli miyiz
 
 input: mustn't we go @ gitmemeli miyiz
-output: NOK
-1 biz git
-2 git
+output: OK
+1 gitmemeli miyiz
+2 biz gitmemeli miyiz
 
 input: i am happy @ mutluyum
-output: NOK
-1 ben mutluarým
-2 mutluarým
+output: OK
+1 mutluyum
+2 ben mutluyum
 
 input: he is happy @ mutlu
-output: NOK
-1 o mutluar
-2 mutluar
+output: OK
+1 mutlu
+2 o mutlu
 
 input: we are happy @ mutluyuz
-output: NOK
-1 biz mutluarýz
-2 mutluarýz
+output: OK
+1 mutluyuz
+2 biz mutluyuz
 
 input: you are happy @ mutlusunuz
-output: NOK
-1 siz mutluarsýnýz
-2 mutluarsýnýz
-3 sen mutluarsýn
-4 mutluarsýn
+output: OK
+1 mutlusun
+2 sen mutlusun
+3 mutlusunuz
+4 siz mutlusunuz
 
 input: they are happy @ mutlular
-output: NOK
-1 onlar mutluarlar
-2 mutluarlar
+output: OK
+1 mutlular mý
+2 onlar mutlular mý
+3 mutlular
+4 onlar mutlular
 
 input: i was happy @ mutluydum
-output: NOK
-1 ben mutludum
-2 mutludum
+output: OK
+1 mutluydum
+2 ben mutluydum
 
 input: he was happy @ mutluydu
-output: NOK
-1 o mutludu
-2 mutludu
+output: OK
+1 mutluydu
+2 o mutluydu
 
 input: we were happy @ mutluyduk
-output: NOK
-1 biz mutluduk
-2 mutluduk
+output: OK
+1 mutluyduk
+2 biz mutluyduk
 
 input: you were happy @ mutluydunuz
-output: NOK
-1 siz mutludunuz
-2 mutludunuz
-3 sen mutludun
-4 mutludun
+output: OK
+1 mutluydun
+2 sen mutluydun
+3 mutluydunuz
+4 siz mutluydunuz
 
 input: they were happy @ mutluydular
-output: NOK
-1 onlar mutludular
-2 mutludular
+output: OK
+1 mutluydular
+2 onlar mutluydular
+3 mutlulardý
+4 onlar mutlulardý
 
 input: am i happy @ mutlu muyum
-output: NOK
-1 ben mutlu
-2 mutlu
+output: OK
+1 mutlu muyum
+2 ben mutlu muyum
 
 input: is he happy @ mutlu mu
-output: NOK
-1 o mutlu
-2 mutlu
+output: OK
+1 mutlu mu
+2 o mutlu mu
 
 input: are we happy @ mutlu muyuz
-output: NOK
-1 biz mutlu
-2 mutlu
+output: OK
+1 mutlu muyuz
+2 biz mutlu muyuz
 
 input: are you happy @ mutlu musunuz
-output: NOK
-1 siz mutlu
-2 mutlu
-3 sen mutlu
-4 mutlu
+output: OK
+1 mutlu musunuz
+2 siz mutlu musunuz
+3 mutlu musun
+4 sen mutlu musun
 
 input: are they happy @ mutlular mý
-output: NOK
-1 onlar mutlu
-2 mutlu
+output: OK
+1 mutlular mý
+2 onlar mutlular mý
+3 mutlu mular
+4 onlar mutlu mular
 
 input: i am not happy @ mutlu deðilim
-output: NOK
-1 ben mutlumam
-2 mutlumam
+output: OK
+1 mutlu deðilim
+2 ben mutlu deðilim
 
 input: he is not happy @ mutlu deðil
-output: NOK
-1 o mutlumaz
-2 mutlumaz
+output: OK
+1 mutlu deðil
+2 o mutlu deðil
 
 input: we are not happy @ mutlu deðiliz
-output: NOK
-1 biz mutlumayýz
-2 mutlumayýz
+output: OK
+1 mutlu deðiliz
+2 biz mutlu deðiliz
 
 input: you are not happy @ mutlu deðilsiniz
-output: NOK
-1 siz mutlumazsýnýz
-2 mutlumazsýnýz
-3 sen mutlumazþýn
-4 mutlumazþýn
+output: OK
+1 mutlu deðilsin
+2 sen mutlu deðilsin
+3 mutlu deðilsiniz
+4 siz mutlu deðilsiniz
 
 input: they are not happy @ mutlu deðiller
-output: NOK
-1 onlar mutlumazlar
-2 mutlumazlar
+output: OK
+1 mutlu deðiller mi
+2 onlar mutlu deðiller mi
+3 mutlu deðiller
+4 onlar mutlu deðiller
 
 input: am i not happy @ mutlu deðil miyim
-output: NOK
-1 ben mutlu
-2 mutlu
+output: OK
+1 mutlu deðil miyim
+2 ben mutlu deðil miyim
 
 input: is he not happy @ mutlu deðil mi
-output: NOK
-1 o mutlu
-2 mutlu
+output: OK
+1 mutlu deðil mi
+2 o mutlu deðil mi
 
 input: are we not happy @ mutlu deðil miyiz
-output: NOK
-1 biz mutlu
-2 mutlu
+output: OK
+1 mutlu deðil miyiz
+2 biz mutlu deðil miyiz
 
 input: are you not happy @ mutlu deðil misiniz
-output: NOK
-1 siz mutlu
-2 mutlu
-3 sen mutlu
-4 mutlu
+output: OK
+1 mutlu deðil misiniz
+2 siz mutlu deðil misiniz
+3 mutlu deðil misin
+4 sen mutlu deðil misin
 
 input: are they not happy @ mutlu deðil miler
-output: NOK
-1 onlar mutlu
-2 mutlu
+output: OK
+1 mutlu deðiller mi
+2 onlar mutlu deðiller mi
+3 mutlu deðil miler
+4 onlar mutlu deðil miler
 
 input: was i happy @ mutlu muydum
-output: NOK
-1 ben mutlu
-2 mutlu
+output: OK
+1 mutlu muydum
+2 ben mutlu muydum
 
 input: was he happy @ mutlu muydu
-output: NOK
-1 o mutlu
-2 mutlu
+output: OK
+1 mutlu muydu
+2 o mutlu muydu
 
 input: were we happy @ mutlu muyduk
-output: NOK
-1 biz mutlu
-2 mutlu
+output: OK
+1 mutlu muyduk
+2 biz mutlu muyduk
 
 input: were you happy @ mutlu muydunuz
-output: NOK
-1 sen mutlu
-2 mutlu
-3 siz mutlu
-4 mutlu
+output: OK
+1 mutlu muydunuz
+2 siz mutlu muydunuz
+3 mutlu muydun
+4 sen mutlu muydun
 
-input: were they happy @ mutlular muydunuz
-output: NOK
-1 onlar mutlu
-2 mutlu
+input: were they happy @ mutlu muydular
+output: OK
+1 mutlu muydular
+2 onlar mutlu muydular
+3 mutlular mýydý
+4 onlar mutlular mýydý
 
 input: i was not happy @ mutlu deðildim
-output: NOK
-1 ben mutlumadým
-2 mutlumadým
+output: OK
+1 mutlu deðildim
+2 ben mutlu deðildim
 
 input: he was not happy @ mutlu deðildi
-output: NOK
-1 o mutlumadý
-2 mutlumadý
+output: OK
+1 mutlu deðildi
+2 o mutlu deðildi
 
 input: we were not happy @ mutlu deðildik
-output: NOK
-1 biz mutlumadýk
-2 mutlumadýk
+output: OK
+1 mutlu deðildik
+2 biz mutlu deðildik
 
 input: you were not happy @ mutlu deðildiniz
-output: NOK
-1 siz mutlumadýnýz
-2 mutlumadýnýz
-3 sen mutlumadýn
-4 mutlumadýn
+output: OK
+1 mutlu deðildin
+2 sen mutlu deðildin
+3 mutlu deðildiniz
+4 siz mutlu deðildiniz
 
 input: they were not happy @ mutlu deðillerdi
-output: NOK
-1 onlar mutlumadýlar
-2 mutlumadýlar
+output: OK
+1 mutlu deðildiler
+2 onlar mutlu deðildiler
+3 mutlu deðillerdi
+4 onlar mutlu deðillerdi
 
 input: was i not happy @ mutlu deðil miydim
-output: NOK
-1 ben mutlu
-2 mutlu
+output: OK
+1 mutlu deðil miydim
+2 ben mutlu deðil miydim
 
 input: was he not happy @ mutlu deðil miydi
-output: NOK
-1 o mutlu
-2 mutlu
+output: OK
+1 mutlu deðil miydi
+2 o mutlu deðil miydi
 
 input: were we not happy @ mutlu deðil miydik
-output: NOK
-1 biz mutlu
-2 mutlu
+output: OK
+1 mutlu deðil miydik
+2 biz mutlu deðil miydik
 
 input: were you not happy @ mutlu deðil miydiniz
-output: NOK
-1 sen mutlu
-2 mutlu
-3 siz mutlu
-4 mutlu
+output: OK
+1 mutlu deðil miydiniz
+2 siz mutlu deðil miydiniz
+3 mutlu deðil miydin
+4 sen mutlu deðil miydin
 
 input: were they not happy @ mutlu deðiller miydi
-output: NOK
-1 onlar mutlu
-2 mutlu
+output: OK
+1 mutlu deðil miydiler
+2 onlar mutlu deðil miydiler
+3 mutlu deðiller miydi
+4 onlar mutlu deðiller miydi
 
-input=166, translated=160, matched=53
+input: i have been happy @ mutlu oldum
+output: OK
+1 mutlu oldum
+2 ben mutlu oldum
+
+input: she has been happy @ mutlu oldu
+output: OK
+1 mutlu oldu
+2 o mutlu oldu
+
+input: i had been happy @ mutlu olmuþtum
+output: OK
+1 mutlu olmuþtum
+2 ben mutlu olmuþtum
+
+input: she had been happy @ mutlu olmuþtu
+output: OK
+1 mutlu olmuþtu
+2 o mutlu olmuþtu
+
+input: have i been happy @ mutlu oldum mu
+output: OK
+1 mutlu oldum mu
+2 ben mutlu oldum mu
+
+input: has she been happy @ mutlu oldu mu
+output: OK
+1 mutlu oldu mu
+2 o mutlu oldu mu
+
+input: had i been happy @ mutlu olmuþ muydum
+output: OK
+1 mutlu olmuþ muydum
+2 ben mutlu olmuþ muydum
+
+input: had she been happy @ mutlu olmuþ muydu
+output: OK
+1 mutlu olmuþ muydu
+2 o mutlu olmuþ muydu
+
+input: i haven't been happy @ mutlu olmadým
+output: OK
+1 mutlu olmadým
+2 ben mutlu olmadým
+
+input: she hasn't been happy @ mutlu olmadý
+output: OK
+1 mutlu olmadý
+2 o mutlu olmadý
+
+input: i hadn't been happy @ mutlu olmamýþtým
+output: OK
+1 mutlu olmamýþtým
+2 ben mutlu olmamýþtým
+
+input: she hadn't been happy @ mutlu olmamýþtý
+output: OK
+1 mutlu olmamýþtý
+2 o mutlu olmamýþtý
+
+input: haven't i been happy @ mutlu olmadým mý
+output: OK
+1 mutlu olmadým mý
+2 ben mutlu olmadým mý
+
+input: hasn't she been happy @ mutlu olmadý mý
+output: OK
+1 mutlu olmadý mý
+2 o mutlu olmadý mý
+
+input: hadn't i been happy @ mutlu olmamýþ mýydým
+output: OK
+1 mutlu olmamýþ mýydým
+2 ben mutlu olmamýþ mýydým
+
+input: hadn't she been happy @ mutlu olmamýþ mýydý
+output: OK
+1 mutlu olmamýþ mýydý
+2 o mutlu olmamýþ mýydý
+
+input: i am being happy @ mutlu oluyorum
+output: OK
+1 mutlu oluyorum
+2 ben mutlu oluyorum
+
+input: she is being happy @ mutlu oluyor
+output: OK
+1 mutlu oluyor
+2 o mutlu oluyor
+
+input: i was being happy @ mutlu oluyordum
+output: OK
+1 mutlu oluyordum
+2 ben mutlu oluyordum
+
+input: she was being happy @ mutlu oluyordu
+output: OK
+1 mutlu oluyordu
+2 o mutlu oluyordu
+
+input: am i being happy @ mutlu oluyor muyum
+output: OK
+1 mutlu oluyor muyum
+2 ben mutlu oluyor muyum
+
+input: is she being happy @ mutlu oluyor mu
+output: OK
+1 mutlu oluyor mu
+2 o mutlu oluyor mu
+
+input: was i being happy @ mutlu oluyor muydum
+output: OK
+1 mutlu oluyor muydum
+2 ben mutlu oluyor muydum
+
+input: was she being happy @ mutlu oluyor muydu
+output: OK
+1 mutlu oluyor muydu
+2 o mutlu oluyor muydu
+
+input: i am not being happy @ mutlu olmuyorum
+output: OK
+1 mutlu olmuyorum
+2 ben mutlu olmuyorum
+
+input: she isn't being happy @ mutlu olmuyor
+output: OK
+1 mutlu olmuyor
+2 o mutlu olmuyor
+
+input: i wasn't being happy @ mutlu olmuyordum
+output: OK
+1 mutlu olmuyordum
+2 ben mutlu olmuyordum
+
+input: she wasn't being happy @ mutlu olmuyordu
+output: OK
+1 mutlu olmuyordu
+2 o mutlu olmuyordu
+
+input: am i not being happy @ mutlu olmuyor muyum
+output: OK
+1 mutlu olmuyor muyum
+2 ben mutlu olmuyor muyum
+
+input: isn't she being happy @ mutlu olmuyor mu
+output: OK
+1 mutlu olmuyor mu
+2 o mutlu olmuyor mu
+
+input: wasn't i being happy @ mutlu olmuyor muydum
+output: OK
+1 mutlu olmuyor muydum
+2 ben mutlu olmuyor muydum
+
+input: wasn't she being happy @ mutlu olmuyor muydu
+output: OK
+1 mutlu olmuyor muydu
+2 o mutlu olmuyor muydu
+
+input: i will be happy @ mutlu olacaðým
+output: OK
+1 mutlu olacaðým
+2 ben mutlu olacaðým
+
+input: i would be happy @ mutlu olacaktým
+output: OK
+1 mutlu olacaktým
+2 ben mutlu olacaktým
+
+input: i can be happy @ mutlu olabilirim
+output: OK
+1 mutlu olabilirim
+2 ben mutlu olabilirim
+
+input: i could be happy @ mutlu olabilirdim
+output: OK
+1 mutlu olabilirdim
+2 ben mutlu olabilirdim
+
+input: i may be happy @ mutlu olabilirim
+output: OK
+1 mutlu olabilirim
+2 ben mutlu olabilirim
+
+input: i might be happy @ mutlu olabilirdim
+output: OK
+1 mutlu olabilirdim
+2 ben mutlu olabilirdim
+
+input: i must be happy @ mutlu olmalýyým
+output: OK
+1 mutlu olmalýyým
+2 ben mutlu olmalýyým
+
+input: i won't be happy @ mutlu olmayacaðým
+output: OK
+1 mutlu olmayacaðým
+2 ben mutlu olmayacaðým
+
+input: i wouldn't be happy @ mutlu olmayacaktým
+output: OK
+1 mutlu olmayacaktým
+2 ben mutlu olmayacaktým
+
+input: i can't be happy @ mutlu olamam
+output: OK
+1 mutlu olamam
+2 ben mutlu olamam
+
+input: i couldn't be happy @ mutlu olamazdým
+output: OK
+1 mutlu olamazdým
+2 ben mutlu olamazdým
+
+input: i mayn't be happy @ mutlu olmayabilirim
+output: OK
+1 mutlu olmayabilirim
+2 ben mutlu olmayabilirim
+
+input: i mightn't be happy @ mutlu olmayabilirdim
+output: OK
+1 mutlu olmayabilirdim
+2 ben mutlu olmayabilirdim
+
+input: i mustn't be happy @ mutlu olmamalýyým
+output: OK
+1 mutlu olmamalýyým
+2 ben mutlu olmamalýyým
+
+input: will i be happy @ mutlu olacak mýyým
+output: OK
+1 mutlu olacak mýyým
+2 ben mutlu olacak mýyým
+
+input: would i be happy @ mutlu olacak mýydým
+output: OK
+1 mutlu olacak mýydým
+2 ben mutlu olacak mýydým
+
+input: can i be happy @ mutlu olabilir miyim
+output: OK
+1 mutlu olabilir miyim
+2 ben mutlu olabilir miyim
+
+input: could i be happy @ mutlu olabilir miydim
+output: OK
+1 mutlu olabilir miydim
+2 ben mutlu olabilir miydim
+
+input: may i be happy @ mutlu olabilir miyim
+output: OK
+1 mutlu olabilir miyim
+2 ben mutlu olabilir miyim
+
+input: might i be happy @ mutlu olabilir miydim
+output: OK
+1 mutlu olabilir miydim
+2 ben mutlu olabilir miydim
+
+input: must i be happy @ mutlu olmalý mýyým
+output: OK
+1 mutlu olmalý mýyým
+2 ben mutlu olmalý mýyým
+
+input: won't i be happy @ mutlu olmayacak mýyým
+output: OK
+1 mutlu olmayacak mýyým
+2 ben mutlu olmayacak mýyým
+
+input: wouldn't i be happy @ mutlu olmayacak mýydým
+output: OK
+1 mutlu olmayacak mýydým
+2 ben mutlu olmayacak mýydým
+
+input: can't i be happy @ mutlu olamaz mýyým
+output: OK
+1 mutlu olamaz mýyým
+2 ben mutlu olamaz mýyým
+
+input: couldn't i be happy @ mutlu olamaz mýydým
+output: OK
+1 mutlu olamaz mýydým
+2 ben mutlu olamaz mýydým
+
+input: mayn't i be happy @ mutlu olmayabilir miyim
+output: OK
+1 mutlu olmayabilir miyim
+2 ben mutlu olmayabilir miyim
+
+input: mightn't i be happy @ mutlu olmayabilir miydim
+output: OK
+1 mutlu olmayabilir miydim
+2 ben mutlu olmayabilir miydim
+
+input: mustn't i be happy @ mutlu olmamalý mýyým
+output: OK
+1 mutlu olmamalý mýyým
+2 ben mutlu olmamalý mýyým
+
+input: go @ git
+output: OK
+1 git
+
+input: don't go @ gitme
+output: OK
+1 gitme
+
+input: do not go @ gitme
+output: OK
+1 gitme
+
+input: let's go @ gidelim
+output: OK
+1 gidelim
+
+input: let's not go @ gitmeyelim
+output: OK
+1 gitmeyelim
+
+input: shall we go @ gidelim mi
+output: OK
+1 gidelim mi
+2 gidecek miyiz
+3 biz gidecek miyiz
+
+input: shall we not go @ gitmeyelim mi
+output: OK
+1 gitmeyelim mi
+2 gitmeyecek miyiz
+3 biz gitmeyecek miyiz
+
+input: be happy @ mutlu ol
+output: OK
+1 mutlu ol
+
+input: don't be happy @ mutlu olma
+output: OK
+1 mutlu olma
+
+input: i am watched @ seyredilirim
+output: OK
+1 seyredilerim
+2 ben seyredilerim
+3 seyredilirim
+4 ben seyredilirim
+
+input: i am not watched @ seyredilmem
+output: OK
+1 seyredilmem
+2 ben seyredilmem
+
+input: am i watched @ seyredilir miyim
+output: OK
+1 seyrediler miyim
+2 ben seyrediler miyim
+3 seyredilir miyim
+4 ben seyredilir miyim
+
+input: am i not watched @ seyredilmez miyim
+output: OK
+1 seyredilmez miyim
+2 ben seyredilmez miyim
+
+input: i was watched @ seyredildim
+output: OK
+1 seyredildim
+2 ben seyredildim
+
+input: i wasn't watched @ seyredilmedim
+output: OK
+1 seyredilmedim
+2 ben seyredilmedim
+
+input: was i watched @ seyredildim mi
+output: OK
+1 seyredildim mi
+2 ben seyredildim mi
+
+input: wasn't i watched @ seyredilmedim mi
+output: OK
+1 seyredilmedim mi
+2 ben seyredilmedim mi
+
+input: i am being watched @ seyrediliyorum
+output: OK
+1 seyrediliyorum
+2 ben seyrediliyorum
+
+input: i am not being watched @ seyredilmiyorum
+output: OK
+1 seyredilmiyorum
+2 ben seyredilmiyorum
+
+input: am i being watched @ seyrediliyor muyum
+output: OK
+1 seyrediliyor muyum
+2 ben seyrediliyor muyum
+
+input: am i not being watched @ seyredilmiyor muyum
+output: OK
+1 seyredilmiyor muyum
+2 ben seyredilmiyor muyum
+
+input: i was being watched @ seyrediliyordum
+output: OK
+1 seyrediliyordum
+2 ben seyrediliyordum
+
+input: i wasn't being watched @ seyredilmiyordum
+output: OK
+1 seyredilmiyordum
+2 ben seyredilmiyordum
+
+input: was i being watched @ seyrediliyor muydum
+output: OK
+1 seyrediliyor muydum
+2 ben seyrediliyor muydum
+
+input: wasn't i being watched @ seyredilmiyor muydum
+output: OK
+1 seyredilmiyor muydum
+2 ben seyredilmiyor muydum
+
+input: i have been watched @ seyredildim
+output: OK
+1 seyredildim
+2 ben seyredildim
+
+input: i haven't been watched @ seyredilmedim
+output: OK
+1 seyredilmedim
+2 ben seyredilmedim
+
+input: have i been watched @ seyredildim mi
+output: OK
+1 seyredildim mi
+2 ben seyredildim mi
+
+input: haven't i been watched @ seyredilmedim mi
+output: OK
+1 seyredilmedim mi
+2 ben seyredilmedim mi
+
+input: i had been watched @ seyredilmiþtim
+output: OK
+1 seyredilmiþtim
+2 ben seyredilmiþtim
+
+input: i hadn't been watched @ seyredilmemiþtim
+output: OK
+1 seyredilmemiþtim
+2 ben seyredilmemiþtim
+
+input: had i been watched @ seyredilmiþ miydim
+output: OK
+1 seyredilmiþ miydim
+2 ben seyredilmiþ miydim
+
+input: hadn't i been watched @ seyredilmemiþ miydim
+output: OK
+1 seyredilmemiþ miydim
+2 ben seyredilmemiþ miydim
+
+input: i will be watched @ seyredileceðim
+output: OK
+1 seyredileceðim
+2 ben seyredileceðim
+
+input: i won't be watched @ seyredilmeyeceðim
+output: OK
+1 seyredilmeyeceðim
+2 ben seyredilmeyeceðim
+
+input: will i be watched @ seyredilecek miyim
+output: OK
+1 seyredilecek miyim
+2 ben seyredilecek miyim
+
+input: won't i be watched @ seyredilmeyecek miyim
+output: OK
+1 seyredilmeyecek miyim
+2 ben seyredilmeyecek miyim
+
+input: i can be watched @ seyredilebilirim
+output: OK
+1 seyredilebilirim
+2 ben seyredilebilirim
+
+input: i can't be watched @ seyredilemem
+output: OK
+1 seyredilemem
+2 ben seyredilemem
+
+input: can i be watched @ seyredilebilir miyim
+output: OK
+1 seyredilebilir miyim
+2 ben seyredilebilir miyim
+
+input: can't i be watched @ seyredilemez miyim
+output: OK
+1 seyredilemez miyim
+2 ben seyredilemez miyim
+
+input: i may be watched @ seyredilebilirim
+output: OK
+1 seyredilebilirim
+2 ben seyredilebilirim
+
+input: i mayn't be watched @ seyredilmeyebilirim
+output: OK
+1 seyredilmeyebilirim
+2 ben seyredilmeyebilirim
+
+input: may i be watched @ seyredilebilir miyim
+output: OK
+1 seyredilebilir miyim
+2 ben seyredilebilir miyim
+
+input: mayn't i be watched @ seyredilmeyebilir miyim
+output: OK
+1 seyredilmeyebilir miyim
+2 ben seyredilmeyebilir miyim
+
+input: i must be watched @ seyredilmeliyim
+output: OK
+1 seyredilmeliyim
+2 ben seyredilmeliyim
+
+input: i mustn't be watched @ seyredilmemeliyim
+output: OK
+1 seyredilmemeliyim
+2 ben seyredilmemeliyim
+
+input: must i be watched @ seyredilmeli miyim
+output: OK
+1 seyredilmeli miyim
+2 ben seyredilmeli miyim
+
+input: mustn't i be watched @ seyredilmemeli miyim
+output: OK
+1 seyredilmemeli miyim
+2 ben seyredilmemeli miyim
+
+input: i'm going to be watched @ seyredileceðim
+output: OK
+1 seyredileceðim
+2 ben seyredileceðim
+
+input: i am not going to be watched @ seyredilmeyeceðim
+output: OK
+1 seyredilmeyeceðim
+2 ben seyredilmeyeceðim
+
+input: am i going to be watched @ seyredilecek miyim
+output: OK
+1 seyredilecek miyim
+2 ben seyredilecek miyim
+
+input: am i not going to be watched @ seyredilmeyecek miyim
+output: OK
+1 seyredilmeyecek miyim
+2 ben seyredilmeyecek miyim
+
+input: i was going to be watched @ seyredilecektim
+output: OK
+1 seyredilecektim
+2 ben seyredilecektim
+
+input: i wasn't going to be watched @ seyredilmeyecektim
+output: OK
+1 seyredilmeyecektim
+2 ben seyredilmeyecektim
+
+input: was i going to be watched @ seyredilecek miydim
+output: OK
+1 seyredilecek miydim
+2 ben seyredilecek miydim
+
+input: wasn't i going to be watched @ seyredilmeyecek miydim
+output: OK
+1 seyredilmeyecek miydim
+2 ben seyredilmeyecek miydim
+
+input=287, translated=287, matched=287

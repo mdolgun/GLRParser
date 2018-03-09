@@ -41,7 +41,7 @@ i may go @ gidebilirim
 i might go @ gidebilirdim
 i must go @ gitmeliyim
 i must be going @ gidiyor olmalýyým
-i must have gone @ gimiþ olmalýyým
+i must have gone @ gitmiþ olmalýyým
 i should go @ gitmeliyim
 i shall go @ gideceðim
 
@@ -91,18 +91,18 @@ i could not go @ gidemezdim
 i couldn't go @ gidemezdim
 i shall not go @ gitmeyeceðim
 i shan't go @ gitmeyeceðim
-i may not go @ gidemezdim
-i might not go @ gidemezdim
+i may not go @ gitmeyebilirim
+i might not go @ gitmeyebilirdim
 i should not go @ gitmemeliyim
 i shouldn't go @ gitmemeliyim
 i must not go @ gitmemeliyim
 i mustn't go @ gitmemeliyim 
 i won't be going @ gidiyor olmayacaðým
-i wouldn't be going @ gidiyor olmayacaðým
+i wouldn't be going @ gidiyor olmayacaktým
 i won't have gone @ gitmiþ olmayacaðým
 i wouldn't have gone @ gitmiþ olmayacaktým
 i may not be going @ gidiyor olmayabilirim
-i might not be going @ gidiyor olmayabilirim
+i might not be going @ gidiyor olmayabilirdim
 i mustn't be going @ gidiyor olmamalýyým
 i mustn't have gone @ gitmiþ olmamalýyým
 
@@ -126,11 +126,15 @@ hadn't we gone @ gitmemiþ miydik
 will we go @ gidecek miyiz
 won't we go @ gitmeyecek miyiz
 are we going to go @ gidecek miyiz
-aren't we going to go @ gitmeyecek
+aren't we going to go @ gitmeyecek miyiz
 can we go @ gidebilir miyiz
 can't we go @ gidemez miyiz
 could we go @ gidebilir miydik
 couldn't we go @ gidemez miydik
+may we go @ gidebilir miyiz
+mayn't we go @ gitmeyebilir miyiz
+might we go @ gidebilir miydik
+mightn't we go @ gitmeyebilir miydik
 must we go @ gitmeli miyiz
 mustn't we go @ gitmemeli miyiz
 
@@ -169,7 +173,7 @@ was i happy @ mutlu muydum
 was he happy @ mutlu muydu
 were we happy @ mutlu muyduk
 were you happy @ mutlu muydunuz
-were they happy @ mutlular muydunuz
+were they happy @ mutlu muydular
 
 i was not happy @ mutlu deðildim
 he was not happy @ mutlu deðildi
@@ -183,14 +187,145 @@ were we not happy @ mutlu deðil miydik
 were you not happy @ mutlu deðil miydiniz
 were they not happy @ mutlu deðiller miydi
 
+i have been happy @ mutlu oldum
+she has been happy @ mutlu oldu
+i had been happy @ mutlu olmuþtum
+she had been happy @ mutlu olmuþtu
 
+have i been happy @ mutlu oldum mu
+has she been happy @ mutlu oldu mu
+had i been happy @ mutlu olmuþ muydum
+had she been happy @ mutlu olmuþ muydu
 
+i haven't been happy @ mutlu olmadým
+she hasn't been happy @ mutlu olmadý
+i hadn't been happy @ mutlu olmamýþtým
+she hadn't been happy @ mutlu olmamýþtý
 
+haven't i been happy @ mutlu olmadým mý
+hasn't she been happy @ mutlu olmadý mý
+hadn't i been happy @ mutlu olmamýþ mýydým
+hadn't she been happy @ mutlu olmamýþ mýydý
 
+i am being happy @ mutlu oluyorum
+she is being happy @ mutlu oluyor
+i was being happy @ mutlu oluyordum
+she was being happy @ mutlu oluyordu
 
+am i being happy @ mutlu oluyor muyum
+is she being happy @ mutlu oluyor mu
+was i being happy @ mutlu oluyor muydum
+was she being happy @ mutlu oluyor muydu
 
+i am not being happy @ mutlu olmuyorum
+she isn't being happy @ mutlu olmuyor
+i wasn't being happy @ mutlu olmuyordum
+she wasn't being happy @ mutlu olmuyordu
 
+am i not being happy @ mutlu olmuyor muyum
+isn't she being happy @ mutlu olmuyor mu
+wasn't i being happy @ mutlu olmuyor muydum
+wasn't she being happy @ mutlu olmuyor muydu
 
+i will be happy @ mutlu olacaðým
+i would be happy @ mutlu olacaktým
+i can be happy @ mutlu olabilirim
+i could be happy @ mutlu olabilirdim
+i may be happy @ mutlu olabilirim
+i might be happy @ mutlu olabilirdim
+i must be happy@ mutlu olmalýyým
 
+i won't be happy @ mutlu olmayacaðým
+i wouldn't be happy @ mutlu olmayacaktým
+i can't be happy @ mutlu olamam
+i couldn't be happy @ mutlu olamazdým
+i mayn't be happy @ mutlu olmayabilirim
+i mightn't be happy @ mutlu olmayabilirdim
+i mustn't be happy @ mutlu olmamalýyým
 
+will i be happy @ mutlu olacak mýyým
+would i be happy @ mutlu olacak mýydým
+can i be happy @ mutlu olabilir miyim
+could i be happy @ mutlu olabilir miydim
+may i be happy @ mutlu olabilir miyim
+might i be happy @ mutlu olabilir miydim
+must i be happy @ mutlu olmalý mýyým
+
+won't i be happy @ mutlu olmayacak mýyým
+wouldn't i be happy @ mutlu olmayacak mýydým
+can't i be happy @ mutlu olamaz mýyým
+couldn't i be happy @ mutlu olamaz mýydým
+mayn't i be happy @ mutlu olmayabilir miyim
+mightn't i be happy @ mutlu olmayabilir miydim
+mustn't i be happy @ mutlu olmamalý mýyým
+
+go @ git
+don't go @ gitme
+do not go @ gitme
+let's go @ gidelim
+let's not go @ gitmeyelim
+shall we go @ gidelim mi
+shall we not go @ gitmeyelim mi
+be happy @ mutlu ol
+don't be happy @ mutlu olma
+
+i am watched @ seyredilirim
+i am not watched @ seyredilmem
+am i watched @ seyredilir miyim
+am i not watched @ seyredilmez miyim
+
+i was watched @ seyredildim
+i wasn't watched @ seyredilmedim
+was i watched @ seyredildim mi
+wasn't i watched @ seyredilmedim mi
+
+i am being watched @ seyrediliyorum
+i am not being watched @ seyredilmiyorum
+am i being watched @ seyrediliyor muyum
+am i not being watched @ seyredilmiyor muyum
+
+i was being watched @ seyrediliyordum
+i wasn't being watched @ seyredilmiyordum
+was i being watched @ seyrediliyor muydum
+wasn't i being watched @ seyredilmiyor muydum
+
+i have been watched @ seyredildim
+i haven't been watched @ seyredilmedim
+have i been watched @ seyredildim mi
+haven't i been watched @ seyredilmedim mi
+
+i had been watched @ seyredilmiþtim
+i hadn't been watched @ seyredilmemiþtim
+had i been watched @ seyredilmiþ miydim
+hadn't i been watched @ seyredilmemiþ miydim
+
+i will be watched @ seyredileceðim
+i won't be watched @ seyredilmeyeceðim
+will i be watched @ seyredilecek miyim
+won't i be watched @ seyredilmeyecek miyim
+
+i can be watched @ seyredilebilirim
+i can't be watched @ seyredilemem
+can i be watched @ seyredilebilir miyim
+can't i be watched @ seyredilemez miyim
+
+i may be watched @ seyredilebilirim
+i mayn't be watched @ seyredilmeyebilirim
+may i be watched @ seyredilebilir miyim
+mayn't i be watched @ seyredilmeyebilir miyim
+
+i must be watched @ seyredilmeliyim
+i mustn't be watched @ seyredilmemeliyim
+must i be watched @ seyredilmeli miyim
+mustn't i be watched @ seyredilmemeli miyim
+
+i'm going to be watched @ seyredileceðim
+i am not going to be watched @ seyredilmeyeceðim
+am i going to be watched @ seyredilecek miyim
+am i not going to be watched @ seyredilmeyecek miyim
+
+i was going to be watched @ seyredilecektim
+i wasn't going to be watched @ seyredilmeyecektim
+was i going to be watched @ seyredilecek miydim
+wasn't i going to be watched @ seyredilmeyecek miydim
 

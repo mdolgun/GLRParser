@@ -15,6 +15,8 @@ class XTestResult(unittest.TestResult):
 class TestMorph(unittest.TestCase):
     cases = [
         ('ev-Hm', 'evim'),
+        ('ev-YHm', 'evim'),
+        ('ev-YdHm', 'evdim'),
         ('ev-YH', 'evi'),
         ('ev-YlA', 'evle'),
         ('ev-dA', 'evde'),
@@ -25,6 +27,8 @@ class TestMorph(unittest.TestCase):
         ('ev-ZHN-dA', 'evinde'),
         ('ev-ZHN-NHn', 'evinin'),
         ('araba-Hm', 'arabam'),
+        ('araba-YHm', 'arabayım'),
+        ('araba-YdHm', 'arabaydım'),
         ('araba-YH', 'arabayı'),
         ('araba-YlA', 'arabayla'),
         ('araba-dA', 'arabada'),
@@ -35,6 +39,8 @@ class TestMorph(unittest.TestCase):
         ('araba-ZHN-dA', 'arabasında'),
         ('araba-ZHN-NHn', 'arabasının'),
         ('kitap-Hm', 'kitabım'),
+        ('kitap-YHm', 'kitabım'),
+        ('kitap-YdHm', 'kitaptım'),
         ('kitap-YH', 'kitabı'),
         ('kitap-YlA', 'kitapla'),
         ('kitap-dA', 'kitapta'),
@@ -45,6 +51,8 @@ class TestMorph(unittest.TestCase):
         ('kitap-ZHN-dA', 'kitabında'),
         ('kitap-ZHN-NHn', 'kitabının'),
         ('hak+-Hm', 'hakkım'),
+        ('hak+-YHm', 'hakkım'),
+        ('hak+-YdHm', 'haktım'),
         ('hak+-YH', 'hakkı'),
         ('hak+-YlA', 'hakla'),
         ('hak+-dA', 'hakta'),
@@ -55,6 +63,8 @@ class TestMorph(unittest.TestCase):
         ('hak+-ZHN-dA', 'hakkında'),
         ('hak+-ZHN-NHn', 'hakkının'),
         ('tank!-Hm', 'tankım'),
+        ('tank!-YHm', 'tankım'),
+        ('tank!-YdHm', 'tanktım'),
         ('tank!-YH', 'tankı'),
         ('tank!-YlA', 'tankla'),
         ('tank!-dA', 'tankta'),
@@ -65,6 +75,8 @@ class TestMorph(unittest.TestCase):
         ('tank!-ZHN-dA', 'tankında'),
         ('tank!-ZHN-NHn', 'tankının'),
         ('yatak-Hm', 'yatağım'),
+        ('yatak-YHm', 'yatağım'),
+        ('yatak-YdHm', 'yataktım'),
         ('yatak-YH', 'yatağı'),
         ('yatak-YlA', 'yatakla'),
         ('yatak-dA', 'yatakta'),
@@ -74,17 +86,21 @@ class TestMorph(unittest.TestCase):
         ('yatak-ZHN-YlA', 'yatağıyla'),
         ('yatak-ZHN-dA', 'yatağında'),
         ('yatak-ZHN-NHn', 'yatağının'),
-        ('bur$un-Hm', 'burnum'),
-        ('bur$un-YH', 'burnu'),
-        ('bur$un-YlA', 'burunla'),
-        ('bur$un-dA', 'burunda'),
-        ('bur$un-NHn', 'burnun'),
-        ('bur$un-ZHN', 'burnu'),
-        ('bur$un-ZHN-YH', 'burnunu'),
-        ('bur$un-ZHN-YlA', 'burnuyla'),
-        ('bur$un-ZHN-dA', 'burnunda'),
-        ('bur$un-ZHN-NHn', 'burnunun'),
+        ('bur@un-Hm', 'burnum'),
+        ('bur@un-YHm', 'burnum'), # ??
+        ('bur@un-YdHm', 'burundum'),
+        ('bur@un-YH', 'burnu'),
+        ('bur@un-YlA', 'burunla'),
+        ('bur@un-dA', 'burunda'),
+        ('bur@un-NHn', 'burnun'),
+        ('bur@un-ZHN', 'burnu'),
+        ('bur@un-ZHN-YH', 'burnunu'),
+        ('bur@un-ZHN-YlA', 'burnuyla'),
+        ('bur@un-ZHN-dA', 'burnunda'),
+        ('bur@un-ZHN-NHn', 'burnunun'),
         ('renk-Hm', 'rengim'),
+        ('renk-YHm', 'rengim'),
+        ('renk-YdHm', 'renktim'),
         ('renk-YH', 'rengi'),
         ('renk-YlA', 'renkle'),
         ('renk-dA', 'renkte'),
@@ -95,6 +111,8 @@ class TestMorph(unittest.TestCase):
         ('renk-ZHN-dA', 'renginde'),
         ('renk-ZHN-NHn', 'renginin'),
         ('ro^l-Hm', 'rolüm'),
+        ('ro^l-YHm', 'rolüm'),
+        ('ro^l-YdHm', 'roldüm'),
         ('ro^l-YH', 'rolü'),
         ('ro^l-YlA', 'rolle'),
         ('ro^l-dA', 'rolde'),
@@ -170,8 +188,8 @@ def main():
     morpher = TurkishPostProcessor()
     data = []
 
-    words = [ "ev", "araba", "kitap", "hak+", "tank!", "yatak", "bur$un", "renk", "ro^l" ]
-    suffixes = [ "-Hm", "-YH", "-YlA", "-dA", "-NHn", "-ZHN", "-ZHN-YH", "-ZHN-YlA", "-ZHN-dA", "-ZHN-NHn" ]
+    words = [ "ev", "araba", "kitap", "hak+", "tank!", "yatak", "bur@un", "renk", "ro^l" ]
+    suffixes = [ "-Hm", "-YHm", "-YdHm", "-YH", "-YlA", "-dA", "-NHn", "-ZHN", "-ZHN-YH", "-ZHN-YlA", "-ZHN-dA", "-ZHN-NHn" ]
 
     for word in words:
         for suffix in suffixes:

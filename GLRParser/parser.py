@@ -692,6 +692,7 @@ class Parser:
                         print(idx+1,alt,file=fout)
                 print(file=fout)
             print("input={}, translated={}, matched={}".format(input_cnt,trans_cnt,match_cnt),file=fout)
+        return (input_cnt,trans_cnt,match_cnt)
             
 
 def main():
