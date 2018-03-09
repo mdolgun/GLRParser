@@ -334,10 +334,10 @@ output: OK
 
 input: he's not gone @ gitmedi
 output: OK
-1 gidilmez
-2 o gidilmez
-3 gitmedi
-4 o gitmedi
+1 gitmedi
+2 o gitmedi
+3 gidilmez
+4 o gidilmez
 
 input: he hasn't gone @ gitmedi
 output: OK
@@ -1382,6 +1382,42 @@ output: OK
 1 seyredilmeyecek miyim
 2 ben seyredilmeyecek miyim
 
+input: i will have been watched @ seyredilmiþ olacaðým
+output: OK
+1 uyulmuþ olacaðým
+2 ben uyulmuþ olacaðým
+3 gidilmiþ olacaðým
+4 ben gidilmiþ olacaðým
+5 seyredilmiþ olacaðým
+6 ben seyredilmiþ olacaðým
+
+input: i won't have been watched @ seyredilmiþ olmayacaðým
+output: OK
+1 uyulmuþ olmayacaðým
+2 ben uyulmuþ olmayacaðým
+3 gidilmiþ olmayacaðým
+4 ben gidilmiþ olmayacaðým
+5 seyredilmiþ olmayacaðým
+6 ben seyredilmiþ olmayacaðým
+
+input: will i have been watched @ seyredilmiþ olacak mýyým
+output: OK
+1 uyulmuþ olacak mýyým
+2 ben uyulmuþ olacak mýyým
+3 gidilmiþ olacak mýyým
+4 ben gidilmiþ olacak mýyým
+5 seyredilmiþ olacak mýyým
+6 ben seyredilmiþ olacak mýyým
+
+input: won't i have been watched @ seyredilmiþ olmayacak mýyým
+output: OK
+1 uyulmuþ olmayacak mýyým
+2 ben uyulmuþ olmayacak mýyým
+3 gidilmiþ olmayacak mýyým
+4 ben gidilmiþ olmayacak mýyým
+5 seyredilmiþ olmayacak mýyým
+6 ben seyredilmiþ olmayacak mýyým
+
 input: i can be watched @ seyredilebilirim
 output: OK
 1 seyredilebilirim
@@ -1482,4 +1518,4 @@ output: OK
 1 seyredilmeyecek miydim
 2 ben seyredilmeyecek miydim
 
-input=287, translated=287, matched=287
+input=291, translated=291, matched=291

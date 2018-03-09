@@ -304,6 +304,11 @@ i won't be watched @ seyredilmeyeceðim
 will i be watched @ seyredilecek miyim
 won't i be watched @ seyredilmeyecek miyim
 
+i will have been watched @ seyredilmiþ olacaðým
+i won't have been watched @ seyredilmiþ olmayacaðým
+will i have been watched @ seyredilmiþ olacak mýyým
+won't i have been watched @ seyredilmiþ olmayacak mýyým
+
 i can be watched @ seyredilebilirim
 i can't be watched @ seyredilemem
 can i be watched @ seyredilebilir miyim
