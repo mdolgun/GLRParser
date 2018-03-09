@@ -3,9 +3,9 @@ import os
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname),encoding='utf-8').read()
-	
+
 setup(name='GLRParser',
-	version='0.2.3',
+	version='0.2.4',
 	description='A GLR Parser for Natural Language Processing and Translation',
 	long_description=read("README.rst"),
 	url='https://github.com/mdolgun/GLRParser',
@@ -19,5 +19,5 @@ setup(name='GLRParser',
 	keywords = 'NLP MachineTranslation Parser GLR Turkish',
 	license='MIT',
 	packages=['GLRParser'],
-	package_data = { 'GLRParser': ['*.grm'] }
+	package_data = { 'GLRParser': ['grm/*'] }
 )
