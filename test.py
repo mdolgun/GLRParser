@@ -12,10 +12,10 @@ try:
     tree = parser.make_tree() # generates parse forest
     ttree = parser.trans_tree(tree) # translate the parse forest
 
-    print(ttree.pformat(Tree.right_tree)) # pretty-print the translated parse forest
+    print(ttree.pformat(False)) # pretty-print the translated parse forest
 
-    for trans in ttree.enum(): # enumerate and print all alternative translations in the parse forest
-	    print(trans.replace(" -","")) # concat suffixes
+    for trans,cost in ttree.enumx(): # enumerate and print all alternative translations in the parse forest
+	    print(trans.replace(" -",""),":",cost) # concat suffixes
 except GrammarError as ge:
     print(ge)
 except ParseError as pe:

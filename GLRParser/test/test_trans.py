@@ -2,7 +2,7 @@ import sys, unittest, textwrap
 sys.path.append("../..")
 from GLRParser import Parser, ParseError, GrammarError, Tree
 
-class TestParse(unittest.TestCase):
+class TestTrans(unittest.TestCase):
     grammar = """
         S -> NP VP : NP VP
         S -> S in NP : NP -de S 
@@ -108,13 +108,13 @@ class TestParse(unittest.TestCase):
         self.assertEqual([self.parser.post_processor(trans) for trans in self.ttree.enum()], self.enum)
 
     def test_format(self):
-        self.assertEqual(self.ttree.format(3), self.format)
+        self.assertEqual(self.ttree.format(False), self.format)
 
     def test_str_format(self):
-        self.assertEqual(self.ttree.str_format(3), self.str_format)
+        self.assertEqual(self.ttree.str_format(False), self.str_format)
 
     def test_pformat(self):
-        self.assertEqual(self.ttree.pformat(3), textwrap.dedent(self.pformat))
+        self.assertEqual(self.ttree.pformat(False), textwrap.dedent(self.pformat))
                          
 def main():
     # used for data generation

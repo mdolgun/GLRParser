@@ -254,8 +254,17 @@ class Grammar:
         rules = []
         rules.append(Grammar("S' -> S() : S()").parse_rule())
         line_no = 0
+        process = True
         for s in iterator:
             line_no += 1
+            if s.startswith('#'):
+                if s.startswith('#ifdef'):
+                    process = False
+                elif s.startswith('#endif'):
+                    process = True
+                continue
+            if not process:
+                continue
             rule = Grammar(s,line_no).parse_rule()
             if rule is None: # empty/comment line
                 continue

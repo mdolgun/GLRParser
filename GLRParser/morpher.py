@@ -52,7 +52,7 @@ class TurkishPostProcessor:
         ( "(enk)-(?=[ZNHA]|Y[aIeiouOUHA])", "eng"),
         ( "([pCtk])-(?=[ZNHA]|Y[aIeiouOUHA])", {'p':'b', 'C':'c', 't':'d', 'k':'G'} ),
         ( "([pbctdk]\+)-(?=[ZNHA]|Y[aIeiouOUHA])", {'p+':'bb', 'b+':'bb', 'c+':'cc', 't+':'tt', 'd+':'dd', 'k+':'kk' } ),
-        ( "([-@\+!]|N$)", "")
+        ( "([-@\+!]|N$|N(?= ))", "")
     ]
 
     vowel = { 'a': 0, 'I':0 , 'e':1, 'i':1, 'o':2, 'u':2 , 'O':3, 'U':3 }

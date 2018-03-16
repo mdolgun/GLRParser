@@ -12,7 +12,7 @@ class XTestResult(unittest.TestResult):
         self.testsRun += 1
 '''
 
-class TestMorph(unittest.TestCase):
+class TestMorpher(unittest.TestCase):
     cases = [
         ('ev-Hm', 'evim'),
         ('ev-YHm', 'evim'),

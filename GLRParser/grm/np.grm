@@ -1,0 +1,70 @@
+S -> NP : NP
+
+NP -> NP1	: NP1
+NP -> NGOf	: NGOf		[ng=1]
+
+NP1 -> Det NGOf				: Det NGOf					[ng=1]
+NP1 -> Poss NGOf			: Poss NGOf PossSuf			[ng=0] 
+NP1 -> NGOf of NP1()		: NP1() -NHn NGOf -ZHN		[ng=0]			
+NP1 -> Det NGOf of NP1()	: NP1() -NHn Det NGOf -ZHN	[ng=0]	
+
+NGOf -> NSimp of NGOf()	: NGOf(ng=1) NSimp NGSuf
+NGOf -> NG of NGOf()	: NGOf(ng=1) NG
+NGOf -> NSimp			: NSimp
+NGOf -> NG				: NG
+
+NG -> NSimp-1 NSimp-2	: NSimp-1 NSimp-2 NGSuf
+NG -> NG() NSimp		: NG(ng=1) NSimp NGSuf
+NG -> NSimp NG			: NSimp NG
+NG -> NComp 			: NComp NGSuf
+
+
+NGSuf ->			[ng=0]
+NGSuf -> : -ZHN     [ng=1]
+
+NSimp -> NSing  : NSing
+NSimp -> NPlur  : NPlur Plur
+NComp -> NCSing : NCSing
+NComp -> NCPlur : NCPlur Plur
+
+Plur -> : -lAr	
+
+Det -> a    : bir		
+Det -> the   			
+Det -> this : bu	
+
+Poss -> PossPron : PossPron 
+Poss -> PossPron
+Poss -> NP() 's  : NP() -NHn [pnumb=sing,ppers=3]
+
+PossPron -> my    : benim  		[pnumb=sing,ppers=1]
+PossPron -> your  : senin  		[pnumb=sing,ppers=2]
+PossPron -> his   : onun  		[pnumb=sing,ppers=3]
+PossPron -> her   : onun  		[pnumb=sing,ppers=3]
+PossPron -> its   : onun  		[pnumb=sing,ppers=3]
+PossPron -> our   : bizim  		[pnumb=plur,ppers=1]
+PossPron -> your  : sizin  		[pnumb=plur,ppers=2]
+PossPron -> their : onların  	[pnumb=plur,ppers=3]
+
+PossSuf -> : -Hm 	[pnumb=sing,ppers=1]
+PossSuf -> : -Hn 	[pnumb=sing,ppers=2]
+PossSuf -> : -ZHN 	[pnumb=sing,ppers=3]
+PossSuf -> : -HmHz	[pnumb=plur,ppers=1]
+PossSuf -> : -HnHz	[pnumb=plur,ppers=2]
+PossSuf -> : -lArH	[pnumb=plur,ppers=3]
+
+NSing -> house : ev
+NSing -> door  : kapı
+NSing -> bell  : zil
+NSing -> box   : kutu
+
+NPlur -> houses : ev
+NPlur -> doors  : kapı
+NPlur -> bells  : zil
+NPlur -> boxes  : kutu
+
+NCSing -> butter	: tereyağ
+NCSing -> bedroom   : yatak oda
+
+NCPlur -> butters	: tereyağ
+NCPlur -> bedrooms  : yatak oda

@@ -5,131 +5,19 @@
 This file define classes:
     Parser: main functionality for parsing, feature unification and translation
     ParserError,UnifyError: exceptions thrown when parsing or unification fails
-    Tree: node of a parse tree
       
 """
 import logging, re
-from collections import defaultdict,namedtuple
+from collections import defaultdict
 
 if __name__ == "__main__":
     from morpher import TurkishPostProcessor
     from grammar import Grammar,GrammarError,Rule,format_feat
+    from tree import Tree
 else:
     from .morpher import TurkishPostProcessor
     from .grammar import Grammar,GrammarError,Rule,format_feat
-
-Tree = namedtuple('Tree', 'head, ruleno, left, right, feat')
-
-def format_tree(self,tree_type=2):
-    """ returnes single-line formatted string representation of a tree """
-    return " ".join([
-        item if type(item)==str
-        else "{}({})".format(item[0].head,"|".join([format_tree(alt,tree_type) for alt in item]))
-        for item in self[tree_type]
-        ])
-
-def str_tree(self,tree_type=2):
-    """ return string representation of terminals where alternative strings are in the form: (alt1|alt2|...) """
-    return " ".join([
-        item if type(item)==str 
-        else str_tree(item[0],tree_type) if len(item)==1
-        else "("+"|".join([str_tree(alt,tree_type) for alt in item])+")"
-        for item in self[tree_type]
-    ])
-
-def convert_tree(self):   
-    return " ".join([
-        item if type(item)==str 
-        else "("+"|".join([convert_tree(alt) for alt in item])+")"
-        for item in self
-    ])
-
-def list_tree(self,tree_type=2):
-    out = []
-    for item in self[tree_type]:
-        if type(item)==str:
-            out.append(item)
-        elif len(item)==1:
-            out.extend(list_tree(item[0],tree_type))
-        else:
-            out.append([list_tree(alt,tree_type) for alt in item])
-    return out
-
-indenter = "    "
-def pformat_tree(self,tree_type=2,level=0):
-    """ return prety formatted (indented multiline) string representation of a tree """
-    indent = indenter*level
-    return "".join([
-        "{}{}\n".format(indent,item) if type(item)==str
-        else "{indent}{head}({body})\n".format(
-            indent=indent,
-            head=item[0].head,
-            body=" ".join(item[0][tree_type])    
-        ) if len(item)==1 and all(map(lambda x:type(x)==str,item[0][tree_type]))
-        else "{indent}{head}(\n{body}{indent})\n".format(
-            indent=indent,
-            head=item[0].head,
-            body=(indent+"|\n").join([pformat_tree(alt,tree_type,level+1) for alt in item])  
-        )
-        for item in self[tree_type]
-    ])
-
-def pformat_tree_ext(self,tree_type=2,level=0):
-    """ return prety formatted (indented multiline) string representation of a tree with extended information(rule no, feature list) """
-    indent = indenter*level
-    if len(self[tree_type])==0: # empty production
-        return ""
-    if all(map(lambda x:type(x)==str,self[tree_type])): # terminal-only production
-        return  indent+" ".join(self[tree_type])+"\n"
-    return "".join([
-        "{}{}\n".format(indent,item) if type(item)==str
-        else "{indent}{head}(\n{body}{indent})\n".format(
-            indent=indent,
-            head=item[0].head,
-            body=(indent+"|\n").join([
-                "{indent}#{ruleno}{feat}\n{body}".format(
-                    indent=indent,
-                    ruleno=alt.ruleno,
-                    feat=format_feat(alt.feat),
-                    body = pformat_tree_ext(alt,tree_type,level+1)
-                )
-                for alt in item
-            ])    
-        )
-        for item in self[tree_type]
-    ])
-      
-def enum_tree(tree,idx=0):
-    """ a generator for enumerating all translations in a parse forest """
-    try:
-        item = tree.right[idx]
-    except IndexError:
-        yield ""
-        return
-    for rest in enum_tree(tree,idx+1):
-        if type(item)==str:
-            if rest:
-                yield item + " " + rest
-            else:
-                yield item
-        else:
-            for alt in item:
-                for first in enum_tree(alt):
-                    if first and rest:
-                        yield first + " " + rest
-                    else:
-                        yield first or rest
-
-
-Tree.format = format_tree
-Tree.pformat = pformat_tree
-Tree.pformat_ext = pformat_tree_ext
-Tree.str_format = str_tree
-Tree.list_format = list_tree
-Tree.convert_tree = convert_tree
-Tree.enum = enum_tree
-Tree.left_tree = 2
-Tree.right_tree = 3
+    from .tree import Tree
 
 empty_dict = dict()
 empty_set = set()
@@ -254,12 +142,12 @@ class Parser:
         """ get string repr of "items" in state set in dotted fomat  e.g "{ S -> NP . VP ; VP -> . V  ; VP -> . V NP }" """
         slist = ["{"]
         for ruleno,rulepos in stateset:
-            slist.append("{} --> {} . {}".format(self.rules[ruleno][0], " ".join(self.rules[ruleno][1][0:rulepos]), " ".join(self.rules[ruleno][1][rulepos:])))
+            slist.append("{} -> {} . {}".format(self.rules[ruleno][0], " ".join(self.rules[ruleno][1][0:rulepos]), " ".join(self.rules[ruleno][1][rulepos:])))
         slist.append("}")
         return " , ".join(slist)
 
     def get_item(self,ruleno,rulepos):
-        return "{} --> {} . {}".format(self.rules[ruleno][0], " ".join(self.rules[ruleno][1][0:rulepos]), " ".join(self.rules[ruleno][1][rulepos:]))    
+        return "{} -> {} . {}".format(self.rules[ruleno][0], " ".join(self.rules[ruleno][1][0:rulepos]), " ".join(self.rules[ruleno][1][rulepos:]))    
 
     def compile(self):
         """ compile rule list "rules" to a DFA
@@ -365,6 +253,36 @@ class Parser:
             for key in newkeys:
                 dst[key] = src[key]
         return dst
+
+    def unify_down(dst,param,src):
+        """ unification of "src" features into "dst" features, using filtering of "param", if unification fails raises UnifyError
+
+        if param is None, src is directly unified into dst
+        otherwise param contains a pre-condition dict and a filter set,
+        dst is unified against pre-condition dict and filtered src
+
+        """
+        if param is None:
+            pdict = src
+        else:
+            pdict = dict()
+            for key in param.keys():
+                if param[key] is None:
+                    if key in src:
+                        pdict[key] = src[key]
+                else:
+                    pdict[key] = param[key]
+
+        for key in pdict.keys() & dst.keys():
+            if pdict[key] != dst[key]:
+                raise UnifyError("UnifyD error feat=%s src=%s param=%s" % (key, pdict[key], dst[key]))
+
+        newkeys = pdict.keys() - dst.keys()
+        if newkeys:
+            dst = dst.copy()
+            dst.update(pdict)
+
+        return dst
  
     def unify_tree(self,tree):
         """ bottom-up unifies a tree and returns a new tree """
@@ -409,7 +327,7 @@ class Parser:
                     raise UnifyError(last_error)
         ntree = []
         for fdict,seq in stack:
-            ntree.append(Tree(tree.head,tree.ruleno,seq,tree.right,fdict))
+            ntree.append(Tree(tree.head,tree.ruleno,seq,tree.right,fdict,tree.lcost,tree.rcost))
         if tree.head=="S'":
             assert len(ntree)==1
             return ntree[0]
@@ -419,22 +337,22 @@ class Parser:
         """ generate a tree for dst-only non-terminal tree """
         ntree = []
         for ruleno in self.ruledict[symbol]:
-            rule = self.rules[ruleno] # (head,src,dst,feat,lparam,rparam,lcost,rcost)
+            rule = self.rules[ruleno] 
             try:
-                fdict = Parser.unify(feat,fparam,rule.feat)
-                logging.debug("make_trans_tree: %s unify(%s,%s,%s)->%s", symbol, format_feat(feat), format_feat(fparam,'()'), format_feat(rule.feat), format_feat(fdict))
+                fdict = Parser.unify_down(rule.feat,fparam,feat)
+                logging.debug("make_trans_tree: %s unifyd(%s,%s,%s)->%s", symbol, format_feat(feat), format_feat(fparam,'()'), format_feat(rule.feat), format_feat(fdict))
                 sub = []
                 for item,param in zip(rule.right,rule.rparam):
-                    assert type(item) != int
+                    assert type(item) != int, "%s#%d(%s) %s:%s" % (symbol,ruleno,fparam,item,param)
                     if param is False: # Terminal
                         sub.append(item)
                     else: # NonTerminal
                         sub.append( self.make_trans_tree(item,fdict,param) )      
                 ntree.append(Tree(symbol,ruleno,[],sub,fdict)) # [head, ruleno, [symbol*], [tsymbol*], featdict]
-            except UnifyError:
-                pass
+            except UnifyError as ue:
+                last_error = "%s %s#%d" % (ue.args[0], symbol, ruleno)
         if not ntree:
-            raise UnifyError("empty make_trans_tree")
+            raise UnifyError(last_error)
         return ntree
 
     def trans_tree(self,tree,feat=empty_dict,fparam=None):
@@ -442,7 +360,7 @@ class Parser:
         returns a modified version of the node "tree" """
 
         assert type(tree)==Tree
-        fdict = Parser.unify(tree.feat,fparam,feat)
+        fdict = Parser.unify_down(tree.feat,fparam,feat)
         logging.debug("trans_prod: %s unify(%s,%s,%s)->%s", tree.head, format_feat(tree.feat), format_feat(fparam,'()'), format_feat(feat), format_feat(fdict))                       
         rule = self.rules[tree.ruleno]
         trans = []
@@ -455,7 +373,9 @@ class Parser:
             else: # Matched (Left&Right) NT
                 assert type(item)==int
                 trans.append([self.trans_tree(alt,fdict,param) for alt in tree.left[item]])
-        return tree._replace(right=trans)
+        #return tree._replace(right=trans)
+        tree.right = trans
+        return tree
 
     def format_edge_item(alts):
         """ internal: format an edge item to str (used internally for logging/debugging) """
@@ -482,9 +402,7 @@ class Parser:
         self.tree = Tree(
             head = "S'",
             ruleno = 0,
-            left = [self.make_tree_int(self.top_edge)],
-            right = empty_list,
-            feat = empty_dict
+            left = [self.make_tree_int(self.top_edge)]
         )
         return self.tree
 
@@ -500,7 +418,9 @@ class Parser:
                 ruleno = alt_edge[0],
                 left = [self.make_tree_int(sub_edge) for sub_edge in alt_edge[1:]],
                 right = rule.right,
-                feat = rule.feat
+                feat = rule.feat,
+                lcost = rule.lcost,
+                rcost = rule.rcost
             ) )
         return alt
 
@@ -640,7 +560,7 @@ class Parser:
             tree = self.make_tree()
             tree2 = self.unify_tree(tree)
             tree3 = self.trans_tree(tree2)
-            return [self.post_processor(trans) for trans in tree3.enum()]
+            return [(self.post_processor(trans),cost) for trans,cost in tree3.enumx()]
         except ParseError as pe:
             return str(pe)
         except UnifyError as ue:
@@ -654,6 +574,7 @@ class Parser:
         input_cnt = 0
         trans_cnt = 0
         match_cnt = 0
+        experr_cnt = 0
         pre_processor = DummyPreProcessor()
         with open(infile, 'r') as fin, open(outfile, 'w') as fout:
             for line in fin:
@@ -667,89 +588,58 @@ class Parser:
                         trans,sent = parts
                     else:
                         sent,trans = parts
-                    trans = pre_processor(trans)
+                    trans = [pre_processor(tsent) for tsent in trans.split('|')]
                 else:
                     if sent.reverse:
                         raise ParseError("Input sentence doesn't contain translation", line)
                     sent = parts[0]
-                    trans = None
+                    trans = []
+
+                sent = sent.strip()
+                if sent == '*': # reverse translation for expected parse error
+                    continue
                         
-                print("input:"," @ ".join([sent.strip(),trans]),file=fout)
+                print("input:"," @ ".join([sent.strip()," | ".join(trans)]),file=fout)
                 print("output:",file=fout,end=" ")
                 trans_list = self.trans_sent(sent)
                 #print(sent, trans_list)
                 if type(trans_list)==str: # an error occured
-                    print("ERROR",file=fout)
+                    if '*' in trans:
+                        experr_cnt += 1
+                        print("EXPECTED ERROR",file=fout)
+                    else:
+                        print("ERROR",file=fout)
                     print(trans_list,file=fout)
                 else:
+                    trans_list, trans_cost = zip(*trans_list)
                     trans_cnt += 1
-                    if trans and trans in trans_list:
+                    if any(tsent in trans_list for tsent in trans):
                         print("OK",file=fout)
                         match_cnt += 1  
                     else:
                         print("NOK",file=fout)
                     for idx, alt in enumerate(trans_list):
-                        print(idx+1,alt,file=fout)
+                        print(idx+1,alt,trans_cost[idx],file=fout)
                 print(file=fout)
-            print("input={}, translated={}, matched={}".format(input_cnt,trans_cnt,match_cnt),file=fout)
-        return (input_cnt,trans_cnt,match_cnt)
+            print("input={}, translated={}, matched={} exp_err={}".format(input_cnt,trans_cnt,match_cnt,experr_cnt),file=fout)
+        return (input_cnt,trans_cnt,match_cnt,experr_cnt)
             
 
 def main():
-    logging.basicConfig(level=logging.DEBUG,filename="parser.log",filemode="w")
-    
-    parser = Parser()
-    parser.pre_processor = EnglishPreProcessor()
-    parser.post_processor = TurkishPostProcessor()
-
-    try:
-        #parser.load_grammar("_sample.grm")
-        #sent = "i saw the man in the house with the telescope"
-        parser.load_grammar("grm/test.grm")
-        #sents = ["i am watching you", "you are watching it", "men are watching her"]
-        #sents = ["ben seni seyrediyorum", "sen onu seyrediyorsun", "adamlar onu seyrediyorlar"]
-        sents = [ "i went" ]
-
-        parser.compile()
-        #print(parser.rules)
-        for sent in sents:
-            try:
-                parser.parse(sent)
-                #parser.print_parse_tables()
-                tree = parser.make_tree()
-                print(tree.pformat())
-                tree2 = parser.unify_tree(tree)
-                print(tree2.pformat_ext())
-                tree3 = parser.trans_tree(tree2)
-                print(tree3.pformat(tree_type=3))
-                print(tree3.str_format(tree_type=2))
-                print(tree3.str_format(tree_type=3))
-                print("==================================")
-                print("input:", sent)
-                print("output:")
-                for no,alt in enumerate(tree3.enum()):
-                    #print(no+1, alt, " ==> ", parser.post_processor(alt))
-                    print(no+1,alt)
-            except ParseError as pe:
-                print(pe.args)
-            except UnifyError as ue:
-                print(ue.args)
-    except GrammarError as ge:
-        print(ge.args)
-
-def file_main():
-    logging.basicConfig(level=logging.DEBUG,filename="parser.log",filemode="w")
-    
-    parser = Parser()
-    parser.pre_processor = EnglishPreProcessor()
-    parser.post_processor = TurkishPostProcessor()
-
-    parser.load_grammar("grm/tenses.grm")
-    #print(parser.format_rules())
-    parser.compile()
-
-    parser.trans_file("grm/tenses.in.txt","grm/tenses.out.txt")
+    cases = [ # dst,param,src,exp_result(None if exception)
+        ({},{"ng":"1"},{"det":"1"},{"ng":"1"}),
+        ({},None,{"det":"1"},{"det":"1"}),
+        ({"det":"1","numb":"plur"},None,{"det":"1","pers":"1"},{"det":"1","numb":"plur","pers":"1"}),
+        ({"det":"0","numb":"plur"},None,{"det":"1","pers":"1"},None),
+        ({"det":"0","numb":"plur"},{"pers":None},{"det":"1","pers":"1"},{"det":"0","numb":"plur","pers":"1"}),
+    ]
+    for dst,param,src,exp in cases:
+        try:
+            result = Parser.unify_down(dst,param,src)
+        except UnifyError:
+            result = None
+        print(result,exp,"OK" if result==exp else "NOK")
     
 if __name__ == "__main__":
     # execute only if run as a script
-    file_main()
+    main()

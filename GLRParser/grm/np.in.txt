@@ -1,0 +1,63 @@
+house @ ev
+houses @ evler
+my house @ evim
+my houses @ evlerim
+his house @ evi
+his houses @ evleri
+their house @ evleri | onlarýn evi
+their houses @ evleri
+bedroom @ yatak odasý
+bedrooms @ yatak odalarý
+my bedroom @ yatak odam
+my bedrooms @ yatak odalarým
+house door @ ev kapýsý
+house's door @ evin kapýsý
+door of house @ ev kapýsý
+door bell @ kapý zili
+door's bell @ kapýnýn zili
+bell of door @ kapý zili
+house door bell @ ev kapýsý zili | ev kapý zili
+bell of house door @ ev kapýsý zili
+house door's bell @ ev kapýsýnýn zili
+door bell of house @ ev kapý zili
+house's door bell @ evin kapý zili
+bell of door of house @ ev kapýsý zili
+house's door's bell @ evin kapýsýnýn zili
+
+my house door @ ev kapým
+my house's door @ evimin kapýsý
+door of my house @ evimin kapýsý
+door of the house @ evin kapýsý
+my door of my house @ *
+my door of house @ ev kapým
+the door of my house @ evimin kapýsý
+a door of my house @ evimin bir kapýsý
+this door of my house @ evimin bu kapýsý
+
+my door bell of house @ ev kapý zilim
+my door bell of the house @ *
+my door bell of a house @ *
+the door bell of the house @ evin kapý zili
+this door bell of this house @ bu evin bu kapý zili
+
+house door bells @ ev kapý zilleri | ev kapýsý zilleri
+door bells of house @ ev kapý zilleri
+door bell of houses @ evler kapý zili
+door bell of the houses @ evlerin kapý zili 
+bells of house door @ ev kapýsý zilleri
+bells of house doors @ ev kapýlarý zilleri
+
+house butter @ ev tereyaðý
+my house butter @ ev tereyaðým
+butter box @ tereyaðý kutusu
+box of butter @ tereyaðý kutusu
+my butter box @ tereyaðý kutum
+butter of house @  ev tereyaðý
+butter of my house @ evimin tereyaðý
+bedroom door @ yatak odasý kapýsý
+door of bedroom @ yatak odasý kapýsý
+
+
+
+
+

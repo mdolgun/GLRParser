@@ -35,7 +35,7 @@ SentInv -> AuxHaveNeg Subj StHave      : Subj StHave  [neg=1]
 SentInv -> AuxDoPos Subj Not StDo      : Subj StDo 
 SentInv -> AuxDoNeg Subj StDo          : Subj StDo    [neg=1]
 SentInv -> ModalPos Subj Not StModal   : Subj StModal   
-SentInv -> ModalNeg Subj StModal       : Subj StModal        [neg=1]
+SentInv -> ModalNeg Subj StModal       : Subj StModal [neg=1]
 
 AuxBePos   -> am      [tense=pres,pers=1,numb=sing]
 AuxBePos   -> are     [tense=pres,pers=2,numb=sing]
@@ -119,7 +119,7 @@ StModal -> be Ven        	: Ven Pass  ModalTense
 StModal -> have Ven      	: Ven -mHş ol ModalTense
 StModal -> have been Ving  	: Ving -Hyor ol ModalTense
 StModal -> have been Pred  	: Pred olmuş ol ModalTense
-StModal -> have been Ven   	: Ved Pass -mHş ol ModalTense
+StModal -> have been Ven   	: Ven Pass -mHş ol ModalTense
 StModal -> V               	: V ModalTense
 
 Not -> not [neg=1]
@@ -153,7 +153,7 @@ Quest -> : mH 	[quest=1]
 Quest -> : 	[quest=0]
 
 
-PredTense -> : NegPred -lAr mH {-1}		[tense=pres,numb=plur,pers=3]
+PredTense -> : NegPred -lAr mH {-1}		[tense=pres,numb=plur,pers=3,quest=1]
 PredTense -> : NegPred Quest Pers1 		[tense=pres]
 PredTense -> : NegPred Quest -YdH Pers2 	[tense=past]
 PredTense -> : NegPred -lAr Quest -YdH		[tense=past,numb=plur,pers=3]
@@ -210,7 +210,7 @@ Adj -> happy  : mutlu
 
 Subj -> NSing : NSing 		[numb=sing,pers=3]
 Subj -> NPlur : NPlur -lAr	[numb=plur,pers=3]
-Subj -> Pron  : Pron
+Subj -> Pron  : Pron {1}
 Subj -> Pron   
 
 Pron -> i    : ben     [numb=sing,pers=1]
