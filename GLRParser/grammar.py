@@ -47,8 +47,8 @@ Rule.format = format_rule
 
 class Grammar:
     NONTERM = re.compile("[_A-Z][-_A-Za-z0-9]*'*")
-    TERM = re.compile('".*"|[-\'a-zıüöçğşðþý][-\'A-Za-zıüöçğşðþý]*')
-    FEAT = re.compile('\*?[a-z0-9_]*')
+    TERM = re.compile('".*"|[-\'a-z0-9ıüöçğşðþý][-\'A-Z0-9a-zıüöçğşðþý]*')
+    FEAT = re.compile('[a-z0-9_]*')
     INTEGER = re.compile('-?[1-9][0-9]*')
     def add_range(chars,start,end):
         for ch in range(ord(start),ord(end)+1):
@@ -81,6 +81,26 @@ class Grammar:
             return True
         if ensure:
             raise GrammarError("Line:%d Pos:%d '%s' expected but found: %s..." % (self.line,self.pos,token,self.get_rest()))
+
+    def get_char_list(self,char_list,ensure=True,skip_ws=True):
+        if skip_ws:
+            self.skip_ws()
+        char = self.s[self.pos]
+        if char in char_list:
+            self.pos += 1
+            return char
+        if ensure:
+            raise GrammarError("Line:%d Pos:%d '%s' expected but found: %s..." % (self.line,self.pos,char_list,self.get_rest()))
+
+    def get_token_list(self,token_list,ensure=True,skip_ws=True):
+        if skip_ws:
+            self.skip_ws()
+        for token in token_list:
+            if self.s.startswith(token,self.pos):
+                self.pos += len(token)
+                return token
+        if ensure:
+            raise GrammarError("Line:%d Pos:%d '%s' expected but found: %s..." % (self.line,self.pos,token_list,self.get_rest()))
 
     def skip_ws(self):
         try:
@@ -140,6 +160,7 @@ class Grammar:
 
     def parse_rule(self,reverse=False):
         """ parses a rule and return an object of type Rule """
+
         if self.get_eof(False):
             return None
 
@@ -153,7 +174,7 @@ class Grammar:
         else:
             right,rparam,rcost = empty_list,empty_list,0
         if self.get_token('[',False):
-            feat = self.parse_feat()
+            feat = self.parse_feat_list()
         else:
             feat = empty_dict
         self.get_eof()
@@ -201,19 +222,26 @@ class Grammar:
         return prod,param_list,cost
 
     def parse_feat(self):
-        """ Parses feature list returns dict of name=value """
-        name = self.get_feat(False)
-        if not name and self.get_token(']',False): # empty list
-            return empty_dict
-        fdict = dict()
-        self.get_token('=')
-        value = self.get_feat()  
-        fdict[name] = value
-
-        while self.get_token(',', False):   
+        char = self.get_char_list("+-",False)
+        if char:
+            name = self.get_feat()
+            value = char
+        else:
             name = self.get_feat()
             self.get_token('=')
-            value = self.get_feat()  
+            value = self.get_feat()
+        return name,value
+
+
+    def parse_feat_list(self):
+        """ Parses feature list returns dict of name=value """
+        if self.get_token(']',False): # empty list
+            return empty_dict
+        fdict = dict()
+        name,value = self.parse_feat()
+        fdict[name] = value
+        while self.get_token(',', False):   
+            name,value = self.parse_feat()
             fdict[name] = value
         self.get_token(']')
         return fdict
@@ -265,7 +293,7 @@ class Grammar:
                 continue
             if not process:
                 continue
-            rule = Grammar(s,line_no).parse_rule()
+            rule = Grammar(s,line_no).parse_rule(reverse)
             if rule is None: # empty/comment line
                 continue
             rules.append(rule)

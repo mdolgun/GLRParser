@@ -69,15 +69,25 @@ class TurkishPreProcessor:
         return self.regex.sub(' ',sent).strip()
 
 class DummyPreProcessor:
-    """ Default pre/post processor used in Parser """
+    """ Dummy pre processor used in Parser """
+    def __call__(self,sent):
+        return sent
+
+class DummyPostProcessor:
+    """ Dummy post processor used in Parser """      
+    def __call__(self,sent):
+        return sent
+
+class DefPreProcessor:
+    """ Default pre processor used in Parser """
     def __init__(self):
         self.regex = re.compile("[ ,.?:;()]+")
         
     def __call__(self,sent):
         return self.regex.sub(' ',sent).strip()  
 
-class DummyPostProcessor:
-    """ Default pre/post processor used in Parser """
+class DefPostProcessor:
+    """ Default post processor used in Parser """
         
     def __call__(self,sent):
         return sent.replace(" -","")
@@ -95,8 +105,8 @@ class Parser:
             reduce : maps a state to a list of reductions  reduce[state] -> [(ruleno,rulepos)*]
             ereduce : maps a state to a list of empty reductions  ereduce[state] -> [(ruleno,rulepos)*]
     """
-    pre_processors  = { "": DummyPreProcessor,  "EN": EnglishPreProcessor,  "TR": TurkishPreProcessor }
-    post_processors = { "": DummyPostProcessor, "EN": EnglishPostProcessor, "TR": TurkishPostProcessor }
+    pre_processors  = { None: DummyPreProcessor, "": DefPreProcessor,  "EN": EnglishPreProcessor,  "TR": TurkishPreProcessor }
+    post_processors = { None: DummyPreProcessor, "": DefPostProcessor, "EN": EnglishPostProcessor, "TR": TurkishPostProcessor }
 
     def __init__(self,pre_process="",post_process="",reverse=False):
         """ initializes parser with pre_processor and post_processor, which should be callable, reverse reverses(i.e. swaps) the input/output grammars """
@@ -123,7 +133,7 @@ class Parser:
                     if nextstate not in stateset: 
                         stateset.add(nextstate)
                         todo.append(nextstate)
-                """               
+                """                            
                 while symbol in self.nullable:
                     rulepos += 1
                     nextstate = (ruleno,rulepos)
@@ -225,7 +235,7 @@ class Parser:
         if logging.getLogger().isEnabledFor(logging.INFO):
             logging.info("rules=%s",self.format_rules())
 
-    def unify(dst,param,src):
+    def unify_up(dst,param,src):
         """ unification of "src" features into "dst" features, using filtering of "param", if unification fails raises UnifyError
 
         if param is None, src is directly unified into dst
@@ -240,14 +250,29 @@ class Parser:
             for key in param.keys() & src.keys():
                 if param[key] is None:
                     keys.add(key)
-                elif param[key] != src[key]:
-                    raise UnifyError("Unify error feat=%s src=%s param=%s" % (key, src[key], param[key]))
-
-        for key in keys & dst.keys():
-            if  src[key] != dst[key]:
-                raise UnifyError("Unify error feat=%s src=%s param=%s" % (key, src[key], dst[key]))
+                else:
+                    val = param[key]
+                    if val[0] == '*':
+                        val = dst.get(val[1:])
+                    if val:
+                        if val != src[key]:
+                            raise UnifyError("Unify precheck error feat=%s src=%s param=%s" % (key, src[key], val))
 
         newkeys = keys - dst.keys()
+        for key in keys & dst.keys():
+            if  src[key] != dst[key]:
+                if dst[key] == '-':
+                    newkeys.add(key)
+                elif src[key] == '-':
+                    pass
+                elif dst[key] == '+':
+                    newkeys.add(key)
+                elif src[key] == '+':
+                    pass
+                else:
+                    raise UnifyError("Unify error feat=%s src=%s param=%s" % (key, src[key], dst[key]))
+
+    
         if newkeys:
             dst = dst.copy()
             for key in newkeys:
@@ -271,18 +296,26 @@ class Parser:
                     if key in src:
                         pdict[key] = src[key]
                 else:
-                    pdict[key] = param[key]
-
-        for key in pdict.keys() & dst.keys():
-            if pdict[key] != dst[key]:
-                raise UnifyError("UnifyD error feat=%s src=%s param=%s" % (key, pdict[key], dst[key]))
+                    val = param[key]
+                    if val[0] == '*':
+                        val = src.get(val[1:])
+                    if val:
+                        pdict[key] = val
 
         newkeys = pdict.keys() - dst.keys()
+        for key in pdict.keys() & dst.keys():
+            if pdict[key] != dst[key]:
+                if pdict[key] == '+' and dst[key] != '-':
+                        pass
+                elif dst[key] == '+' and pdict[key] != '-':
+                    newkeys.add(key)
+                else:
+                    raise UnifyError("UnifyD error feat=%s src=%s param=%s" % (key, pdict[key], dst[key]))
         if newkeys:
             dst = dst.copy()
             dst.update(pdict)
-
         return dst
+
  
     def unify_tree(self,tree):
         """ bottom-up unifies a tree and returns a new tree """
@@ -307,7 +340,7 @@ class Parser:
                         for subtree in subtrees:
                             logging.debug("Unify feat=%s param=%s subfeat=%s ", format_feat(fdict), format_feat(param), format_feat(subtree.feat))
                             try:      
-                                _fdict = Parser.unify(fdict,param,subtree.feat)
+                                _fdict = Parser.unify_up(fdict,param,subtree.feat)
                                 logging.debug("Unify Success=%s", format_feat(_fdict))
                                 try:
                                     idx = nkeys.index(_fdict)
@@ -351,6 +384,7 @@ class Parser:
                 ntree.append(Tree(symbol,ruleno,[],sub,fdict)) # [head, ruleno, [symbol*], [tsymbol*], featdict]
             except UnifyError as ue:
                 last_error = "%s %s#%d" % (ue.args[0], symbol, ruleno)
+                logging.debug("make_trans_tree: %s unifyd(%s,%s,%s)->Error", symbol, format_feat(feat), format_feat(fparam,'()'), format_feat(rule.feat))
         if not ntree:
             raise UnifyError(last_error)
         return ntree
@@ -360,8 +394,9 @@ class Parser:
         returns a modified version of the node "tree" """
 
         assert type(tree)==Tree
+        logging.debug("trans_tree: %s unify(%s,%s,%s)->", tree.head, format_feat(tree.feat), format_feat(fparam,'()'), format_feat(feat))                       
         fdict = Parser.unify_down(tree.feat,fparam,feat)
-        logging.debug("trans_prod: %s unify(%s,%s,%s)->%s", tree.head, format_feat(tree.feat), format_feat(fparam,'()'), format_feat(feat), format_feat(fdict))                       
+        logging.debug("trans_tree: ->%s", format_feat(fdict))                       
         rule = self.rules[tree.ruleno]
         trans = []
         for item,param in zip(rule.right,rule.rparam):
@@ -373,7 +408,6 @@ class Parser:
             else: # Matched (Left&Right) NT
                 assert type(item)==int
                 trans.append([self.trans_tree(alt,fdict,param) for alt in tree.left[item]])
-        #return tree._replace(right=trans)
         tree.right = trans
         return tree
 
@@ -508,7 +542,8 @@ class Parser:
                             logging.debug("appending edge %s to %s", Parser.format_edge_item(ptree), self.format_edge(nedge))
                             edges[nedge].append(ptree)
 
-            for state in list(active):
+            actlist = list(active)
+            for state in actlist:
                 for ruleno,rulepos in ereduce.get(state,set()):
                     logging.debug("e-Reducing %s", self.get_item(ruleno,rulepos))
                     head,body = self.rules[ruleno][0:2]
@@ -521,7 +556,9 @@ class Parser:
                     nstate = dfa.get((state,head),-1)
                     logging.debug("EREDUCE %s , %s -> %s", state, head, nstate)
                     if nstate!= -1:
-                        active.add(nstate)
+                        if nstate not in active:
+                            active.add(nstate)
+                            actlist.append(nstate)
                         nodes[pos,nstate,head].add((pos,state))
                         nedge = (pos,state,head,pos,nstate)
                         logging.debug("appending edge %s to %s", Parser.format_edge_item(ptree), self.format_edge(nedge))

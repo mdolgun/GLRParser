@@ -731,14 +731,16 @@ class TestParseSimpleEmpty(unittest.TestCase):
 
 class TestParseMiddleEmpty(unittest.TestCase):
     grammar = """
-        S -> a B c
+        S -> A B c
+        A -> a
+        A ->
         B -> b
         B ->
     """
 
     pformat = """\
         S(
-            a
+            A()
             B()
             c
         )
@@ -747,23 +749,25 @@ class TestParseMiddleEmpty(unittest.TestCase):
     pformat_ext = """\
         S(
         #1[]
-            a
-            B(
+            A(
             #3[]
+            )
+            B(
+            #5[]
             )
             c
         )
         """
 
-    format = "S(a B() c)"
-    str_format = "a  c"
+    format = "S(A() B() c)"
+    str_format = "  c"
 
     def setUp(self):
         parser = Parser()
         grammar = textwrap.dedent(self.grammar)
 
         parser.load_grammar(text=grammar)
-        sent = "a c"
+        sent = "c"
 
         parser.compile()
         parser.parse(sent)
@@ -820,7 +824,7 @@ def gen_TestParseMiddleEmpty():
     grammar = textwrap.dedent(TestParseMiddleEmpty.grammar)
 
     parser.load_grammar(text=grammar)
-    sent = "a c"
+    sent = "c"
 
     parser.compile()
     parser.parse(sent)
@@ -832,4 +836,4 @@ def gen_TestParseMiddleEmpty():
 
 if __name__ == '__main__':
     unittest.main()
-    #gen_TestParseSimpleEmpty()
+    #gen_TestParseMiddleEmpty()

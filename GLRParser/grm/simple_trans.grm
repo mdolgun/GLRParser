@@ -1,12 +1,12 @@
 # this is an EN-TR translation version of the simple grammar
+S -> i VP : VP -m
 S -> NP VP : NP VP
-S -> S in NP : NP -de S
-S -> S with NP : NP -la S
-NP -> i
+VP -> VP in NP : NP -de VP
+VP -> VP with NP : NP -la VP
 NP -> the man : adam
 NP -> the telescope : teleskop
 NP -> the house : ev
 NP -> NP-1 in NP-2 : NP-2 -deki NP-1
 NP -> NP-1 with NP-2 : NP-2 -lu NP-1
-VP -> saw NP : NP -ý gördüm
+VP -> saw NP : NP -ý gördü
 
