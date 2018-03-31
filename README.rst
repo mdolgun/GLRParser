@@ -30,7 +30,7 @@ Sample code for parsing and translation should be like:
 		tree = parser.make_tree() # generates parse forest
 		ttree = parser.trans_tree(tree) # translate the parse forest
 
-		print(ttree.pformat(Tree.right_tree)) # pretty-print the translated parse forest
+		print(ttree.pformatr()) # pretty-print the translated parse forest
 
 		for trans in ttree.enum(): # enumerate and print all alternative translations in the parse forest
 			print(trans.replace(" -","")) # concat suffixes

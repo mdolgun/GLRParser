@@ -106,12 +106,32 @@ class Tree:
             for item in prod
         ])
 
+    def formatr(self):
+        return self.format(False)
+
+    def pformatr(self):
+        return self.pformat(False)
+
+    def pformatr_ext(self):
+        return self.pformat_ext(False)
+
+    def list_formatr(self):
+        return self.list_format(False)
+
+    def str_formatr(self):
+        return self.str_format(False)
+    
     formats = {
-        'f': format,
-        'p': pformat,
-        'x': pformat_ext,
-        'l': list_format,
-        's': str_format
+        'f' : format,
+        'fr': formatr,
+        'p' : pformat,
+        'pr': pformatr,
+        'x' : pformat_ext,
+        'xr': pformatr_ext,
+        'l' : list_format,
+        'lr': list_formatr,
+        's' : str_format,
+        'sr': str_formatr,
         }
 
     def __format__(self,format_spec):
