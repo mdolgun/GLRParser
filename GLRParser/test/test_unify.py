@@ -2,6 +2,99 @@ import sys, unittest, textwrap
 sys.path.append("../..")
 from GLRParser import Parser, ParseError, UnifyError, GrammarError, Tree
 
+class TestUnifyBinary(unittest.TestCase): 
+
+    grammar = """
+        S -> A B : C  [-f]
+        A -> a0     
+        A -> a1     [+f]
+        B -> b0    
+        B -> b1     [+f]
+        C -> : c0   [-f]      
+        C -> : c1   [+f]  
+        """
+
+    cases = [
+        ("a0 b0","""\
+            S(
+            #1[f=-]
+                A(
+                #2[]
+                    a0
+                )
+                B(
+                #4[]
+                    b0
+                )
+            )
+            """),
+
+        ("a0 b1","""\
+            S(
+            #1[f=+]
+                A(
+                #2[]
+                    a0
+                )
+                B(
+                #5[f=+]
+                    b1
+                )
+            )
+            """),
+
+        ("a1 b0","""\
+            S(
+            #1[f=+]
+                A(
+                #3[f=+]
+                    a1
+                )
+                B(
+                #4[]
+                    b0
+                )
+            )
+            """),
+
+        ("a1 b1","""\
+            S(
+            #1[f=+]
+                A(
+                #3[f=+]
+                    a1
+                )
+                B(
+                #5[f=+]
+                    b1
+                )
+            )
+            """),
+
+        ]
+
+    def setUp(self):
+        parser = Parser()
+
+        parser.load_grammar(text=self.grammar)
+        parser.compile()
+        self.parser = parser
+        self.maxDiff = None
+
+    def test_all(self):
+        for idx,(sent,out) in enumerate(self.cases):
+            with self.subTest(idx=idx,sent=sent):
+                try:
+                    self.parser.parse(sent)
+                    tree = self.parser.make_tree()
+                    tree2 = self.parser.unify_tree(tree)
+                    out = tree2.pformat_ext()
+                except UnifyError as ue:
+                    out = str(ue)
+                except ParseError as pe:
+                    out = str(pe)
+                self.assertEqual(out, textwrap.dedent(self.cases[idx][1]))
+
 class TestUnify(unittest.TestCase): 
 
     grammar = """
@@ -123,8 +216,8 @@ class TestUnify(unittest.TestCase):
                 )
             )
             """ ),
-        ("me am watching you", "Unify error feat=case src=acc param=nom super=S#1 sub=NP#9"),
-        ("she is watching i", "Unify error feat=case src=nom param=acc super=S#1 sub=NP#2"),
+        ("me am watching you", "Unify precheck error feat=case src=acc param=nom super=S#1 sub=NP#9"),
+        ("she is watching i", "Unify precheck error feat=case src=nom param=acc super=S#1 sub=NP#2"),
         ("two man is watching it", "Unify error feat=numb src=sing param=plur super=NP#16 sub=Noun#23"),
         ("a man watch us","Unify error feat=pers src=1 param=3 super=S#1 sub=VP#31"),
         ("they watch us","""\
@@ -218,6 +311,25 @@ def gen_TestUnify():
             print(ue)
         except ParseError as pe:
             print(pe)
+
+def gen_TestUnifyBinary():
+    parser = Parser()
+
+    parser.load_grammar(text=TestUnifyBinary.grammar)
+    parser.compile()
+    sents = [ "a0 b0", "a0 b1", "a1 b0", "a1 b1" ]
+
+    for sent in sents:
+        print(sent)
+        try:
+            parser.parse(sent)
+            tree = parser.make_tree()
+            tree2 = parser.unify_tree(tree)
+            print(tree2.pformat_ext())
+        except UnifyError as ue:
+            print(ue)
+        except ParseError as pe:
+            print(pe)
 if __name__ == '__main__':
     unittest.main(verbosity=2)
-    #gen_TestUnify()
+    #gen_TestUnifyBinary()

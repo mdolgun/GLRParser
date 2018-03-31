@@ -1,0 +1,78 @@
+S -> NP 	: NP
+#NP -> Det AG NG : Det AG NG
+NP -> Det NG : Det NG PossSuf'
+
+PossSuf' -> : -ZH	[+ng]
+PossSuf' -> : PossSuf	[-ng]
+
+
+NG -> N		: N 	
+NG -> NG() N	: NG() N 	[+ng]
+
+NGSuf -> : -ZH	[-pnumb,+ng]
+NGSuf -> :	[-pnumb,-ng]
+NGSuf -> :	[+pnumb]
+
+AG -> 
+AG -> AG Adj	: AG Adj
+
+NP -> NP of NP-C()	: NP-C() NP		[+ng]
+NP -> NP-C() 's NP	: NP-C() -NHn NP	[+ng]
+NP -> NP in NP-C()	: NP-C() -dAki
+NP -> NP with NP-C()	: NP-C() -lH
+
+Det ->				[def=0]
+Det -> the	 		[def=1]
+Det -> a 			[def=a,numb=sing]
+Det -> this	: bu 		[numb=sing]
+Det -> these	: bu 		[numb=plur]
+Det -> no	: hiç 		[numb=plur,+noplur,+neg]
+Det -> two	: iki		[numb=plur,+noplur]
+Det -> PossPron : PossPron
+
+PossPron -> my    : benim  		[pnumb=sing,ppers=1]
+PossPron -> your  : senin  		[pnumb=sing,ppers=2]
+PossPron -> his   : onun  		[pnumb=sing,ppers=3]
+PossPron -> her   : onun  		[pnumb=sing,ppers=3]
+PossPron -> its   : onun  		[pnumb=sing,ppers=3]
+PossPron -> our   : bizim  		[pnumb=plur,ppers=1]
+PossPron -> your  : sizin  		[pnumb=plur,ppers=2]
+PossPron -> their : onlarýn  		[pnumb=plur,ppers=3]
+
+PossSuf -> : -Hm 	[pnumb=sing,ppers=1]
+PossSuf -> : -Hn 	[pnumb=sing,ppers=2]
+PossSuf -> : -ZHN 	[pnumb=sing,ppers=3]
+PossSuf -> : -HmHz	[pnumb=plur,ppers=1]
+PossSuf -> : -HnHz	[pnumb=plur,ppers=2]
+PossSuf -> : -lArH	[pnumb=plur,ppers=3]
+
+N -> NSing 	: NSing		[numb=sing]
+N -> NPlur 	: NPlur Plur	[numb=plur]
+N -> NCSing	: NCSing	[numb=sing,+ng]
+N -> NCPlur	: NCPlur Plur	[numb=plur,+ng]	
+
+Plur -> 	[+noplur]
+Plur -> : -lAr	[-noplur]
+
+NSing -> house 	: ev
+NSing -> door  	: kapý
+NSing -> bell  	: zil
+NSing -> box   	: kutu
+
+NPlur -> houses : ev
+NPlur -> doors  : kapý
+NPlur -> bells  : zil
+NPlur -> boxes  : kutu
+
+NCSing -> butter	: tereyað
+NCSing -> bedroom   	: yatak oda
+
+NCPlur -> butters	: tereyað
+NCPlur -> bedrooms  	: yatak oda
+
+
+Adj -> blue	: mavi
+Adj -> white	: beyaz
+Adj -> big	: büyük
+Adj -> small	: küçük
+Adj -> happy	: mutlu

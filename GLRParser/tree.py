@@ -15,15 +15,14 @@ empty_dict = dict()
 empty_list = list()
 
 class Tree:
-    __slots__ = ('head', 'ruleno', 'left', 'right', 'feat', 'lcost', 'rcost')
-    def __init__(self, head, ruleno, left=empty_list, right=empty_list, feat=empty_dict, lcost=0, rcost=0):
+    __slots__ = ('head', 'ruleno', 'left', 'right', 'feat', 'cost')
+    def __init__(self, head, ruleno, left=empty_list, right=empty_list, feat=empty_dict, cost=0):
         self.head = head
         self.ruleno = ruleno
         self.left = left
         self.right = right
         self.feat = feat
-        self.lcost = lcost
-        self.rcost = rcost
+        self.cost = cost
 
     def format(self,tree_type=True):
         """ returnes single-line formatted string representation of a tree """
@@ -61,22 +60,6 @@ class Tree:
                 out.append([alt.list_format(tree_type) for alt in item])
         return out
 
-    def lcostify(self):
-        cost = 0
-        for item in self.left:
-            if type(item)!=str:
-               cost += min([alt.lcostify() for alt in item])
-        self.lcost += cost
-        return self.lcost
-
-    def rcostify(self,cost):
-        self.rcost += cost
-        for item in self.right:
-            if type(item)!=str:
-               for alt in item:
-                   alt.rcostify(self.rcost)
-        
-
     indenter = "    "
     def pformat(self,tree_type=True,level=0):
         """ return prety formatted (indented multiline) string representation of a tree """
@@ -97,7 +80,7 @@ class Tree:
         ])
 
     def pformat_ext(self,tree_type=True,level=0):
-        """ return prety formatted (indented multiline) string representation of a tree with extended information(rule no, feature list) """
+        """ return prety formatted (indented multiline) string representation of a tree with extended information(rule no, feature list, cost) """
         indent = self.indenter*level
         prod = self.left if tree_type else self.right
         if len(prod)==0: # empty production
@@ -110,13 +93,12 @@ class Tree:
                 indent=indent,
                 head=item[0].head,
                 body=(indent+"|\n").join([
-                    "{indent}#{ruleno}{lcost}{rcost}{feat}\n{body}".format(
+                    "{indent}#{ruleno}{cost}{feat}\n{body}".format(
                         indent=indent,
                         ruleno=alt.ruleno,
                         feat=format_feat(alt.feat),
                         body = alt.pformat_ext(tree_type,level+1),
-                        lcost = "{L%d}" % alt.lcost if alt.lcost!=0 else "",
-                        rcost = "{R%d}" % alt.rcost if alt.rcost!=0 else ""
+                        cost = "{%d}" % alt.cost if alt.cost!=0 else ""
                     )
                     for alt in item
                 ])    
@@ -136,7 +118,7 @@ class Tree:
         return self.formats[format_spec](self)
 
     def __repr__(self):
-        return "(head=%r,ruleno=%r,left=%r,right=%r,feat=%r,lcost=%r,rcost=%r)" % (self.head,self.ruleno,self.left,self.right,self.feat,self.lcost,self.rcost)
+        return "(head=%r,ruleno=%r,left=%r,right=%r,feat=%r,cost=%r" % (self.head,self.ruleno,self.left,self.right,self.feat,self.cost)
       
     def enum(tree,idx=0):
         """ a generator for enumerating all translations in a parse forest """
@@ -164,7 +146,7 @@ class Tree:
         try:
             item = tree.right[idx]
         except IndexError:
-            yield "",tree.rcost
+            yield "",tree.cost
             return
         for rest,cost in tree.enumx(idx+1):
             if type(item)==str:
@@ -180,44 +162,3 @@ class Tree:
                         else:
                             yield first or rest, cost+fcost
 
-def main():
-    tree = Tree(
-        head = "S'",
-        ruleno = 0,
-        left = [
-            [
-                Tree(
-                    head = 'S',
-                    ruleno = 1,
-                    left = [
-                        "hello",
-                        [
-                            Tree(
-                                head = 'W',
-                                ruleno = 2,
-                                left = [ "world"],
-                                cost = 1
-                            ),
-                            Tree(
-                                head = 'W',
-                                ruleno = 3,
-                                left = [ "universe"],
-                                cost = 2
-                            )
-                        ]
-                    ]
-                )
-            ]
-        ]
-        )
-    print(tree.list_format())
-    print(tree.str_format())
-    print(tree.format())
-    print(tree.pformat())
-    print(tree.pformat_ext())
-    tree.costify()
-    print(tree.pformat_ext())
-    print("{:x}".format(tree))
-if __name__ == "__main__":
-    # execute only if run as a script
-    main()

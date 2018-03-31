@@ -360,17 +360,25 @@ class Parser:
                     raise UnifyError(last_error)
         ntree = []
         for fdict,seq in stack:
-            ntree.append(Tree(tree.head,tree.ruleno,seq,tree.right,fdict,tree.lcost,tree.rcost))
+            ntree.append(Tree(tree.head,tree.ruleno,seq,tree.right,fdict,tree.cost))
         if tree.head=="S'":
             assert len(ntree)==1
             return ntree[0]
         return ntree
 
+    def prune(alts):
+        cost = min(subtree.cost for subtree in alts)
+        if cost<0:
+            alts = [subtree for subtree in alts if subtree.cost==cost]
+            for subtree in alts:
+                subtree.cost = 0
+        return alts
+
     def make_trans_tree(self,symbol,feat,fparam):
         """ generate a tree for dst-only non-terminal tree """
         ntree = []
         for ruleno in self.ruledict[symbol]:
-            rule = self.rules[ruleno] 
+            rule = self.rules[ruleno]
             try:
                 fdict = Parser.unify_down(rule.feat,fparam,feat)
                 logging.debug("make_trans_tree: %s unifyd(%s,%s,%s)->%s", symbol, format_feat(feat), format_feat(fparam,'()'), format_feat(rule.feat), format_feat(fdict))
@@ -380,8 +388,8 @@ class Parser:
                     if param is False: # Terminal
                         sub.append(item)
                     else: # NonTerminal
-                        sub.append( self.make_trans_tree(item,fdict,param) )      
-                ntree.append(Tree(symbol,ruleno,[],sub,fdict)) # [head, ruleno, [symbol*], [tsymbol*], featdict]
+                        sub.append(Parser.prune( self.make_trans_tree(item,fdict,param) ))
+                ntree.append(Tree(symbol,ruleno,[],sub,fdict,rule.cost)) 
             except UnifyError as ue:
                 last_error = "%s %s#%d" % (ue.args[0], symbol, ruleno)
                 logging.debug("make_trans_tree: %s unifyd(%s,%s,%s)->Error", symbol, format_feat(feat), format_feat(fparam,'()'), format_feat(rule.feat))
@@ -404,10 +412,10 @@ class Parser:
                 trans.append(item)
             elif type(item)==str: # Unmatched (Right-Only) NT
                 assert item[0].isupper()
-                trans.append( self.make_trans_tree(item,fdict,param) ) 
+                trans.append(Parser.prune( self.make_trans_tree(item,fdict,param) )) 
             else: # Matched (Left&Right) NT
                 assert type(item)==int
-                trans.append([self.trans_tree(alt,fdict,param) for alt in tree.left[item]])
+                trans.append(Parser.prune( [self.trans_tree(alt,fdict,param) for alt in tree.left[item]] ))           
         tree.right = trans
         return tree
 
@@ -453,8 +461,7 @@ class Parser:
                 left = [self.make_tree_int(sub_edge) for sub_edge in alt_edge[1:]],
                 right = rule.right,
                 feat = rule.feat,
-                lcost = rule.lcost,
-                rcost = rule.rcost
+                cost = rule.cost
             ) )
         return alt
 

@@ -23,7 +23,7 @@ class GrammarError(Exception):
 empty_list = list()
 empty_dict = dict()
 
-Rule = namedtuple('Rule', 'head, left, right, feat, lparam, rparam, lcost, rcost')
+Rule = namedtuple('Rule', 'head, left, right, feat, lparam, rparam, cost')
 #print(Rule._source)
 
 def format_feat(fdict,par='[]'):
@@ -34,12 +34,11 @@ def format_feat(fdict,par='[]'):
     return par[0] + ",".join(["=".join(item) if item[1] else item[0] for item in sorted(fdict.items())]) + par[1]
 
 def format_rule(self):
-    return "%s -> %s {%d}: %s {%d} %s" % (
+    return "%s -> %s : %s {%d} %s" % (
         self.head, 
         " ".join( ['"'+symbol+'"' if fparam is False else symbol+format_feat(fparam,'()') for symbol,fparam in zip(self.left,self.lparam)] ),
-        self.lcost,
         " ".join( ['"'+symbol+'"' if fparam is False else str(symbol)+format_feat(fparam,'()') for symbol,fparam in zip(self.right,self.rparam)] ),
-        self.rcost,
+        self.cost,
         format_feat(self.feat,'[]')
     )
 
@@ -195,7 +194,7 @@ class Grammar:
             if param is not False: # NonTerminal
                 left[idx] = symbol.split('-')[0]    
 
-        return Rule(head,left,right,feat,lparam,rparam,lcost,rcost)
+        return Rule(head,left,right,feat,lparam,rparam,rcost)
 
     def parse_prod(self):
         """ parses left or right grammar and builds references, returns tuple(symbol list,param list)  """

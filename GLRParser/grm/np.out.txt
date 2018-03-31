@@ -1,238 +1,238 @@
-input: house @ ev
-output: OK
+input: house @  ev
+output: NOK
 1 ev 0
 
-input: houses @ evler
-output: OK
+input: houses @  evler
+output: NOK
 1 evler 0
 
-input: my house @ evim
-output: OK
+input: my house @  evim
+output: NOK
 1 evim 0
 2 benim evim 0
 
-input: my houses @ evlerim
-output: OK
+input: my houses @  evlerim
+output: NOK
 1 evlerim 0
 2 benim evlerim 0
 
-input: his house @ evi
-output: OK
+input: his house @  evi
+output: NOK
 1 evi 0
 2 onun evi 0
 
-input: his houses @ evleri
-output: OK
+input: his houses @  evleri
+output: NOK
 1 evleri 0
 2 onun evleri 0
 
-input: their house @ evleri | onların evi
-output: OK
+input: their house @  evleri  |  onların evi
+output: NOK
 1 evleri 0
 2 onların evleri 0
 
-input: their houses @ evleri
+input: their houses @  evleri
 output: NOK
 1 evlerleri 0
 2 onların evlerleri 0
 
-input: bedroom @ yatak odası
-output: OK
+input: bedroom @  yatak odası
+output: NOK
 1 yatak odası 0
 
-input: bedrooms @ yatak odaları
-output: OK
+input: bedrooms @  yatak odaları
+output: NOK
 1 yatak odaları 0
 
-input: my bedroom @ yatak odam
-output: OK
+input: my bedroom @  yatak odam
+output: NOK
 1 yatak odam 0
 2 benim yatak odam 0
 
-input: my bedrooms @ yatak odalarım
-output: OK
+input: my bedrooms @  yatak odalarım
+output: NOK
 1 yatak odalarım 0
 2 benim yatak odalarım 0
 
-input: house door @ ev kapısı
-output: OK
+input: house door @  ev kapısı
+output: NOK
 1 ev kapısı 0
 
-input: house's door @ evin kapısı
-output: OK
+input: house's door @  evin kapısı
+output: NOK
 1 evin kapısı 0
 
-input: door of house @ ev kapısı
-output: OK
+input: door of house @  ev kapısı
+output: NOK
 1 ev kapısı 0
 
-input: door bell @ kapı zili
-output: OK
+input: door bell @  kapı zili
+output: NOK
 1 kapı zili 0
 
-input: door's bell @ kapının zili
-output: OK
+input: door's bell @  kapının zili
+output: NOK
 1 kapının zili 0
 
-input: bell of door @ kapı zili
-output: OK
+input: bell of door @  kapı zili
+output: NOK
 1 kapı zili 0
 
-input: house door bell @ ev kapısı zili | ev kapı zili
-output: OK
+input: house door bell @  ev kapısı zili  |  ev kapı zili
+output: NOK
 1 ev kapısı zili 0
 2 ev kapı zili 0
 
-input: bell of house door @ ev kapısı zili
-output: OK
+input: bell of house door @  ev kapısı zili
+output: NOK
 1 ev kapısı zili 0
 
-input: house door's bell @ ev kapısının zili
-output: OK
+input: house door's bell @  ev kapısının zili
+output: NOK
 1 ev kapısının zili 0
 
-input: door bell of house @ ev kapı zili
-output: OK
+input: door bell of house @  ev kapı zili
+output: NOK
 1 ev kapı zili 0
 
-input: house's door bell @ evin kapı zili
-output: OK
+input: house's door bell @  evin kapı zili
+output: NOK
 1 evin kapı zili 0
 
-input: bell of door of house @ ev kapısı zili
-output: OK
+input: bell of door of house @  ev kapısı zili
+output: NOK
 1 ev kapısı zili 0
 
-input: house's door's bell @ evin kapısının zili
-output: OK
+input: house's door's bell @  evin kapısının zili
+output: NOK
 1 evin kapısının zili 0
 
-input: my house door @ ev kapım
-output: OK
+input: my house door @  ev kapım
+output: NOK
 1 ev kapım 0
 2 benim ev kapım 0
 
-input: my house's door @ evimin kapısı
-output: OK
+input: my house's door @  evimin kapısı
+output: NOK
 1 evimin kapısı 0
 2 benim evimin kapısı 0
 
-input: door of my house @ evimin kapısı
-output: OK
+input: door of my house @  evimin kapısı
+output: NOK
 1 evimin kapısı 0
 2 benim evimin kapısı 0
 
-input: door of the house @ evin kapısı
-output: OK
+input: door of the house @  evin kapısı
+output: NOK
 1 evin kapısı 0
 
-input: my door of my house @ *
-output: EXPECTED ERROR
+input: my door of my house @  *
+output: ERROR
 Cannot shift my door of my<< house $
 
-input: my door of house @ ev kapım
-output: OK
+input: my door of house @  ev kapım
+output: NOK
 1 ev kapım 0
 2 benim ev kapım 0
 
-input: the door of my house @ evimin kapısı
-output: OK
+input: the door of my house @  evimin kapısı
+output: NOK
 1 evimin kapısı 0
 2 benim evimin kapısı 0
 
-input: a door of my house @ evimin bir kapısı
-output: OK
+input: a door of my house @  evimin bir kapısı
+output: NOK
 1 evimin bir kapısı 0
 2 benim evimin bir kapısı 0
 
-input: this door of my house @ evimin bu kapısı
-output: OK
+input: this door of my house @  evimin bu kapısı
+output: NOK
 1 evimin bu kapısı 0
 2 benim evimin bu kapısı 0
 
-input: my door bell of house @ ev kapı zilim
-output: OK
+input: my door bell of house @  ev kapı zilim
+output: NOK
 1 ev kapı zilim 0
 2 benim ev kapı zilim 0
 
-input: my door bell of the house @ *
-output: EXPECTED ERROR
+input: my door bell of the house @  *
+output: ERROR
 Cannot shift my door bell of the<< house $
 
-input: my door bell of a house @ *
-output: EXPECTED ERROR
+input: my door bell of a house @  *
+output: ERROR
 Cannot shift my door bell of a<< house $
 
-input: the door bell of the house @ evin kapı zili
-output: OK
+input: the door bell of the house @  evin kapı zili
+output: NOK
 1 evin kapı zili 0
 
-input: this door bell of this house @ bu evin bu kapı zili
-output: OK
+input: this door bell of this house @  bu evin bu kapı zili
+output: NOK
 1 bu evin bu kapı zili 0
 
-input: house door bells @ ev kapı zilleri | ev kapısı zilleri
-output: OK
+input: house door bells @  ev kapı zilleri  |  ev kapısı zilleri
+output: NOK
 1 ev kapısı zilleri 0
 2 ev kapı zilleri 0
 
-input: door bells of house @ ev kapı zilleri
-output: OK
+input: door bells of house @  ev kapı zilleri
+output: NOK
 1 ev kapı zilleri 0
 
-input: door bell of houses @ evler kapı zili
-output: OK
+input: door bell of houses @  evler kapı zili
+output: NOK
 1 evler kapı zili 0
 
-input: door bell of the houses @ evlerin kapı zili
-output: OK
+input: door bell of the houses @  evlerin kapı zili
+output: NOK
 1 evlerin kapı zili 0
 
-input: bells of house door @ ev kapısı zilleri
-output: OK
+input: bells of house door @  ev kapısı zilleri
+output: NOK
 1 ev kapısı zilleri 0
 
-input: bells of house doors @ ev kapıları zilleri
-output: OK
+input: bells of house doors @  ev kapıları zilleri
+output: NOK
 1 ev kapıları zilleri 0
 
-input: house butter @ ev tereyağı
-output: OK
+input: house butter @  ev tereyağı
+output: NOK
 1 ev tereyağı 0
 
-input: my house butter @ ev tereyağım
-output: OK
+input: my house butter @  ev tereyağım
+output: NOK
 1 ev tereyağım 0
 2 benim ev tereyağım 0
 
-input: butter box @ tereyağı kutusu
-output: OK
+input: butter box @  tereyağı kutusu
+output: NOK
 1 tereyağı kutusu 0
 
-input: box of butter @ tereyağı kutusu
-output: OK
+input: box of butter @  tereyağı kutusu
+output: NOK
 1 tereyağı kutusu 0
 
-input: my butter box @ tereyağı kutum
-output: OK
+input: my butter box @  tereyağı kutum
+output: NOK
 1 tereyağı kutum 0
 2 benim tereyağı kutum 0
 
-input: butter of house @ ev tereyağı
-output: OK
+input: butter of house @   ev tereyağı
+output: NOK
 1 ev tereyağı 0
 
-input: butter of my house @ evimin tereyağı
-output: OK
+input: butter of my house @  evimin tereyağı
+output: NOK
 1 evimin tereyağı 0
 2 benim evimin tereyağı 0
 
-input: bedroom door @ yatak odası kapısı
-output: OK
+input: bedroom door @  yatak odası kapısı
+output: NOK
 1 yatak odası kapısı 0
 
-input: door of bedroom @ yatak odası kapısı
-output: OK
+input: door of bedroom @  yatak odası kapısı
+output: NOK
 1 yatak odası kapısı 0
 
-input=54, translated=51, matched=50 exp_err=3
+input=54, translated=51, matched=0 exp_err=0
