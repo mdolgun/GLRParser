@@ -30,6 +30,8 @@ door of my house @ evimin kapýsý
 door of the house @ evin kapýsý
 my door of my house @ *
 my door of house @ ev kapým
+my big door of house @ büyük ev kapým
+my big house door @ büyük ev kapým
 the door of my house @ evimin kapýsý
 a door of my house @ evimin bir kapýsý
 this door of my house @ evimin bu kapýsý
@@ -194,6 +196,8 @@ none of the milk @ sütün hiç biri
 all of the milk @ sütün hepsi
 most of the milk @ sütün çoðu
 
+piece of cake @ kek parçasý
+my piece of cake @ kek parçam
 a piece of cake @ bir parça kek | bir kek parçasý
 two pieces of cake @ iki parça kek | iki kek parçasý
 two small pieces of cake @ iki küçük kek parçasý

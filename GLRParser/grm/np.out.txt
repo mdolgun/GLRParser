@@ -92,8 +92,7 @@ output: OK
 
 input: bell of door of house @ ev kapýsý zili
 output: OK
-1 ev kapý zili 0
-2 ev kapýsý zili 0
+1 ev kapýsý zili 0
 
 input: house's door's bell @ evin kapýsýnýn zili
 output: OK
@@ -124,6 +123,14 @@ output: IGNORED
 input: my door of house @ ev kapým
 output: OK
 1 ev kapým 0
+
+input: my big door of house @ büyük ev kapým
+output: OK
+1 büyük ev kapým 0
+
+input: my big house door @ büyük ev kapým
+output: OK
+1 büyük ev kapým 0
 
 input: the door of my house @ evimin kapýsý
 output: OK
@@ -229,10 +236,10 @@ output: OK
 
 input: family tree family tree @ soyaðacý soyaðacý
 output: OK
-1 soyaðacý ailesi aðacý 0
-2 aile aðacý ailesi aðacý 0
-3 soyaðacý soyaðacý 0
-4 aile aðacý soyaðacý 0
+1 soyaðacý soyaðacý 0
+2 aile aðacý soyaðacý 0
+3 soyaðacý ailesi aðacý 0
+4 aile aðacý ailesi aðacý 0
 
 input: family of me @ ailem
 output: OK
@@ -240,8 +247,8 @@ output: OK
 
 input: family of you @ ailen
 output: OK
-1 aileniz 0
-2 ailen 0
+1 ailen 0
+2 aileniz 0
 
 input: family of us @ ailemiz
 output: OK
@@ -265,8 +272,8 @@ output: OK
 
 input: doors of you @ kapýlarýn
 output: OK
-1 kapýlarýnýz 0
-2 kapýlarýn 0
+1 kapýlarýn 0
+2 kapýlarýnýz 0
 
 input: doors of us @ kapýlarýmýz
 output: OK
@@ -417,8 +424,8 @@ output: OK
 1 iki katý 0
 
 input: double @ iki katý | duble
-output: ERROR
-Parse not possible
+output: OK
+1 iki katý 0
 
 input: five times @ beþ katý
 output: OK
@@ -695,19 +702,24 @@ input: most of the milk @ sütün çoðu
 output: OK
 1 sütün çoðu 0
 
+input: piece of cake @ kek parçasý
+output: OK
+1 kek parçasý 0
+
+input: my piece of cake @ kek parçam
+output: OK
+1 kek parçam 0
+
 input: a piece of cake @ bir parça kek | bir kek parçasý
-output: NOK
-1 kek bir parçasý 0
-2 kek bir parçasý 0
+output: OK
+1 bir kek parçasý 0
 
 input: two pieces of cake @ iki parça kek | iki kek parçasý
-output: NOK
-1 kek iki parçasý 0
-2 kek iki parçasý 0
+output: OK
+1 iki kek parçasý 0
 
-input: two small pieces of cake @ iki küçük parça kek | iki küçük kek parçasý
-output: NOK
-1 kek iki küçük parçasý 0
-2 kek iki küçük parçasý 0
+input: two small pieces of cake @ iki küçük kek parçasý
+output: OK
+1 iki küçük kek parçasý 0
 
-input=174, translated=173, matched=167 exp_err=0 ignored=3
+input=178, translated=178, matched=175 exp_err=0 ignored=3

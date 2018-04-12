@@ -1,6 +1,8 @@
 S -> NP 	: NP
 #S -> PP         : PP
-NP -> DG AG NG : DG AG A NG Case
+NP -> DG AG NG' : DG AG A NG' Case
+NG' -> NG  : NG
+NG' -> NG of NG'() : NG'() NG  [+ng]
 
 NP -> all  : hepsiN
 NP -> both : her ikisiN
@@ -8,7 +10,7 @@ NP -> each | either : her biriN
 NP -> none | neither: hiç biriN [+neg]
 NP -> most : çoğuN
 NP -> half : yarısıN
-NP -> twice : iki katıN
+NP -> twice | double : iki katıN
 NP -> five times : beş katıN
 NP -> any   : herhangi biriN
 NP -> some : bir kısmıN
@@ -40,7 +42,7 @@ AG ->
 AG -> AG Adj	: AG Adj
 
 NP -> NP PP()       : PP() NP
-NP -> NP of NP-C()  : NP-C(case=in)  NP		  [+ng]
+NP -> NP of NP-C(-nodef)  : NP-C(case=in)  NP		  [+ng]
 NP -> NP() of ObjPron : NP(pnumb=*numb,ppers=*pers,case=in,noplur)
 
 PP -> Prep NP : NP Prep(pnumb=sing,ppers=3)
@@ -75,7 +77,7 @@ Prep -> toward			        : doğru					[case=e]
 Prep -> with   		     								[case=li]
 Prep -> without 		 								[case=siz]
 
-DG ->	  
+DG ->	[+nodef]
 DG ->   a [+indef,numb=sing]
 DG ->  Det DG' : Det DG' [+def]
 DG' -> Det DG' : Det DG'
@@ -155,7 +157,6 @@ NSing -> front  : ön
 NSing -> cake   : kek!
 NSing -> book   : kitap
 NSing -> milk   : süt!
-NSing -> piece  : parça
 
 NPlur -> houses : ev
 NPlur -> doors  : kapı
@@ -166,7 +167,7 @@ NPlur -> trees  : ağaç
 NPlur -> pieces : parça
 NPlur -> cakes  : kek!
 NPlur -> books  : kitap
-NPlur -> pieces : parça
+
 
 NCSing -> butter	: tereyağ
 NCSing -> bedroom   	: yatak oda
