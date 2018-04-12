@@ -45,17 +45,9 @@ def format_rule(self):
 Rule.format = format_rule
 
 class Grammar:
-    NONTERM = re.compile("[_A-Z][-_A-Za-z0-9]*'*")
-    TERM = re.compile('".*"|[-\'a-z0-9ıüöçğşðþý][-\'A-Z0-9a-zıüöçğşðþý]*')
-    FEAT = re.compile('[a-z0-9_]*')
+    SYMBOL = re.compile('''([_A-Z][-_A-Za-z0-9]*'*)|("[^"]*"|[-\'a-z0-9üöçğşðþýı][-\'A-Z0-9a-züöçğşıðþý+@^!]*)''')
+    FEAT = re.compile('\*?[a-z0-9_]*')
     INTEGER = re.compile('-?[1-9][0-9]*')
-    def add_range(chars,start,end):
-        for ch in range(ord(start),ord(end)+1):
-            chars.add(chr(ch))
-    word_chars = set('_-ıüöçğşðþý"\'') 
-    add_range(word_chars,'A','Z')
-    add_range(word_chars,'a','z')
-    add_range(word_chars,'0','9')
    
     def __init__(self,s,line=0):
         self.s = s
@@ -108,70 +100,62 @@ class Grammar:
         except IndexError:
             pass
 
-    def get_word(self,ensure=True,skip_ws=True):
+    def get_symbol(self,ensure=True,skip_ws=True):
         if skip_ws:
             self.skip_ws()
-        start = self.pos
-        try:
-            while self.s[self.pos] in Grammar.word_chars:
-                self.pos += 1 
-        except IndexError:
-            pass
-        if start != self.pos:
-            return self.s[start:self.pos]
+        match = Grammar.SYMBOL.match(self.s,self.pos)
+        if match:
+            self.pos = match.end()
+            if match.group(1):
+                return match.group(1),0
+            if match.group(2):
+                return match.group(2).strip('"'),1
         if ensure:
-            raise GrammarError("Line:%d Pos:%d Word expected but found: %s..." % (self.line,self.pos,self.get_rest()))
-
-    def get_symbol(self,ensure=True,skip_ws=True):
-        word = self.get_word(ensure,skip_ws)
-        if word:
-            if Grammar.NONTERM.fullmatch(word):
-                return word,0
-            if Grammar.TERM.fullmatch(word):
-                return word.strip('"'),1
-            if ensure:
-                raise GrammarError("Line:%d Pos:%d Symbol expected but found: '%s'" % (self.line,self.pos,word))
+            raise GrammarError("Line:%d Pos:%d Symbol expected but found: %s" % (self.line,self.pos,self.get_rest()))
         return None,None
 
     def get_nonterm(self,ensure=True,skip_ws=True):
-        word = self.get_word(ensure,skip_ws)
-        if word:
-            if Grammar.NONTERM.fullmatch(word):
-                return word
-            if ensure:
-                raise GrammarError("Line:%d Pos:%d NonTerm expected but found: '%s'" % (self.line,self.pos,word))
+        symbol,stype = self.get_symbol(ensure,skip_ws)
+        if stype == 0:
+            return symbol
+        if ensure:
+            raise GrammarError("Line:%d Pos:%d NonTerm expected but found: '%s'" % (self.line,self.pos,symbol))
 
     def get_feat(self,ensure=True,skip_ws=True):
-        word = self.get_word(ensure,skip_ws)
-        if word:
-            if Grammar.FEAT.fullmatch(word):
-                return word
-            if ensure:
-                raise GrammarError("Line:%d Pos:%d FeatId expected but found '%s'" % (self.line,self.pos,word))
+        if skip_ws:
+            self.skip_ws()
+        match = Grammar.FEAT.match(self.s,self.pos)
+        if match:
+            self.pos = match.end()
+            return match.group()
+        if ensure:
+            raise GrammarError("Line:%d Pos:%d FeatId expected but found %s" % (self.line,self.pos,self.get_rest()))
 
     def get_integer(self,ensure=True,skip_ws=True):
-        word = self.get_word(ensure,skip_ws)
-        if word:
-            if Grammar.INTEGER.fullmatch(word):
-                return int(word)
-            if ensure:
-                raise GrammarError("Line:%d Pos:%d Integer expected but found '%s'" % (self.line,self.pos,word))
+        if skip_ws:
+            self.skip_ws()
+        match = Grammar.INTEGER.match(self.s,self.pos)
+        if match:
+            self.pos = match.end()
+            return int(match.group())
+        if ensure:
+            raise GrammarError("Line:%d Pos:%d FeatId expected but found %s" % (self.line,self.pos,self.get_rest()))
 
     def parse_rule(self,reverse=False):
         """ parses a rule and return an object of type Rule """
 
         if self.get_eof(False):
-            return None
+            return []
 
         head = self.get_nonterm()
 
         self.get_token('->')
 
-        left,lparam,lcost = self.parse_prod()
+        llist = self.parse_prod()
         if self.get_token(':',False):
-            right,rparam,rcost = self.parse_prod()
+            rlist = self.parse_prod()
         else:
-            right,rparam,rcost = empty_list,empty_list,0
+            rlist = [(empty_list,empty_list,0)]
         if self.get_token('[',False):
             feat = self.parse_feat_list()
         else:
@@ -179,24 +163,30 @@ class Grammar:
         self.get_eof()
 
         if reverse:
-            left,lparam,lcost,right,rparam,rcost = right,rparam,rcost,left,lparam,lcost
-        
-        # following cross-references right with left, removing referencing suffixes
-        #  e.g.  VP -> give NP-prim NP-secn : NP-prim -yA NP-secn ver => VP -> give NP NP : 1 -yA 2 ver
-        for idx,(symbol,param) in enumerate(zip(right,rparam)):
-            if param is not False: # NonTerminal
-                try:
-                    right[idx] = left.index(symbol)
-                except ValueError:
-                    right[idx] = symbol.split('-')[0]
+            llist,rlist = rlist,llist
 
-        for idx,(symbol,param) in enumerate(zip(left,lparam)):
-            if param is not False: # NonTerminal
-                left[idx] = symbol.split('-')[0]    
+        rules = []
+        for left,lparam,lcost in llist:
+            for right,rparam,rcost in rlist:      
+                # following cross-references right with left, removing referencing suffixes
+                #  e.g.  VP -> give NP-prim NP-secn : NP-prim -yA NP-secn ver => VP -> give NP NP : 1 -yA 2 ver
+                left = left.copy()
+                right = right.copy()
+                for idx,(symbol,param) in enumerate(zip(right,rparam)):
+                    if param is not False: # NonTerminal
+                        try:
+                            right[idx] = left.index(symbol)
+                        except ValueError:
+                            right[idx] = symbol.split('-')[0]
 
-        return Rule(head,left,right,feat,lparam,rparam,rcost)
+                for idx,(symbol,param) in enumerate(zip(left,lparam)):
+                    if param is not False: # NonTerminal
+                        left[idx] = symbol.split('-')[0]    
 
-    def parse_prod(self):
+                rules.append( Rule(head,left,right,feat,lparam,rparam,rcost) )
+        return rules
+
+    def parse_alt(self):
         """ parses left or right grammar and builds references, returns tuple(symbol list,param list)  """
         prod = []
         param_list = []
@@ -220,15 +210,23 @@ class Grammar:
 
         return prod,param_list,cost
 
-    def parse_feat(self):
+    def parse_prod(self):
+        alts = [self.parse_alt()]
+        while self.get_token('|',False):
+            alts.append( self.parse_alt() )
+        return alts
+
+    def parse_feat(self,ensure_val=True):
         char = self.get_char_list("+-",False)
         if char:
             name = self.get_feat()
             value = char
         else:
             name = self.get_feat()
-            self.get_token('=')
-            value = self.get_feat()
+            if self.get_token('=',ensure=ensure_val):
+                value = self.get_feat()
+            else:
+                value = None
         return name,value
 
 
@@ -247,22 +245,14 @@ class Grammar:
 
     def parse_fparam(self):
         """ Parses feature parameter list returns dict of name=value or name=None """
-        name = self.get_feat(False)
-        if not name and self.get_token(')',False): # empty list
+        if self.get_token(')',False): # empty list
             return empty_dict
         fdict = dict()
-        if self.get_token('=', False):
-            value = self.get_feat()
-            fdict[name] = value
-        else:
-            fdict[name] = None
+        name,value = self.parse_feat(False)
+        fdict[name] = value
         while self.get_token(',', False):   
-            name = self.get_feat()
-            if self.get_token('=', False):
-                value = self.get_feat()
-                fdict[name] = value
-            else:
-                fdict[name] = None
+            name,value = self.parse_feat(False)
+            fdict[name] = value
         self.get_token(')')
         return fdict
 
@@ -278,8 +268,7 @@ class Grammar:
         
 
     def parse_grammar(iterator,reverse=False):
-        rules = []
-        rules.append(Grammar("S' -> S() : S()").parse_rule())
+        rules = Grammar("S' -> S() : S()").parse_rule()
         line_no = 0
         process = True
         for s in iterator:
@@ -292,40 +281,7 @@ class Grammar:
                 continue
             if not process:
                 continue
-            rule = Grammar(s,line_no).parse_rule(reverse)
-            if rule is None: # empty/comment line
-                continue
-            rules.append(rule)
+            nrules = Grammar(s,line_no).parse_rule(reverse)
+            rules.extend(nrules)
         return rules
-
-
-def main():
-    text = """
-    VP -> Modal Ven-1 "isn't" -'s  : Ven-1(mode=pres,pers,numb) Tense() -iyor [mode=pres_perf] # a comment
-    VP -> [pers=1] @ test
-    VP -> : çalışıyor [pers=1]
-    VP ->
-    """
-    line = 0
-    for s in text.split('\n'):
-        line += 1
-        g = Grammar(s,line)
-        print("Parsing: %s" % s)
-        try:
-            rule = g.parse_rule()
-            if rule is None:
-                continue
-            #print(rule)
-            print('    ',rule.format())
-        except GrammarError as pe:
-            print('    ',pe.args[0])
-
-def fmain():
-    rules = Grammar.load_grammar("test.grm")
-    for rule in rules:
-        print(rule.format())
-if __name__ == "__main__":
-    # execute only if run as a script
-    fmain()
-
       

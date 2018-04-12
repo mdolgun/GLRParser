@@ -1,238 +1,713 @@
-input: house @  ev
-output: NOK
+input: house @ ev
+output: OK
 1 ev 0
 
-input: houses @  evler
-output: NOK
+input: houses @ evler
+output: OK
 1 evler 0
 
-input: my house @  evim
-output: NOK
+input: my house @ evim
+output: OK
 1 evim 0
-2 benim evim 0
 
-input: my houses @  evlerim
-output: NOK
+input: my houses @ evlerim
+output: OK
 1 evlerim 0
-2 benim evlerim 0
 
-input: his house @  evi
-output: NOK
+input: his house @ evi
+output: OK
 1 evi 0
-2 onun evi 0
 
-input: his houses @  evleri
-output: NOK
+input: his houses @ evleri
+output: OK
 1 evleri 0
-2 onun evleri 0
 
-input: their house @  evleri  |  onların evi
-output: NOK
+input: their house @ evleri | onların evi
+output: OK
 1 evleri 0
-2 onların evleri 0
 
-input: their houses @  evleri
-output: NOK
-1 evlerleri 0
-2 onların evlerleri 0
+input: their houses @ evleri
+output: OK
+1 evleri 0
 
-input: bedroom @  yatak odası
-output: NOK
+input: bedroom @ yatak odası
+output: OK
 1 yatak odası 0
 
-input: bedrooms @  yatak odaları
-output: NOK
+input: bedrooms @ yatak odaları
+output: OK
 1 yatak odaları 0
 
-input: my bedroom @  yatak odam
-output: NOK
+input: my bedroom @ yatak odam
+output: OK
 1 yatak odam 0
-2 benim yatak odam 0
 
-input: my bedrooms @  yatak odalarım
-output: NOK
+input: my bedrooms @ yatak odalarım
+output: OK
 1 yatak odalarım 0
-2 benim yatak odalarım 0
 
-input: house door @  ev kapısı
-output: NOK
+input: house door @ ev kapısı
+output: OK
 1 ev kapısı 0
 
-input: house's door @  evin kapısı
-output: NOK
+input: house's door @ evin kapısı
+output: OK
 1 evin kapısı 0
 
-input: door of house @  ev kapısı
-output: NOK
+input: door of house @ ev kapısı
+output: OK
 1 ev kapısı 0
 
-input: door bell @  kapı zili
-output: NOK
+input: door bell @ kapı zili
+output: OK
 1 kapı zili 0
 
-input: door's bell @  kapının zili
-output: NOK
+input: door's bell @ kapının zili
+output: OK
 1 kapının zili 0
 
-input: bell of door @  kapı zili
-output: NOK
+input: bell of door @ kapı zili
+output: OK
 1 kapı zili 0
 
-input: house door bell @  ev kapısı zili  |  ev kapı zili
-output: NOK
-1 ev kapısı zili 0
-2 ev kapı zili 0
-
-input: bell of house door @  ev kapısı zili
-output: NOK
+input: house door bell @ ev kapısı zili | ev kapı zili
+output: OK
 1 ev kapısı zili 0
 
-input: house door's bell @  ev kapısının zili
-output: NOK
+input: bell of house door @ ev kapısı zili
+output: OK
+1 ev kapısı zili 0
+
+input: house door's bell @ ev kapısının zili
+output: OK
 1 ev kapısının zili 0
 
-input: door bell of house @  ev kapı zili
-output: NOK
+input: door bell of house @ ev kapı zili
+output: OK
 1 ev kapı zili 0
 
-input: house's door bell @  evin kapı zili
-output: NOK
+input: house's door bell @ evin kapı zili
+output: OK
 1 evin kapı zili 0
 
-input: bell of door of house @  ev kapısı zili
-output: NOK
-1 ev kapısı zili 0
+input: bell of door of house @ ev kapısı zili
+output: OK
+1 ev kapı zili 0
+2 ev kapısı zili 0
 
-input: house's door's bell @  evin kapısının zili
-output: NOK
+input: house's door's bell @ evin kapısının zili
+output: OK
 1 evin kapısının zili 0
+2 evin kapının zili 0
 
-input: my house door @  ev kapım
-output: NOK
+input: my house door @ ev kapım
+output: OK
 1 ev kapım 0
-2 benim ev kapım 0
 
-input: my house's door @  evimin kapısı
-output: NOK
+input: my house's door @ evimin kapısı
+output: OK
 1 evimin kapısı 0
-2 benim evimin kapısı 0
+2 evin kapım 0
 
-input: door of my house @  evimin kapısı
-output: NOK
+input: door of my house @ evimin kapısı
+output: OK
 1 evimin kapısı 0
-2 benim evimin kapısı 0
 
-input: door of the house @  evin kapısı
-output: NOK
+input: door of the house @ evin kapısı
+output: OK
 1 evin kapısı 0
 
-input: my door of my house @  *
-output: ERROR
-Cannot shift my door of my<< house $
+input: my door of my house @ *
+output: IGNORED
+1 evimin kapım 0
 
-input: my door of house @  ev kapım
-output: NOK
+input: my door of house @ ev kapım
+output: OK
 1 ev kapım 0
-2 benim ev kapım 0
 
-input: the door of my house @  evimin kapısı
-output: NOK
+input: the door of my house @ evimin kapısı
+output: OK
 1 evimin kapısı 0
-2 benim evimin kapısı 0
 
-input: a door of my house @  evimin bir kapısı
-output: NOK
+input: a door of my house @ evimin bir kapısı
+output: OK
 1 evimin bir kapısı 0
-2 benim evimin bir kapısı 0
 
-input: this door of my house @  evimin bu kapısı
-output: NOK
+input: this door of my house @ evimin bu kapısı
+output: OK
 1 evimin bu kapısı 0
-2 benim evimin bu kapısı 0
 
-input: my door bell of house @  ev kapı zilim
-output: NOK
+input: my door bell of house @ ev kapı zilim
+output: OK
 1 ev kapı zilim 0
-2 benim ev kapı zilim 0
 
-input: my door bell of the house @  *
-output: ERROR
-Cannot shift my door bell of the<< house $
+input: my door bell of the house @ *
+output: IGNORED
+1 evin kapı zilim 0
 
-input: my door bell of a house @  *
-output: ERROR
-Cannot shift my door bell of a<< house $
+input: my door bell of a house @ *
+output: IGNORED
+1 bir evin kapı zilim 0
 
-input: the door bell of the house @  evin kapı zili
-output: NOK
+input: the door bell of the house @ evin kapı zili
+output: OK
 1 evin kapı zili 0
 
-input: this door bell of this house @  bu evin bu kapı zili
-output: NOK
+input: this door bell of this house @ bu evin bu kapı zili
+output: OK
 1 bu evin bu kapı zili 0
 
-input: house door bells @  ev kapı zilleri  |  ev kapısı zilleri
-output: NOK
+input: house door bells @ ev kapı zilleri | ev kapısı zilleri
+output: OK
 1 ev kapısı zilleri 0
-2 ev kapı zilleri 0
 
-input: door bells of house @  ev kapı zilleri
-output: NOK
+input: door bells of house @ ev kapı zilleri
+output: OK
 1 ev kapı zilleri 0
 
-input: door bell of houses @  evler kapı zili
-output: NOK
+input: door bell of houses @ evler kapı zili
+output: OK
 1 evler kapı zili 0
 
-input: door bell of the houses @  evlerin kapı zili
-output: NOK
+input: door bell of the houses @ evlerin kapı zili
+output: OK
 1 evlerin kapı zili 0
 
-input: bells of house door @  ev kapısı zilleri
-output: NOK
+input: bells of house door @ ev kapısı zilleri
+output: OK
 1 ev kapısı zilleri 0
 
-input: bells of house doors @  ev kapıları zilleri
-output: NOK
+input: bells of house doors @ ev kapıları zilleri
+output: OK
 1 ev kapıları zilleri 0
 
-input: house butter @  ev tereyağı
-output: NOK
+input: house butter @ ev tereyağı
+output: OK
 1 ev tereyağı 0
 
-input: my house butter @  ev tereyağım
-output: NOK
+input: my house butter @ ev tereyağım
+output: OK
 1 ev tereyağım 0
-2 benim ev tereyağım 0
 
-input: butter box @  tereyağı kutusu
-output: NOK
+input: butter box @ tereyağı kutusu
+output: OK
 1 tereyağı kutusu 0
 
-input: box of butter @  tereyağı kutusu
-output: NOK
+input: box of butter @ tereyağı kutusu
+output: OK
 1 tereyağı kutusu 0
 
-input: my butter box @  tereyağı kutum
-output: NOK
+input: my butter box @ tereyağı kutum
+output: OK
 1 tereyağı kutum 0
-2 benim tereyağı kutum 0
 
-input: butter of house @   ev tereyağı
-output: NOK
+input: butter of house @ ev tereyağı
+output: OK
 1 ev tereyağı 0
 
-input: butter of my house @  evimin tereyağı
-output: NOK
+input: butter of my house @ evimin tereyağı
+output: OK
 1 evimin tereyağı 0
-2 benim evimin tereyağı 0
 
-input: bedroom door @  yatak odası kapısı
-output: NOK
+input: bedroom door @ yatak odası kapısı
+output: OK
 1 yatak odası kapısı 0
 
-input: door of bedroom @  yatak odası kapısı
-output: NOK
+input: door of bedroom @ yatak odası kapısı
+output: OK
 1 yatak odası kapısı 0
 
-input=54, translated=51, matched=0 exp_err=0
+input: family tree @ soyağacı
+output: OK
+1 soyağacı 0
+2 aile ağacı 0
+
+input: my family tree @ soyağacım
+output: OK
+1 aile ağacım 0
+2 soyağacım 0
+
+input: family tree family tree @ soyağacı soyağacı
+output: OK
+1 soyağacı ailesi ağacı 0
+2 aile ağacı ailesi ağacı 0
+3 soyağacı soyağacı 0
+4 aile ağacı soyağacı 0
+
+input: family of me @ ailem
+output: OK
+1 ailem 0
+
+input: family of you @ ailen
+output: OK
+1 aileniz 0
+2 ailen 0
+
+input: family of us @ ailemiz
+output: OK
+1 ailemiz 0
+
+input: family of them @ aileleri
+output: OK
+1 aileleri 0
+
+input: families of him @ aileleri
+output: OK
+1 aileleri 0
+
+input: families of them @ aileleri
+output: OK
+1 aileleri 0
+
+input: doors of me @ kapılarım
+output: OK
+1 kapılarım 0
+
+input: doors of you @ kapıların
+output: OK
+1 kapılarınız 0
+2 kapıların 0
+
+input: doors of us @ kapılarımız
+output: OK
+1 kapılarımız 0
+
+input: door in house @ evdeki kapı
+output: OK
+1 evdeki kapı 0
+
+input: door in a house @ bir evdeki kapı
+output: OK
+1 bir evdeki kapı 0
+
+input: door in the house @ evdeki kapı
+output: OK
+1 evdeki kapı 0
+
+input: door in me @ bendeki kapı
+output: OK
+1 bendeki kapı 0
+
+input: house with door @ kapılı ev
+output: OK
+1 kapılı ev 0
+
+input: house with a door @ bir kapılı ev
+output: OK
+1 bir kapılı ev 0
+
+input: house with the door @ kapılı ev
+output: OK
+1 kapılı ev 0
+
+input: house with me @ benli ev
+output: OK
+1 benli ev 0
+
+input: house without door @ kapısız ev
+output: OK
+1 kapısız ev 0
+
+input: house without a door @ bir kapısız ev
+output: OK
+1 bir kapısız ev 0
+
+input: house without the door @ kapısız ev
+output: OK
+1 kapısız ev 0
+
+input: house without me @ bensiz ev
+output: OK
+1 bensiz ev 0
+
+input: door under tree @ ağaç altındaki kapı
+output: OK
+1 ağaç altındaki kapı 0
+
+input: door under a tree @ bir ağacın altındaki kapı
+output: OK
+1 bir ağacın altındaki kapı 0
+
+input: door under the tree @ ağacın altındaki kapı
+output: OK
+1 ağacın altındaki kapı 0
+
+input: door under me @ altımdaki kapı
+output: OK
+1 altımdaki kapı 0
+
+input: tree on door @ kapı üstündeki ağaç
+output: OK
+1 kapı üstündeki ağaç 0
+
+input: tree on a door @ bir kapının üstündeki ağaç
+output: OK
+1 bir kapının üstündeki ağaç 0
+
+input: tree on the door @ kapının üstündeki ağaç
+output: OK
+1 kapının üstündeki ağaç 0
+
+input: tree on me @ üstümdeki ağaç
+output: OK
+1 üstümdeki ağaç 0
+
+input: tree for door @ kapı için ağaç
+output: OK
+1 kapı için ağaç 0
+
+input: tree for a door @ bir kapı için ağaç
+output: OK
+1 bir kapı için ağaç 0
+
+input: tree for the door @ kapı için ağaç
+output: OK
+1 kapı için ağaç 0
+
+input: tree for me @ benim için ağaç
+output: OK
+1 benim için ağaç 0
+
+input: door from tree @ ağaçtan kapı
+output: OK
+1 ağaçtan kapı 0
+
+input: door from a tree @ bir ağaçtan kapı
+output: OK
+1 bir ağaçtan kapı 0
+
+input: door from the tree @ ağaçtan kapı
+output: OK
+1 ağaçtan kapı 0
+
+input: door from me @ benden kapı
+output: OK
+1 benden kapı 0
+
+input: door to tree @ ağaca kapı
+output: OK
+1 ağaca kapı 0
+
+input: door to a tree @ bir ağaca kapı
+output: OK
+1 bir ağaca kapı 0
+
+input: door to the tree @ ağaca kapı
+output: OK
+1 ağaca kapı 0
+
+input: door to me @ bana kapı
+output: OK
+1 bana kapı 0
+
+input: half @ yarısı
+output: OK
+1 yarısı 0
+
+input: all @ hepsi
+output: OK
+1 hepsi 0
+
+input: both @ her ikisi
+output: OK
+1 her ikisi 0
+
+input: twice @ iki katı
+output: OK
+1 iki katı 0
+
+input: double @ iki katı | duble
+output: ERROR
+Parse not possible
+
+input: five times @ beş katı
+output: OK
+1 beş katı 0
+
+input: any @ hiç biri | herhangi biri
+output: OK
+1 herhangi biri 0
+
+input: none @ hiç biri
+output: OK
+1 hiç biri 0
+
+input: neither @ hiç biri
+output: OK
+1 hiç biri 0
+
+input: either @ her biri
+output: OK
+1 her biri 0
+
+input: each @ her biri
+output: OK
+1 her biri 0
+
+input: half a book @ yarım kitap
+output: OK
+1 yarım kitap 0
+2 bir kitabın yarısı 0
+
+input: half of a book @ bir kitabın yarısı
+output: OK
+1 bir kitabın yarısı 0
+
+input: half the books @ kitapların yarısı
+output: OK
+1 kitapların yarısı 0
+
+input: half the milk @ sütün yarısı
+output: OK
+1 sütün yarısı 0
+
+input: half this book @ bu kitabın yarısı
+output: OK
+1 bu kitabın yarısı 0
+
+input: half this milk @ bu sütün yarısı
+output: OK
+1 bu sütün yarısı 0
+
+input: half my books @ kitaplarımın yarısı
+output: OK
+1 kitaplarımın yarısı 0
+
+input: half my milk @ sütümün yarısı
+output: OK
+1 sütümün yarısı 0
+
+input: all of the milk @ bütün süt | sütün hepsi
+output: OK
+1 sütün hepsi 0
+
+input: half of the books @ kitapların yarısı
+output: OK
+1 kitapların yarısı 0
+
+input: half of the milk @ sütün yarısı
+output: OK
+1 sütün yarısı 0
+
+input: half of this book @ bu kitabın yarısı
+output: OK
+1 bu kitabın yarısı 0
+
+input: half of this milk @ bu sütün yarısı
+output: OK
+1 bu sütün yarısı 0
+
+input: half of my books @ kitaplarımın yarısı
+output: OK
+1 kitaplarımın yarısı 0
+
+input: half of my milk @ sütümün yarısı
+output: OK
+1 sütümün yarısı 0
+
+input: all of the milk @ bütün süt | sütün hepsi
+output: OK
+1 sütün hepsi 0
+
+input: both the books @ her iki kitap
+output: OK
+1 her iki kitap 0
+
+input: both of the books @ kitapların her ikisi
+output: OK
+1 kitapların her ikisi 0
+
+input: twice the milk @ iki kat süt
+output: OK
+1 iki kat süt 0
+
+input: twice of the milk @ sütün iki katı
+output: OK
+1 sütün iki katı 0
+
+input: five times the milk @ beş kat süt
+output: OK
+1 beş kat süt 0
+
+input: five times of the milk @ sütün beş katı
+output: OK
+1 sütün beş katı 0
+
+input: any book @ herhangi bir kitap
+output: OK
+1 herhangi bir kitap 0
+2 hiç kitap 0
+
+input: each book @ her bir kitap
+output: OK
+1 her bir kitap 0
+
+input: either book @ her bir kitap
+output: OK
+1 her bir kitap 0
+
+input: neither book @ hiç bir kitap
+output: OK
+1 hiç bir kitap 0
+
+input: no book @ hiç kitap
+output: OK
+1 hiç kitap 0
+
+input: every book @ her kitap
+output: OK
+1 her kitap 0
+
+input: some milk @ biraz süt
+output: OK
+1 biraz süt 0
+
+input: plenty of milk @ çok süt
+output: OK
+1 çok süt 0
+
+input: little milk @ az süt
+output: OK
+1 az süt 0
+
+input: a little milk @ biraz süt
+output: OK
+1 biraz süt 0
+
+input: no milk @ hiç süt
+output: OK
+1 hiç süt 0
+
+input: any milk @ hiç süt
+output: OK
+1 herhangi bir süt 0
+2 hiç süt 0
+
+input: some books @ bazı kitaplar
+output: OK
+1 bazı kitaplar 0
+
+input: plenty of books @ birçok kitap
+output: OK
+1 birçok kitap 0
+
+input: both books @ her iki kitap
+output: OK
+1 her iki kitap 0
+
+input: several books @ birçok kitap
+output: OK
+1 birçok kitap 0
+
+input: few books @ az kitap
+output: OK
+1 az kitap 0
+
+input: many books @ birçok kitap
+output: OK
+1 birçok kitap 0
+
+input: a few books @ birkaç kitap
+output: OK
+1 birkaç kitap 0
+
+input: a lot of books @ birçok kitap
+output: OK
+1 birçok kitap 0
+
+input: all books @ bütün kitaplar
+output: OK
+1 bütün kitaplar 0
+
+input: most books @ çoğu kitap
+output: OK
+1 çoğu kitap 0
+
+input: no books @ hiç kitap
+output: OK
+1 hiç kitap 0
+
+input: lots of books @ birçok kitap
+output: OK
+1 birçok kitap 0
+
+input: a number of books @ birçok kitap
+output: OK
+1 birçok kitap 0
+
+input: any of the books @ kitapların herhangi biri
+output: OK
+1 kitapların herhangi biri 0
+
+input: each of the books @ kitapların her biri
+output: OK
+1 kitapların her biri 0
+
+input: none of the books @ kitapların hiç biri
+output: OK
+1 kitapların hiç biri 0
+
+input: either of the books @ kitapların her biri
+output: OK
+1 kitapların her biri 0
+
+input: neither of the books @ kitapların hiç biri
+output: OK
+1 kitapların hiç biri 0
+
+input: some of the books @ kitapların bir kısmı
+output: OK
+1 kitapların bir kısmı 0
+
+input: both of the books @ kitapların her ikisi
+output: OK
+1 kitapların her ikisi 0
+
+input: several of the books @ kitapların birçoğu
+output: OK
+1 kitapların birçoğu 0
+
+input: many of the books @ kitapların birçoğu
+output: OK
+1 kitapların birçoğu 0
+
+input: all of the books @ kitapların hepsi
+output: OK
+1 kitapların hepsi 0
+
+input: most of the books @ kitapların çoğu
+output: OK
+1 kitapların çoğu 0
+
+input: some of the milk @ sütün bir kısmı
+output: OK
+1 sütün bir kısmı 0
+
+input: none of the milk @ sütün hiç biri
+output: OK
+1 sütün hiç biri 0
+
+input: all of the milk @ sütün hepsi
+output: OK
+1 sütün hepsi 0
+
+input: most of the milk @ sütün çoğu
+output: OK
+1 sütün çoğu 0
+
+input: a piece of cake @ bir parça kek | bir kek parçası
+output: NOK
+1 kek bir parçası 0
+2 kek bir parçası 0
+
+input: two pieces of cake @ iki parça kek | iki kek parçası
+output: NOK
+1 kek iki parçası 0
+2 kek iki parçası 0
+
+input: two small pieces of cake @ iki küçük parça kek | iki küçük kek parçası
+output: NOK
+1 kek iki küçük parçası 0
+2 kek iki küçük parçası 0
+
+input=174, translated=173, matched=167 exp_err=0 ignored=3

@@ -14,6 +14,18 @@ else: # called as a module or script
 empty_dict = dict()
 empty_list = list()
 
+uid_dict = dict()
+uid_cnt = 0
+def uid(obj):
+    global uid_cnt, uid_dict
+    _id = id(obj)
+    if _id in uid_dict:
+        return uid_dict[_id]
+    uid_cnt += 1
+    uid_dict[_id] = uid_cnt
+    return uid_cnt
+
+
 class Tree:
     __slots__ = ('head', 'ruleno', 'left', 'right', 'feat', 'cost')
     def __init__(self, head, ruleno, left=empty_list, right=empty_list, feat=empty_dict, cost=0):
@@ -106,6 +118,34 @@ class Tree:
             for item in prod
         ])
 
+    def pformat_dbg(self,tree_type=True,level=0):
+        """ return prety formatted (indented multiline) string representation of a tree with extended information(rule no, feature list, cost) """
+        indent = self.indenter*level
+        prod = self.left if tree_type else self.right
+        if len(prod)==0: # empty production
+            return ""
+        if all(map(lambda x:type(x)==str,prod)): # terminal-only production
+            return  indent+" ".join(prod)+"\n"
+        return "".join([
+            "{}{}\n".format(indent,item) if type(item)==str
+            else "{indent}{head}({id})(\n{body}{indent})\n".format(
+                indent=indent,
+                head=item[0].head,
+                id=uid(item),
+                body=(indent+"|\n").join([
+                    "{indent}#{ruleno}{cost}{feat}({id})\n{body}".format(
+                        indent=indent,
+                        ruleno=alt.ruleno,
+                        feat=format_feat(alt.feat),
+                        id=uid(alt),
+                        body = alt.pformat_dbg(tree_type,level+1),
+                        cost = "{%d}" % alt.cost if alt.cost!=0 else ""
+                    )
+                    for alt in item
+                ])    
+            )
+            for item in prod
+        ])
     def formatr(self):
         return self.format(False)
 
@@ -114,6 +154,9 @@ class Tree:
 
     def pformatr_ext(self):
         return self.pformat_ext(False)
+
+    def pformatr_dbg(self):
+        return self.pformat_dbg(False)
 
     def list_formatr(self):
         return self.list_format(False)

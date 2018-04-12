@@ -7,17 +7,17 @@ This file define classes:
     ParserError,UnifyError: exceptions thrown when parsing or unification fails
       
 """
-import logging, re
+import logging, re, copy
 from collections import defaultdict
 
 if __name__ == "__main__":
     from morpher import TurkishPostProcessor
     from grammar import Grammar,GrammarError,Rule,format_feat
-    from tree import Tree
+    from tree import Tree,uid
 else:
     from .morpher import TurkishPostProcessor
     from .grammar import Grammar,GrammarError,Rule,format_feat
-    from .tree import Tree
+    from .tree import Tree,uid
 
 empty_dict = dict()
 empty_set = set()
@@ -71,7 +71,7 @@ class TurkishPreProcessor:
 class DummyPreProcessor:
     """ Dummy pre processor used in Parser """
     def __call__(self,sent):
-        return sent
+        return sent.strip()
 
 class DummyPostProcessor:
     """ Dummy post processor used in Parser """      
@@ -380,6 +380,7 @@ class Parser:
         for ruleno in self.ruledict[symbol]:
             rule = self.rules[ruleno]
             try:
+                #logging.debug("make_trans_tree1: %s unifyd(%s,%s,%s)", symbol, format_feat(feat), format_feat(fparam,'()'), format_feat(rule.feat))
                 fdict = Parser.unify_down(rule.feat,fparam,feat)
                 logging.debug("make_trans_tree: %s unifyd(%s,%s,%s)->%s", symbol, format_feat(feat), format_feat(fparam,'()'), format_feat(rule.feat), format_feat(fdict))
                 sub = []
@@ -402,6 +403,7 @@ class Parser:
         returns a modified version of the node "tree" """
 
         assert type(tree)==Tree
+        tree = copy.copy(tree) # MD 12.04.2018
         logging.debug("trans_tree: %s unify(%s,%s,%s)->", tree.head, format_feat(tree.feat), format_feat(fparam,'()'), format_feat(feat))                       
         fdict = Parser.unify_down(tree.feat,fparam,feat)
         logging.debug("trans_tree: ->%s", format_feat(fdict))                       
@@ -459,7 +461,7 @@ class Parser:
                 head = edge[2],
                 ruleno = alt_edge[0],
                 left = [self.make_tree_int(sub_edge) for sub_edge in alt_edge[1:]],
-                right = rule.right,
+                right = rule.right,#.copy(),
                 feat = rule.feat,
                 cost = rule.cost
             ) )
@@ -605,13 +607,14 @@ class Parser:
             tree2 = self.unify_tree(tree)
             tree3 = self.trans_tree(tree2)
             return [(self.post_processor(trans),cost) for trans,cost in tree3.enumx()]
+            #return list(tree3.enumx())
         except ParseError as pe:
             return str(pe)
         except UnifyError as ue:
             return str(ue)
         
     
-    def trans_file(self,infile,outfile):
+    def trans_file(self,infile,outfile,ignore_exp_error=False):
         """ parses all sentences in infile. Each line should be in the form: InputSentence [ "@" ExpectedTranslation ]
         input and corresponding translations are written to output file. The file is appended by statistics (InputCount,TranslatedCount,MatchedCount)
         """
@@ -619,11 +622,12 @@ class Parser:
         trans_cnt = 0
         match_cnt = 0
         experr_cnt = 0
+        ignore_cnt = 0
         pre_processor = DummyPreProcessor()
         with open(infile, 'r') as fin, open(outfile, 'w') as fout:
             for line in fin:
                 line = line.strip()
-                if not line:
+                if not line or line.startswith('#'):
                     continue
                 input_cnt += 1
                 parts = line.split('@')
@@ -634,7 +638,7 @@ class Parser:
                         sent,trans = parts
                     trans = [pre_processor(tsent) for tsent in trans.split('|')]
                 else:
-                    if sent.reverse:
+                    if self.reverse:
                         raise ParseError("Input sentence doesn't contain translation", line)
                     sent = parts[0]
                     trans = []
@@ -657,7 +661,10 @@ class Parser:
                 else:
                     trans_list, trans_cost = zip(*trans_list)
                     trans_cnt += 1
-                    if any(tsent in trans_list for tsent in trans):
+                    if trans==[] or trans==['*'] and ignore_exp_error:
+                        print("IGNORED",file=fout)
+                        ignore_cnt += 1
+                    elif any(tsent in trans_list for tsent in trans):
                         print("OK",file=fout)
                         match_cnt += 1  
                     else:
@@ -665,25 +672,7 @@ class Parser:
                     for idx, alt in enumerate(trans_list):
                         print(idx+1,alt,trans_cost[idx],file=fout)
                 print(file=fout)
-            print("input={}, translated={}, matched={} exp_err={}".format(input_cnt,trans_cnt,match_cnt,experr_cnt),file=fout)
-        return (input_cnt,trans_cnt,match_cnt,experr_cnt)
+            print("input={}, translated={}, matched={} exp_err={} ignored={}".format(input_cnt,trans_cnt,match_cnt,experr_cnt,ignore_cnt),file=fout)
+        return (input_cnt,trans_cnt,match_cnt,experr_cnt,ignore_cnt)
             
 
-def main():
-    cases = [ # dst,param,src,exp_result(None if exception)
-        ({},{"ng":"1"},{"det":"1"},{"ng":"1"}),
-        ({},None,{"det":"1"},{"det":"1"}),
-        ({"det":"1","numb":"plur"},None,{"det":"1","pers":"1"},{"det":"1","numb":"plur","pers":"1"}),
-        ({"det":"0","numb":"plur"},None,{"det":"1","pers":"1"},None),
-        ({"det":"0","numb":"plur"},{"pers":None},{"det":"1","pers":"1"},{"det":"0","numb":"plur","pers":"1"}),
-    ]
-    for dst,param,src,exp in cases:
-        try:
-            result = Parser.unify_down(dst,param,src)
-        except UnifyError:
-            result = None
-        print(result,exp,"OK" if result==exp else "NOK")
-    
-if __name__ == "__main__":
-    # execute only if run as a script
-    main()

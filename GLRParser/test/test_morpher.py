@@ -169,7 +169,8 @@ class TestMorpher(unittest.TestCase):
         ('ara-YAcAk-Hm', 'arayacağım'),
         ('ara-YAcAk-sHn', 'arayacaksın'),
         ('ara-YAcAk-Hz', 'arayacağız'),
-        ('ara-YAcAk-sHnHz', 'arayacaksınız')
+        ('ara-YAcAk-sHnHz', 'arayacaksınız'),
+        ('üst! -Hm', 'üstüm'),
     ]
     '''
     def run(self, test_result=None):

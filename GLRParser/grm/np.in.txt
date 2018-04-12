@@ -56,8 +56,147 @@ butter of house @  ev tereyaðý
 butter of my house @ evimin tereyaðý
 bedroom door @ yatak odasý kapýsý
 door of bedroom @ yatak odasý kapýsý
+family tree @ soyaðacý
+my family tree @ soyaðacým
+family tree family tree @ soyaðacý soyaðacý
+
+family of me @ ailem
+family of you @ ailen
+family of us @ ailemiz
+family of them @ aileleri
+families of him @ aileleri
+families of them @ aileleri
+
+doors of me @ kapýlarým
+doors of you @ kapýlarýn
+doors of us @ kapýlarýmýz
+
+door in house @ evdeki kapý
+door in a house @ bir evdeki kapý
+door in the house @ evdeki kapý
+door in me @ bendeki kapý
+
+house with door @ kapýlý ev
+house with a door @ bir kapýlý ev
+house with the door @ kapýlý ev
+house with me @ benli ev
 
 
+house without door @ kapýsýz ev
+house without a door @ bir kapýsýz ev
+house without the door @ kapýsýz ev
+house without me @ bensiz ev
+
+door under tree @ aðaç altýndaki kapý
+door under a tree @ bir aðacýn altýndaki kapý
+door under the tree @ aðacýn altýndaki kapý
+door under me @ altýmdaki kapý
+
+tree on door @ kapý üstündeki aðaç
+tree on a door @ bir kapýnýn üstündeki aðaç
+tree on the door @ kapýnýn üstündeki aðaç
+tree on me @ üstümdeki aðaç
+
+tree for door @ kapý için aðaç
+tree for a door @ bir kapý için aðaç
+tree for the door @ kapý için aðaç
+tree for me @ benim için aðaç
+
+door from tree @ aðaçtan kapý
+door from a tree @ bir aðaçtan kapý
+door from the tree @ aðaçtan kapý
+door from me @ benden kapý
+
+door to tree @ aðaca kapý
+door to a tree @ bir aðaca kapý
+door to the tree @ aðaca kapý
+door to me @ bana kapý
+
+# Determiners
+half @ yarýsý
+all @ hepsi
+both @ her ikisi
+twice @ iki katý
+double @ iki katý | duble
+five times @ beþ katý
+any @ hiç biri | herhangi biri
+none @ hiç biri
+neither @ hiç biri
+either @ her biri
+each @ her biri
+
+half a book @ yarým kitap
+half of a book @ bir kitabýn yarýsý
+half the books @ kitaplarýn yarýsý
+half the milk @ sütün yarýsý
+half this book @ bu kitabýn yarýsý
+half this milk @ bu sütün yarýsý
+half my books @ kitaplarýmýn yarýsý
+half my milk @ sütümün yarýsý
+all of the milk @ bütün süt | sütün hepsi
+half of the books @ kitaplarýn yarýsý
+half of the milk @ sütün yarýsý
+half of this book @ bu kitabýn yarýsý
+half of this milk @ bu sütün yarýsý
+half of my books @ kitaplarýmýn yarýsý
+half of my milk @ sütümün yarýsý
+all of the milk @ bütün süt | sütün hepsi
+
+both the books @ her iki kitap
+both of the books @ kitaplarýn her ikisi
+twice the milk @ iki kat süt 
+twice of the milk @ sütün iki katý
+five times the milk @ beþ kat süt
+five times of the milk @ sütün beþ katý
+
+any book @ herhangi bir kitap
+each book @ her bir kitap
+either book @ her bir kitap
+neither book @ hiç bir kitap
+no book  @ hiç kitap
+every book @ her kitap
+
+some milk @ biraz süt
+plenty of milk @ çok süt
+little milk @ az süt
+a little milk @ biraz süt
+no milk @ hiç süt
+any milk @ hiç süt
+
+some books @ bazý kitaplar
+plenty of books @ birçok kitap
+both books @ her iki kitap
+several books @ birçok kitap
+few books @ az kitap
+many books @ birçok kitap
+a few books @ birkaç kitap
+a lot of books @ birçok kitap
+all books @ bütün kitaplar
+most books @ çoðu kitap
+no books @ hiç kitap
+lots of books @ birçok kitap
+a number of books @ birçok kitap
+
+any of the books @ kitaplarýn herhangi biri
+each of the books @ kitaplarýn her biri
+none of the books @ kitaplarýn hiç biri
+either of the books @ kitaplarýn her biri
+neither of the books @ kitaplarýn hiç biri
+some of the books @ kitaplarýn bir kýsmý
+both of the books @ kitaplarýn her ikisi
+several of the books @ kitaplarýn birçoðu
+many of the books @ kitaplarýn birçoðu
+all of the books @ kitaplarýn hepsi
+most of the books @ kitaplarýn çoðu
+
+some of the milk @ sütün bir kýsmý
+none of the milk @ sütün hiç biri
+all of the milk @ sütün hepsi
+most of the milk @ sütün çoðu
+
+a piece of cake @ bir parça kek | bir kek parçasý
+two pieces of cake @ iki parça kek | iki kek parçasý
+two small pieces of cake @ iki küçük kek parçasý
 
 
 
