@@ -16,6 +16,8 @@ Name, Value ::= Id
 import re
 from collections import namedtuple
 
+enable_trie = False
+
 class GrammarError(Exception):
     """ Raised when a grammar cannot be parsed """
     pass
@@ -166,7 +168,7 @@ class Grammar:
         self.pos = 0
 
         if self.get_eof(False):
-            return []
+            return
 
         head = self.get_nonterm()
 
@@ -187,9 +189,8 @@ class Grammar:
             llist,rlist = rlist,llist
 
         for left,lparam,lcost in llist:
-            """
-            term_only = all(map(lambda x:x is False,lparam))
-            """
+            term_only = enable_trie and len(lparam)>0 and all(map(lambda x:x is False,lparam))
+
             for right,rparam,rcost in rlist:      
                 # following cross-references right with left, removing referencing suffixes
                 #  e.g.  VP -> give NP-prim NP-secn : NP-prim -yA NP-secn ver => VP -> give NP NP : 1 -yA 2 ver
@@ -206,11 +207,11 @@ class Grammar:
                 for idx,(symbol,param) in enumerate(zip(left,lparam)):
                     if param is not False: # NonTerminal
                         left[idx] = symbol.split('-')[0]    
-                """
-                if self.dict_enabled and term_only:
-                    self.trie.add(left,(head,right,feat,rcost))
-                """
-                self.rules.append( Rule(head,left,right,feat,lparam,rparam,rcost) )
+                
+                if term_only:
+                    self.trie.add(head, Rule(head,left,right,feat,lparam,rparam,rcost) )
+                else:
+                    self.rules.append( Rule(head,left,right,feat,lparam,rparam,rcost) )
                
     def parse_alt(self):
         """ parses left or right grammar and builds references, returns tuple(symbol list,param list)  """
@@ -297,7 +298,7 @@ class Grammar:
     def parse_grammar(self,iterator,reverse=False):
         self.line_no = 0
         self.rules = []
-        #self.trie = Trie()
+        self.trie = Trie()
         self.parse_rule("S' -> S() : S()", reverse)    
         process = True
         for s in iterator:
@@ -311,5 +312,5 @@ class Grammar:
             if not process:
                 continue
             self.parse_rule(s,reverse)
-        return self.rules
+        return self.rules,self.trie
       

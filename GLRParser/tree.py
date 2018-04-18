@@ -205,7 +205,7 @@ class Tree:
                             yield first or rest
 
     def enumx(tree,idx=0):
-        """ a generator for enumerating all translations in a parse forest """
+        """ a generator for enumerating all translations in a parse forest WITH corresponding costs """
         try:
             item = tree.right[idx]
         except IndexError:

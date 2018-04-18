@@ -12,11 +12,11 @@ from collections import defaultdict
 
 if __name__ == "__main__":
     from morpher import TurkishPostProcessor
-    from grammar import Grammar,GrammarError,Rule,format_feat
+    from grammar import Grammar,GrammarError,Rule,format_feat,Trie
     from tree import Tree,uid
 else:
     from .morpher import TurkishPostProcessor
-    from .grammar import Grammar,GrammarError,Rule,format_feat
+    from .grammar import Grammar,GrammarError,Rule,format_feat,Trie
     from .tree import Tree,uid
 
 empty_dict = dict()
@@ -231,7 +231,8 @@ class Parser:
    
     def load_grammar(self,fname=None,reverse=False,text=None):
         """ loads a grammar file and parse it """
-        self.rules = Grammar.load_grammar(fname,reverse,text)
+        self.rules,self.trie = Grammar.load_grammar(fname,reverse,text)
+
         if logging.getLogger().isEnabledFor(logging.INFO):
             logging.info("rules=%s",self.format_rules())
 
@@ -456,10 +457,16 @@ class Parser:
             return edge[2]
         alt = []
         for alt_edge in self.edges[edge]: 
-            rule = self.rules[alt_edge[0]] 
+            ruleno = alt_edge[0]
+            if type(ruleno)==int:
+                rule = self.rules[ruleno]
+            else:
+                rule = ruleno
+                ruleno = None
+
             alt.append( Tree(
                 head = edge[2],
-                ruleno = alt_edge[0],
+                ruleno = ruleno, ### Check!!!
                 left = [self.make_tree_int(sub_edge) for sub_edge in alt_edge[1:]],
                 right = rule.right,#.copy(),
                 feat = rule.feat,
@@ -590,21 +597,6 @@ class Parser:
                     logging.error("not active, %s",active)
                     raise ParseError("Cannot shift %s<< %s" % (" ".join(instr[0:pos])," ".join(instr[pos:])))
 
-                """
-                tokens = dict_search(instr,pos)
-                tokens.append((token,1))
-                for token,input_len in tokens:
-                    for state in active:
-                        nstate = dfa.get((state,token),-1)
-                        if nstate != -1:
-                            nextpos = pos + input_len
-                            logging.debug("add nodes[%s] = %s",(nextpos,nstate,token),(pos,state)) 
-                            nodes[nextpos,nstate,token].add((pos,state))
-                            logging.debug("shift %s = %s", (nextpos,nstate,token,pos,state),token)
-                    
-                            act_edges[nextpos].add((pos,state,token,nextpos,nstate))
-                            act_states[nextpos].add(nstate)
-                """
                 for state in active:
                     nstate = dfa.get((state,token),-1)
                     #print(state,",",token,"->",nstate)
@@ -615,6 +607,25 @@ class Parser:
                     
                         act_edges[pos+1].add((pos,state,token,pos+1,nstate))
                         act_states[pos+1].add(nstate)
+
+                items = self.trie.get(instr[pos:])
+                #items.append((1,(token,[],[]))
+                for input_len,rule in items:
+                    token = rule.head
+                    nextpos = pos + input_len
+                    for state in active:
+                        nstate = dfa.get((state,token),-1)
+                        if nstate != -1:                           
+                            logging.debug("add nodes[%s] = %s",(nextpos,nstate,token),(pos,state)) 
+                            nodes[nextpos,nstate,token].add((pos,state))
+                            nedge = (pos,state,token,nextpos,nstate)
+                            logging.debug("shift %s = %s", nedge, token)
+                    
+                            act_edges[nextpos].add(nedge)
+                            act_states[nextpos].add(nstate)
+
+                            edges[nedge].append([rule]+rule.left)
+                            #logging.debug("appending edge %s to %s", Parser.format_edge_item(ptree), self.format_edge(nedge))
 
     def trans_sent(self,sent):
         """ translates a sentence, returns a list of possible translations or an error """
