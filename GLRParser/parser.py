@@ -503,15 +503,19 @@ class Parser:
         self.instr = instr
         self.top_edge = (0,0,"S",inlen-1,fstate)
 
-        active = {0}
-        rset = set()
+        act_states = [set() for i in range(inlen)] # active set of states for each position
+        act_edges  = [set() for i in range(inlen)] # active set of edges for each position
+
+        act_states[0].add(0); # add initial state to initial position
+
         
         for pos in range(inlen):
             token = instr[pos]         
+             
+            rlist = list(act_edges[pos])
+            active = act_states[pos]
 
-            logging.debug("eset=%s rset=%s", active, rset)
-
-            rlist = list(rset)
+            logging.debug("act_states=%s act_edges=%s", active, rlist)
 
             for edge in rlist: # for each work item (start_position, start_state, edge_symbol, end_position, end_state)
                 spos,sstate,esymbol,epos,estate = edge
@@ -552,6 +556,7 @@ class Parser:
                             edges[nedge].append(ptree)
 
             actlist = list(active)
+
             for state in actlist:
                 for ruleno,rulepos in ereduce.get(state,set()):
                     logging.debug("e-Reducing %s", self.get_item(ruleno,rulepos))
@@ -584,8 +589,22 @@ class Parser:
                 if not active:
                     logging.error("not active, %s",active)
                     raise ParseError("Cannot shift %s<< %s" % (" ".join(instr[0:pos])," ".join(instr[pos:])))
-                rset = set()
-                nactive = set()
+
+                """
+                tokens = dict_search(instr,pos)
+                tokens.append((token,1))
+                for token,input_len in tokens:
+                    for state in active:
+                        nstate = dfa.get((state,token),-1)
+                        if nstate != -1:
+                            nextpos = pos + input_len
+                            logging.debug("add nodes[%s] = %s",(nextpos,nstate,token),(pos,state)) 
+                            nodes[nextpos,nstate,token].add((pos,state))
+                            logging.debug("shift %s = %s", (nextpos,nstate,token,pos,state),token)
+                    
+                            act_edges[nextpos].add((pos,state,token,nextpos,nstate))
+                            act_states[nextpos].add(nstate)
+                """
                 for state in active:
                     nstate = dfa.get((state,token),-1)
                     #print(state,",",token,"->",nstate)
@@ -594,9 +613,8 @@ class Parser:
                         nodes[pos+1,nstate,token].add((pos,state))
                         logging.debug("shift %s = %s", (pos+1,nstate,token,pos,state),token)
                     
-                        rset.add((pos,state,token,pos+1,nstate))
-                        nactive.add(nstate)
-                active = nactive
+                        act_edges[pos+1].add((pos,state,token,pos+1,nstate))
+                        act_states[pos+1].add(nstate)
 
     def trans_sent(self,sent):
         """ translates a sentence, returns a list of possible translations or an error """

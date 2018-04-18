@@ -44,22 +44,41 @@ def format_rule(self):
 
 Rule.format = format_rule
 
+class Trie:
+    leaf = '$$$'
+    
+    def __init__(self):
+        self.root = dict()
+        
+    def add(self,keyseq,val):
+        curr_dict = self.root
+        for key in keyseq:
+            curr_dict = curr_dict.setdefault(key,dict())
+        curr_dict.setdefault(self.leaf,[]).append(val)
+
+    def get(self,keyseq):
+        result = []
+        curr_dict = self.root
+        for idx,key in enumerate(keyseq):
+            try:
+                curr_dict = curr_dict[key]
+                for val in curr_dict.get(self.leaf,[]):
+                    result.append((idx+1,val))
+            except KeyError:
+                pass
+        return result
+
 class Grammar:
     SYMBOL = re.compile('''([_A-Z][-_A-Za-z0-9]*'*)|("[^"]*"|[-\'a-z0-9üöçğşðþýı][-\'A-Z0-9a-züöçğşıðþý+@^!]*)''')
     FEAT = re.compile('\*?[a-z0-9_]*')
     INTEGER = re.compile('-?[1-9][0-9]*')
    
-    def __init__(self,s,line=0):
-        self.s = s
-        self.pos = 0
-        self.line = line
-
     def get_rest(self,maxchars=20):
-        return self.s[self.pos:self.pos+maxchars]
+        return self.buf[self.pos:self.pos+maxchars]
 
     def get_eof(self,ensure=True):
         self.skip_ws()
-        if self.pos == len(self.s) or self.s[self.pos] == '#':
+        if self.pos == len(self.buf) or self.buf[self.pos] == '#':
             return True
         if ensure:
             raise GrammarError("Line:%d Pos:%d EOF expected but found: %s..." % (self.line,self.pos,self.get_rest()))
@@ -67,7 +86,7 @@ class Grammar:
     def get_token(self,token,ensure=True,skip_ws=True):
         if skip_ws:
             self.skip_ws()
-        if self.s.startswith(token,self.pos):
+        if self.buf.startswith(token,self.pos):
             self.pos += len(token)
             return True
         if ensure:
@@ -76,7 +95,7 @@ class Grammar:
     def get_char_list(self,char_list,ensure=True,skip_ws=True):
         if skip_ws:
             self.skip_ws()
-        char = self.s[self.pos]
+        char = self.buf[self.pos]
         if char in char_list:
             self.pos += 1
             return char
@@ -87,7 +106,7 @@ class Grammar:
         if skip_ws:
             self.skip_ws()
         for token in token_list:
-            if self.s.startswith(token,self.pos):
+            if self.buf.startswith(token,self.pos):
                 self.pos += len(token)
                 return token
         if ensure:
@@ -95,7 +114,7 @@ class Grammar:
 
     def skip_ws(self):
         try:
-            while self.s[self.pos] in " \t\r\n":
+            while self.buf[self.pos] in " \t\r\n":
                 self.pos += 1 
         except IndexError:
             pass
@@ -103,7 +122,7 @@ class Grammar:
     def get_symbol(self,ensure=True,skip_ws=True):
         if skip_ws:
             self.skip_ws()
-        match = Grammar.SYMBOL.match(self.s,self.pos)
+        match = Grammar.SYMBOL.match(self.buf,self.pos)
         if match:
             self.pos = match.end()
             if match.group(1):
@@ -124,7 +143,7 @@ class Grammar:
     def get_feat(self,ensure=True,skip_ws=True):
         if skip_ws:
             self.skip_ws()
-        match = Grammar.FEAT.match(self.s,self.pos)
+        match = Grammar.FEAT.match(self.buf,self.pos)
         if match:
             self.pos = match.end()
             return match.group()
@@ -134,15 +153,17 @@ class Grammar:
     def get_integer(self,ensure=True,skip_ws=True):
         if skip_ws:
             self.skip_ws()
-        match = Grammar.INTEGER.match(self.s,self.pos)
+        match = Grammar.INTEGER.match(self.buf,self.pos)
         if match:
             self.pos = match.end()
             return int(match.group())
         if ensure:
             raise GrammarError("Line:%d Pos:%d FeatId expected but found %s" % (self.line,self.pos,self.get_rest()))
 
-    def parse_rule(self,reverse=False):
+    def parse_rule(self,buf,reverse=False):
         """ parses a rule and return an object of type Rule """
+        self.buf = buf
+        self.pos = 0
 
         if self.get_eof(False):
             return []
@@ -165,13 +186,16 @@ class Grammar:
         if reverse:
             llist,rlist = rlist,llist
 
-        rules = []
         for left,lparam,lcost in llist:
+            """
+            term_only = all(map(lambda x:x is False,lparam))
+            """
             for right,rparam,rcost in rlist:      
                 # following cross-references right with left, removing referencing suffixes
                 #  e.g.  VP -> give NP-prim NP-secn : NP-prim -yA NP-secn ver => VP -> give NP NP : 1 -yA 2 ver
                 left = left.copy()
                 right = right.copy()
+
                 for idx,(symbol,param) in enumerate(zip(right,rparam)):
                     if param is not False: # NonTerminal
                         try:
@@ -182,10 +206,12 @@ class Grammar:
                 for idx,(symbol,param) in enumerate(zip(left,lparam)):
                     if param is not False: # NonTerminal
                         left[idx] = symbol.split('-')[0]    
-
-                rules.append( Rule(head,left,right,feat,lparam,rparam,rcost) )
-        return rules
-
+                """
+                if self.dict_enabled and term_only:
+                    self.trie.add(left,(head,right,feat,rcost))
+                """
+                self.rules.append( Rule(head,left,right,feat,lparam,rparam,rcost) )
+               
     def parse_alt(self):
         """ parses left or right grammar and builds references, returns tuple(symbol list,param list)  """
         prod = []
@@ -260,19 +286,22 @@ class Grammar:
         """ loads a grammar file and parse it """
         if bool(fname) == bool(text):
             raise GrammarError("load_grammar: either fname or text should be provided")
+        grammar = Grammar()
         if text is None:
             with open(fname, "r") as f:
-                return Grammar.parse_grammar(f,reverse)
+                return grammar.parse_grammar(f,reverse)
         else:
-            return Grammar.parse_grammar(text.split('\n'),reverse)
+            return grammar.parse_grammar(text.split('\n'),reverse)
         
 
-    def parse_grammar(iterator,reverse=False):
-        rules = Grammar("S' -> S() : S()").parse_rule()
-        line_no = 0
+    def parse_grammar(self,iterator,reverse=False):
+        self.line_no = 0
+        self.rules = []
+        #self.trie = Trie()
+        self.parse_rule("S' -> S() : S()", reverse)    
         process = True
         for s in iterator:
-            line_no += 1
+            self.line_no += 1
             if s.startswith('#'):
                 if s.startswith('#ifdef'):
                     process = False
@@ -281,7 +310,6 @@ class Grammar:
                 continue
             if not process:
                 continue
-            nrules = Grammar(s,line_no).parse_rule(reverse)
-            rules.extend(nrules)
-        return rules
+            self.parse_rule(s,reverse)
+        return self.rules
       
