@@ -424,13 +424,19 @@ class Parser:
 
     def format_edge_item(alts):
         """ internal: format an edge item to str (used internally for logging/debugging) """
-        return " ".join(["{2}({0},{1};{3},{4})".format(*alt) for alt in alts[1:]])
+        return " ".join(["{2}({0},{1};{3},{4})".format(*alt) if type(alt)==tuple else " ".join(alt)
+                         for alt in alts[1:]])
       
     def format_edge(self,edge):
         """ internal: format an edge into str (used internally for logging/debugging) """
         if edge not in self.edges:
-            return "{2}({0},{1};{3},{4}) -> None".format(*edge)
-        return  "{2}({0},{1};{3},{4}) -> ".format(*edge) + " | ".join( [ " ".join(["{2}({0},{1};{3},{4})".format(*alt) for alt in alts[1:]]) for alts in self.edges[edge]] )       
+            if type(edge)==tuple:
+                return "{2}({0},{1};{3},{4}) -> None".format(*edge)
+            else:
+                return " ".join(edge)
+        return  "{2}({0},{1};{3},{4}) -> ".format(*edge) + " | ".join( [ " ".join(
+            ["{2}({0},{1};{3},{4})".format(*alt) if type(alt)==tuple else alt
+             for alt in alts[1:]]) for alts in self.edges[edge]] )       
     
     def print_parse_tables(self):
         """ internal: print parse tables after parse """
@@ -454,7 +460,10 @@ class Parser:
     def make_tree_int(self,edge):
         """ generates a tree (which is a recursive list of lists) from edges """
         if edge not in self.edges:
-            return edge[2]
+            if type(edge)==tuple: #(state1,pos1,term,state2,pos2)
+                return edge[2]
+            else: # list of non-terminals
+                return edge;
         alt = []
         for alt_edge in self.edges[edge]: 
             ruleno = alt_edge[0]
@@ -590,12 +599,15 @@ class Parser:
                 if fstate in active:
                     logging.info("Parse successful")
                 else:
-                    logging.error("Parse not possible")
-                    raise ParseError("Parse not possible")
+                    while not act_states[pos]:
+                        pos -= 1
+                    logging.error("Parse not possible: %s >> %s"," ".join(instr[0:pos])," ".join(instr[pos:]))
+                    raise ParseError("Parse not possible: %s >> %s" % (" ".join(instr[0:pos])," ".join(instr[pos:])))
             else:
                 if not active:
-                    logging.error("not active, %s",active)
-                    raise ParseError("Cannot shift %s<< %s" % (" ".join(instr[0:pos])," ".join(instr[pos:])))
+                    continue
+                    #logging.error("not active, %s",active)
+                    #raise ParseError("Cannot shift %s<< %s" % (" ".join(instr[0:pos])," ".join(instr[pos:])))
 
                 for state in active:
                     nstate = dfa.get((state,token),-1)
@@ -608,7 +620,8 @@ class Parser:
                         act_edges[pos+1].add((pos,state,token,pos+1,nstate))
                         act_states[pos+1].add(nstate)
 
-                items = self.trie.get(instr[pos:])
+                items = self.trie.search(instr[pos:])
+                logging.debug("Shift pos: %d items: %s", pos, items)
                 #items.append((1,(token,[],[]))
                 for input_len,rule in items:
                     token = rule.head

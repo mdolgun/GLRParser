@@ -16,7 +16,7 @@ Name, Value ::= Id
 import re
 from collections import namedtuple
 
-enable_trie = False
+
 
 class GrammarError(Exception):
     """ Raised when a grammar cannot be parsed """
@@ -58,7 +58,7 @@ class Trie:
             curr_dict = curr_dict.setdefault(key,dict())
         curr_dict.setdefault(self.leaf,[]).append(val)
 
-    def get(self,keyseq):
+    def search(self,keyseq):
         result = []
         curr_dict = self.root
         for idx,key in enumerate(keyseq):
@@ -70,7 +70,24 @@ class Trie:
                 pass
         return result
 
+    def list(self):
+        lst = []
+        Trie.list_int(self.root,lst)
+
+    def list_int(dic,lst):
+        for key,val in dic.items():
+            if key == Trie.leaf:
+                print(" ".join(lst),":",",".join(["{} -> {} {{{}}} {}".format(item.head," ".join(item.right),item.cost,format_feat(item.feat)) for item in val]))
+                #print(lst,":",val)
+            else:
+                Trie.list_int(val,lst+[key])
+
+
+
+
 class Grammar:
+    enable_trie = False
+
     SYMBOL = re.compile('''([_A-Z][-_A-Za-z0-9]*'*)|("[^"]*"|[-\'a-z0-9üöçğşðþýı][-\'A-Z0-9a-züöçğşıðþý+@^!]*)''')
     FEAT = re.compile('\*?[a-z0-9_]*')
     INTEGER = re.compile('-?[1-9][0-9]*')
@@ -189,7 +206,7 @@ class Grammar:
             llist,rlist = rlist,llist
 
         for left,lparam,lcost in llist:
-            term_only = enable_trie and len(lparam)>0 and all(map(lambda x:x is False,lparam))
+            term_only = self.enable_trie and len(lparam)>0 and all(map(lambda x:x is False,lparam))
 
             for right,rparam,rcost in rlist:      
                 # following cross-references right with left, removing referencing suffixes
@@ -209,7 +226,7 @@ class Grammar:
                         left[idx] = symbol.split('-')[0]    
                 
                 if term_only:
-                    self.trie.add(head, Rule(head,left,right,feat,lparam,rparam,rcost) )
+                    self.trie.add(left, Rule(head,left,right,feat,lparam,rparam,rcost) )
                 else:
                     self.rules.append( Rule(head,left,right,feat,lparam,rparam,rcost) )
                
