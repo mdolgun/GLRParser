@@ -72,18 +72,15 @@ class Trie:
 
     def list(self):
         lst = []
-        Trie.list_int(self.root,lst)
+        yield from Trie.list_int(self.root,lst)
 
     def list_int(dic,lst):
         for key,val in dic.items():
             if key == Trie.leaf:
-                print(" ".join(lst),":",",".join(["{} -> {} {{{}}} {}".format(item.head," ".join(item.right),item.cost,format_feat(item.feat)) for item in val]))
+                yield "{} : {}".format(" ".join(lst),",".join(["{} -> {} {{{}}} {}".format(item.head," ".join(item.right),item.cost,format_feat(item.feat)) for item in val]))
                 #print(lst,":",val)
             else:
-                Trie.list_int(val,lst+[key])
-
-
-
+                yield from Trie.list_int(val,lst+[key])
 
 class Grammar:
     enable_trie = False

@@ -127,7 +127,7 @@ class Parser:
         # for iteration we use set as FIFO, for membership check we use set for O(1) complexity
         for ruleno,rulepos in todo:
             try:
-                symbol = self.rules[ruleno][1][rulepos]
+                symbol = self.rules[ruleno].left[rulepos]
                 for nextno in self.ruledict.get(symbol,set()):
                     nextstate = (nextno,0)
                     if nextstate not in stateset: 
@@ -140,7 +140,7 @@ class Parser:
                     if nextstate not in stateset: 
                         stateset.add(nextstate)
                         todo.append(nextstate)              
-                    symbol = self.rules[ruleno][1][rulepos]
+                    symbol = self.rules[ruleno].left[rulepos]
                 """
             except IndexError: # there is no more symbols in the rule (i.e. A->x.)
                 pass
@@ -152,12 +152,12 @@ class Parser:
         """ get string repr of "items" in state set in dotted fomat  e.g "{ S -> NP . VP ; VP -> . V  ; VP -> . V NP }" """
         slist = ["{"]
         for ruleno,rulepos in stateset:
-            slist.append("{} -> {} . {}".format(self.rules[ruleno][0], " ".join(self.rules[ruleno][1][0:rulepos]), " ".join(self.rules[ruleno][1][rulepos:])))
+            slist.append("{} -> {} . {}".format(self.rules[ruleno].head, " ".join(self.rules[ruleno].left[0:rulepos]), " ".join(self.rules[ruleno].left[rulepos:])))
         slist.append("}")
         return " , ".join(slist)
 
     def get_item(self,ruleno,rulepos):
-        return "{} -> {} . {}".format(self.rules[ruleno][0], " ".join(self.rules[ruleno][1][0:rulepos]), " ".join(self.rules[ruleno][1][rulepos:]))    
+        return "{} -> {} . {}".format(self.rules[ruleno].head, " ".join(self.rules[ruleno].left[0:rulepos]), " ".join(self.rules[ruleno].left[rulepos:]))    
 
     def compile(self):
         """ compile rule list "rules" to a DFA
@@ -177,17 +177,17 @@ class Parser:
         self.ereduce = ereduce
         
         for ruleno,rule in enumerate(rules):
-            ruledict[rule[0]].append(ruleno)
+            ruledict[rule.head].append(ruleno)
 
         # todo: more efficient algorithm for large grammars
-        nullable = {rule[0] for rule in rules if len(rule[1])==0}  # empty productions
+        nullable = {rule.head for rule in rules if len(rule.left)==0}  # empty productions
         flag = bool(nullable)
         while flag:
             flag = False
             for rule in rules:
-                if all(map(lambda x:x in nullable,rule[1])): # all of symbols in RHS is nullable
-                    if rule[0] not in nullable:
-                        nullable.add(rule[0])
+                if all(map(lambda x:x in nullable,rule.left)): # all of symbols in RHS is nullable
+                    if rule.head not in nullable:
+                        nullable.add(rule.head)
                         flag = True
             
         logging.info("nullable=%s", nullable)
@@ -203,7 +203,7 @@ class Parser:
             tempdict = defaultdict(set) # maps symbol to set of next states
             for ruleno,rulepos in states[stateno]:          
                 try:
-                    symbol = rules[ruleno][1][rulepos] # get next symbol after dot (i.e. A->x.By)
+                    symbol = rules[ruleno].left[rulepos] # get next symbol after dot (i.e. A->x.By)
                     tempdict[symbol].add((ruleno,rulepos+1))
                 except IndexError: # there is no more symbols in the rule (i.e. A->x.)
                     pass
@@ -219,7 +219,7 @@ class Parser:
                 dfa[stateno,symbol] = nextstateno
         for idx,stateset in enumerate(states):
             for ruleno,rulepos in stateset:
-                body = rules[ruleno][1]
+                body = rules[ruleno].left
                 if all(map(lambda x:x in nullable,body[rulepos:])): # if all remaining items are nullable
                     if rulepos == 0: # empty or nullable rule
                         ereduce[idx].add((ruleno,rulepos))                   
@@ -235,6 +235,7 @@ class Parser:
 
         if logging.getLogger().isEnabledFor(logging.INFO):
             logging.info("rules=%s",self.format_rules())
+            logging.info("dict=%s","\n".join(self.trie.list()))
 
     def unify_up(dst,param,src):
         """ unification of "src" features into "dst" features, using filtering of "param", if unification fails raises UnifyError
@@ -272,7 +273,6 @@ class Parser:
                     pass
                 else:
                     raise UnifyError("Unify error feat=%s src=%s param=%s" % (key, src[key], dst[key]))
-
     
         if newkeys:
             dst = dst.copy()
@@ -320,7 +320,8 @@ class Parser:
  
     def unify_tree(self,tree):
         """ bottom-up unifies a tree and returns a new tree """
-        rule = self.rules[tree.ruleno]
+
+        rule = tree.rule
         fdict,srcflist = rule.feat, rule.lparam
         stack = [(fdict,[])]
         for item,param in zip(tree.left,srcflist):
@@ -340,7 +341,7 @@ class Parser:
                             continue
                         for subtree in subtrees:
                             logging.debug("Unify feat=%s param=%s subfeat=%s ", format_feat(fdict), format_feat(param), format_feat(subtree.feat))
-                            try:      
+                            try:
                                 _fdict = Parser.unify_up(fdict,param,subtree.feat)
                                 logging.debug("Unify Success=%s", format_feat(_fdict))
                                 try:
@@ -352,7 +353,7 @@ class Parser:
                                 #print("nkeys=%s nvals=%s" % (nkeys,nvals))
                             except UnifyError as ue:
                                 logging.debug("Unify Failure dst=%s param=%s src=%s ", format_feat(fdict), format_feat(param), format_feat(subtree.feat))
-                                last_error = "%s super=%s#%d sub=%s#%d" % (ue.args[0], tree.head, tree.ruleno, subtree.head, subtree.ruleno)
+                                last_error = "%s super=%s#%s sub=%s#%s" % (ue.args[0], tree.head, tree.ruleno, subtree.head, subtree.ruleno)
                     for key,val in zip(nkeys,nvals):
                         nstack.append((key,seq+[val]))
                 stack = nstack
@@ -361,7 +362,7 @@ class Parser:
                     raise UnifyError(last_error)
         ntree = []
         for fdict,seq in stack:
-            ntree.append(Tree(tree.head,tree.ruleno,seq,tree.right,fdict,tree.cost))
+            ntree.append(Tree(tree.head,tree.rule,tree.ruleno,seq,tree.right,fdict,tree.cost))
         if tree.head=="S'":
             assert len(ntree)==1
             return ntree[0]
@@ -391,7 +392,7 @@ class Parser:
                         sub.append(item)
                     else: # NonTerminal
                         sub.append(Parser.prune( self.make_trans_tree(item,fdict,param) ))
-                ntree.append(Tree(symbol,ruleno,[],sub,fdict,rule.cost)) 
+                ntree.append(Tree(symbol,rule,ruleno,[],sub,fdict,rule.cost)) 
             except UnifyError as ue:
                 last_error = "%s %s#%d" % (ue.args[0], symbol, ruleno)
                 logging.debug("make_trans_tree: %s unifyd(%s,%s,%s)->Error", symbol, format_feat(feat), format_feat(fparam,'()'), format_feat(rule.feat))
@@ -408,7 +409,7 @@ class Parser:
         logging.debug("trans_tree: %s unify(%s,%s,%s)->", tree.head, format_feat(tree.feat), format_feat(fparam,'()'), format_feat(feat))                       
         fdict = Parser.unify_down(tree.feat,fparam,feat)
         logging.debug("trans_tree: ->%s", format_feat(fdict))                       
-        rule = self.rules[tree.ruleno]
+        rule = tree.rule
         trans = []
         for item,param in zip(rule.right,rule.rparam):
             if param is False: # Terminal
@@ -452,6 +453,7 @@ class Parser:
     def make_tree(self):
         self.tree = Tree(
             head = "S'",
+            rule = self.rules[0],
             ruleno = 0,
             left = [self.make_tree_int(self.top_edge)]
         )
@@ -473,9 +475,13 @@ class Parser:
                 rule = ruleno
                 ruleno = None
 
+            assert type(ruleno)==int or ruleno is None, "ruleno=%s" % ruleno
+            assert type(rule) == Rule
+
             alt.append( Tree(
                 head = edge[2],
-                ruleno = ruleno, ### Check!!!
+                rule = rule,
+                ruleno = ruleno, 
                 left = [self.make_tree_int(sub_edge) for sub_edge in alt_edge[1:]],
                 right = rule.right,#.copy(),
                 feat = rule.feat,
@@ -537,7 +543,8 @@ class Parser:
                 spos,sstate,esymbol,epos,estate = edge
                 logging.debug("Checking Work Item: %s  All: %s", edge, rlist)
                 for ruleno,rulepos in reduce.get(estate,set()): # find reducible items for end_state
-                    head,body = self.rules[ruleno][0:2]
+                    head = self.rules[ruleno].head
+                    body = self.rules[ruleno].left
                     logging.debug("Reducing %s ", self.get_item(ruleno,rulepos))
                     ptree = [edge]
                         
@@ -576,7 +583,8 @@ class Parser:
             for state in actlist:
                 for ruleno,rulepos in ereduce.get(state,set()):
                     logging.debug("e-Reducing %s", self.get_item(ruleno,rulepos))
-                    head,body = self.rules[ruleno][0:2]
+                    head = self.rules[ruleno].head
+                    body = self.rules[ruleno].left
                     ptree = [ruleno]
                     estate = state
                     for symbol in body[rulepos:]:

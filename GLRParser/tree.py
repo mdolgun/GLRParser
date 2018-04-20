@@ -27,9 +27,10 @@ def uid(obj):
 
 
 class Tree:
-    __slots__ = ('head', 'ruleno', 'left', 'right', 'feat', 'cost')
-    def __init__(self, head, ruleno, left=empty_list, right=empty_list, feat=empty_dict, cost=0):
+    __slots__ = ('head', 'rule', 'ruleno', 'left', 'right', 'feat', 'cost')
+    def __init__(self, head, rule, ruleno=None, left=empty_list, right=empty_list, feat=empty_dict, cost=0):
         self.head = head
+        self.rule = rule
         self.ruleno = ruleno
         self.left = left
         self.right = right
