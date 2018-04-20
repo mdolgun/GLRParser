@@ -11,8 +11,8 @@ def main():
     parser.compile()
 
     input_cnt,trans_cnt,match_cnt,experr_cnt,ignore_cnt = parser.trans_file(
-        grm_dir+"np.in.txt",
-        grm_dir+"np.out.txt",
+        grm_dir+"tenses.in.txt",
+        grm_dir+"tenses.out.txt",
         ignore_exp_error=True
     )
     print("input={}, translated={}, matched={}, experr={}, ignored={} success=%{}".format(
