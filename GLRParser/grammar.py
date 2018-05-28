@@ -3,7 +3,10 @@
 (c) 2018 by Mehmet Dolgun, m.dolgun@yahoo.com
 
 Grammar Rules:
+Macro ::= %def TokenList | %ifdef TokenList | %endif | %else | %elif TokenList | %include FileName | %macro MacroName -> TerminalList | %form MacroName -> NonTerminalList
 Rule ::= Head "->" Prod [ ":" Prod ] [ Feat ] [ "#" Comment ]
+Head ::= "$" MacroName | NonTerminal
+Terminal ::= Term+ | Term* "$" Term+ | Term* "$("  Term+ ")" Term*
 Prod ::= ( Terminal | NonTerminal [ "-" Suffix ] [ FParam ] )* [ "{" Cost "}" ] 
 Feat ::= "[" [ Name "=" Value ( "," Name "=" Value )* ] "]"
 FParam ::= "(" [ Name [ "=" Value ] ( "," Name [ "=" Value ] )* ")"
@@ -13,7 +16,7 @@ NonTerminal ::= Id not starting with upper case, optionally double-quoted
 Name, Value ::= Id
 
 """
-import re
+import re, pickle
 from collections import namedtuple
 
 
@@ -84,8 +87,7 @@ class Trie:
 
 class Grammar:
     enable_trie = False
-
-    SYMBOL = re.compile('''([_A-Z][-_A-Za-z0-9]*'*)|("[^"]*"|[-\'a-z0-9üöçğşðþýı][-\'A-Z0-9a-züöçğşıðþý+@^!]*)''')
+    SYMBOL = re.compile('''([_A-Z][-_A-Za-z0-9]*'*)|("[^"]*"|[-\'a-z0-9üöçğşðþýı$][-\'A-Z0-9a-züöçğşıðþý+@^!$]*)''')
     FEAT = re.compile('\*?[a-z0-9_]*')
     INTEGER = re.compile('-?[1-9][0-9]*')
    
@@ -97,7 +99,7 @@ class Grammar:
         if self.pos == len(self.buf) or self.buf[self.pos] == '#':
             return True
         if ensure:
-            raise GrammarError("Line:%d Pos:%d EOF expected but found: %s..." % (self.line,self.pos,self.get_rest()))
+            raise GrammarError("Line:%d Pos:%d EOF expected but found: %s..." % (self.line_no,self.pos,self.get_rest()))
 
     def get_token(self,token,ensure=True,skip_ws=True):
         if skip_ws:
@@ -106,7 +108,7 @@ class Grammar:
             self.pos += len(token)
             return True
         if ensure:
-            raise GrammarError("Line:%d Pos:%d '%s' expected but found: %s..." % (self.line,self.pos,token,self.get_rest()))
+            raise GrammarError("Line:%d Pos:%d '%s' expected but found: %s..." % (self.line_no,self.pos,token,self.get_rest()))
 
     def get_char_list(self,char_list,ensure=True,skip_ws=True):
         if skip_ws:
@@ -116,7 +118,7 @@ class Grammar:
             self.pos += 1
             return char
         if ensure:
-            raise GrammarError("Line:%d Pos:%d '%s' expected but found: %s..." % (self.line,self.pos,char_list,self.get_rest()))
+            raise GrammarError("Line:%d Pos:%d '%s' expected but found: %s..." % (self.line_no,self.pos,char_list,self.get_rest()))
 
     def get_token_list(self,token_list,ensure=True,skip_ws=True):
         if skip_ws:
@@ -126,7 +128,7 @@ class Grammar:
                 self.pos += len(token)
                 return token
         if ensure:
-            raise GrammarError("Line:%d Pos:%d '%s' expected but found: %s..." % (self.line,self.pos,token_list,self.get_rest()))
+            raise GrammarError("Line:%d Pos:%d '%s' expected but found: %s..." % (self.line_no,self.pos,token_list,self.get_rest()))
 
     def skip_ws(self):
         try:
@@ -146,7 +148,7 @@ class Grammar:
             if match.group(2):
                 return match.group(2).strip('"'),1
         if ensure:
-            raise GrammarError("Line:%d Pos:%d Symbol expected but found: %s" % (self.line,self.pos,self.get_rest()))
+            raise GrammarError("Line:%d Pos:%d Symbol expected but found: %s" % (self.line_no,self.pos,self.get_rest()))
         return None,None
 
     def get_nonterm(self,ensure=True,skip_ws=True):
@@ -154,7 +156,14 @@ class Grammar:
         if stype == 0:
             return symbol
         if ensure:
-            raise GrammarError("Line:%d Pos:%d NonTerm expected but found: '%s'" % (self.line,self.pos,symbol))
+            raise GrammarError("Line:%d Pos:%d NonTerm expected but found: '%s'" % (self.line_no,self.pos,symbol))
+
+    def get_term(self,ensure=True,skip_ws=True):
+        symbol,stype = self.get_symbol(ensure,skip_ws)
+        if stype == 1:
+            return symbol
+        if ensure:
+            raise GrammarError("Line:%d Pos:%d Term expected but found: '%s'" % (self.line_no,self.pos,symbol))
 
     def get_feat(self,ensure=True,skip_ws=True):
         if skip_ws:
@@ -164,7 +173,7 @@ class Grammar:
             self.pos = match.end()
             return match.group()
         if ensure:
-            raise GrammarError("Line:%d Pos:%d FeatId expected but found %s" % (self.line,self.pos,self.get_rest()))
+            raise GrammarError("Line:%d Pos:%d FeatId expected but found %s" % (self.line_no,self.pos,self.get_rest()))
 
     def get_integer(self,ensure=True,skip_ws=True):
         if skip_ws:
@@ -174,7 +183,7 @@ class Grammar:
             self.pos = match.end()
             return int(match.group())
         if ensure:
-            raise GrammarError("Line:%d Pos:%d FeatId expected but found %s" % (self.line,self.pos,self.get_rest()))
+            raise GrammarError("Line:%d Pos:%d FeatId expected but found %s" % (self.line_no,self.pos,self.get_rest()))
 
     def parse_rule(self,buf,reverse=False):
         """ parses a rule and return an object of type Rule """
@@ -184,7 +193,7 @@ class Grammar:
         if self.get_eof(False):
             return
 
-        head = self.get_nonterm()
+        macro_name,head = self.parse_head()
 
         self.get_token('->')
 
@@ -192,7 +201,7 @@ class Grammar:
         if self.get_token(':',False):
             rlist = self.parse_prod()
         else:
-            rlist = [(empty_list,empty_list,0)]
+            rlist = [(empty_list,empty_list,0,None)]
         if self.get_token('[',False):
             feat = self.parse_feat_list()
         else:
@@ -202,15 +211,15 @@ class Grammar:
         if reverse:
             llist,rlist = rlist,llist
 
-        for left,lparam,lcost in llist:
+        for left,lparam,lcost,lmacro in llist:
             term_only = self.enable_trie and len(lparam)>0 and all(map(lambda x:x is False,lparam))
 
-            for right,rparam,rcost in rlist:      
+            for right,rparam,rcost,rmacro in rlist:      
                 # following cross-references right with left, removing referencing suffixes
                 #  e.g.  VP -> give NP-prim NP-secn : NP-prim -yA NP-secn ver => VP -> give NP NP : 1 -yA 2 ver
                 left = left.copy()
                 right = right.copy()
-
+                
                 for idx,(symbol,param) in enumerate(zip(right,rparam)):
                     if param is not False: # NonTerminal
                         try:
@@ -221,17 +230,46 @@ class Grammar:
                 for idx,(symbol,param) in enumerate(zip(left,lparam)):
                     if param is not False: # NonTerminal
                         left[idx] = symbol.split('-')[0]    
-                
-                if term_only:
-                    self.trie.add(left, Rule(head,left,right,feat,lparam,rparam,rcost) )
+                if macro_name:
+                    if not lmacro:
+                        raise GrammarError("Line:%d No form substitution defined for macro" % (line))
+                    idx,word = lmacro
+                    for _head,form in zip(head,self.forms[macro_name][word]):
+                        for altform in form:
+                            _left = left.copy()
+                            _left[idx] = left[idx].replace('$'+word, altform)                         
+                            if term_only:
+                                self.trie.add(_left, Rule(_head,_left,right,feat,lparam,rparam,rcost) )
+                            else:
+                                self.rules.append( Rule(_head,_left,right,feat,lparam,rparam,rcost) )   
                 else:
-                    self.rules.append( Rule(head,left,right,feat,lparam,rparam,rcost) )
-               
+                    if term_only:
+                        self.trie.add(left, Rule(head,left,right,feat,lparam,rparam,rcost) )
+                    else:
+                        self.rules.append( Rule(head,left,right,feat,lparam,rparam,rcost) )
+
+    def parse_head(self):
+        if self.buf[self.pos] == '$':
+            self.pos += 1
+            macro = True
+        else:
+            macro = False
+        symbol = self.get_nonterm(True,False)
+        if macro:
+            macro_name = symbol
+            head = self.macros[symbol]
+        else:
+            macro_name = None
+            head = symbol
+        return macro_name,head
+    
     def parse_alt(self):
         """ parses left or right grammar and builds references, returns tuple(symbol list,param list)  """
         prod = []
         param_list = []
+        macro_var = None
         symbol,stype = self.get_symbol(False)
+        idx = 0
         while symbol:
             if stype == 0: # NonTerminal
                 if self.get_token('(', False, skip_ws=False):
@@ -239,17 +277,22 @@ class Grammar:
                 else:
                     param = None
             else:
-                param = False   
+                param = False
+                pos = symbol.find('$')
+                if pos != -1:
+                    macro_var = (idx,symbol[pos+1:])
             prod.append(symbol)
             param_list.append(param)
             symbol,stype = self.get_symbol(False)
+            idx += 1
+
         if self.get_token('{',False):
             cost = self.get_integer()
             self.get_token('}')
         else:
             cost = 0
 
-        return prod,param_list,cost
+        return prod,param_list,cost,macro_var
 
     def parse_prod(self):
         alts = [self.parse_alt()]
@@ -307,24 +350,97 @@ class Grammar:
                 return grammar.parse_grammar(f,reverse)
         else:
             return grammar.parse_grammar(text.split('\n'),reverse)
-        
 
+    def parse_nonterm_list(self):
+        items = []
+        items.append(self.get_nonterm())
+        while self.get_token(',',False):
+            items.append(self.get_nonterm())
+        return items
+
+    def parse_macro(self):
+        macro_name = self.get_nonterm()
+        self.get_token('->')
+        items = self.parse_nonterm_list()
+        if macro_name in self.macros:
+            raise GrammarError("Line:%d Macro already defined: %s" % (self.line_no,macro_name))
+        self.macros[macro_name] = items
+        self.forms[macro_name] = dict()
+
+    def parse_form(self):
+        macro_name = self.get_nonterm()
+        self.get_token('->')
+        if macro_name not in self.macros:
+            raise GrammarError("Line:%d Macro not defined: %s" % (self.line_no,macro_name))
+        cnt = len(self.macros[macro_name])
+        items = self.buf[self.pos:].split(",")
+        if len(items) != cnt:
+            raise GrammarError("Line:%d Form expecting %d items but found: %s" % (line_no,cnt,self.get_rest()))
+        items = [[alt.strip() for alt in item.split("/")] for item in items]
+        for alt in items[0]:
+            self.forms[macro_name][alt] = items
+
+
+    def include_form(self):
+        macro_name = self.get_nonterm()
+        fname = self.get_term()
+        if macro_name not in self.macros:
+            raise GrammarError("Line:%d Macro not defined: %s" % (self.line_no,macro_name))
+        cnt = len(self.macros[macro_name])
+        with open(fname,"rt") as f:
+            for line_no,line in enumerate(f):
+                line = line.strip()
+                if line and not line.startswith("#"):
+                    items = line.split(",")
+                    if len(items) != cnt:
+                        raise GrammarError("File:%s Line:%d Form expecting %d items but found: %s" % (fname,line_no,cnt,line))
+                    items = [[alt.strip() for alt in item.split("/")] for item in items]
+                    for alt in items[0]:
+                        self.forms[macro_name][alt] = items
+
+    def save_macros(self):
+        fname = self.get_term()
+        with open(fname,"wb") as fout:
+            pickle.dump(self.forms,fout)
+    
+    def load_macros(self):
+        fname = self.get_term()
+        with open(self,"rb") as fin:
+            self.forms = pickle.load(fin)
+
+    funcs = { 
+        "macro" : parse_macro,
+        "form" : parse_form,
+        "include_form" : include_form,
+        "save_macros" : save_macros,
+    }
     def parse_grammar(self,iterator,reverse=False):
         self.line_no = 0
         self.rules = []
         self.trie = Trie()
-        self.parse_rule("S' -> S() : S()", reverse)    
+        self.parse_rule("S' -> S() : S()", reverse)
+        self.macros = dict()
+        self.forms = dict()
         process = True
         for s in iterator:
             self.line_no += 1
-            if s.startswith('#'):
-                if s.startswith('#ifdef'):
+            if s.startswith('%'):
+                command,rest = s[1:].split(maxsplit=1)
+                if not process:
+                    if command == 'endif':
+                        process = True
+                    continue
+                if command == 'ifdef':
                     process = False
-                elif s.startswith('#endif'):
-                    process = True
-                continue
-            if not process:
-                continue
-            self.parse_rule(s,reverse)
+                else:
+                    method = self.funcs.get(command)
+                    if method:
+                        self.buf = s
+                        self.pos = len(command)+2
+                        method(self)
+                    else:
+                        raise GrammarError("Line:%d Undefined command: %s" % (line_no,command))
+            elif process:
+                self.parse_rule(s,reverse)
         return self.rules,self.trie
       
