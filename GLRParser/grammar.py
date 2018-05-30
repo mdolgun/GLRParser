@@ -90,6 +90,19 @@ class Grammar:
     SYMBOL = re.compile('''([_A-Z][-_A-Za-z0-9]*'*)|("[^"]*"|[-\'a-z0-9üöçğşðþýı$][-\'A-Z0-9a-züöçğşıðþý+@^!$]*)''')
     FEAT = re.compile('\*?[a-z0-9_]*')
     INTEGER = re.compile('-?[1-9][0-9]*')
+
+    def __init__(self,reverse=False):
+        self.reverse = reverse
+        self.line_no = 0
+        self.rules = []
+        self.trie = Trie()
+        self.macros = dict()
+        self.forms = dict()
+        self.defines = set()
+        self.process = True
+        self.if_stack = []
+        self.parse_rule("S' -> S() : S()")
+        
    
     def get_rest(self,maxchars=20):
         return self.buf[self.pos:self.pos+maxchars]
@@ -185,7 +198,7 @@ class Grammar:
         if ensure:
             raise GrammarError("Line:%d Pos:%d FeatId expected but found %s" % (self.line_no,self.pos,self.get_rest()))
 
-    def parse_rule(self,buf,reverse=False):
+    def parse_rule(self,buf):
         """ parses a rule and return an object of type Rule """
         self.buf = buf
         self.pos = 0
@@ -208,7 +221,7 @@ class Grammar:
             feat = empty_dict
         self.get_eof()
 
-        if reverse:
+        if self.reverse:
             llist,rlist = rlist,llist
 
         for left,lparam,lcost,lmacro in llist:
@@ -344,12 +357,12 @@ class Grammar:
         """ loads a grammar file and parse it """
         if bool(fname) == bool(text):
             raise GrammarError("load_grammar: either fname or text should be provided")
-        grammar = Grammar()
+        grammar = Grammar(reverse)
         if text is None:
             with open(fname, "r") as f:
-                return grammar.parse_grammar(f,reverse)
+                return grammar.parse_grammar(f)
         else:
-            return grammar.parse_grammar(text.split('\n'),reverse)
+            return grammar.parse_grammar(text.split('\n'))
 
     def parse_nonterm_list(self):
         items = []
@@ -358,7 +371,15 @@ class Grammar:
             items.append(self.get_nonterm())
         return items
 
+    def parse_term_list(self):
+        items = []
+        items.append(self.get_term())
+        while self.get_token(',',False):
+            items.append(self.get_term())
+        return items
+
     def parse_macro(self):
+        """ %macro MacroName -> NonTerm (, NonTerm)* """
         macro_name = self.get_nonterm()
         self.get_token('->')
         items = self.parse_nonterm_list()
@@ -368,6 +389,7 @@ class Grammar:
         self.forms[macro_name] = dict()
 
     def parse_form(self):
+        """ %form MacroName -> Term (, Term)* """
         macro_name = self.get_nonterm()
         self.get_token('->')
         if macro_name not in self.macros:
@@ -380,8 +402,36 @@ class Grammar:
         for alt in items[0]:
             self.forms[macro_name][alt] = items
 
+    def parse_define(self):
+        """ %define Token (, Token)* """
+        items = self.parse_term_list()
+        for item in items:
+            self.defines.add(item)
+
+    def parse_ifdef(self):
+        """ %ifdef Token """
+        item = self.get_term()
+        self.if_stack.append(item in self.defines)
+        self.process = all(self.if_stack)
+        
+    def parse_else(self):
+        """ %else """
+        self.if_stack[-1] = not self.if_stack[-1]
+        self.process = all(self.if_stack)
+
+    def parse_endif(self):
+        """ %endif """
+        self.if_stack.pop()
+        self.process = all(self.if_stack)
+
+    def include(self):
+        """ %include "file name" """
+        fname = self.get_term()
+        with open(fname,"rt") as f:
+            self.parse_grammar(f)
 
     def include_form(self):
+        """ %include_form MacroName "file name" """
         macro_name = self.get_nonterm()
         fname = self.get_term()
         if macro_name not in self.macros:
@@ -399,11 +449,25 @@ class Grammar:
                         self.forms[macro_name][alt] = items
 
     def save_macros(self):
+        """ %save_macros "file name" """
         fname = self.get_term()
         with open(fname,"wb") as fout:
             pickle.dump(self.forms,fout)
     
     def load_macros(self):
+        """ %save_macros "file name" """
+        fname = self.get_term()
+        with open(self,"rb") as fin:
+            self.forms = pickle.load(fin)
+
+    def save_dict(self):
+        """ %save_dict "file name" """
+        fname = self.get_term()
+        with open(fname,"wb") as fout:
+            pickle.dump(self.forms,fout)
+    
+    def load_dict(self):
+        """ %load_dict "file name" """
         fname = self.get_term()
         with open(self,"rb") as fin:
             self.forms = pickle.load(fin)
@@ -413,34 +477,36 @@ class Grammar:
         "form" : parse_form,
         "include_form" : include_form,
         "save_macros" : save_macros,
+        "load_macros" : load_macros,
+        "save_dict" : save_dict,
+        "load_dict" : load_dict,
+        "define" : parse_define,
+        "ifdef" : parse_ifdef,
+        "else"  : parse_else,
+        "endif" : parse_endif,
     }
-    def parse_grammar(self,iterator,reverse=False):
-        self.line_no = 0
-        self.rules = []
-        self.trie = Trie()
-        self.parse_rule("S' -> S() : S()", reverse)
-        self.macros = dict()
-        self.forms = dict()
-        process = True
-        for s in iterator:
+    def parse_grammar(self,iterator):
+        for line in iterator:
+            line = line.strip()
+            if not line:
+                continue
             self.line_no += 1
-            if s.startswith('%'):
-                command,rest = s[1:].split(maxsplit=1)
-                if not process:
-                    if command == 'endif':
-                        process = True
-                    continue
-                if command == 'ifdef':
-                    process = False
+            if line.startswith('%'):
+                parts = line[1:].split(maxsplit=1)
+                if len(parts)==1:
+                    command,rest=parts[0],""
                 else:
-                    method = self.funcs.get(command)
-                    if method:
-                        self.buf = s
-                        self.pos = len(command)+2
-                        method(self)
-                    else:
-                        raise GrammarError("Line:%d Undefined command: %s" % (line_no,command))
-            elif process:
-                self.parse_rule(s,reverse)
+                    command,rest = parts
+                if not self.process and command not in {"ifdef","else","endif"}:
+                    continue
+                method = self.funcs.get(command)
+                if method:
+                    self.buf = line
+                    self.pos = len(command)+2
+                    method(self)
+                else:
+                    raise GrammarError("Line:%d Undefined command: %s" % (self.line_no,command))
+            elif self.process:
+                self.parse_rule(line)
         return self.rules,self.trie
       
