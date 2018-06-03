@@ -231,8 +231,10 @@ class Parser:
    
     def load_grammar(self,fname=None,reverse=False,text=None):
         """ loads a grammar file and parse it """
-        self.rules,self.trie = Grammar.load_grammar(fname,reverse,text)
-
+        grammar = Grammar.load_grammar(fname,reverse,text)
+        self.rules,self.trie = grammar.rules,grammar.trie
+        self.post_processor.suff_idxs,self.post_processor.suff_dict_list =  grammar.suff_idxs,grammar.suff_dict_list
+        
         if logging.getLogger().isEnabledFor(logging.INFO):
             logging.info("rules=%s",self.format_rules())
             logging.info("dict=%s","\n".join(self.trie.list()))
@@ -666,7 +668,7 @@ class Parser:
     
     def trans_file(self,infile,outfile,ignore_exp_error=False):
         """ parses all sentences in infile. Each line should be in the form: InputSentence [ "@" ExpectedTranslation ]
-        input and corresponding translations are written to output file. The file is appended by statistics (InputCount,TranslatedCount,MatchedCount)
+        input and corresponding translations are written to output file. The file is appended by statistics (InputCount,TranslatedCount,MatchedCount,ExpectedErrorCount,IgnoredCount)
         """
         input_cnt = 0
         trans_cnt = 0

@@ -87,7 +87,7 @@ class Trie:
 
 class Grammar:
     enable_trie = False
-    SYMBOL = re.compile('''([_A-Z][-_A-Za-z0-9]*'*)|("[^"]*"|[-\'a-z0-9üöçğşðþýı$][-\'A-Z0-9a-züöçğşıðþý+@^!$]*)''')
+    SYMBOL = re.compile('''([_A-Z][-_A-Za-z0-9]*'*)|("[^"]*"|[-+\'a-z0-9üöçğşðþýı$][-\'A-Z0-9a-züöçğşıðþý+@^!$]*)''')
     FEAT = re.compile('\*?[a-z0-9_]*')
     INTEGER = re.compile('-?[1-9][0-9]*')
 
@@ -102,6 +102,9 @@ class Grammar:
         self.process = True
         self.if_stack = []
         self.parse_rule("S' -> S() : S()")
+        self.suff_dict_names = dict()
+        self.suff_idxs = dict()
+        self.suff_dict_list = []
         
    
     def get_rest(self,maxchars=20):
@@ -360,9 +363,11 @@ class Grammar:
         grammar = Grammar(reverse)
         if text is None:
             with open(fname, "r") as f:
-                return grammar.parse_grammar(f)
+                grammar.parse_grammar(f)
+                return grammar
         else:
-            return grammar.parse_grammar(text.split('\n'))
+            grammar.parse_grammar(text.split('\n'))
+            return grammar
 
     def parse_nonterm_list(self):
         items = []
@@ -472,6 +477,50 @@ class Grammar:
         with open(self,"rb") as fin:
             self.forms = pickle.load(fin)
 
+    def parse_suffix_macro(self):
+        """ %suffix_macro MacroName -> term (, term)* """
+        macro_name = self.get_nonterm()
+        self.get_token('->')
+        items = self.parse_term_list()
+
+        if macro_name in self.suff_dict_names:
+            raise GrammarError("Line:%d Macro already defined: %s" % (self.line_no,macro_name))
+        dict_idx = len(self.suff_dict_list)
+        self.suff_dict_names[macro_name] = (dict_idx,len(items))
+        self.suff_dict_list.append(dict())
+        for idx,item in enumerate(items):
+            self.suff_idxs[item] = (dict_idx,idx)
+
+    def parse_suffix(self):
+        """ %suffix MacroName -> Term (, Term)* """
+        macro_name = self.get_nonterm()
+        self.get_token('->')
+        if macro_name not in self.suff_dict_names:
+            raise GrammarError("Line:%d Suffix Macro not defined: %s" % (self.line_no,macro_name))
+        dict_idx,cnt = self.suff_dict_names[macro_name]
+        items = self.buf[self.pos:].split(",")
+        if len(items) != cnt:
+            raise GrammarError("Line:%d Suffix expecting %d items but found: %s" % (line_no,cnt,self.get_rest()))
+        items = [item.strip() for item in items]
+        self.suff_dict_list[dict_idx][items[0]] = items
+
+    def include_suffix(self):
+        """ %include_suffix MacroName "file name" """
+        macro_name = self.get_nonterm()
+        fname = self.get_term()
+        if macro_name not in self.suff_dict_names:
+            raise GrammarError("Line:%d Suffix Macro not defined: %s" % (self.line_no,macro_name))
+        dict_idx,cnt = self.suff_dict_names[macro_name]
+        with open(fname,"rt") as f:
+            for line_no,line in enumerate(f):
+                line = line.strip()
+                if line and not line.startswith("#"):
+                    items = line.split(",")
+                    if len(items) != cnt:
+                        raise GrammarError("File:%s Line:%d Suffix Form expecting %d items but found: %s" % (fname,line_no,cnt,line))
+                    items = [item.strip() for item in items]
+                    self.suff_dict_list[dict_idx][items[0]] = items
+
     funcs = { 
         "macro" : parse_macro,
         "form" : parse_form,
@@ -484,13 +533,18 @@ class Grammar:
         "ifdef" : parse_ifdef,
         "else"  : parse_else,
         "endif" : parse_endif,
+        "suffix_macro" : parse_suffix_macro,
+        "suffix" : parse_suffix,
+        "include_suffix": include_suffix,
+#        "save_suffixes" : save_suffixes,
+#        "load_suffixes" : load_suffixes,
     }
     def parse_grammar(self,iterator):
         for line in iterator:
+            self.line_no += 1
             line = line.strip()
             if not line:
-                continue
-            self.line_no += 1
+                continue           
             if line.startswith('%'):
                 parts = line[1:].split(maxsplit=1)
                 if len(parts)==1:
@@ -508,5 +562,4 @@ class Grammar:
                     raise GrammarError("Line:%d Undefined command: %s" % (self.line_no,command))
             elif self.process:
                 self.parse_rule(line)
-        return self.rules,self.trie
       

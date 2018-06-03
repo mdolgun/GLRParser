@@ -69,7 +69,6 @@ class TurkishPostProcessor:
     def __init__(self):
         relist, self.replist = zip(*TurkishPostProcessor.rules)
         self.rx = re.compile('|'.join(relist))
-
         
     def handle_match(self,match):
         for idx,val in enumerate(match.groups()):
@@ -99,6 +98,15 @@ class TurkishPostProcessor:
     
     
     def __call__(self,text):
+        items = text.split()
+        for idx,item in enumerate(items):
+            if item.startswith("+"):
+                dicidx,sufidx = self.suff_idxs[item[1:]]
+                prev = items[idx-1]
+                items[idx-1] = self.suff_dict_list[dicidx][prev][sufidx]
+                items[idx] = ""
+        text = " ".join(items).replace("  "," ")
+
         return TurkishPostProcessor.vowel_harmony(
             self.rx.sub(
                 self.handle_match,
