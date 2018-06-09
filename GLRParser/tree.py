@@ -17,6 +17,7 @@ empty_list = list()
 uid_dict = dict()
 uid_cnt = 0
 def uid(obj):
+    """ create globally unique id for an object, starting from 1) """
     global uid_cnt, uid_dict
     _id = id(obj)
     if _id in uid_dict:
@@ -63,6 +64,7 @@ class Tree:
     """
 
     def list_format(self,tree_type=True):
+        """ return a list formatted tree """
         out = []
         for item in (self.left if tree_type else self.right):
             if type(item)==str:
@@ -120,7 +122,7 @@ class Tree:
         ])
 
     def pformat_dbg(self,tree_type=True,level=0):
-        """ return prety formatted (indented multiline) string representation of a tree with extended information(rule no, feature list, cost) """
+        """ similar to pformat_ext, additionally prints globally unique ids for tree nodes """
         indent = self.indenter*level
         prod = self.left if tree_type else self.right
         if len(prod)==0: # empty production

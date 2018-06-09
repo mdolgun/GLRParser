@@ -119,6 +119,22 @@ class TestCost2(TestCost,unittest.TestCase):
         [('c ee', 0), ('dd c', 0), ('dd ee', 1)],
     ]
 
+class TestCost3(TestCost,unittest.TestCase):
+    reverse = False
+    grammar = """
+        S -> A : A B {-1}    [f=0]
+        S -> A : A n B 
+        A -> a : x         [f=1]  
+        A -> b : y
+        B -> : z
+    """
+    sents = [ "a", "b" ]
+    enumx = [
+        [('x n z', 0)],
+        [('y z', 0)],
+    ]
+
+
 def genTestCost(cls):
     parser = Parser()
     parser.load_grammar(text=cls.grammar,reverse=cls.reverse)
@@ -132,4 +148,4 @@ def genTestCost(cls):
  
 if __name__== '__main__':
     unittest.main()
-    #genTestCost(TestCost2)
+    #genTestCost(TestCost3)

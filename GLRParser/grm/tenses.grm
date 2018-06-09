@@ -1,12 +1,15 @@
-S -> SentNorm  : SentNorm [quest=0]
-S -> SentInv   : SentInv  [quest=1]
-S -> SentCmd   : SentCmd
+S -> SentNorm  : SentNorm [conn=0,quest=0]
+S -> SentInv   : SentInv  [conn=0,quest=1]
+S -> SentCmd   : SentCmd  [conn=0]
+S -> that SentNorm : SentNorm [conn=that]
+S -> as long as SentNorm : SentNorm sürece [conn=that]
+S -> while SentNorm : SentNorm  [conn=while]
 
-SentCmd -> be Pred 		: Pred ol
+SentCmd -> be Pred 			: Pred ol
 SentCmd -> don't be Pred 	: Pred olma
-SentCmd -> don't V 		: V -mA 	[neg=1]
+SentCmd -> don't V 			: V -mA 	[neg=1]
 SentCmd -> do Not V 		: V Neg
-SentCmd -> V 			: V  		[neg=0]
+SentCmd -> V 				: V  		[neg=0]
 SentCmd -> let 's Not V   	: V Neg -YAlHm
 
 # affirmative 
@@ -15,16 +18,17 @@ SentNorm -> Subj AuxBeCont Not StBe     : Subj StBe
 SentNorm -> Subj AuxBeNeg StBe          : Subj StBe          	[neg=1]
 SentNorm -> Subj AuxHavePos Not StHave  : Subj StHave 
 SentNorm -> Subj AuxHaveCont Not StHave : Subj StHave 
-SentNorm -> Subj AuxHaveNeg StHave      : Subj StHave      	[neg=1]
+SentNorm -> Subj AuxHaveNeg StHave      : Subj StHave      		[neg=1]
 SentNorm -> Subj AuxDoPos Not StDo      : Subj StDo 
 SentNorm -> Subj AuxDoNeg StDo          : Subj StDo           	[neg=1]
 SentNorm -> Subj ModalPos Not StModal   : Subj StModal 	
 SentNorm -> Subj ModalCont Not StModal  : Subj StModal 
-SentNorm -> Subj ModalNeg StModal       : Subj StModal     	[neg=1]
-SentNorm -> Subj Vs                     : Subj Vs SimpTense	[pass=0,neg=0,mode=simp,tense=pres,numb=sing,pers=3]
+SentNorm -> Subj ModalNeg StModal       : Subj StModal     		[neg=1]
+SentNorm -> Subj Vs                     : Subj Vs SimpTense		[pass=0,neg=0,mode=simp,tense=pres,numb=sing,pers=3]
 SentNorm -> Subj V                      : Subj V SimpTense      [pass=0,neg=0,mode=simp,tense=pres,numb=sing,pers=1]
 SentNorm -> Subj V                      : Subj V SimpTense      [pass=0,neg=0,mode=simp,tense=pres,numb=plur]
 SentNorm -> Subj Ved                    : Subj Ved SimpTense    [pass=0,neg=0,mode=simp,tense=past]
+SentNorm -> Subj used to V              : Subj V +aorist -dH Pers2
 
 # question
 SentInv -> shall we Not V              : V Neg -YAlHm mH
@@ -102,86 +106,175 @@ ModalNeg -> mayn't    [modal=may,tense=pres]
 ModalNeg -> mightn't  [modal=may,tense=past]
 ModalNeg -> shouldn't [modal=must]
 
-StBe    -> going to StModal 	: StModal [modal=will]
+StBe    -> going to StModal : StModal [modal=will]
 StBe    -> Ving {1}      	: Ving ProgTense
-StBe    -> being Ven     	: Ven Pass ProgTense
-StBe    -> Ven           	: Ven Pass SimpTense
-StBe    -> Pred          	: Pred PredTense 	
+StBe    -> being Ven     	: Ven +passive ProgTense
+StBe    -> Ven           	: Ven +passive SimpTense [pass=1]
+StBe    -> Pred          	: Pred PredTense
+StBe    -> PredVerb			: PredVerb ProgTense
 StBe    -> being Pred    	: Pred ol ProgTense
+#StBe    -> being Pred2   	: Pred2 ProgTense
+StBe    -> able to V        : V ModalCan
 StHave  -> Ven       {1} 	: Ven PerfTense
 StHave  -> been Ving {1} 	: Ving	ProgTense
 StHave  -> been Pred     	: Pred ol PerfTense
-StHave  -> been Ven      	: Ven Pass PerfTense
-StDo    -> V             	: V SimpTense
-StModal -> be Ving       	: Ving -Hyor ol ModalTense	
-StModal -> be Pred       	: Pred ol ModalTense
-StModal -> be Ven        	: Ven Pass  ModalTense
-StModal -> have Ven      	: Ven -mHþ ol ModalTense
-StModal -> have been Ving  	: Ving -Hyor ol ModalTense
-StModal -> have been Pred  	: Pred olmuþ ol ModalTense
-StModal -> have been Ven   	: Ven Pass -mHþ ol ModalTense
-StModal -> V               	: V ModalTense
+StHave  -> been PredVerb	: PredVerb PerfTense
+StHave  -> been able to V   : V -YAbil ProgTense [neg=0]
+StHave  -> been able to V   : V -YA ProgTense [neg=1]
+StHave  -> been Ven      	: Ven +passive PerfTense 
+StDo    -> V             	: V SimpTense [pass=0]
+StDo    -> use to V         : V Aorist 
+
+PredVerb -> afraid of Obj	: Obj -dAn kork!
+
+BaseModal -> be Ving       		: Ving -Hyor ol	
+BaseModal -> be Pred       		: Pred ol
+BaseModal -> be Ven        		: Ven +passive 
+BaseModal -> have Ven      		: Ven -mHþ ol
+BaseModal -> have been Ving  	: Ving -Hyor ol
+BaseModal -> have been Pred  	: Pred olmuþ ol
+BaseModal -> have been Ven   	: Ven +passive -mHþ ol
+BaseModal -> V					: V
+
+StModal -> BaseModal			: BaseModal ModalTense	  
+StModal -> be able to V         : V ModalCanModal
+StModal -> be PredVerb          : PredVerb ModalTense
+#StModal -> BaseModal			: BaseModal ol ModalTense		[pred=1]
+#StModal -> be PredModal		: PredModal
+#StModal -> have been PredModal	: PredModal
 
 Not -> not [neg=1]
 Not ->     [neg=0]
 
-V    -> sleep    : uyu	
-Vs   -> sleeps   : uyu	
-Ving -> sleeping : uyu
-Ved  -> slept    : uyu
-Ven  -> slept    : uyu
+%macro V -> V,Vs,Ving,Ved,Ven
+%form V -> sleep,sleeps,sleeping,slept,slept
+%form V -> go,goes,going,went,gone
+%form V -> watch,watches,watching,watched,watched
+%form V -> clean,cleans,cleaning,cleaned,cleaned
+%form V -> burn,burns,burning,burnt,burnt
+%form V -> turn,turns,turning,turned,turned
+%form V -> have,has,having,had,had
+%form V -> hate,hates,hating,hated,hated
+%form V -> make,makes,making,made,made
+%form V -> use,uses,using,used,used
 
-V    -> go       : git
-Vs   -> goes     : git
-Ving -> going    : git
-Ved  -> went     : git
-Ven  -> gone     : git
+%suffix_macro V -> base,aorist,caus,passive
+%suffix V -> git,gider,götür,gidil
+%suffix V -> izle,izler,izlet,izlen
+%suffix V -> seyret,seyreder,seyrettir,seyredil
+%suffix V -> uyu,uyur,uyut,uyun
+%suffix V -> çevir,çevirir,çevirt,çevril
+%suffix V -> dön,döner,döndür,dönül
+%suffix V -> döndür,döndürür,döndürt,döndürül
+%suffix V -> temizle,temizler,temizlet,temizlen
+%suffix V -> yan,yanar,yak,yandýr
+%suffix V -> yak,yakar,yaktýr,yakýl
+%suffix V -> et,eder,ettir,edil
 
-V    -> watch    : seyret
-Vs   -> watches  : seyret
-Ving -> watching : seyret
-Ved  -> watched  : seyret
-Ven  -> watched  : seyret
+$V -> $sleep          : uyu 
+$V -> $go             : git
+$V -> $watch          : izle | seyret
+$V -> $watch Obj : Obj Acc izle | Obj Acc seyret 
+$V -> $turn           : dön
+$V -> $turn Obj       : Obj Acc çevir | Obj Acc döndür 
+$V -> $turn Obj down  : Obj Acc geri çevir
+$V -> $turn Obj on    : Obj Acc aç
+$V -> $turn Obj off   : Obj Acc kapa
+$V -> $clean Obj      : Obj Acc temizle
+$V -> $burn           : yan
+$V -> $burn Obj       : Obj Acc yak
+$V -> $make Obj V     : Obj -YA V +caus
+$V -> $have Obj Ved   : Obj Acc V +caus
+$V -> $have to BaseModal  : BaseModal -mAk zorunda [pred=1]
+#$V -> $have Obj()     : Obj PossSuf(pnumb=*numb,ppers=*pers) Var [pred=1]
+$V -> $have Obj		  : Obj -YA sahip [pred=1]
+$V -> $hate Obj       : Obj -dAn nefret et 
+#$V -> $use to V       : V Aorist  [+notense]
+
+Var -> : {-1}	[modal=0]
+Var -> : yok	[neg=1]
+Var -> : var	[neg=0]
 
 Neg -> : -mA 	[neg=1]
-Neg -> : 	[neg=0]
+Neg -> : 		[neg=0]
 
 NegPred -> : deðil [neg=1]
 NegPred -> :       [neg=0]
 
 Quest -> : mH 	[quest=1]
-Quest -> : 	[quest=0]
+Quest -> : 		[quest=0]
+
+											
+SimpTense -> : SimpVTense {-1}									[-notense,pred=0,conn=0]
+SimpTense -> : PredTense										[-notense,pred=1,conn=0]
+SimpTense -> : Neg -dHk PossSuf(pnumb=*numb,ppers=*pers) {-1}	[-notense,pred=0,conn=that]
+SimpTense -> : ol Neg -dHk PossSuf(pnumb=*numb,ppers=*pers)		[-notense,pred=1,conn=that]
+SimpTense -> : Neg -dHk PossSuf(pnumb=*numb,ppers=*pers) {-1}	[-notense,pred=0,conn=while]
+SimpTense -> : ol Neg -dHk PossSuf(pnumb=*numb,ppers=*pers)		[-notense,pred=1,conn=while]
 
 
-PredTense -> : NegPred -lAr mH {-1}		[tense=pres,numb=plur,pers=3,quest=1]
-PredTense -> : NegPred Quest Pers1 		[tense=pres]
+PredTense -> : NegPred -lAr mH {-1}			[tense=pres,numb=plur,pers=3,quest=1]
+PredTense -> : NegPred Quest Pers1 			[tense=pres]
 PredTense -> : NegPred Quest -YdH Pers2 	[tense=past]
 PredTense -> : NegPred -lAr Quest -YdH		[tense=past,numb=plur,pers=3]
 
-ProgTense -> : Neg -Hyor Quest Pers1		[tense=pres]
-ProgTense -> : Neg -Hyor Quest -YdH Pers2    	[tense=past]
+ProgTense -> : Neg -Hyor Quest TenseX								[conn=0]
+ProgTense -> : Neg -Hyor olduk PossSuf(pnumb=*numb,ppers=*pers)		[conn=that]
 
-SimpTense -> : -Ar Quest Pers1		[tense=pres,neg=0,pass=0]
-SimpTense -> : -Hr Quest Pers1		[tense=pres,neg=0,pass=1]
-SimpTense -> : -mA Pers3 		[tense=pres,neg=1,quest=0]
-SimpTense -> : -mAz mH Pers1		[tense=pres,neg=1,quest=1]
-SimpTense -> : Neg -dH Pers2 Quest	[tense=past]
+Aorist -> : +aorist Quest TenseX		[neg=0]
+Aorist -> : -mA Pers3					[tense=pres,neg=1,quest=0]
+Aorist -> : -mAzdH Pers2				[tense=past,neg=1,quest=0]
+Aorist -> : -mAz mH TenseX				[neg=1,quest=1]
 
-Pass -> : -Hl
+SimpVTense -> : +aorist Quest Pers1		[tense=pres,neg=0,pass=0]
+SimpVTense -> : -Hr Quest Pers1			[tense=pres,neg=0,pass=1]
+SimpVTense -> : -mA Pers3 				[tense=pres,neg=1,quest=0]
+SimpVTense -> : -mAz mH Pers1			[tense=pres,neg=1,quest=1]
+SimpVTense -> : Neg -dH Pers2 Quest		[tense=past]
 
-PerfTense -> : Neg -dH Pers2 Quest		[tense=pres]
-PerfTense -> : Neg -mHþ Quest -YdH Pers2	[tense=past]
+PerfTense -> : Neg -dH Pers2 Quest			[tense=pres,conn=0]
+PerfTense -> : Neg -mHþ Quest -YdH Pers2	[tense=past,conn=0]
+PerfTense -> : Neg -dHk	PossSuf(pnumb=*numb,ppers=*pers)			[tense=pres,conn=that]
+PerfTense -> : Neg -mHþ olduk PossSuf(pnumb=*numb,ppers=*pers)		[tense=past,conn=that]
 
-ModalTense -> : Neg -YAcAk Quest Pers1		[modal=will,tense=pres]
-ModalTense -> : Neg -YAcAk Quest -YdH Pers2	[modal=will,tense=past]
-ModalTense -> : -YAbilir Quest Pers1		[modal=can,tense=pres,neg=0]
-ModalTense -> : -YAbilir Quest -YdH  Pers2	[modal=can,tense=past,neg=0]
-ModalTense -> : -AmA Pers3 Quest		[modal=can,tense=pres,neg=1,quest=0]
-ModalTense -> : -AmAz mH Pers1		        [modal=can,tense=pres,neg=1,quest=1]
-ModalTense -> : -AmAz Quest -YdH Pers2		[modal=can,tense=past,neg=1]
-ModalTense -> : Neg -YAbilir Quest Pers1	[modal=may,tense=pres]
-ModalTense -> : Neg -YAbilir Quest -YdH Pers2	[modal=may,tense=past]
-ModalTense -> : Neg -mAlH Quest Pers1		[modal=must]
+ModalTense -> : ModalVTense {-1}									[pred=0,conn=0]
+ModalTense -> : ModalConn PossSuf(pnumb=*numb,ppers=*pers) {-1}		[pred=0,conn=that]
+ModalTense -> : ol ModalVTense										[pred=1,conn=0]
+ModalTense -> : ol ModalConn PossSuf(pnumb=*numb,ppers=*pers)		[pred=1,conn=that]
+
+
+ModalConn -> : Neg -YAcAk				[modal=will]
+ModalConn -> : -YAbildik				[modal=can,neg=0]
+ModalConn -> : -YAmAdHk					[modal=can,neg=1]
+ModalConn -> : Neg -YAbildHk			[modal=may]
+ModalConn -> : Neg -mAk zorunda olduk   [modal=must]
+
+ModalVTense -> : Neg -YAcAk Quest TenseX		[modal=will]
+ModalVTense -> : ModalCan						[modal=can]
+ModalVTense -> : Neg -YAbilir Quest TenseX		[modal=may]
+ModalVTense -> : Neg -mAlH Quest Pers1			[modal=must]
+
+ModalCan -> : -YAbilir Quest TenseX				[neg=0]
+ModalCan -> : -AmA Pers3   					    [tense=pres,neg=1,quest=0]
+ModalCan -> : -AmAz mH Pers1					[tense=pres,neg=1,quest=1]
+ModalCan -> : -AmAz Quest -YdH Pers2			[tense=past,neg=1]
+
+ModalCanModal -> : -YAbil ModalX Quest Pers1			[tense=pres,neg=0]
+ModalCanModal -> : -YAbil ModalX Quest -YdH  Pers2		[tense=past,neg=0]
+ModalCanModal -> : -YAmA ModalX Quest Pers1     		[tense=pres,neg=1]
+ModalCanModal -> : -YAmA ModalX Quest -YdH Pers2		[tense=past,neg=1] 
+
+ModalX -> : -YAcAk [modal=will]
+ModalX -> : -mAlH  [modal=must,tense=pres]
+ModalX -> :        [modal=can] # What?
+
+TenseX -> : Pers1		[tense=pres]
+TenseX -> : -YdH Pers2	[tense=past]
+
+Pred -> Adj : Adj
+Pred -> used to Obj : Obj -YA alýþkýn
+Pred -> used to Ving : Ving -mAyA alýþkýn
+
 
 Pers1 -> : -YHm     [numb=sing,pers=1]
 Pers1 -> : -sHn     [numb=sing,pers=2]
@@ -204,14 +297,42 @@ Pers3 -> : -yHz     [numb=plur,pers=1]
 Pers3 -> : -zsHnHz  [numb=plur,pers=2]
 Pers3 -> : -zlAr    [numb=plur,pers=3]
 
-Pred -> Adj : Adj
 
 Adj -> happy  : mutlu
 
-Subj -> NSing : NSing 		[numb=sing,pers=3]
-Subj -> NPlur : NPlur -lAr	[numb=plur,pers=3]
-Subj -> Pron  : Pron {1}
-Subj -> Pron   
+Subj -> SubjNom [conn=0]
+Subj -> SubjGen [conn=that]
+
+SubjNom -> NSing : NSing 		[numb=sing,pers=3]
+SubjNom -> NPlur : NPlur -lAr	[numb=plur,pers=3]
+SubjNom -> Pron  : Pron {1}
+SubjNom -> Pron
+
+SubjGen -> NSing : NSing -NHn	[numb=sing,pers=3]
+SubjGen -> NPlur : NPlur -lArHn	[numb=plur,pers=3]
+SubjGen -> Pron  : PossPron {1}
+SubjGen -> Pron
+
+
+Det -> 				[def=0]
+Det -> the 			[def=1]
+Det -> a   : bir	[def=0]
+
+Case -> : 	  	[case=0]
+Case -> : 	  	[case=i,def=0]
+Case -> : -YH 	[case=i,def=1]
+Case -> : -YA	[case=e]
+Case -> : -dA 	[case=de]
+Case -> : -dAn	[case=den] 
+Case -> : -lH   [case=li]
+Case -> : -YlA  [case=le]
+Case -> : -sHz  [case=siz]
+
+Acc -> :		[def=0]
+Acc -> : -YH	[def=1]
+
+Obj -> Det NSing : Det NSing 
+Obj -> Det NPlur : Det NPlur -lAr 
 
 Pron -> i    : ben     [numb=sing,pers=1]
 Pron -> you  : sen     [numb=sing,pers=2]
@@ -222,5 +343,26 @@ Pron -> we   : biz     [numb=plur,pers=1]
 Pron -> you  : siz     [numb=plur,pers=2]
 Pron -> they : onlar   [numb=plur,pers=3]
 
-NSing -> man : adam
-NPlur -> men : adam
+PossPron -> my    : benim     [numb=sing,pers=1]
+PossPron -> your  : senin     [numb=sing,pers=2]
+PossPron -> his   : onun      [numb=sing,pers=3]
+PossPron -> her   : onun      [numb=sing,pers=3]
+PossPron -> its   : onun      [numb=sing,pers=3]
+PossPron -> our   : bizim     [numb=plur,pers=1]
+PossPron -> your  : sizin     [numb=plur,pers=2]
+PossPron -> their : onlarýn   [numb=plur,pers=3]
+
+PossSuf -> : -Hm 	[pnumb=sing,ppers=1]
+PossSuf -> : -Hn 	[pnumb=sing,ppers=2]
+PossSuf -> : -ZHN 	[pnumb=sing,ppers=3]
+PossSuf -> : -HmHz	[pnumb=plur,ppers=1]
+PossSuf -> : -HnHz	[pnumb=plur,ppers=2]
+PossSuf -> : -lArH	[pnumb=plur,ppers=3]
+
+%macro N -> NSing,NPlur
+%form N -> man,men
+%form N -> car,cars
+%form N -> light,lights
+$N -> $man		: adam
+$N -> $car		: araba
+$N -> $light	: ýþýk

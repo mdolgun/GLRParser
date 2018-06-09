@@ -11,11 +11,11 @@ import logging, re, copy
 from collections import defaultdict
 
 if __name__ == "__main__":
-    from morpher import TurkishPostProcessor
+    from morpher import TurkishPostProcessor,PostProcessError
     from grammar import Grammar,GrammarError,Rule,format_feat,Trie
     from tree import Tree,uid
 else:
-    from .morpher import TurkishPostProcessor
+    from .morpher import TurkishPostProcessor,PostProcessError
     from .grammar import Grammar,GrammarError,Rule,format_feat,Trie
     from .tree import Tree,uid
 
@@ -399,6 +399,8 @@ class Parser:
                 last_error = "%s %s#%d" % (ue.args[0], symbol, ruleno)
                 logging.debug("make_trans_tree: %s unifyd(%s,%s,%s)->Error", symbol, format_feat(feat), format_feat(fparam,'()'), format_feat(rule.feat))
         if not ntree:
+            if not self.ruledict[symbol]:
+                raise ParseError("No production rule defined for symbol: %s" % symbol)
             raise UnifyError(last_error)
         return ntree
 
@@ -664,6 +666,8 @@ class Parser:
             return str(pe)
         except UnifyError as ue:
             return str(ue)
+        except PostProcessError as ppe:
+            return str(ppe)
         
     
     def trans_file(self,infile,outfile,ignore_exp_error=False):

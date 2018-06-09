@@ -21,6 +21,10 @@ All functionality is provided by main class: TurkishPostProcessor
 
 import re
 
+class PostProcessError(Exception):
+    """ Raised when a suffix cannot be applied to word stem """
+    pass
+
 class TurkishPostProcessor:
     """
     rules = [
@@ -98,14 +102,18 @@ class TurkishPostProcessor:
     
     
     def __call__(self,text):
+        #print(text)
         items = text.split()
         for idx,item in enumerate(items):
             if item.startswith("+"):
                 dicidx,sufidx = self.suff_idxs[item[1:]]
                 prev = items[idx-1]
-                items[idx-1] = self.suff_dict_list[dicidx][prev][sufidx]
-                items[idx] = ""
-        text = " ".join(items).replace("  "," ")
+                try:
+                    items[idx-1] = self.suff_dict_list[dicidx][prev][sufidx]
+                except KeyError:
+                    raise PostProcessError("Postprocess Error: sent: %s word: %s, suffix: %s" % (text, prev,item))
+                del items[idx]
+        text = " ".join(items)
 
         return TurkishPostProcessor.vowel_harmony(
             self.rx.sub(

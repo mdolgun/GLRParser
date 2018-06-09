@@ -167,7 +167,7 @@ am i not happy @ mutlu deðil miyim
 is he not happy @ mutlu deðil mi
 are we not happy @ mutlu deðil miyiz
 are you not happy @ mutlu deðil misiniz
-are they not happy @ mutlu deðil miler
+are they not happy @ mutlu deðil miler | mutlu deðiller mi
 
 was i happy @ mutlu muydum
 was he happy @ mutlu muydu
@@ -234,6 +234,7 @@ i could be happy @ mutlu olabilirdim
 i may be happy @ mutlu olabilirim
 i might be happy @ mutlu olabilirdim
 i must be happy@ mutlu olmalýyým
+i have to be happy @ mutlu olmak zorundayým
 
 i won't be happy @ mutlu olmayacaðým
 i wouldn't be happy @ mutlu olmayacaktým
@@ -242,6 +243,7 @@ i couldn't be happy @ mutlu olamazdým
 i mayn't be happy @ mutlu olmayabilirim
 i mightn't be happy @ mutlu olmayabilirdim
 i mustn't be happy @ mutlu olmamalýyým
+i don't have to be happy @ mutlu olmak zorunda deðilim
 
 will i be happy @ mutlu olacak mýyým
 would i be happy @ mutlu olacak mýydým
@@ -250,6 +252,7 @@ could i be happy @ mutlu olabilir miydim
 may i be happy @ mutlu olabilir miyim
 might i be happy @ mutlu olabilir miydim
 must i be happy @ mutlu olmalý mýyým
+do i have to be happy @ mutlu olmak zorunda mýyým
 
 won't i be happy @ mutlu olmayacak mýyým
 wouldn't i be happy @ mutlu olmayacak mýydým
@@ -258,6 +261,7 @@ couldn't i be happy @ mutlu olamaz mýydým
 mayn't i be happy @ mutlu olmayabilir miyim
 mightn't i be happy @ mutlu olmayabilir miydim
 mustn't i be happy @ mutlu olmamalý mýyým
+don't i have to be happy @ mutlu olmak zorunda deðil miyim
 
 go @ git
 don't go @ gitme
@@ -268,6 +272,7 @@ shall we go @ gidelim mi
 shall we not go @ gitmeyelim mi
 be happy @ mutlu ol
 don't be happy @ mutlu olma
+don't have to be happy @ mutlu olmak zorunda olma
 
 i am watched @ seyredilirim
 i am not watched @ seyredilmem
@@ -334,3 +339,282 @@ i wasn't going to be watched @ seyredilmeyecektim
 was i going to be watched @ seyredilecek miydim
 wasn't i going to be watched @ seyredilmeyecek miydim
 
+i have to go @ gitmek zorundayým
+i don't have to go @ gitmek zorunda deðilim
+do i have to go @ gitmek zorunda mýyým
+don't i have to go @ gitmek zorunda deðil miyim
+
+i had to go @ gitmek zorundaydým
+i didn't have to go @ gitmek zorunda deðildim
+did i have to go @ gitmek zorunda mýydým
+didn't i have to go @ gitmek zorunda deðil miydim
+
+i will have to go @ gitmek zorunda olacaðým
+i won't have to go @ gitmek zorunda olmayacaðým
+will i have to go @ gitmek zorunda olacak mýyým 
+won't i have to go @ gitmek zorunda olmayacak mýyým
+
+i would have to go @ gitmek zorunda olacaktým
+i wouldn't have to go @ gitmek zorunda olmayacaktým
+would i have to go @ gitmek zorunda olacak mýydým 
+wouldn't i have to go @ gitmek zorunda olmayacak mýydým
+
+i may have to go @ gitmek zorunda olabilirim
+i mayn't have to go @ gitmek zorunda olmayabilirim
+may i have to go @ gitmek zorunda olabilir miyim
+mayn't i have to go @ gitmek zorunda olmayabilir miyim
+
+i have a car @ bir arabam var | bir arabaya sahibim
+do i have a car @ bir arabam var mý | bir arabaya sahip miyim
+i don't have a car @ bir arabam yok | bir arabaya sahip deðilim
+don't i have a car @ bir arabam yok mu | bir arabaya sahip deðil miyim
+
+she has a car @ bir arabasý var | bir arabaya sahip
+does she have a car @ bir arabasý var mý | bir arabaya sahip mi
+she doesn't have a car @ bir arabasý yok | bir arabaya sahip deðil
+doesn't she have a car @ bir arabasý yok mu | bir arabaya sahip deðil mi
+
+i had a car @ bir arabam vardý | bir arabaya sahiptim 
+did i have a car @ bir arabam var mýydý | bir arabaya sahip miydim
+i didn't have a car @ bir arabam yoktu | bir arabaya sahip deðildim
+didn't i have a car @ bir arabam yok muydu | bir arabaya sahip deðil miydim
+
+i will have a car @ bir arabam olacak | bir arabaya sahip olacaðým
+will i have a car @ bir arabam olacak mý | bir arabaya sahip olacak mýyým
+i won't have a car @ bir arabam olmayacak | bir arabaya sahip olmayacaðým
+won't i have a car @ bir arabam olmayacak mý | bir arabaya sahip olmayacak mýyým
+
+i am able to go @ gidebilirim 
+i am not able to go @ gidemem
+am i able to go @ gidebilir miyim
+am i not able to go @ gidemez miyim
+
+i was able to go @ gidebilirdim | gidebildim
+i was not able to go @ gidemezdim | gidemedim
+was i able to go @ gidebilir miydim | gidebildim mi
+wasn't i able to go @ gidemez miydim | gidemedim mi
+
+i will be able to go @ gidebileceðim
+i won't be able to go @ gidemeyeceðim
+will i be able to go @ gidebilecek miyim 
+won't i be able to go @ gidemeyecek miyim
+
+i would be able to go @ gidebilecektim
+i wouldn't be able to go @ gidemeyecektim
+would i be able to go @ gidebilecek miydim 
+wouldn't i be able to go @ gidemeyecek miydim
+
+i must be able to go @ gidebilmeliyim 
+i mustn't be able to go @ gidebilmemeliyim | gidememeliyim
+must i be able to go @ gidebilmeli miyim
+mustn't i be able to go @ gidebilmemeli miyim | gidememeli miyim
+
+i used to go @ giderdim
+i didn't use to go @ gitmezdim
+did i use to go @ gider miydim
+didn't i use to go @ gitmez miydim
+
+i am used to going @ gitmeye alýþkýným
+i am not used to going @ gitmeye alýþkýn deðilim
+am i used to going @ gitmeye alýþkýn mýyým
+am i not used to going @ gitmeye alýþkýn deðil miyim
+
+i am afraid of cars @ arabalardan korkarým | arabalardan korkuyorum
+i am not afraid of cars @ arabalardan korkmam | arabalardan korkmuyorum
+am i afraid of cars @ arabalardan korkar mýyým | arabalardan korkuyor muyum
+am i not afraid of cars @ arabalardan korkmaz mýyým | arabalardan korkmuyor muyum
+
+i was afraid of cars @ arabalardan korkardým |arabalardan korkuyordum
+i wasn't afraid of cars @ arabalardan korkmazdým | arabalardan korkmuyordum
+was i afraid of cars @ arabalardan korkar mýydým | arabalardan korkuyor muydum
+wasn't i afraid of cars @ arabalardan korkmaz mýydým | arabalardan korkmuyor muydum
+
+i will be afraid of cars @ arabalardan korkacaðým
+i won't be afraid of cars @ arabalardan korkmayacaðým
+will i be afraid of cars @ arabalardan korkacak mýyým
+won't i be afraid of cars @ arabalardan korkmayacaðým
+
+i can be afraid of cars @ arabalardan korkabilirim | arabalardan korkabiliyorum
+i can't be afraid of cars @ arabalardan korkamam | arabalardan korkamýyorum
+can i be afraid of cars @ arabalardan korkabilir miyim | arabalardan korkabiliyor muyum
+can't i be afraid of cars @ arabalardan korkamaz mýyým | arabalardan korkamýyor muyum
+
+i must be afraid of cars @ arabalardan korkmalýyým
+i mustn't be afraid of cars @ arabalardan korkmamalýyým
+must i be afraid of cars @ arabalardan korkmalý mýyým 
+mustn't i be afraid of cars @ arabalardan korkmamalý mýyým 
+
+
+i watch a car @ bir araba seyrederim
+i watch car @ araba seyrederim
+i watch the car @ arabayý seyrederim
+
+i hated the car @ arabadan nefret ettim
+i turned @ döndüm
+i turned the car @ arabayý çevirdim 
+i turned the man down @ adamý geri çevirdim
+i turned the light on @ ýþýðý açtým
+i turned the light off @ ýþýðý kapadým
+
+that i go @ gittiðim
+that i don't go @ gitmediðim
+that i went @ gittiðim
+that i didn't go @ gitmediðim
+that i have gone @ gittiðim
+that i haven't gone @ gitmediðim
+that i had gone @ gitmiþ olduðum
+that i hadn't gone @ gitmemiþ olduðum
+that i am going @ gidiyor olduðum
+that i am not going @ gitmiyor olduðum
+that i was going @ gidiyor olduðum
+that i wasn't going @ gitmiyor olduðum
+that i will go @ gideceðim
+that i won't go @ gitmeyeceðim
+that i can go @ gidebildiðim
+that i can't go @ gidemediðim
+that i must go @ gitmem gerektiði | gitmem gereken | gitmek zorunda olduðum
+that i mustn't go @ gitmemem gerektiði | gitmem gereken | gitmemek zorunda olduðum
+that i have to go @ gitmek zorunda olduðum
+that i don't have to go @ gitmek zorunda olmadýðým
+that i will have to go @ gitmek zorunda olacaðým
+that i won't have to go @ gitmek zorunda olmayacaðým
+
+car which goes @ giden
+car which doesn't go @ gitmeyen
+cars which go @ giden
+cars which don't go @ gitmeyen
+car which went @ giden
+car which didn't go @ gitmeyen
+car which has gone @ gitmiþ olan
+car which hasn't gone @ gitmemiþ olan
+car which had gone @ gitmiþ olan
+car which hadn't gone @ gitmemiþ olan
+car which is going @ giden 
+car which isn't going @ gitmeyen
+cars which are going @ giden 
+cars which aren't going @ gitmeyen
+car which was going @ giden 
+car which wasn't going @ gitmeyen
+cars which were going @ giden 
+cars which weren't going @ gitmeyen
+car which will go @ gidecek
+car which won't go @ gitmeyecek
+car which would go @ gidecek olan
+car which wouldn't go @ gitmeyecek olan
+car which can go @ gidebilecek | gidebilen
+car which can't go @ gidemeyecek | gidemeyen
+car which could go @ gidebilecek olan | gidebilen
+car which couldn't go @ gidemeyecek olan | gidemeyen
+car which may go @ gidebilecek | gidebilen
+car which mayn't go @ gitmeyebilecek | gidemeyen
+car which must go @ gitmek zorunda olan
+car which has to go @ gitmek zorunda olan
+cars which don't have to go @ gitmek zorunda olmayan
+car which will be going @ gidiyor olacak
+car which would be going @ gidiyor olacak olan
+
+if i go @ gidip gitmediðim
+if i went @ gidip gitmediðim
+if i am going @ gidip gitmediðim
+if i was going @ gidiyor olup olmadýðým
+if i have gone @ gidip gitmediðim
+if i had gone @ gitmiþ olup olmadýðým
+if i will go @ gidecek olup olmadýðým
+if i would go @ gidecek olup olmadýðým
+if i can go @ gidip gidemediðim
+if i could go @ gidip gidemediðim
+if i may go @ gidip gidemeyeceðim
+if i might go @ gidip gidemeyeceðim
+if i must go @ gitmek zorunda olup olmadýðým
+if i have to go @ gitmek zorunda olup olmadýðým
+if i had to go @ gitmek zorunda olup olmadýðým
+
+as soon as i go @ gider gitmez
+as soon as i went @ gider gitmez
+as soon as i am going @ gider gitmez
+as soon as i was going @ gider gitmez
+as soon as i have gone @ gider gitmez
+as soon as i had gone @ gider gitmez
+as soon as i will go @ gider gitmez
+as soon as i would go @ gider gitmez
+as soon as i can go @ gider gitmez
+as soon as i could go @ gider gitmez
+as soon as i may go @ gider gitmez
+as soon as i might go @ gider gitmez
+as soon as i must go @ gider gitmez
+as soon as i have to go @ gitmek zorunda olur olmaz
+as soon as i had to go @ gitmek zorunda olur olmaz
+as soon as i have a car @ bir araba sahibi olur olmaz
+as soon as i had a car @ bir araba sahibi olur olmaz
+
+as long as i go @ gittiðim sürece
+as long as i went @ gittiðim sürece
+as long as i am going @ gittiðim sürece | gidiyor olduðum sürece
+as long as i was going @ gittiðim sürece | gidiyor olduðum sürece
+as long as i have gone @ gittiðim sürece | gitmiþ olduðum sürece
+as long as i had gone @ gittiðim sürece | gitmiþ olduðum sürece
+as long as i will go @ gideceðim sürece
+as long as i would go @ gideceðim sürece
+as long as i can go @ gidebildiðim sürece
+as long as i could go @ gidebildiðim sürece
+as long as i may go @ gidebildiðim sürece
+as long as i might go @ gidebildiðim sürece
+as long as i must go @ gitmek zorunda olduðum sürece
+as long as i have to go @ gitmek zorunda olduðum sürece
+as long as i had to go @ gitmek zorunda olduðum sürece
+as long as i have a car @ bir arabaya sahip olduðum sürece
+as long as i had a car @ bir arabaya sahip olduðum sürece
+
+before i go @ ben gitmeden önce 
+before i went @ ben gitmeden önce
+before i am going @ ben gitmeden önce
+before i was going @ ben gitmeden önce
+before i have gone @ ben gitmeden önce
+before i had gone @ ben gitmeden önceece
+before i will go @ ben gidecek olmadan önce
+before i would go @ ben gidecek olmadan önce
+before i can go @ ben gidemeden önce
+before i could go @ ben gidemeden önce
+before i may go @ ben gidemeden önce
+before i might go @ ben gidemeden önce
+before i must go @ ben gitmek zorunda olmadan önce
+before i have to go @ ben gitmek zorunda olmadan önce
+before i had to go @ ben gitmek zorunda olmadan önce
+before i have a car @ ben bir arabaya sahip olmadan önce
+before i had a car @ ben bir arabaya sahip olmadan önce
+
+after i go @ ben gittikten sonra
+after i went @ ben gittikten sonra
+after i am going @ ben gittikten sonra
+after i was going @ ben gittikten sonra
+after i have gone @ ben gittikten sonra
+after i had gone @ ben gittikten sonra
+after i will go @ ben gittikten sonra
+after i would go @ ben gittikten sonra
+after i can go @ ben gidebildikten sonra
+after i could go @ ben gidebildikten sonra
+after i may go @ ben gidebildikten sonra
+after i might go @ ben gidebildikten sonra
+after i must go @ ben gitmek zorunda olduktan sonra
+after i have to go @ ben gitmek zorunda olduktan sonra
+after i had to go @ ben gitmek zorunda olduktan sonra
+after i have a car @ bir arabaya sahip olduktan sonra
+after i had a car @ bir arabaya sahip olduktan sonra
+
+while i go @ ben giderken
+while i went @  ben giderken
+while i am going @ ben gidiyorken
+while i was going @ ben gidiyorken
+while i have gone @ ben gitmiþken
+while i had gone @ ben gitmiþken
+while i will go @ ben gidecekken
+while i would go @ ben gidecekken
+while i can go @ ben gidebilirken
+while i could go @ ben gidebilirken
+while i may go @ ben gidebilirken
+while i might go @ ben gidebilirken
+while i must go @ ben gitmek zorundayken
+while i have to go @ ben gitmek zorundayken
+while i had to go @ ben gitmek zorundayken
+while i have a car @ ben bir arabaya sahipken
+while i had a car @ ben bir arabaya sahipken

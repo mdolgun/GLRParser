@@ -248,8 +248,10 @@ class Grammar:
                         left[idx] = symbol.split('-')[0]    
                 if macro_name:
                     if not lmacro:
-                        raise GrammarError("Line:%d No form substitution defined for macro" % (line))
+                        raise GrammarError("Line:%d No form substitution defined for macro %s" % (self.line_no,self.buf))
                     idx,word = lmacro
+                    if word not in self.forms[macro_name]:
+                        raise GrammarError("Line:%d No form defined for word '%s': %s" % (self.line_no,word,self.buf))
                     for _head,form in zip(head,self.forms[macro_name][word]):
                         for altform in form:
                             _left = left.copy()
@@ -273,6 +275,8 @@ class Grammar:
         symbol = self.get_nonterm(True,False)
         if macro:
             macro_name = symbol
+            if symbol not in self.macros:
+                raise GrammarError("Line:%d Macro %s not defined: %s" % (self.line_no,macro_name,self.buf))
             head = self.macros[symbol]
         else:
             macro_name = None
