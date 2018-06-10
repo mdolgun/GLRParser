@@ -4,13 +4,24 @@ S -> SentCmd   : SentCmd  [conn=0]
 S -> that SentNorm : SentNorm [conn=that]
 S -> as long as SentNorm : SentNorm sürece [conn=that]
 S -> while SentNorm : SentNorm  [conn=while]
+S -> if SentNorm : SentNorm [conn=if]
+S -> as soon as SentNorm : SentNorm [conn=assoon]
 
-SentCmd -> be Pred 			: Pred ol
-SentCmd -> don't be Pred 	: Pred olma
-SentCmd -> don't V 			: V -mA 	[neg=1]
-SentCmd -> do Not V 		: V Neg
-SentCmd -> V 				: V  		[neg=0]
-SentCmd -> let 's Not V   	: V Neg -YAlHm
+VBe -> V : V  {-1} [pred=0]
+VBe -> V : V ol    [pred=1]
+VBe -> be Pred : Pred ol 
+VBe -> be PredVerb : PredVerb
+VBe -> be Ven : Ven +passive
+
+InfBe -> Not to V : V Neg
+InfBe -> Not to be Pred : Pred ol Neg
+InfBe -> Not to be PredVerb : PredVerb Neg
+InfBe -> Not to be Ven : Ven +passive Neg
+
+SentCmd -> VBe				: VBe 				
+SentCmd -> don't VBe		: VBe -mA	[neg=1]
+SentCmd -> do Not VBe		: VBe Neg
+SentCmd -> let 's Not VBe	: VBe Neg -YAlHm
 
 # affirmative 
 SentNorm -> Subj AuxBePos Not StBe      : Subj StBe  
@@ -113,7 +124,6 @@ StBe    -> Ven           	: Ven +passive SimpTense [pass=1]
 StBe    -> Pred          	: Pred PredTense
 StBe    -> PredVerb			: PredVerb ProgTense
 StBe    -> being Pred    	: Pred ol ProgTense
-#StBe    -> being Pred2   	: Pred2 ProgTense
 StBe    -> able to V        : V ModalCan
 StHave  -> Ven       {1} 	: Ven PerfTense
 StHave  -> been Ving {1} 	: Ving	ProgTense
@@ -139,9 +149,6 @@ BaseModal -> V					: V
 StModal -> BaseModal			: BaseModal ModalTense	  
 StModal -> be able to V         : V ModalCanModal
 StModal -> be PredVerb          : PredVerb ModalTense
-#StModal -> BaseModal			: BaseModal ol ModalTense		[pred=1]
-#StModal -> be PredModal		: PredModal
-#StModal -> have been PredModal	: PredModal
 
 Not -> not [neg=1]
 Not ->     [neg=0]
@@ -186,7 +193,7 @@ $V -> $burn Obj       : Obj Acc yak
 $V -> $make Obj V     : Obj -YA V +caus
 $V -> $have Obj Ved   : Obj Acc V +caus
 $V -> $have to BaseModal  : BaseModal -mAk zorunda [pred=1]
-#$V -> $have Obj()     : Obj PossSuf(pnumb=*numb,ppers=*pers) Var [pred=1]
+#$V -> $have Obj()     : Obj PossSufA Var [pred=1]
 $V -> $have Obj		  : Obj -YA sahip [pred=1]
 $V -> $hate Obj       : Obj -dAn nefret et 
 #$V -> $use to V       : V Aorist  [+notense]
@@ -205,21 +212,25 @@ Quest -> : mH 	[quest=1]
 Quest -> : 		[quest=0]
 
 											
-SimpTense -> : SimpVTense {-1}									[-notense,pred=0,conn=0]
-SimpTense -> : PredTense										[-notense,pred=1,conn=0]
-SimpTense -> : Neg -dHk PossSuf(pnumb=*numb,ppers=*pers) {-1}	[-notense,pred=0,conn=that]
-SimpTense -> : ol Neg -dHk PossSuf(pnumb=*numb,ppers=*pers)		[-notense,pred=1,conn=that]
-SimpTense -> : Neg -dHk PossSuf(pnumb=*numb,ppers=*pers) {-1}	[-notense,pred=0,conn=while]
-SimpTense -> : ol Neg -dHk PossSuf(pnumb=*numb,ppers=*pers)		[-notense,pred=1,conn=while]
-
+SimpTense -> : SimpVTense {-1}							[pred=0,conn=0]
+SimpTense -> : PredTense								[pred=1,conn=0]
+SimpTense -> : Neg -dHk PossSufA {-1}					[pred=0,conn=that]
+SimpTense -> : ol Neg -dHk PossSufA						[pred=1,conn=that]
+SimpTense -> : Neg -dHk PossSufA {-1}					[pred=0,conn=while]
+SimpTense -> : ol Neg -dHk PossSufA						[pred=1,conn=while]
+SimpTense -> : +copy -YHp +paste -mAdHk PossSufA {-1}	[pred=0,conn=if]
+SimpTense -> : olup olmadýk PossSufA					[pred=1,conn=if]
+SimpTense -> : +copy +aorist +paste -mAz {-1}			[pred=0,conn=assoon]
+SimpTense -> : olur olmaz								[pred=1,conn=assoon]
 
 PredTense -> : NegPred -lAr mH {-1}			[tense=pres,numb=plur,pers=3,quest=1]
 PredTense -> : NegPred Quest Pers1 			[tense=pres]
 PredTense -> : NegPred Quest -YdH Pers2 	[tense=past]
 PredTense -> : NegPred -lAr Quest -YdH		[tense=past,numb=plur,pers=3]
 
-ProgTense -> : Neg -Hyor Quest TenseX								[conn=0]
-ProgTense -> : Neg -Hyor olduk PossSuf(pnumb=*numb,ppers=*pers)		[conn=that]
+ProgTense -> : Neg -Hyor Quest TenseX		[conn=0]
+ProgTense -> : Neg -Hyor olduk PossSufA		[conn=that]
+ProgTense -> : Neg -Hyor olup olmadýk PossSufA		[conn=if]
 
 Aorist -> : +aorist Quest TenseX		[neg=0]
 Aorist -> : -mA Pers3					[tense=pres,neg=1,quest=0]
@@ -234,14 +245,19 @@ SimpVTense -> : Neg -dH Pers2 Quest		[tense=past]
 
 PerfTense -> : Neg -dH Pers2 Quest			[tense=pres,conn=0]
 PerfTense -> : Neg -mHþ Quest -YdH Pers2	[tense=past,conn=0]
-PerfTense -> : Neg -dHk	PossSuf(pnumb=*numb,ppers=*pers)			[tense=pres,conn=that]
-PerfTense -> : Neg -mHþ olduk PossSuf(pnumb=*numb,ppers=*pers)		[tense=past,conn=that]
+PerfTense -> : Neg -dHk	PossSufA			[tense=pres,conn=that]
+PerfTense -> : Neg -mHþ olduk PossSufA		[tense=past,conn=that]
+PerfTense -> : +copy -YHp +paste -mAdHk	PossSufA	[tense=pres,conn=that]
+PerfTense -> : -mHþ olup olmadýk PossSufA	[tense=past,conn=if]
 
-ModalTense -> : ModalVTense {-1}									[pred=0,conn=0]
-ModalTense -> : ModalConn PossSuf(pnumb=*numb,ppers=*pers) {-1}		[pred=0,conn=that]
-ModalTense -> : ol ModalVTense										[pred=1,conn=0]
-ModalTense -> : ol ModalConn PossSuf(pnumb=*numb,ppers=*pers)		[pred=1,conn=that]
-
+ModalTense -> : ModalVTense {-1}							[pred=0,conn=0]
+ModalTense -> : ModalConn PossSufA {-1}						[pred=0,conn=that]
+ModalTense -> : +copy -YHp +paste ModalConn(modal,neg=1) PossSufA		[pred=0,conn=if]
+ModalTense -> : +copy +aorist +paste -mAz					[pred=0,conn=assoon]
+ModalTense -> : ol ModalVTense								[pred=1,conn=0]
+ModalTense -> : ol ModalConn PossSufA						[pred=1,conn=that]
+ModalTense -> : olup ol ModalConn(modal,neg=1) PossSufA		[pred=1,conn=if]
+ModalTense -> : olur olmaz 									[pred=1,conn=assoon]
 
 ModalConn -> : Neg -YAcAk				[modal=will]
 ModalConn -> : -YAbildik				[modal=can,neg=0]
@@ -352,12 +368,12 @@ PossPron -> our   : bizim     [numb=plur,pers=1]
 PossPron -> your  : sizin     [numb=plur,pers=2]
 PossPron -> their : onlarýn   [numb=plur,pers=3]
 
-PossSuf -> : -Hm 	[pnumb=sing,ppers=1]
-PossSuf -> : -Hn 	[pnumb=sing,ppers=2]
-PossSuf -> : -ZHN 	[pnumb=sing,ppers=3]
-PossSuf -> : -HmHz	[pnumb=plur,ppers=1]
-PossSuf -> : -HnHz	[pnumb=plur,ppers=2]
-PossSuf -> : -lArH	[pnumb=plur,ppers=3]
+PossSufA -> : -Hm 	[numb=sing,pers=1]
+PossSufA -> : -Hn 	[numb=sing,pers=2]
+PossSufA -> : -ZHN 	[numb=sing,pers=3]
+PossSufA -> : -HmHz	[numb=plur,pers=1]
+PossSufA -> : -HnHz	[numb=plur,pers=2]
+PossSufA -> : -lArH	[numb=plur,pers=3]
 
 %macro N -> NSing,NPlur
 %form N -> man,men

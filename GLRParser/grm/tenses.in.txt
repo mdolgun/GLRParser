@@ -266,13 +266,21 @@ don't i have to be happy @ mutlu olmak zorunda deðil miyim
 go @ git
 don't go @ gitme
 do not go @ gitme
-let's go @ gidelim
-let's not go @ gitmeyelim
-shall we go @ gidelim mi
-shall we not go @ gitmeyelim mi
+don't have to go @ gitmek zorunda olma
+be watched @ seyredil
+don't be watched @ seyredilme
 be happy @ mutlu ol
 don't be happy @ mutlu olma
-don't have to be happy @ mutlu olmak zorunda olma
+be afraid of cars @ arabalardan kork
+don't be afraid of cars @ arabalardan korkma
+let's go @ gidelim
+let's not go @ gitmeyelim
+let's be happy @ mutlu olalým
+let's not be happy @ mutlu olmayalým
+let's be afraid of cars @ arabalardan korkalým
+let's not be afraid of cars @ arabalardan korkmayalým
+shall we go @ gidelim mi
+shall we not go @ gitmeyelim mi
 
 i am watched @ seyredilirim
 i am not watched @ seyredilmem
@@ -432,7 +440,7 @@ wasn't i afraid of cars @ arabalardan korkmaz mýydým | arabalardan korkmuyor muy
 i will be afraid of cars @ arabalardan korkacaðým
 i won't be afraid of cars @ arabalardan korkmayacaðým
 will i be afraid of cars @ arabalardan korkacak mýyým
-won't i be afraid of cars @ arabalardan korkmayacaðým
+won't i be afraid of cars @ arabalardan korkmayacak mýyým
 
 i can be afraid of cars @ arabalardan korkabilirim | arabalardan korkabiliyorum
 i can't be afraid of cars @ arabalardan korkamam | arabalardan korkamýyorum

@@ -105,7 +105,12 @@ class TurkishPostProcessor:
         #print(text)
         items = text.split()
         for idx,item in enumerate(items):
-            if item.startswith("+"):
+            if item == "+copy":
+                back_word = items[idx-1]
+                del items[idx]
+            elif item == "+paste":
+                items[idx] = back_word
+            elif item.startswith("+"):
                 dicidx,sufidx = self.suff_idxs[item[1:]]
                 prev = items[idx-1]
                 try:
