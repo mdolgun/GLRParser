@@ -104,21 +104,31 @@ class TurkishPostProcessor:
     def __call__(self,text):
         #print(text)
         items = text.split()
+        previdx = None
         for idx,item in enumerate(items):
             if item == "+copy":
                 back_word = items[idx-1]
-                del items[idx]
+                items[idx] = None
             elif item == "+paste":
                 items[idx] = back_word
+                previdx = idx
             elif item.startswith("+"):
-                dicidx,sufidx = self.suff_idxs[item[1:]]
-                prev = items[idx-1]
                 try:
-                    items[idx-1] = self.suff_dict_list[dicidx][prev][sufidx]
+                    dicidx,sufidx = self.suff_idxs[item[1:]]
                 except KeyError:
-                    raise PostProcessError("Postprocess Error: sent: %s word: %s, suffix: %s" % (text, prev,item))
-                del items[idx]
-        text = " ".join(items)
+                    raise PostProcessError("Postprocess Error: sent: %s Unknown suffix: %s" % (text, item))  
+                try:
+                    prev = items[previdx]
+                    items[previdx] = self.suff_dict_list[dicidx][prev][sufidx]
+                    items[idx] = None
+                except KeyError:
+                    try:
+                        items[idx] = self.suff_dict_list[dicidx][""][sufidx]
+                    except KeyError:
+                        raise PostProcessError("Postprocess Error: sent: %s word: %s, suffix: %s" % (text, prev, item))              
+            else:
+                previdx = idx
+        text = " ".join(item for item in items if item)
 
         return TurkishPostProcessor.vowel_harmony(
             self.rx.sub(

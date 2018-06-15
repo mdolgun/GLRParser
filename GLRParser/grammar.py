@@ -88,7 +88,7 @@ class Trie:
 class Grammar:
     enable_trie = False
     SYMBOL = re.compile('''([_A-Z][-_A-Za-z0-9]*'*)|("[^"]*"|[-+\'a-z0-9üöçğşðþýı$][-\'A-Z0-9a-züöçğşıðþý+@^!$]*)''')
-    FEAT = re.compile('\*?[a-z0-9_]*')
+    FEAT = re.compile('[*?]?[a-z0-9_]*')
     INTEGER = re.compile('-?[1-9][0-9]*')
 
     def __init__(self,reverse=False):
@@ -495,17 +495,34 @@ class Grammar:
         for idx,item in enumerate(items):
             self.suff_idxs[item] = (dict_idx,idx)
 
+    def parse_suffix_def(self):
+        """ %suffix_def MacroName -> term (, term)* """
+        macro_name = self.get_nonterm()
+        self.get_token('->')
+        items = self.parse_term_list()
+
+        if macro_name not in self.suff_dict_names:
+            raise GrammarError("Line:%d Macro not defined: %s" % (self.line_no,macro_name))
+        dict_idx,cnt = self.suff_dict_names[macro_name]
+        #items = self.buf[self.pos:].split(",")
+        if len(items) != cnt:
+            raise GrammarError("Line:%d suffix_def expecting %d items but found: %s" % (self.line_no,cnt,self.buf))
+        #items = [item.strip() for item in items]
+        self.suff_dict_list[dict_idx][""] = items
+
     def parse_suffix(self):
         """ %suffix MacroName -> Term (, Term)* """
         macro_name = self.get_nonterm()
         self.get_token('->')
+        items = self.parse_term_list()
+
         if macro_name not in self.suff_dict_names:
             raise GrammarError("Line:%d Suffix Macro not defined: %s" % (self.line_no,macro_name))
         dict_idx,cnt = self.suff_dict_names[macro_name]
-        items = self.buf[self.pos:].split(",")
+        #items = self.buf[self.pos:].split(",")
         if len(items) != cnt:
-            raise GrammarError("Line:%d Suffix expecting %d items but found: %s" % (line_no,cnt,self.get_rest()))
-        items = [item.strip() for item in items]
+            raise GrammarError("Line:%d Suffix expecting %d items but found: %s" % (self.line_no,cnt,self.get_rest()))
+        #items = [item.strip() for item in items]
         self.suff_dict_list[dict_idx][items[0]] = items
 
     def include_suffix(self):
@@ -538,6 +555,7 @@ class Grammar:
         "else"  : parse_else,
         "endif" : parse_endif,
         "suffix_macro" : parse_suffix_macro,
+        "suffix_def" : parse_suffix_def,
         "suffix" : parse_suffix,
         "include_suffix": include_suffix,
 #        "save_suffixes" : save_suffixes,
