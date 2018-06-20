@@ -265,24 +265,19 @@ class Parser:
         newkeys = keys - dst.keys()
         for key in keys & dst.keys():
             if  src[key] != dst[key]:
-                if dst[key] == '-':
-                    newkeys.add(key)
-                elif src[key] == '-':
+                if src[key] == '?' and dst[key] != '!':
                     pass
-                elif dst[key] == '+':
+                elif dst[key] == '?' and src[key] != '!':
                     newkeys.add(key)
-                elif src[key] == '+':
-                    pass
                 else:
                     raise UnifyError("Unify error feat=%s src=%s param=%s" % (key, src[key], dst[key]))
-    
         if newkeys:
             dst = dst.copy()
             for key in newkeys:
                 dst[key] = src[key]
         return dst
 
-    def unify_down(dst,param,src):
+    def unify_down(dst,param,src,checklist):
         """ unification of "src" features into "dst" features, using filtering of "param", if unification fails raises UnifyError
 
         if param is None, src is directly unified into dst
@@ -308,15 +303,21 @@ class Parser:
         newkeys = pdict.keys() - dst.keys()
         for key in pdict.keys() & dst.keys():
             if pdict[key] != dst[key]:
-                if pdict[key] == '+' and dst[key] != '-':
-                        pass
-                elif dst[key] == '+' and pdict[key] != '-':
-                    newkeys.add(key)
-                else:
+                #if pdict[key] == '?' and dst[key] != '!':
+                #    pass
+                #elif dst[key] == '?' and pdict[key] != '!':
+                #    newkeys.add(key)
+                #else:
                     raise UnifyError("UnifyD error feat=%s src=%s param=%s" % (key, pdict[key], dst[key]))
         if newkeys:
             dst = dst.copy()
             dst.update(pdict)
+        for key in checklist:
+            if dst.get(key,'!') == '!':
+                raise UnifyError("UnifyD feature not exists: %s" % key)
+        #for key,val in dst.items():
+        #   if val=='?':
+        #       raise UnifyError("UnifyD non-existing feat=%s" % key )
         return dst
 
  
@@ -324,7 +325,9 @@ class Parser:
         """ bottom-up unifies a tree and returns a new tree """
 
         rule = tree.rule
-        fdict,srcflist = rule.feat, rule.lparam
+        fdict = {key:val for key,val in rule.feat.items() if val != '?'}
+        srcflist = rule.lparam
+
         stack = [(fdict,[])]
         for item,param in zip(tree.left,srcflist):
             if type(item)==str:
@@ -383,9 +386,11 @@ class Parser:
         ntree = []
         for ruleno in self.ruledict[symbol]:
             rule = self.rules[ruleno]
+            checklist = [key for key,val in rule.feat.items() if val=='?']
+            rule_feat = {key:val for key,val in rule.feat.items() if val!='?'}
             try:
                 #logging.debug("make_trans_tree1: %s unifyd(%s,%s,%s)", symbol, format_feat(feat), format_feat(fparam,'()'), format_feat(rule.feat))
-                fdict = Parser.unify_down(rule.feat,fparam,feat)
+                fdict = Parser.unify_down(rule_feat,fparam,feat,checklist)
                 logging.debug("make_trans_tree: %s unifyd(%s,%s,%s)->%s", symbol, format_feat(feat), format_feat(fparam,'()'), format_feat(rule.feat), format_feat(fdict))
                 sub = []
                 for item,param in zip(rule.right,rule.rparam):
@@ -394,6 +399,7 @@ class Parser:
                         sub.append(item)
                     else: # NonTerminal
                         sub.append(Parser.prune( self.make_trans_tree(item,fdict,param) ))
+
                 ntree.append(Tree(symbol,rule,ruleno,[],sub,fdict,rule.cost)) 
             except UnifyError as ue:
                 last_error = "%s %s#%d" % (ue.args[0], symbol, ruleno)
@@ -410,10 +416,13 @@ class Parser:
 
         assert type(tree)==Tree
         tree = copy.copy(tree) # MD 12.04.2018
-        logging.debug("trans_tree: %s unify(%s,%s,%s)->", tree.head, format_feat(tree.feat), format_feat(fparam,'()'), format_feat(feat))                       
-        fdict = Parser.unify_down(tree.feat,fparam,feat)
-        logging.debug("trans_tree: ->%s", format_feat(fdict))                       
         rule = tree.rule
+        checklist = [key for key,val in rule.feat.items() if val=='?']
+
+        logging.debug("trans_tree: %s unify(%s,%s,%s)->", tree.head, format_feat(tree.feat), format_feat(fparam,'()'), format_feat(feat)) 
+        fdict = Parser.unify_down(tree.feat,fparam,feat,checklist)
+        logging.debug("trans_tree: ->%s", format_feat(fdict)) 
+        
         trans = []
         for item,param in zip(rule.right,rule.rparam):
             if param is False: # Terminal
@@ -423,7 +432,15 @@ class Parser:
                 trans.append(Parser.prune( self.make_trans_tree(item,fdict,param) )) 
             else: # Matched (Left&Right) NT
                 assert type(item)==int
-                trans.append(Parser.prune( [self.trans_tree(alt,fdict,param) for alt in tree.left[item]] ))           
+                alts = []
+                for alt in tree.left[item]:
+                    try:                        
+                        alts.append( self.trans_tree(alt,fdict,param) )
+                    except UnifyError as ue:
+                        last_error = "%s %s" % (ue.args[0], rule)
+                if not alts:
+                    raise UnifyError(last_error)
+                trans.append(Parser.prune(alts))           
         tree.right = trans
         return tree
 

@@ -88,7 +88,7 @@ class Trie:
 class Grammar:
     enable_trie = False
     SYMBOL = re.compile('''([_A-Z][-_A-Za-z0-9]*'*)|("[^"]*"|[-+\'a-z0-9üöçğşðþýı$][-\'A-Z0-9a-züöçğşıðþý+@^!$]*)''')
-    FEAT = re.compile('[*?]?[a-z0-9_]*')
+    FEAT = re.compile('\*?[a-z0-9_]*')
     INTEGER = re.compile('-?[1-9][0-9]*')
 
     def __init__(self,reverse=False):
@@ -321,7 +321,7 @@ class Grammar:
         return alts
 
     def parse_feat(self,ensure_val=True):
-        char = self.get_char_list("+-",False)
+        char = self.get_char_list("+-?!",False)
         if char:
             name = self.get_feat()
             value = char

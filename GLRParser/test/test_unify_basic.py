@@ -22,16 +22,19 @@ class TestUnifyBasic(unittest.TestCase):
         ({"noplur":"1"},None,{}, {"noplur":"1"},{"noplur":"1"}),
         ({"noplur":"0"},None,{"noplur":"1"}, None,None),
         ({"noplur":"1"},None,{"noplur":"0"}, None,None),
-        ({"noplur":"+"},None,{"noplur":"-"}, {"noplur":"+"},None),
-        ({"noplur":"-"},None,{"noplur":"+"}, {"noplur":"+"},None),
-        ({"noplur":"+"},None,{}, {"noplur":"+"},{"noplur":"+"}),
-        ({},None,{"noplur":"+"}, {"noplur":"+"},{"noplur":"+"}),
-        ({"noplur":"-"},None,{}, {"noplur":"-"},{"noplur":"-"}),
-        ({},None,{"noplur":"-"}, {"noplur":"-"},{"noplur":"-"}),
-        ({"noplur":"+"},None,{"noplur":"1"}, {"noplur":"1"},{"noplur":"1"}),
-        ({"noplur":"1"},None,{"noplur":"+"}, {"noplur":"1"},{"noplur":"1"}),
-        ({"noplur":"-"},None,{"noplur":"1"}, {"noplur":"1"},None),
-        ({"noplur":"1"},None,{"noplur":"-"}, {"noplur":"1"},None),
+
+        ({"noplur":"+"},None,{"noplur":"?"}, None, {"noplur":"+"}),
+        ({"noplur":"?"},None,{"noplur":"+"}, None, {"noplur":"+"}),
+        ({},None,{"noplur":"?"}, {"noplur":"?"},None),
+        ({"noplur":"?"},None,{}, {"noplur":"?"},None),
+
+        ({"noplur":"+"},None,{"noplur":"!"}, None, None),
+        ({"noplur":"!"},None,{"noplur":"+"}, None, None),
+        ({},None,{"noplur":"!"}, {"noplur":"!"},{"noplur":"!"}),
+        ({"noplur":"!"},None,{}, {"noplur":"!"},{"noplur":"!"}),
+
+        ({"noplur":"?"},None,{"noplur":"!"}, None,None),
+        ({"noplur":"!"},None,{"noplur":"?"}, None,None),
     ]
 
     def test_unify_basic(self):

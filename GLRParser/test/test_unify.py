@@ -5,19 +5,19 @@ from GLRParser import Parser, ParseError, UnifyError, GrammarError, Tree
 class TestUnifyBinary(unittest.TestCase): 
 
     grammar = """
-        S -> A B : C  [-f]
+        S -> A B : C 
         A -> a0     
         A -> a1     [+f]
         B -> b0    
         B -> b1     [+f]
-        C -> : c0   [-f]      
-        C -> : c1   [+f]  
+        C -> : c0   [!f]      
+        C -> : c1   [?f]  
         """
 
     cases = [
         ("a0 b0","""\
             S(
-            #1[f=-]
+            #1[]
                 A(
                 #2[]
                     a0
