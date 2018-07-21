@@ -2,24 +2,13 @@
 
 (c) 2018 by Mehmet Dolgun, m.dolgun@yahoo.com
 
-Grammar Rules:
-Macro ::= %def TokenList | %ifdef TokenList | %endif | %else | %elif TokenList | %include FileName | %macro MacroName -> TerminalList | %form MacroName -> NonTerminalList
-Rule ::= Head "->" Prod [ ":" Prod ] [ Feat ] [ "#" Comment ]
-Head ::= "$" MacroName | NonTerminal
-Terminal ::= Term+ | Term* "$" Term+ | Term* "$("  Term+ ")" Term*
-Prod ::= ( Terminal | NonTerminal [ "-" Suffix ] [ FParam ] )* [ "{" Cost "}" ] 
-Feat ::= "[" [ Name "=" Value ( "," Name "=" Value )* ] "]"
-FParam ::= "(" [ Name [ "=" Value ] ( "," Name [ "=" Value ] )* ")"
-where 
-Terminal ::= Id starting with upper case, excluding "-"
-NonTerminal ::= Id not starting with upper case, optionally double-quoted
-Name, Value ::= Id
+Source for parsing input grammar, defines classes GrammarError,Rule,Trie and Grammar
 
 """
 import re, pickle
 from collections import namedtuple
 
-
+new_unify = False
 
 class GrammarError(Exception):
     """ Raised when a grammar cannot be parsed """
@@ -28,28 +17,86 @@ class GrammarError(Exception):
 empty_list = list()
 empty_dict = dict()
 
-Rule = namedtuple('Rule', 'head, left, right, feat, lparam, rparam, cost')
-#print(Rule._source)
+class Rule:
+    """ Definition of  a grammar rule """
+    __slots__ = ('head', 'left', 'right', 'feat', 'checklist', 'lparam', 'rparam', 'cost', 'cut')
 
+    def __init__(self, head, left=empty_list, right=empty_list, feat=empty_dict, lparam=empty_list, rparam=empty_list, cost=0, cut=None):
+        self.head = head
+        self.left = left
+        self.right = right
+        self.checklist = None
+        self.feat = feat
+        #self.checklist = [key for key,val in feat.items() if val=='?']
+        #self.feat = {key:val for key,val in feat.items() if val!='?'}
+        self.lparam = lparam
+        self.rparam = rparam
+        self.cost = cost
+        self.cut = cut
+
+    def format(self):
+        return "%s -> %s : %s {%d} %s %s" % (
+            self.head, 
+            " ".join( '"'+symbol+'"' if fparam is False else symbol+format_feat(fparam,'()') for symbol,fparam in zip(self.left,self.lparam) ),
+            " ".join( '"'+symbol+'"' if fparam is False else str(symbol)+format_feat(fparam,'()') for symbol,fparam in zip(self.right,self.rparam) ),
+            self.cost,
+            "!" if self.cut else "",
+            format_feat(self.feat,'[]')
+    )
+    def __str__(self):
+        return self.format()
+
+    def __repr__(self):
+        return self.format()
+
+    def __eq__(self,other):
+        return ((self.head, self.left, self.right, self.feat, self.checklist, self.lparam, self.rparam, self.cost, self.cut) == 
+            (other.head, other.left, other.right, other.feat, other.checklist, other.lparam, other.rparam, other.cost, other.cut)) 
+
+#Rule1 = namedtuple('Rule', 'head, left, right, feat, lparam, rparam, cost, cut')
+#print(Rule1._source)
 def format_feat(fdict,par='[]'):
     if not fdict:
         if type(fdict)==dict: # empty dict
             return par
         return ""
-    return par[0] + ",".join(["=".join(item) if item[1] else item[0] for item in sorted(fdict.items())]) + par[1]
+    return par[0] + ",".join("{}={}".format(item[0],item[1]) if item[1] is not None else item[0] for item in sorted(fdict.items())) + par[1]
 
-def format_rule(self):
-    return "%s -> %s : %s {%d} %s" % (
-        self.head, 
-        " ".join( ['"'+symbol+'"' if fparam is False else symbol+format_feat(fparam,'()') for symbol,fparam in zip(self.left,self.lparam)] ),
-        " ".join( ['"'+symbol+'"' if fparam is False else str(symbol)+format_feat(fparam,'()') for symbol,fparam in zip(self.right,self.rparam)] ),
-        self.cost,
-        format_feat(self.feat,'[]')
-    )
 
-Rule.format = format_rule
+
+#else:
+#    Rule = namedtuple('Rule', 'head, left, lparam, right') # (head,left,lparam,[(right,rparam,feat,checklist,cost,cut)+])
+#    def format_feat(fdict,par='[]',checklist=[]):
+#        if not fdict:
+#            if type(fdict)==dict: # empty dict
+#                return par
+#            return ""
+#        return par[0] + ",".join((
+#            ",".join("?"+item for item in checklist),
+#            ",".join("=".join(item) if item[1] is not None else item[0] for item in sorted(fdict.items()))
+#        )) + par[1]
+
+
+#    def format_rule(self):
+#        return "%s -> %s : %s {%d} %s" % (
+#            self.head, 
+#            " ".join( ['"'+symbol+'"' if fparam is False else symbol+format_feat(fparam,'()') for symbol,fparam in zip(self.left,self.lparam)] ),
+#            " | ".join( "%s {%d} %s" % (
+#                    " ".join( ['"'+symbol+'"' if fparam is False else str(symbol)+format_feat(fparam,'()') for symbol,fparam in zip(self.right,self.rparam)] ),
+#                    self.cost,
+#                    format_feat(self.feat,'[]')
+#                ) for right,rparam,feat,cost in self.right
+#            )
+#        )
+
+#Rule.format = format_rule
 
 class Trie:
+    """ Trie is  tree where each nodes are words (or characters). It is used as a dictionary 
+
+    Note that it is advantageous over a hash dictionary that, any substring of input string can easily be looked up efficiently retrieving all valid phrases,
+    which may also be prefix of another phase. e.g. root -> united(leaf) -> states(leaf) -> of -> america(leaf)
+    """
     leaf = '$$$'
     
     def __init__(self):
@@ -87,18 +134,35 @@ class Trie:
 
 class Grammar:
     enable_trie = False
-    SYMBOL = re.compile('''([_A-Z][-_A-Za-z0-9]*'*)|("[^"]*"|[-+\'a-z0-9üöçğşðþýı$][-\'A-Z0-9a-züöçğşıðþý+@^!$]*)''')
-    FEAT = re.compile('\*?[a-z0-9_]*')
+    #SYMBOL = re.compile('''(\*[a-z0-9_]+|[_A-Z][-_A-Za-z0-9]*'*)|("[^"]*"|[-+\'a-z0-9üöçğşðþýı$][-\'A-Z0-9a-züöçğşıðþý+@^!$]*)''')
+    #FEAT_NAME = re.compile('@?[a-z0-9_]+|@?\*')
+    #FEAT_VALUE = re.compile('\*?@?[-_A-Za-z0-9]+')
     INTEGER = re.compile('-?[1-9][0-9]*')
 
-    def __init__(self,reverse=False):
+    re_NONTERM = "[_A-Z][-_A-Za-z0-9]*'*"
+    # re_FEAT_NAME = r'@?[a-z0-9_]+|@?\*'
+    re_FEAT_NAME = "[a-z0-9_]+"
+    re_FPARAM_NAME = r"@?{}|@?\*".format(re_FEAT_NAME)
+    re_TERM = r'''"[^"]*"|(?![_A-Z])[-+'$\w][-+'$\w@^!]*'''
+    #re_TERMv2 = r'"[^"]*"|[^\W_A-Z][-+\'$\w@^!]'
+    re_FEAT_VALUE = r"\*{}|\*{}|{}".format(re_NONTERM, re_FEAT_NAME ,re_TERM)
+    re_SYMBOL = r'({}|\*{})|({})'.format(re_NONTERM, re_FEAT_NAME, re_TERM)
+
+    SYMBOL = re.compile(re_SYMBOL)
+    FEAT_NAME = re.compile(re_FEAT_NAME)
+    FEAT_VALUE = re.compile(re_FEAT_VALUE)
+    FPARAM_NAME = re.compile(re_FPARAM_NAME)
+    TERM = re.compile(re_TERM)
+    NONTERM = re.compile(re_NONTERM)
+
+    def __init__(self,reverse=False,defines=None):
         self.reverse = reverse
         self.line_no = 0
         self.rules = []
         self.trie = Trie()
         self.macros = dict()
         self.forms = dict()
-        self.defines = set()
+        self.defines = set() if defines is None else defines
         self.process = True
         self.if_stack = []
         self.parse_rule("S' -> S() : S()")
@@ -181,15 +245,15 @@ class Grammar:
         if ensure:
             raise GrammarError("Line:%d Pos:%d Term expected but found: '%s'" % (self.line_no,self.pos,symbol))
 
-    def get_feat(self,ensure=True,skip_ws=True):
+    def get_re(self,regexp,ensure=True,skip_ws=True):
         if skip_ws:
             self.skip_ws()
-        match = Grammar.FEAT.match(self.buf,self.pos)
+        match = regexp.match(self.buf,self.pos)
         if match:
             self.pos = match.end()
             return match.group()
         if ensure:
-            raise GrammarError("Line:%d Pos:%d FeatId expected but found %s" % (self.line_no,self.pos,self.get_rest()))
+            raise GrammarError("Line:%d Pos:%d %s expected but found %s" % (self.line_no,self.pos,regexp,self.get_rest()))
 
     def get_integer(self,ensure=True,skip_ws=True):
         if skip_ws:
@@ -217,9 +281,11 @@ class Grammar:
         if self.get_token(':',False):
             rlist = self.parse_prod()
         else:
-            rlist = [(empty_list,empty_list,0,None)]
+            rlist = [(empty_list,empty_list,0,None,None)]
         if self.get_token('[',False):
             feat = self.parse_feat_list()
+            #!checklist = [key for key,val in feat.items() if val=='?']
+            #!rule = {key:val for key,val in feat.items() if val!='?'}
         else:
             feat = empty_dict
         self.get_eof()
@@ -227,10 +293,10 @@ class Grammar:
         if self.reverse:
             llist,rlist = rlist,llist
 
-        for left,lparam,lcost,lmacro in llist:
+        for left,lparam,lcost,lmacro,lcut in llist:
             term_only = self.enable_trie and len(lparam)>0 and all(map(lambda x:x is False,lparam))
 
-            for right,rparam,rcost,rmacro in rlist:      
+            for right,rparam,rcost,rmacro,rcut in rlist:      
                 # following cross-references right with left, removing referencing suffixes
                 #  e.g.  VP -> give NP-prim NP-secn : NP-prim -yA NP-secn ver => VP -> give NP NP : 1 -yA 2 ver
                 left = left.copy()
@@ -242,6 +308,14 @@ class Grammar:
                             right[idx] = left.index(symbol)
                         except ValueError:
                             right[idx] = symbol.split('-')[0]
+
+                # TODO: if there are two alternatives and position of reference NT doesn't match it takes only first position (intelligent copy needed)
+                for key,val in feat.items(): 
+                    if val[0] == '*':
+                        try:
+                            feat[key] = left.index(val[1:])
+                        except ValueError:
+                            raise GrammarError("Line:%d No matching NonTerminal found for reference feature %s=%s" % (self.line_no,key,val))
 
                 for idx,(symbol,param) in enumerate(zip(left,lparam)):
                     if param is not False: # NonTerminal
@@ -257,14 +331,18 @@ class Grammar:
                             _left = left.copy()
                             _left[idx] = left[idx].replace('$'+word, altform)                         
                             if term_only:
-                                self.trie.add(_left, Rule(_head,_left,right,feat,lparam,rparam,rcost) )
+                                self.trie.add(_left, Rule(_head,_left,right,feat,lparam,rparam,rcost,rcut) )
+                                #!self.trie.add(left, Rule(head,left,lparam,[(right,rparam,feat,checklist,rcost)]) )
                             else:
-                                self.rules.append( Rule(_head,_left,right,feat,lparam,rparam,rcost) )   
+                                self.rules.append( Rule(_head,_left,right,feat,lparam,rparam,rcost,rcut) )
+                                #!self.rules.append( Rule(head,left,lparam,[(right,rparam,feat,checklist,rcost)]) )
                 else:
                     if term_only:
-                        self.trie.add(left, Rule(head,left,right,feat,lparam,rparam,rcost) )
+                        self.trie.add(left, Rule(head,left,right,feat,lparam,rparam,rcost,rcut) )
+                        #!self.trie.add(left, Rule(head,left,lparam,[(right,rparam,feat,checklist,rcost)]) )
                     else:
-                        self.rules.append( Rule(head,left,right,feat,lparam,rparam,rcost) )
+                        self.rules.append( Rule(head,left,right,feat,lparam,rparam,rcost,rcut) )
+                        #!self.rules.append( Rule(head,left,lparam,[(right,rparam,feat,checklist,rcost)]) )
 
     def parse_head(self):
         if self.buf[self.pos] == '$':
@@ -293,7 +371,7 @@ class Grammar:
         while symbol:
             if stype == 0: # NonTerminal
                 if self.get_token('(', False, skip_ws=False):
-                    param = self.parse_fparam()
+                    param = self.parse_fparam_list()
                 else:
                     param = None
             else:
@@ -312,7 +390,9 @@ class Grammar:
         else:
             cost = 0
 
-        return prod,param_list,cost,macro_var
+        cut = self.get_token('!',False)
+
+        return prod,param_list,cost,macro_var,cut
 
     def parse_prod(self):
         alts = [self.parse_alt()]
@@ -320,15 +400,26 @@ class Grammar:
             alts.append( self.parse_alt() )
         return alts
 
-    def parse_feat(self,ensure_val=True):
+    def parse_feat(self):
         char = self.get_char_list("+-?!",False)
         if char:
-            name = self.get_feat()
+            name = self.get_re(self.FEAT_NAME)
             value = char
         else:
-            name = self.get_feat()
-            if self.get_token('=',ensure=ensure_val):
-                value = self.get_feat()
+            name = self.get_re(self.FEAT_NAME)
+            self.get_token('=')
+            value = self.get_re(self.FEAT_VALUE)
+        return name,value
+
+    def parse_fparam(self):
+        char = self.get_char_list("+-",False)
+        if char:
+            name = self.get_re(self.FPARAM_NAME)
+            value = char
+        else:
+            name = self.get_re(self.FPARAM_NAME)
+            if self.get_token('=',ensure=False):
+                value = self.get_re(self.FEAT_VALUE)
             else:
                 value = None
         return name,value
@@ -347,24 +438,24 @@ class Grammar:
         self.get_token(']')
         return fdict
 
-    def parse_fparam(self):
+    def parse_fparam_list(self):
         """ Parses feature parameter list returns dict of name=value or name=None """
         if self.get_token(')',False): # empty list
             return empty_dict
         fdict = dict()
-        name,value = self.parse_feat(False)
+        name,value = self.parse_fparam()
         fdict[name] = value
         while self.get_token(',', False):   
-            name,value = self.parse_feat(False)
+            name,value = self.parse_fparam()
             fdict[name] = value
         self.get_token(')')
         return fdict
 
-    def load_grammar(fname=None,reverse=False,text=None):
+    def load_grammar(fname=None,reverse=False,text=None,defines=None):
         """ loads a grammar file and parse it """
         if bool(fname) == bool(text):
             raise GrammarError("load_grammar: either fname or text should be provided")
-        grammar = Grammar(reverse)
+        grammar = Grammar(reverse,defines)
         if text is None:
             with open(fname, "r") as f:
                 grammar.parse_grammar(f)

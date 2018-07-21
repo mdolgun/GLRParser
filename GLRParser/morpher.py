@@ -47,7 +47,7 @@ class TurkishPostProcessor:
         ( "(?<=[pCtkSfsh][\+!]-)(Y?d)","t"),
         ( "(@[IiuU])(?=[^aIeiouOU]-(?:[ZNHA]|Y[aIeiouOUHA]))", ""),
         ( "([aIeiouOUA]-H)(?=yor)" , "H" ),
-        ( "(?<=[aIeiouOU]-)(H)" , "" ),
+        ( "(?<=[aIeiouOUA]-)(H)" , "" ),
         ( "(?<=[^aIeiouOUAH]-)([NZY])" , "" ),
         ( "(?<=[aIeiouOUAH]-)([NZY])", {'N':'n', 'Z':'s', 'Y':'y'} ),
         ( "(N-Y)(?=[^aIeiouOUAH])", "y" ),
@@ -113,6 +113,8 @@ class TurkishPostProcessor:
                 items[idx] = back_word
                 previdx = idx
             elif item.startswith("+"):
+                if previdx is None:
+                    raise PostProcessError("Postprocess Error: sent: %s Word stem not found" % text) 
                 try:
                     dicidx,sufidx = self.suff_idxs[item[1:]]
                 except KeyError:

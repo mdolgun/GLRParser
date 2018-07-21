@@ -1,16 +1,13 @@
-
-
 i am going @ gidiyorum
 i'm going @ gidiyorum
-you are going @ gidiyorsun
-you're going @ gidiyorsun
-he is going @ gidiyor
-he's going @ gidiyor
-she is going @ gidiyor
-it is going @ gidiyor
+you are going @ gidiyorsun | gidiyorsunuz
+you're going @ gidiyorsun | gidiyorsunuz
+he is going @ gidiyor | o gidiyor
+he's going @ gidiyor | o gidiyor
+she is going @ gidiyor | o gidiyor
+it is going @ gidiyor | o gidiyor
 we are going @ gidiyoruz
-you are going @ gidiyorsunuz
-they are going @ gidiyorlar
+they are going @ gidiyorlar | onlar gidiyor
 
 i was going @ gidiyordum
 i have been going @ gidiyorum
@@ -48,15 +45,14 @@ i should go @ gitmeliyim
 i shall go @ gideceðim
 
 i am not going @ gitmiyorum
-you are not going @ gitmiyorsun
-you're not going @ gitmiyorsun
-you aren't going @ gitmiyorsun
-he is not going @ gitmiyor
-he's not going @ gitmiyor
-he isn't going @ gitmiyor
+you are not going @ gitmiyorsun | gitmiyorsunuz
+you're not going @ gitmiyorsun | gitmiyorsunuz
+you aren't going @ gitmiyorsun | gitmiyorsunuz
+he is not going @ gitmiyor | o gitmiyor
+he's not going @ gitmiyor | o gitmiyor
+he isn't going @ gitmiyor | o gitmiyor
 we are not going @ gitmiyoruz
-you are not going @ gitmiyorsunuz
-they are not going @ gitmiyorlar
+they are not going @ gitmiyorlar | onlar gitmiyor
 
 i was not going @ gitmiyordum
 i wasn't going @ gitmiyordum
@@ -68,16 +64,16 @@ i was not going to go @ gitmeyecektim
 i have not gone @ gitmedim
 i've not gone @ gitmedim
 i haven't gone @ gitmedim
-he has not gone @ gitmedi
-he's not gone @ gitmedi 
-he hasn't gone @ gitmedi
+he has not gone @ gitmedi | o gitmedi
+he's not gone @ gitmedi | o gitmedi
+he hasn't gone @ gitmedi | o gitmedi
 
 i have not been going @ gitmiyorum
 i had not been going @ gitmiyordum
 i do not go @ gitmem
 i don't go @ gitmem
-he does not go @ gitmez
-he doesn't go @ gitmez
+he does not go @ gitmez | o gitmez
+he doesn't go @ gitmez | o gitmez
 i did not go @ gitmedim
 i didn't go @ gitmedim
 
@@ -110,9 +106,9 @@ i mustn't have gone @ gitmiþ olmamalýyým
 
 am i going @ gidiyor muyum
 am i not going @ gitmiyor muyum
-was she going @ gidiyor muydu
-wasn't she going @ gitmiyor muydu
-was she not going @ gitmiyor muydu
+was she going @ gidiyor muydu | o gidiyor muydu
+wasn't she going @ gitmiyor muydu | o gitmiyor muydu
+was she not going @ gitmiyor muydu | o gitmiyor muydu
 
 did we go @ gittik mi
 didn't we go @ gitmedik mi
@@ -141,93 +137,94 @@ must we go @ gitmeli miyiz
 mustn't we go @ gitmemeli miyiz
 
 i am happy @ mutluyum
-he is happy @ mutlu
+he is happy @ mutlu | o mutlu
 we are happy @ mutluyuz
-you are happy @ mutlusunuz
-they are happy @ mutlular
+you are happy @ mutlusun | mutlusunuz
+they are happy @ mutlular | onlar mutlu
 
 i was happy @ mutluydum
-he was happy @ mutluydu
+he was happy @ mutluydu | o mutluydu
 we were happy @ mutluyduk
-you were happy @ mutluydunuz
-they were happy @ mutluydular
+you were happy @ mutluydun | mutluydunuz
+they were happy @ mutluydular | onlar mutluydu
 
 
 am i happy @ mutlu muyum
-is he happy @ mutlu mu
+is he happy @ mutlu mu | o mutlu mu
 are we happy @ mutlu muyuz
-are you happy @ mutlu musunuz
-are they happy @ mutlular mý
+are you happy @ mutlu musun | mutlu musunuz
+are they happy @ mutlular mý | onlar mutlu mu
 
 i am not happy @ mutlu deðilim
-he is not happy @ mutlu deðil
+he is not happy @ mutlu deðil | o mutlu deðil
 we are not happy @ mutlu deðiliz
-you are not happy @ mutlu deðilsiniz
-they are not happy @ mutlu deðiller
+you are not happy @ mutlu deðilsin | mutlu deðilsiniz
+they are not happy @ mutlu deðiller | onlar mutlu deðil
 
 am i not happy @ mutlu deðil miyim
-is he not happy @ mutlu deðil mi
+is he not happy @ mutlu deðil mi | o mutlu deðil mi
 are we not happy @ mutlu deðil miyiz
-are you not happy @ mutlu deðil misiniz
-are they not happy @ mutlu deðil miler | mutlu deðiller mi
+are you not happy @ mutlu deðil misin | mutlu deðil misiniz
+are they not happy @ mutlu deðiller mi | onlar mutlu deðil mi
 
 was i happy @ mutlu muydum
-was he happy @ mutlu muydu
+was he happy @ mutlu muydu | o mutlu muydu
 were we happy @ mutlu muyduk
-were you happy @ mutlu muydunuz
-were they happy @ mutlu muydular
+were you happy @ mutlu muydun | mutlu muydunuz
+were they happy @ mutlu muydular | onlar mutlu muydu
 
 i was not happy @ mutlu deðildim
-he was not happy @ mutlu deðildi
+he was not happy @ mutlu deðildi | o mutlu deðildi
 we were not happy @ mutlu deðildik
-you were not happy @ mutlu deðildiniz
-they were not happy @ mutlu deðillerdi
+you were not happy @ mutlu deðildin | mutlu deðildiniz
+they were not happy @ mutlu deðillerdi | onlar mutlu deðildi
 
 was i not happy @ mutlu deðil miydim
-was he not happy @ mutlu deðil miydi
+was he not happy @ mutlu deðil miydi | o mutlu deðil miydi
 were we not happy @ mutlu deðil miydik
-were you not happy @ mutlu deðil miydiniz
-were they not happy @ mutlu deðiller miydi
+were you not happy @ mutlu deðil miydin | mutlu deðil miydiniz
+were they not happy @ mutlu deðiller miydi | onlar mutlu deðil miydi
 
 i have been happy @ mutlu oldum
-she has been happy @ mutlu oldu
+she has been happy @ mutlu oldu | o mutlu oldu
 i had been happy @ mutlu olmuþtum
-she had been happy @ mutlu olmuþtu
+she had been happy @ mutlu olmuþtu | o mutlu olmuþtu
 
 have i been happy @ mutlu oldum mu
-has she been happy @ mutlu oldu mu
+has she been happy @ mutlu oldu mu | o mutlu oldu mu
 had i been happy @ mutlu olmuþ muydum
-had she been happy @ mutlu olmuþ muydu
+had she been happy @ mutlu olmuþ muydu | o mutlu olmuþ muydu
 
 i haven't been happy @ mutlu olmadým
-she hasn't been happy @ mutlu olmadý
+she hasn't been happy @ mutlu olmadý | o mutlu olmadý
 i hadn't been happy @ mutlu olmamýþtým
-she hadn't been happy @ mutlu olmamýþtý
+she hadn't been happy @ mutlu olmamýþtý | o mutlu olmamýþtý
 
 haven't i been happy @ mutlu olmadým mý
-hasn't she been happy @ mutlu olmadý mý
+hasn't she been happy @ mutlu olmadý mý | o mutlu olmadý mý
 hadn't i been happy @ mutlu olmamýþ mýydým
-hadn't she been happy @ mutlu olmamýþ mýydý
+hadn't she been happy @ mutlu olmamýþ mýydý | o mutlu olmamýþ mýydý
 
 i am being happy @ mutlu oluyorum
-she is being happy @ mutlu oluyor
+she is being happy @ mutlu oluyor | o mutlu oluyor
 i was being happy @ mutlu oluyordum
-she was being happy @ mutlu oluyordu
+she was being happy @ mutlu oluyordu | o mutlu oluyordu
+
 
 am i being happy @ mutlu oluyor muyum
-is she being happy @ mutlu oluyor mu
+is she being happy @ mutlu oluyor mu | o mutlu oluyor mu
 was i being happy @ mutlu oluyor muydum
-was she being happy @ mutlu oluyor muydu
+was she being happy @ mutlu oluyor muydu | o mutlu oluyor muydu
 
 i am not being happy @ mutlu olmuyorum
-she isn't being happy @ mutlu olmuyor
+she isn't being happy @ mutlu olmuyor | o mutlu olmuyor
 i wasn't being happy @ mutlu olmuyordum
-she wasn't being happy @ mutlu olmuyordu
+she wasn't being happy @ mutlu olmuyordu | o mutlu olmuyordu
 
 am i not being happy @ mutlu olmuyor muyum
-isn't she being happy @ mutlu olmuyor mu
+isn't she being happy @ mutlu olmuyor mu | o mutlu olmuyor mu
 wasn't i being happy @ mutlu olmuyor muydum
-wasn't she being happy @ mutlu olmuyor muydu
+wasn't she being happy @ mutlu olmuyor muydu | o mutlu olmuyor muydu
 
 i will be happy @ mutlu olacaðým
 i would be happy @ mutlu olacaktým
@@ -491,10 +488,10 @@ do i have a car @ bir arabam var mý | bir arabaya sahip miyim
 i don't have a car @ bir arabam yok | bir arabaya sahip deðilim
 don't i have a car @ bir arabam yok mu | bir arabaya sahip deðil miyim
 
-she has a car @ bir arabasý var | bir arabaya sahip
-does she have a car @ bir arabasý var mý | bir arabaya sahip mi
-she doesn't have a car @ bir arabasý yok | bir arabaya sahip deðil
-doesn't she have a car @ bir arabasý yok mu | bir arabaya sahip deðil mi
+she has a car @ onun bir arabasý var | o bir arabaya sahip
+does she have a car @ onun bir arabasý var mý | o bir arabaya sahip mi
+she doesn't have a car @ onun bir arabasý yok | o bir arabaya sahip deðil
+doesn't she have a car @ onun bir arabasý yok mu | o bir arabaya sahip deðil mi
 
 i had a car @ bir arabam vardý | bir arabaya sahiptim 
 did i have a car @ bir arabam var mýydý | bir arabaya sahip miydim
@@ -567,20 +564,7 @@ must i be afraid @ korkmalý mýyým
 mustn't i be afraid @ korkmamalý mýyým 
 
 
-i watch a car @ bir araba seyrederim
-i watch car @ araba seyrederim
-i watch the car @ arabayý seyrederim
 
-i am afraid of cars @ arabalardan korkuyorum
-i hated the car @ arabadan nefret ettim
-i turned @ döndüm
-i turned the car @ arabayý çevirdim 
-i turned the man down @ adamý geri çevirdim
-i turned the light on @ ýþýðý açtým
-i turned the light off @ ýþýðý kapadým
-i told him not to go @ ona gitmemesini söyledim
-i told him that i was happy @ ona mutlu olduðumu söyledim
-i told him whether i was happy @ ona mutlu olup olmadýðýmý söyledim
 
 that i go @ gittiðim
 that i don't go @ gitmediðim
@@ -627,34 +611,34 @@ cars which were going @ giden arabalar
 cars which weren't going @ gitmeyen arabalar
 car which will go @ gidecek araba
 car which won't go @ gitmeyecek araba
-car which would go @ gidecek olan araba
-car which wouldn't go @ gitmeyecek olan araba
+car which would go @ gidecek araba
+car which wouldn't go @ gitmeyecek araba
 car which can go @ gidebilecek araba | gidebilen araba
 car which can't go @ gidemeyecek araba | gidemeyen araba
 car which could go @ gidebilecek olan araba | gidebilen araba
-car which couldn't go @ gidemeyecek olan araba | gidemeyen araba
+car which couldn't go @ gidemeyecek araba | gidemeyen araba
 car which may go @ gidebilecek araba | gidebilen araba
 car which mayn't go @ gitmeyebilecek araba | gidemeyen araba
 car which must go @ gitmek zorunda olan araba
 car which has to go @ gitmek zorunda olan araba
-cars which don't have to go @ gitmek zorunda olmayan araba
+cars which don't have to go @ gitmek zorunda olmayan arabalar
 car which will be going @ gidiyor olacak araba
-car which would be going @ gidiyor olacak olan araba
+car which would be going @ gidiyor olacak araba
 car which is happy @ mutlu olan araba
 car which is afraid @ korkan araba
 
 whether i go @ gidip gitmediðim
 whether i went @ gidip gitmediðim
 whether i am going @ gidiyor olup olmadýðým | gidip gitmediðim
-whether i was going @ gidiyor olup olmadýðým
+whether i was going @ gidiyor olup olmadýðým | gidip gitmediðim
 whether i have gone @ gidip gitmediðim
 whether i had gone @ gitmiþ olup olmadýðým
 whether i will go @ gidip gitmeyeceðim
 whether i would go @ gidip gitmeyeceðim
 whether i can go @ gidip gidemediðim
 whether i could go @ gidip gidemediðim
-whether i may go @ gidip gidemeyeceðim
-whether i might go @ gidip gidemeyeceðim
+whether i may go @ gidip gidemeyeceðim | gidip gidemediðim
+whether i might go @ gidip gidemeyeceðim | gidip gidemediðim
 whether i must go @ gitmek zorunda olup olmadýðým
 whether i have to go @ gitmek zorunda olup olmadýðým
 whether i had to go @ gitmek zorunda olup olmadýðým
@@ -663,7 +647,8 @@ whether i am afraid @ korkup korkmadýðým
 
 if i go @ gidersem
 if i don't go @ gitmezsem
-if i went @ gittiysem
+if i went @ gitseydim
+if i didn't go @ gitmeseydim
 if i am going @ gidiyorsam
 if i was going @ gidiyorsam | gidiyorduysam
 if i have gone @ gittiysem
@@ -703,6 +688,7 @@ as soon as i have a car @ ben bir arabaya sahip olur olmaz
 as soon as i had a car @ ben bir arabaya sahip olur olmaz
 as soon as i am happy @ ben mutlu olur olmaz
 as soon as i am afraid @ ben korkar korkmaz
+as soon as i see you @ ben sizi görür görmez
 
 as long as i go @ gittiðim sürece
 as long as i went @ gittiðim sürece
@@ -723,6 +709,7 @@ as long as i have a car @ bir arabaya sahip olduðum sürece
 as long as i had a car @ bir arabaya sahip olduðum sürece
 as long as i am happy @ mutlu olduðum sürece
 as long as i am afraid @ korktuðum sürece
+as long as i see you @ sizi gördüðüm sürece
 
 before i go @ ben gitmeden önce | gitmemden önce
 before i went @ ben gitmeden önce| gitmemden önce
@@ -743,6 +730,7 @@ before i have a car @ ben bir arabaya sahip olmadan önce | bir arabaya sahip olm
 before i had a car @ ben bir arabaya sahip olmadan önce | bir arabaya sahip olmamdan önce
 before i am happy @ ben mutlu olmadan önce | mutlu olmamdan önce
 before i am afraid @ ben korkmadan önce
+before i see you @ ben sizi görmeden önce
 
 after i go @ ben gittikten sonra
 after i went @ ben gittikten sonra
@@ -761,6 +749,8 @@ after i have to go @ ben gitmek zorunda olduktan sonra
 after i had to go @ ben gitmek zorunda olduktan sonra
 after i have a car @ ben bir arabaya sahip olduktan sonra
 after i had a car @ ben bir arabaya sahip olduktan sonra
+after i am afraid @ ben korktuktan sonra
+after i see you @ ben sizi gördükten sonra
 
 while i go @ ben giderken
 while i went @  ben giderken
@@ -781,17 +771,18 @@ while i have a car @ ben bir arabaya sahipken
 while i had a car @ ben bir arabaya sahipken
 while i am happy @ ben mutluyken
 while i am afraid @ ben korkuyorken
+while i see you @ ben sizi görüyorken
 
 though i go @ gitmeme raðmen
 though i went @  gitmeme raðmen
 though i am going @ gitmeme raðmen | gidiyor olmama raðmen
 though i was going @ gitmeme raðmen | gidiyor olmama raðmen
-though i have gone @ gitmeme raðmen 
+though i have gone @ gitmeme raðmen | gitmiþ olmama raðmen
 though i had gone @ gitmiþ olmama raðmen
 though i will go @ gidecek olmama raðmen
 though i would go @ gidecek olmama raðmen
 though i can go @ gidebilmeme raðmen
-though i could go @ gidememe raðmen
+though i could go @ gidebilmeme raðmen
 though i may go @ gidebilmeme raðmen
 though i might go @ gidebilmeme raðmen
 though i must go @ gitmek zorunda olmama raðmen
@@ -800,9 +791,64 @@ though i had to go @ gitmek zorunda olmama raðmen
 though i have a car @ bir arabaya sahip olmama raðmen
 though i had a car @ bir arabaya sahip olmama raðmen
 though i am happy @ mutlu olmama raðmen
-though i am afraid @ korkmama raðmen
+though i am afraid @ korkmama raðmen | korkuyor olmama raðmen
+though i see you @ sizi görmeme raðmen | sizi görüyor olmama raðmen
 
-while going @ giderken
+while going @ giderken | gidiyorken
+while not going @ gitmezken | gitmiyorken
+while having gone @ gitmiþ olurken
+while being happy @ mutlu olurken | mutlu oluyorken
+while being afraid @ korkuyorken | korkarken
+while seeing you @ sizi görüyorken | sizi görürken
+
 before going @ gitmeden önce
+before having gone @ gitmiþ olmadan önce
+before being happy @ mutlu olmadan önce
+before being afraid @ korkmadan önce
+before seeing you @ sizi görmeden önce
+
 after going @ gittikten sonra
+after having gone @ gitmiþ olduktan sonra
+after being happy @ mutlu olduktan sonra
+after being afraid @ korktuktan sonra
+after seeing you @ sizi gördükten sonra
+
+in order to go @ gitmek için
+in order not to go @ gitmemek için
+in order to have gone @ gitmiþ olmak için
+in order to be happy @ mutlu olmak için
+in order to be afraid @ korkmak için
+in order to see you @ sizi görmek için
+
 because i go @ gittiðim için
+# Verb -> Predicate Conversion
+# i have to go @ gitmek zorundayým
+# Predicate -> Verb Conversion
+# i am afraid @ korkuyorum
+
+# Subject Nominative -> Possesive conversion
+men like cars @ arabalar adamlarýn hoþuna gidiyor
+i like cars @ arabalar hoþuma gidiyor
+she like cars @ arabalar hoþuna gidiyor
+they like cars @ arabalar hoþlarýna gidiyor
+i like you @ siz hoþuma gidiyorsunuz
+i wanted you to like cars @ arabalarýn hoþunuza gitmesini istedim
+though i like you @ sizin hoþuma gitmenize raðmen | hoþuma gitmenize raðmen
+though i like cars @ arabalalarýn hoþuma gitmesine raðmen
+as long as i like you @ siz hoþuma gittiðiniz sürece
+whether i like @ hoþuma gidip gitmediðiniz
+
+# Subject Nominative -> Possesive conversion
+cars bother me @ arabalar canýmý sýkýyor
+cars bother her @ arabalar canýný sýkýyor
+cars bother them @ arabalar canlarýný sýkýyor
+you bother me @ canýmý sýkýyorsunuz
+i wanted him to bother you @ onun sizin canýnýzý sýkmasýný istedim
+though i bother you @ canýnýzý sýkmama raðmen
+though cars bother you @ arabalarýn canýnýzý sýkmasýna raðmen
+as long as i bother you @ canýnýzý sýktýðým sürece
+whether i bother you @ canýnýzý sýkýp sýkmadýðým
+
+
+#before my going @ gitmemden önce
+#after his going @ gitmesinden sonra

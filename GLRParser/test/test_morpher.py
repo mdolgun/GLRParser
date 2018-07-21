@@ -170,6 +170,7 @@ class TestMorpher(unittest.TestCase):
         ('ara-YAcAk-sHn', 'arayacaksın'),
         ('ara-YAcAk-Hz', 'arayacağız'),
         ('ara-YAcAk-sHnHz', 'arayacaksınız'),
+        ('git-mA-Hm', 'gitmem'),
         ('üst! -Hm', 'üstüm'),
     ]
     '''

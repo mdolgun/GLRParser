@@ -47,7 +47,9 @@ S -> in : out
         "%define token2\n",
         "",
     ]
+    
     def test_rules(self):
+        self.maxDiff = None
         for define,exp_rules in zip(self.defines,self.rule_sets):
             parser = Parser()       
             parser.load_grammar(text=define+self.grammar)            

@@ -25,11 +25,11 @@ class TestCost1A(TestCost,unittest.TestCase):
     grammar = """
         S -> A B : C
         A -> a0 
-        A -> a1   {-1} [f=1]
+        A -> a1   ! [f=1]
         B -> b0 
-        B -> b1   {-1} [f=1]
-        C -> : c0 {-1} [f=0]
-        C -> : c1      [f=1]    
+        B -> b1   ! [f=1]
+        C -> : c0 ! [f=0]
+        C -> : c1   [f=1]    
     """
     sents = [ "a0 b0", "a0 b1", "a1 b0", "a1 b1"] 
     enumx = [
@@ -42,13 +42,23 @@ class TestCost1AR(TestCost,unittest.TestCase):
     reverse = True
     grammar = """
         S -> A B : C
-        A -> a0 
-        A -> a1   {-1} [f=1]
-        B -> b0 
-        B -> b1   {-1} [f=1]
-        C -> : c0 {-1} [f=0]
-        C -> : c1      [f=1] 
+        A -> a0   ! [f=0]
+        A -> a1   
+        B -> b0   ! [f=0]
+        B -> b1   
+        C -> : c0 ! [f=0]
+        C -> : c1   [f=1] 
     """
+    #reverse = False
+    #grammar = """
+    #    S -> C : A B
+    #    A -> : a0 
+    #    A -> : a1   ! [f=1]
+    #    B -> : b0 
+    #    B -> : b1   ! [f=1]
+    #    C -> c0 ! [f=0]
+    #    C -> c1   [f=1] 
+    #"""
     sents = [ "c0", "c1"] 
     enumx = [
         [('a0 b0', 0)],
@@ -122,7 +132,7 @@ class TestCost2(TestCost,unittest.TestCase):
 class TestCost3(TestCost,unittest.TestCase):
     reverse = False
     grammar = """
-        S -> A : A B {-1}    [f=0]
+        S -> A : A B !     [f=0]
         S -> A : A n B 
         A -> a : x         [f=1]  
         A -> b : y

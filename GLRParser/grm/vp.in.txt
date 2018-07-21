@@ -1,0 +1,62 @@
+i know it @ onu biliyorum
+i knew it @ onu biliyordum
+i see you @ sizi görüyorum
+i saw you @ sizi gördüm
+i watch it @ onu izlerim
+i watched it @ onu izledim
+
+i had better go @ gitsem iyi olur
+you had better not go @ gitmesen iyi olur
+i would like to see you @ sizi görmek isterim
+would you like to see me @ beni görmek ister misiniz
+i would rather sleep @ uyumayý tercih ederim
+i would rather not sleep @ uyumamayý tercih ederim
+
+#it is easy to see you @ sizi görmek kolay
+#it is easy for me to see you @ sizi görmem kolay | sizi görmek benim için kolay
+
+i watch a car @ bir araba seyrederim
+i watch car @ araba seyrederim
+i watch the car @ arabayý seyrederim
+
+i am afraid of cars @ arabalardan korkuyorum
+i am afraid of you @ sizden korkuyorum
+i am angry with you @ size kýzgýným
+i am happy that you are happy @ mutlu olduðunuz için mutluyum
+i didn't know that you were not happy @ mutlu olmadýðýnýzý bilmiyordum
+
+i hated the car @ arabadan nefret ettim | arabadan nefret ediyordum
+i turned @ döndüm
+i turned the car @ arabayý çevirdim 
+i turned the man down @ adamý geri çevirdim
+i turned the light on @ ýþýðý açtým
+i turned the light off @ ýþýðý kapadým
+i told him not to go @ ona gitmemesini söyledim
+i told him that i was happy @ ona mutlu olduðumu söyledim
+she didn't tell me whether she was happy @ o bana mutlu olup olmadýðýný söylemedi
+i know that you are happy @ mutlu olduðunuzu biliyorum
+i don't know whether you are happy @ mutlu olup olmadýðýnýzý bilmiyorum
+i wanted a car @ bir araba istedim
+i wanted to see you @ sizi görmek istedim 
+i wanted to be happy @ mutlu olmak istedim
+i wanted you not to go @ sizin gitmemenizi istedim
+he wanted me to see you @ o benim sizi görmemi istedi 
+he gave the car @ o arabayý verdi
+he gave me the car @ o bana arabayý verdi
+
+
+i was given a car @ bana bir araba verildi | bir araba verildim
+#i was hated @ benden nefret edildi | nefret edildim
+i was watched @ seyredildim
+#i was looked after @ bana bakýldý | bakýldým
+
+i saw a car @ bir araba gördüm
+i saw him sleep @ onun uyuduðunu gördüm 
+i saw him sleeping @ onun uyuduðunu gördüm | onu uyurken gördüm
+i saw his sleeping @ onun uyumasýný gördüm
+
+she is looking @ o bakýyor
+she looked at me @ o bana baktý
+she is looking for me @ o beni arýyor
+she is looking after the children @ o çocuklara bakýyor
+she looks angry @ o kýzgýn görünüyor

@@ -22,21 +22,34 @@ def main():
     print("Compile time:", int((end-start)*1000),"ms")
 
     start = end
-    input_cnt,trans_cnt,match_cnt,experr_cnt,ignore_cnt = parser.trans_file(
-        "test.in.txt", #grm_dir+"tenses.in.txt",
-        "test.out.txt", #grm_dir+"tenses.out.txt",
+    #input_cnt,trans_cnt,match_cnt,experr_cnt,ignore_cnt = parser.trans_file(
+    #    #"test.in.txt",
+    #    #"test.out.txt",
+    #    grm_dir+"tenses.in.txt",
+    #    grm_dir+"tenses.out.txt",
+    #    ignore_exp_error=True
+    #)
+    stats = parser.trans_file(
+        #"test.in.txt",
+        #"test.out.txt",
+        grm_dir+"tenses.in.txt",
+        grm_dir+"tenses.out.txt",
         ignore_exp_error=True
     )
     end = timer()
-    print("Parse time Total:", int((end-start)*1000),"ms  Per sentence:", int((end-start)*1000/input_cnt),"ms")
+    #print("Parse time Total:", int((end-start)*1000),"ms  Per sentence:", int((end-start)*1000/input_cnt),"ms")
+    print("Parse time Total:", int((end-start)*1000),"ms  Per sentence:", int((end-start)*1000/stats[0]),"ms")
 
-    print("input={}, translated={}, matched={}, experr={}, ignored={} success=%{}".format(
-        input_cnt,
-        trans_cnt,
-        match_cnt,
-        experr_cnt,
-        ignore_cnt,
-        (match_cnt+experr_cnt+ignore_cnt)*100//input_cnt
+    #print("input={}, translated={}, matched={}, experr={}, ignored={} success=%{}".format(
+    #    input_cnt,
+    #    trans_cnt,
+    #    match_cnt,
+    #    experr_cnt,
+    #    ignore_cnt,
+    #    (match_cnt+experr_cnt+ignore_cnt)*100//input_cnt
+    #))
+    print("input={}, translated={}, matched={}, experr={}, ignored={} success=%{}".format(*stats,
+        (stats[2]+stats[3]+stats[4])*100//stats[0]
     ))
 
 

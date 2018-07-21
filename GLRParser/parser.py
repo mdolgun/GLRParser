@@ -146,10 +146,11 @@ class Parser:
                 pass
 
     def format_rules(self):
-         return "\n".join([rule.format() for rule in self.rules])
+        """ return string repr of all rules """
+        return "\n".join(rule.format() for rule in self.rules)
          
     def get_items(self,stateset):
-        """ get string repr of "items" in state set in dotted fomat  e.g "{ S -> NP . VP ; VP -> . V  ; VP -> . V NP }" """
+        """ get string repr of  a "stateset" in state set in dotted fomat  e.g "{ S -> NP . VP ; VP -> . V  ; VP -> . V NP }" """
         slist = ["{"]
         for ruleno,rulepos in stateset:
             slist.append("{} -> {} . {}".format(self.rules[ruleno].head, " ".join(self.rules[ruleno].left[0:rulepos]), " ".join(self.rules[ruleno].left[rulepos:])))
@@ -157,6 +158,7 @@ class Parser:
         return " , ".join(slist)
 
     def get_item(self,ruleno,rulepos):
+        """ get string repr of a single state item """
         return "{} -> {} . {}".format(self.rules[ruleno].head, " ".join(self.rules[ruleno].left[0:rulepos]), " ".join(self.rules[ruleno].left[rulepos:]))    
 
     def compile(self):
@@ -229,9 +231,9 @@ class Parser:
             for stateno,stateset in enumerate(states):
                 logging.debug("%s : %s REDUCE: %s EREDUCE: %s", stateno, self.get_items(stateset), self.get_items(reduce.get(stateno,set())), self.get_items(ereduce.get(stateno,set())))
    
-    def load_grammar(self,fname=None,reverse=False,text=None):
+    def load_grammar(self,fname=None,reverse=False,text=None,defines=None):
         """ loads a grammar file and parse it """
-        grammar = Grammar.load_grammar(fname,reverse,text)
+        grammar = Grammar.load_grammar(fname,reverse,text,defines)
         self.rules,self.trie = grammar.rules,grammar.trie
         self.post_processor.suff_idxs,self.post_processor.suff_dict_list =  grammar.suff_idxs,grammar.suff_dict_list
         
@@ -239,43 +241,55 @@ class Parser:
             logging.info("rules=%s",self.format_rules())
             logging.info("dict=%s","\n".join(self.trie.list()))
 
-    def unify_up(dst,param,src):
+    def unify_up(dst,param,src,checklist):
         """ unification of "src" features into "dst" features, using filtering of "param", if unification fails raises UnifyError
 
         if param is None, src is directly unified into dst
         otherwise param contains a pre-condition dict and a filter set,
         src is checked against pre-condition dict and then filtered with filter set and unified into dst
-
         """
         if param is None:
-            keys = src.keys()
+            items = [(key,val) for key,val in src.items() if key[0]!='@']
         else:
-            keys = set()
-            for key in param.keys() & src.keys():
-                if param[key] is None:
-                    keys.add(key)
+            items = []
+            for key,val in param.items():
+                if val is None:
+                    if key == '@*':
+                        for skey,sval in src.items():
+                            if skey[0]!='@':
+                                items.append( ('@'+skey, sval) )
+                    elif key[0] == '@':
+                        sval = src.get(key[1:])
+                        if sval is not None:
+                            items.append( (key, sval) )
+                    else:
+                        items.append( (key, src[key]) )
                 else:
-                    val = param[key]
                     if val[0] == '*':
-                        val = dst.get(val[1:])
-                    if val:
-                        if val != src[key]:
-                            raise UnifyError("Unify precheck error feat=%s src=%s param=%s" % (key, src[key], val))
+                        sval =  src.get(key)
+                        if sval is not None:
+                            items.append( (val[1:], sval) )
+                    else:
+                        sval = src.get(key)
+                        if sval is not None and val!=sval:
+                            raise UnifyError("Unify precheck error feat=%s src=%s param=%s" % (key, sval, val))
 
-        newkeys = keys - dst.keys()
-        for key in keys & dst.keys():
-            if  src[key] != dst[key]:
-                if src[key] == '?' and dst[key] != '!':
-                    pass
-                elif dst[key] == '?' and src[key] != '!':
-                    newkeys.add(key)
-                else:
-                    raise UnifyError("Unify error feat=%s src=%s param=%s" % (key, src[key], dst[key]))
-        if newkeys:
-            dst = dst.copy()
-            for key in newkeys:
-                dst[key] = src[key]
-        return dst
+        changed = False
+        for key,val in items:
+            dval = dst.get(key)
+            if dval is None:
+                if not changed:
+                    dst = dst.copy()
+                    changed = True
+                dst[key] = val
+            elif val!=dval:
+                raise UnifyError("Unify error feat=%s src=%s param=%s" % (key, val, dval))
+
+        for key in checklist:
+            if dst.get(key) == '!':
+                raise UnifyError("Unify feature not exists: %s" % key)
+
+        return dst     
 
     def unify_down(dst,param,src,checklist):
         """ unification of "src" features into "dst" features, using filtering of "param", if unification fails raises UnifyError
@@ -283,48 +297,55 @@ class Parser:
         if param is None, src is directly unified into dst
         otherwise param contains a pre-condition dict and a filter set,
         dst is unified against pre-condition dict and filtered src
-
         """
         if param is None:
-            pdict = src
+            items = [(key,val) for key,val in src.items() if key[0]!='@']
         else:
-            pdict = dict()
-            for key in param.keys():
-                if param[key] is None:
-                    if key in src:
-                        pdict[key] = src[key]
+            items = []
+            if type(param)!=dict:
+                pass
+            for key,val in param.items():
+                if val is None:
+                    if key == '@*':
+                        for skey,sval in src.items():
+                            if skey[0]=='@':
+                                items.append( (skey[1:], sval) )
+                    elif key[0] == '@':
+                        sval = src.get(key)
+                        if sval is not None:
+                            items.append( (key[1:], sval) )
+                    else:
+                        items.append( (key, src[key]) )
                 else:
-                    val = param[key]
                     if val[0] == '*':
-                        val = src.get(val[1:])
-                    if val:
-                        pdict[key] = val
+                        sval =  src.get(val[1:])
+                        if sval is not None:
+                            items.append( (key, sval) )
+                    else:
+                        items.append( (key, val) )
 
-        newkeys = pdict.keys() - dst.keys()
-        for key in pdict.keys() & dst.keys():
-            if pdict[key] != dst[key]:
-                #if pdict[key] == '?' and dst[key] != '!':
-                #    pass
-                #elif dst[key] == '?' and pdict[key] != '!':
-                #    newkeys.add(key)
-                #else:
-                    raise UnifyError("UnifyD error feat=%s src=%s param=%s" % (key, pdict[key], dst[key]))
-        if newkeys:
-            dst = dst.copy()
-            dst.update(pdict)
+        changed = False
+        for key,val in items:
+            dval = dst.get(key)
+            if dval is None:
+                if not changed:
+                    dst = dst.copy()
+                    changed = True
+                dst[key] = val
+            elif val!=dval:
+                raise UnifyError("UnifyD error feat=%s src=%s param=%s" % (key, val, dval))
+
         for key in checklist:
             if dst.get(key,'!') == '!':
                 raise UnifyError("UnifyD feature not exists: %s" % key)
-        #for key,val in dst.items():
-        #   if val=='?':
-        #       raise UnifyError("UnifyD non-existing feat=%s" % key )
-        return dst
 
+        return dst           
  
     def unify_tree(self,tree):
         """ bottom-up unifies a tree and returns a new tree """
 
         rule = tree.rule
+        checklist = [key for key,val in rule.feat.items() if val=='?']
         fdict = {key:val for key,val in rule.feat.items() if val != '?'}
         srcflist = rule.lparam
 
@@ -347,7 +368,7 @@ class Parser:
                         for subtree in subtrees:
                             logging.debug("Unify feat=%s param=%s subfeat=%s ", format_feat(fdict), format_feat(param), format_feat(subtree.feat))
                             try:
-                                _fdict = Parser.unify_up(fdict,param,subtree.feat)
+                                _fdict = Parser.unify_up(fdict,param,subtree.feat,[])
                                 logging.debug("Unify Success=%s", format_feat(_fdict))
                                 try:
                                     idx = nkeys.index(_fdict)
@@ -367,19 +388,22 @@ class Parser:
                     raise UnifyError(last_error)
         ntree = []
         for fdict,seq in stack:
+            for key,val in fdict.items():
+                if type(val) == int:
+                    fdict[key] = tree.left[val]
             ntree.append(Tree(tree.head,tree.rule,tree.ruleno,seq,tree.right,fdict,tree.cost))
         if tree.head=="S'":
             assert len(ntree)==1
             return ntree[0]
         return ntree
 
-    def prune(alts):
-        cost = min(subtree.cost for subtree in alts)
-        if cost<0:
-            alts = [subtree for subtree in alts if subtree.cost==cost]
-            for subtree in alts:
-                subtree.cost = 0
-        return alts
+    #def prune(alts):
+    #    cost = min(subtree.cost for subtree in alts)
+    #    if cost<0:
+    #        alts = [subtree for subtree in alts if subtree.cost==cost]
+    #        for subtree in alts:
+    #            subtree.cost = 0
+    #    return alts
 
     def make_trans_tree(self,symbol,feat,fparam):
         """ generate a tree for dst-only non-terminal tree """
@@ -392,15 +416,28 @@ class Parser:
                 #logging.debug("make_trans_tree1: %s unifyd(%s,%s,%s)", symbol, format_feat(feat), format_feat(fparam,'()'), format_feat(rule.feat))
                 fdict = Parser.unify_down(rule_feat,fparam,feat,checklist)
                 logging.debug("make_trans_tree: %s unifyd(%s,%s,%s)->%s", symbol, format_feat(feat), format_feat(fparam,'()'), format_feat(rule.feat), format_feat(fdict))
-                sub = []
+                trans = []
                 for item,param in zip(rule.right,rule.rparam):
-                    assert type(item) != int, "%s#%d(%s) %s:%s" % (symbol,ruleno,fparam,item,param)
-                    if param is False: # Terminal
-                        sub.append(item)
+                    assert type(item) == str, "%s#%d(%s) %s:%s" % (symbol,ruleno,fparam,item,param)
+                    if item[0]=='*': # Reference
+                        key = item[1:]
+                        try:
+                            val = fdict[key]
+                        except KeyError:
+                            raise UnifyError("Translate Ref to feature %s not found in %s" % (key,rule))
+                        if type(val)==str:
+                            trans.append(val)
+                        else:
+                            assert param is not False
+                            trans.append( self.trans_alts(val,fdict,param) )
+                    elif param is False: # Terminal
+                        trans.append(item)
                     else: # NonTerminal
-                        sub.append(Parser.prune( self.make_trans_tree(item,fdict,param) ))
+                        trans.append( self.make_trans_tree(item,fdict,param) )
 
-                ntree.append(Tree(symbol,rule,ruleno,[],sub,fdict,rule.cost)) 
+                ntree.append(Tree(symbol,rule,ruleno,[],trans,fdict,rule.cost))
+                if rule.cut:
+                    break
             except UnifyError as ue:
                 last_error = "%s %s#%d" % (ue.args[0], symbol, ruleno)
                 logging.debug("make_trans_tree: %s unifyd(%s,%s,%s)->Error", symbol, format_feat(feat), format_feat(fparam,'()'), format_feat(rule.feat))
@@ -409,6 +446,20 @@ class Parser:
                 raise ParseError("No production rule defined for symbol: %s" % symbol)
             raise UnifyError(last_error)
         return ntree
+
+    def trans_alts(self,subtrees,fdict,param):
+        assert type(subtrees) == list
+        alts = []
+        for alt in subtrees:
+            try:                        
+                alts.append( self.trans_tree(alt,fdict,param) )
+                if alt.rule.cut:
+                    break
+            except UnifyError as ue:
+                last_error = "%s %s" % (ue.args[0], alt.rule)
+        if not alts:
+            raise UnifyError(last_error)
+        return alts
 
     def trans_tree(self,tree,feat=empty_dict,fparam=None):
         """ translates and unifies translation(right) part of a parse tree
@@ -425,22 +476,26 @@ class Parser:
         
         trans = []
         for item,param in zip(rule.right,rule.rparam):
-            if param is False: # Terminal
+            if type(item)==int: # Matched (Left&Right) NT
+                assert param is not False
+                trans.append( self.trans_alts(tree.left[item],fdict,param) )
+            elif item[0]=='*': # Reference
+                assert param is not False
+                key = item[1:]
+                try:
+                    val = fdict[key]
+                except KeyError:
+                    raise UnifyError("Translate Ref to feature %s not found in %s" % (key,rule))
+                if type(val)==str:
+                    trans.append(val)
+                else:
+                    trans.append( self.trans_alts(val,fdict,param) )
+            elif param is False: # Terminal
                 trans.append(item)
-            elif type(item)==str: # Unmatched (Right-Only) NT
+            else: # Unmatched (Right-Only) NT
                 assert item[0].isupper()
-                trans.append(Parser.prune( self.make_trans_tree(item,fdict,param) )) 
-            else: # Matched (Left&Right) NT
-                assert type(item)==int
-                alts = []
-                for alt in tree.left[item]:
-                    try:                        
-                        alts.append( self.trans_tree(alt,fdict,param) )
-                    except UnifyError as ue:
-                        last_error = "%s %s" % (ue.args[0], rule)
-                if not alts:
-                    raise UnifyError(last_error)
-                trans.append(Parser.prune(alts))           
+                trans.append( self.make_trans_tree(item,fdict,param) ) 
+        
         tree.right = trans
         return tree
 
