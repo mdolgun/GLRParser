@@ -99,17 +99,26 @@ class TurkishPostProcessor:
             elif item.startswith("+"):
                 if previdx is None:
                     raise PostProcessError("Postprocess Error: sent: %s Word stem not found" % text) 
-                try:
-                    dicidx,sufidx = self.suff_idxs[item[1:]]
-                except KeyError:
-                    raise PostProcessError("Postprocess Error: sent: %s Unknown suffix: %s" % (text, item))  
+                #try:
+                #    dicidx,sufidx = self.suff_idxs[item[1:]]
+                #except KeyError:
+                #    raise PostProcessError("Postprocess Error: sent: %s Unknown suffix: %s" % (text, item))  
+                #try:
+                #    prev = items[previdx]
+                #    items[previdx] = self.suff_dict_list[dicidx][prev][sufidx]
+                #    items[idx] = None
+                #except KeyError:
+                #    try:
+                #        items[idx] = self.suff_dict_list[dicidx][""][sufidx]
+                #    except KeyError:
+                #        raise PostProcessError("Postprocess Error: sent: %s word: %s, suffix: %s" % (text, prev, item))
                 try:
                     prev = items[previdx]
-                    items[previdx] = self.suff_dict_list[dicidx][prev][sufidx]
+                    items[previdx] = self.suff_dict[prev+item]
                     items[idx] = None
                 except KeyError:
                     try:
-                        items[idx] = self.suff_dict_list[dicidx][""][sufidx]
+                        items[idx] = self.suff_dict[item]
                     except KeyError:
                         raise PostProcessError("Postprocess Error: sent: %s word: %s, suffix: %s" % (text, prev, item))
             else:

@@ -175,9 +175,10 @@ class Grammar:
         self.process = True
         self.if_stack = []
         self.parse_rule("S' -> S() : S()")
-        self.suff_dict_names = dict()
-        self.suff_idxs = dict()
-        self.suff_dict_list = []
+        self.suff_dict = dict()
+        #self.suff_dict_names = dict()
+        #self.suff_idxs = dict()
+        #self.suff_dict_list = []
         
    
     def get_rest(self,maxchars=20):
@@ -497,23 +498,28 @@ class Grammar:
         return items
 
     def parse_macro(self):
-        """ %macro MacroName -> NonTerm (, NonTerm)* """
-        macro_name = self.get_nonterm()
-        self.get_token('->')
-        items = self.parse_nonterm_list()
+        #""" %macro MacroName -> NonTerm (, NonTerm)* """
+        #macro_name = self.get_nonterm()
+        #self.get_token('->')
+        #items = self.parse_nonterm_list()
+
+        _,macro_name,items = self.buf.split()
         if macro_name in self.macros:
             raise GrammarError("Line:%d Macro already defined: %s" % (self.line_no,macro_name))
-        self.macros[macro_name] = items
+        self.macros[macro_name] = items.split(",")
         self.forms[macro_name] = dict()
 
     def parse_form(self):
         """ %form MacroName -> Term (, Term)* """
-        macro_name = self.get_nonterm()
-        self.get_token('->')
+        #macro_name = self.get_nonterm()
+        #self.get_token('->')
+
+        _,macro_name,items = self.buf.split()
         if macro_name not in self.macros:
             raise GrammarError("Line:%d Macro not defined: %s" % (self.line_no,macro_name))
         cnt = len(self.macros[macro_name])
-        items = self.buf[self.pos:].split(",")
+        #items = self.buf[self.pos:].split(",")
+        items = items.split(",")
         if len(items) != cnt:
             raise GrammarError("Line:%d Form expecting %d items but found: %s" % (line_no,cnt,self.get_rest()))
         items = [[alt.strip() for alt in item.split("/")] for item in items]
@@ -590,41 +596,41 @@ class Grammar:
         with open(self,"rb") as fin:
             self.forms = pickle.load(fin)
 
-    def parse_suffix_macro(self):
-        """ %suffix_macro MacroName -> term (, term)* """
+    #def parse_suffix_macro(self):
+    #    """ %suffix_macro MacroName -> term (, term)* """
 
-        #macro_name = self.get_nonterm()
-        #self.get_token('->')
-        #items = self.parse_term_list()
-        _,macro_name,_,items = self.buf.split()
-        items = items.split(",")
+    #    #macro_name = self.get_nonterm()
+    #    #self.get_token('->')
+    #    #items = self.parse_term_list()
+    #    _,macro_name,_,items = self.buf.split()
+    #    items = items.split(",")
 
-        if macro_name in self.suff_dict_names:
-            raise GrammarError("Line:%d Macro already defined: %s" % (self.line_no,macro_name))
-        dict_idx = len(self.suff_dict_list)
-        self.suff_dict_names[macro_name] = (dict_idx,len(items))
-        self.suff_dict_list.append(dict())
-        for idx,item in enumerate(items):
-            self.suff_idxs[item] = (dict_idx,idx)
+    #    if macro_name in self.suff_dict_names:
+    #        raise GrammarError("Line:%d Macro already defined: %s" % (self.line_no,macro_name))
+    #    dict_idx = len(self.suff_dict_list)
+    #    self.suff_dict_names[macro_name] = (dict_idx,len(items))
+    #    self.suff_dict_list.append(dict())
+    #    for idx,item in enumerate(items):
+    #        self.suff_idxs[item] = (dict_idx,idx)
 
 
-    def parse_suffix_def(self):
-        """ %suffix_def MacroName -> term (, term)* """
+    #def parse_suffix_def(self):
+    #    """ %suffix_def MacroName -> term (, term)* """
 
-        #macro_name = self.get_nonterm()
-        #self.get_token('->')
-        #items = self.parse_term_list()
-        _,macro_name,_,items = self.buf.split()
-        items = items.split(",")
+    #    #macro_name = self.get_nonterm()
+    #    #self.get_token('->')
+    #    #items = self.parse_term_list()
+    #    _,macro_name,_,items = self.buf.split()
+    #    items = items.split(",")
 
-        if macro_name not in self.suff_dict_names:
-            raise GrammarError("Line:%d Macro not defined: %s" % (self.line_no,macro_name))
-        dict_idx,cnt = self.suff_dict_names[macro_name]
-        #items = self.buf[self.pos:].split(",")
-        if len(items) != cnt:
-            raise GrammarError("Line:%d suffix_def expecting %d items but found: %s" % (self.line_no,cnt,self.buf))
-        #items = [item.strip() for item in items]
-        self.suff_dict_list[dict_idx][""] = items
+    #    if macro_name not in self.suff_dict_names:
+    #        raise GrammarError("Line:%d Macro not defined: %s" % (self.line_no,macro_name))
+    #    dict_idx,cnt = self.suff_dict_names[macro_name]
+    #    #items = self.buf[self.pos:].split(",")
+    #    if len(items) != cnt:
+    #        raise GrammarError("Line:%d suffix_def expecting %d items but found: %s" % (self.line_no,cnt,self.buf))
+    #    #items = [item.strip() for item in items]
+    #    self.suff_dict_list[dict_idx][""] = items
 
     def parse_suffix(self):
         """ %suffix MacroName -> Term (, Term)* """
@@ -632,34 +638,34 @@ class Grammar:
         #macro_name = self.get_nonterm()
         #self.get_token('->')
         #items = self.parse_term_list()
-        _,macro_name,_,items = self.buf.split()
-        items = items.split(",")
+        _,key,val = self.buf.split()
 
-        if macro_name not in self.suff_dict_names:
-            raise GrammarError("Line:%d Suffix Macro not defined: %s" % (self.line_no,macro_name))
-        dict_idx,cnt = self.suff_dict_names[macro_name]
+        #if macro_name not in self.suff_dict_names:
+        #    raise GrammarError("Line:%d Suffix Macro not defined: %s" % (self.line_no,macro_name))
+        #dict_idx,cnt = self.suff_dict_names[macro_name]
         #items = self.buf[self.pos:].split(",")
-        if len(items) != cnt:
-            raise GrammarError("Line:%d Suffix expecting %d items but found: %s" % (self.line_no,cnt,self.get_rest()))
+        #if len(items) != cnt:
+        #    raise GrammarError("Line:%d Suffix expecting %d items but found: %s" % (self.line_no,cnt,self.get_rest()))
         #items = [item.strip() for item in items]
-        self.suff_dict_list[dict_idx][items[0]] = items
+        #self.suff_dict_list[dict_idx][items[0]] = items
+        self.suff_dict[key] = val
 
-    def include_suffix(self):
-        """ %include_suffix MacroName "file name" """
-        macro_name = self.get_nonterm()
-        fname = self.get_term()
-        if macro_name not in self.suff_dict_names:
-            raise GrammarError("Line:%d Suffix Macro not defined: %s" % (self.line_no,macro_name))
-        dict_idx,cnt = self.suff_dict_names[macro_name]
-        with open(fname,"rt") as f:
-            for line_no,line in enumerate(f):
-                line = line.strip()
-                if line and not line.startswith("#"):
-                    items = line.split(",")
-                    if len(items) != cnt:
-                        raise GrammarError("File:%s Line:%d Suffix Form expecting %d items but found: %s" % (fname,line_no,cnt,line))
-                    items = [item.strip() for item in items]
-                    self.suff_dict_list[dict_idx][items[0]] = items
+    #def include_suffix(self):
+    #    """ %include_suffix MacroName "file name" """
+    #    macro_name = self.get_nonterm()
+    #    fname = self.get_term()
+    #    if macro_name not in self.suff_dict_names:
+    #        raise GrammarError("Line:%d Suffix Macro not defined: %s" % (self.line_no,macro_name))
+    #    dict_idx,cnt = self.suff_dict_names[macro_name]
+    #    with open(fname,"rt") as f:
+    #        for line_no,line in enumerate(f):
+    #            line = line.strip()
+    #            if line and not line.startswith("#"):
+    #                items = line.split(",")
+    #                if len(items) != cnt:
+    #                    raise GrammarError("File:%s Line:%d Suffix Form expecting %d items but found: %s" % (fname,line_no,cnt,line))
+    #                items = [item.strip() for item in items]
+    #                self.suff_dict_list[dict_idx][items[0]] = items
 
     funcs = { 
         "macro" : parse_macro,
@@ -673,10 +679,10 @@ class Grammar:
         "ifdef" : parse_ifdef,
         "else"  : parse_else,
         "endif" : parse_endif,
-        "suffix_macro" : parse_suffix_macro,
-        "suffix_def" : parse_suffix_def,
+        #"suffix_macro" : parse_suffix_macro,
+        #"suffix_def" : parse_suffix_def,
         "suffix" : parse_suffix,
-        "include_suffix": include_suffix,
+        #"include_suffix": include_suffix,
 #        "save_suffixes" : save_suffixes,
 #        "load_suffixes" : load_suffixes,
     }

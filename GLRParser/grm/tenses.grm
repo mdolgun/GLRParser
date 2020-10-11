@@ -29,19 +29,19 @@ VBe -> V : V       [!pred]
 VBe -> V : V ol    [?pred]
 VBe -> be Pred : Pred ol 
 VBe -> be PredVerb : PredVerb
-VBe -> be Ven : Ven +passive
+VBe -> be Ven : Ven +pass
 
 Inf -> Not to V : V Neg
 Inf -> Not to have Ven : Ven -mHş ol Neg
 Inf -> Not to be Pred : Pred ol Neg
 Inf -> Not to be PredVerb : PredVerb Neg
-Inf -> Not to be Ven : Ven +passive Neg
+Inf -> Not to be Ven : Ven +pass Neg
 
 Ger -> Not Ving : Ving 
 Ger -> Not having Ven : Ven -mHş ol 
 Ger -> Not being Pred : Pred ol 
 Ger -> Not being PredVerb : PredVerb
-Ger -> Not being Ven : Ven +passive
+Ger -> Not being Ven : Ven +pass
 
 PGer -> PossPron Ger    : PossPron Ger -mA PossSuf
 
@@ -50,7 +50,7 @@ PGer -> Ger             : Ger -mAk
 BInf -> Not V : V Neg
 BInf -> Not be Pred : Pred ol Neg
 BInf -> Not be PredVerb : PredVerb Neg
-BInf -> Not be Ven : Ven +passive Neg
+BInf -> Not be Ven : Ven +pass Neg
 
 SentCmd -> VBe              : VBe               
 SentCmd -> don't VBe        : VBe -mA   [neg=1]
@@ -98,7 +98,7 @@ VPNorm -> Vs                     : Vs SimpTense         [pass=0,neg=0,mode=simp,
 VPNorm -> V                      : V SimpTense          [pass=0,neg=0,mode=simp,tense=pres,numb=sing,pers=1]
 VPNorm -> V                      : V SimpTense          [pass=0,neg=0,mode=simp,tense=pres,numb=plur]
 VPNorm -> Ved                    : Ved SimpTense        [pass=0,neg=0,mode=simp,tense=past]
-VPNorm -> used to V              : V +aorist -dH Pers2
+VPNorm -> used to V              : V +aor -dH Pers2
 VPNorm -> had better Not V       : V  Neg -sA SubjPoss iyi olur
 VPNorm -> would rather Not V     : V Neg -mAyH tercih eder Pers1
 VPNorm -> would like to V        : V -mAk ister Pers1
@@ -191,8 +191,8 @@ ModalNeg -> shouldn't [modal=must]
 
 StBe    -> going to StModal : StModal               [modal=will]
 StBe    -> Ving {1}         : Ving ProgTense
-StBe    -> being Ven        : Ven +passive ProgTense
-StBe    -> Ven              : Ven +passive SimpTense [pass=1]
+StBe    -> being Ven        : Ven +pass ProgTense
+StBe    -> Ven              : Ven +pass SimpTense [pass=1]
 StBe    -> Pred             : Pred PredTense
 StBe    -> PredVerb         : PredVerb SimpTense
 StBe    -> being Pred       : Pred ol ProgTense
@@ -204,7 +204,7 @@ StHave  -> been Pred        : Pred ol PerfTense
 StHave  -> been PredVerb    : PredVerb PerfTense
 StHave  -> been able to V   : V -YAbil ProgTense    [neg=0]
 StHave  -> been able to V   : V -YAmA ProgTense     [neg=1]
-StHave  -> been Ven         : Ven +passive PerfTense 
+StHave  -> been Ven         : Ven +pass PerfTense 
 StDo    -> V                : V SimpTense           [pass=0]
 StDo    -> use to V         : V Aorist 
 
@@ -214,11 +214,11 @@ PredVerb -> afraid          : kork                      [+prog,+pprog]
 
 BaseModal -> be Ving            : Ving -Vyor ol 
 BaseModal -> be Pred            : Pred ol
-BaseModal -> be Ven             : Ven +passive 
+BaseModal -> be Ven             : Ven +pass 
 BaseModal -> have Ven           : Ven -mHş ol
 BaseModal -> have been Ving     : Ving -Vyor ol
 BaseModal -> have been Pred     : Pred olmuş ol
-BaseModal -> have been Ven      : Ven +passive -mHş ol
+BaseModal -> have been Ven      : Ven +pass -mHş ol
 BaseModal -> V                  : V
 
 StModal -> BaseModal            : BaseModal ModalTense    
@@ -231,64 +231,94 @@ ModalTense -> : ol ModalVerbTense       [?pred]
 Not -> not [neg=1]
 Not ->     [neg=0]
 
-%macro V -> V,Vs,Ving,Ved,Ven
-%form V -> sleep,sleeps,sleeping,slept,slept
-%form V -> go,goes,going,went,gone
-%form V -> watch,watches,watching,watched,watched
-%form V -> clean,cleans,cleaning,cleaned,cleaned
-%form V -> burn,burns,burning,burnt,burnt
-%form V -> turn,turns,turning,turned,turned
-%form V -> have,has,having,had,had
-%form V -> hate,hates,hating,hated,hated
-%form V -> make,makes,making,made,made
-%form V -> use,uses,using,used,used
-%form V -> say,says,saying,said,said
-%form V -> tell,tells,telling,told,told
-%form V -> know,knows,knowing,knew,known
-%form V -> see,sees,seeing,saw,seen
-%form V -> look,looks,looking,looked,looked
-%form V -> want,wants,wanting,wanted,wanted
-%form V -> give,gives,giving,gave,given
-%form V -> do,does,doing,did,done
-%form V -> bother,bothers,bothering,bothered,bothered
-%form V -> like,likes,liking,liked,liked
+%macro V V,Vs,Ving,Ved,Ven
+%form V sleep,sleeps,sleeping,slept,slept
+%form V go,goes,going,went,gone
+%form V watch,watches,watching,watched,watched
+%form V clean,cleans,cleaning,cleaned,cleaned
+%form V burn,burns,burning,burnt,burnt
+%form V turn,turns,turning,turned,turned
+%form V have,has,having,had,had
+%form V hate,hates,hating,hated,hated
+%form V make,makes,making,made,made
+%form V use,uses,using,used,used
+%form V say,says,saying,said,said
+%form V tell,tells,telling,told,told
+%form V know,knows,knowing,knew,known
+%form V see,sees,seeing,saw,seen
+%form V look,looks,looking,looked,looked
+%form V want,wants,wanting,wanted,wanted
+%form V give,gives,giving,gave,given
+%form V do,does,doing,did,done
+%form V bother,bothers,bothering,bothered,bothered
+%form V like,likes,liking,liked,liked
 
-%suffix_macro V -> base,aorist,caus,passive
-%suffix V -> kork,korkar,korkut,korkul
-%suffix V -> git?,gider,götür,gidil
-%suffix V -> izle,izler,izlet,izlen
-%suffix V -> seyret?,seyreder,seyrettir,seyredil
-%suffix V -> uyu,uyur,uyut,uyun
-%suffix V -> çevir,çevirir,çevirt,çevril
-%suffix V -> dön,döner,döndür,dönül
-%suffix V -> döndür,döndürür,döndürt,döndürül
-%suffix V -> temizle,temizler,temizlet,temizlen
-%suffix V -> yan,yanar,yak,yandır
-%suffix V -> yak,yakar,yaktır,yakıl
-%suffix V -> et?,eder,ettir,edil
-%suffix V -> ol,olur,oldur,olun
-%suffix V -> bil,bilir,bildir,bilin
-%suffix V -> gör,görür,göster,görül
-%suffix V -> görün,görünür,göster,görünül
-%suffix V -> bak,bakar,baktır,bakıl
-%suffix V -> bekle,bekler,beklet,beklen
-%suffix V -> ara,arar,arat,aran
-%suffix V -> iste,ister,istet,isten
-%suffix V -> ver,verir,verdir,veril
-%suffix V -> yap,yapar,yaptır,yapıl
-%suffix V -> sık,sıkar,sıktır,sıkıl
 
-%suffix_macro Case -> base,acc,dat,loc,abl,gen,genp,instr 
+
+%suffix +aor -Hr
+%suffix +caus -DHr
+%suffix +pass -Hl
+
+%suffix aç+aor açar
+%suffix bak+aor bakar
+%suffix dik+aor diker
+%suffix dön+aor döner
+%suffix emret?+aor emreder
+%suffix et?+aor eder
+%suffix git?+aor gider
+%suffix giy+aor giyer
+%suffix kork+aor korkar
+%suffix sev+aor sever
+%suffix seyret?+aor seyreder
+%suffix sık+aor sıkar
+%suffix yap+aor yapar
+
+
+#%suffix_macro V -> base,aorist,caus,passive
+#%suffix V -> kork,korkar,korkut,korkul
+#%suffix V -> git?,gider,götür,gidil
+#%suffix V -> izle,izler,izlet,izlen
+#%suffix V -> seyret?,seyreder,seyrettir,seyredil
+#%suffix V -> uyu,uyur,uyut,uyun
+#%suffix V -> çevir,çevirir,çevirt,çevril
+#%suffix V -> dön,döner,döndür,dönül
+#%suffix V -> döndür,döndürür,döndürt,döndürül
+#%suffix V -> temizle,temizler,temizlet,temizlen
+#%suffix V -> yan,yanar,yak,yandır
+#%suffix V -> yak,yakar,yaktır,yakıl
+#%suffix V -> et?,eder,ettir,edil
+#%suffix V -> ol,olur,oldur,olun
+#%suffix V -> bil,bilir,bildir,bilin
+#%suffix V -> gör,görür,göster,görül
+#%suffix V -> görün,görünür,göster,görünül
+#%suffix V -> bak,bakar,baktır,bakıl
+#%suffix V -> bekle,bekler,beklet,beklen
+#%suffix V -> ara,arar,arat,aran
+#%suffix V -> iste,ister,istet,isten
+#%suffix V -> ver,verir,verdir,veril
+#%suffix V -> yap,yapar,yaptır,yapıl
+#%suffix V -> sık,sıkar,sıktır,sıkıl
+
+#%suffix_macro Case -> base,acc,dat,loc,abl,gen,genp,instr 
 # i,me,to me,at me,from me,my,(for) me,with me
-%suffix_def Case -> -,-YH,-YA,-dA,-dAn,-NHn,-,-YlA
-%suffix Case -> ben,beni,bana,bende,benden,benim,benim,benimle
-%suffix Case -> sen,seni,sana,sende,senden,senin,senin,seninle
-%suffix Case -> o,onu,ona,onda,ondan,onun,onun,onunla
-%suffix Case -> biz,bizi,bize,bizde,bizden,bizim,bizim,bizimle
-%suffix Case -> siz,sizi,size,sizde,sizden,sizin,sizin,sizinle
-%suffix Case -> onlar,onları,onlara,onlarda,onlardan,onların,onlar,onlarla
-%suffix Case -> bu,bunu,buna,bunda,bundan,bunun,bunun,bununla
-%suffix Case -> bunlar,bunları,bunlara,bunlarda,bunlardan,bunların,bunlar,bunlarla
+#%suffix_def Case -> -,-YH,-YA,-dA,-dAn,-NHn,-,-YlA
+#%suffix Case -> ben,beni,bana,bende,benden,benim,benim,benimle
+#%suffix Case -> sen,seni,sana,sende,senden,senin,senin,seninle
+#%suffix Case -> o,onu,ona,onda,ondan,onun,onun,onunla
+#%suffix Case -> biz,bizi,bize,bizde,bizden,bizim,bizim,bizimle
+#%suffix Case -> siz,sizi,size,sizde,sizden,sizin,sizin,sizinle
+#%suffix Case -> onlar,onları,onlara,onlarda,onlardan,onların,onlar,onlarla
+#%suffix Case -> bu,bunu,buna,bunda,bundan,bunun,bunun,bununla
+#%suffix Case -> bunlar,bunları,bunlara,bunlarda,bunlardan,bunların,bunlar,bunlarla
+
+%suffix +acc -YH
+%suffix +dat -YA
+%suffix +loc -DA
+%suffix +abl -DAn
+%suffix +gen -NHn
+%suffix +genp -
+%suffix +instr -YlA
+
 
 $V -> $sleep              : uyu 
 $V -> $go                 : git?
@@ -376,13 +406,13 @@ SimpVerbTense -> : ConnEn               [conn=en]
 
 ConnThat    -> : Neg -DHk? SubjPoss                  
 ConnWhether -> : +copy -YHp +paste -mAdHk? SubjPoss  
-ConnAsSoon  -> : +copy +aorist +paste -mAz  
+ConnAsSoon  -> : +copy +aor +paste -mAz  
 ConnBefore  -> : -mAdAn
 ConnAfter   -> : -DHktAn
 ConnEn      -> : Neg -YAn
 ConnMesi    -> : Neg -mA SubjPoss
 
-AoristX -> : +aorist    [neg=0]
+AoristX -> : +aor    [neg=0]
 AoristX -> : -mAz       [neg=1]
 
 NegPred -> : değil  [-there,neg=1]
@@ -426,12 +456,12 @@ ProgTense -> : -DHktAn                      [conn=dikten]
 ProgTense -> : Neg -YAn                     [conn=en]
 ProgTense -> : Neg -Vyor ol -mA SubjPoss        [conn=mesi]
 
-Aorist -> : +aorist Quest TenseX        [neg=0]
+Aorist -> : +aor Quest TenseX        [neg=0]
 Aorist -> : -mA Pers3                   [tense=pres,neg=1,quest=0]
 Aorist -> : -mAzdH Pers2                [tense=past,neg=1,quest=0]
 Aorist -> : -mAz mH TenseX              [neg=1,quest=1]
 
-SimpVTense -> : +aorist Quest Pers1     [tense=pres,neg=0,pass=0]
+SimpVTense -> : +aor Quest Pers1     [tense=pres,neg=0,pass=0]
 SimpVTense -> : -Hr Quest Pers1         [tense=pres,neg=0,pass=1]
 SimpVTense -> : -mA Pers3               [tense=pres,neg=1,quest=0]
 SimpVTense -> : -mAz mH Pers1           [tense=pres,neg=1,quest=1]
@@ -457,7 +487,7 @@ PerfTense -> : Neg -mHş ol -mA SubjPoss             [conn=mesi]
 ModalVerbTense -> : ModalVTense                                         [conn=0]
 ModalVerbTense -> : ModalConn SubjPoss                                  [conn=digi]
 ModalVerbTense -> : ModalWhether SubjPoss                               [conn=ip_medigi] 
-ModalVerbTense -> : +copy +aorist +paste -mAz                           [conn=ir_mez]
+ModalVerbTense -> : +copy +aor +paste -mAz                           [conn=ir_mez]
 ModalVerbTense -> : ModalX -Yken                                        [conn=ken]
 ModalVerbTense -> : ModalX -YsA Pers2                                   [conn=se]
 ModalVerbTense -> : -YAmAdAn                                            [conn=meden,modal=can]
@@ -657,11 +687,11 @@ ObjPoss -> : -HmHz  [onumb=plur,opers=1]
 ObjPoss -> : -HnHz  [onumb=plur,opers=2]
 ObjPoss -> : -lArH  [onumb=plur,opers=3]
 
-%macro N -> NSing,NPlur
-%form N -> man,men
-%form N -> car,cars
-%form N -> light,lights
-%form N -> child,children
+%macro N NSing,NPlur
+%form N man,men
+%form N car,cars
+%form N light,lights
+%form N child,children
 
 $N -> $man      : adam
 $N -> $car      : araba

@@ -235,7 +235,8 @@ class Parser:
         """ loads a grammar file and parse it """
         grammar = Grammar.load_grammar(fname,reverse,text,defines)
         self.rules,self.trie = grammar.rules,grammar.trie
-        self.post_processor.suff_idxs,self.post_processor.suff_dict_list =  grammar.suff_idxs,grammar.suff_dict_list
+        #self.post_processor.suff_idxs,self.post_processor.suff_dict_list =  grammar.suff_idxs,grammar.suff_dict_list
+        self.post_processor.suff_dict = grammar.suff_dict
         
         if logging.getLogger().isEnabledFor(logging.INFO):
             logging.info("rules=%s",self.format_rules())

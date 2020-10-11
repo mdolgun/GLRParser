@@ -248,8 +248,8 @@ output: OK
 
 input: he's not gone @ gitmedi | o gitmedi
 output: OK
-1 o gitmedi 0
-2 o gidilmez 0
+1 o gidilmez 0
+2 o gitmedi 0
 
 input: he hasn't gone @ gitmedi | o gitmedi
 output: OK
@@ -1057,27 +1057,27 @@ output: OK
 
 input: there are a car @ *
 output: EXPECTED ERROR
-Unify error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#50
+UnifyU error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#50
 
 input: there is cars @ *
 output: EXPECTED ERROR
-Unify error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#50
+UnifyU error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#50
 
 input: there were a car @ *
 output: EXPECTED ERROR
-Unify error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#50
+UnifyU error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#50
 
 input: there was cars @ *
 output: EXPECTED ERROR
-Unify error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#50
+UnifyU error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#50
 
 input: there have been a car @ *
 output: EXPECTED ERROR
-Unify error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#53
+UnifyU error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#53
 
 input: there has been cars @ *
 output: EXPECTED ERROR
-Unify error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#53
+UnifyU error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#53
 
 input: there is a car @ bir araba var
 output: OK
@@ -1322,12 +1322,12 @@ output: OK
 input: be watched @ seyredil
 output: OK
 1 seyredil 0
-2 izlen 0
+2 izlel 0
 
 input: don't be watched @ seyredilme
 output: OK
 1 seyredilme 0
-2 izlenme 0
+2 izlelme 0
 
 input: be happy @ mutlu ol
 output: OK
@@ -1382,262 +1382,262 @@ output: OK
 input: i am watched @ seyredilirim
 output: OK
 1 seyredilirim 0
-2 izlenirim 0
+2 izlelirim 0
 
 input: i am not watched @ seyredilmem
 output: OK
 1 seyredilmem 0
-2 izlenmem 0
+2 izlelmem 0
 
 input: am i watched @ seyredilir miyim
 output: OK
 1 seyredilir miyim 0
-2 izlenir miyim 0
+2 izlelir miyim 0
 
 input: am i not watched @ seyredilmez miyim
 output: OK
 1 seyredilmez miyim 0
-2 izlenmez miyim 0
+2 izlelmez miyim 0
 
 input: i was watched @ seyredildim
 output: OK
 1 seyredildim 0
-2 izlendim 0
+2 izleldim 0
 
 input: i wasn't watched @ seyredilmedim
 output: OK
 1 seyredilmedim 0
-2 izlenmedim 0
+2 izlelmedim 0
 
 input: was i watched @ seyredildim mi
 output: OK
 1 seyredildim mi 0
-2 izlendim mi 0
+2 izleldim mi 0
 
 input: wasn't i watched @ seyredilmedim mi
 output: OK
 1 seyredilmedim mi 0
-2 izlenmedim mi 0
+2 izlelmedim mi 0
 
 input: i am being watched @ seyrediliyorum
 output: OK
 1 seyrediliyorum 0
-2 izleniyorum 0
+2 izleliyorum 0
 
 input: i am not being watched @ seyredilmiyorum
 output: OK
 1 seyredilmiyorum 0
-2 izlenmiyorum 0
+2 izlelmiyorum 0
 
 input: am i being watched @ seyrediliyor muyum
 output: OK
 1 seyrediliyor muyum 0
-2 izleniyor muyum 0
+2 izleliyor muyum 0
 
 input: am i not being watched @ seyredilmiyor muyum
 output: OK
 1 seyredilmiyor muyum 0
-2 izlenmiyor muyum 0
+2 izlelmiyor muyum 0
 
 input: i was being watched @ seyrediliyordum
 output: OK
 1 seyrediliyordum 0
-2 izleniyordum 0
+2 izleliyordum 0
 
 input: i wasn't being watched @ seyredilmiyordum
 output: OK
 1 seyredilmiyordum 0
-2 izlenmiyordum 0
+2 izlelmiyordum 0
 
 input: was i being watched @ seyrediliyor muydum
 output: OK
 1 seyrediliyor muydum 0
-2 izleniyor muydum 0
+2 izleliyor muydum 0
 
 input: wasn't i being watched @ seyredilmiyor muydum
 output: OK
 1 seyredilmiyor muydum 0
-2 izlenmiyor muydum 0
+2 izlelmiyor muydum 0
 
 input: i have been watched @ seyredildim
 output: OK
 1 seyredildim 0
-2 izlendim 0
+2 izleldim 0
 
 input: i haven't been watched @ seyredilmedim
 output: OK
 1 seyredilmedim 0
-2 izlenmedim 0
+2 izlelmedim 0
 
 input: have i been watched @ seyredildim mi
 output: OK
 1 seyredildim mi 0
-2 izlendim mi 0
+2 izleldim mi 0
 
 input: haven't i been watched @ seyredilmedim mi
 output: OK
 1 seyredilmedim mi 0
-2 izlenmedim mi 0
+2 izlelmedim mi 0
 
 input: i had been watched @ seyredilmiþtim
 output: OK
 1 seyredilmiþtim 0
-2 izlenmiþtim 0
+2 izlelmiþtim 0
 
 input: i hadn't been watched @ seyredilmemiþtim
 output: OK
 1 seyredilmemiþtim 0
-2 izlenmemiþtim 0
+2 izlelmemiþtim 0
 
 input: had i been watched @ seyredilmiþ miydim
 output: OK
 1 seyredilmiþ miydim 0
-2 izlenmiþ miydim 0
+2 izlelmiþ miydim 0
 
 input: hadn't i been watched @ seyredilmemiþ miydim
 output: OK
 1 seyredilmemiþ miydim 0
-2 izlenmemiþ miydim 0
+2 izlelmemiþ miydim 0
 
 input: i will be watched @ seyredileceðim
 output: OK
 1 seyredileceðim 0
-2 izleneceðim 0
+2 izleleceðim 0
 
 input: i won't be watched @ seyredilmeyeceðim
 output: OK
 1 seyredilmeyeceðim 0
-2 izlenmeyeceðim 0
+2 izlelmeyeceðim 0
 
 input: will i be watched @ seyredilecek miyim
 output: OK
 1 seyredilecek miyim 0
-2 izlenecek miyim 0
+2 izlelecek miyim 0
 
 input: won't i be watched @ seyredilmeyecek miyim
 output: OK
 1 seyredilmeyecek miyim 0
-2 izlenmeyecek miyim 0
+2 izlelmeyecek miyim 0
 
 input: i will have been watched @ seyredilmiþ olacaðým
 output: OK
 1 seyredilmiþ olacaðým 0
-2 izlenmiþ olacaðým 0
+2 izlelmiþ olacaðým 0
 
 input: i won't have been watched @ seyredilmiþ olmayacaðým
 output: OK
 1 seyredilmiþ olmayacaðým 0
-2 izlenmiþ olmayacaðým 0
+2 izlelmiþ olmayacaðým 0
 
 input: will i have been watched @ seyredilmiþ olacak mýyým
 output: OK
 1 seyredilmiþ olacak mýyým 0
-2 izlenmiþ olacak mýyým 0
+2 izlelmiþ olacak mýyým 0
 
 input: won't i have been watched @ seyredilmiþ olmayacak mýyým
 output: OK
 1 seyredilmiþ olmayacak mýyým 0
-2 izlenmiþ olmayacak mýyým 0
+2 izlelmiþ olmayacak mýyým 0
 
 input: i can be watched @ seyredilebilirim
 output: OK
 1 seyredilebilirim 0
-2 izlenebilirim 0
+2 izlelebilirim 0
 
 input: i can't be watched @ seyredilemem
 output: OK
 1 seyredilemem 0
-2 izlenemem 0
+2 izlelemem 0
 
 input: can i be watched @ seyredilebilir miyim
 output: OK
 1 seyredilebilir miyim 0
-2 izlenebilir miyim 0
+2 izlelebilir miyim 0
 
 input: can't i be watched @ seyredilemez miyim
 output: OK
 1 seyredilemez miyim 0
-2 izlenemez miyim 0
+2 izlelemez miyim 0
 
 input: i may be watched @ seyredilebilirim
 output: OK
 1 seyredilebilirim 0
-2 izlenebilirim 0
+2 izlelebilirim 0
 
 input: i mayn't be watched @ seyredilmeyebilirim
 output: OK
 1 seyredilmeyebilirim 0
-2 izlenmeyebilirim 0
+2 izlelmeyebilirim 0
 
 input: may i be watched @ seyredilebilir miyim
 output: OK
 1 seyredilebilir miyim 0
-2 izlenebilir miyim 0
+2 izlelebilir miyim 0
 
 input: mayn't i be watched @ seyredilmeyebilir miyim
 output: OK
 1 seyredilmeyebilir miyim 0
-2 izlenmeyebilir miyim 0
+2 izlelmeyebilir miyim 0
 
 input: i must be watched @ seyredilmeliyim
 output: OK
 1 seyredilmeliyim 0
-2 izlenmeliyim 0
+2 izlelmeliyim 0
 
 input: i mustn't be watched @ seyredilmemeliyim
 output: OK
 1 seyredilmemeliyim 0
-2 izlenmemeliyim 0
+2 izlelmemeliyim 0
 
 input: must i be watched @ seyredilmeli miyim
 output: OK
 1 seyredilmeli miyim 0
-2 izlenmeli miyim 0
+2 izlelmeli miyim 0
 
 input: mustn't i be watched @ seyredilmemeli miyim
 output: OK
 1 seyredilmemeli miyim 0
-2 izlenmemeli miyim 0
+2 izlelmemeli miyim 0
 
 input: i'm going to be watched @ seyredileceðim
 output: OK
 1 seyredileceðim 0
-2 izleneceðim 0
+2 izleleceðim 0
 
 input: i am not going to be watched @ seyredilmeyeceðim
 output: OK
 1 seyredilmeyeceðim 0
-2 izlenmeyeceðim 0
+2 izlelmeyeceðim 0
 
 input: am i going to be watched @ seyredilecek miyim
 output: OK
 1 seyredilecek miyim 0
-2 izlenecek miyim 0
+2 izlelecek miyim 0
 
 input: am i not going to be watched @ seyredilmeyecek miyim
 output: OK
 1 seyredilmeyecek miyim 0
-2 izlenmeyecek miyim 0
+2 izlelmeyecek miyim 0
 
 input: i was going to be watched @ seyredilecektim
 output: OK
 1 seyredilecektim 0
-2 izlenecektim 0
+2 izlelecektim 0
 
 input: i wasn't going to be watched @ seyredilmeyecektim
 output: OK
 1 seyredilmeyecektim 0
-2 izlenmeyecektim 0
+2 izlelmeyecektim 0
 
 input: was i going to be watched @ seyredilecek miydim
 output: OK
 1 seyredilecek miydim 0
-2 izlenecek miydim 0
+2 izlelecek miydim 0
 
 input: wasn't i going to be watched @ seyredilmeyecek miydim
 output: OK
 1 seyredilmeyecek miydim 0
-2 izlenmeyecek miydim 0
+2 izlelmeyecek miydim 0
 
 input: i have to go @ gitmek zorundayým
 output: OK
@@ -2953,7 +2953,7 @@ output: NOK
 
 input: she like cars @ arabalar hoþuna gidiyor
 output: ERROR
-Unify error feat=numb src=plur param=sing super=SentNorm#49 sub=VPNorm#63
+UnifyU error feat=numb src=plur param=sing super=SentNorm#49 sub=VPNorm#63
 
 input: they like cars @ arabalar hoþlarýna gidiyor
 output: NOK
@@ -2989,15 +2989,15 @@ Parse not possible: whether i like >> $
 
 input: cars bother me @ arabalar canýmý sýkýyor
 output: ERROR
-Unify error feat=def src=1 param=0 super=SentNorm#49 sub=VPNorm#63
+UnifyU error feat=def src=1 param=0 super=SentNorm#49 sub=VPNorm#63
 
 input: cars bother her @ arabalar canýný sýkýyor
 output: ERROR
-Unify error feat=def src=1 param=0 super=SentNorm#49 sub=VPNorm#63
+UnifyU error feat=def src=1 param=0 super=SentNorm#49 sub=VPNorm#63
 
 input: cars bother them @ arabalar canlarýný sýkýyor
 output: ERROR
-Unify error feat=def src=1 param=0 super=SentNorm#49 sub=VPNorm#63
+UnifyU error feat=def src=1 param=0 super=SentNorm#49 sub=VPNorm#63
 
 input: you bother me @ canýmý sýkýyorsunuz
 output: NOK
@@ -3013,7 +3013,7 @@ output: NOK
 
 input: though cars bother you @ arabalarýn canýnýzý sýkmasýna raðmen
 output: ERROR
-Unify error feat=def src=1 param=0 super=SentNorm#49 sub=VPNorm#63
+UnifyU error feat=def src=1 param=0 super=SentNorm#49 sub=VPNorm#63
 
 input: as long as i bother you @ canýnýzý sýktýðým sürece
 output: NOK
