@@ -14,21 +14,23 @@ class GrammarError(Exception):
     """ Raised when a grammar cannot be parsed """
     pass
 
+class FParam(dict):
+    pass
+
 empty_list = list()
 empty_dict = dict()
+empty_fparam = FParam()
 
 class Rule:
     """ Definition of  a grammar rule """
     __slots__ = ('head', 'left', 'right', 'feat', 'checklist', 'lparam', 'rparam', 'cost', 'cut')
 
-    def __init__(self, head, left=empty_list, right=empty_list, feat=empty_dict, lparam=empty_list, rparam=empty_list, cost=0, cut=None):
+    def __init__(self, head, left=empty_list, right=empty_list, feat=empty_dict, checklist=empty_list, lparam=empty_list, rparam=empty_list, cost=0, cut=None):
         self.head = head
         self.left = left
         self.right = right
-        self.checklist = None
         self.feat = feat
-        #self.checklist = [key for key,val in feat.items() if val=='?']
-        #self.feat = {key:val for key,val in feat.items() if val!='?'}
+        self.checklist = checklist
         self.lparam = lparam
         self.rparam = rparam
         self.cost = cost
@@ -37,11 +39,11 @@ class Rule:
     def format(self):
         return "%s -> %s : %s {%d} %s %s" % (
             self.head, 
-            " ".join( '"'+symbol+'"' if fparam is False else symbol+format_feat(fparam,'()') for symbol,fparam in zip(self.left,self.lparam) ),
-            " ".join( '"'+symbol+'"' if fparam is False else str(symbol)+format_feat(fparam,'()') for symbol,fparam in zip(self.right,self.rparam) ),
+            " ".join( '"'+symbol+'"' if fparam is False else symbol+format_fparam(fparam) for symbol,fparam in zip(self.left,self.lparam) ),
+            " ".join( '"'+symbol+'"' if fparam is False else str(symbol)+format_fparam(fparam) for symbol,fparam in zip(self.right,self.rparam) ),
             self.cost,
             "!" if self.cut else "",
-            format_feat(self.feat,'[]')
+            format_feat(self.feat,self.checklist)
     )
     def __str__(self):
         return self.format()
@@ -53,16 +55,22 @@ class Rule:
         return ((self.head, self.left, self.right, self.feat, self.checklist, self.lparam, self.rparam, self.cost, self.cut) == 
             (other.head, other.left, other.right, other.feat, other.checklist, other.lparam, other.rparam, other.cost, other.cut)) 
 
-#Rule1 = namedtuple('Rule', 'head, left, right, feat, lparam, rparam, cost, cut')
-#print(Rule1._source)
-def format_feat(fdict,par='[]'):
+def format_fparam(fdict):
     if not fdict:
         if type(fdict)==dict: # empty dict
-            return par
+            return "()"
         return ""
-    return par[0] + ",".join("{}={}".format(item[0],item[1]) if item[1] is not None else item[0] for item in sorted(fdict.items())) + par[1]
+    return "(" + ",".join("{}={}".format(item[0],item[1]) if item[1] is not None else item[0] for item in sorted(fdict.items())) + ")"
 
-
+def format_feat(fdict,checklist=empty_dict):
+    if not fdict:
+        if type(fdict)==dict: # empty dict
+            return "[]"
+        return ""
+    return "[" + ",".join((
+        ",".join("=".join(item) for item in checklist.items()),
+        ",".join("=".join(item) for item in sorted(fdict.items()))
+    )) + "]"
 
 #else:
 #    Rule = namedtuple('Rule', 'head, left, lparam, right') # (head,left,lparam,[(right,rparam,feat,checklist,cost,cut)+])
@@ -132,20 +140,21 @@ class Trie:
             else:
                 yield from Trie.list_int(val,lst+[key])
 
+
+
 class Grammar:
     enable_trie = False
-    #SYMBOL = re.compile('''(\*[a-z0-9_]+|[_A-Z][-_A-Za-z0-9]*'*)|("[^"]*"|[-+\'a-z0-9üöçğşðþýı$][-\'A-Z0-9a-züöçğşıðþý+@^!$]*)''')
-    #FEAT_NAME = re.compile('@?[a-z0-9_]+|@?\*')
-    #FEAT_VALUE = re.compile('\*?@?[-_A-Za-z0-9]+')
-    INTEGER = re.compile('-?[1-9][0-9]*')
 
-    re_NONTERM = "[_A-Z][-_A-Za-z0-9]*'*"
-    # re_FEAT_NAME = r'@?[a-z0-9_]+|@?\*'
-    re_FEAT_NAME = "[a-z0-9_]+"
+    INTEGER = re.compile('-?[1-9][0-9]*') # 
+    #re_NONTERM = "[_A-Z][-_A-Za-z0-9]*'*"
+    re_NONTERM = r"\$?[_A-Z][_A-Za-z0-9$]*'*"
+    re_FEAT_NAME = "[-a-z0-9_]+"
     re_FPARAM_NAME = r"@?{}|@?\*".format(re_FEAT_NAME)
-    re_TERM = r'''"[^"]*"|(?![_A-Z])[-+'$\w][-+'$\w@^!]*'''
-    #re_TERMv2 = r'"[^"]*"|[^\W_A-Z][-+\'$\w@^!]'
-    re_FEAT_VALUE = r"\*{}|\*{}|{}".format(re_NONTERM, re_FEAT_NAME ,re_TERM)
+    #re_TERM = r'''"[^"]*"|(?![_A-Z])[-+'$\w][-+'$\w@^!]*'''
+    re_TERM = r'''"([^"]*)"|(\$?[^|{:[_A-Z#!"][^|{:[#!\s]*)'''
+
+    #re_FEAT_VALUE = r"\*{}|\*{}|{}".format(re_NONTERM, re_FEAT_NAME ,re_TERM)
+    re_FEAT_VALUE = r"\*{}|\*{}|{}".format(re_NONTERM, re_FEAT_NAME ,re_FEAT_NAME)
     re_SYMBOL = r'({}|\*{})|({})'.format(re_NONTERM, re_FEAT_NAME, re_TERM)
 
     SYMBOL = re.compile(re_SYMBOL)
@@ -283,11 +292,10 @@ class Grammar:
         else:
             rlist = [(empty_list,empty_list,0,None,None)]
         if self.get_token('[',False):
-            feat = self.parse_feat_list()
-            #!checklist = [key for key,val in feat.items() if val=='?']
-            #!rule = {key:val for key,val in feat.items() if val!='?'}
+            feat,checklist = self.parse_feat_list()
         else:
             feat = empty_dict
+            checklist = empty_dict
         self.get_eof()
 
         if self.reverse:
@@ -319,7 +327,7 @@ class Grammar:
 
                 for idx,(symbol,param) in enumerate(zip(left,lparam)):
                     if param is not False: # NonTerminal
-                        left[idx] = symbol.split('-')[0]    
+                        left[idx] = symbol.split('-')[0]
                 if macro_name:
                     if not lmacro:
                         raise GrammarError("Line:%d No form substitution defined for macro %s" % (self.line_no,self.buf))
@@ -329,19 +337,19 @@ class Grammar:
                     for _head,form in zip(head,self.forms[macro_name][word]):
                         for altform in form:
                             _left = left.copy()
-                            _left[idx] = left[idx].replace('$'+word, altform)                         
+                            _left[idx] = left[idx].replace('$'+word, altform)
                             if term_only:
-                                self.trie.add(_left, Rule(_head,_left,right,feat,lparam,rparam,rcost,rcut) )
+                                self.trie.add(_left, Rule(_head,_left,right,feat,checklist,lparam,rparam,rcost,rcut) )
                                 #!self.trie.add(left, Rule(head,left,lparam,[(right,rparam,feat,checklist,rcost)]) )
                             else:
-                                self.rules.append( Rule(_head,_left,right,feat,lparam,rparam,rcost,rcut) )
+                                self.rules.append( Rule(_head,_left,right,feat,checklist,lparam,rparam,rcost,rcut) )
                                 #!self.rules.append( Rule(head,left,lparam,[(right,rparam,feat,checklist,rcost)]) )
                 else:
                     if term_only:
-                        self.trie.add(left, Rule(head,left,right,feat,lparam,rparam,rcost,rcut) )
+                        self.trie.add(left, Rule(head,left,right,feat,checklist,lparam,rparam,rcost,rcut) )
                         #!self.trie.add(left, Rule(head,left,lparam,[(right,rparam,feat,checklist,rcost)]) )
                     else:
-                        self.rules.append( Rule(head,left,right,feat,lparam,rparam,rcost,rcut) )
+                        self.rules.append( Rule(head,left,right,feat,checklist,lparam,rparam,rcost,rcut) )
                         #!self.rules.append( Rule(head,left,lparam,[(right,rparam,feat,checklist,rcost)]) )
 
     def parse_head(self):
@@ -428,21 +436,29 @@ class Grammar:
     def parse_feat_list(self):
         """ Parses feature list returns dict of name=value """
         if self.get_token(']',False): # empty list
-            return empty_dict
+            return empty_dict,empty_dict
         fdict = dict()
+        checklist = dict()
         name,value = self.parse_feat()
-        fdict[name] = value
+        if value.startswith("?") or value.startswith("!"):
+            checklist[name] = value
+        else:
+            fdict[name] = value
         while self.get_token(',', False):   
             name,value = self.parse_feat()
-            fdict[name] = value
+            if value.startswith("?") or value.startswith("!"):
+                checklist[name] = value
+            else:
+                fdict[name] = value
         self.get_token(']')
-        return fdict
+        return fdict,checklist
 
     def parse_fparam_list(self):
         """ Parses feature parameter list returns dict of name=value or name=None """
         if self.get_token(')',False): # empty list
-            return empty_dict
-        fdict = dict()
+            return empty_fparam
+        fdict = FParam()
+        fdict.param_type = self.get_char_list("+-",False)
         name,value = self.parse_fparam()
         fdict[name] = value
         while self.get_token(',', False):   
@@ -457,10 +473,12 @@ class Grammar:
             raise GrammarError("load_grammar: either fname or text should be provided")
         grammar = Grammar(reverse,defines)
         if text is None:
+            grammar.fname = fname
             with open(fname, "r") as f:
                 grammar.parse_grammar(f)
                 return grammar
         else:
+            grammar.fname = ""
             grammar.parse_grammar(text.split('\n'))
             return grammar
 
@@ -574,9 +592,12 @@ class Grammar:
 
     def parse_suffix_macro(self):
         """ %suffix_macro MacroName -> term (, term)* """
-        macro_name = self.get_nonterm()
-        self.get_token('->')
-        items = self.parse_term_list()
+
+        #macro_name = self.get_nonterm()
+        #self.get_token('->')
+        #items = self.parse_term_list()
+        _,macro_name,_,items = self.buf.split()
+        items = items.split(",")
 
         if macro_name in self.suff_dict_names:
             raise GrammarError("Line:%d Macro already defined: %s" % (self.line_no,macro_name))
@@ -586,11 +607,15 @@ class Grammar:
         for idx,item in enumerate(items):
             self.suff_idxs[item] = (dict_idx,idx)
 
+
     def parse_suffix_def(self):
         """ %suffix_def MacroName -> term (, term)* """
-        macro_name = self.get_nonterm()
-        self.get_token('->')
-        items = self.parse_term_list()
+
+        #macro_name = self.get_nonterm()
+        #self.get_token('->')
+        #items = self.parse_term_list()
+        _,macro_name,_,items = self.buf.split()
+        items = items.split(",")
 
         if macro_name not in self.suff_dict_names:
             raise GrammarError("Line:%d Macro not defined: %s" % (self.line_no,macro_name))
@@ -603,9 +628,12 @@ class Grammar:
 
     def parse_suffix(self):
         """ %suffix MacroName -> Term (, Term)* """
-        macro_name = self.get_nonterm()
-        self.get_token('->')
-        items = self.parse_term_list()
+
+        #macro_name = self.get_nonterm()
+        #self.get_token('->')
+        #items = self.parse_term_list()
+        _,macro_name,_,items = self.buf.split()
+        items = items.split(",")
 
         if macro_name not in self.suff_dict_names:
             raise GrammarError("Line:%d Suffix Macro not defined: %s" % (self.line_no,macro_name))
@@ -657,7 +685,7 @@ class Grammar:
             self.line_no += 1
             line = line.strip()
             if not line:
-                continue           
+                continue
             if line.startswith('%'):
                 parts = line[1:].split(maxsplit=1)
                 if len(parts)==1:
