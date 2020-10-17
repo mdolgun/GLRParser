@@ -4,63 +4,63 @@ my house @ evim
 my houses @ evlerim
 his house @ evi
 his houses @ evleri
-their house @ evleri | onların evi
+their house @ evleri | onlarÄ±n evi
 their houses @ evleri
-bedroom @ yatak odası
-bedrooms @ yatak odaları
+bedroom @ yatak odasÄ±
+bedrooms @ yatak odalarÄ±
 my bedroom @ yatak odam
-my bedrooms @ yatak odalarım
-house door @ ev kapısı
-house's door @ evin kapısı
-door of house @ ev kapısı
-door bell @ kapı zili
-door's bell @ kapının zili
-bell of door @ kapı zili
-house door bell @ ev kapısı zili | ev kapı zili
-bell of house door @ ev kapısı zili
-house door's bell @ ev kapısının zili
-door bell of house @ ev kapı zili
-house's door bell @ evin kapı zili
-bell of door of house @ ev kapısı zili
-house's door's bell @ evin kapısının zili
+my bedrooms @ yatak odalarÄ±m
+house door @ ev kapÄ±sÄ±
+house's door @ evin kapÄ±sÄ±
+door of house @ ev kapÄ±sÄ±
+door bell @ kapÄ± zili
+door's bell @ kapÄ±nÄ±n zili
+bell of door @ kapÄ± zili
+house door bell @ ev kapÄ±sÄ± zili | ev kapÄ± zili
+bell of house door @ ev kapÄ±sÄ± zili
+house door's bell @ ev kapÄ±sÄ±nÄ±n zili
+door bell of house @ ev kapÄ± zili
+house's door bell @ evin kapÄ± zili
+bell of door of house @ ev kapÄ±sÄ± zili
+house's door's bell @ evin kapÄ±sÄ±nÄ±n zili
 
-my house door @ ev kapım
-my house's door @ evimin kapısı
-door of my house @ evimin kapısı
-door of the house @ evin kapısı
+my house door @ ev kapÄ±m
+my house's door @ evimin kapÄ±sÄ±
+door of my house @ evimin kapÄ±sÄ±
+door of the house @ evin kapÄ±sÄ±
 my door of my house @ *
-my door of house @ ev kapım
-my big door of house @ büyük ev kapım
-my big house door @ büyük ev kapım
-the door of my house @ evimin kapısı
-a door of my house @ evimin bir kapısı
-this door of my house @ evimin bu kapısı
+my door of house @ ev kapÄ±m
+my big door of house @ bÃ¼yÃ¼k ev kapÄ±m
+my big house door @ bÃ¼yÃ¼k ev kapÄ±m
+the door of my house @ evimin kapÄ±sÄ±
+a door of my house @ evimin bir kapÄ±sÄ±
+this door of my house @ evimin bu kapÄ±sÄ±
 
-my door bell of house @ ev kapı zilim
+my door bell of house @ ev kapÄ± zilim
 my door bell of the house @ *
 my door bell of a house @ *
-the door bell of the house @ evin kapı zili
-this door bell of this house @ bu evin bu kapı zili
+the door bell of the house @ evin kapÄ± zili
+this door bell of this house @ bu evin bu kapÄ± zili
 
-house door bells @ ev kapı zilleri | ev kapısı zilleri
-door bells of house @ ev kapı zilleri
-door bell of houses @ evler kapı zili
-door bell of the houses @ evlerin kapı zili 
-bells of house door @ ev kapısı zilleri
-bells of house doors @ ev kapıları zilleri
+house door bells @ ev kapÄ± zilleri | ev kapÄ±sÄ± zilleri
+door bells of house @ ev kapÄ± zilleri
+door bell of houses @ evler kapÄ± zili
+door bell of the houses @ evlerin kapÄ± zili 
+bells of house door @ ev kapÄ±sÄ± zilleri
+bells of house doors @ ev kapÄ±larÄ± zilleri
 
-house butter @ ev tereyağı
-my house butter @ ev tereyağım
-butter box @ tereyağı kutusu
-box of butter @ tereyağı kutusu
-my butter box @ tereyağı kutum
-butter of house @  ev tereyağı
-butter of my house @ evimin tereyağı
-bedroom door @ yatak odası kapısı
-door of bedroom @ yatak odası kapısı
-family tree @ soyağacı
-my family tree @ soyağacım
-family tree family tree @ soyağacı soyağacı
+house butter @ ev tereyaÄŸÄ±
+my house butter @ ev tereyaÄŸÄ±m
+butter box @ tereyaÄŸÄ± kutusu
+box of butter @ tereyaÄŸÄ± kutusu
+my butter box @ tereyaÄŸÄ± kutum
+butter of house @  ev tereyaÄŸÄ±
+butter of my house @ evimin tereyaÄŸÄ±
+bedroom door @ yatak odasÄ± kapÄ±sÄ±
+door of bedroom @ yatak odasÄ± kapÄ±sÄ±
+family tree @ soyaÄŸacÄ±
+my family tree @ soyaÄŸacÄ±m
+family tree family tree @ soyaÄŸacÄ± soyaÄŸacÄ±
 
 family of me @ ailem
 family of you @ ailen
@@ -69,138 +69,138 @@ family of them @ aileleri
 families of him @ aileleri
 families of them @ aileleri
 
-doors of me @ kapılarım
-doors of you @ kapıların
-doors of us @ kapılarımız
+doors of me @ kapÄ±larÄ±m
+doors of you @ kapÄ±larÄ±n
+doors of us @ kapÄ±larÄ±mÄ±z
 
-door in house @ evdeki kapı
-door in a house @ bir evdeki kapı
-door in the house @ evdeki kapı
-door in me @ bendeki kapı
+door in house @ evdeki kapÄ±
+door in a house @ bir evdeki kapÄ±
+door in the house @ evdeki kapÄ±
+door in me @ bendeki kapÄ±
 
-house with door @ kapılı ev
-house with a door @ bir kapılı ev
-house with the door @ kapılı ev
+house with door @ kapÄ±lÄ± ev
+house with a door @ bir kapÄ±lÄ± ev
+house with the door @ kapÄ±lÄ± ev
 house with me @ benli ev
 
 
-house without door @ kapısız ev
-house without a door @ bir kapısız ev
-house without the door @ kapısız ev
+house without door @ kapÄ±sÄ±z ev
+house without a door @ bir kapÄ±sÄ±z ev
+house without the door @ kapÄ±sÄ±z ev
 house without me @ bensiz ev
 
-door under tree @ ağaç altındaki kapı
-door under a tree @ bir ağacın altındaki kapı
-door under the tree @ ağacın altındaki kapı
-door under me @ altımdaki kapı
+door under tree @ aÄŸaÃ§ altÄ±ndaki kapÄ±
+door under a tree @ bir aÄŸacÄ±n altÄ±ndaki kapÄ±
+door under the tree @ aÄŸacÄ±n altÄ±ndaki kapÄ±
+door under me @ altÄ±mdaki kapÄ±
 
-tree on door @ kapı üstündeki ağaç
-tree on a door @ bir kapının üstündeki ağaç
-tree on the door @ kapının üstündeki ağaç
-tree on me @ üstümdeki ağaç
+tree on door @ kapÄ± Ã¼stÃ¼ndeki aÄŸaÃ§
+tree on a door @ bir kapÄ±nÄ±n Ã¼stÃ¼ndeki aÄŸaÃ§
+tree on the door @ kapÄ±nÄ±n Ã¼stÃ¼ndeki aÄŸaÃ§
+tree on me @ Ã¼stÃ¼mdeki aÄŸaÃ§
 
-tree for door @ kapı için ağaç
-tree for a door @ bir kapı için ağaç
-tree for the door @ kapı için ağaç
-tree for me @ benim için ağaç
+tree for door @ kapÄ± iÃ§in aÄŸaÃ§
+tree for a door @ bir kapÄ± iÃ§in aÄŸaÃ§
+tree for the door @ kapÄ± iÃ§in aÄŸaÃ§
+tree for me @ benim iÃ§in aÄŸaÃ§
 
-door from tree @ ağaçtan kapı
-door from a tree @ bir ağaçtan kapı
-door from the tree @ ağaçtan kapı
-door from me @ benden kapı
+door from tree @ aÄŸaÃ§tan kapÄ±
+door from a tree @ bir aÄŸaÃ§tan kapÄ±
+door from the tree @ aÄŸaÃ§tan kapÄ±
+door from me @ benden kapÄ±
 
-door to tree @ ağaca kapı
-door to a tree @ bir ağaca kapı
-door to the tree @ ağaca kapı
-door to me @ bana kapı
+door to tree @ aÄŸaca kapÄ±
+door to a tree @ bir aÄŸaca kapÄ±
+door to the tree @ aÄŸaca kapÄ±
+door to me @ bana kapÄ±
 
 # Determiners
-half @ yarısı
+half @ yarÄ±sÄ±
 all @ hepsi
 both @ her ikisi
-twice @ iki katı
-double @ iki katı | duble
-five times @ beş katı
-any @ hiç biri | herhangi biri
-none @ hiç biri
-neither @ hiç biri
+twice @ iki katÄ±
+double @ iki katÄ± | duble
+five times @ beÅŸ katÄ±
+any @ hiÃ§ biri | herhangi biri
+none @ hiÃ§ biri
+neither @ hiÃ§ biri
 either @ her biri
 each @ her biri
 
-half a book @ yarım kitap
-half of a book @ bir kitabın yarısı
-half the books @ kitapların yarısı
-half the milk @ sütün yarısı
-half this book @ bu kitabın yarısı
-half this milk @ bu sütün yarısı
-half my books @ kitaplarımın yarısı
-half my milk @ sütümün yarısı
-all of the milk @ bütün süt | sütün hepsi
-half of the books @ kitapların yarısı
-half of the milk @ sütün yarısı
-half of this book @ bu kitabın yarısı
-half of this milk @ bu sütün yarısı
-half of my books @ kitaplarımın yarısı
-half of my milk @ sütümün yarısı
-all of the milk @ bütün süt | sütün hepsi
+half a book @ yarÄ±m kitap
+half of a book @ bir kitabÄ±n yarÄ±sÄ±
+half the books @ kitaplarÄ±n yarÄ±sÄ±
+half the milk @ sÃ¼tÃ¼n yarÄ±sÄ±
+half this book @ bu kitabÄ±n yarÄ±sÄ±
+half this milk @ bu sÃ¼tÃ¼n yarÄ±sÄ±
+half my books @ kitaplarÄ±mÄ±n yarÄ±sÄ±
+half my milk @ sÃ¼tÃ¼mÃ¼n yarÄ±sÄ±
+all of the milk @ bÃ¼tÃ¼n sÃ¼t | sÃ¼tÃ¼n hepsi
+half of the books @ kitaplarÄ±n yarÄ±sÄ±
+half of the milk @ sÃ¼tÃ¼n yarÄ±sÄ±
+half of this book @ bu kitabÄ±n yarÄ±sÄ±
+half of this milk @ bu sÃ¼tÃ¼n yarÄ±sÄ±
+half of my books @ kitaplarÄ±mÄ±n yarÄ±sÄ±
+half of my milk @ sÃ¼tÃ¼mÃ¼n yarÄ±sÄ±
+all of the milk @ bÃ¼tÃ¼n sÃ¼t | sÃ¼tÃ¼n hepsi
 
 both the books @ her iki kitap
-both of the books @ kitapların her ikisi
-twice the milk @ iki kat süt 
-twice of the milk @ sütün iki katı
-five times the milk @ beş kat süt
-five times of the milk @ sütün beş katı
+both of the books @ kitaplarÄ±n her ikisi
+twice the milk @ iki kat sÃ¼t 
+twice of the milk @ sÃ¼tÃ¼n iki katÄ±
+five times the milk @ beÅŸ kat sÃ¼t
+five times of the milk @ sÃ¼tÃ¼n beÅŸ katÄ±
 
 any book @ herhangi bir kitap
 each book @ her bir kitap
 either book @ her bir kitap
-neither book @ hiç bir kitap
-no book  @ hiç kitap
+neither book @ hiÃ§ bir kitap
+no book  @ hiÃ§ kitap
 every book @ her kitap
 
-some milk @ biraz süt
-plenty of milk @ çok süt
-little milk @ az süt
-a little milk @ biraz süt
-no milk @ hiç süt
-any milk @ hiç süt
+some milk @ biraz sÃ¼t
+plenty of milk @ Ã§ok sÃ¼t
+little milk @ az sÃ¼t
+a little milk @ biraz sÃ¼t
+no milk @ hiÃ§ sÃ¼t
+any milk @ hiÃ§ sÃ¼t
 
-some books @ bazı kitaplar
-plenty of books @ birçok kitap
+some books @ bazÄ± kitaplar
+plenty of books @ birÃ§ok kitap
 both books @ her iki kitap
-several books @ birçok kitap
+several books @ birÃ§ok kitap
 few books @ az kitap
-many books @ birçok kitap
-a few books @ birkaç kitap
-a lot of books @ birçok kitap
-all books @ bütün kitaplar
-most books @ çoğu kitap
-no books @ hiç kitap
-lots of books @ birçok kitap
-a number of books @ birçok kitap
+many books @ birÃ§ok kitap
+a few books @ birkaÃ§ kitap
+a lot of books @ birÃ§ok kitap
+all books @ bÃ¼tÃ¼n kitaplar
+most books @ Ã§oÄŸu kitap
+no books @ hiÃ§ kitap
+lots of books @ birÃ§ok kitap
+a number of books @ birÃ§ok kitap
 
-any of the books @ kitapların herhangi biri
-each of the books @ kitapların her biri
-none of the books @ kitapların hiç biri
-either of the books @ kitapların her biri
-neither of the books @ kitapların hiç biri
-some of the books @ kitapların bir kısmı
-both of the books @ kitapların her ikisi
-several of the books @ kitapların birçoğu
-many of the books @ kitapların birçoğu
-all of the books @ kitapların hepsi
-most of the books @ kitapların çoğu
+any of the books @ kitaplarÄ±n herhangi biri
+each of the books @ kitaplarÄ±n her biri
+none of the books @ kitaplarÄ±n hiÃ§ biri
+either of the books @ kitaplarÄ±n her biri
+neither of the books @ kitaplarÄ±n hiÃ§ biri
+some of the books @ kitaplarÄ±n bir kÄ±smÄ±
+both of the books @ kitaplarÄ±n her ikisi
+several of the books @ kitaplarÄ±n birÃ§oÄŸu
+many of the books @ kitaplarÄ±n birÃ§oÄŸu
+all of the books @ kitaplarÄ±n hepsi
+most of the books @ kitaplarÄ±n Ã§oÄŸu
 
-some of the milk @ sütün bir kısmı
-none of the milk @ sütün hiç biri
-all of the milk @ sütün hepsi
-most of the milk @ sütün çoğu
+some of the milk @ sÃ¼tÃ¼n bir kÄ±smÄ±
+none of the milk @ sÃ¼tÃ¼n hiÃ§ biri
+all of the milk @ sÃ¼tÃ¼n hepsi
+most of the milk @ sÃ¼tÃ¼n Ã§oÄŸu
 
-piece of cake @ kek parçası
-my piece of cake @ kek parçam
-a piece of cake @ bir parça kek | bir kek parçası
-two pieces of cake @ iki parça kek | iki kek parçası
-two small pieces of cake @ iki küçük kek parçası
+piece of cake @ kek parÃ§asÄ±
+my piece of cake @ kek parÃ§am
+a piece of cake @ bir parÃ§a kek | bir kek parÃ§asÄ±
+two pieces of cake @ iki parÃ§a kek | iki kek parÃ§asÄ±
+two small pieces of cake @ iki kÃ¼Ã§Ã¼k kek parÃ§asÄ±
 
 
 

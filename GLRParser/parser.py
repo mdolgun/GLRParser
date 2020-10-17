@@ -242,6 +242,12 @@ class Parser:
             logging.info("rules=%s",self.format_rules())
             logging.info("dict=%s","\n".join(self.trie.list()))
 
+#all,			// All features are passed through								e.g. V -> PPS
+#only_params,	// Only parameters are passed through							e.g. V -> PPS(+gap) PPS(gap)
+#with_params,	// Parameters and remaining features are passed through			e.g. V -> PPS(+, +gap) 		Note: PPS(+, gap) == PPS
+#without_params	// Except parameters, remaining features are passed through		e.g. V -> PPS(-, gap)		Note: PPS(-, +gap) == PPS(-, gap)
+
+    ### IMPORTANT Currently ?! is ignored in Up Propagation
     def unify_up(dst,param,src):
         """ unification of "src" features into "dst" features, using filtering of "param", if unification fails raises UnifyError
 
@@ -250,84 +256,44 @@ class Parser:
         src is checked against pre-condition dict and then filtered with filter set and unified into dst
 
         """
-        if param is None:
-            keys = src.keys()
+        if hasattr(param,'param_type'):
+            param_type = param.param_type
         else:
-            keys = set()
-            for key in param.keys() & src.keys():
-                if param[key] is None:
-                    keys.add(key)
-                else:
-                    val = param[key]
-                    if val[0] == '*':
-                        val = dst.get(val[1:])
-                    if val and val != src[key]:
-                        raise UnifyError("UnifyU precheck error feat=%s src=%s param=%s" % (key, src[key], val))
+            param_type = None
 
-        for key in keys & dst.keys():
-            if src[key] != dst[key]:
-                raise UnifyError("UnifyU error feat=%s src=%s param=%s" % (key, src[key], dst[key]))
+        if param is None:
+            check_keys = []
+            copy_keys = [(key,key) for key in src.keys()]
+        else:
+            check_keys = [(key,val) for key,val in param.items() if val is not None and not val.startswith('*') and key in src]
+            if param_type == '-':
+                copy_keys = [(key,key) for key in src.keys() if key not in param]
+            else:
+                copy_keys = [(key,key if val is None else val[1:]) for key,val in param.items() if (val is None or val.startswith('*')) and key in src]
+                if param_type == '+':
+                    copy_keys.extend((key,key) for key in src.keys() if key not in param)
+            
+        for key,val in check_keys:
+            src_val = src[key]
+            if src_val != val:
+                raise UnifyError("UnifyU precheck error feat=%s src=%s param=%s" % (key, src_val, val))
 
-        newkeys = keys - dst.keys()
-        if newkeys:
+        new_items = {}
+        for src_key,dst_key in copy_keys:
+            src_val = src[src_key]
+            dst_val = dst.get(dst_key)
+            if dst_val is None:
+                new_items[dst_key] = src_val
+            elif src_val != dst_val:
+                raise UnifyError("UnifyU error feat=%s src=%s dst=%s" % (dst_key, src_val, dst_val))
+
+        if new_items:
             dst = dst.copy()
-            for key in newkeys:
-                dst[key] = src[key]
+            dst.update(new_items)
+
         return dst
 
-
-
-    #def unify_up(dst,param,src,checklist):
-    #    """ unification of "src" features into "dst" features, using filtering of "param", if unification fails raises UnifyError
-
-    #    if param is None, src is directly unified into dst
-    #    otherwise param contains a pre-condition dict and a filter set,
-    #    src is checked against pre-condition dict and then filtered with filter set and unified into dst
-    #    """
-    #    if param is None:
-    #        items = [(key,val) for key,val in src.items() if key[0]!='@']
-    #    else:
-    #        items = []
-    #        for key,val in param.items():
-    #            if val is None:
-    #                if key == '@*':
-    #                    for skey,sval in src.items():
-    #                        if skey[0]!='@':
-    #                            items.append( ('@'+skey, sval) )
-    #                elif key[0] == '@':
-    #                    sval = src.get(key[1:])
-    #                    if sval is not None:
-    #                        items.append( (key, sval) )
-    #                else:
-    #                    items.append( (key, src[key]) )
-    #            else:
-    #                if val[0] == '*':
-    #                    sval =  src.get(key)
-    #                    if sval is not None:
-    #                        items.append( (val[1:], sval) )
-    #                else:
-    #                    sval = src.get(key)
-    #                    if sval is not None and val!=sval:
-    #                        raise UnifyError("Unify precheck error feat=%s src=%s param=%s" % (key, sval, val))
-
-    #    changed = False
-    #    for key,val in items:
-    #        dval = dst.get(key)
-    #        if dval is None:
-    #            if not changed:
-    #                dst = dst.copy()
-    #                changed = True
-    #            dst[key] = val
-    #        elif val!=dval:
-    #            raise UnifyError("Unify error feat=%s src=%s param=%s" % (key, val, dval))
-
-    #    for key in checklist:
-    #        if dst.get(key) == '!':
-    #            raise UnifyError("Unify feature not exists: %s" % key)
-
-    #    return dst
-
-
+    ### IMPORTANT Currently default copying types +- are ignored in Down Propagation
     def unify_down(dst,param,src,checklist):
         """ unification of "src" features into "dst" features, using filtering of "param", if unification fails raises UnifyError
 
@@ -376,62 +342,10 @@ class Parser:
 
         return dst
 
-    #def unify_down(dst,param,src,checklist):
-    #    """ unification of "src" features into "dst" features, using filtering of "param", if unification fails raises UnifyError
-
-    #    if param is None, src is directly unified into dst
-    #    otherwise param contains a pre-condition dict and a filter set,
-    #    dst is unified against pre-condition dict and filtered src
-    #    """
-    #    if param is None:
-    #        items = [(key,val) for key,val in src.items() if key[0]!='@']
-    #    else:
-    #        items = []
-    #        if type(param)!=dict:
-    #            pass
-    #        for key,val in param.items():
-    #            if val is None:
-    #                if key == '@*':
-    #                    for skey,sval in src.items():
-    #                        if skey[0]=='@':
-    #                            items.append( (skey[1:], sval) )
-    #                elif key[0] == '@':
-    #                    sval = src.get(key)
-    #                    if sval is not None:
-    #                        items.append( (key[1:], sval) )
-    #                else:
-    #                    items.append( (key, src[key]) )
-    #            else:
-    #                if val[0] == '*':
-    #                    sval =  src.get(val[1:])
-    #                    if sval is not None:
-    #                        items.append( (key, sval) )
-    #                else:
-    #                    items.append( (key, val) )
-
-    #    changed = False
-    #    for key,val in items:
-    #        dval = dst.get(key)
-    #        if dval is None:
-    #            if not changed:
-    #                dst = dst.copy()
-    #                changed = True
-    #            dst[key] = val
-    #        elif val!=dval:
-    #            raise UnifyError("UnifyD error feat=%s src=%s param=%s" % (key, val, dval))
-
-    #    for key in checklist:
-    #        if dst.get(key,'!') == '!':
-    #            raise UnifyError("UnifyD feature not exists: %s" % key)
-
-    #    return dst
-
     def unify_tree(self,tree):
         """ bottom-up unifies a tree and returns a new tree """
 
         rule = tree.rule
-        #checklist = [key for key,val in rule.feat.items() if val=='?']
-        #fdict = {key:val for key,val in rule.feat.items() if val != '?'}
         checklist = rule.checklist
         fdict = rule.feat
 
@@ -510,7 +424,10 @@ class Parser:
                         except KeyError:
                             raise UnifyError("Translate Ref to feature %s not found in %s" % (key,rule))
                         if type(val)==str:
-                            trans.append(val)
+                            if val[0].isupper():
+                                trans.append( self.make_trans_tree(val,fdict,param) )
+                            else:
+                                trans.append(val)
                         else:
                             assert param is not False
                             trans.append( self.trans_alts(val,fdict,param) )
@@ -570,7 +487,10 @@ class Parser:
                 except KeyError:
                     raise UnifyError("Translate Ref to feature %s not found in %s" % (key,rule))
                 if type(val)==str:
-                    trans.append(val)
+                    if val[0].isupper():
+                        trans.append( self.make_trans_tree(val,fdict,param) )
+                    else:
+                        trans.append(val)
                 else:
                     trans.append( self.trans_alts(val,fdict,param) )
             elif param is False: # Terminal
@@ -768,8 +688,9 @@ class Parser:
                 else:
                     while not act_states[pos]:
                         pos -= 1
-                    logging.error("Parse not possible: %s >> %s"," ".join(instr[0:pos])," ".join(instr[pos:]))
-                    raise ParseError("Parse not possible: %s >> %s" % (" ".join(instr[0:pos])," ".join(instr[pos:])))
+                    error = "Parse is not possible at position %s: %s [* %s *] %s" % (pos, " ".join(instr[0:pos]),instr[pos]," ".join(instr[pos+1:-1]))
+                    logging.error(error)
+                    raise ParseError(error)
             else:
                 if not active:
                     continue
@@ -815,75 +736,15 @@ class Parser:
             tree = self.make_tree()
             tree2 = self.unify_tree(tree)
             tree3 = self.trans_tree(tree2)
-            return [(self.post_processor(trans),cost) for trans,cost in tree3.enumx()]
+
+            result = [(self.post_processor(trans),cost) for trans,cost in tree3.enumx()]
+            result.sort(key=lambda item:item[1])
+            return result
             #return list(tree3.enumx())
         except ParseError as pe:
-            return str(pe)
+            return "ParseError: "+str(pe)
         except UnifyError as ue:
-            return str(ue)
+            return "UnifyError: "+str(ue)
         except PostProcessError as ppe:
-            return str(ppe)
+            return "PostProcessError: "+str(ppe)
         
-    
-    def trans_file(self,infile,outfile,ignore_exp_error=False):
-        """ parses all sentences in infile. Each line should be in the form: InputSentence [ "@" ExpectedTranslation ]
-        input and corresponding translations are written to output file. The file is appended by statistics (InputCount,TranslatedCount,MatchedCount,ExpectedErrorCount,IgnoredCount)
-        """
-        input_cnt = 0
-        trans_cnt = 0
-        match_cnt = 0
-        experr_cnt = 0
-        ignore_cnt = 0
-        pre_processor = DummyPreProcessor()
-        with open(infile, 'r') as fin, open(outfile, 'w') as fout:
-            for line in fin:
-                line = line.strip()
-                if not line or line.startswith('#'):
-                    continue
-                input_cnt += 1
-                parts = line.split('@')
-                if len(parts) == 2: # input file contains the expected translation
-                    if self.reverse:
-                        trans,sent = parts
-                    else:
-                        sent,trans = parts
-                    trans = [pre_processor(tsent) for tsent in trans.split('|')]
-                else:
-                    if self.reverse:
-                        raise ParseError("Input sentence doesn't contain translation", line)
-                    sent = parts[0]
-                    trans = []
-
-                sent = sent.strip()
-                if sent == '*': # reverse translation for expected parse error
-                    continue
-                        
-                print("input:"," @ ".join([sent.strip()," | ".join(trans)]),file=fout)
-                print("output:",file=fout,end=" ")
-                trans_list = self.trans_sent(sent)
-                #print(sent, trans_list)
-                if type(trans_list)==str: # an error occured
-                    if '*' in trans:
-                        experr_cnt += 1
-                        print("EXPECTED ERROR",file=fout)
-                    else:
-                        print("ERROR",file=fout)
-                    print(trans_list,file=fout)
-                else:
-                    trans_list, trans_cost = zip(*trans_list)
-                    trans_cnt += 1
-                    if trans==[] or trans==['*'] and ignore_exp_error:
-                        print("IGNORED",file=fout)
-                        ignore_cnt += 1
-                    elif any(tsent in trans_list for tsent in trans):
-                        print("OK",file=fout)
-                        match_cnt += 1  
-                    else:
-                        print("NOK",file=fout)
-                    for idx, alt in enumerate(trans_list):
-                        print(idx+1,alt,trans_cost[idx],file=fout)
-                print(file=fout)
-            print("input={}, translated={}, matched={} exp_err={} ignored={}".format(input_cnt,trans_cnt,match_cnt,experr_cnt,ignore_cnt),file=fout)
-        return (input_cnt,trans_cnt,match_cnt,experr_cnt,ignore_cnt)
-            
-

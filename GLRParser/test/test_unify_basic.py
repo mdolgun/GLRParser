@@ -2,6 +2,8 @@ import sys, unittest, textwrap
 sys.path.append("../..")
 from GLRParser import Parser, UnifyError
 
+class Param(dict):
+    pass
 
 class TestUnifyBasic(unittest.TestCase):
     cases = [ # dst,param,src,exp_up,exp_down(None if exception)
@@ -22,7 +24,7 @@ class TestUnifyBasic(unittest.TestCase):
     # []<-(ppers=*pers)<-[pers=3]    up: []  down: [ppers=3]
         ({},{"ppers":"*pers"},{"pers":"3"}, {}, {"ppers":"3"}),
     # []<-(pers=*ppers)<-[pers=3]    up: [ppers=3]  down: []
-        ({},{"ppers":"*pers"},{"pers":"3"}, {}, {"ppers":"3"}),
+        ({},{"pers":"*ppers"},{"pers":"3"}, {"ppers":"3"},{}),
     # [ppers=1]<-(ppers=*pers)<-[pers=1]    up: [ppers=1]  down: [ppers=1]
         ({"ppers":"1"},{"ppers":"*pers"},{"pers":"1"}, {"ppers":"1"}, {"ppers":"1"}),
     # [ppers=1]<-(ppers=*pers)<-[pers=3]    up: [ppers=1]  down: X
@@ -39,29 +41,42 @@ class TestUnifyBasic(unittest.TestCase):
         ({"noplur":"0"},None,{"noplur":"1"}, None,None),
         ({"noplur":"1"},None,{"noplur":"0"}, None,None),
 
+    ### IMPORTANT Currently default copying types +- are ignored in Down Propagation
+    # []<-(+,ppers=*pers)<-[pers=3,+neg]    up: [pers=3,+neg]  down: [ppers=3]
+        ({},{"+":None,"ppers":"*pers"},{"pers":"3","neg":"+"}, {"pers":"3","neg":"+"},{"ppers":"3"}),
+    # []<-(+,pers=*ppers)<-[pers=3,+neg]    up: [ppers=3,+neg]  down: [ppers=3]
+        ({},{"+":None,"pers":"*ppers"},{"pers":"3","neg":"+"}, {"ppers":"3","neg":"+"},{}),
+    # []<-(-,ppers=*pers,numb)<-[pers=3,+neg,numb=sing]    up: [pers=3,+neg]  down: [ppers=3]
+        ({},{"-":None,"ppers":"*pers","numb":None},{"pers":"3","neg":"+","numb":"sing"}, {"pers":"3","neg":"+"},{"ppers":"3","numb":"sing"}),
+    # []<-(-,pers=*ppers,numb)<-[pers=3,+neg,numb=sing]    up: [ppers=3,+neg]  down: [ppers=3]
+        ({},{"-":None,"pers":"*ppers","numb":None},{"pers":"3","neg":"+","numb":"sing"}, {"neg":"+"},{"numb":"sing"}),
+
+    ### IMPORTANT Currently ?! is ignored in Up Propagation
     # [?noplur]<- <-[+noplur]    up: [+noplur]  down: [+noplur]
-        ({"noplur":"?"},None,{"noplur":"+"}, {"noplur":"+"}, {"noplur":"+"}),
-    # [?noplur]<- <-[]    up: []  down: None
-        #({"noplur":"?"},None,{}, {"noplur":"?"},None), !OLD method works this way!
+        ({"noplur":"?"},None,{"noplur":"+"}, {"noplur":"+"},{"noplur":"+"}),
+    # [?noplur]<- <-[]    up: []  down: X
         ({"noplur":"?"},None,{}, {},None),
-    # [?noplur]<- <-[!noplur]    up: None  down: None
-        ({"noplur":"?"},None,{"noplur":"!"}, None,None),
 
-        ({"noplur":"+"},None,{"noplur":"!"}, None, None),
-        ({"noplur":"!"},None,{"noplur":"+"}, None, None),
-        ({},None,{"noplur":"!"}, {"noplur":"!"},{"noplur":"!"}),
-        ({"noplur":"!"},None,{}, {"noplur":"!"},{"noplur":"!"}),
+    # [!noplur]<- <-[+noplur]    up: [+noplur]  down: X
+        ({"noplur":"!"},None,{"noplur":"+"}, {"noplur":"+"},None),
+    # [!noplur]<- <-[]    up: []  down: []
+        ({"noplur":"!"},None,{}, {},{}),
 
-    # []<- <-[@numb=plur,@pers=3]    up: [] down: []
-        ({},None,{"@numb":"plur","@pers":"3"}, {},{}),
-    # []<-(@numb)<-[@numb=plur,@pers=3]    up: [] down: [numb=plur] 
-        ({},{"@numb":None},{"@numb":"plur","@pers":"3"}, {},{"numb":"plur"}),
-    # []<-(@numb)<-[numb=plur,pers=3]    up: [@numb=plur] down: [] 
-        ({},{"@numb":None},{"numb":"plur","pers":"3"}, {"@numb":"plur"},{}),
-    # []<-(@*)<-[@numb=plur,@pers=3]    up: [] down: [numb=plur,pers=3] 
-        ({},{"@*":None},{"@numb":"plur","@pers":"3"}, {},{"numb":"plur","pers":"3"}),
-    # []<-(@*)<-[numb=plur,pers=3]    up: [@numb=plur,@pers=3] down: [] 
-        ({},{"@*":None},{"numb":"plur","pers":"3"}, {"@numb":"plur","@pers":"3"},{}),
+    # [conn=?if]<- <-[conn=if]   up: [conn=if] down: [conn=if]
+        ({"conn":"?if"},None,{"conn":"if"}, {"conn":"if"}, {"conn":"if"}),
+    # [conn=?if]<- <-[conn=while]   up: [conn=while] down: X
+        ({"conn":"?if"},None,{"conn":"while"}, {"conn":"while"},None),
+    # [conn=?if]<- <-[]   up: [] down: X
+        ({"conn":"?if"},None,{}, {},None),
+
+    # [conn=!if]<- <-[conn=if]   up: [conn=if] down: X
+        ({"conn":"!if"},None,{"conn":"if"}, {"conn":"if"}, None),
+    # [conn=!if]<- <-[conn=while]   up: [conn=while] down: [conn=while]
+        ({"conn":"!if"},None,{"conn":"while"}, {"conn":"while"},{"conn":"while"}),
+    # [conn=!if]<- <-[]   up: [] down: None
+        ({"conn":"!if"},None,{}, {},None),
+
+        ({"gap":"+"},{"gap":"-"},{"gap":"-"}, {"gap":"+"},None),
     ]
 
     def test_unify_basic(self):
@@ -69,17 +84,25 @@ class TestUnifyBasic(unittest.TestCase):
 
             with self.subTest(dst=dst,param=param,src=src):
                try:
-                   checklist = [key for key,val in dst.items() if val=='?']
-                   _dst = {key:val for key,val in dst.items() if val!='?'}
-                   result = Parser.unify_up(_dst,param,src,checklist)
+                   checklist = {key:val for key,val in dst.items() if val[0] in '?!'}
+                   _dst = {key:val for key,val in dst.items() if val[0] not in '?!'}
+                   if param is not None:
+                       param_type = [key for key,val in param.items() if key in '+-' ]
+                       param = Param([(key,val) for key,val in param.items() if key not in '+-'])
+                       param.param_type = param_type[0] if param_type else None
+                   result = Parser.unify_up(_dst,param,src)
                except UnifyError:
                    result = None
                self.assertEqual(result, exp_up)
 
             with self.subTest(dst=dst,param=param,src=src):
                try:
-                   checklist = [key for key,val in dst.items() if val=='?']
-                   _dst = {key:val for key,val in dst.items() if val!='?'}
+                   checklist = {key:val for key,val in dst.items() if val[0] in '?!'}
+                   _dst = {key:val for key,val in dst.items() if val[0] not in '?!'}
+                   if param is not None:
+                       param_type = [key for key,val in param.items() if key in '+-' ]
+                       param = Param([(key,val) for key,val in param.items() if key not in '+-'])
+                       param.param_type = param_type[0] if param_type else None
                    result = Parser.unify_down(_dst,param,src,checklist)
                except UnifyError:
                    result = None

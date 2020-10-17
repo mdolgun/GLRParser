@@ -1,62 +1,62 @@
 i know it @ onu biliyorum
 i knew it @ onu biliyordum
-i see you @ sizi görüyorum
-i saw you @ sizi gördüm
+i see you @ sizi gÃ¶rÃ¼yorum
+i saw you @ sizi gÃ¶rdÃ¼m
 i watch it @ onu izlerim
 i watched it @ onu izledim
 
 i had better go @ gitsem iyi olur
 you had better not go @ gitmesen iyi olur
-i would like to see you @ sizi görmek isterim
-would you like to see me @ beni görmek ister misiniz
-i would rather sleep @ uyumayı tercih ederim
-i would rather not sleep @ uyumamayı tercih ederim
+i would like to see you @ sizi gÃ¶rmek isterim
+would you like to see me @ beni gÃ¶rmek ister misiniz
+i would rather sleep @ uyumayÄ± tercih ederim
+i would rather not sleep @ uyumamayÄ± tercih ederim
 
-#it is easy to see you @ sizi görmek kolay
-#it is easy for me to see you @ sizi görmem kolay | sizi görmek benim için kolay
+#it is easy to see you @ sizi gÃ¶rmek kolay
+#it is easy for me to see you @ sizi gÃ¶rmem kolay | sizi gÃ¶rmek benim iÃ§in kolay
 
 i watch a car @ bir araba seyrederim
 i watch car @ araba seyrederim
-i watch the car @ arabayı seyrederim
+i watch the car @ arabayÄ± seyrederim
 
 i am afraid of cars @ arabalardan korkuyorum
 i am afraid of you @ sizden korkuyorum
-i am angry with you @ size kızgınım
-i am happy that you are happy @ mutlu olduğunuz için mutluyum
-i didn't know that you were not happy @ mutlu olmadığınızı bilmiyordum
+i am angry with you @ size kÄ±zgÄ±nÄ±m
+i am happy that you are happy @ mutlu olduÄŸunuz iÃ§in mutluyum
+i didn't know that you were not happy @ mutlu olmadÄ±ÄŸÄ±nÄ±zÄ± bilmiyordum
 
 i hated the car @ arabadan nefret ettim | arabadan nefret ediyordum
-i turned @ döndüm
-i turned the car @ arabayı çevirdim 
-i turned the man down @ adamı geri çevirdim
-i turned the light on @ ışığı açtım
-i turned the light off @ ışığı kapadım
-i told him not to go @ ona gitmemesini söyledim
-i told him that i was happy @ ona mutlu olduğumu söyledim
-she didn't tell me whether she was happy @ o bana mutlu olup olmadığını söylemedi
-i know that you are happy @ mutlu olduğunuzu biliyorum
-i don't know whether you are happy @ mutlu olup olmadığınızı bilmiyorum
+i turned @ dÃ¶ndÃ¼m
+i turned the car @ arabayÄ± Ã§evirdim 
+i turned the man down @ adamÄ± geri Ã§evirdim
+i turned the light on @ Ä±ÅŸÄ±ÄŸÄ± aÃ§tÄ±m
+i turned the light off @ Ä±ÅŸÄ±ÄŸÄ± kapadÄ±m
+i told him not to go @ ona gitmemesini sÃ¶yledim
+i told him that i was happy @ ona mutlu olduÄŸumu sÃ¶yledim
+she didn't tell me whether she was happy @ o bana mutlu olup olmadÄ±ÄŸÄ±nÄ± sÃ¶ylemedi
+i know that you are happy @ mutlu olduÄŸunuzu biliyorum
+i don't know whether you are happy @ mutlu olup olmadÄ±ÄŸÄ±nÄ±zÄ± bilmiyorum
 i wanted a car @ bir araba istedim
-i wanted to see you @ sizi görmek istedim 
+i wanted to see you @ sizi gÃ¶rmek istedim 
 i wanted to be happy @ mutlu olmak istedim
 i wanted you not to go @ sizin gitmemenizi istedim
-he wanted me to see you @ o benim sizi görmemi istedi 
-he gave the car @ o arabayı verdi
-he gave me the car @ o bana arabayı verdi
+he wanted me to see you @ o benim sizi gÃ¶rmemi istedi 
+he gave the car @ o arabayÄ± verdi
+he gave me the car @ o bana arabayÄ± verdi
 
 
 i was given a car @ bana bir araba verildi | bir araba verildim
 #i was hated @ benden nefret edildi | nefret edildim
 i was watched @ seyredildim
-#i was looked after @ bana bakıldı | bakıldım
+#i was looked after @ bana bakÄ±ldÄ± | bakÄ±ldÄ±m
 
-i saw a car @ bir araba gördüm
-i saw him sleep @ onun uyuduğunu gördüm 
-i saw him sleeping @ onun uyuduğunu gördüm | onu uyurken gördüm
-i saw his sleeping @ onun uyumasını gördüm
+i saw a car @ bir araba gÃ¶rdÃ¼m
+i saw him sleep @ onun uyuduÄŸunu gÃ¶rdÃ¼m 
+i saw him sleeping @ onun uyuduÄŸunu gÃ¶rdÃ¼m | onu uyurken gÃ¶rdÃ¼m
+i saw his sleeping @ onun uyumasÄ±nÄ± gÃ¶rdÃ¼m
 
-she is looking @ o bakıyor
-she looked at me @ o bana baktı
-she is looking for me @ o beni arıyor
-she is looking after the children @ o çocuklara bakıyor
-she looks angry @ o kızgın görünüyor
+she is looking @ o bakÄ±yor
+she looked at me @ o bana baktÄ±
+she is looking for me @ o beni arÄ±yor
+she is looking after the children @ o Ã§ocuklara bakÄ±yor
+she looks angry @ o kÄ±zgÄ±n gÃ¶rÃ¼nÃ¼yor

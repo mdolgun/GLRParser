@@ -125,13 +125,17 @@ class TurkishPostProcessor:
                 previdx = idx
         text = " ".join(item for item in items if item)
 
-        return TurkishPostProcessor.vowel_harmony(
-            self.rx.sub(
-                self.handle_match,
-                #001text.replace(' -','-').translate(self.intab)
-                text.replace(' -','').translate(self.intab)
-            )
-        ).translate(self.outtab)
+        #return TurkishPostProcessor.vowel_harmony(
+        #    self.rx.sub(
+        #        self.handle_match,
+        #        text.replace(' -','').translate(self.intab)
+        #    )
+        #).translate(self.outtab)
+        inp = text.replace(' -','').translate(self.intab) 
+        result = self.rx.sub(self.handle_match, inp)
+        result = TurkishPostProcessor.vowel_harmony(result)
+        result = result.translate(self.outtab)
+        return result
 
 def main():
     morpher = TurkishPostProcessor()

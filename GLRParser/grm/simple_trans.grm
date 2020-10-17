@@ -8,5 +8,5 @@ NP -> the telescope : teleskop
 NP -> the house : ev
 NP -> NP-1 in NP-2 : NP-2 -deki NP-1
 NP -> NP-1 with NP-2 : NP-2 -lu NP-1
-VP -> saw NP : NP -ı gördü
+VP -> saw NP : NP -Ä± gÃ¶rdÃ¼
 

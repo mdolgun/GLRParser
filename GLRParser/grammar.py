@@ -6,9 +6,6 @@ Source for parsing input grammar, defines classes GrammarError,Rule,Trie and Gra
 
 """
 import re, pickle
-from collections import namedtuple
-
-new_unify = False
 
 class GrammarError(Exception):
     """ Raised when a grammar cannot be parsed """
@@ -60,44 +57,18 @@ def format_fparam(fdict):
         if type(fdict)==dict: # empty dict
             return "()"
         return ""
-    return "(" + ",".join("{}={}".format(item[0],item[1]) if item[1] is not None else item[0] for item in sorted(fdict.items())) + ")"
+    if fdict.param_type:
+        param_type = fdict.param_type+","
+    else:
+        param_type = ""
+    return "(" + param_type + ",".join("{}={}".format(item[0],item[1]) if item[1] is not None else item[0] for item in sorted(fdict.items())) + ")"
 
 def format_feat(fdict,checklist=empty_dict):
-    if not fdict:
-        if type(fdict)==dict: # empty dict
-            return "[]"
-        return ""
-    return "[" + ",".join((
-        ",".join("=".join(item) for item in checklist.items()),
-        ",".join("=".join(item) for item in sorted(fdict.items()))
-    )) + "]"
-
-#else:
-#    Rule = namedtuple('Rule', 'head, left, lparam, right') # (head,left,lparam,[(right,rparam,feat,checklist,cost,cut)+])
-#    def format_feat(fdict,par='[]',checklist=[]):
-#        if not fdict:
-#            if type(fdict)==dict: # empty dict
-#                return par
-#            return ""
-#        return par[0] + ",".join((
-#            ",".join("?"+item for item in checklist),
-#            ",".join("=".join(item) if item[1] is not None else item[0] for item in sorted(fdict.items()))
-#        )) + par[1]
-
-
-#    def format_rule(self):
-#        return "%s -> %s : %s {%d} %s" % (
-#            self.head, 
-#            " ".join( ['"'+symbol+'"' if fparam is False else symbol+format_feat(fparam,'()') for symbol,fparam in zip(self.left,self.lparam)] ),
-#            " | ".join( "%s {%d} %s" % (
-#                    " ".join( ['"'+symbol+'"' if fparam is False else str(symbol)+format_feat(fparam,'()') for symbol,fparam in zip(self.right,self.rparam)] ),
-#                    self.cost,
-#                    format_feat(self.feat,'[]')
-#                ) for right,rparam,feat,cost in self.right
-#            )
-#        )
-
-#Rule.format = format_rule
+    #if fdict is None:
+    #    return ""
+    checklist_out = ",".join("=".join(item) for item in checklist.items())
+    feat_out = ",".join("=".join(item) if type(item[1])==str else item[0]+'=*' for item in sorted(fdict.items()))
+    return "[" + ",".join(item for item in (checklist_out,feat_out) if item) + "]"
 
 class Trie:
     """ Trie is  tree where each nodes are words (or characters). It is used as a dictionary 
@@ -141,20 +112,17 @@ class Trie:
                 yield from Trie.list_int(val,lst+[key])
 
 
-
 class Grammar:
     enable_trie = False
 
     INTEGER = re.compile('-?[1-9][0-9]*') # 
-    #re_NONTERM = "[_A-Z][-_A-Za-z0-9]*'*"
-    re_NONTERM = r"\$?[_A-Z][_A-Za-z0-9$]*'*"
-    re_FEAT_NAME = "[-a-z0-9_]+"
+    re_NONTERM = r"\$?[_A-Z][-_A-Za-z0-9$]*'*"
+    re_FEAT_NAME = "[a-z0-9_]+"
     re_FPARAM_NAME = r"@?{}|@?\*".format(re_FEAT_NAME)
-    #re_TERM = r'''"[^"]*"|(?![_A-Z])[-+'$\w][-+'$\w@^!]*'''
     re_TERM = r'''"([^"]*)"|(\$?[^|{:[_A-Z#!"][^|{:[#!\s]*)'''
 
     #re_FEAT_VALUE = r"\*{}|\*{}|{}".format(re_NONTERM, re_FEAT_NAME ,re_TERM)
-    re_FEAT_VALUE = r"\*{}|\*{}|{}".format(re_NONTERM, re_FEAT_NAME ,re_FEAT_NAME)
+    re_FEAT_VALUE = r"{}|\*{}|\*{}|[?!]?[-+]?{}".format(re_NONTERM, re_NONTERM, re_FEAT_NAME ,re_FEAT_NAME)
     re_SYMBOL = r'({}|\*{})|({})'.format(re_NONTERM, re_FEAT_NAME, re_TERM)
 
     SYMBOL = re.compile(re_SYMBOL)
@@ -176,6 +144,8 @@ class Grammar:
         self.if_stack = []
         self.parse_rule("S' -> S() : S()")
         self.suff_dict = dict()
+        self.auto_dict = False
+        self.include_stack = []
         #self.suff_dict_names = dict()
         #self.suff_idxs = dict()
         #self.suff_dict_list = []
@@ -459,7 +429,10 @@ class Grammar:
         if self.get_token(')',False): # empty list
             return empty_fparam
         fdict = FParam()
-        fdict.param_type = self.get_char_list("+-",False)
+        fdict.param_type = self.get_token_list(["+,","-,"],False)
+        if fdict.param_type:
+            fdict.param_type = fdict.param_type[0]
+
         name,value = self.parse_fparam()
         fdict[name] = value
         while self.get_token(',', False):   
@@ -475,7 +448,7 @@ class Grammar:
         grammar = Grammar(reverse,defines)
         if text is None:
             grammar.fname = fname
-            with open(fname, "r") as f:
+            with open(fname, "r", encoding="utf-8") as f:
                 grammar.parse_grammar(f)
                 return grammar
         else:
@@ -551,8 +524,13 @@ class Grammar:
     def include(self):
         """ %include "file name" """
         fname = self.get_term()
-        with open(fname,"rt") as f:
+        self.include_stack.append({"fname":self.fname, "line_no":self.line_no, "auto_dict":self.auto_dict})
+        with open(fname,"rt",encoding="utf-8") as f:
             self.parse_grammar(f)
+        params = self.include_stack.pop()
+        self.fname = params["fname"]
+        self.line_no = params["line_no"]
+        self.auto_dict = params["auto_dict"]
 
     def include_form(self):
         """ %include_form MacroName "file name" """
@@ -561,7 +539,7 @@ class Grammar:
         if macro_name not in self.macros:
             raise GrammarError("Line:%d Macro not defined: %s" % (self.line_no,macro_name))
         cnt = len(self.macros[macro_name])
-        with open(fname,"rt") as f:
+        with open(fname,"rt",encoding="utf-8") as f:
             for line_no,line in enumerate(f):
                 line = line.strip()
                 if line and not line.startswith("#"):
@@ -595,6 +573,13 @@ class Grammar:
         fname = self.get_term()
         with open(self,"rb") as fin:
             self.forms = pickle.load(fin)
+
+    def parse_auto_dict(self):
+        """%auto_dict false|true|all"""
+        _,param = self.buf.split()
+        self.auto_dict = {"false": False, "true": True, "all": "all"}.get(param)
+        if self.auto_dict is None:
+            raise GrammarError("Line:%d auto_dict unexpected parameter: %s" % (self.line_no,param))
 
     #def parse_suffix_macro(self):
     #    """ %suffix_macro MacroName -> term (, term)* """
@@ -667,7 +652,8 @@ class Grammar:
     #                items = [item.strip() for item in items]
     #                self.suff_dict_list[dict_idx][items[0]] = items
 
-    funcs = { 
+    funcs = {
+        "auto_dict": parse_auto_dict,
         "macro" : parse_macro,
         "form" : parse_form,
         "include_form" : include_form,
@@ -679,6 +665,7 @@ class Grammar:
         "ifdef" : parse_ifdef,
         "else"  : parse_else,
         "endif" : parse_endif,
+        "include": include,
         #"suffix_macro" : parse_suffix_macro,
         #"suffix_def" : parse_suffix_def,
         "suffix" : parse_suffix,

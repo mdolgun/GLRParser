@@ -1,3026 +1,2739 @@
-input: i am going @ gidiyorum
-output: OK
-1 gidiyorum 0
-
-input: i'm going @ gidiyorum
-output: OK
-1 gidiyorum 0
-
-input: you are going @ gidiyorsun | gidiyorsunuz
-output: OK
-1 gidiyorsunuz 0
-
-input: you're going @ gidiyorsun | gidiyorsunuz
-output: OK
-1 gidiyorsunuz 0
-
-input: he is going @ gidiyor | o gidiyor
-output: OK
-1 o gidiyor 0
-
-input: he's going @ gidiyor | o gidiyor
-output: OK
-1 o gidiyor 0
-
-input: she is going @ gidiyor | o gidiyor
-output: OK
-1 o gidiyor 0
-
-input: it is going @ gidiyor | o gidiyor
-output: OK
-1 o gidiyor 0
-
-input: we are going @ gidiyoruz
-output: OK
-1 gidiyoruz 0
-
-input: they are going @ gidiyorlar | onlar gidiyor
-output: OK
-1 onlar gidiyor 0
-
-input: i was going @ gidiyordum
-output: OK
-1 gidiyordum 0
-
-input: i have been going @ gidiyorum
-output: OK
-1 gidiyorum 0
-
-input: i've been going @ gidiyorum
-output: OK
-1 gidiyorum 0
-
-input: i had been going @ gidiyordum
-output: OK
-1 gidiyordum 0
-
-input: i go @ giderim
-output: OK
-1 giderim 0
-
-input: i went @ gittim
-output: OK
-1 gittim 0
-
-input: i have gone @ gittim
-output: OK
-1 gittim 0
-
-input: i've gone @ gittim
-output: OK
-1 gittim 0
-
-input: i had gone @ gitmiştim
-output: OK
-1 gitmiştim 0
-
-input: i'd gone @ gitmiştim
-output: OK
-1 gitmiştim 0
-
-input: i am going to go @ gideceğim
-output: OK
-1 gideceğim 0
-
-input: i was going to go @ gidecektim
-output: OK
-1 gidecektim 0
-
-input: i will go @ gideceğim
-output: OK
-1 gideceğim 0
-
-input: i'll go @ gideceğim
-output: OK
-1 gideceğim 0
-
-input: i would go @ gidecektim
-output: OK
-1 gidecektim 0
-
-input: i'd go @ gidecektim
-output: OK
-1 gidecektim 0
-
-input: i will be going @ gidiyor olacağım
-output: OK
-1 gidiyor olacağım 0
-
-input: i would be going @ gidiyor olacaktım
-output: OK
-1 gidiyor olacaktım 0
-
-input: i will have gone @ gitmiş olacağım
-output: OK
-1 gitmiş olacağım 0
-
-input: i would have gone @ gitmiş olacaktım
-output: OK
-1 gitmiş olacaktım 0
-
-input: i can go @ gidebilirim
-output: OK
-1 gidebilirim 0
-
-input: i could go @ gidebilirdim
-output: OK
-1 gidebilirdim 0
-
-input: i can be going @ gidiyor olabilirim
-output: OK
-1 gidiyor olabilirim 0
-
-input: i could be going @ gidiyor olabilirdim
-output: OK
-1 gidiyor olabilirdim 0
-
-input: i can have gone @ gitmiş olabilirim
-output: OK
-1 gitmiş olabilirim 0
-
-input: i could have gone @ gitmiş olabilirdim
-output: OK
-1 gitmiş olabilirdim 0
-
-input: i may go @ gidebilirim
-output: OK
-1 gidebilirim 0
-
-input: i might go @ gidebilirdim
-output: OK
-1 gidebilirdim 0
-
-input: i must go @ gitmeliyim
-output: OK
-1 gitmeliyim 0
-
-input: i must be going @ gidiyor olmalıyım
-output: OK
-1 gidiyor olmalıyım 0
-
-input: i must have gone @ gitmiş olmalıyım
-output: OK
-1 gitmiş olmalıyım 0
-
-input: i should go @ gitmeliyim
-output: OK
-1 gitmeliyim 0
-
-input: i shall go @ gideceğim
-output: OK
-1 gideceğim 0
-
-input: i am not going @ gitmiyorum
-output: OK
-1 gitmiyorum 0
-
-input: you are not going @ gitmiyorsun | gitmiyorsunuz
-output: OK
-1 gitmiyorsunuz 0
-
-input: you're not going @ gitmiyorsun | gitmiyorsunuz
-output: OK
-1 gitmiyorsunuz 0
-
-input: you aren't going @ gitmiyorsun | gitmiyorsunuz
-output: OK
-1 gitmiyorsunuz 0
-
-input: he is not going @ gitmiyor | o gitmiyor
-output: OK
-1 o gitmiyor 0
-
-input: he's not going @ gitmiyor | o gitmiyor
-output: OK
-1 o gitmiyor 0
-
-input: he isn't going @ gitmiyor | o gitmiyor
-output: OK
-1 o gitmiyor 0
-
-input: we are not going @ gitmiyoruz
-output: OK
-1 gitmiyoruz 0
-
-input: they are not going @ gitmiyorlar | onlar gitmiyor
-output: OK
-1 onlar gitmiyor 0
-
-input: i was not going @ gitmiyordum
-output: OK
-1 gitmiyordum 0
-
-input: i wasn't going @ gitmiyordum
-output: OK
-1 gitmiyordum 0
-
-input: we were not going @ gitmiyorduk
-output: OK
-1 gitmiyorduk 0
-
-input: we weren't going @ gitmiyorduk
-output: OK
-1 gitmiyorduk 0
-
-input: i wasn't going to go @ gitmeyecektim
-output: OK
-1 gitmeyecektim 0
-
-input: i was not going to go @ gitmeyecektim
-output: OK
-1 gitmeyecektim 0
-
-input: i have not gone @ gitmedim
-output: OK
-1 gitmedim 0
-
-input: i've not gone @ gitmedim
-output: OK
-1 gitmedim 0
-
-input: i haven't gone @ gitmedim
-output: OK
-1 gitmedim 0
-
-input: he has not gone @ gitmedi | o gitmedi
-output: OK
-1 o gitmedi 0
-
-input: he's not gone @ gitmedi | o gitmedi
-output: OK
-1 o gidilmez 0
-2 o gitmedi 0
-
-input: he hasn't gone @ gitmedi | o gitmedi
-output: OK
-1 o gitmedi 0
-
-input: i have not been going @ gitmiyorum
-output: OK
-1 gitmiyorum 0
-
-input: i had not been going @ gitmiyordum
-output: OK
-1 gitmiyordum 0
-
-input: i do not go @ gitmem
-output: OK
-1 gitmem 0
-
-input: i don't go @ gitmem
-output: OK
-1 gitmem 0
-
-input: he does not go @ gitmez | o gitmez
-output: OK
-1 o gitmez 0
-
-input: he doesn't go @ gitmez | o gitmez
-output: OK
-1 o gitmez 0
-
-input: i did not go @ gitmedim
-output: OK
-1 gitmedim 0
-
-input: i didn't go @ gitmedim
-output: OK
-1 gitmedim 0
-
-input: i will not go @ gitmeyeceğim
-output: OK
-1 gitmeyeceğim 0
-
-input: i'll not go @ gitmeyeceğim
-output: OK
-1 gitmeyeceğim 0
-
-input: i won't go @ gitmeyeceğim
-output: OK
-1 gitmeyeceğim 0
-
-input: i would not go @ gitmeyecektim
-output: OK
-1 gitmeyecektim 0
-
-input: i'd not go @ gitmeyecektim
-output: OK
-1 gitmeyecektim 0
-
-input: i wouldn't go @ gitmeyecektim
-output: OK
-1 gitmeyecektim 0
-
-input: i can not go @ gidemem
-output: OK
-1 gidemem 0
-
-input: i can't go @ gidemem
-output: OK
-1 gidemem 0
-
-input: i could not go @ gidemezdim
-output: OK
-1 gidemezdim 0
-
-input: i couldn't go @ gidemezdim
-output: OK
-1 gidemezdim 0
-
-input: i shall not go @ gitmeyeceğim
-output: OK
-1 gitmeyeceğim 0
-
-input: i shan't go @ gitmeyeceğim
-output: OK
-1 gitmeyeceğim 0
-
-input: i may not go @ gitmeyebilirim
-output: OK
-1 gitmeyebilirim 0
-
-input: i might not go @ gitmeyebilirdim
-output: OK
-1 gitmeyebilirdim 0
-
-input: i should not go @ gitmemeliyim
-output: OK
-1 gitmemeliyim 0
-
-input: i shouldn't go @ gitmemeliyim
-output: OK
-1 gitmemeliyim 0
-
-input: i must not go @ gitmemeliyim
-output: OK
-1 gitmemeliyim 0
-
-input: i mustn't go @ gitmemeliyim
-output: OK
-1 gitmemeliyim 0
-
-input: i won't be going @ gidiyor olmayacağım
-output: OK
-1 gidiyor olmayacağım 0
-
-input: i wouldn't be going @ gidiyor olmayacaktım
-output: OK
-1 gidiyor olmayacaktım 0
-
-input: i won't have gone @ gitmiş olmayacağım
-output: OK
-1 gitmiş olmayacağım 0
-
-input: i wouldn't have gone @ gitmiş olmayacaktım
-output: OK
-1 gitmiş olmayacaktım 0
-
-input: i may not be going @ gidiyor olmayabilirim
-output: OK
-1 gidiyor olmayabilirim 0
-
-input: i might not be going @ gidiyor olmayabilirdim
-output: OK
-1 gidiyor olmayabilirdim 0
-
-input: i mustn't be going @ gidiyor olmamalıyım
-output: OK
-1 gidiyor olmamalıyım 0
-
-input: i mustn't have gone @ gitmiş olmamalıyım
-output: OK
-1 gitmiş olmamalıyım 0
-
-input: am i going @ gidiyor muyum
-output: OK
-1 gidiyor muyum 0
-
-input: am i not going @ gitmiyor muyum
-output: OK
-1 gitmiyor muyum 0
-
-input: was she going @ gidiyor muydu | o gidiyor muydu
-output: OK
-1 o gidiyor muydu 0
-
-input: wasn't she going @ gitmiyor muydu | o gitmiyor muydu
-output: OK
-1 o gitmiyor muydu 0
-
-input: was she not going @ gitmiyor muydu | o gitmiyor muydu
-output: OK
-1 o gitmiyor muydu 0
-
-input: did we go @ gittik mi
-output: OK
-1 gittik mi 0
-
-input: didn't we go @ gitmedik mi
-output: OK
-1 gitmedik mi 0
-
-input: did we not go @ gitmedik mi
-output: OK
-1 gitmedik mi 0
-
-input: do we go @ gider miyiz
-output: OK
-1 gider miyiz 0
-
-input: don't we go @ gitmez miyiz
-output: OK
-1 gitmez miyiz 0
-
-input: do we not go @ gitmez miyiz
-output: OK
-1 gitmez miyiz 0
-
-input: have we gone @ gittik mi
-output: OK
-1 gittik mi 0
-
-input: haven't we gone @ gitmedik mi
-output: OK
-1 gitmedik mi 0
-
-input: have we not gone @ gitmedik mi
-output: OK
-1 gitmedik mi 0
-
-input: had we gone @ gitmiş miydik
-output: OK
-1 gitmiş miydik 0
-
-input: hadn't we gone @ gitmemiş miydik
-output: OK
-1 gitmemiş miydik 0
-
-input: will we go @ gidecek miyiz
-output: OK
-1 gidecek miyiz 0
-
-input: won't we go @ gitmeyecek miyiz
-output: OK
-1 gitmeyecek miyiz 0
-
-input: are we going to go @ gidecek miyiz
-output: OK
-1 gidecek miyiz 0
-
-input: aren't we going to go @ gitmeyecek miyiz
-output: OK
-1 gitmeyecek miyiz 0
-
-input: can we go @ gidebilir miyiz
-output: OK
-1 gidebilir miyiz 0
-
-input: can't we go @ gidemez miyiz
-output: OK
-1 gidemez miyiz 0
-
-input: could we go @ gidebilir miydik
-output: OK
-1 gidebilir miydik 0
-
-input: couldn't we go @ gidemez miydik
-output: OK
-1 gidemez miydik 0
-
-input: may we go @ gidebilir miyiz
-output: OK
-1 gidebilir miyiz 0
-
-input: mayn't we go @ gitmeyebilir miyiz
-output: OK
-1 gitmeyebilir miyiz 0
-
-input: might we go @ gidebilir miydik
-output: OK
-1 gidebilir miydik 0
-
-input: mightn't we go @ gitmeyebilir miydik
-output: OK
-1 gitmeyebilir miydik 0
-
-input: must we go @ gitmeli miyiz
-output: OK
-1 gitmeli miyiz 0
-
-input: mustn't we go @ gitmemeli miyiz
-output: OK
-1 gitmemeli miyiz 0
-
-input: i am happy @ mutluyum
-output: OK
-1 mutluyum 0
-
-input: he is happy @ mutlu | o mutlu
-output: OK
-1 o mutlu 0
-
-input: we are happy @ mutluyuz
-output: OK
-1 mutluyuz 0
-
-input: you are happy @ mutlusun | mutlusunuz
-output: OK
-1 mutlusunuz 0
-
-input: they are happy @ mutlular | onlar mutlu
-output: OK
-1 onlar mutlu 0
-
-input: i was happy @ mutluydum
-output: OK
-1 mutluydum 0
-
-input: he was happy @ mutluydu | o mutluydu
-output: OK
-1 o mutluydu 0
-
-input: we were happy @ mutluyduk
-output: OK
-1 mutluyduk 0
-
-input: you were happy @ mutluydun | mutluydunuz
-output: OK
-1 mutluydunuz 0
-
-input: they were happy @ mutluydular | onlar mutluydu
-output: OK
-1 onlar mutluydu 0
-
-input: am i happy @ mutlu muyum
-output: OK
-1 mutlu muyum 0
-
-input: is he happy @ mutlu mu | o mutlu mu
-output: OK
-1 o mutlu mu 0
-
-input: are we happy @ mutlu muyuz
-output: OK
-1 mutlu muyuz 0
-
-input: are you happy @ mutlu musun | mutlu musunuz
-output: OK
-1 mutlu musunuz 0
-
-input: are they happy @ mutlular mı | onlar mutlu mu
-output: OK
-1 onlar mutlu mu 0
-
-input: i am not happy @ mutlu değilim
-output: OK
-1 mutlu değilim 0
-
-input: he is not happy @ mutlu değil | o mutlu değil
-output: OK
-1 o mutlu değil 0
-
-input: we are not happy @ mutlu değiliz
-output: OK
-1 mutlu değiliz 0
-
-input: you are not happy @ mutlu değilsin | mutlu değilsiniz
-output: OK
-1 mutlu değilsiniz 0
-
-input: they are not happy @ mutlu değiller | onlar mutlu değil
-output: OK
-1 onlar mutlu değil 0
-
-input: am i not happy @ mutlu değil miyim
-output: OK
-1 mutlu değil miyim 0
-
-input: is he not happy @ mutlu değil mi | o mutlu değil mi
-output: OK
-1 o mutlu değil mi 0
-
-input: are we not happy @ mutlu değil miyiz
-output: OK
-1 mutlu değil miyiz 0
-
-input: are you not happy @ mutlu değil misin | mutlu değil misiniz
-output: OK
-1 mutlu değil misiniz 0
-
-input: are they not happy @ mutlu değiller mi | onlar mutlu değil mi
-output: OK
-1 onlar mutlu değil mi 0
-
-input: was i happy @ mutlu muydum
-output: OK
-1 mutlu muydum 0
-
-input: was he happy @ mutlu muydu | o mutlu muydu
-output: OK
-1 o mutlu muydu 0
-
-input: were we happy @ mutlu muyduk
-output: OK
-1 mutlu muyduk 0
-
-input: were you happy @ mutlu muydun | mutlu muydunuz
-output: OK
-1 mutlu muydunuz 0
-
-input: were they happy @ mutlu muydular | onlar mutlu muydu
-output: OK
-1 onlar mutlu muydu 0
-
-input: i was not happy @ mutlu değildim
-output: OK
-1 mutlu değildim 0
-
-input: he was not happy @ mutlu değildi | o mutlu değildi
-output: OK
-1 o mutlu değildi 0
-
-input: we were not happy @ mutlu değildik
-output: OK
-1 mutlu değildik 0
-
-input: you were not happy @ mutlu değildin | mutlu değildiniz
-output: OK
-1 mutlu değildiniz 0
-
-input: they were not happy @ mutlu değillerdi | onlar mutlu değildi
-output: OK
-1 onlar mutlu değildi 0
-
-input: was i not happy @ mutlu değil miydim
-output: OK
-1 mutlu değil miydim 0
-
-input: was he not happy @ mutlu değil miydi | o mutlu değil miydi
-output: OK
-1 o mutlu değil miydi 0
-
-input: were we not happy @ mutlu değil miydik
-output: OK
-1 mutlu değil miydik 0
-
-input: were you not happy @ mutlu değil miydin | mutlu değil miydiniz
-output: OK
-1 mutlu değil miydiniz 0
-
-input: were they not happy @ mutlu değiller miydi | onlar mutlu değil miydi
-output: OK
-1 onlar mutlu değil miydi 0
-
-input: i have been happy @ mutlu oldum
-output: OK
-1 mutlu oldum 0
-
-input: she has been happy @ mutlu oldu | o mutlu oldu
-output: OK
-1 o mutlu oldu 0
-
-input: i had been happy @ mutlu olmuştum
-output: OK
-1 mutlu olmuştum 0
-
-input: she had been happy @ mutlu olmuştu | o mutlu olmuştu
-output: OK
-1 o mutlu olmuştu 0
-
-input: have i been happy @ mutlu oldum mu
-output: OK
-1 mutlu oldum mu 0
-
-input: has she been happy @ mutlu oldu mu | o mutlu oldu mu
-output: OK
-1 o mutlu oldu mu 0
-
-input: had i been happy @ mutlu olmuş muydum
-output: OK
-1 mutlu olmuş muydum 0
-
-input: had she been happy @ mutlu olmuş muydu | o mutlu olmuş muydu
-output: OK
-1 o mutlu olmuş muydu 0
-
-input: i haven't been happy @ mutlu olmadım
-output: OK
-1 mutlu olmadım 0
-
-input: she hasn't been happy @ mutlu olmadı | o mutlu olmadı
-output: OK
-1 o mutlu olmadı 0
-
-input: i hadn't been happy @ mutlu olmamıştım
-output: OK
-1 mutlu olmamıştım 0
-
-input: she hadn't been happy @ mutlu olmamıştı | o mutlu olmamıştı
-output: OK
-1 o mutlu olmamıştı 0
-
-input: haven't i been happy @ mutlu olmadım mı
-output: OK
-1 mutlu olmadım mı 0
-
-input: hasn't she been happy @ mutlu olmadı mı | o mutlu olmadı mı
-output: OK
-1 o mutlu olmadı mı 0
-
-input: hadn't i been happy @ mutlu olmamış mıydım
-output: OK
-1 mutlu olmamış mıydım 0
-
-input: hadn't she been happy @ mutlu olmamış mıydı | o mutlu olmamış mıydı
-output: OK
-1 o mutlu olmamış mıydı 0
-
-input: i am being happy @ mutlu oluyorum
-output: OK
-1 mutlu oluyorum 0
-
-input: she is being happy @ mutlu oluyor | o mutlu oluyor
-output: OK
-1 o mutlu oluyor 0
-
-input: i was being happy @ mutlu oluyordum
-output: OK
-1 mutlu oluyordum 0
-
-input: she was being happy @ mutlu oluyordu | o mutlu oluyordu
-output: OK
-1 o mutlu oluyordu 0
-
-input: am i being happy @ mutlu oluyor muyum
-output: OK
-1 mutlu oluyor muyum 0
-
-input: is she being happy @ mutlu oluyor mu | o mutlu oluyor mu
-output: OK
-1 o mutlu oluyor mu 0
-
-input: was i being happy @ mutlu oluyor muydum
-output: OK
-1 mutlu oluyor muydum 0
-
-input: was she being happy @ mutlu oluyor muydu | o mutlu oluyor muydu
-output: OK
-1 o mutlu oluyor muydu 0
-
-input: i am not being happy @ mutlu olmuyorum
-output: OK
-1 mutlu olmuyorum 0
-
-input: she isn't being happy @ mutlu olmuyor | o mutlu olmuyor
-output: OK
-1 o mutlu olmuyor 0
-
-input: i wasn't being happy @ mutlu olmuyordum
-output: OK
-1 mutlu olmuyordum 0
-
-input: she wasn't being happy @ mutlu olmuyordu | o mutlu olmuyordu
-output: OK
-1 o mutlu olmuyordu 0
-
-input: am i not being happy @ mutlu olmuyor muyum
-output: OK
-1 mutlu olmuyor muyum 0
-
-input: isn't she being happy @ mutlu olmuyor mu | o mutlu olmuyor mu
-output: OK
-1 o mutlu olmuyor mu 0
-
-input: wasn't i being happy @ mutlu olmuyor muydum
-output: OK
-1 mutlu olmuyor muydum 0
-
-input: wasn't she being happy @ mutlu olmuyor muydu | o mutlu olmuyor muydu
-output: OK
-1 o mutlu olmuyor muydu 0
-
-input: i will be happy @ mutlu olacağım
-output: OK
-1 mutlu olacağım 0
-
-input: i would be happy @ mutlu olacaktım
-output: OK
-1 mutlu olacaktım 0
-
-input: i can be happy @ mutlu olabilirim
-output: OK
-1 mutlu olabilirim 0
-
-input: i could be happy @ mutlu olabilirdim
-output: OK
-1 mutlu olabilirdim 0
-
-input: i may be happy @ mutlu olabilirim
-output: OK
-1 mutlu olabilirim 0
-
-input: i might be happy @ mutlu olabilirdim
-output: OK
-1 mutlu olabilirdim 0
-
-input: i must be happy @ mutlu olmalıyım
-output: OK
-1 mutlu olmalıyım 0
-
-input: i have to be happy @ mutlu olmak zorundayım
-output: OK
-1 mutlu olmak zorundayım 0
-
-input: i won't be happy @ mutlu olmayacağım
-output: OK
-1 mutlu olmayacağım 0
-
-input: i wouldn't be happy @ mutlu olmayacaktım
-output: OK
-1 mutlu olmayacaktım 0
-
-input: i can't be happy @ mutlu olamam
-output: OK
-1 mutlu olamam 0
-
-input: i couldn't be happy @ mutlu olamazdım
-output: OK
-1 mutlu olamazdım 0
-
-input: i mayn't be happy @ mutlu olmayabilirim
-output: OK
-1 mutlu olmayabilirim 0
-
-input: i mightn't be happy @ mutlu olmayabilirdim
-output: OK
-1 mutlu olmayabilirdim 0
-
-input: i mustn't be happy @ mutlu olmamalıyım
-output: OK
-1 mutlu olmamalıyım 0
-
-input: i don't have to be happy @ mutlu olmak zorunda değilim
-output: OK
-1 mutlu olmak zorunda değilim 0
-
-input: will i be happy @ mutlu olacak mıyım
-output: OK
-1 mutlu olacak mıyım 0
-
-input: would i be happy @ mutlu olacak mıydım
-output: OK
-1 mutlu olacak mıydım 0
-
-input: can i be happy @ mutlu olabilir miyim
-output: OK
-1 mutlu olabilir miyim 0
-
-input: could i be happy @ mutlu olabilir miydim
-output: OK
-1 mutlu olabilir miydim 0
-
-input: may i be happy @ mutlu olabilir miyim
-output: OK
-1 mutlu olabilir miyim 0
-
-input: might i be happy @ mutlu olabilir miydim
-output: OK
-1 mutlu olabilir miydim 0
-
-input: must i be happy @ mutlu olmalı mıyım
-output: OK
-1 mutlu olmalı mıyım 0
-
-input: do i have to be happy @ mutlu olmak zorunda mıyım
-output: OK
-1 mutlu olmak zorunda mıyım 0
-
-input: won't i be happy @ mutlu olmayacak mıyım
-output: OK
-1 mutlu olmayacak mıyım 0
-
-input: wouldn't i be happy @ mutlu olmayacak mıydım
-output: OK
-1 mutlu olmayacak mıydım 0
-
-input: can't i be happy @ mutlu olamaz mıyım
-output: OK
-1 mutlu olamaz mıyım 0
-
-input: couldn't i be happy @ mutlu olamaz mıydım
-output: OK
-1 mutlu olamaz mıydım 0
-
-input: mayn't i be happy @ mutlu olmayabilir miyim
-output: OK
-1 mutlu olmayabilir miyim 0
-
-input: mightn't i be happy @ mutlu olmayabilir miydim
-output: OK
-1 mutlu olmayabilir miydim 0
-
-input: mustn't i be happy @ mutlu olmamalı mıyım
-output: OK
-1 mutlu olmamalı mıyım 0
-
-input: don't i have to be happy @ mutlu olmak zorunda değil miyim
-output: OK
-1 mutlu olmak zorunda değil miyim 0
-
-input: it is a car @ o bir araba
-output: OK
-1 o bir araba 0
-
-input: is it a car @ o bir araba mı
-output: OK
-1 o bir araba mı 0
-
-input: it isn't a car @ o bir araba değil
-output: OK
-1 o bir araba değil 0
-
-input: isn't it a car @ o bir araba değil mi
-output: OK
-1 o bir araba değil mi 0
-
-input: it is cars @ o arabalar
-output: OK
-1 o arabalar 0
-
-input: is it cars @ o arabalar mı
-output: OK
-1 o arabalar mı 0
-
-input: it isn't cars @ o arabalar değil
-output: OK
-1 o arabalar değil 0
-
-input: isn't it cars @ o arabalar değil mi
-output: OK
-1 o arabalar değil mi 0
-
-input: they are a car @ onlar bir araba | onlar bir arabalar
-output: OK
-1 onlar bir araba 0
-
-input: are they a car @ onlar bir araba mı | onlar bir arabalar mı
-output: OK
-1 onlar bir araba mı 0
-
-input: they aren't a car @ onlar bir araba değil | onlar bir araba değiller
-output: OK
-1 onlar bir araba değil 0
-
-input: aren't they a car @ onlar bir araba değil mi | onlar bir araba değiller mi
-output: OK
-1 onlar bir araba değil mi 0
-
-input: they are cars @ onlar arabalar | arabalar # note double -lar
-output: OK
-1 onlar arabalar 0
-
-input: are they cars @ onlar arabalar mı | arabalar mı
-output: OK
-1 onlar arabalar mı 0
-
-input: they aren't cars @ onlar arabalar değil | arabalar değiller
-output: OK
-1 onlar arabalar değil 0
-
-input: aren't they cars @ onlar arabalar değil mi | arabalar değiller mi
-output: OK
-1 onlar arabalar değil mi 0
-
-input: the car is cars @ araba arabalar
-output: OK
-1 araba arabalar 0
-
-input: is the car cars @ araba arabalar mı
-output: OK
-1 araba arabalar mı 0
-
-input: the car isn't cars @ araba arabalar değil
-output: OK
-1 araba arabalar değil 0
-
-input: isn't the car cars @ araba arabalar değil mi
-output: OK
-1 araba arabalar değil mi 0
-
-input: the car is a car @ araba bir araba
-output: OK
-1 araba bir araba 0
-
-input: is the car a car @ araba bir araba mı
-output: OK
-1 araba bir araba mı 0
-
-input: the car isn't a car @ araba bir araba değil
-output: OK
-1 araba bir araba değil 0
-
-input: isn't the car a car @ araba bir araba değil mi
-output: OK
-1 araba bir araba değil mi 0
-
-input: the cars are cars @ arabalar arabalar
-output: OK
-1 arabalar arabalar 0
-
-input: are the cars cars @ arabalar arabalar mı
-output: OK
-1 arabalar arabalar mı 0
-
-input: the cars aren't cars @ arabalar arabalar değil | arabalar arabalar değiller
-output: OK
-1 arabalar arabalar değil 0
-
-input: aren't the cars cars @ arabalar arabalar değil mi | arabalar arabalar değiller mi
-output: OK
-1 arabalar arabalar değil mi 0
-
-input: the cars are a car @ arabalar bir araba | arabalar bir arabalar
-output: OK
-1 arabalar bir araba 0
-
-input: are the cars a car @ arabalar bir araba mı | arabalar bir arabalar mı
-output: OK
-1 arabalar bir araba mı 0
-
-input: the cars aren't a car @ arabalar bir araba değil | arabalar bir araba değiller
-output: OK
-1 arabalar bir araba değil 0
-
-input: aren't the cars a car @ arabalar bir araba değil mi | arabalar bir araba değiller mi
-output: OK
-1 arabalar bir araba değil mi 0
-
-input: there are a car @ *
-output: EXPECTED ERROR
-UnifyU error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#50
-
-input: there is cars @ *
-output: EXPECTED ERROR
-UnifyU error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#50
-
-input: there were a car @ *
-output: EXPECTED ERROR
-UnifyU error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#50
-
-input: there was cars @ *
-output: EXPECTED ERROR
-UnifyU error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#50
-
-input: there have been a car @ *
-output: EXPECTED ERROR
-UnifyU error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#53
-
-input: there has been cars @ *
-output: EXPECTED ERROR
-UnifyU error feat=there src=- param=+ super=SentNorm#49 sub=VPNorm#53
-
-input: there is a car @ bir araba var
-output: OK
-1 bir araba var 0
-
-input: is there a car @ bir araba var mı
-output: OK
-1 bir araba var mı 0
-
-input: there isn't a car @ bir araba yok
-output: OK
-1 bir araba yok 0
-
-input: isn't there a car @ bir araba yok mu
-output: OK
-1 bir araba yok mu 0
-
-input: there are cars @ arabalar var | arabalar varlar
-output: OK
-1 arabalar var 0
-
-input: are there cars @ arabalar var mı | arabalar varlar mı
-output: OK
-1 arabalar var mı 0
-
-input: there aren't cars @ arabalar yok | arabalar yoklar
-output: OK
-1 arabalar yok 0
-
-input: aren't there cars @ arabalar yok mu | arabalar yoklar mı
-output: OK
-1 arabalar yok mu 0
-
-input: there was a car @ bir araba vardı
-output: OK
-1 bir araba vardı 0
-
-input: was there a car @ bir araba var mıydı
-output: OK
-1 bir araba var mıydı 0
-
-input: there wasn't a car @ bir araba yoktu
-output: OK
-1 bir araba yoktu 0
-
-input: wasn't there a car @ bir araba yok muydu
-output: OK
-1 bir araba yok muydu 0
-
-input: there were cars @ arabalar vardı
-output: OK
-1 arabalar vardı 0
-
-input: were there cars @ arabalar var mıydı
-output: OK
-1 arabalar var mıydı 0
-
-input: there weren't cars @ arabalar yoktu
-output: OK
-1 arabalar yoktu 0
-
-input: weren't there cars @ arabalar yok muydu
-output: OK
-1 arabalar yok muydu 0
-
-input: there has been a car @ bir araba oldu
-output: OK
-1 bir araba oldu 0
-
-input: has there been a car @ bir araba oldu mu
-output: OK
-1 bir araba oldu mu 0
-
-input: there hasn't been a car @ bir araba olmadı
-output: OK
-1 bir araba olmadı 0
-
-input: hasn't there been a car @ bir araba olmadı mı
-output: OK
-1 bir araba olmadı mı 0
-
-input: there have been cars @ arabalar oldu
-output: OK
-1 arabalar oldu 0
-
-input: have there been cars @ arabalar oldu mu
-output: OK
-1 arabalar oldu mu 0
-
-input: there haven't been cars @ arabalar olmadı
-output: OK
-1 arabalar olmadı 0
-
-input: haven't there been cars @ arabalar olmadı mı
-output: OK
-1 arabalar olmadı mı 0
-
-input: there had been cars @ arabalar olmuştu
-output: OK
-1 arabalar olmuştu 0
-
-input: had there been cars @ arabalar olmuş muydu
-output: OK
-1 arabalar olmuş muydu 0
-
-input: there hadn't been cars @ arabalar olmamıştı
-output: OK
-1 arabalar olmamıştı 0
-
-input: hadn't there been cars @ arabalar olmamış mıydı
-output: OK
-1 arabalar olmamış mıydı 0
-
-input: there will be cars @ arabalar olacak
-output: OK
-1 arabalar olacak 0
-
-input: will there be cars @ arabalar olacak mı
-output: OK
-1 arabalar olacak mı 0
-
-input: there won't be cars @ arabalar olmayacak
-output: OK
-1 arabalar olmayacak 0
-
-input: won't there be cars @ arabalar olmayacak mı
-output: OK
-1 arabalar olmayacak mı 0
-
-input: there would be cars @ arabalar olacaktı | arabalar olurdu
-output: OK
-1 arabalar olacaktı 0
-
-input: would there be cars @ arabalar olacak mıydı | arabalar olur muydu
-output: OK
-1 arabalar olacak mıydı 0
-
-input: there wouldn't be cars @ arabalar olmayacaktı | arabalar olmazdı
-output: OK
-1 arabalar olmayacaktı 0
-
-input: wouldn't there be cars @ arabalar olmayacak mıydı | arabalar olmaz mıydı
-output: OK
-1 arabalar olmayacak mıydı 0
-
-input: there can be cars @ arabalar olabilir
-output: OK
-1 arabalar olabilir 0
-
-input: can there be cars @ arabalar olabilir mi
-output: OK
-1 arabalar olabilir mi 0
-
-input: there can't be cars @ arabalar olamaz
-output: OK
-1 arabalar olamaz 0
-
-input: can't there be cars @ arabalar olamaz mı
-output: OK
-1 arabalar olamaz mı 0
-
-input: there could be cars @ arabalar olabilirdi
-output: OK
-1 arabalar olabilirdi 0
-
-input: could there be cars @ arabalar olabilir miydi
-output: OK
-1 arabalar olabilir miydi 0
-
-input: there couldn't be cars @ arabalar olamazdı
-output: OK
-1 arabalar olamazdı 0
-
-input: couldn't there be cars @ arabalar olamaz mıydı
-output: OK
-1 arabalar olamaz mıydı 0
-
-input: there may be cars @ arabalar olabilir
-output: OK
-1 arabalar olabilir 0
-
-input: may there be cars @ arabalar olabilir mi
-output: OK
-1 arabalar olabilir mi 0
-
-input: there mayn't be cars @ arabalar olamaz | arabalar olmayabilir
-output: OK
-1 arabalar olmayabilir 0
-
-input: mayn't there be cars @ arabalar olamaz mı | arabalar olmayabilir mi
-output: OK
-1 arabalar olmayabilir mi 0
-
-input: there might be cars @ arabalar olabilirdi
-output: OK
-1 arabalar olabilirdi 0
-
-input: might there be cars @ arabalar olabilir miydi
-output: OK
-1 arabalar olabilir miydi 0
-
-input: there mightn't be cars @ arabalar olamazdı | arabalar olmayabilirdi
-output: OK
-1 arabalar olmayabilirdi 0
-
-input: mightn't there be cars @ arabalar olamaz mıydı | arabalar olmayabilir miydi
-output: OK
-1 arabalar olmayabilir miydi 0
-
-input: there must be cars @ arabalar olmalı
-output: OK
-1 arabalar olmalı 0
-
-input: must there be cars @ arabalar olmalı mı
-output: OK
-1 arabalar olmalı mı 0
-
-input: there mustn't be cars @ arabalar olmamalı
-output: OK
-1 arabalar olmamalı 0
-
-input: mustn't there be cars @ arabalar olmamalı mı
-output: OK
-1 arabalar olmamalı mı 0
-
-input: go @ git
-output: OK
-1 git 0
-
-input: don't go @ gitme
-output: OK
-1 gitme 0
-
-input: do not go @ gitme
-output: OK
-1 gitme 0
-
-input: don't have to go @ gitmek zorunda olma
-output: OK
-1 gitmek zorunda olma 0
-
-input: be watched @ seyredil
-output: OK
-1 seyredil 0
-2 izlel 0
-
-input: don't be watched @ seyredilme
-output: OK
-1 seyredilme 0
-2 izlelme 0
-
-input: be happy @ mutlu ol
-output: OK
-1 mutlu ol 0
-
-input: don't be happy @ mutlu olma
-output: OK
-1 mutlu olma 0
-
-input: be afraid @ kork
-output: OK
-1 kork 0
-
-input: don't be afraid @ korkma
-output: OK
-1 korkma 0
-
-input: let's go @ gidelim
-output: OK
-1 gidelim 0
-
-input: let's not go @ gitmeyelim
-output: OK
-1 gitmeyelim 0
-
-input: let's be happy @ mutlu olalım
-output: OK
-1 mutlu olalım 0
-
-input: let's not be happy @ mutlu olmayalım
-output: OK
-1 mutlu olmayalım 0
-
-input: let's be afraid @ korkalım
-output: OK
-1 korkalım 0
-
-input: let's not be afraid @ korkmayalım
-output: OK
-1 korkmayalım 0
-
-input: shall we go @ gidelim mi
-output: OK
-1 gidelim mi 0
-2 gidecek miyiz 0
-
-input: shall we not go @ gitmeyelim mi
-output: OK
-1 gitmeyelim mi 0
-2 gitmeyecek miyiz 0
-
-input: i am watched @ seyredilirim
-output: OK
-1 seyredilirim 0
-2 izlelirim 0
-
-input: i am not watched @ seyredilmem
-output: OK
-1 seyredilmem 0
-2 izlelmem 0
-
-input: am i watched @ seyredilir miyim
-output: OK
-1 seyredilir miyim 0
-2 izlelir miyim 0
-
-input: am i not watched @ seyredilmez miyim
-output: OK
-1 seyredilmez miyim 0
-2 izlelmez miyim 0
-
-input: i was watched @ seyredildim
-output: OK
-1 seyredildim 0
-2 izleldim 0
-
-input: i wasn't watched @ seyredilmedim
-output: OK
-1 seyredilmedim 0
-2 izlelmedim 0
-
-input: was i watched @ seyredildim mi
-output: OK
-1 seyredildim mi 0
-2 izleldim mi 0
-
-input: wasn't i watched @ seyredilmedim mi
-output: OK
-1 seyredilmedim mi 0
-2 izlelmedim mi 0
-
-input: i am being watched @ seyrediliyorum
-output: OK
-1 seyrediliyorum 0
-2 izleliyorum 0
-
-input: i am not being watched @ seyredilmiyorum
-output: OK
-1 seyredilmiyorum 0
-2 izlelmiyorum 0
-
-input: am i being watched @ seyrediliyor muyum
-output: OK
-1 seyrediliyor muyum 0
-2 izleliyor muyum 0
-
-input: am i not being watched @ seyredilmiyor muyum
-output: OK
-1 seyredilmiyor muyum 0
-2 izlelmiyor muyum 0
-
-input: i was being watched @ seyrediliyordum
-output: OK
-1 seyrediliyordum 0
-2 izleliyordum 0
-
-input: i wasn't being watched @ seyredilmiyordum
-output: OK
-1 seyredilmiyordum 0
-2 izlelmiyordum 0
-
-input: was i being watched @ seyrediliyor muydum
-output: OK
-1 seyrediliyor muydum 0
-2 izleliyor muydum 0
-
-input: wasn't i being watched @ seyredilmiyor muydum
-output: OK
-1 seyredilmiyor muydum 0
-2 izlelmiyor muydum 0
-
-input: i have been watched @ seyredildim
-output: OK
-1 seyredildim 0
-2 izleldim 0
-
-input: i haven't been watched @ seyredilmedim
-output: OK
-1 seyredilmedim 0
-2 izlelmedim 0
-
-input: have i been watched @ seyredildim mi
-output: OK
-1 seyredildim mi 0
-2 izleldim mi 0
-
-input: haven't i been watched @ seyredilmedim mi
-output: OK
-1 seyredilmedim mi 0
-2 izlelmedim mi 0
-
-input: i had been watched @ seyredilmiştim
-output: OK
-1 seyredilmiştim 0
-2 izlelmiştim 0
-
-input: i hadn't been watched @ seyredilmemiştim
-output: OK
-1 seyredilmemiştim 0
-2 izlelmemiştim 0
-
-input: had i been watched @ seyredilmiş miydim
-output: OK
-1 seyredilmiş miydim 0
-2 izlelmiş miydim 0
-
-input: hadn't i been watched @ seyredilmemiş miydim
-output: OK
-1 seyredilmemiş miydim 0
-2 izlelmemiş miydim 0
-
-input: i will be watched @ seyredileceğim
-output: OK
-1 seyredileceğim 0
-2 izleleceğim 0
-
-input: i won't be watched @ seyredilmeyeceğim
-output: OK
-1 seyredilmeyeceğim 0
-2 izlelmeyeceğim 0
-
-input: will i be watched @ seyredilecek miyim
-output: OK
-1 seyredilecek miyim 0
-2 izlelecek miyim 0
-
-input: won't i be watched @ seyredilmeyecek miyim
-output: OK
-1 seyredilmeyecek miyim 0
-2 izlelmeyecek miyim 0
-
-input: i will have been watched @ seyredilmiş olacağım
-output: OK
-1 seyredilmiş olacağım 0
-2 izlelmiş olacağım 0
-
-input: i won't have been watched @ seyredilmiş olmayacağım
-output: OK
-1 seyredilmiş olmayacağım 0
-2 izlelmiş olmayacağım 0
-
-input: will i have been watched @ seyredilmiş olacak mıyım
-output: OK
-1 seyredilmiş olacak mıyım 0
-2 izlelmiş olacak mıyım 0
-
-input: won't i have been watched @ seyredilmiş olmayacak mıyım
-output: OK
-1 seyredilmiş olmayacak mıyım 0
-2 izlelmiş olmayacak mıyım 0
-
-input: i can be watched @ seyredilebilirim
-output: OK
-1 seyredilebilirim 0
-2 izlelebilirim 0
-
-input: i can't be watched @ seyredilemem
-output: OK
-1 seyredilemem 0
-2 izlelemem 0
-
-input: can i be watched @ seyredilebilir miyim
-output: OK
-1 seyredilebilir miyim 0
-2 izlelebilir miyim 0
-
-input: can't i be watched @ seyredilemez miyim
-output: OK
-1 seyredilemez miyim 0
-2 izlelemez miyim 0
-
-input: i may be watched @ seyredilebilirim
-output: OK
-1 seyredilebilirim 0
-2 izlelebilirim 0
-
-input: i mayn't be watched @ seyredilmeyebilirim
-output: OK
-1 seyredilmeyebilirim 0
-2 izlelmeyebilirim 0
-
-input: may i be watched @ seyredilebilir miyim
-output: OK
-1 seyredilebilir miyim 0
-2 izlelebilir miyim 0
-
-input: mayn't i be watched @ seyredilmeyebilir miyim
-output: OK
-1 seyredilmeyebilir miyim 0
-2 izlelmeyebilir miyim 0
-
-input: i must be watched @ seyredilmeliyim
-output: OK
-1 seyredilmeliyim 0
-2 izlelmeliyim 0
-
-input: i mustn't be watched @ seyredilmemeliyim
-output: OK
-1 seyredilmemeliyim 0
-2 izlelmemeliyim 0
-
-input: must i be watched @ seyredilmeli miyim
-output: OK
-1 seyredilmeli miyim 0
-2 izlelmeli miyim 0
-
-input: mustn't i be watched @ seyredilmemeli miyim
-output: OK
-1 seyredilmemeli miyim 0
-2 izlelmemeli miyim 0
-
-input: i'm going to be watched @ seyredileceğim
-output: OK
-1 seyredileceğim 0
-2 izleleceğim 0
-
-input: i am not going to be watched @ seyredilmeyeceğim
-output: OK
-1 seyredilmeyeceğim 0
-2 izlelmeyeceğim 0
-
-input: am i going to be watched @ seyredilecek miyim
-output: OK
-1 seyredilecek miyim 0
-2 izlelecek miyim 0
-
-input: am i not going to be watched @ seyredilmeyecek miyim
-output: OK
-1 seyredilmeyecek miyim 0
-2 izlelmeyecek miyim 0
-
-input: i was going to be watched @ seyredilecektim
-output: OK
-1 seyredilecektim 0
-2 izlelecektim 0
-
-input: i wasn't going to be watched @ seyredilmeyecektim
-output: OK
-1 seyredilmeyecektim 0
-2 izlelmeyecektim 0
-
-input: was i going to be watched @ seyredilecek miydim
-output: OK
-1 seyredilecek miydim 0
-2 izlelecek miydim 0
-
-input: wasn't i going to be watched @ seyredilmeyecek miydim
-output: OK
-1 seyredilmeyecek miydim 0
-2 izlelmeyecek miydim 0
-
-input: i have to go @ gitmek zorundayım
-output: OK
-1 gitmek zorundayım 0
-
-input: i don't have to go @ gitmek zorunda değilim
-output: OK
-1 gitmek zorunda değilim 0
-
-input: do i have to go @ gitmek zorunda mıyım
-output: OK
-1 gitmek zorunda mıyım 0
-
-input: don't i have to go @ gitmek zorunda değil miyim
-output: OK
-1 gitmek zorunda değil miyim 0
-
-input: i had to go @ gitmek zorundaydım
-output: OK
-1 gitmek zorundaydım 0
-
-input: i didn't have to go @ gitmek zorunda değildim
-output: OK
-1 gitmek zorunda değildim 0
-
-input: did i have to go @ gitmek zorunda mıydım
-output: OK
-1 gitmek zorunda mıydım 0
-
-input: didn't i have to go @ gitmek zorunda değil miydim
-output: OK
-1 gitmek zorunda değil miydim 0
-
-input: i will have to go @ gitmek zorunda olacağım
-output: OK
-1 gitmek zorunda olacağım 0
-
-input: i won't have to go @ gitmek zorunda olmayacağım
-output: OK
-1 gitmek zorunda olmayacağım 0
-
-input: will i have to go @ gitmek zorunda olacak mıyım
-output: OK
-1 gitmek zorunda olacak mıyım 0
-
-input: won't i have to go @ gitmek zorunda olmayacak mıyım
-output: OK
-1 gitmek zorunda olmayacak mıyım 0
-
-input: i would have to go @ gitmek zorunda olacaktım
-output: OK
-1 gitmek zorunda olacaktım 0
-
-input: i wouldn't have to go @ gitmek zorunda olmayacaktım
-output: OK
-1 gitmek zorunda olmayacaktım 0
-
-input: would i have to go @ gitmek zorunda olacak mıydım
-output: OK
-1 gitmek zorunda olacak mıydım 0
-
-input: wouldn't i have to go @ gitmek zorunda olmayacak mıydım
-output: OK
-1 gitmek zorunda olmayacak mıydım 0
-
-input: i may have to go @ gitmek zorunda olabilirim
-output: OK
-1 gitmek zorunda olabilirim 0
-
-input: i mayn't have to go @ gitmek zorunda olmayabilirim
-output: OK
-1 gitmek zorunda olmayabilirim 0
-
-input: may i have to go @ gitmek zorunda olabilir miyim
-output: OK
-1 gitmek zorunda olabilir miyim 0
-
-input: mayn't i have to go @ gitmek zorunda olmayabilir miyim
-output: OK
-1 gitmek zorunda olmayabilir miyim 0
-
-input: i have a car @ bir arabam var | bir arabaya sahibim
-output: OK
-1 bir arabaya sahibim 0
-
-input: do i have a car @ bir arabam var mı | bir arabaya sahip miyim
-output: OK
-1 bir arabaya sahip miyim 0
-
-input: i don't have a car @ bir arabam yok | bir arabaya sahip değilim
-output: OK
-1 bir arabaya sahip değilim 0
-
-input: don't i have a car @ bir arabam yok mu | bir arabaya sahip değil miyim
-output: OK
-1 bir arabaya sahip değil miyim 0
-
-input: she has a car @ onun bir arabası var | o bir arabaya sahip
-output: OK
-1 o bir arabaya sahip 0
-
-input: does she have a car @ onun bir arabası var mı | o bir arabaya sahip mi
-output: OK
-1 o bir arabaya sahip mi 0
-
-input: she doesn't have a car @ onun bir arabası yok | o bir arabaya sahip değil
-output: OK
-1 o bir arabaya sahip değil 0
-
-input: doesn't she have a car @ onun bir arabası yok mu | o bir arabaya sahip değil mi
-output: OK
-1 o bir arabaya sahip değil mi 0
-
-input: i had a car @ bir arabam vardı | bir arabaya sahiptim
-output: OK
-1 bir arabaya sahiptim 0
-
-input: did i have a car @ bir arabam var mıydı | bir arabaya sahip miydim
-output: OK
-1 bir arabaya sahip miydim 0
-
-input: i didn't have a car @ bir arabam yoktu | bir arabaya sahip değildim
-output: OK
-1 bir arabaya sahip değildim 0
-
-input: didn't i have a car @ bir arabam yok muydu | bir arabaya sahip değil miydim
-output: OK
-1 bir arabaya sahip değil miydim 0
-
-input: i will have a car @ bir arabam olacak | bir arabaya sahip olacağım
-output: OK
-1 bir arabaya sahip olacağım 0
-
-input: will i have a car @ bir arabam olacak mı | bir arabaya sahip olacak mıyım
-output: OK
-1 bir arabaya sahip olacak mıyım 0
-
-input: i won't have a car @ bir arabam olmayacak | bir arabaya sahip olmayacağım
-output: OK
-1 bir arabaya sahip olmayacağım 0
-
-input: won't i have a car @ bir arabam olmayacak mı | bir arabaya sahip olmayacak mıyım
-output: OK
-1 bir arabaya sahip olmayacak mıyım 0
-
-input: i am able to go @ gidebilirim
-output: OK
-1 gidebilirim 0
-
-input: i am not able to go @ gidemem
-output: OK
-1 gidemem 0
-
-input: am i able to go @ gidebilir miyim
-output: OK
-1 gidebilir miyim 0
-
-input: am i not able to go @ gidemez miyim
-output: OK
-1 gidemez miyim 0
-
-input: i was able to go @ gidebilirdim | gidebildim
-output: OK
-1 gidebilirdim 0
-
-input: i was not able to go @ gidemezdim | gidemedim
-output: OK
-1 gidemezdim 0
-
-input: was i able to go @ gidebilir miydim | gidebildim mi
-output: OK
-1 gidebilir miydim 0
-
-input: wasn't i able to go @ gidemez miydim | gidemedim mi
-output: OK
-1 gidemez miydim 0
-
-input: i will be able to go @ gidebileceğim
-output: OK
-1 gidebileceğim 0
-
-input: i won't be able to go @ gidemeyeceğim
-output: OK
-1 gidemeyeceğim 0
-
-input: will i be able to go @ gidebilecek miyim
-output: OK
-1 gidebilecek miyim 0
-
-input: won't i be able to go @ gidemeyecek miyim
-output: OK
-1 gidemeyecek miyim 0
-
-input: i would be able to go @ gidebilecektim
-output: OK
-1 gidebilecektim 0
-
-input: i wouldn't be able to go @ gidemeyecektim
-output: OK
-1 gidemeyecektim 0
-
-input: would i be able to go @ gidebilecek miydim
-output: OK
-1 gidebilecek miydim 0
-
-input: wouldn't i be able to go @ gidemeyecek miydim
-output: OK
-1 gidemeyecek miydim 0
-
-input: i must be able to go @ gidebilmeliyim
-output: OK
-1 gidebilmeliyim 0
-
-input: i mustn't be able to go @ gidebilmemeliyim | gidememeliyim
-output: OK
-1 gidememeliyim 0
-
-input: must i be able to go @ gidebilmeli miyim
-output: OK
-1 gidebilmeli miyim 0
-
-input: mustn't i be able to go @ gidebilmemeli miyim | gidememeli miyim
-output: OK
-1 gidememeli miyim 0
-
-input: i used to go @ giderdim
-output: OK
-1 giderdim 0
-
-input: i didn't use to go @ gitmezdim
-output: OK
-1 gitmezdim 0
-
-input: did i use to go @ gider miydim
-output: OK
-1 gider miydim 0
-
-input: didn't i use to go @ gitmez miydim
-output: OK
-1 gitmez miydim 0
-
-input: i am used to going @ gitmeye alışkınım
-output: OK
-1 gitmeye alışkınım 0
-
-input: i am not used to going @ gitmeye alışkın değilim
-output: OK
-1 gitmeye alışkın değilim 0
-
-input: am i used to going @ gitmeye alışkın mıyım
-output: OK
-1 gitmeye alışkın mıyım 0
-
-input: am i not used to going @ gitmeye alışkın değil miyim
-output: OK
-1 gitmeye alışkın değil miyim 0
-
-input: i am afraid @ korkarım | korkuyorum
-output: OK
-1 korkuyorum 0
-
-input: i am not afraid @ korkmam | korkmuyorum
-output: OK
-1 korkmuyorum 0
-
-input: am i afraid @ korkar mıyım | korkuyor muyum
-output: OK
-1 korkuyor muyum 0
-
-input: am i not afraid @ korkmaz mıyım | korkmuyor muyum
-output: OK
-1 korkmuyor muyum 0
-
-input: i was afraid @ korkardım | korkuyordum
-output: OK
-1 korkuyordum 0
-
-input: i wasn't afraid @ korkmazdım | korkmuyordum
-output: OK
-1 korkmuyordum 0
-
-input: was i afraid @ korkar mıydım | korkuyor muydum
-output: OK
-1 korkuyor muydum 0
-
-input: wasn't i afraid @ korkmaz mıydım | korkmuyor muydum
-output: OK
-1 korkmuyor muydum 0
-
-input: i will be afraid @ korkacağım
-output: OK
-1 korkacağım 0
-
-input: i won't be afraid @ korkmayacağım
-output: OK
-1 korkmayacağım 0
-
-input: will i be afraid @ korkacak mıyım
-output: OK
-1 korkacak mıyım 0
-
-input: won't i be afraid @ korkmayacak mıyım
-output: OK
-1 korkmayacak mıyım 0
-
-input: i can be afraid @ korkabilirim | korkabiliyorum
-output: OK
-1 korkabilirim 0
-
-input: i can't be afraid @ korkamam | korkamıyorum
-output: OK
-1 korkamam 0
-
-input: can i be afraid @ korkabilir miyim | korkabiliyor muyum
-output: OK
-1 korkabilir miyim 0
-
-input: can't i be afraid @ korkamaz mıyım | korkamıyor muyum
-output: OK
-1 korkamaz mıyım 0
-
-input: i must be afraid @ korkmalıyım
-output: OK
-1 korkmalıyım 0
-
-input: i mustn't be afraid @ korkmamalıyım
-output: OK
-1 korkmamalıyım 0
-
-input: must i be afraid @ korkmalı mıyım
-output: OK
-1 korkmalı mıyım 0
-
-input: mustn't i be afraid @ korkmamalı mıyım
-output: OK
-1 korkmamalı mıyım 0
-
-input: that i go @ gittiğim
-output: OK
-1 gittiğim 0
-
-input: that i don't go @ gitmediğim
-output: OK
-1 gitmediğim 0
-
-input: that i went @ gittiğim
-output: OK
-1 gittiğim 0
-
-input: that i didn't go @ gitmediğim
-output: OK
-1 gitmediğim 0
-
-input: that i have gone @ gittiğim
-output: OK
-1 gittiğim 0
-
-input: that i haven't gone @ gitmediğim
-output: OK
-1 gitmediğim 0
-
-input: that i had gone @ gitmiş olduğum
-output: OK
-1 gitmiş olduğum 0
-
-input: that i hadn't gone @ gitmemiş olduğum
-output: OK
-1 gitmemiş olduğum 0
-
-input: that i am going @ gidiyor olduğum
-output: OK
-1 gidiyor olduğum 0
-
-input: that i am not going @ gitmiyor olduğum
-output: OK
-1 gitmiyor olduğum 0
-
-input: that i was going @ gidiyor olduğum
-output: OK
-1 gidiyor olduğum 0
-
-input: that i wasn't going @ gitmiyor olduğum
-output: OK
-1 gitmiyor olduğum 0
-
-input: that i will go @ gideceğim
-output: OK
-1 gideceğim 0
-
-input: that i won't go @ gitmeyeceğim
-output: OK
-1 gitmeyeceğim 0
-
-input: that i can go @ gidebildiğim
-output: OK
-1 gidebildiğim 0
-
-input: that i can't go @ gidemediğim
-output: OK
-1 gidemediğim 0
-
-input: that i must go @ gitmem gerektiği | gitmem gereken | gitmek zorunda olduğum
-output: OK
-1 gitmek zorunda olduğum 0
-
-input: that i mustn't go @ gitmemem gerektiği | gitmem gereken | gitmemek zorunda olduğum
-output: OK
-1 gitmemek zorunda olduğum 0
-
-input: that i have to go @ gitmek zorunda olduğum
-output: OK
-1 gitmek zorunda olduğum 0
-
-input: that i don't have to go @ gitmek zorunda olmadığım
-output: OK
-1 gitmek zorunda olmadığım 0
-
-input: that i will have to go @ gitmek zorunda olacağım
-output: OK
-1 gitmek zorunda olacağım 0
-
-input: that i won't have to go @ gitmek zorunda olmayacağım
-output: OK
-1 gitmek zorunda olmayacağım 0
-
-input: that i am happy @ mutlu olduğum
-output: OK
-1 mutlu olduğum 0
-
-input: that i am afraid @ korktuğum | korkuyor olduğum
-output: OK
-1 korktuğum 0
-
-input: car which goes @ giden araba
-output: OK
-1 giden araba 0
-
-input: car which doesn't go @ gitmeyen araba
-output: OK
-1 gitmeyen araba 0
-
-input: cars which go @ giden arabalar
-output: OK
-1 giden arabalar 0
-
-input: cars which don't go @ gitmeyen arabalar
-output: OK
-1 gitmeyen arabalar 0
-
-input: car which went @ giden araba
-output: OK
-1 giden araba 0
-
-input: car which didn't go @ gitmeyen araba
-output: OK
-1 gitmeyen araba 0
-
-input: car which has gone @ gitmiş olan araba
-output: OK
-1 gitmiş olan araba 0
-
-input: car which hasn't gone @ gitmemiş olan araba
-output: OK
-1 gitmemiş olan araba 0
-
-input: car which had gone @ gitmiş olan araba
-output: OK
-1 gitmiş olan araba 0
-
-input: car which hadn't gone @ gitmemiş olan araba
-output: OK
-1 gitmemiş olan araba 0
-
-input: car which is going @ giden araba
-output: OK
-1 giden araba 0
-
-input: car which isn't going @ gitmeyen araba
-output: OK
-1 gitmeyen araba 0
-
-input: cars which are going @ giden arabalar
-output: OK
-1 giden arabalar 0
-
-input: cars which aren't going @ gitmeyen arabalar
-output: OK
-1 gitmeyen arabalar 0
-
-input: car which was going @ giden araba
-output: OK
-1 giden araba 0
-
-input: car which wasn't going @ gitmeyen araba
-output: OK
-1 gitmeyen araba 0
-
-input: cars which were going @ giden arabalar
-output: OK
-1 giden arabalar 0
-
-input: cars which weren't going @ gitmeyen arabalar
-output: OK
-1 gitmeyen arabalar 0
-
-input: car which will go @ gidecek araba
-output: OK
-1 gidecek araba 0
-
-input: car which won't go @ gitmeyecek araba
-output: OK
-1 gitmeyecek araba 0
-
-input: car which would go @ gidecek araba
-output: OK
-1 gidecek araba 0
-
-input: car which wouldn't go @ gitmeyecek araba
-output: OK
-1 gitmeyecek araba 0
-
-input: car which can go @ gidebilecek araba | gidebilen araba
-output: OK
-1 gidebilen araba 0
-
-input: car which can't go @ gidemeyecek araba | gidemeyen araba
-output: OK
-1 gidemeyen araba 0
-
-input: car which could go @ gidebilecek olan araba | gidebilen araba
-output: OK
-1 gidebilen araba 0
-
-input: car which couldn't go @ gidemeyecek araba | gidemeyen araba
-output: OK
-1 gidemeyen araba 0
-
-input: car which may go @ gidebilecek araba | gidebilen araba
-output: OK
-1 gidebilecek araba 0
-
-input: car which mayn't go @ gitmeyebilecek araba | gidemeyen araba
-output: OK
-1 gitmeyebilecek araba 0
-
-input: car which must go @ gitmek zorunda olan araba
-output: OK
-1 gitmek zorunda olan araba 0
-
-input: car which has to go @ gitmek zorunda olan araba
-output: OK
-1 gitmek zorunda olan araba 0
-
-input: cars which don't have to go @ gitmek zorunda olmayan arabalar
-output: OK
-1 gitmek zorunda olmayan arabalar 0
-
-input: car which will be going @ gidiyor olacak araba
-output: OK
-1 gidiyor olacak araba 0
-
-input: car which would be going @ gidiyor olacak araba
-output: OK
-1 gidiyor olacak araba 0
-
-input: car which is happy @ mutlu olan araba
-output: OK
-1 mutlu olan araba 0
-
-input: car which is afraid @ korkan araba
-output: OK
-1 korkan araba 0
-
-input: whether i go @ gidip gitmediğim
-output: OK
-1 gidip gitmediğim 0
-
-input: whether i went @ gidip gitmediğim
-output: OK
-1 gidip gitmediğim 0
-
-input: whether i am going @ gidiyor olup olmadığım | gidip gitmediğim
-output: OK
-1 gidip gitmediğim 0
-
-input: whether i was going @ gidiyor olup olmadığım | gidip gitmediğim
-output: OK
-1 gidip gitmediğim 0
-
-input: whether i have gone @ gidip gitmediğim
-output: OK
-1 gidip gitmediğim 0
-
-input: whether i had gone @ gitmiş olup olmadığım
-output: OK
-1 gitmiş olup olmadığım 0
-
-input: whether i will go @ gidip gitmeyeceğim
-output: OK
-1 gidip gitmeyeceğim 0
-
-input: whether i would go @ gidip gitmeyeceğim
-output: OK
-1 gidip gitmeyeceğim 0
-
-input: whether i can go @ gidip gidemediğim
-output: OK
-1 gidip gidemediğim 0
-
-input: whether i could go @ gidip gidemediğim
-output: OK
-1 gidip gidemediğim 0
-
-input: whether i may go @ gidip gidemeyeceğim | gidip gidemediğim
-output: OK
-1 gidip gidemeyeceğim 0
-
-input: whether i might go @ gidip gidemeyeceğim | gidip gidemediğim
-output: OK
-1 gidip gidemeyeceğim 0
-
-input: whether i must go @ gitmek zorunda olup olmadığım
-output: OK
-1 gitmek zorunda olup olmadığım 0
-
-input: whether i have to go @ gitmek zorunda olup olmadığım
-output: OK
-1 gitmek zorunda olup olmadığım 0
-
-input: whether i had to go @ gitmek zorunda olup olmadığım
-output: OK
-1 gitmek zorunda olup olmadığım 0
-
-input: whether i am happy @ mutlu olup olmadığım
-output: OK
-1 mutlu olup olmadığım 0
-
-input: whether i am afraid @ korkup korkmadığım
-output: OK
-1 korkup korkmadığım 0
-
-input: if i go @ gidersem
-output: OK
-1 gidersem 0
-
-input: if i don't go @ gitmezsem
-output: OK
-1 gitmezsem 0
-
-input: if i went @ gitseydim
-output: OK
-1 gitseydim 0
-
-input: if i didn't go @ gitmeseydim
-output: OK
-1 gitmeseydim 0
-
-input: if i am going @ gidiyorsam
-output: OK
-1 gidiyorsam 0
-
-input: if i was going @ gidiyorsam | gidiyorduysam
-output: OK
-1 gidiyorsam 0
-
-input: if i have gone @ gittiysem
-output: OK
-1 gittiysem 0
-
-input: if i had gone @ gitmişsem
-output: OK
-1 gitmişsem 0
-
-input: if i will go @ gideceksem
-output: OK
-1 gideceksem 0
-
-input: if i would go @ gideceksem | gidecektiysem
-output: OK
-1 gideceksem 0
-
-input: if i can go @ gidebilirsem
-output: OK
-1 gidebilirsem 0
-
-input: if i can't go @ gidemezsem
-output: OK
-1 gidemezsem 0
-
-input: if i could go @ gidebilirsem | gidebilirdiysem
-output: OK
-1 gidebilirsem 0
-
-input: if i may go @ gidebilirsem
-output: OK
-1 gidebilirsem 0
-
-input: if i might go @ gidebilirsem | gidebilirdiysem
-output: OK
-1 gidebilirsem 0
-
-input: if i must go @ gitmeliysem
-output: OK
-1 gitmeliysem 0
-
-input: if i have to go @ gitmek zorundaysam
-output: OK
-1 gitmek zorundaysam 0
-
-input: if i don't have to go @ gitmek zorunda değilsem
-output: OK
-1 gitmek zorunda değilsem 0
-
-input: if i had to go @ gitmek zorundaysam | gitmek zorunda idiysem
-output: OK
-1 gitmek zorundaysam 0
-
-input: if i am happy @ mutluysam
-output: OK
-1 mutluysam 0
-
-input: if i am not happy @ mutlu değilsem
-output: OK
-1 mutlu değilsem 0
-
-input: if i am afraid @ korkuyorsam
-output: OK
-1 korkuyorsam 0
-
-input: if i am not afraid @ korkmuyorsam
-output: OK
-1 korkmuyorsam 0
-
-input: as soon as i go @ ben gider gitmez
-output: OK
-1 ben gider gitmez 0
-
-input: as soon as i went @ ben gider gitmez
-output: OK
-1 ben gider gitmez 0
-
-input: as soon as i am going @ ben gider gitmez | ben gidiyor olur olmaz
-output: OK
-1 ben gidiyor olur olmaz 0
-
-input: as soon as i was going @ ben gider gitmez | ben gidiyor olur olmaz
-output: OK
-1 ben gidiyor olur olmaz 0
-
-input: as soon as i have gone @ ben gider gitmez | ben gitmiş olur olmaz
-output: OK
-1 ben gitmiş olur olmaz 0
-
-input: as soon as i had gone @ ben gider gitmez | ben gitmiş olur olmaz
-output: OK
-1 ben gitmiş olur olmaz 0
-
-input: as soon as i will go @ ben gider gitmez
-output: OK
-1 ben gider gitmez 0
-
-input: as soon as i would go @ ben gider gitmez
-output: OK
-1 ben gider gitmez 0
-
-input: as soon as i can go @ ben gider gitmez
-output: OK
-1 ben gider gitmez 0
-
-input: as soon as i could go @ ben gider gitmez
-output: OK
-1 ben gider gitmez 0
-
-input: as soon as i may go @ ben gider gitmez
-output: OK
-1 ben gider gitmez 0
-
-input: as soon as i might go @ ben gider gitmez
-output: OK
-1 ben gider gitmez 0
-
-input: as soon as i must go @ ben gider gitmez
-output: OK
-1 ben gider gitmez 0
-
-input: as soon as i have to go @ ben gitmek zorunda olur olmaz
-output: OK
-1 ben gitmek zorunda olur olmaz 0
-
-input: as soon as i had to go @ ben gitmek zorunda olur olmaz
-output: OK
-1 ben gitmek zorunda olur olmaz 0
-
-input: as soon as i have a car @ ben bir arabaya sahip olur olmaz
-output: OK
-1 ben bir arabaya sahip olur olmaz 0
-
-input: as soon as i had a car @ ben bir arabaya sahip olur olmaz
-output: OK
-1 ben bir arabaya sahip olur olmaz 0
-
-input: as soon as i am happy @ ben mutlu olur olmaz
-output: OK
-1 ben mutlu olur olmaz 0
-
-input: as soon as i am afraid @ ben korkar korkmaz
-output: OK
-1 ben korkar korkmaz 0
-
-input: as soon as i see you @ ben sizi görür görmez
-output: OK
-1 ben sizi görür görmez 0
-
-input: as long as i go @ gittiğim sürece
-output: OK
-1 gittiğim sürece 0
-
-input: as long as i went @ gittiğim sürece
-output: OK
-1 gittiğim sürece 0
-
-input: as long as i am going @ gittiğim sürece | gidiyor olduğum sürece
-output: OK
-1 gidiyor olduğum sürece 0
-
-input: as long as i was going @ gittiğim sürece | gidiyor olduğum sürece
-output: OK
-1 gidiyor olduğum sürece 0
-
-input: as long as i have gone @ gittiğim sürece | gitmiş olduğum sürece
-output: OK
-1 gittiğim sürece 0
-
-input: as long as i had gone @ gittiğim sürece | gitmiş olduğum sürece
-output: OK
-1 gitmiş olduğum sürece 0
-
-input: as long as i will go @ gideceğim sürece
-output: OK
-1 gideceğim sürece 0
-
-input: as long as i would go @ gideceğim sürece
-output: OK
-1 gideceğim sürece 0
-
-input: as long as i can go @ gidebildiğim sürece
-output: OK
-1 gidebildiğim sürece 0
-
-input: as long as i could go @ gidebildiğim sürece
-output: OK
-1 gidebildiğim sürece 0
-
-input: as long as i may go @ gidebildiğim sürece
-output: OK
-1 gidebildiğim sürece 0
-
-input: as long as i might go @ gidebildiğim sürece
-output: OK
-1 gidebildiğim sürece 0
-
-input: as long as i must go @ gitmek zorunda olduğum sürece
-output: OK
-1 gitmek zorunda olduğum sürece 0
-
-input: as long as i have to go @ gitmek zorunda olduğum sürece
-output: OK
-1 gitmek zorunda olduğum sürece 0
-
-input: as long as i had to go @ gitmek zorunda olduğum sürece
-output: OK
-1 gitmek zorunda olduğum sürece 0
-
-input: as long as i have a car @ bir arabaya sahip olduğum sürece
-output: OK
-1 bir arabaya sahip olduğum sürece 0
-
-input: as long as i had a car @ bir arabaya sahip olduğum sürece
-output: OK
-1 bir arabaya sahip olduğum sürece 0
-
-input: as long as i am happy @ mutlu olduğum sürece
-output: OK
-1 mutlu olduğum sürece 0
-
-input: as long as i am afraid @ korktuğum sürece
-output: OK
-1 korktuğum sürece 0
-
-input: as long as i see you @ sizi gördüğüm sürece
-output: OK
-1 sizi gördüğüm sürece 0
-
-input: before i go @ ben gitmeden önce | gitmemden önce
-output: OK
-1 ben gitmeden önce 0
-
-input: before i went @ ben gitmeden önce | gitmemden önce
-output: OK
-1 ben gitmeden önce 0
-
-input: before i am going @ ben gitmeden önce | gitmemden önce
-output: OK
-1 ben gitmeden önce 0
-
-input: before i was going @ ben gitmeden önce | gitmemden önce
-output: OK
-1 ben gitmeden önce 0
-
-input: before i have gone @ ben gitmeden önce | ben gitmiş olmadan önce | gitmemden önce
-output: OK
-1 ben gitmiş olmadan önce 0
-
-input: before i had gone @ ben gitmeden önceece | ben gitmiş olmadan önce | gitmemden önce
-output: OK
-1 ben gitmiş olmadan önce 0
-
-input: before i will go @ ben gidecek olmadan önce | gidecek olmamdan önce
-output: OK
-1 ben gitmeden önce 0
-2 ben gidecek olmadan önce 0
-
-input: before i would go @ ben gidecek olmadan önce | gidecek olmamdan önce
-output: OK
-1 ben gitmeden önce 0
-2 ben gidecek olmadan önce 0
-
-input: before i can go @ ben gidemeden önce | gidebilmemden önce
-output: OK
-1 ben gidemeden önce 0
-
-input: before i could go @ ben gidemeden önce | gidebilmemden önce
-output: OK
-1 ben gidemeden önce 0
-
-input: before i may go @ ben gidemeden önce | gidebilmemden önce
-output: OK
-1 ben gidemeden önce 0
-
-input: before i might go @ ben gidemeden önce | gidebilmemden önce
-output: OK
-1 ben gidemeden önce 0
-
-input: before i must go @ ben gitmek zorunda olmadan önce | gitmek zorunda olmamdan önce
-output: OK
-1 ben gitmek zorunda olmadan önce 0
-
-input: before i have to go @ ben gitmek zorunda olmadan önce | gitmek zorunda olmamdan önce
-output: OK
-1 ben gitmek zorunda olmadan önce 0
-
-input: before i had to go @ ben gitmek zorunda olmadan önce | gitmek zorunda olmamdan önce
-output: OK
-1 ben gitmek zorunda olmadan önce 0
-
-input: before i have a car @ ben bir arabaya sahip olmadan önce | bir arabaya sahip olmamdan önce
-output: OK
-1 ben bir arabaya sahip olmadan önce 0
-
-input: before i had a car @ ben bir arabaya sahip olmadan önce | bir arabaya sahip olmamdan önce
-output: OK
-1 ben bir arabaya sahip olmadan önce 0
-
-input: before i am happy @ ben mutlu olmadan önce | mutlu olmamdan önce
-output: OK
-1 ben mutlu olmadan önce 0
-
-input: before i am afraid @ ben korkmadan önce
-output: OK
-1 ben korkmadan önce 0
-
-input: before i see you @ ben sizi görmeden önce
-output: OK
-1 ben sizi görmeden önce 0
-
-input: after i go @ ben gittikten sonra
-output: OK
-1 ben gittikten sonra 0
-
-input: after i went @ ben gittikten sonra
-output: OK
-1 ben gittikten sonra 0
-
-input: after i am going @ ben gittikten sonra
-output: OK
-1 ben gittikten sonra 0
-
-input: after i was going @ ben gittikten sonra
-output: OK
-1 ben gittikten sonra 0
-
-input: after i have gone @ ben gittikten sonra | ben gitmiş olduktan sonra
-output: OK
-1 ben gitmiş olduktan sonra 0
-
-input: after i had gone @ ben gitmiş olduktan sonra
-output: OK
-1 ben gitmiş olduktan sonra 0
-
-input: after i will go @ ben gidecek olduktan sonra
-output: OK
-1 ben gittikten sonra 0
-2 ben gidecek olduktan sonra 0
-
-input: after i would go @ ben gidecek olduktan sonra
-output: OK
-1 ben gittikten sonra 0
-2 ben gidecek olduktan sonra 0
-
-input: after i can go @ ben gidebildikten sonra
-output: OK
-1 ben gidebildikten sonra 0
-
-input: after i could go @ ben gidebildikten sonra
-output: OK
-1 ben gidebildikten sonra 0
-
-input: after i may go @ ben gidebildikten sonra
-output: OK
-1 ben gidebildikten sonra 0
-
-input: after i might go @ ben gidebildikten sonra
-output: OK
-1 ben gidebildikten sonra 0
-
-input: after i must go @ ben gitmek zorunda olduktan sonra
-output: OK
-1 ben gitmek zorunda olduktan sonra 0
-
-input: after i have to go @ ben gitmek zorunda olduktan sonra
-output: OK
-1 ben gitmek zorunda olduktan sonra 0
-
-input: after i had to go @ ben gitmek zorunda olduktan sonra
-output: OK
-1 ben gitmek zorunda olduktan sonra 0
-
-input: after i have a car @ ben bir arabaya sahip olduktan sonra
-output: OK
-1 ben bir arabaya sahip olduktan sonra 0
-
-input: after i had a car @ ben bir arabaya sahip olduktan sonra
-output: OK
-1 ben bir arabaya sahip olduktan sonra 0
-
-input: after i am afraid @ ben korktuktan sonra
-output: OK
-1 ben korktuktan sonra 0
-
-input: after i see you @ ben sizi gördükten sonra
-output: OK
-1 ben sizi gördükten sonra 0
-
-input: while i go @ ben giderken
-output: OK
-1 ben giderken 0
-
-input: while i went @ ben giderken
-output: OK
-1 ben giderken 0
-
-input: while i am going @ ben gidiyorken
-output: OK
-1 ben gidiyorken 0
-
-input: while i was going @ ben gidiyorken
-output: OK
-1 ben gidiyorken 0
-
-input: while i have gone @ ben gitmişken
-output: OK
-1 ben gitmişken 0
-
-input: while i had gone @ ben gitmişken
-output: OK
-1 ben gitmişken 0
-
-input: while i will go @ ben gidecekken
-output: OK
-1 ben gidecekken 0
-
-input: while i would go @ ben gidecekken
-output: OK
-1 ben gidecekken 0
-
-input: while i can go @ ben gidebilirken
-output: OK
-1 ben gidebilirken 0
-
-input: while i could go @ ben gidebilirken
-output: OK
-1 ben gidebilirken 0
-
-input: while i may go @ ben gidebilirken
-output: OK
-1 ben gidebilirken 0
-
-input: while i might go @ ben gidebilirken
-output: OK
-1 ben gidebilirken 0
-
-input: while i must go @ ben gitmeliyken
-output: OK
-1 ben gitmeliyken 0
-
-input: while i have to go @ ben gitmek zorundayken
-output: OK
-1 ben gitmek zorundayken 0
-
-input: while i had to go @ ben gitmek zorundayken
-output: OK
-1 ben gitmek zorundayken 0
-
-input: while i have a car @ ben bir arabaya sahipken
-output: OK
-1 ben bir arabaya sahipken 0
-
-input: while i had a car @ ben bir arabaya sahipken
-output: OK
-1 ben bir arabaya sahipken 0
-
-input: while i am happy @ ben mutluyken
-output: OK
-1 ben mutluyken 0
-
-input: while i am afraid @ ben korkuyorken
-output: OK
-1 ben korkuyorken 0
-
-input: while i see you @ ben sizi görüyorken
-output: OK
-1 ben sizi görüyorken 0
-
-input: though i go @ gitmeme rağmen
-output: OK
-1 gitmeme rağmen 0
-
-input: though i went @ gitmeme rağmen
-output: OK
-1 gitmeme rağmen 0
-
-input: though i am going @ gitmeme rağmen | gidiyor olmama rağmen
-output: OK
-1 gidiyor olmama rağmen 0
-
-input: though i was going @ gitmeme rağmen | gidiyor olmama rağmen
-output: OK
-1 gidiyor olmama rağmen 0
-
-input: though i have gone @ gitmeme rağmen | gitmiş olmama rağmen
-output: OK
-1 gitmiş olmama rağmen 0
-
-input: though i had gone @ gitmiş olmama rağmen
-output: OK
-1 gitmiş olmama rağmen 0
-
-input: though i will go @ gidecek olmama rağmen
-output: OK
-1 gidecek olmama rağmen 0
-
-input: though i would go @ gidecek olmama rağmen
-output: OK
-1 gidecek olmama rağmen 0
-
-input: though i can go @ gidebilmeme rağmen
-output: OK
-1 gidebilmeme rağmen 0
-
-input: though i could go @ gidebilmeme rağmen
-output: OK
-1 gidebilmeme rağmen 0
-
-input: though i may go @ gidebilmeme rağmen
-output: OK
-1 gidebilmeme rağmen 0
-
-input: though i might go @ gidebilmeme rağmen
-output: OK
-1 gidebilmeme rağmen 0
-
-input: though i must go @ gitmek zorunda olmama rağmen
-output: OK
-1 gitmek zorunda olmama rağmen 0
-
-input: though i have to go @ gitmek zorunda olmama rağmen
-output: OK
-1 gitmek zorunda olmama rağmen 0
-
-input: though i had to go @ gitmek zorunda olmama rağmen
-output: OK
-1 gitmek zorunda olmama rağmen 0
-
-input: though i have a car @ bir arabaya sahip olmama rağmen
-output: OK
-1 bir arabaya sahip olmama rağmen 0
-
-input: though i had a car @ bir arabaya sahip olmama rağmen
-output: OK
-1 bir arabaya sahip olmama rağmen 0
-
-input: though i am happy @ mutlu olmama rağmen
-output: OK
-1 mutlu olmama rağmen 0
-
-input: though i am afraid @ korkmama rağmen | korkuyor olmama rağmen
-output: OK
-1 korkmama rağmen 0
-
-input: though i see you @ sizi görmeme rağmen | sizi görüyor olmama rağmen
-output: OK
-1 sizi görmeme rağmen 0
-
-input: while going @ giderken | gidiyorken
-output: OK
-1 giderken 0
-
-input: while not going @ gitmezken | gitmiyorken
-output: OK
-1 gitmezken 0
-
-input: while having gone @ gitmiş olurken
-output: OK
-1 gitmiş olurken 0
-
-input: while being happy @ mutlu olurken | mutlu oluyorken
-output: OK
-1 mutlu olurken 0
-
-input: while being afraid @ korkuyorken | korkarken
-output: OK
-1 korkuyorken 0
-
-input: while seeing you @ sizi görüyorken | sizi görürken
-output: OK
-1 sizi görüyorken 0
-
-input: before going @ gitmeden önce
-output: OK
-1 gitmeden önce 0
-
-input: before having gone @ gitmiş olmadan önce
-output: OK
-1 gitmiş olmadan önce 0
-
-input: before being happy @ mutlu olmadan önce
-output: OK
-1 mutlu olmadan önce 0
-
-input: before being afraid @ korkmadan önce
-output: OK
-1 korkmadan önce 0
-
-input: before seeing you @ sizi görmeden önce
-output: OK
-1 sizi görmeden önce 0
-
-input: after going @ gittikten sonra
-output: OK
-1 gittikten sonra 0
-
-input: after having gone @ gitmiş olduktan sonra
-output: OK
-1 gitmiş olduktan sonra 0
-
-input: after being happy @ mutlu olduktan sonra
-output: OK
-1 mutlu olduktan sonra 0
-
-input: after being afraid @ korktuktan sonra
-output: OK
-1 korktuktan sonra 0
-
-input: after seeing you @ sizi gördükten sonra
-output: OK
-1 sizi gördükten sonra 0
-
-input: in order to go @ gitmek için
-output: OK
-1 gitmek için 0
-
-input: in order not to go @ gitmemek için
-output: OK
-1 gitmemek için 0
-
-input: in order to have gone @ gitmiş olmak için
-output: OK
-1 gitmiş olmak için 0
-
-input: in order to be happy @ mutlu olmak için
-output: OK
-1 mutlu olmak için 0
-
-input: in order to be afraid @ korkmak için
-output: OK
-1 korkmak için 0
-
-input: in order to see you @ sizi görmek için
-output: OK
-1 sizi görmek için 0
-
-input: because i go @ gittiğim için
-output: OK
-1 gittiğim için 0
-
-input: men like cars @ arabalar adamların hoşuna gidiyor
-output: NOK
-1 adamlar arabalar hoşlarıya gidiyor 0
-
-input: i like cars @ arabalar hoşuma gidiyor
-output: NOK
-1 arabalar hoşuma gidiyorum 0
-
-input: she like cars @ arabalar hoşuna gidiyor
-output: ERROR
-UnifyU error feat=numb src=plur param=sing super=SentNorm#49 sub=VPNorm#63
-
-input: they like cars @ arabalar hoşlarına gidiyor
-output: NOK
-1 onlar arabalar hoşlarıya gidiyor 0
-
-input: i like you @ siz hoşuma gidiyorsunuz
-output: NOK
-1 siz hoşuma gidiyorum 0
-
-input: i wanted you to like cars @ arabaların hoşunuza gitmesini istedim
-output: NOK
-1 sizin arabalar hoşuma gitmenizi istedim 0
-2 sizin arabalar hoşuna gitmenizi istedim 0
-3 sizin arabalar hoşumuza gitmenizi istedim 0
-4 sizin arabalar hoşunuza gitmenizi istedim 0
-5 sizin arabalar hoşlarıya gitmenizi istedim 0
-
-input: though i like you @ sizin hoşuma gitmenize rağmen | hoşuma gitmenize rağmen
-output: NOK
-1 siz hoşuma gitmeme rağmen 0
-
-input: though i like cars @ arabalaların hoşuma gitmesine rağmen
-output: NOK
-1 arabalar hoşuma gitmeme rağmen 0
-
-input: as long as i like you @ siz hoşuma gittiğiniz sürece
-output: NOK
-1 siz hoşuma gittiğim sürece 0
-
-input: whether i like @ hoşuma gidip gitmediğiniz
-output: ERROR
-Parse not possible: whether i like >> $
-
-input: cars bother me @ arabalar canımı sıkıyor
-output: ERROR
-UnifyU error feat=def src=1 param=0 super=SentNorm#49 sub=VPNorm#63
-
-input: cars bother her @ arabalar canını sıkıyor
-output: ERROR
-UnifyU error feat=def src=1 param=0 super=SentNorm#49 sub=VPNorm#63
-
-input: cars bother them @ arabalar canlarını sıkıyor
-output: ERROR
-UnifyU error feat=def src=1 param=0 super=SentNorm#49 sub=VPNorm#63
-
-input: you bother me @ canımı sıkıyorsunuz
-output: NOK
-1 ben canımı sıkıyorsunuz 0
-
-input: i wanted him to bother you @ onun sizin canınızı sıkmasını istedim
-output: NOK
-1 onun siz canınızı sıkmasını istedim 0
-
-input: though i bother you @ canınızı sıkmama rağmen
-output: NOK
-1 siz canınızı sıkmama rağmen 0
-
-input: though cars bother you @ arabaların canınızı sıkmasına rağmen
-output: ERROR
-UnifyU error feat=def src=1 param=0 super=SentNorm#49 sub=VPNorm#63
-
-input: as long as i bother you @ canınızı sıktığım sürece
-output: NOK
-1 siz canınızı sıktığım sürece 0
-
-input: whether i bother you @ canınızı sıkıp sıkmadığım
-output: NOK
-1 siz canınızı sıkıp sıkmadığım 0
-
-input=740, translated=728, matched=715 exp_err=6 ignored=0
+
+i am going @ gidiyorum
+  *gidiyorum {0}
+  OK
+
+i'm going @ gidiyorum
+  *gidiyorum {0}
+  OK
+
+you are going @ gidiyorsun | gidiyorsunuz
+  *gidiyorsunuz {0}
+  OK
+
+you're going @ gidiyorsun | gidiyorsunuz
+  *gidiyorsunuz {0}
+  OK
+
+he is going @ gidiyor | o gidiyor
+  *gidiyor {0}
+  OK
+
+he's going @ gidiyor | o gidiyor
+  *gidiyor {0}
+  OK
+
+she is going @ gidiyor | o gidiyor
+  *gidiyor {0}
+  OK
+
+it is going @ gidiyor | o gidiyor
+  *gidiyor {0}
+  OK
+
+we are going @ gidiyoruz
+  *gidiyoruz {0}
+  OK
+
+they are going @ gidiyorlar | onlar gidiyor
+  *gidiyorlar {0}
+  OK
+
+i was going @ gidiyordum
+  *gidiyordum {0}
+  OK
+
+i have been going @ gidiyorum
+  *gidiyorum {0}
+  OK
+
+i've been going @ gidiyorum
+  *gidiyorum {0}
+  OK
+
+i had been going @ gidiyordum
+  *gidiyordum {0}
+  OK
+
+i go @ giderim
+  *gidirim {0}
+  NOK
+
+i went @ gittim
+  *gittim {0}
+  OK
+
+i have gone @ gittim
+  *gittim {0}
+  OK
+
+i've gone @ gittim
+  *gittim {0}
+  OK
+
+i had gone @ gitmiÅŸtim
+  *gitmiÅŸtim {0}
+  OK
+
+i'd gone @ gitmiÅŸtim
+  *gitmiÅŸtim {0}
+  OK
+
+i am going to go @ gideceÄŸim
+  *gideceÄŸim {0}
+  *gitmek iÃ§in gidiyorum {100}
+  OK
+
+i was going to go @ gidecektim
+  *gidirdim {0}
+  *gitmek iÃ§in gidiyordum {100}
+  NOK
+
+i will go @ gideceÄŸim
+  *gideceÄŸim {0}
+  OK
+
+i'll go @ gideceÄŸim
+  *gideceÄŸim {0}
+  OK
+
+i would go @ gidecektim
+  *gidirdim {0}
+  NOK
+
+i'd go @ gidecektim
+  *gidirdim {0}
+  NOK
+
+i will be going @ gidiyor olacaÄŸÄ±m
+  *gidiyor olacaÄŸÄ±m {0}
+  OK
+
+i would be going @ gidiyor olacaktÄ±m
+  *gidiyor olurdum {0}
+  NOK
+
+i will have gone @ gitmiÅŸ olacaÄŸÄ±m
+  *gitmiÅŸ olacaÄŸÄ±m {0}
+  OK
+
+i would have gone @ gitmiÅŸ olacaktÄ±m
+  *gitmiÅŸ olurdum {0}
+  NOK
+
+i can go @ gidebilirim
+  *gidebilirim {0}
+  OK
+
+i could go @ gidebilirdim
+  *gidebilirdim {0}
+  OK
+
+i can be going @ gidiyor olabilirim
+  *gidiyor olabilirim {0}
+  OK
+
+i could be going @ gidiyor olabilirdim
+  *gidiyor olabilirdim {0}
+  OK
+
+i can have gone @ gitmiÅŸ olabilirim
+  *gitmiÅŸ olabilirim {0}
+  OK
+
+i could have gone @ gitmiÅŸ olabilirdim
+  *gitmiÅŸ olabilirdim {0}
+  OK
+
+i may go @ gidebilirim
+  *gidebilirim {0}
+  OK
+
+i might go @ gidebilirdim
+  *gidebilirdim {0}
+  OK
+
+i must go @ gitmeliyim
+  *gitmeliyim {0}
+  OK
+
+i must be going @ gidiyor olmalÄ±yÄ±m
+  *gidiyor olmalÄ±yÄ±m {0}
+  OK
+
+i must have gone @ gitmiÅŸ olmalÄ±yÄ±m
+  *gitmiÅŸ olmalÄ±yÄ±m {0}
+  OK
+
+i should go @ gitmeliyim
+  *gitmeliyim {0}
+  OK
+
+i shall go @ gideceÄŸim
+  *gideceÄŸim {0}
+  OK
+
+i am not going @ gitmiyorum
+  *gitmiyorum {0}
+  OK
+
+you are not going @ gitmiyorsun | gitmiyorsunuz
+  *gitmiyorsunuz {0}
+  OK
+
+you're not going @ gitmiyorsun | gitmiyorsunuz
+  *gitmiyorsunuz {0}
+  OK
+
+you aren't going @ gitmiyorsun | gitmiyorsunuz
+  *gitmiyorsunuz {0}
+  OK
+
+he is not going @ gitmiyor | o gitmiyor
+  *gitmiyor {0}
+  OK
+
+he's not going @ gitmiyor | o gitmiyor
+  *gitmiyor {0}
+  OK
+
+he isn't going @ gitmiyor | o gitmiyor
+  *gitmiyor {0}
+  OK
+
+we are not going @ gitmiyoruz
+  *gitmiyoruz {0}
+  OK
+
+they are not going @ gitmiyorlar | onlar gitmiyor
+  *gitmiyorlar {0}
+  OK
+
+i was not going @ gitmiyordum
+  *gitmiyordum {0}
+  OK
+
+i wasn't going @ gitmiyordum
+  *gitmiyordum {0}
+  OK
+
+we were not going @ gitmiyorduk
+  *gitmiyorduk {0}
+  OK
+
+we weren't going @ gitmiyorduk
+  *gitmiyorduk {0}
+  OK
+
+i wasn't going to go @ gitmeyecektim
+  *gitmezdim {0}
+  *gitmek iÃ§in gitmiyordum {100}
+  NOK
+
+i was not going to go @ gitmeyecektim
+  *gitmezdim {0}
+  *gitmek iÃ§in gitmiyordum {100}
+  NOK
+
+i have not gone @ gitmedim
+  *gitmedim {0}
+  OK
+
+i've not gone @ gitmedim
+  *gitmedim {0}
+  OK
+
+i haven't gone @ gitmedim
+  *gitmedim {0}
+  OK
+
+he has not gone @ gitmedi | o gitmedi
+  *gitmedi {0}
+  OK
+
+he's not gone @ gitmedi | o gitmedi
+  *gitmedi {0}
+  OK
+
+he hasn't gone @ gitmedi | o gitmedi
+  *gitmedi {0}
+  OK
+
+i have not been going @ gitmiyorum
+  *gitmiyorum {0}
+  OK
+
+i had not been going @ gitmiyordum
+  *gitmiyordum {0}
+  OK
+
+i do not go @ gitmem
+  *gitmem {0}
+  OK
+
+i don't go @ gitmem
+  *gitmem {0}
+  OK
+
+he does not go @ gitmez | o gitmez
+  *gitmez {0}
+  OK
+
+he doesn't go @ gitmez | o gitmez
+  *gitmez {0}
+  OK
+
+i did not go @ gitmedim
+  *gitmedim {0}
+  OK
+
+i didn't go @ gitmedim
+  *gitmedim {0}
+  OK
+
+i will not go @ gitmeyeceÄŸim
+  *gitmeyeceÄŸim {0}
+  OK
+
+i'll not go @ gitmeyeceÄŸim
+  *gitmeyeceÄŸim {0}
+  OK
+
+i won't go @ gitmeyeceÄŸim
+  *gitmeyeceÄŸim {0}
+  OK
+
+i would not go @ gitmeyecektim
+  *gitmezdim {0}
+  NOK
+
+i'd not go @ gitmeyecektim
+  *gitmezdim {0}
+  NOK
+
+i wouldn't go @ gitmeyecektim
+  *gitmezdim {0}
+  NOK
+
+i can not go @ gidemem
+  *gidemem {0}
+  OK
+
+i can't go @ gidemem
+  *gidemem {0}
+  OK
+
+i could not go @ gidemezdim
+  *gidemezdim {0}
+  OK
+
+i couldn't go @ gidemezdim
+  *gidemezdim {0}
+  OK
+
+i shall not go @ gitmeyeceÄŸim
+  *gitmeyeceÄŸim {0}
+  OK
+
+i shan't go @ gitmeyeceÄŸim
+  *gitmeyeceÄŸim {0}
+  OK
+
+i may not go @ gitmeyebilirim
+  *gitmeyebilirim {0}
+  OK
+
+i might not go @ gitmeyebilirdim
+  *gitmeyebilirdim {0}
+  OK
+
+i should not go @ gitmemeliyim
+  *gitmemeliyim {0}
+  OK
+
+i shouldn't go @ gitmemeliyim
+  *gitmemeliyim {0}
+  OK
+
+i must not go @ gitmemeliyim
+  *gitmemeliyim {0}
+  OK
+
+i mustn't go @ gitmemeliyim
+  *gitmemeliyim {0}
+  OK
+
+i won't be going @ gidiyor olmayacaÄŸÄ±m
+  *gidiyor olmayacaÄŸÄ±m {0}
+  OK
+
+i wouldn't be going @ gidiyor olmayacaktÄ±m
+  *gidiyor olmazdÄ±m {0}
+  NOK
+
+i won't have gone @ gitmiÅŸ olmayacaÄŸÄ±m
+  *gitmiÅŸ olmayacaÄŸÄ±m {0}
+  OK
+
+i wouldn't have gone @ gitmiÅŸ olmayacaktÄ±m
+  *gitmiÅŸ olmazdÄ±m {0}
+  NOK
+
+i may not be going @ gidiyor olmayabilirim
+  *gidiyor olmayabilirim {0}
+  OK
+
+i might not be going @ gidiyor olmayabilirdim
+  *gidiyor olmayabilirdim {0}
+  OK
+
+i mustn't be going @ gidiyor olmamalÄ±yÄ±m
+  *gidiyor olmamalÄ±yÄ±m {0}
+  OK
+
+i mustn't have gone @ gitmiÅŸ olmamalÄ±yÄ±m
+  *gitmiÅŸ olmamalÄ±yÄ±m {0}
+  OK
+
+am i going @ gidiyor muyum
+  *gidiyor muyum {0}
+  OK
+
+am i not going @ gitmiyor muyum
+  *gitmiyor muyum {0}
+  OK
+
+was she going @ gidiyor muydu | o gidiyor muydu
+  *gidiyor muydu {0}
+  OK
+
+wasn't she going @ gitmiyor muydu | o gitmiyor muydu
+  *gitmiyor muydu {0}
+  OK
+
+was she not going @ gitmiyor muydu | o gitmiyor muydu
+  *gitmiyor muydu {0}
+  OK
+
+did we go @ gittik mi
+  *gittik mi {0}
+  OK
+
+didn't we go @ gitmedik mi
+  *gitmedik mi {0}
+  OK
+
+did we not go @ gitmedik mi
+  *gitmedik mi {0}
+  OK
+
+do we go @ gider miyiz
+  *gidir miyiz {0}
+  NOK
+
+don't we go @ gitmez miyiz
+  *gitmez miyiz {0}
+  OK
+
+do we not go @ gitmez miyiz
+  *gitmez miyiz {0}
+  OK
+
+have we gone @ gittik mi
+  *gittik mi {0}
+  OK
+
+haven't we gone @ gitmedik mi
+  *gitmedik mi {0}
+  OK
+
+have we not gone @ gitmedik mi
+  *gitmedik mi {0}
+  OK
+
+had we gone @ gitmiÅŸ miydik
+  *gitmiÅŸ miydik {0}
+  OK
+
+hadn't we gone @ gitmemiÅŸ miydik
+  *gitmemiÅŸ miydik {0}
+  OK
+
+will we go @ gidecek miyiz
+  *gidecek miyiz {0}
+  OK
+
+won't we go @ gitmeyecek miyiz
+  *gitmeyecek miyiz {0}
+  OK
+
+are we going to go @ gidecek miyiz
+  *gidecek miyiz {0}
+  OK
+
+aren't we going to go @ gitmeyecek miyiz
+  *gitmeyecek miyiz {0}
+  OK
+
+can we go @ gidebilir miyiz
+  *gidebilir miyiz {0}
+  OK
+
+can't we go @ gidemez miyiz
+  *gidemez miyiz {0}
+  OK
+
+could we go @ gidebilir miydik
+  *gidebilir miydik {0}
+  OK
+
+couldn't we go @ gidemez miydik
+  *gidemez miydik {0}
+  OK
+
+may we go @ gidebilir miyiz
+  *gidebilir miyiz {0}
+  OK
+
+mayn't we go @ gitmeyebilir miyiz
+  *gitmeyebilir miyiz {0}
+  OK
+
+might we go @ gidebilir miydik
+  *gidebilir miydik {0}
+  OK
+
+mightn't we go @ gitmeyebilir miydik
+  *gitmeyebilir miydik {0}
+  OK
+
+must we go @ gitmeli miyiz
+  *gitmeli miyiz {0}
+  OK
+
+mustn't we go @ gitmemeli miyiz
+  *gitmemeli miyiz {0}
+  OK
+
+i am happy @ mutluyum
+  *mutluyum {0}
+  OK
+
+he is happy @ mutlu | o mutlu
+  *o mutlu {0}
+  OK
+
+we are happy @ mutluyuz
+  *mutluyuz {0}
+  OK
+
+you are happy @ mutlusun | mutlusunuz
+  *mutlusunuz {0}
+  OK
+
+they are happy @ mutlular | onlar mutlu
+  *onlar mutlu {0}
+  OK
+
+i was happy @ mutluydum
+  *mutluydum {0}
+  OK
+
+he was happy @ mutluydu | o mutluydu
+  *o mutluydu {0}
+  OK
+
+we were happy @ mutluyduk
+  *mutluyduk {0}
+  OK
+
+you were happy @ mutluydun | mutluydunuz
+  *mutluydunuz {0}
+  OK
+
+they were happy @ mutluydular | onlar mutluydu
+  *onlar mutluydu {0}
+  OK
+
+am i happy @ mutlu muyum
+  *mutlu muyum {0}
+  OK
+
+is he happy @ mutlu mu | o mutlu mu
+  *o mutlu mu {0}
+  OK
+
+are we happy @ mutlu muyuz
+  *mutlu muyuz {0}
+  OK
+
+are you happy @ mutlu musun | mutlu musunuz
+  *mutlu musunuz {0}
+  OK
+
+are they happy @ mutlular mÄ± | onlar mutlu mu
+  *onlar mutlu mu {0}
+  OK
+
+i am not happy @ mutlu deÄŸilim
+  *mutlu deÄŸilim {0}
+  OK
+
+he is not happy @ mutlu deÄŸil | o mutlu deÄŸil
+  *o mutlu deÄŸil {0}
+  OK
+
+we are not happy @ mutlu deÄŸiliz
+  *mutlu deÄŸiliz {0}
+  OK
+
+you are not happy @ mutlu deÄŸilsin | mutlu deÄŸilsiniz
+  *mutlu deÄŸilsiniz {0}
+  OK
+
+they are not happy @ mutlu deÄŸiller | onlar mutlu deÄŸil
+  *onlar mutlu deÄŸil {0}
+  OK
+
+am i not happy @ mutlu deÄŸil miyim
+  *mutlu deÄŸil miyim {0}
+  OK
+
+is he not happy @ mutlu deÄŸil mi | o mutlu deÄŸil mi
+  *o mutlu deÄŸil mi {0}
+  OK
+
+are we not happy @ mutlu deÄŸil miyiz
+  *mutlu deÄŸil miyiz {0}
+  OK
+
+are you not happy @ mutlu deÄŸil misin | mutlu deÄŸil misiniz
+  *mutlu deÄŸil misiniz {0}
+  OK
+
+are they not happy @ mutlu deÄŸiller mi | onlar mutlu deÄŸil mi
+  *onlar mutlu deÄŸil mi {0}
+  OK
+
+was i happy @ mutlu muydum
+  *mutlu muydum {0}
+  OK
+
+was he happy @ mutlu muydu | o mutlu muydu
+  *o mutlu muydu {0}
+  OK
+
+were we happy @ mutlu muyduk
+  *mutlu muyduk {0}
+  OK
+
+were you happy @ mutlu muydun | mutlu muydunuz
+  *mutlu muydunuz {0}
+  OK
+
+were they happy @ mutlu muydular | onlar mutlu muydu
+  *onlar mutlu muydu {0}
+  OK
+
+i was not happy @ mutlu deÄŸildim
+  *mutlu deÄŸildim {0}
+  OK
+
+he was not happy @ mutlu deÄŸildi | o mutlu deÄŸildi
+  *o mutlu deÄŸildi {0}
+  OK
+
+we were not happy @ mutlu deÄŸildik
+  *mutlu deÄŸildik {0}
+  OK
+
+you were not happy @ mutlu deÄŸildin | mutlu deÄŸildiniz
+  *mutlu deÄŸildiniz {0}
+  OK
+
+they were not happy @ mutlu deÄŸillerdi | onlar mutlu deÄŸildi
+  *onlar mutlu deÄŸildi {0}
+  OK
+
+was i not happy @ mutlu deÄŸil miydim
+  *mutlu deÄŸil miydim {0}
+  OK
+
+was he not happy @ mutlu deÄŸil miydi | o mutlu deÄŸil miydi
+  *o mutlu deÄŸil miydi {0}
+  OK
+
+were we not happy @ mutlu deÄŸil miydik
+  *mutlu deÄŸil miydik {0}
+  OK
+
+were you not happy @ mutlu deÄŸil miydin | mutlu deÄŸil miydiniz
+  *mutlu deÄŸil miydiniz {0}
+  OK
+
+were they not happy @ mutlu deÄŸiller miydi | onlar mutlu deÄŸil miydi
+  *onlar mutlu deÄŸil miydi {0}
+  OK
+
+i have been happy @ mutlu oldum
+  *mutlu oldum {0}
+  OK
+
+she has been happy @ mutlu oldu | o mutlu oldu
+  *mutlu oldu {0}
+  OK
+
+i had been happy @ mutlu olmuÅŸtum
+  *mutlu olmuÅŸtum {0}
+  OK
+
+she had been happy @ mutlu olmuÅŸtu | o mutlu olmuÅŸtu
+  *mutlu olmuÅŸtu {0}
+  OK
+
+have i been happy @ mutlu oldum mu
+  *mutlu oldum mu {0}
+  OK
+
+has she been happy @ mutlu oldu mu | o mutlu oldu mu
+  *mutlu oldu mu {0}
+  OK
+
+had i been happy @ mutlu olmuÅŸ muydum
+  *mutlu olmuÅŸ muydum {0}
+  OK
+
+had she been happy @ mutlu olmuÅŸ muydu | o mutlu olmuÅŸ muydu
+  *mutlu olmuÅŸ muydu {0}
+  OK
+
+i haven't been happy @ mutlu olmadÄ±m
+  *mutlu olmadÄ±m {0}
+  OK
+
+she hasn't been happy @ mutlu olmadÄ± | o mutlu olmadÄ±
+  *mutlu olmadÄ± {0}
+  OK
+
+i hadn't been happy @ mutlu olmamÄ±ÅŸtÄ±m
+  *mutlu olmamÄ±ÅŸtÄ±m {0}
+  OK
+
+she hadn't been happy @ mutlu olmamÄ±ÅŸtÄ± | o mutlu olmamÄ±ÅŸtÄ±
+  *mutlu olmamÄ±ÅŸtÄ± {0}
+  OK
+
+haven't i been happy @ mutlu olmadÄ±m mÄ±
+  *mutlu olmadÄ±m mÄ± {0}
+  OK
+
+hasn't she been happy @ mutlu olmadÄ± mÄ± | o mutlu olmadÄ± mÄ±
+  *mutlu olmadÄ± mÄ± {0}
+  OK
+
+hadn't i been happy @ mutlu olmamÄ±ÅŸ mÄ±ydÄ±m
+  *mutlu olmamÄ±ÅŸ mÄ±ydÄ±m {0}
+  OK
+
+hadn't she been happy @ mutlu olmamÄ±ÅŸ mÄ±ydÄ± | o mutlu olmamÄ±ÅŸ mÄ±ydÄ±
+  *mutlu olmamÄ±ÅŸ mÄ±ydÄ± {0}
+  OK
+
+i am being happy @ mutlu oluyorum
+  *mutlu oluyorum {0}
+  OK
+
+she is being happy @ mutlu oluyor | o mutlu oluyor
+  *mutlu oluyor {0}
+  OK
+
+i was being happy @ mutlu oluyordum
+  *mutlu oluyordum {0}
+  OK
+
+she was being happy @ mutlu oluyordu | o mutlu oluyordu
+  *mutlu oluyordu {0}
+  OK
+
+am i being happy @ mutlu oluyor muyum
+  *mutlu oluyor muyum {0}
+  OK
+
+is she being happy @ mutlu oluyor mu | o mutlu oluyor mu
+  *mutlu oluyor mu {0}
+  OK
+
+was i being happy @ mutlu oluyor muydum
+  *mutlu oluyor muydum {0}
+  OK
+
+was she being happy @ mutlu oluyor muydu | o mutlu oluyor muydu
+  *mutlu oluyor muydu {0}
+  OK
+
+i am not being happy @ mutlu olmuyorum
+  *mutlu olmuyorum {0}
+  OK
+
+she isn't being happy @ mutlu olmuyor | o mutlu olmuyor
+  *mutlu olmuyor {0}
+  OK
+
+i wasn't being happy @ mutlu olmuyordum
+  *mutlu olmuyordum {0}
+  OK
+
+she wasn't being happy @ mutlu olmuyordu | o mutlu olmuyordu
+  *mutlu olmuyordu {0}
+  OK
+
+am i not being happy @ mutlu olmuyor muyum
+  *mutlu olmuyor muyum {0}
+  OK
+
+isn't she being happy @ mutlu olmuyor mu | o mutlu olmuyor mu
+  *mutlu olmuyor mu {0}
+  OK
+
+wasn't i being happy @ mutlu olmuyor muydum
+  *mutlu olmuyor muydum {0}
+  OK
+
+wasn't she being happy @ mutlu olmuyor muydu | o mutlu olmuyor muydu
+  *mutlu olmuyor muydu {0}
+  OK
+
+i will be happy @ mutlu olacaÄŸÄ±m
+  *mutlu olacaÄŸÄ±m {0}
+  OK
+
+i would be happy @ mutlu olacaktÄ±m
+  *mutlu olurdum {0}
+  NOK
+
+i can be happy @ mutlu olabilirim
+  *mutlu olabilirim {0}
+  OK
+
+i could be happy @ mutlu olabilirdim
+  *mutlu olabilirdim {0}
+  OK
+
+i may be happy @ mutlu olabilirim
+  *mutlu olabilirim {0}
+  OK
+
+i might be happy @ mutlu olabilirdim
+  *mutlu olabilirdim {0}
+  OK
+
+i must be happy @ mutlu olmalÄ±yÄ±m
+  *mutlu olmalÄ±yÄ±m {0}
+  OK
+
+i have to be happy @ mutlu olmak zorundayÄ±m
+  *mutlu olmak zorundayÄ±m {0}
+  OK
+
+i won't be happy @ mutlu olmayacaÄŸÄ±m
+  *mutlu olmayacaÄŸÄ±m {0}
+  OK
+
+i wouldn't be happy @ mutlu olmayacaktÄ±m
+  *mutlu olmazdÄ±m {0}
+  NOK
+
+i can't be happy @ mutlu olamam
+  *mutlu olamam {0}
+  OK
+
+i couldn't be happy @ mutlu olamazdÄ±m
+  *mutlu olamazdÄ±m {0}
+  OK
+
+i mayn't be happy @ mutlu olmayabilirim
+  *mutlu olmayabilirim {0}
+  OK
+
+i mightn't be happy @ mutlu olmayabilirdim
+  *mutlu olmayabilirdim {0}
+  OK
+
+i mustn't be happy @ mutlu olmamalÄ±yÄ±m
+  *mutlu olmamalÄ±yÄ±m {0}
+  OK
+
+i don't have to be happy @ mutlu olmak zorunda deÄŸilim
+  *mutlu olmak zorunda deÄŸilim {0}
+  OK
+
+will i be happy @ mutlu olacak mÄ±yÄ±m
+  *mutlu olacak mÄ±yÄ±m {0}
+  OK
+
+would i be happy @ mutlu olacak mÄ±ydÄ±m
+  *mutlu olur muydum {0}
+  NOK
+
+can i be happy @ mutlu olabilir miyim
+  *mutlu olabilir miyim {0}
+  OK
+
+could i be happy @ mutlu olabilir miydim
+  *mutlu olabilir miydim {0}
+  OK
+
+may i be happy @ mutlu olabilir miyim
+  *mutlu olabilir miyim {0}
+  OK
+
+might i be happy @ mutlu olabilir miydim
+  *mutlu olabilir miydim {0}
+  OK
+
+must i be happy @ mutlu olmalÄ± mÄ±yÄ±m
+  *mutlu olmalÄ± mÄ±yÄ±m {0}
+  OK
+
+do i have to be happy @ mutlu olmak zorunda mÄ±yÄ±m
+  *mutlu olmak zorunda mÄ±yÄ±m {0}
+  OK
+
+won't i be happy @ mutlu olmayacak mÄ±yÄ±m
+  *mutlu olmayacak mÄ±yÄ±m {0}
+  OK
+
+wouldn't i be happy @ mutlu olmayacak mÄ±ydÄ±m
+  *mutlu olmaz mÄ±ydÄ±m {0}
+  NOK
+
+can't i be happy @ mutlu olamaz mÄ±yÄ±m
+  *mutlu olamaz mÄ±yÄ±m {0}
+  OK
+
+couldn't i be happy @ mutlu olamaz mÄ±ydÄ±m
+  *mutlu olamaz mÄ±ydÄ±m {0}
+  OK
+
+mayn't i be happy @ mutlu olmayabilir miyim
+  *mutlu olmayabilir miyim {0}
+  OK
+
+mightn't i be happy @ mutlu olmayabilir miydim
+  *mutlu olmayabilir miydim {0}
+  OK
+
+mustn't i be happy @ mutlu olmamalÄ± mÄ±yÄ±m
+  *mutlu olmamalÄ± mÄ±yÄ±m {0}
+  OK
+
+don't i have to be happy @ mutlu olmak zorunda deÄŸil miyim
+  *mutlu olmak zorunda deÄŸil miyim {0}
+  OK
+
+it is a car @ o bir araba
+  *o bir araba {0}
+  OK
+
+is it a car @ o bir araba mÄ±
+  *o bir araba mÄ± {0}
+  OK
+
+it isn't a car @ o bir araba deÄŸil
+  *o bir araba deÄŸil {0}
+  OK
+
+isn't it a car @ o bir araba deÄŸil mi
+  *o bir araba deÄŸil mi {0}
+  OK
+
+it is cars @ o arabalar
+  *o arabalar {0}
+  OK
+
+is it cars @ o arabalar mÄ±
+  *o arabalar mÄ± {0}
+  OK
+
+it isn't cars @ o arabalar deÄŸil
+  *o arabalar deÄŸil {0}
+  OK
+
+isn't it cars @ o arabalar deÄŸil mi
+  *o arabalar deÄŸil mi {0}
+  OK
+
+they are a car @ onlar bir araba | onlar bir arabalar
+  *onlar bir araba {0}
+  OK
+
+are they a car @ onlar bir araba mÄ± | onlar bir arabalar mÄ±
+  *onlar bir araba mÄ± {0}
+  OK
+
+they aren't a car @ onlar bir araba deÄŸil | onlar bir araba deÄŸiller
+  *onlar bir araba deÄŸil {0}
+  OK
+
+aren't they a car @ onlar bir araba deÄŸil mi | onlar bir araba deÄŸiller mi
+  *onlar bir araba deÄŸil mi {0}
+  OK
+
+they are cars @ onlar arabalar | arabalar # note double -lar
+  *onlar arabalar {0}
+  OK
+
+are they cars @ onlar arabalar mÄ± | arabalar mÄ±
+  *onlar arabalar mÄ± {0}
+  OK
+
+they aren't cars @ onlar arabalar deÄŸil | arabalar deÄŸiller
+  *onlar arabalar deÄŸil {0}
+  OK
+
+aren't they cars @ onlar arabalar deÄŸil mi | arabalar deÄŸiller mi
+  *onlar arabalar deÄŸil mi {0}
+  OK
+
+the car is cars @ araba arabalar
+  *araba arabalar {0}
+  OK
+
+is the car cars @ araba arabalar mÄ±
+  *araba arabalar mÄ± {0}
+  OK
+
+the car isn't cars @ araba arabalar deÄŸil
+  *araba arabalar deÄŸil {0}
+  OK
+
+isn't the car cars @ araba arabalar deÄŸil mi
+  *araba arabalar deÄŸil mi {0}
+  OK
+
+the car is a car @ araba bir araba
+  *araba bir araba {0}
+  OK
+
+is the car a car @ araba bir araba mÄ±
+  *araba bir araba mÄ± {0}
+  OK
+
+the car isn't a car @ araba bir araba deÄŸil
+  *araba bir araba deÄŸil {0}
+  OK
+
+isn't the car a car @ araba bir araba deÄŸil mi
+  *araba bir araba deÄŸil mi {0}
+  OK
+
+the cars are cars @ arabalar arabalar
+  *arabalar arabalar {0}
+  OK
+
+are the cars cars @ arabalar arabalar mÄ±
+  *arabalar arabalar mÄ± {0}
+  OK
+
+the cars aren't cars @ arabalar arabalar deÄŸil | arabalar arabalar deÄŸiller
+  *arabalar arabalar deÄŸil {0}
+  OK
+
+aren't the cars cars @ arabalar arabalar deÄŸil mi | arabalar arabalar deÄŸiller mi
+  *arabalar arabalar deÄŸil mi {0}
+  OK
+
+the cars are a car @ arabalar bir araba | arabalar bir arabalar
+  *arabalar bir araba {0}
+  OK
+
+are the cars a car @ arabalar bir araba mÄ± | arabalar bir arabalar mÄ±
+  *arabalar bir araba mÄ± {0}
+  OK
+
+the cars aren't a car @ arabalar bir araba deÄŸil | arabalar bir araba deÄŸiller
+  *arabalar bir araba deÄŸil {0}
+  OK
+
+aren't the cars a car @ arabalar bir araba deÄŸil mi | arabalar bir araba deÄŸiller mi
+  *arabalar bir araba deÄŸil mi {0}
+  OK
+
+there are a car @ *
+  EXPECTED ParseError: UnifyU error feat=num src=sing dst=plur super=SentNorm#505 sub=NP'#979
+
+there is cars @ *
+  EXPECTED ParseError: UnifyU error feat=num src=plur dst=sing super=SentNorm#505 sub=NP'#979
+
+there were a car @ *
+  EXPECTED ParseError: UnifyU error feat=num src=sing dst=plur super=SentNorm#505 sub=NP'#979
+
+there was cars @ *
+  EXPECTED ParseError: UnifyU error feat=num src=plur dst=sing super=SentNorm#505 sub=NP'#979
+
+there have been a car @ *
+  EXPECTED ParseError: UnifyU error feat=num src=sing dst=plur super=SentNorm#506 sub=NP'#979
+
+there has been cars @ *
+  EXPECTED ParseError: UnifyU error feat=num src=plur dst=sing super=SentNorm#506 sub=NP'#979
+
+there is a car @ bir araba var
+  *bir araba var {0}
+  OK
+
+is there a car @ bir araba var mÄ±
+  *bir araba var mÄ± {0}
+  OK
+
+there isn't a car @ bir araba yok
+  *bir araba yok {0}
+  OK
+
+isn't there a car @ bir araba yok mu
+  *bir araba yok mu {0}
+  OK
+
+there are cars @ arabalar var | arabalar varlar
+  *arabalar var {0}
+  OK
+
+are there cars @ arabalar var mÄ± | arabalar varlar mÄ±
+  ParseError: UnifyU error feat=num src=plur dst=sing super=SentInv#514 sub=AuxBePos#1055
+
+there aren't cars @ arabalar yok | arabalar yoklar
+  *arabalar yok {0}
+  OK
+
+aren't there cars @ arabalar yok mu | arabalar yoklar mÄ±
+  ParseError: UnifyU error feat=num src=plur dst=sing super=SentInv#515 sub=AuxBeNeg#1063
+
+there was a car @ bir araba vardÄ±
+  *bir araba vardÄ± {0}
+  OK
+
+was there a car @ bir araba var mÄ±ydÄ±
+  *bir araba var mÄ±ydÄ± {0}
+  OK
+
+there wasn't a car @ bir araba yoktu
+  *bir araba yoktu {0}
+  OK
+
+wasn't there a car @ bir araba yok muydu
+  *bir araba yok muydu {0}
+  OK
+
+there were cars @ arabalar vardÄ±
+  *arabalar vardÄ±lar {0}
+  NOK
+
+were there cars @ arabalar var mÄ±ydÄ±
+  ParseError: UnifyU error feat=num src=plur dst=sing super=SentInv#514 sub=AuxBePos#1058
+
+there weren't cars @ arabalar yoktu
+  *arabalar yoktular {0}
+  NOK
+
+weren't there cars @ arabalar yok muydu
+  ParseError: UnifyU error feat=num src=plur dst=sing super=SentInv#515 sub=AuxBeNeg#1066
+
+there has been a car @ bir araba oldu
+  *bir araba ol oldu {0}
+  NOK
+
+has there been a car @ bir araba oldu mu
+  *bir araba ol oldu mu {0}
+  NOK
+
+there hasn't been a car @ bir araba olmadÄ±
+  *bir araba ol olmadÄ± {0}
+  NOK
+
+hasn't there been a car @ bir araba olmadÄ± mÄ±
+  *bir araba ol olmadÄ± mÄ± {0}
+  NOK
+
+there have been cars @ arabalar oldu
+  *arabalar ol oldular {0}
+  NOK
+
+have there been cars @ arabalar oldu mu
+  ParseError: UnifyU error feat=per src=1 dst=3 super=SentInv#516 sub=AuxHavePos#1067
+
+there haven't been cars @ arabalar olmadÄ±
+  *arabalar ol olmadÄ±lar {0}
+  NOK
+
+haven't there been cars @ arabalar olmadÄ± mÄ±
+  ParseError: UnifyU error feat=num src=plur dst=sing super=SentInv#517 sub=AuxHaveNeg#1076
+
+there had been cars @ arabalar olmuÅŸtu
+  *arabalar ol olmuÅŸtular {0}
+  NOK
+
+had there been cars @ arabalar olmuÅŸ muydu
+  *arabalar ol olmuÅŸ muydu {0}
+  NOK
+
+there hadn't been cars @ arabalar olmamÄ±ÅŸtÄ±
+  *arabalar ol olmamÄ±ÅŸtÄ±lar {0}
+  NOK
+
+hadn't there been cars @ arabalar olmamÄ±ÅŸ mÄ±ydÄ±
+  *arabalar ol olmamÄ±ÅŸ mÄ±ydÄ± {0}
+  NOK
+
+there will be cars @ arabalar olacak
+  *arabalar olacak {0}
+  OK
+
+will there be cars @ arabalar olacak mÄ±
+  *arabalar olacak mÄ± {0}
+  OK
+
+there won't be cars @ arabalar olmayacak
+  *arabalar olmayacak {0}
+  OK
+
+won't there be cars @ arabalar olmayacak mÄ±
+  *arabalar olmayacak mÄ± {0}
+  OK
+
+there would be cars @ arabalar olacaktÄ± | arabalar olurdu
+  *arabalar olurdular {0}
+  NOK
+
+would there be cars @ arabalar olacak mÄ±ydÄ± | arabalar olur muydu
+  *arabalar olur muydu {0}
+  OK
+
+there wouldn't be cars @ arabalar olmayacaktÄ± | arabalar olmazdÄ±
+  *arabalar olmazdÄ±lar {0}
+  NOK
+
+wouldn't there be cars @ arabalar olmayacak mÄ±ydÄ± | arabalar olmaz mÄ±ydÄ±
+  *arabalar olmaz mÄ±ydÄ± {0}
+  OK
+
+there can be cars @ arabalar olabilir
+  *arabalar olabilir {0}
+  OK
+
+can there be cars @ arabalar olabilir mi
+  *arabalar olabilir mi {0}
+  OK
+
+there can't be cars @ arabalar olamaz
+  *arabalar olamazlar {0}
+  NOK
+
+can't there be cars @ arabalar olamaz mÄ±
+  *arabalar olamaz mÄ± {0}
+  OK
+
+there could be cars @ arabalar olabilirdi
+  *arabalar olabilirdiler {0}
+  NOK
+
+could there be cars @ arabalar olabilir miydi
+  *arabalar olabilir miydi {0}
+  OK
+
+there couldn't be cars @ arabalar olamazdÄ±
+  *arabalar olamazdÄ±lar {0}
+  NOK
+
+couldn't there be cars @ arabalar olamaz mÄ±ydÄ±
+  *arabalar olamaz mÄ±ydÄ± {0}
+  OK
+
+there may be cars @ arabalar olabilir
+  *arabalar olabilir {0}
+  OK
+
+may there be cars @ arabalar olabilir mi
+  *arabalar olabilir mi {0}
+  OK
+
+there mayn't be cars @ arabalar olamaz | arabalar olmayabilir
+  *arabalar olmayabilir {0}
+  OK
+
+mayn't there be cars @ arabalar olamaz mÄ± | arabalar olmayabilir mi
+  *arabalar olmayabilir mi {0}
+  OK
+
+there might be cars @ arabalar olabilirdi
+  *arabalar olabilirdiler {0}
+  NOK
+
+might there be cars @ arabalar olabilir miydi
+  *arabalar olabilir miydi {0}
+  OK
+
+there mightn't be cars @ arabalar olamazdÄ± | arabalar olmayabilirdi
+  *arabalar olmayabilirdiler {0}
+  NOK
+
+mightn't there be cars @ arabalar olamaz mÄ±ydÄ± | arabalar olmayabilir miydi
+  *arabalar olmayabilir miydi {0}
+  OK
+
+there must be cars @ arabalar olmalÄ±
+  *arabalar olmalÄ± {0}
+  OK
+
+must there be cars @ arabalar olmalÄ± mÄ±
+  *arabalar olmalÄ± mÄ± {0}
+  OK
+
+there mustn't be cars @ arabalar olmamalÄ±
+  *arabalar olmamalÄ± {0}
+  OK
+
+mustn't there be cars @ arabalar olmamalÄ± mÄ±
+  *arabalar olmamalÄ± mÄ± {0}
+  OK
+
+go @ git
+  *git {0}
+  OK
+
+don't go @ gitme
+  *gitme {0}
+  OK
+
+do not go @ gitme
+  *gitme {0}
+  OK
+
+don't have to go @ gitmek zorunda olma
+  *gitmek zorunda olma {0}
+  OK
+
+be watched @ seyredil
+  *seyredil {0}
+  OK
+
+don't be watched @ seyredilme
+  *seyredilme {0}
+  OK
+
+be happy @ mutlu ol
+  *mutlu ol {0}
+  OK
+
+don't be happy @ mutlu olma
+  *mutlu olma {0}
+  OK
+
+be afraid @ kork
+  *kork {0}
+  OK
+
+don't be afraid @ korkma
+  *korkma {0}
+  OK
+
+let's go @ gidelim
+  *gidelim {0}
+  OK
+
+let's not go @ gitmeyelim
+  *gitmeyelim {0}
+  OK
+
+let's be happy @ mutlu olalÄ±m
+  *mutlu olalÄ±m {0}
+  OK
+
+let's not be happy @ mutlu olmayalÄ±m
+  *mutlu olmayalÄ±m {0}
+  OK
+
+let's be afraid @ korkalÄ±m
+  *korkalÄ±m {0}
+  OK
+
+let's not be afraid @ korkmayalÄ±m
+  *korkmayalÄ±m {0}
+  OK
+
+shall we go @ gidelim mi
+  *gidelim mi {0}
+  *gidecek miyiz {0}
+  OK
+
+shall we not go @ gitmeyelim mi
+  *gitmeyelim mi {0}
+  *gitmeyecek miyiz {0}
+  OK
+
+i am watched @ seyredilirim
+  *seyredilirim {0}
+  OK
+
+i am not watched @ seyredilmem
+  *seyredilmem {0}
+  OK
+
+am i watched @ seyredilir miyim
+  *seyredilir miyim {0}
+  OK
+
+am i not watched @ seyredilmez miyim
+  *seyredilmez miyim {0}
+  OK
+
+i was watched @ seyredildim
+  *seyredildim {0}
+  OK
+
+i wasn't watched @ seyredilmedim
+  *seyredilmedim {0}
+  OK
+
+was i watched @ seyredildim mi
+  *seyredildim mi {0}
+  OK
+
+wasn't i watched @ seyredilmedim mi
+  *seyredilmedim mi {0}
+  OK
+
+i am being watched @ seyrediliyorum
+  *seyrediliyorum {0}
+  OK
+
+i am not being watched @ seyredilmiyorum
+  *seyredilmiyorum {0}
+  OK
+
+am i being watched @ seyrediliyor muyum
+  *seyrediliyor muyum {0}
+  OK
+
+am i not being watched @ seyredilmiyor muyum
+  *seyredilmiyor muyum {0}
+  OK
+
+i was being watched @ seyrediliyordum
+  *seyrediliyordum {0}
+  OK
+
+i wasn't being watched @ seyredilmiyordum
+  *seyredilmiyordum {0}
+  OK
+
+was i being watched @ seyrediliyor muydum
+  *seyrediliyor muydum {0}
+  OK
+
+wasn't i being watched @ seyredilmiyor muydum
+  *seyredilmiyor muydum {0}
+  OK
+
+i have been watched @ seyredildim
+  *seyredildim {0}
+  OK
+
+i haven't been watched @ seyredilmedim
+  *seyredilmedim {0}
+  OK
+
+have i been watched @ seyredildim mi
+  *seyredildim mi {0}
+  OK
+
+haven't i been watched @ seyredilmedim mi
+  *seyredilmedim mi {0}
+  OK
+
+i had been watched @ seyredilmiÅŸtim
+  *seyredilmiÅŸtim {0}
+  OK
+
+i hadn't been watched @ seyredilmemiÅŸtim
+  *seyredilmemiÅŸtim {0}
+  OK
+
+had i been watched @ seyredilmiÅŸ miydim
+  *seyredilmiÅŸ miydim {0}
+  OK
+
+hadn't i been watched @ seyredilmemiÅŸ miydim
+  *seyredilmemiÅŸ miydim {0}
+  OK
+
+i will be watched @ seyredileceÄŸim
+  *seyredileceÄŸim {0}
+  OK
+
+i won't be watched @ seyredilmeyeceÄŸim
+  *seyredilmeyeceÄŸim {0}
+  OK
+
+will i be watched @ seyredilecek miyim
+  *seyredilecek miyim {0}
+  OK
+
+won't i be watched @ seyredilmeyecek miyim
+  *seyredilmeyecek miyim {0}
+  OK
+
+i will have been watched @ seyredilmiÅŸ olacaÄŸÄ±m
+  *seyredilmiÅŸ olacaÄŸÄ±m {0}
+  OK
+
+i won't have been watched @ seyredilmiÅŸ olmayacaÄŸÄ±m
+  *seyredilmiÅŸ olmayacaÄŸÄ±m {0}
+  OK
+
+will i have been watched @ seyredilmiÅŸ olacak mÄ±yÄ±m
+  *seyredilmiÅŸ olacak mÄ±yÄ±m {0}
+  OK
+
+won't i have been watched @ seyredilmiÅŸ olmayacak mÄ±yÄ±m
+  *seyredilmiÅŸ olmayacak mÄ±yÄ±m {0}
+  OK
+
+i can be watched @ seyredilebilirim
+  *seyredilebilirim {0}
+  OK
+
+i can't be watched @ seyredilemem
+  *seyredilemem {0}
+  OK
+
+can i be watched @ seyredilebilir miyim
+  *seyredilebilir miyim {0}
+  OK
+
+can't i be watched @ seyredilemez miyim
+  *seyredilemez miyim {0}
+  OK
+
+i may be watched @ seyredilebilirim
+  *seyredilebilirim {0}
+  OK
+
+i mayn't be watched @ seyredilmeyebilirim
+  *seyredilmeyebilirim {0}
+  OK
+
+may i be watched @ seyredilebilir miyim
+  *seyredilebilir miyim {0}
+  OK
+
+mayn't i be watched @ seyredilmeyebilir miyim
+  *seyredilmeyebilir miyim {0}
+  OK
+
+i must be watched @ seyredilmeliyim
+  *seyredilmeliyim {0}
+  OK
+
+i mustn't be watched @ seyredilmemeliyim
+  *seyredilmemeliyim {0}
+  OK
+
+must i be watched @ seyredilmeli miyim
+  *seyredilmeli miyim {0}
+  OK
+
+mustn't i be watched @ seyredilmemeli miyim
+  *seyredilmemeli miyim {0}
+  OK
+
+i'm going to be watched @ seyredileceÄŸim
+  *seyredileceÄŸim {0}
+  *seyredilmek iÃ§in gidiyorum {100}
+  OK
+
+i am not going to be watched @ seyredilmeyeceÄŸim
+  *seyredilmeyeceÄŸim {0}
+  *seyredilmek iÃ§in gitmiyorum {100}
+  OK
+
+am i going to be watched @ seyredilecek miyim
+  *seyredilecek miyim {0}
+  OK
+
+am i not going to be watched @ seyredilmeyecek miyim
+  *seyredilmeyecek miyim {0}
+  OK
+
+i was going to be watched @ seyredilecektim
+  *seyredilirdim {0}
+  *seyredilmek iÃ§in gidiyordum {100}
+  NOK
+
+i wasn't going to be watched @ seyredilmeyecektim
+  *seyredilmezdim {0}
+  *seyredilmek iÃ§in gitmiyordum {100}
+  NOK
+
+was i going to be watched @ seyredilecek miydim
+  *seyredilir miydim {0}
+  NOK
+
+wasn't i going to be watched @ seyredilmeyecek miydim
+  *seyredilmez miydim {0}
+  NOK
+
+i have to go @ gitmek zorundayÄ±m
+  *gitmek zorundayÄ±m {0}
+  OK
+
+i don't have to go @ gitmek zorunda deÄŸilim
+  *gitmek zorunda deÄŸilim {0}
+  OK
+
+do i have to go @ gitmek zorunda mÄ±yÄ±m
+  *gitmek zorunda mÄ±yÄ±m {0}
+  OK
+
+don't i have to go @ gitmek zorunda deÄŸil miyim
+  *gitmek zorunda deÄŸil miyim {0}
+  OK
+
+i had to go @ gitmek zorundaydÄ±m
+  *gitmek zorundaydÄ±m {0}
+  OK
+
+i didn't have to go @ gitmek zorunda deÄŸildim
+  *gitmek zorunda deÄŸildim {0}
+  OK
+
+did i have to go @ gitmek zorunda mÄ±ydÄ±m
+  *gitmek zorunda mÄ±ydÄ±m {0}
+  OK
+
+didn't i have to go @ gitmek zorunda deÄŸil miydim
+  *gitmek zorunda deÄŸil miydim {0}
+  OK
+
+i will have to go @ gitmek zorunda olacaÄŸÄ±m
+  *gitmek zorunda olacaÄŸÄ±m {0}
+  OK
+
+i won't have to go @ gitmek zorunda olmayacaÄŸÄ±m
+  *gitmek zorunda olmayacaÄŸÄ±m {0}
+  OK
+
+will i have to go @ gitmek zorunda olacak mÄ±yÄ±m
+  *gitmek zorunda olacak mÄ±yÄ±m {0}
+  OK
+
+won't i have to go @ gitmek zorunda olmayacak mÄ±yÄ±m
+  *gitmek zorunda olmayacak mÄ±yÄ±m {0}
+  OK
+
+i would have to go @ gitmek zorunda olacaktÄ±m
+  *gitmek zorunda olurdum {0}
+  NOK
+
+i wouldn't have to go @ gitmek zorunda olmayacaktÄ±m
+  *gitmek zorunda olmazdÄ±m {0}
+  NOK
+
+would i have to go @ gitmek zorunda olacak mÄ±ydÄ±m
+  *gitmek zorunda olur muydum {0}
+  NOK
+
+wouldn't i have to go @ gitmek zorunda olmayacak mÄ±ydÄ±m
+  *gitmek zorunda olmaz mÄ±ydÄ±m {0}
+  NOK
+
+i may have to go @ gitmek zorunda olabilirim
+  *gitmek zorunda olabilirim {0}
+  OK
+
+i mayn't have to go @ gitmek zorunda olmayabilirim
+  *gitmek zorunda olmayabilirim {0}
+  OK
+
+may i have to go @ gitmek zorunda olabilir miyim
+  *gitmek zorunda olabilir miyim {0}
+  OK
+
+mayn't i have to go @ gitmek zorunda olmayabilir miyim
+  *gitmek zorunda olmayabilir miyim {0}
+  OK
+
+i have a car @ bir arabam var | bir arabaya sahibim
+  *bir arabam var {0}
+  OK
+
+do i have a car @ bir arabam var mÄ± | bir arabaya sahip miyim
+  *bir arabam var mÄ± {0}
+  OK
+
+i don't have a car @ bir arabam yok | bir arabaya sahip deÄŸilim
+  *bir arabam yok {0}
+  OK
+
+don't i have a car @ bir arabam yok mu | bir arabaya sahip deÄŸil miyim
+  *bir arabam yok mu {0}
+  OK
+
+she has a car @ onun bir arabasÄ± var | o bir arabaya sahip
+  *onun bir arabasÄ± var {0}
+  OK
+
+does she have a car @ onun bir arabasÄ± var mÄ± | o bir arabaya sahip mi
+  *onun bir arabasÄ± var mÄ± {0}
+  OK
+
+she doesn't have a car @ onun bir arabasÄ± yok | o bir arabaya sahip deÄŸil
+  *onun bir arabasÄ± yok {0}
+  OK
+
+doesn't she have a car @ onun bir arabasÄ± yok mu | o bir arabaya sahip deÄŸil mi
+  *onun bir arabasÄ± yok mu {0}
+  OK
+
+i had a car @ bir arabam vardÄ± | bir arabaya sahiptim
+  *bir arabam vardÄ± {0}
+  OK
+
+did i have a car @ bir arabam var mÄ±ydÄ± | bir arabaya sahip miydim
+  *bir arabam var mÄ±ydÄ± {0}
+  OK
+
+i didn't have a car @ bir arabam yoktu | bir arabaya sahip deÄŸildim
+  *bir arabam yoktu {0}
+  OK
+
+didn't i have a car @ bir arabam yok muydu | bir arabaya sahip deÄŸil miydim
+  *bir arabam yok muydu {0}
+  OK
+
+i will have a car @ bir arabam olacak | bir arabaya sahip olacaÄŸÄ±m
+  *bir arabam olacak {0}
+  OK
+
+will i have a car @ bir arabam olacak mÄ± | bir arabaya sahip olacak mÄ±yÄ±m
+  *bir arabam olacak mÄ± {0}
+  OK
+
+i won't have a car @ bir arabam olmayacak | bir arabaya sahip olmayacaÄŸÄ±m
+  *bir arabam olmayacak {0}
+  OK
+
+won't i have a car @ bir arabam olmayacak mÄ± | bir arabaya sahip olmayacak mÄ±yÄ±m
+  *bir arabam olmayacak mÄ± {0}
+  OK
+
+i am able to go @ gidebilirim
+  *gidebilirim {0}
+  OK
+
+i am not able to go @ gidemem
+  *gidemem {0}
+  OK
+
+am i able to go @ gidebilir miyim
+  *gidebilir miyim {0}
+  OK
+
+am i not able to go @ gidemez miyim
+  *gidemez miyim {0}
+  OK
+
+i was able to go @ gidebilirdim | gidebildim
+  *gidebilirdim {0}
+  OK
+
+i was not able to go @ gidemezdim | gidemedim
+  *gidemezdim {0}
+  OK
+
+was i able to go @ gidebilir miydim | gidebildim mi
+  *gidebilir miydim {0}
+  OK
+
+wasn't i able to go @ gidemez miydim | gidemedim mi
+  *gidemez miydim {0}
+  OK
+
+i will be able to go @ gidebileceÄŸim
+  *gidebileceÄŸim {0}
+  OK
+
+i won't be able to go @ gidemeyeceÄŸim
+  *gidemeyeceÄŸim {0}
+  OK
+
+will i be able to go @ gidebilecek miyim
+  *gidebilecek miyim {0}
+  OK
+
+won't i be able to go @ gidemeyecek miyim
+  *gidemeyecek miyim {0}
+  OK
+
+i would be able to go @ gidebilecektim
+  *gidebilecektim {0}
+  OK
+
+i wouldn't be able to go @ gidemeyecektim
+  *gidemeyecektim {0}
+  OK
+
+would i be able to go @ gidebilecek miydim
+  *gidebilecek miydim {0}
+  OK
+
+wouldn't i be able to go @ gidemeyecek miydim
+  *gidemeyecek miydim {0}
+  OK
+
+i must be able to go @ gidebilmeliyim
+  *gidebilmeliyim {0}
+  OK
+
+i mustn't be able to go @ gidebilmemeliyim | gidememeliyim
+  *gidememeliyim {0}
+  OK
+
+must i be able to go @ gidebilmeli miyim
+  *gidebilmeli miyim {0}
+  OK
+
+mustn't i be able to go @ gidebilmemeli miyim | gidememeli miyim
+  *gidememeli miyim {0}
+  OK
+
+i used to go @ giderdim
+  *gidirdim {0}
+  NOK
+
+i didn't use to go @ gitmezdim
+  *gitmezdim {0}
+  OK
+
+did i use to go @ gider miydim
+  *gidir miydiyim {0}
+  *gidir miydim {0}
+  NOK
+
+didn't i use to go @ gitmez miydim
+  *gitmez miydim {0}
+  OK
+
+i am used to going @ gitmeye alÄ±ÅŸkÄ±nÄ±m
+  ParseError: Parse is not possible at position 4: i am used to [* going *] 
+
+i am not used to going @ gitmeye alÄ±ÅŸkÄ±n deÄŸilim
+  ParseError: Parse is not possible at position 5: i am not used to [* going *] 
+
+am i used to going @ gitmeye alÄ±ÅŸkÄ±n mÄ±yÄ±m
+  ParseError: Parse is not possible at position 4: am i used to [* going *] 
+
+am i not used to going @ gitmeye alÄ±ÅŸkÄ±n deÄŸil miyim
+  ParseError: Parse is not possible at position 5: am i not used to [* going *] 
+
+i am afraid @ korkarÄ±m | korkuyorum
+  *korkuyorum {0}
+  OK
+
+i am not afraid @ korkmam | korkmuyorum
+  *korkmuyorum {0}
+  OK
+
+am i afraid @ korkar mÄ±yÄ±m | korkuyor muyum
+  *korkuyor muyum {0}
+  OK
+
+am i not afraid @ korkmaz mÄ±yÄ±m | korkmuyor muyum
+  *korkmuyor muyum {0}
+  OK
+
+i was afraid @ korkardÄ±m | korkuyordum
+  *korkuyordum {0}
+  OK
+
+i wasn't afraid @ korkmazdÄ±m | korkmuyordum
+  *korkmuyordum {0}
+  OK
+
+was i afraid @ korkar mÄ±ydÄ±m | korkuyor muydum
+  *korkuyor muydum {0}
+  OK
+
+wasn't i afraid @ korkmaz mÄ±ydÄ±m | korkmuyor muydum
+  *korkmuyor muydum {0}
+  OK
+
+i will be afraid @ korkacaÄŸÄ±m
+  *korkacaÄŸÄ±m {0}
+  OK
+
+i won't be afraid @ korkmayacaÄŸÄ±m
+  *korkmayacaÄŸÄ±m {0}
+  OK
+
+will i be afraid @ korkacak mÄ±yÄ±m
+  *korkacak mÄ±yÄ±m {0}
+  OK
+
+won't i be afraid @ korkmayacak mÄ±yÄ±m
+  *korkmayacak mÄ±yÄ±m {0}
+  OK
+
+i can be afraid @ korkabilirim | korkabiliyorum
+  *korkabilirim {0}
+  OK
+
+i can't be afraid @ korkamam | korkamÄ±yorum
+  *korkamam {0}
+  OK
+
+can i be afraid @ korkabilir miyim | korkabiliyor muyum
+  *korkabilir miyim {0}
+  OK
+
+can't i be afraid @ korkamaz mÄ±yÄ±m | korkamÄ±yor muyum
+  *korkamaz mÄ±yÄ±m {0}
+  OK
+
+i must be afraid @ korkmalÄ±yÄ±m
+  *korkmalÄ±yÄ±m {0}
+  OK
+
+i mustn't be afraid @ korkmamalÄ±yÄ±m
+  *korkmamalÄ±yÄ±m {0}
+  OK
+
+must i be afraid @ korkmalÄ± mÄ±yÄ±m
+  *korkmalÄ± mÄ±yÄ±m {0}
+  OK
+
+mustn't i be afraid @ korkmamalÄ± mÄ±yÄ±m
+  *korkmamalÄ± mÄ±yÄ±m {0}
+  OK
+
+that i go @ gittiÄŸim
+  ParseError: UnifyU error feat=num src=plur dst=sing super=SThatObj#809 sub=VPNorm#527
+
+that i don't go @ gitmediÄŸim
+  ParseError: UnifyU error feat=num src=plur dst=sing super=SThatObj#809 sub=VPNorm#524
+
+that i went @ gittiÄŸim
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#528
+
+that i didn't go @ gitmediÄŸim
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#524
+
+that i have gone @ gittiÄŸim
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#521
+
+that i haven't gone @ gitmediÄŸim
+  ParseError: UnifyU error feat=num src=plur dst=sing super=SThatObj#809 sub=VPNorm#521
+
+that i had gone @ gitmiÅŸ olduÄŸum
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#521
+
+that i hadn't gone @ gitmemiÅŸ olduÄŸum
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#521
+
+that i am going @ gidiyor olduÄŸum
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#520
+
+that i am not going @ gitmiyor olduÄŸum
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#520
+
+that i was going @ gidiyor olduÄŸum
+  ParseError: UnifyU error feat=per src=3 dst=1 super=SThatObj#809 sub=VPNorm#520
+
+that i wasn't going @ gitmiyor olduÄŸum
+  ParseError: UnifyU error feat=per src=3 dst=1 super=SThatObj#809 sub=VPNorm#520
+
+that i will go @ gideceÄŸim
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#522
+
+that i won't go @ gitmeyeceÄŸim
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#522
+
+that i can go @ gidebildiÄŸim
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#522
+
+that i can't go @ gidemediÄŸim
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#522
+
+that i must go @ gitmem gerektiÄŸi | gitmem gereken | gitmek zorunda olduÄŸum
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#522
+
+that i mustn't go @ gitmemem gerektiÄŸi | gitmem gereken | gitmemek zorunda olduÄŸum
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#522
+
+that i have to go @ gitmek zorunda olduÄŸum
+  ParseError: UnifyU error feat=num src=plur dst=sing super=SThatObj#809 sub=VPNorm#527
+
+that i don't have to go @ gitmek zorunda olmadÄ±ÄŸÄ±m
+  ParseError: UnifyU error feat=num src=plur dst=sing super=SThatObj#809 sub=VPNorm#524
+
+that i will have to go @ gitmek zorunda olacaÄŸÄ±m
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#522
+
+that i won't have to go @ gitmek zorunda olmayacaÄŸÄ±m
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#522
+
+that i am happy @ mutlu olduÄŸum
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#520
+
+that i am afraid @ korktuÄŸum | korkuyor olduÄŸum
+  ParseError: UnifyU error feat=gap src=- dst=+ super=SThatObj#809 sub=VPNorm#520
+
+car which goes @ giden araba
+  *giden araba {0}
+  OK
+
+car which doesn't go @ gitmeyen araba
+  *gitmeyen araba {0}
+  OK
+
+cars which go @ giden arabalar
+  *giden arabalar {0}
+  OK
+
+cars which don't go @ gitmeyen arabalar
+  *gitmeyen arabalar {0}
+  OK
+
+car which went @ giden araba
+  *giden araba {0}
+  OK
+
+car which didn't go @ gitmeyen araba
+  *gitmeyen araba {0}
+  OK
+
+car which has gone @ gitmiÅŸ olan araba
+  *gitmiÅŸ olan araba {0}
+  OK
+
+car which hasn't gone @ gitmemiÅŸ olan araba
+  *gitmemiÅŸ olan araba {0}
+  OK
+
+car which had gone @ gitmiÅŸ olan araba
+  *gitmiÅŸ olan araba {0}
+  OK
+
+car which hadn't gone @ gitmemiÅŸ olan araba
+  *gitmemiÅŸ olan araba {0}
+  OK
+
+car which is going @ giden araba
+  *giden araba {0}
+  OK
+
+car which isn't going @ gitmeyen araba
+  *gitmeyen araba {0}
+  OK
+
+cars which are going @ giden arabalar
+  *giden arabalar {0}
+  OK
+
+cars which aren't going @ gitmeyen arabalar
+  *gitmeyen arabalar {0}
+  OK
+
+car which was going @ giden araba
+  *giden araba {0}
+  OK
+
+car which wasn't going @ gitmeyen araba
+  *gitmeyen araba {0}
+  OK
+
+cars which were going @ giden arabalar
+  *giden arabalar {0}
+  OK
+
+cars which weren't going @ gitmeyen arabalar
+  *gitmeyen arabalar {0}
+  OK
+
+car which will go @ gidecek araba
+  *gidecek araba {0}
+  OK
+
+car which won't go @ gitmeyecek araba
+  *gitmeyecek araba {0}
+  OK
+
+car which would go @ gidecek araba
+  *gidecek araba {0}
+  OK
+
+car which wouldn't go @ gitmeyecek araba
+  *gitmeyecek araba {0}
+  OK
+
+car which can go @ gidebilecek araba | gidebilen araba
+  *gidebilen araba {0}
+  OK
+
+car which can't go @ gidemeyecek araba | gidemeyen araba
+  *gidemeyen araba {0}
+  OK
+
+car which could go @ gidebilecek olan araba | gidebilen araba
+  *gidebilen araba {0}
+  OK
+
+car which couldn't go @ gidemeyecek araba | gidemeyen araba
+  *gidemeyen araba {0}
+  OK
+
+car which may go @ gidebilecek araba | gidebilen araba
+  *gidebilen araba {0}
+  OK
+
+car which mayn't go @ gitmeyebilecek araba | gidemeyen araba
+  *gitmeyebilen araba {0}
+  NOK
+
+car which must go @ gitmek zorunda olan araba
+  *gitmek zorunda olan araba {0}
+  OK
+
+car which has to go @ gitmek zorunda olan araba
+  *gitmek zorunda olan araba {0}
+  OK
+
+cars which don't have to go @ gitmek zorunda olmayan arabalar
+  *gitmek zorunda olmayan arabalar {0}
+  OK
+
+car which will be going @ gidiyor olacak araba
+  *gidiyor olacak araba {0}
+  OK
+
+car which would be going @ gidiyor olacak araba
+  *gidiyor olacak araba {0}
+  OK
+
+car which is happy @ mutlu olan araba
+  *mutlu olan araba {0}
+  OK
+
+car which is afraid @ korkan araba
+  *korkan araba {0}
+  OK
+
+whether i go @ gidip gitmediÄŸim
+  ParseError: Parse is not possible at position 0:  [* whether *] i go
+
+whether i went @ gidip gitmediÄŸim
+  ParseError: Parse is not possible at position 0:  [* whether *] i went
+
+whether i am going @ gidiyor olup olmadÄ±ÄŸÄ±m | gidip gitmediÄŸim
+  ParseError: Parse is not possible at position 0:  [* whether *] i am going
+
+whether i was going @ gidiyor olup olmadÄ±ÄŸÄ±m | gidip gitmediÄŸim
+  ParseError: Parse is not possible at position 0:  [* whether *] i was going
+
+whether i have gone @ gidip gitmediÄŸim
+  ParseError: Parse is not possible at position 0:  [* whether *] i have gone
+
+whether i had gone @ gitmiÅŸ olup olmadÄ±ÄŸÄ±m
+  ParseError: Parse is not possible at position 0:  [* whether *] i had gone
+
+whether i will go @ gidip gitmeyeceÄŸim
+  ParseError: Parse is not possible at position 0:  [* whether *] i will go
+
+whether i would go @ gidip gitmeyeceÄŸim
+  ParseError: Parse is not possible at position 0:  [* whether *] i would go
+
+whether i can go @ gidip gidemediÄŸim
+  ParseError: Parse is not possible at position 0:  [* whether *] i can go
+
+whether i could go @ gidip gidemediÄŸim
+  ParseError: Parse is not possible at position 0:  [* whether *] i could go
+
+whether i may go @ gidip gidemeyeceÄŸim | gidip gidemediÄŸim
+  ParseError: Parse is not possible at position 0:  [* whether *] i may go
+
+whether i might go @ gidip gidemeyeceÄŸim | gidip gidemediÄŸim
+  ParseError: Parse is not possible at position 0:  [* whether *] i might go
+
+whether i must go @ gitmek zorunda olup olmadÄ±ÄŸÄ±m
+  ParseError: Parse is not possible at position 0:  [* whether *] i must go
+
+whether i have to go @ gitmek zorunda olup olmadÄ±ÄŸÄ±m
+  ParseError: Parse is not possible at position 0:  [* whether *] i have to go
+
+whether i had to go @ gitmek zorunda olup olmadÄ±ÄŸÄ±m
+  ParseError: Parse is not possible at position 0:  [* whether *] i had to go
+
+whether i am happy @ mutlu olup olmadÄ±ÄŸÄ±m
+  ParseError: Parse is not possible at position 0:  [* whether *] i am happy
+
+whether i am afraid @ korkup korkmadÄ±ÄŸÄ±m
+  ParseError: Parse is not possible at position 0:  [* whether *] i am afraid
+
+if i go @ gidersem
+  ParseError: Parse is not possible at position 3: if i go [* $ *] 
+
+if i don't go @ gitmezsem
+  ParseError: Parse is not possible at position 4: if i don't go [* $ *] 
+
+if i went @ gitseydim
+  ParseError: Parse is not possible at position 3: if i went [* $ *] 
+
+if i didn't go @ gitmeseydim
+  ParseError: Parse is not possible at position 4: if i didn't go [* $ *] 
+
+if i am going @ gidiyorsam
+  ParseError: Parse is not possible at position 4: if i am going [* $ *] 
+
+if i was going @ gidiyorsam | gidiyorduysam
+  ParseError: Parse is not possible at position 4: if i was going [* $ *] 
+
+if i have gone @ gittiysem
+  ParseError: Parse is not possible at position 4: if i have gone [* $ *] 
+
+if i had gone @ gitmiÅŸsem
+  ParseError: Parse is not possible at position 4: if i had gone [* $ *] 
+
+if i will go @ gideceksem
+  ParseError: Parse is not possible at position 4: if i will go [* $ *] 
+
+if i would go @ gideceksem | gidecektiysem
+  ParseError: Parse is not possible at position 4: if i would go [* $ *] 
+
+if i can go @ gidebilirsem
+  ParseError: Parse is not possible at position 4: if i can go [* $ *] 
+
+if i can't go @ gidemezsem
+  ParseError: Parse is not possible at position 4: if i can't go [* $ *] 
+
+if i could go @ gidebilirsem | gidebilirdiysem
+  ParseError: Parse is not possible at position 4: if i could go [* $ *] 
+
+if i may go @ gidebilirsem
+  ParseError: Parse is not possible at position 4: if i may go [* $ *] 
+
+if i might go @ gidebilirsem | gidebilirdiysem
+  ParseError: Parse is not possible at position 4: if i might go [* $ *] 
+
+if i must go @ gitmeliysem
+  ParseError: Parse is not possible at position 4: if i must go [* $ *] 
+
+if i have to go @ gitmek zorundaysam
+  ParseError: Parse is not possible at position 5: if i have to go [* $ *] 
+
+if i don't have to go @ gitmek zorunda deÄŸilsem
+  ParseError: Parse is not possible at position 6: if i don't have to go [* $ *] 
+
+if i had to go @ gitmek zorundaysam | gitmek zorunda idiysem
+  ParseError: Parse is not possible at position 5: if i had to go [* $ *] 
+
+if i am happy @ mutluysam
+  ParseError: Parse is not possible at position 4: if i am happy [* $ *] 
+
+if i am not happy @ mutlu deÄŸilsem
+  ParseError: Parse is not possible at position 5: if i am not happy [* $ *] 
+
+if i am afraid @ korkuyorsam
+  ParseError: Parse is not possible at position 4: if i am afraid [* $ *] 
+
+if i am not afraid @ korkmuyorsam
+  ParseError: Parse is not possible at position 5: if i am not afraid [* $ *] 
+
+as soon as i go @ ben gider gitmez
+  ParseError: Parse is not possible at position 5: as soon as i go [* $ *] 
+
+as soon as i went @ ben gider gitmez
+  ParseError: Parse is not possible at position 5: as soon as i went [* $ *] 
+
+as soon as i am going @ ben gider gitmez | ben gidiyor olur olmaz
+  ParseError: Parse is not possible at position 6: as soon as i am going [* $ *] 
+
+as soon as i was going @ ben gider gitmez | ben gidiyor olur olmaz
+  ParseError: Parse is not possible at position 6: as soon as i was going [* $ *] 
+
+as soon as i have gone @ ben gider gitmez | ben gitmiÅŸ olur olmaz
+  ParseError: Parse is not possible at position 6: as soon as i have gone [* $ *] 
+
+as soon as i had gone @ ben gider gitmez | ben gitmiÅŸ olur olmaz
+  ParseError: Parse is not possible at position 6: as soon as i had gone [* $ *] 
+
+as soon as i will go @ ben gider gitmez
+  ParseError: Parse is not possible at position 6: as soon as i will go [* $ *] 
+
+as soon as i would go @ ben gider gitmez
+  ParseError: Parse is not possible at position 6: as soon as i would go [* $ *] 
+
+as soon as i can go @ ben gider gitmez
+  ParseError: Parse is not possible at position 6: as soon as i can go [* $ *] 
+
+as soon as i could go @ ben gider gitmez
+  ParseError: Parse is not possible at position 6: as soon as i could go [* $ *] 
+
+as soon as i may go @ ben gider gitmez
+  ParseError: Parse is not possible at position 6: as soon as i may go [* $ *] 
+
+as soon as i might go @ ben gider gitmez
+  ParseError: Parse is not possible at position 6: as soon as i might go [* $ *] 
+
+as soon as i must go @ ben gider gitmez
+  ParseError: Parse is not possible at position 6: as soon as i must go [* $ *] 
+
+as soon as i have to go @ ben gitmek zorunda olur olmaz
+  ParseError: Parse is not possible at position 7: as soon as i have to go [* $ *] 
+
+as soon as i had to go @ ben gitmek zorunda olur olmaz
+  ParseError: Parse is not possible at position 7: as soon as i had to go [* $ *] 
+
+as soon as i have a car @ ben bir arabaya sahip olur olmaz
+  ParseError: Parse is not possible at position 7: as soon as i have a car [* $ *] 
+
+as soon as i had a car @ ben bir arabaya sahip olur olmaz
+  ParseError: Parse is not possible at position 7: as soon as i had a car [* $ *] 
+
+as soon as i am happy @ ben mutlu olur olmaz
+  ParseError: Parse is not possible at position 6: as soon as i am happy [* $ *] 
+
+as soon as i am afraid @ ben korkar korkmaz
+  ParseError: Parse is not possible at position 6: as soon as i am afraid [* $ *] 
+
+as soon as i see you @ ben sizi gÃ¶rÃ¼r gÃ¶rmez
+  ParseError: Parse is not possible at position 6: as soon as i see you [* $ *] 
+
+as long as i go @ gittiÄŸim sÃ¼rece
+  ParseError: Parse is not possible at position 5: as long as i go [* $ *] 
+
+as long as i went @ gittiÄŸim sÃ¼rece
+  ParseError: Parse is not possible at position 5: as long as i went [* $ *] 
+
+as long as i am going @ gittiÄŸim sÃ¼rece | gidiyor olduÄŸum sÃ¼rece
+  ParseError: Parse is not possible at position 6: as long as i am going [* $ *] 
+
+as long as i was going @ gittiÄŸim sÃ¼rece | gidiyor olduÄŸum sÃ¼rece
+  ParseError: Parse is not possible at position 6: as long as i was going [* $ *] 
+
+as long as i have gone @ gittiÄŸim sÃ¼rece | gitmiÅŸ olduÄŸum sÃ¼rece
+  ParseError: Parse is not possible at position 6: as long as i have gone [* $ *] 
+
+as long as i had gone @ gittiÄŸim sÃ¼rece | gitmiÅŸ olduÄŸum sÃ¼rece
+  ParseError: Parse is not possible at position 6: as long as i had gone [* $ *] 
+
+as long as i will go @ gideceÄŸim sÃ¼rece
+  ParseError: Parse is not possible at position 6: as long as i will go [* $ *] 
+
+as long as i would go @ gideceÄŸim sÃ¼rece
+  ParseError: Parse is not possible at position 6: as long as i would go [* $ *] 
+
+as long as i can go @ gidebildiÄŸim sÃ¼rece
+  ParseError: Parse is not possible at position 6: as long as i can go [* $ *] 
+
+as long as i could go @ gidebildiÄŸim sÃ¼rece
+  ParseError: Parse is not possible at position 6: as long as i could go [* $ *] 
+
+as long as i may go @ gidebildiÄŸim sÃ¼rece
+  ParseError: Parse is not possible at position 6: as long as i may go [* $ *] 
+
+as long as i might go @ gidebildiÄŸim sÃ¼rece
+  ParseError: Parse is not possible at position 6: as long as i might go [* $ *] 
+
+as long as i must go @ gitmek zorunda olduÄŸum sÃ¼rece
+  ParseError: Parse is not possible at position 6: as long as i must go [* $ *] 
+
+as long as i have to go @ gitmek zorunda olduÄŸum sÃ¼rece
+  ParseError: Parse is not possible at position 7: as long as i have to go [* $ *] 
+
+as long as i had to go @ gitmek zorunda olduÄŸum sÃ¼rece
+  ParseError: Parse is not possible at position 7: as long as i had to go [* $ *] 
+
+as long as i have a car @ bir arabaya sahip olduÄŸum sÃ¼rece
+  ParseError: Parse is not possible at position 7: as long as i have a car [* $ *] 
+
+as long as i had a car @ bir arabaya sahip olduÄŸum sÃ¼rece
+  ParseError: Parse is not possible at position 7: as long as i had a car [* $ *] 
+
+as long as i am happy @ mutlu olduÄŸum sÃ¼rece
+  ParseError: Parse is not possible at position 6: as long as i am happy [* $ *] 
+
+as long as i am afraid @ korktuÄŸum sÃ¼rece
+  ParseError: Parse is not possible at position 6: as long as i am afraid [* $ *] 
+
+as long as i see you @ sizi gÃ¶rdÃ¼ÄŸÃ¼m sÃ¼rece
+  ParseError: Parse is not possible at position 6: as long as i see you [* $ *] 
+
+before i go @ ben gitmeden Ã¶nce | gitmemden Ã¶nce
+  ParseError: Parse is not possible at position 3: before i go [* $ *] 
+
+before i went @ ben gitmeden Ã¶nce | gitmemden Ã¶nce
+  ParseError: Parse is not possible at position 3: before i went [* $ *] 
+
+before i am going @ ben gitmeden Ã¶nce | gitmemden Ã¶nce
+  ParseError: Parse is not possible at position 4: before i am going [* $ *] 
+
+before i was going @ ben gitmeden Ã¶nce | gitmemden Ã¶nce
+  ParseError: Parse is not possible at position 4: before i was going [* $ *] 
+
+before i have gone @ ben gitmeden Ã¶nce | ben gitmiÅŸ olmadan Ã¶nce | gitmemden Ã¶nce
+  ParseError: Parse is not possible at position 4: before i have gone [* $ *] 
+
+before i had gone @ ben gitmeden Ã¶nceece | ben gitmiÅŸ olmadan Ã¶nce | gitmemden Ã¶nce
+  ParseError: Parse is not possible at position 4: before i had gone [* $ *] 
+
+before i will go @ ben gidecek olmadan Ã¶nce | gidecek olmamdan Ã¶nce
+  ParseError: Parse is not possible at position 4: before i will go [* $ *] 
+
+before i would go @ ben gidecek olmadan Ã¶nce | gidecek olmamdan Ã¶nce
+  ParseError: Parse is not possible at position 4: before i would go [* $ *] 
+
+before i can go @ ben gidemeden Ã¶nce | gidebilmemden Ã¶nce
+  ParseError: Parse is not possible at position 4: before i can go [* $ *] 
+
+before i could go @ ben gidemeden Ã¶nce | gidebilmemden Ã¶nce
+  ParseError: Parse is not possible at position 4: before i could go [* $ *] 
+
+before i may go @ ben gidemeden Ã¶nce | gidebilmemden Ã¶nce
+  ParseError: Parse is not possible at position 4: before i may go [* $ *] 
+
+before i might go @ ben gidemeden Ã¶nce | gidebilmemden Ã¶nce
+  ParseError: Parse is not possible at position 4: before i might go [* $ *] 
+
+before i must go @ ben gitmek zorunda olmadan Ã¶nce | gitmek zorunda olmamdan Ã¶nce
+  ParseError: Parse is not possible at position 4: before i must go [* $ *] 
+
+before i have to go @ ben gitmek zorunda olmadan Ã¶nce | gitmek zorunda olmamdan Ã¶nce
+  ParseError: Parse is not possible at position 5: before i have to go [* $ *] 
+
+before i had to go @ ben gitmek zorunda olmadan Ã¶nce | gitmek zorunda olmamdan Ã¶nce
+  ParseError: Parse is not possible at position 5: before i had to go [* $ *] 
+
+before i have a car @ ben bir arabaya sahip olmadan Ã¶nce | bir arabaya sahip olmamdan Ã¶nce
+  ParseError: Parse is not possible at position 5: before i have a car [* $ *] 
+
+before i had a car @ ben bir arabaya sahip olmadan Ã¶nce | bir arabaya sahip olmamdan Ã¶nce
+  ParseError: Parse is not possible at position 5: before i had a car [* $ *] 
+
+before i am happy @ ben mutlu olmadan Ã¶nce | mutlu olmamdan Ã¶nce
+  ParseError: Parse is not possible at position 4: before i am happy [* $ *] 
+
+before i am afraid @ ben korkmadan Ã¶nce
+  ParseError: Parse is not possible at position 4: before i am afraid [* $ *] 
+
+before i see you @ ben sizi gÃ¶rmeden Ã¶nce
+  ParseError: Parse is not possible at position 4: before i see you [* $ *] 
+
+after i go @ ben gittikten sonra
+  ParseError: Parse is not possible at position 3: after i go [* $ *] 
+
+after i went @ ben gittikten sonra
+  ParseError: Parse is not possible at position 3: after i went [* $ *] 
+
+after i am going @ ben gittikten sonra
+  ParseError: Parse is not possible at position 4: after i am going [* $ *] 
+
+after i was going @ ben gittikten sonra
+  ParseError: Parse is not possible at position 4: after i was going [* $ *] 
+
+after i have gone @ ben gittikten sonra | ben gitmiÅŸ olduktan sonra
+  ParseError: Parse is not possible at position 4: after i have gone [* $ *] 
+
+after i had gone @ ben gitmiÅŸ olduktan sonra
+  ParseError: Parse is not possible at position 4: after i had gone [* $ *] 
+
+after i will go @ ben gidecek olduktan sonra
+  ParseError: Parse is not possible at position 4: after i will go [* $ *] 
+
+after i would go @ ben gidecek olduktan sonra
+  ParseError: Parse is not possible at position 4: after i would go [* $ *] 
+
+after i can go @ ben gidebildikten sonra
+  ParseError: Parse is not possible at position 4: after i can go [* $ *] 
+
+after i could go @ ben gidebildikten sonra
+  ParseError: Parse is not possible at position 4: after i could go [* $ *] 
+
+after i may go @ ben gidebildikten sonra
+  ParseError: Parse is not possible at position 4: after i may go [* $ *] 
+
+after i might go @ ben gidebildikten sonra
+  ParseError: Parse is not possible at position 4: after i might go [* $ *] 
+
+after i must go @ ben gitmek zorunda olduktan sonra
+  ParseError: Parse is not possible at position 4: after i must go [* $ *] 
+
+after i have to go @ ben gitmek zorunda olduktan sonra
+  ParseError: Parse is not possible at position 5: after i have to go [* $ *] 
+
+after i had to go @ ben gitmek zorunda olduktan sonra
+  ParseError: Parse is not possible at position 5: after i had to go [* $ *] 
+
+after i have a car @ ben bir arabaya sahip olduktan sonra
+  ParseError: Parse is not possible at position 5: after i have a car [* $ *] 
+
+after i had a car @ ben bir arabaya sahip olduktan sonra
+  ParseError: Parse is not possible at position 5: after i had a car [* $ *] 
+
+after i am afraid @ ben korktuktan sonra
+  ParseError: Parse is not possible at position 4: after i am afraid [* $ *] 
+
+after i see you @ ben sizi gÃ¶rdÃ¼kten sonra
+  ParseError: Parse is not possible at position 4: after i see you [* $ *] 
+
+while i go @ ben giderken
+  ParseError: Parse is not possible at position 3: while i go [* $ *] 
+
+while i went @ ben giderken
+  ParseError: Parse is not possible at position 3: while i went [* $ *] 
+
+while i am going @ ben gidiyorken
+  ParseError: Parse is not possible at position 4: while i am going [* $ *] 
+
+while i was going @ ben gidiyorken
+  ParseError: Parse is not possible at position 4: while i was going [* $ *] 
+
+while i have gone @ ben gitmiÅŸken
+  ParseError: Parse is not possible at position 4: while i have gone [* $ *] 
+
+while i had gone @ ben gitmiÅŸken
+  ParseError: Parse is not possible at position 4: while i had gone [* $ *] 
+
+while i will go @ ben gidecekken
+  ParseError: Parse is not possible at position 4: while i will go [* $ *] 
+
+while i would go @ ben gidecekken
+  ParseError: Parse is not possible at position 4: while i would go [* $ *] 
+
+while i can go @ ben gidebilirken
+  ParseError: Parse is not possible at position 4: while i can go [* $ *] 
+
+while i could go @ ben gidebilirken
+  ParseError: Parse is not possible at position 4: while i could go [* $ *] 
+
+while i may go @ ben gidebilirken
+  ParseError: Parse is not possible at position 4: while i may go [* $ *] 
+
+while i might go @ ben gidebilirken
+  ParseError: Parse is not possible at position 4: while i might go [* $ *] 
+
+while i must go @ ben gitmeliyken
+  ParseError: Parse is not possible at position 4: while i must go [* $ *] 
+
+while i have to go @ ben gitmek zorundayken
+  ParseError: Parse is not possible at position 5: while i have to go [* $ *] 
+
+while i had to go @ ben gitmek zorundayken
+  ParseError: Parse is not possible at position 5: while i had to go [* $ *] 
+
+while i have a car @ ben bir arabaya sahipken
+  ParseError: Parse is not possible at position 5: while i have a car [* $ *] 
+
+while i had a car @ ben bir arabaya sahipken
+  ParseError: Parse is not possible at position 5: while i had a car [* $ *] 
+
+while i am happy @ ben mutluyken
+  ParseError: Parse is not possible at position 4: while i am happy [* $ *] 
+
+while i am afraid @ ben korkuyorken
+  ParseError: Parse is not possible at position 4: while i am afraid [* $ *] 
+
+while i see you @ ben sizi gÃ¶rÃ¼yorken
+  ParseError: Parse is not possible at position 4: while i see you [* $ *] 
+
+though i go @ gitmeme raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i go
+
+though i went @ gitmeme raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i went
+
+though i am going @ gitmeme raÄŸmen | gidiyor olmama raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i am going
+
+though i was going @ gitmeme raÄŸmen | gidiyor olmama raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i was going
+
+though i have gone @ gitmeme raÄŸmen | gitmiÅŸ olmama raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i have gone
+
+though i had gone @ gitmiÅŸ olmama raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i had gone
+
+though i will go @ gidecek olmama raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i will go
+
+though i would go @ gidecek olmama raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i would go
+
+though i can go @ gidebilmeme raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i can go
+
+though i could go @ gidebilmeme raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i could go
+
+though i may go @ gidebilmeme raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i may go
+
+though i might go @ gidebilmeme raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i might go
+
+though i must go @ gitmek zorunda olmama raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i must go
+
+though i have to go @ gitmek zorunda olmama raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i have to go
+
+though i had to go @ gitmek zorunda olmama raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i had to go
+
+though i have a car @ bir arabaya sahip olmama raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i have a car
+
+though i had a car @ bir arabaya sahip olmama raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i had a car
+
+though i am happy @ mutlu olmama raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i am happy
+
+though i am afraid @ korkmama raÄŸmen | korkuyor olmama raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i am afraid
+
+though i see you @ sizi gÃ¶rmeme raÄŸmen | sizi gÃ¶rÃ¼yor olmama raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i see you
+
+while going @ giderken | gidiyorken
+  ParseError: Parse is not possible at position 2: while going [* $ *] 
+
+while not going @ gitmezken | gitmiyorken
+  ParseError: Parse is not possible at position 1: while [* not *] going
+
+while having gone @ gitmiÅŸ olurken
+  ParseError: Parse is not possible at position 3: while having gone [* $ *] 
+
+while being happy @ mutlu olurken | mutlu oluyorken
+  ParseError: Parse is not possible at position 3: while being happy [* $ *] 
+
+while being afraid @ korkuyorken | korkarken
+  ParseError: Parse is not possible at position 3: while being afraid [* $ *] 
+
+while seeing you @ sizi gÃ¶rÃ¼yorken | sizi gÃ¶rÃ¼rken
+  ParseError: Parse is not possible at position 3: while seeing you [* $ *] 
+
+before going @ gitmeden Ã¶nce
+  ParseError: Parse is not possible at position 2: before going [* $ *] 
+
+before having gone @ gitmiÅŸ olmadan Ã¶nce
+  ParseError: Parse is not possible at position 3: before having gone [* $ *] 
+
+before being happy @ mutlu olmadan Ã¶nce
+  ParseError: Parse is not possible at position 3: before being happy [* $ *] 
+
+before being afraid @ korkmadan Ã¶nce
+  ParseError: Parse is not possible at position 3: before being afraid [* $ *] 
+
+before seeing you @ sizi gÃ¶rmeden Ã¶nce
+  ParseError: Parse is not possible at position 3: before seeing you [* $ *] 
+
+after going @ gittikten sonra
+  ParseError: Parse is not possible at position 2: after going [* $ *] 
+
+after having gone @ gitmiÅŸ olduktan sonra
+  ParseError: Parse is not possible at position 3: after having gone [* $ *] 
+
+after being happy @ mutlu olduktan sonra
+  ParseError: Parse is not possible at position 3: after being happy [* $ *] 
+
+after being afraid @ korktuktan sonra
+  ParseError: Parse is not possible at position 3: after being afraid [* $ *] 
+
+after seeing you @ sizi gÃ¶rdÃ¼kten sonra
+  ParseError: Parse is not possible at position 3: after seeing you [* $ *] 
+
+in order to go @ gitmek iÃ§in
+  ParseError: Parse is not possible at position 4: in order to go [* $ *] 
+
+in order not to go @ gitmemek iÃ§in
+  ParseError: Parse is not possible at position 5: in order not to go [* $ *] 
+
+in order to have gone @ gitmiÅŸ olmak iÃ§in
+  ParseError: Parse is not possible at position 5: in order to have gone [* $ *] 
+
+in order to be happy @ mutlu olmak iÃ§in
+  ParseError: Parse is not possible at position 5: in order to be happy [* $ *] 
+
+in order to be afraid @ korkmak iÃ§in
+  ParseError: Parse is not possible at position 5: in order to be afraid [* $ *] 
+
+in order to see you @ sizi gÃ¶rmek iÃ§in
+  ParseError: Parse is not possible at position 5: in order to see you [* $ *] 
+
+because i go @ gittiÄŸim iÃ§in
+  ParseError: Parse is not possible at position 3: because i go [* $ *] 
+
+men like cars @ arabalar adamlarÄ±n hoÅŸuna gidiyor
+  *adamlar arabalardan hoÅŸlanÄ±yor {0}
+  *arabalar gibi adamlar {100}
+  NOK
+
+i like cars @ arabalar hoÅŸuma gidiyor
+  *arabalardan hoÅŸlanÄ±yorum {0}
+  NOK
+
+she like cars @ arabalar hoÅŸuna gidiyor
+  ParseError: UnifyU error feat=num src=plur dst=sing super=SentNorm#488 sub=VPNorm#527
+
+they like cars @ arabalar hoÅŸlarÄ±na gidiyor
+  *arabalardan hoÅŸlanÄ±yorlar {0}
+  NOK
+
+i like you @ siz hoÅŸuma gidiyorsunuz
+  *sizden hoÅŸlanÄ±yorum {0}
+  NOK
+
+i wanted you to like cars @ arabalarÄ±n hoÅŸunuza gitmesini istedim
+  *arabalardan hoÅŸlanmanÄ±zÄ± istedim {0}
+  *arabalardan hoÅŸlanmak iÃ§in sizi istedim {100}
+  NOK
+
+though i like you @ sizin hoÅŸuma gitmenize raÄŸmen | hoÅŸuma gitmenize raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i like you
+
+though i like cars @ arabalalarÄ±n hoÅŸuma gitmesine raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i like cars
+
+as long as i like you @ siz hoÅŸuma gittiÄŸiniz sÃ¼rece
+  ParseError: Parse is not possible at position 6: as long as i like you [* $ *] 
+
+whether i like @ hoÅŸuma gidip gitmediÄŸiniz
+  ParseError: Parse is not possible at position 0:  [* whether *] i like
+
+cars bother me @ arabalar canÄ±mÄ± sÄ±kÄ±yor
+  ParseError: Parse is not possible at position 1: cars [* bother *] me
+
+cars bother her @ arabalar canÄ±nÄ± sÄ±kÄ±yor
+  ParseError: Parse is not possible at position 1: cars [* bother *] her
+
+cars bother them @ arabalar canlarÄ±nÄ± sÄ±kÄ±yor
+  ParseError: Parse is not possible at position 1: cars [* bother *] them
+
+you bother me @ canÄ±mÄ± sÄ±kÄ±yorsunuz
+  ParseError: Parse is not possible at position 1: you [* bother *] me
+
+i wanted him to bother you @ onun sizin canÄ±nÄ±zÄ± sÄ±kmasÄ±nÄ± istedim
+  ParseError: Parse is not possible at position 4: i wanted him to [* bother *] you
+
+though i bother you @ canÄ±nÄ±zÄ± sÄ±kmama raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] i bother you
+
+though cars bother you @ arabalarÄ±n canÄ±nÄ±zÄ± sÄ±kmasÄ±na raÄŸmen
+  ParseError: Parse is not possible at position 0:  [* though *] cars bother you
+
+as long as i bother you @ canÄ±nÄ±zÄ± sÄ±ktÄ±ÄŸÄ±m sÃ¼rece
+  ParseError: Parse is not possible at position 4: as long as i [* bother *] you
+
+whether i bother you @ canÄ±nÄ±zÄ± sÄ±kÄ±p sÄ±kmadÄ±ÄŸÄ±m
+  ParseError: Parse is not possible at position 0:  [* whether *] i bother you
+
+input=740, translated=504, matched=451 exp_err=6 ignored=0 success=%61

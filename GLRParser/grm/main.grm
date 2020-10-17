@@ -1,0 +1,1002 @@
+#%load_dict main.dict
+%include vp_inc.grm
+%auto_dict false
+%include numbers.grm
+
+%macro V' V',Vs',Ving',Ved',Ven'
+
+%form V' go,goes,going,went,gone
+%form V' have,has,having,had,had
+%form V' come,comes,coming,came,come
+
+$V' -> $go BInf1(gap) : gidip BInf1(gapw) [-gap]
+$V' -> $come BInf1(gap) : gelip BInf1(gapw) [-gap]
+#$V' -> $have Obj() Ven'(gap) : Obj() +i Ven'(gapw) +caus
+V' -> have Obj() Ven'(gap) : Obj() +i Ven'(gapw) +caus
+
+#V' -> need Obj() : Obj() +e ihtiyaç? SubjPoss [+pred,+exist,scase=+in]
+
+S -> AdvCl() SentNorm       : AdvCl() SentNorm      [-gap]
+S -> SentNorm AdvCl()       : AdvCl() SentNorm      [-gap]
+S -> AdvP SentNorm          : AdvP SentNorm         [-gap]
+S -> SentInv                : SentInv               [+quest,-gap]
+S -> WhCase() SentInv       : SentInv               [+gap,gapw=*WhCase]
+S -> RelAdv SentInv         : SentInv               [-gap,reladv=*RelAdv]
+S -> SentImp                : SentImp               [-gap]
+S -> NP'                    : NP'
+
+
+S -> so AuxBePos Subj        : Subj "- dA" öyle  [+pron]
+S -> so AuxHavePos Subj      : Subj "- dA" öyle  [+pron]
+S -> so AuxDoPos Subj        : Subj "- dA" öyle  [+pron]
+S -> so ModalPos Subj        : Subj "- dA" öyle  [+pron]
+S -> neither AuxBePos Subj   : Subj "- dA" değil [+pron]
+S -> neither AuxHavePos Subj : Subj "- dA" değil [+pron]
+S -> neither AuxDoPos Subj   : Subj "- dA" değil [+pron]
+S -> neither ModalPos Subj   : Subj "- dA" değil [+pron]
+
+AdvCl -> as if SentNorm        : sanki SentNorm gibi   [conn=mis,-gap]
+AdvCl -> if SentNorm Then      : SentNorm              [conn=if,-gap]
+AdvCl -> while SentNorm        : SentNorm              [conn=ken,-gap,+pron]
+AdvCl -> as SentNorm           : SentNorm              [conn=ken,-gap,+pron]
+AdvCl -> when SentNorm         : SentNorm -DA          [conn=dik,-gap]
+AdvCl -> because SentNorm      : SentNorm için         [conn=dik,-gap]
+AdvCl -> as long as SentNorm   : SentNorm sürece       [conn=dik,-gap]
+AdvCl -> as soon as SentNorm   : SentNorm              [conn=ir_mez,-gap,+pron]
+AdvCl -> until SentNorm        : SentNorm +e kadar     [conn=en,-gap,+pron]
+AdvCl -> after SentNorm        : SentNorm +den sonra   [conn=me,-gap]
+AdvCl -> before SentNorm       : SentNorm +den önce    [conn=me,-gap]
+AdvCl -> unless SentNorm       : SentNorm -çA          [conn=medik,-gap,+pron]
+AdvCl -> although SentNorm     : SentNorm +e rağmen    [conn=me,-gap]
+AdvCl -> even though SentNorm  : SentNorm +e rağmen    [conn=me,-gap]
+AdvCl -> as much as SentNorm   : SentNorm +e rağmen    [conn=me,-gap]
+AdvCl -> much as SentNorm      : SentNorm +e rağmen    [conn=me,-gap]
+
+AdvCl -> after BaseGerund(-gap) : BaseGerund() -DHktAn sonra
+AdvCl -> before BaseGerund(-gap) : BaseGerund() -mAdAn önce
+AdvCl -> while BaseGerund(-gap) : BaseGerund() +aor -ken
+
+AdvCl -> ForObjInf(-gap) : ForObjInf için {100}
+AdvCl -> Inf1 : Inf1 +mek için {100}
+AdvCl -> in order ForObjInf(-gap) : ForObjInf için
+AdvCl -> in order Inf1 : Inf1 +mek için 
+
+Then -> then
+Then ->
+
+# affirmative 
+SentNorm -> Subj VPNorm : Subj VPNorm
+
+AuxBe -> AuxBePos Not
+AuxBe -> AuxBeCont Not
+AuxBe -> AuxBeNeg [+neg]
+AuxHave -> AuxHavePos Not
+AuxHave -> AuxHaveCont Not
+AuxHave -> AuxHaveNeg [+neg]
+Modal -> ModalPos Not
+Modal -> ModalCont Not
+Modal -> ModalNeg [+neg]
+
+IntrPred -> AdjP Inf(gap)              : Inf(gapw) AdjP                         [-gap]
+IntrPred -> AdjP ForObjInf(gap)        : ForObjInf(gapw) AdjP                   [-gap]
+IntrPred -> AdjP Ger(gap)              : Ger(gapw) AdjP                         [-gap]
+IntrPred -> AdjP that SentNorm(gap)    : SentNorm(conn=me,scase=+in) AdjP       [-gap]
+
+SentNorm -> it AuxBe IntrPred          : IntrPred PredTense     [num=sing,per=3]
+SentNorm -> it AuxHave been IntrPred   : IntrPred ol PerfTense' [num=sing,per=3]
+SentNorm -> it Modal be IntrPred       : IntrPred ol ModalTense [num=sing,per=3]
+
+SentNorm -> there AuxBe NP' PPS(-gap)        : PPS() NP' PredTense     [+exist,+pred,per=3]
+SentNorm -> there AuxHave been NP' PPS(-gap) : PPS() NP' ol PerfTense' [+exist,+pred,per=3]
+SentNorm -> there Modal be NP' PPS(-gap)     : PPS() NP' ol ModalTense [+exist,+pred,per=3]
+
+SentInv -> AuxBePos it Not IntrPred        : IntrPred PredTense      [num=sing,per=3]
+SentInv -> AuxBeNeg it IntrPred            : IntrPred PredTense      [num=sing,per=3,+neg]
+SentInv -> AuxHavePos it Not been IntrPred : IntrPred ol PerfTense'  [num=sing,per=3]
+SentInv -> AuxHaveNeg it been IntrPred     : IntrPred ol PerfTense'  [num=sing,per=3,+neg]
+SentInv -> ModalPos it Not be IntrPred     : IntrPred ol ModalTense  [num=sing,per=3]
+SentInv -> ModalNeg it be IntrPred         : IntrPred ol ModalTense  [num=sing,per=3,+neg]
+
+SentInv -> AuxBePos there Not Obj PPS(-gap)        : PPS() Obj PredTense      [+exist,+pred,num=sing,per=3]
+SentInv -> AuxBeNeg there Obj PPS(-gap)            : PPS() Obj PredTense      [+exist,+pred,num=sing,per=3,+neg]
+SentInv -> AuxHavePos there Not been Obj PPS(-gap) : PPS() Obj ol PerfTense'  [+exist,+pred,num=sing,per=3]
+SentInv -> AuxHaveNeg there been Obj PPS(-gap)     : PPS() Obj ol PerfTense'  [+exist,+pred,num=sing,per=3,+neg]
+SentInv -> ModalPos there Not be Obj PPS(-gap)     : PPS() Obj ol ModalTense  [+exist,+pred,num=sing,per=3]
+SentInv -> ModalNeg there be Obj PPS(-gap)         : PPS() Obj ol ModalTense  [+exist,+pred,num=sing,per=3,+neg]
+
+VPNorm -> AuxBe AdvP StBe             : AdvP StBe
+VPNorm -> AuxHave AdvP StHave         : AdvP StHave
+VPNorm -> Modal AdvP StModal          : AdvP StModal
+VPNorm -> AuxDoPos Not AdvP StDo      : AdvP StDo 
+VPNorm -> AuxDoNeg AdvP StDo          : AdvP StDo               [+neg]
+VPNorm -> AdvP Vs                     : AdvP Vs SimpTense'      [tense=pres,num=sing,per=3]
+VPNorm -> AdvP V                      : AdvP V SimpTense'       [tense=pres,num=sing,per=1]
+VPNorm -> AdvP V                      : AdvP V SimpTense'       [tense=pres,num=plur]
+VPNorm -> AdvP Ved                    : AdvP Ved SimpTense'     [tense=past]
+VPNorm -> used to V              : V +aor -dH Pers2
+VPNorm -> would rather Not V     : V Neg -mAyH tercih eder Pers1
+
+# question
+SentInv -> AuxBePos Subj Not AdvP StBe      : Subj AdvP StBe 
+SentInv -> AuxBeNeg Subj AdvP StBe          : Subj AdvP StBe    [+neg]
+SentInv -> AuxHavePos Subj Not AdvP StHave  : Subj AdvP StHave 
+SentInv -> AuxHaveNeg Subj AdvP StHave      : Subj AdvP StHave  [+neg]
+SentInv -> AuxDoPos Subj Not AdvP StDo      : Subj AdvP StDo 
+SentInv -> AuxDoNeg Subj AdvP StDo          : Subj AdvP StDo    [+neg]
+SentInv -> ModalPos Subj Not AdvP StModal   : Subj AdvP StModal   
+SentInv -> ModalNeg Subj AdvP StModal       : Subj AdvP StModal [+neg]
+SentInv -> shall we Not V              : V Neg -YAlHm mH
+SentInv -> would Subj rather Not V     : Subj Neg -mAyH mH tercih eder Pers1
+#SentInv -> would Subj like to V        : Subj V -mAk ister mi Pers1
+#SentInv -> would Subj like Obj'        : Subj Obj' Acc ister mi Pers1
+SentInv -> did Subj use to V           : Subj V +aor miydi Pers1
+
+# imperative
+SentImp -> VBe              : VBe
+SentImp -> don't VBe        : VBe -mA   [neg=1]
+SentImp -> do Not VBe       : VBe Neg
+SentImp -> let 's Not VBe   : VBe Neg -YAlHm
+
+#VBe -> V : V
+#VBe -> be Pred : Pred ol
+#VBe -> be Vpass : Vpass
+VBe -> V : V       [!pred]
+VBe -> V : V ol    [?pred]
+VBe -> be Pred : Pred ol 
+VBe -> be PredVerb : PredVerb
+VBe -> be Vpass : Vpass
+
+#StBeX -> Ving : Ving -Vyor  [!pred]
+#StBeX -> Ving : Ving oluyor [?pred]
+#StBeX -> Pred : Pred ol
+#StBeX -> PredVerb : PredVerb
+#StBeX -> be Vpass : Vpass
+
+StBe    -> going to StModal : StModal            [modal=will]
+StBe    -> gonna StModal    : StModal            [modal=will]
+StBe    -> Ving             : Ving ProgTense'
+StBe    -> being Pred       : Pred ProgTense'
+StBe    -> being Vpass      : Vpass ProgTense' 
+StBe    -> Vpass            : Vpass SimpTense'
+StBe    -> Pred             : Pred PredTense [+pron3]
+StBe    -> XPred            : XPred
+StBe    -> PredVerb         : PredVerb SimpTense'
+StBe    -> able to V        : V ModalTense       [modal=can]
+StBe    -> able to be Pred  : Pred ol ModalTense [modal=can]
+StHave  -> Ven              : Ven PerfTense'
+StHave  -> been Ving        : Ving ProgTense'
+StHave  -> been Pred        : Pred PerfTense'
+StHave  -> been able to V   : V NegAbil PerfTense'
+StHave  -> been able to be Pred : Pred ol NegAbil PerfTense
+StHave  -> been Vpass       : Vpass PerfTense'
+StHave  -> better Not V     : V Neg -sA SubjPoss iyi olur Quest
+StDo    -> V                : V SimpTense'
+StDo    -> use to V         : V PresSuf Quest -YDH Pers2 
+
+BaseModal -> be Ving            : Ving -Vyor ol 
+BaseModal -> be Pred            : Pred ol
+BaseModal -> be PredVerb        : PredVerb
+BaseModal -> be Vpass           : Vpass
+BaseModal -> have Ven           : Ven -mHş ol
+BaseModal -> have been Ving     : Ving -Vyor ol
+BaseModal -> have been Pred     : Pred olmuş ol
+BaseModal -> have been Vpass    : Vpass -mHş ol
+BaseModal -> V                  : V PredBe
+
+BaseGerund -> being Pred        : Pred ol
+BaseGerund -> being PredVerb    : PredVerb
+BaseGerund -> being Vpass       : Vpass
+BaseGerund -> having Ven        : Ven -mHş ol
+BaseGerund -> having been Ving  : Ving -Vyor ol
+BaseGerund -> having been Pred  : Pred olmuş ol
+BaseGerund -> having been Vpass : Vpass -mHş ol
+BaseGerund -> Ving              : Ving PredBe
+
+StModal -> BaseModal            : BaseModal ModalTense
+StModal -> be able to V         : V NegAbil AbilTense Quest PresPast
+StModal -> be able to be Pred   : Pred ol NegAbil AbilTense Quest PresPast
+StModal -> like to V            : V -mAk iste PresTense   [modal=will,tense=past]
+StModal -> like Obj'            : Obj' Acc iste PresTense [modal=will,tense=past]
+
+NegAbil -> : -YAbil [!neg]
+NegAbil -> : -YAmA  [?neg]
+
+NegAbil' -> : -YAbilir [!neg]
+NegAbil' -> : -YAmAz   [?neg]
+
+ModalTense -> : Futr    [modal=will]
+ModalTense -> : Abil    [modal=can]
+ModalTense -> : Poss    [modal=may]
+ModalTense -> : Necc    [modal=must]
+
+Futr -> : Neg -YAcAk? Quest Pers1'             [!conn,tense=pres] 
+Futr -> : PresSuf Quest -YDH Pers2'            [!conn,tense=past]
+Futr -> : Neg -YAcAk?                          [conn=?en]
+Futr -> : Neg -YAcAkmHş Pers1'                 [conn=?mis]
+Futr -> : Neg -YAcAk? SubjPoss                 [conn=?dik]
+Futr -> : Neg -YAcAksA Pers2'                  [conn=?if]
+Futr -> : Neg -YAcAkken                        [conn=?ken]
+Futr -> : -YAcAk olmadık?                      [conn=?medik]
+Futr -> : Neg -YAcAk olma SubjPoss             [conn=?me]
+Futr -> : +copy +aor +paste -mAz               [conn=?ir_mez] 
+Futr -> : +copy -YHp +paste -mAYAcAk? SubjPoss [conn=?ip_medik]
+
+Abil -> : ModalCan                             [!conn]
+Abil -> : NegAbil' -sA Pers2'                  [conn=?if]
+Abil -> : NegAbil -YAn                         [conn=?en]
+Abil -> : NegAbil -irmiş Pers1'                [conn=?mis]
+Abil -> : NegAbil -DHk? SubjPoss               [conn=?dik]
+Abil -> : NegAbil' -ken            	           [conn=?ken]
+Abil -> : -YAmAdHk?                            [conn=?medik]
+Abil -> : NegAbil -mA SubjPoss                 [conn=?me]
+Abil -> : +copy +aor +paste -mAz               [conn=?ir_mez] 
+Abil -> : +copy -YHp +paste -YAmADHk? SubjPoss [conn=?ip_medik]
+
+Poss -> : Neg -YAbilir Quest PresPast              [!conn] 
+Poss -> : Neg -YAbilirse Pers2'                    [conn=?if]
+Poss -> : Neg -YAbilen                             [conn=?en]
+Poss -> : Neg -YAbilirmiş Pers1'                   [conn=?mis]
+Poss -> : Neg -YAbilecek? SubjPoss                 [conn=?dik]
+Poss -> : Neg -YAbilirken                          [conn=?ken]
+Poss -> : -mAYAbildHk?                             [conn=?medik]
+Poss -> : Neg -YAbilme                             [conn=?me]
+Poss -> : +copy -YHp +paste -mAYAbilDHk? SubjPoss  [conn=?ip_medik]
+
+Necc -> : Neg -mAlH Quest Pers1'               [!conn]
+Necc -> : Neg -mAlHysA Pers2'                  [conn=?if]
+Necc -> : Neg -mAk zorunda olan                [conn=?en]
+Necc -> : Neg -mAk zorundaymış Pers1'          [conn=?mis]
+Necc -> : Neg -mAk zorunda olduk? SubjPoss     [conn=?dik]
+Necc -> : Neg -mAlHyken                        [conn=?ken]
+Necc -> : Neg -mAk zorunda olmadık?            [conn=?medik]
+Necc -> : Neg -mAk zorunda olma SubjPoss       [conn=?me]
+Necc -> : -mAk zorunda olup olmadık? SubjPoss  [conn=?ip_medik]
+
+ModalCan -> : -YAbilir Quest PresPast         [!neg]
+ModalCan -> : -YAmA Pers3'                    [tense=pres,?neg,!quest]
+ModalCan -> : -YAmAz mH Pers1'                [tense=pres,?neg,?quest]
+ModalCan -> : -YAmAz Quest -YdH Pers2'        [tense=past,?neg]
+
+AbilTense -> : -YAcAk?     [modal=will] # he will be able to
+AbilTense -> : -mAlH       [modal=must] # he must be able to
+AbilTense -> :             [modal=can]  # ?he can be able to
+AbilTense -> :             [modal=may]  # ?he may be able to
+
+PresPast -> : Pers1'      [tense=pres]
+PresPast -> : -YDH Pers2' [tense=past]
+
+SimpTense' -> : Pres [!pred,tense=pres,!prog]
+SimpTense' -> : Prog [!pred,tense=pres,?prog]
+SimpTense' -> : Past [!pred,tense=past,!pprog]
+SimpTense' -> : Prog [!pred,tense=past,?pprog]
+SimpTense' -> : PredTense [?pred]
+
+PredBe -> :     [!pred]
+PredBe -> : ol  [?pred]
+
+ProgTense' -> : PredBe Prog
+
+PerfTense' -> : PredBe PerfTense                          [!conn]
+PerfTense' -> : PredBe Neg -mHş olan                      [conn=?en]
+PerfTense' -> : PredBe Neg -mHş Pers1'                    [conn=?mis]
+PerfTense' -> : PredBe Neg -mHş olduk? SubjPoss           [conn=?dik]
+PerfTense' -> : PredBe Neg -DHysA Pers2'                  [conn=?if,tense=?pres]
+PerfTense' -> : PredBe Neg -mHş olsaydı Pers2'            [conn=?if,tense=?past]
+PerfTense' -> : PredBe Neg -mHşken                        [conn=?ken]
+PerfTense' -> : PredBe Neg -mHş olmadık?                  [conn=?medik]
+PerfTense' -> : PredBe Neg -mHş olma SubPoss              [conn=?me]
+PerfTense' -> : PredBe +copy -YHp +paste -mADHk? SubjPoss [conn=?ip_medik,tense=?pres]
+PerfTense' -> : PredBe -mHş olup olmadık? SubjPoss        [conn=?ip_medik,tense=?past]
+
+Pres -> : PresTense                          [!conn]
+Pres -> : PresSuf -sA Pers2'                 [conn=?if]
+Pres -> : Neg -YAn                           [conn=?en]
+Pres -> : PresSuf -mHş Pers1'                [conn=?mis]
+Pres -> : Neg -DHk? SubjPoss                 [conn=?dik]
+Pres -> : PresSuf -ken                       [conn=?ken]
+Pres -> : -mAdHk                             [conn=?medik]
+Pres -> : Neg -mA SubjPoss                   [conn=?me]
+Pres -> : +copy +aor +paste -mAz             [conn=?ir_mez] 
+Pres -> : +copy -YHp +paste -mADHk? SubjPoss [conn=?ip_medik]
+
+Past -> : PastTense                          [!conn]
+Past -> : Neg -sAyDH Pers2'                  [conn=?if]
+Past -> : Neg -YAn                           [conn=?en]
+Past -> : Neg -mHş Pers1'                    [conn=?mis]
+Past -> : Neg -DHk? SubjPoss                 [conn=?dik]
+Past -> : PresSuf -ken                       [conn=?ken]
+Past -> : -mAdHk                             [conn=?medik]
+Past -> : Neg -mA SubjPoss                   [conn=?me]
+Past -> : +copy +aor +paste -mAz             [conn=?ir_mez] 
+Past -> : +copy -YHp +paste -mADHk? SubjPoss [conn=?ip_medik]
+
+Prog -> : Neg -Vyor Quest PresPast           [!conn]
+Prog -> : Neg -Vyorsa Pers2'                 [conn=?if,tense=?pres]
+Prog -> : Neg -Vyor olsaydı Pers2'           [conn=?if,tense=?past]
+Prog -> : Neg -YAn                           [conn=?en]
+Prog -> : Neg -Vyormuş Pers1'                [conn=?mis]
+Prog -> : Neg -DHk? SubjPoss                 [conn=?dik]
+Prog -> : Neg -Vyorken                       [conn=?ken]
+Prog -> : Neg -Vyor olmadık?                 [conn=?medik]
+Prog -> : Neg -mA SubjPoss                   [conn=?me]
+Prog -> : +copy -YHp +paste -mADHk? SubjPoss [conn=?ip_medik]
+
+PresTense -> : +aor Quest Pers1'          [!neg]
+PresTense -> : -mA Pers3'                 [?neg,!quest]
+PresTense -> : -mAz mH Pers1'             [?neg,?quest]
+
+PresSuf -> : +aor [!neg]
+PresSuf -> : -mAz [?neg]
+
+PastTense -> : Neg -DH Pers2' Quest       
+
+PerfTense -> : Neg -DH Pers2' Quest       [tense=pres]
+PerfTense -> : Neg -mHş Quest -YDH Pers2' [tense=past]
+
+Neg -> : -mA [?neg]
+Neg -> :     [!neg]
+
+Quest -> : mH [?quest]
+Quest -> :    [!quest]
+
+
+Pred -> Obj'              : Obj'              [+pred,case=+0]
+Pred -> AdjP              : AdjP              [+pred,-gap]
+Pred -> PP                : PP                [+pred,-gap]
+Pred -> PPGap             : PPGap             [+pred,+gap,+pred]
+Pred -> AdvAdjComp AdjComp than Obj' : Obj' daha AdvAdjComp AdjComp [+pred,case=+den,-gap]
+Pred -> AdjComp than Obj' : Obj' daha AdjComp [+pred,case=+den,-gap]
+Pred -> as Adj as Obj     : Obj kadar Adj     [+pred,-gap,case=+in_pro]
+Pred -> so Adj as Obj     : Obj kadar Adj     [+pred,-gap,case=+in_pro]
+XPred -> so Adj that SentNorm(gap)   : o kadar Adj PredTense ki SentNorm(gapw)  [+pred,-gap] ###!!!check for other tenses
+
+
+
+NegPred -> : değil  [!exist,?neg]
+NegPred -> :        [!exist,!neg]
+NegPred -> : yok    [?exist,?neg]
+NegPred -> : var    [?exist,!neg]
+
+PredTense -> : NegPred Quest PresPast [!conn]
+PredTense -> : ol Neg -YAn            [conn=?en]
+PredTense -> : -mHş Pers1'            [conn=?mis]
+PredTense -> : ol Neg -DHk? SubjPoss  [conn=?dik]
+PredTense -> : NegPred -YsA Pers2'    [conn=?if,tense=?pres]
+PredTense -> : olsaydı Pers2'         [conn=?if,tense=?past]
+PredTense -> : -ken                   [conn=?ken]
+PredTense -> : olmadık?               [conn=?medik]
+PredTense -> : ol Neg -mA SubjPoss    [conn=?me]
+PredTense -> : olup olmadık? SubjPoss [conn=?ip_medik]
+PredTense -> : olur olmaz             [conn=?ir_mez]
+
+Obj -> NP'(num=*onum,def,neg) : NP'() ObjCase   [oper=3]
+Obj -> ObjPron   :                   [+def,case=?+in]
+Obj -> ObjPron   :                   [+def,!case]
+Obj -> ObjPron   : ObjPron ObjCase   [+def,case=!+in]
+
+PPObj -> NP'(num=*onum,def) : NP'() ObjCase   [oper=3]
+PPObj -> ObjPron : ObjPron
+
+Subj -> NP'      : NP' SubjCase De [per=3,+pron3]
+Subj -> SubjPron : Pron' De
+
+De -> : "- dA"  [?also]
+De -> :         [!also]
+
+Cok -> : çok [?much]
+Cok -> :     [!much]
+
+Pron' -> : Pron SubjCase ! [?pron]
+Pron' -> : Pron SubjCase ! [scase=!+in]
+Pron' -> : Pron SubjCase ! [?pron3,!conn,per=?3]
+Pron' -> :  
+
+ObjCase -> :       [!case]
+ObjCase -> : *case [?case] 
+
+SubjCase -> :        [!scase]
+SubjCase -> : *scase [?scase] 
+
+RObj -> NP'(num=*onum)   : NP'() *case [oper=3]
+
+Objs -> NP'(num=*onum) 's : NP'() [oper=3]
+Objs -> PossPron(pper=*oper,pnum=*onum) : Pron
+
+ObjObj -> Obj-1(neg) Obj-2(neg) : Obj-1(case=*case1) Obj-2(case=*case2)     [-gap]
+ObjObj -> Obj-1(neg)            : Obj-1(case=*case1) GapW(gapw,case=*case2) [+gap]
+
+Obj1 -> Obj(neg) : Obj(case=*case1)       [-gap,-gap1]
+Obj1 -> Obj(neg) : Obj(case=*case1)       [+gap,+gap1]
+Obj1 ->          : GapW(gapw,case=*case1) [+gap,-gap1]
+
+Obj2 -> Obj(neg) : Obj(case=*case2)       [-gap1]
+Obj2 ->          : GapW(gapw,case=*case2) [+gap1]
+
+Obj' -> Obj(onum,oper,neg)   : Obj(case)       [-gap]
+Obj' ->                      : GapW(gapw,case) [+gap]
+
+GapW -> :        [!gapw]
+GapW -> : *gapw  [?gapw]
+
+ObjInf -> Obj(oper,onum,neg) Inf1(gap)   : Obj(case) Inf1(gapw) -mA ObjPoss 
+ObjInf -> Inf1(-gap)                     : GapW(gapw,case) Inf1() -mA ObjPoss(oper=3,onum=sing) [+gap]
+
+ObjInfDik -> Obj(oper,onum,neg) Inf1(gap)   : Obj(case) Inf1(gapw) -DHk? ObjPoss 
+ObjInfDik -> Inf1(-gap)                     : GapW(gapw,case) Inf1() -DHk? ObjPoss(oper=3,onum=sing) [+gap]
+
+ObjBInf -> Obj(oper,onum,neg) BInf1(gap) : Obj(case) BInf1(gapw) -mA ObjPoss 
+
+ObjGer -> Obj(oper,onum,neg) Ger1(gap)   : Obj(case) Ger1(gapw) -mA ObjPoss 
+ObjGer -> Ger1(-gap)                     : GapW(gapw,case) Ger1() -mA ObjPoss(oper=3,onum=sing) [+gap]
+
+ObjGerKen -> Obj(oper,onum,neg) Ger1(gap)   : Obj(case) Ger1(gapw) +aor -ken
+ObjGerKen -> Ger1(-gap)                     : GapW(gapw,case) Ger1() +aor -ken [+gap]
+
+ObjThat -> Obj(oper,onum,neg) SThat'(gap) : Obj(case) SThat'(gapw)
+ObjThat -> SThat'(-gap) : SThat'() [+gap]
+
+ObjIf -> Obj(oper,onum,neg) SWhether'(gap) : Obj(case) SWhether'(gapw)
+ObjIf -> SWhether'(-gap) : SWhether'() [+gap]
+
+ObjWh -> Obj(oper,onum,neg) Wh(gap) : Obj(case) Wh(gapw)
+ObjWh -> Wh(-gap) : Wh() [+gap]
+
+PassInf -> to Not BaseModal(gap) : BaseModal(gapw) -mA SubjPoss
+
+Inf -> Not to BaseModal(gap) : BaseModal(gapw) Neg CaseInf
+BInf -> Not BaseModal(gap)   : BaseModal(gapw) Neg CaseInf
+Ger -> Not BaseGerund(gap)   : BaseGerund(gapw) Neg CaseInf
+
+Inf1 -> Not to BaseModal : BaseModal Neg
+BInf1 -> Not BaseModal   : BaseModal Neg
+Ger1 -> Not BaseGerund  : BaseGerund Neg
+
+ForObjInf -> for Obj(oper,onum,neg) Not to BaseModal(-gap) : Obj(case=+in) BaseModal() Neg -mA ObjPoss
+
+CaseInf -> : -mAk?    [!case]
+CaseInf -> : -mAk?    [case=?+0]
+CaseInf -> : -mAyH   [case=?+i]
+CaseInf -> : -mAyA   [case=?+e]
+CaseInf -> : -mAktA  [case=?+de]
+CaseInf -> : -mAktAn [case=?+den]
+
+Not -> not  [+neg]
+Not ->
+
+That -> that
+That ->
+
+Which -> that
+Which -> which
+Which -> who
+Which -> whom
+
+OptWhich -> Which
+OptWhich ->
+
+SThatSubj -> VPNorm : VPNorm            [conn=en,-gap,per=3]
+SThatObj  -> Subj VPNorm : Subj VPNorm  [conn=dik,+gap,scase=+in]
+
+Whether -> if
+Whether -> whether
+
+SWhether' -> Whether SentNorm(gap) : SentNorm(gapw,conn=ip_medik,scase=+in)
+SWhether' -> whether to V() : V() +copy -YHp +paste -mAdHk? SubjPoss
+
+SThat' -> That SentNorm(gap) : SentNorm(gapw,conn=dik,scase=+in)
+
+Wh -> WhCase SentNorm(+gap) : SentNorm(gapw,conn=dik,scase=+in)  [gapw=*WhCase]
+Wh -> what to V() : ne V(+gap) -mA SubjPoss gerektiğiN
+Wh -> where to V() : nerede V() -mA SubjPoss gerektiğiN
+Wh -> how to V() : nasıl V() -mA SubjPoss gerektiğiN
+Wh -> why to V() : niçin V() -mA SubjPoss gerektiğiN 
+Wh -> RelAdv SentNorm() : RelAdv SentNorm(conn=dik)
+
+RelAdv -> how    : nasıl
+RelAdv -> where  : nerede
+RelAdv -> why    : niçin
+
+WhCase -> WhP : WhP *case
+
+WhP -> what : ney?
+WhP -> which : hangisiN [+def]
+WhP -> whom | who : kim [+def]
+WhP -> which N : hangi N [+def]
+WhP -> whose N : kimin N -ZHN [+def]
+WhP -> how many NPlur : kaç NPlur
+WhP -> how much NSing : ne kadar NSing
+WhP -> how Adj : ne kadar Adj 
+WhP -> how old : kaç yaşında
+WhP -> what N : ne N
+
+
+NP -> NP1 : NP1 # the door of house
+NP -> NP1 of NP(-nodef) : NP() +in_nopro NP1 [+ng] # the door of house of the house of doors : kapılar evinin ev kapısı
+NP -> NP1 PP() : PP(+np) NP1
+NP -> NP1 of ObjPron(per=*pper,num=*pnum) : ObjPron() +in_nopro NP1 # a big house of me : büyük bir evim
+NP -> Pron1 : Pron1 [+def]
+
+PropN -> U : U
+PropN -> PropN U : PropN U
+
+NP1 -> OfDet OfNG : OfDet OfNG
+NP1 -> OfUnit() OfNG : OfUnit() OfNG
+NP1 -> DG OfNG : DG OfNG
+NP1 -> half NP(-nodef) : NP() +in_nopro yarısı
+NP1 -> DetPron : DetPron NGSuf [+ng,+def]
+NP1 -> Pron2 : Pron2
+NP1 -> Pron2 else : başka Pron2
+NP1 -> Pron2 AdjP : AdjP Pron2
+NP1 -> PropN : PropN [+def]
+
+One -> one
+One ->
+
+Pron1 -> this One        : buN
+Pron1 -> that One        : oN
+Pron1 -> these           : bunlar      [num=plur]
+Pron1 -> those           : onlar       [num=plur]
+Pron1 -> the AdjP One    : AdjP olan
+Pron1 -> the AdjP ones   : AdjP olanlar
+
+Pron2 -> something  : bir şey
+Pron2 -> someone    : biriN        [+def]
+Pron2 -> somebody   : biriN        [+def]
+Pron2 -> nothing    : hiç bir şey  [+neg]
+Pron2 -> no one     : hiç kimse    [+neg,+def]
+Pron2 -> nobody     : hiç kimse    [+neg,+def]
+Pron2 -> anything   : herhangi bir şey 
+Pron2 -> anybody    : herhangi bir kimse    [+def]
+Pron2 -> anyone     : herhangi bir kimse    [+def]
+Pron2 -> everything : her şey      [+def]
+Pron2 -> everyone   : herkes       [+def]
+Pron2 -> everybody  : herkes       [+def]
+
+DetPron -> all   : hep 
+DetPron -> both  : her iki 
+DetPron -> each | either : her bir 
+DetPron -> none | neither : hiç bir  [+neg]
+DetPron -> most | the most : çok? 
+DetPron -> more | the more: daha çok? 
+DetPron -> half : yarı 
+DetPron -> twice | double : iki kat 
+DetPron -> CardinalNumber times : CardinalNumber kat 
+DetPron -> any   : herhangi bir 
+DetPron -> some : bir kıs@ım 
+DetPron -> many | several : birçok? 
+DetPron -> a few : biraz 
+DetPron -> few | the few: çok az 
+DetPron -> CardinalNumber | the CardinalNumber : CardinalNumber 
+DetPron -> OrdinalNumber CardinalNumber| the OrdinalNumber CardinalNumber : OrdinalNumber CardinalNumber 
+DetPron -> OrdinalNumber | the OrdinalNumber : OrdinalNumber 
+DetPron -> last | the last : sonuncu 
+DetPron -> first | the first : ilk
+DetPron -> enough : yeteri kadar
+
+OfDet -> a lot of | lots of | a number of | plenty of : birçok [num=plur,+noplur]
+OfDet -> a lot of | lots of | plenty of : çok                  [num=sing]
+
+OfUnit -> DG AG Unit of : DG AG Bir Unit
+
+Unit -> piece   : parça  [num=sing]
+Unit -> pieces  : parça  [num=plur]
+Unit -> glass   : bardak [num=sing]
+Unit -> glasses : bardak [num=plur]
+Unit -> cup     : fincan [num=sing]
+Unit -> cups    : fincan [num=plur]
+Unit -> couple  : çift   [num=sing]
+Unit -> couples : çift   [num=plur]
+Unit -> dozen   : düzine [num=sing]
+Unit -> dozens  : düzine [num=plur]
+
+OfNG -> AG NG : AG Bir NG
+OfNG -> AG NG of OfNG() : AG Bir OfNG() NG [+ng]
+
+NG -> N : N NGSuf
+NG -> NG() N : NG() N NGSuf  [+ng]
+
+Bir -> : ! [!indef]
+Bir -> : ! [?noa]
+Bir -> : bir  
+
+NGSuf -> :         ! [-pnum,-ng] # house : ev()
+NGSuf -> : +poss3  ! [-pnum]     # house door : ev kapı(sı)
+NGSuf -> : PossSuf               # my house door : ev kapı(m)
+
+# Pre-Determiners
+PreDet -> all             : bütün
+PreDet -> both            : her iki  [+noplur]
+PreDet -> twice | double  : iki kat
+PreDet -> CardinalNumber() times : CardinalNumber() kat  # beş kat
+PreDet -> one-third      : üçte bir
+
+DG -> PreDet Det PostDets     : PreDet Det PostDets     [+def]
+DG -> Det PostDets            : Det PostDets            [+def]
+DG -> PreDet PostDets         : PreDet PostDets         
+DG -> PostDet PostDets        : PostDet PostDets        
+DG ->          {1} [+nodef]
+DG ->   a | an {1} [+indef,num=sing]
+DG -> half a | half an : yarım  [+indef,+noa,num=sing]
+
+PostDets -> PostDet PostDets : PostDet PostDets
+PostDets -> 
+
+# main (central) determiners
+Det -> the
+Det -> this              : bu        [num=sing]
+Det -> these             : bu        [num=plur]
+Det -> that              : o         [num=sing]
+Det -> those             : o         [num=plur]
+Det -> PossPron          : PossPron
+Det -> NP() 's           : NP() -NHn     [+ng]
+Det -> NP() '            : NP() -NHn     [+ng]
+
+# post determiners
+PostDet -> each              : her bir
+PostDet -> most              : çoğu [num=plur,+noplur]
+PostDet -> most              : en fazla [num=sing]
+PostDet -> more              : daha çok [+noplur]
+PostDet -> every             : her
+PostDet -> either            : her bir
+PostDet -> neither           : hiç bir   [+neg]
+PostDet -> no                : hiç       [+noplur,+neg]
+
+PostDet -> some              : biraz     [num=sing]
+PostDet -> some              : bazı      [num=plur]
+PostDet -> any               : herhangi bir | hiç
+PostDet -> few | little      : az [+noplur]
+PostDet -> a few             : birkaç [num=plur,+noplur]
+PostDet -> a few             : biraz  [num=sing]
+PostDet -> a little          : biraz  [+noplur]
+#Det -> many | a lot of | lots of | plenty of | several  | a numer of : birçok  [num=plur,+noplur]
+#Det -> much | a lot of | lots of | plenty of            : çok       [num=sing]
+PostDet -> many | several : birçok  [num=plur,+noplur]
+PostDet -> much           : çok     [num=sing]
+PostDet -> CardinalNumber : CardinalNumber
+PostDet -> OrdinalNumber  : OrdinalNumber
+
+NP' -> NP                    : NP
+NP' -> NP OptWhich SThatObj()   : SThatObj() NP         # the book i am reading
+NP' -> NP Which SThatSubj(num)  : SThatSubj() NP        # the man who is reading the book
+NP' -> NP Ving(-gap)  : Ving() -YAn NP  {100}               # the man reading the book
+NP' -> NP Vpass(-gap) : Vpass() -An NP  {100}               # the man killed in the war
+
+Acc -> : +i [?def]
+Acc -> :    [!def]
+
+N -> NSing  : NSing         [num=sing]
+N -> NPlur  : NPlur Plur    [num=plur]
+N -> NCSing : NCSing        [num=sing,+ng]
+N -> NCPlur : NCPlur Plur   [num=plur,+ng]
+
+Plur -> : -lAr ! [num=?plur,!noplur]
+Plur ->
+
+AG ->
+AG -> AdjP AG : AdjP AG
+
+AdvAdj -> very : çok
+AdvAdj -> too : fazla
+AdvAdj -> too much : çok fazla
+AdvAdj -> enough : yeteri kadar
+
+AdvAdjComp -> much | too much : çok
+
+AdjP -> Adj : Adj
+AdjP -> AdjComp : daha AdjComp
+AdjP -> AdjSup : en AdjSup
+AdjP -> AdvAdj Adj : AdvAdj Adj
+AdjP -> AdvAdjComp AdjComp : AdvAdjComp daha AdjComp
+
+Ones -> PossPron(pper=*per,pnum=*num)
+
+Oneself -> myself                     [per=1,num=sing]
+Oneself -> himself | herself | itself [per=3,num=sing]
+Oneself -> ourselves                  [per=1,num=plur]
+Oneself -> yourself | yourselves      [per=2,num=plur]
+Oneself -> themselves                 [per=3,num=plur]
+
+ObjPron -> me             : ben   [oper=1,onum=sing]
+ObjPron -> him | her | it : oN    [oper=3,onum=sing]
+ObjPron -> us             : biz   [oper=1,onum=plur]
+ObjPron -> you            : siz   [oper=2,onum=plur]
+ObjPron -> them           : onlar [oper=3,onum=plur]
+
+SubjPron -> i             : ben   [per=1,num=sing]
+SubjPron -> he | she      : oN    [per=3,num=sing]
+SubjPron -> it            : oN    [per=3,num=sing]
+SubjPron -> we            : biz   [per=1,num=plur]
+SubjPron -> you           : siz   [per=2,num=plur]
+SubjPron -> they          : onlar [per=3,num=plur]
+
+
+Pron -> : onlar ! [per=?3,num=?plur]
+Pron -> : oN    ! [per=?3,num=?sing]
+Pron -> : siz   ! [per=?2]
+Pron -> : biz   ! [per=?1,num=?plur]
+Pron -> : ben   ! [per=?1,num=?sing]
+
+
+#PossPron -> my              : ben   [pper=1,pnum=sing]
+#PossPron -> his | her | its : oN    [pper=3,pnum=sing]
+#PossPron -> our             : biz   [pper=1,pnum=plur]
+#PossPron -> your            : siz   [pper=2,pnum=plur]
+#PossPron -> their           : onlar [pper=3,pnum=plur]
+
+PossPron -> my                  [pnum=sing,pper=1]
+PossPron -> his                 [pnum=sing,pper=3]
+PossPron -> her                 [pnum=sing,pper=3]
+PossPron -> its                 [pnum=sing,pper=3]
+PossPron -> our                 [pnum=plur,pper=1]
+PossPron -> your                [pnum=plur,pper=2]
+PossPron -> their : onların     [pnum=sing,pper=3]
+
+ObjPoss -> : -Hm             [oper=1,onum=sing]
+ObjPoss -> : -HmHz           [oper=1,onum=plur]
+ObjPoss -> : -HnHz           [oper=2,onum=plur]
+ObjPoss -> : -ZHN            [oper=3,onum=sing]
+ObjPoss -> : -lArHN          [oper=3,onum=plur]
+#ObjPoss -> : -ZHN            [oper=3]
+
+SubjPoss -> : -Hm             [per=1,num=sing]
+SubjPoss -> : -HmHz           [per=1,num=plur]
+SubjPoss -> : -HnHz           [per=2,num=plur]
+#SubjPoss -> : -ZHN            [per=3,num=sing]
+#SubjPoss -> : -lArHN          [per=3,num=plur]
+SubjPoss -> : -ZHN            [per=3]
+
+PossSuf -> : -Hm    [pnum=sing,pper=1]
+PossSuf -> : -HmHz  [pnum=plur,pper=1]
+PossSuf -> : -HnHz  [pnum=plur,pper=2]
+PossSuf -> : +poss3 [pper=3]
+
+AuxBePos   -> am      [tense=pres,num=sing,per=1]
+AuxBePos   -> is      [tense=pres,num=sing,per=3]
+AuxBePos   -> are     [tense=pres,num=plur]
+AuxBePos   -> was     [tense=past,num=sing,per=1]
+AuxBePos   -> was     [tense=past,num=sing,per=3]
+AuxBePos   -> were    [tense=past,num=plur]
+AuxBeCont  -> 'm      [tense=pres,per=1,num=sing]
+AuxBeCont  -> 's      [tense=pres,per=3,num=sing]
+AuxBeCont  -> 're     [tense=pres,num=plur]
+AuxBeNeg   -> isn't   [tense=pres,per=3,num=sing]
+AuxBeNeg   -> aren't  [tense=pres,num=plur]
+AuxBeNeg   -> wasn't  [tense=past,num=sing,per=1]
+AuxBeNeg   -> wasn't  [tense=past,num=sing,per=3]
+AuxBeNeg   -> weren't [tense=past,num=plur]
+AuxHavePos -> have    [tense=pres,num=sing,per=1]
+AuxHavePos -> has     [tense=pres,num=sing,per=3]
+AuxHavePos -> have    [tense=pres,num=plur]
+AuxHavePos -> had     [tense=past]
+AuxHaveCont -> 've    [tense=pres,num=sing,per=1]
+AuxHaveCont -> 's     [tense=pres,num=sing,per=3]
+AuxHaveCont -> 've    [tense=pres,num=plur]
+AuxHaveCont -> 'd     [tense=past]
+AuxHaveNeg -> haven't [tense=pres,num=sing,per=1]
+AuxHaveNeg -> haven't [tense=pres,num=plur]
+AuxHaveNeg -> hasn't  [tense=pres,num=sing,per=3]
+AuxHaveNeg -> hadn't  [tense=past]
+AuxDoPos   -> do      [tense=pres,num=sing,per=1]
+AuxDoPos   -> do      [tense=pres,num=plur]
+AuxDoPos   -> does    [tense=pres,num=sing,per=3]
+AuxDoPos   -> did     [tense=past]
+AuxDoNeg   -> don't   [tense=pres,num=sing,per=1]
+AuxDoNeg   -> don't   [tense=pres,num=plur]
+AuxDoNeg   -> doesn't [tense=pres,num=sing,per=3]
+AuxDoNeg   -> didn't  [tense=past]
+ModalPos -> can       [modal=can,tense=pres]
+ModalPos -> could     [modal=can,tense=past]
+ModalPos -> will      [modal=will,tense=pres]
+ModalPos -> shall     [modal=will,tense=pres]
+ModalPos -> would     [modal=will,tense=past]
+ModalPos -> must      [modal=must,tense=pres]
+ModalPos -> may       [modal=may,tense=pres]
+ModalPos -> might     [modal=may,tense=past]
+ModalPos -> should    [modal=must,tense=pres]
+ModalCont -> 'll      [modal=will,tense=pres]
+ModalCont -> 'd       [modal=will,tense=past]
+ModalNeg -> can't     [modal=can,tense=pres]
+ModalNeg -> cannot    [modal=can,tense=pres]
+ModalNeg -> couldn't  [modal=can,tense=past]
+ModalNeg -> won't     [modal=will,tense=pres]
+ModalNeg -> wouldn't  [modal=will,tense=past]
+ModalNeg -> shan't    [modal=will,tense=pres]
+ModalNeg -> mustn't   [modal=must,tense=pres]
+ModalNeg -> mayn't    [modal=may,tense=pres]
+ModalNeg -> mightn't  [modal=may,tense=past]
+ModalNeg -> shouldn't [modal=must,tense=pres]
+
+
+Pers1' -> :     ! [?scase]
+Pers1' -> :     ! [?pred,per=?3]
+Pers1' -> :     ! [?pron3,per=?3]
+Pers1' -> : Pers1
+
+
+Pers2' -> :     ! [?scase]
+Pers2' -> :     ! [?pron3,per=?3]
+Pers2' -> : Pers2
+
+Pers3' -> :     ! [?scase]
+Pers3' -> :     ! [?pron3,per=?3]
+Pers3' -> : Pers3
+
+Pers1 -> : -YHm     [num=sing,per=1]
+Pers1 -> : -sHn     [num=sing,per=2]
+Pers1 -> :          [num=sing,per=3]
+Pers1 -> : -YHz     [num=plur,per=1]
+Pers1 -> : -sHnHz   [num=plur,per=2]
+Pers1 -> : -lAr     [num=plur,per=3]
+
+Pers2 -> : -m       [num=sing,per=1]
+Pers2 -> : -n       [num=sing,per=2]
+Pers2 -> :          [num=sing,per=3]
+Pers2 -> : -k       [num=plur,per=1]
+Pers2 -> : -nHz     [num=plur,per=2]
+Pers2 -> : -lAr     [num=plur,per=3]
+
+Pers3 -> : -m       [num=sing,per=1]
+Pers3 -> : -zSHn    [num=sing,per=2]
+Pers3 -> : -z       [num=sing,per=3]
+Pers3 -> : -yHz     [num=plur,per=1]
+Pers3 -> : -zsHnHz  [num=plur,per=2]
+Pers3 -> : -zlAr    [num=plur,per=3]
+
+V -> V'(+,+gap) PPS(-gap) AdvP : PPS() AdvP V'                  [+gap]
+V -> V'(+,-gap) PPS(+gap) AdvP : PPS(gapw) AdvP V'              [+gap]
+V -> V'(+,-gap) PPS(-gap) AdvP : PPS() TRelAdv AdvP V'          [-gap]
+
+Vs -> Vs'(+,+gap) PPS(-gap) AdvP : PPS() AdvP Vs'               [+gap]
+Vs -> Vs'(+,-gap) PPS(+gap) AdvP : PPS(gapw) AdvP Vs'           [+gap]
+Vs -> Vs'(+,-gap) PPS(-gap) AdvP : PPS() TRelAdv AdvP Vs'       [-gap]
+
+Ving -> Ving'(+,+gap) PPS(-gap) AdvP : PPS() AdvP Ving'         [+gap]
+Ving -> Ving'(+,-gap) PPS(+gap) AdvP : PPS(gapw) AdvP Ving'     [+gap]
+Ving -> Ving'(+,-gap) PPS(-gap) AdvP : PPS() TRelAdv AdvP Ving' [-gap]
+
+Ved -> Ved'(+,+gap) PPS(-gap) AdvP : PPS() AdvP Ved'            [+gap]
+Ved -> Ved'(+,-gap) PPS(+gap) AdvP : PPS(gapw) AdvP Ved'        [+gap]
+Ved -> Ved'(+,-gap) PPS(-gap) AdvP : PPS() TRelAdv AdvP Ved'    [-gap]
+
+Ven -> Ven'(+,+gap) PPS(-gap) AdvP : PPS() AdvP Ven'            [+gap]
+Ven -> Ven'(+,-gap) PPS(+gap) AdvP : PPS(gapw) AdvP Ven'        [+gap]
+Ven -> Ven'(+,-gap) PPS(-gap) AdvP : PPS() TRelAdv AdvP Ven'    [-gap]
+
+Vpass -> Vpass'(+,+gap) By() PPS(-gap) AdvP : PPS() By() AdvP Vpass'(gapw)     [+gap]
+Vpass -> Vpass'(+,-gap) By() PPS(+gap) AdvP : PPS(gapw) By() AdvP Vpass'()     [+gap]
+Vpass -> Vpass'(+,-gap) By() PPS(-gap) AdvP : PPS() By() TRelAdv AdvP Vpass'() [-gap]
+
+By -> by PPObj : PPObj taraf ObjPoss -dAn
+By ->
+
+TRelAdv -> : *reladv [?reladv]
+TRelAdv -> :         [!reladv]
+
+AdvP -> Adv : Adv
+AdvP ->
+
+Adv -> on WeekDay : WeekDay günü
+WeekDay -> monday    : pazartesi
+WeekDay -> tuesday   : salı
+WeekDay -> wednesday : çarşamba
+WeekDay -> thursday  : perşembe
+WeekDay -> friday    : cuma
+WeekDay -> saturday  : cumartesi
+WeekDay -> sunday    : pazar
+
+PP -> Prep PPObj : PPObj Prep {100}
+
+PPS -> PP() PPS : PP() PPS
+PPS -> PPGap() PPS(-gap) : PPGap() PPS(gapw)
+PPS -> [-gap]
+
+Prep -> about                   : +in_pro3 hak+ ObjPoss -dA Ki
+Prep -> above | over            : +in_nopro üst ObjPoss -dA Ki
+Prep -> across                  : +in_nopro karşı ObjPoss -dA Ki
+Prep -> after                   : +den sonra Ki
+Prep -> against                 : +e karşı
+Prep -> along                   : boyunca Olan
+Prep -> among | between         : +in_nopro ara ObjPoss -dA Ki
+Prep -> around                  : +in_nopro etraf ObjPoss -dA Ki
+Prep -> as                      : olarak
+Prep -> at | in | on            : +de Ki
+Prep -> because of              : +den dolayı Olan
+Prep -> before                  : +den önce Ki
+Prep -> beneath | below | under : +in_nopro alt ObjPoss -dA Ki
+Prep -> beyond                  : +in_nopro öte ObjPoss -dA Ki
+Prep -> behind                  : +in_nopro arka ObjPoss -dA Ki
+Prep -> for                     : +in_pro için 
+Prep -> from | through | off    : +den
+Prep -> inside | within         : +in_nopro iç ObjPoss -dA Ki
+Prep -> into                    : +in_nopro iç ObjPoss -YA Olan
+Prep -> like                    : +in_pro gibi
+Prep -> onto                    : +in_nopro ObjPoss -YA Olan
+Prep -> outside | out of        : +in_nopro dış ObjPoss -dA Ki
+Prep -> to                      : +e
+Prep -> toward                  : +e doğru
+Prep -> with                    : PrepWith
+Prep -> without                 : +siz [+noa]
+
+PPGap -> at | in | on | for | to | from
+PPGap -> about                   : hakkında
+PPGap -> above | over            : üstünde
+PPGap -> across | against        : karşı
+PPGap -> among | between         : arasında
+PPGap -> around                  : etrafında
+PPGap -> beneath | below | under : altında
+PPGap -> inside | within         : içinde
+PPGap -> like                    : benzer
+PPGap -> with                    : birlikte
+PPGap -> without                 : olmadan
+
+Ki -> : -ki [?np]
+Ki -> :     [!np]
+
+Olan -> : olan [?np]
+Olan -> :      [!np]
+
+PrepWith -> : +li  [?np]
+PrepWith -> : +le  [!np]
+
+%suffix +0 -
+%suffix +i -YH
+%suffix +e -YA
+%suffix ben+e bana
+%suffix +de -DA
+%suffix +den -DAn
+%suffix +siz -sHz
+%suffix +li -lH
+
+%suffix +poss3 -ZHN
+%suffix hep+poss3 hepsi
+
+%suffix +mek -mAk?
+%suffix +mek+i -mAyH
+%suffix +mek+e -mAyA
+
+%suffix +in -NHn
+%suffix ben+in benim
+%suffix biz+in bizim
+
+# with me: benimle, with him: onunla, with them: onlarla with the book: kitapla
+%suffix +le -YlA
+%suffix ben+le benimle
+%suffix sen+le seninle
+%suffix oN+le onunla
+%suffix biz+le bizimle
+%suffix siz+le sizinle
+
+# for me: benim için, for him: onun için, for them: onlar için, for the book: kitap için
+%suffix +in_pro -
+%suffix ben+in_pro benim
+%suffix sen+in_pro senin 
+%suffix oN+in_pro onun
+%suffix biz+in_pro bizim
+%suffix siz+in_pro sizin 
+%suffix onlar+in_pro onlar
+
+# about me: hakkımda, about him: onun hakkında, about them: onlar hakkında, about the book: kitap hakkında
+%suffix +in_pro3 -
+%suffix ben+in_pro3 -
+%suffix sen+in_pro3 - 
+%suffix oN+in_pro3 onun
+%suffix biz+in_pro3 -
+%suffix siz+in_pro3 - 
+%suffix onlar+in_pro3 onlar
+
+# under me: altımda, under him: onun altında, under them: onların altında, under the book: kitabın altında
+%suffix +in_nopro -NHn
+%suffix ben+in_nopro -
+%suffix sen+in_nopro -
+%suffix biz+in_nopro -
+%suffix siz+in_nopro -
+
+%suffix +sin -NHn
+%suffix ben+sin -
+%suffix biz+sin -
+%suffix siz+sin -
+
+%suffix +aor -Hr
+%suffix +caus -DHr
+
+#%major S,SentNorm,SentInv,SentImp,V,Vs,Ving,Ved,Ven,Obj,AdjP,NP,Adv

@@ -7,9 +7,11 @@ This file define classes:
       
 """
 if len(__name__.split("."))>1: # called within a package
-    from .grammar import format_feat, new_unify
+    from .grammar import format_feat
 else: # called as a module or script
-    from grammar import format_feat, new_unify
+    from grammar import format_feat
+
+new_unify = False
 
 empty_dict = dict()
 empty_list = list()

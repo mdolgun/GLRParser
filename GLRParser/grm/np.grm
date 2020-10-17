@@ -7,15 +7,15 @@ NG' -> NG of NG'() : NG'() NG  [+ng]
 NP -> all  : hepsiN
 NP -> both : her ikisiN
 NP -> each | either : her biriN
-NP -> none | neither: hiç biriN [+neg]
-NP -> most : çoðuN
-NP -> half : yarýsýN
-NP -> twice | double : iki katýN
-NP -> five times : beþ katýN
+NP -> none | neither: hiÃ§ biriN [+neg]
+NP -> most : Ã§oÄŸuN
+NP -> half : yarÄ±sÄ±N
+NP -> twice | double : iki katÄ±N
+NP -> five times : beÅŸ katÄ±N
 NP -> any   : herhangi biriN
-NP -> some : bir kýsmýN
-NP -> many | several : birçoðuN
-NP -> half NP() : NP(case=in) yarýsýN
+NP -> some : bir kÄ±smÄ±N
+NP -> many | several : birÃ§oÄŸuN
+NP -> half NP() : NP(case=in) yarÄ±sÄ±N
 
 Case -> : {-2}  [-case]
 Case -> : {-1}  [case=in,-def,-indef]
@@ -46,34 +46,34 @@ NP -> NP of NP-C(-nodef)  : NP-C(case=in)  NP		  [+ng]
 NP -> NP() of ObjPron : NP(pnumb=*numb,ppers=*pers,case=in,noplur)
 
 PP -> Prep NP : NP Prep(pnumb=sing,ppers=3)
-PP -> for ObjPron  : ObjPron PossSuf(pnumb=*numb,ppers=*pers) için {-3} 
+PP -> for ObjPron  : ObjPron PossSuf(pnumb=*numb,ppers=*pers) iÃ§in {-3} 
 PP -> Prep ObjPron : Prep(pnumb=*numb,ppers=*pers)   {-2} [case=in]
 PP -> Prep ObjPron : sana Prep   {-1} [case=e,numb=sing,pers=2]
 PP -> Prep ObjPron : bana Prep   {-1} [case=e,numb=sing,pers=1]
 PP -> Prep ObjPron : ObjPron Case Prep [+def] 
 
 Prep -> about   		        : hak+ PossSuf -dAki
-Prep -> above | on | over	    : üst! PossSuf -dAki	[case=in]
-Prep -> across  		        : karþý PossSuf -dAki	[case=in]
+Prep -> above | on | over	    : Ã¼st! PossSuf -dAki	[case=in]
+Prep -> across  		        : karÅŸÄ± PossSuf -dAki	[case=in]
 Prep -> after                   : sonraki				[case=den]
-Prep -> against 		        : karþý					[case=e]
+Prep -> against 		        : karÅŸÄ±					[case=e]
 Prep -> along   		        : boyunca
 Prep -> among | between  	    : ara PossSuf -dAki		[case=in]
 Prep -> around  		        : etraf PossSuf -dAki   [case=in]
 Prep -> at | in  	            : -ki					[case=de]
-Prep -> because of  : dolayý [case=den]
-Prep -> before                  : önceki				[case=den]
+Prep -> because of  : dolayÄ± [case=den]
+Prep -> before                  : Ã¶nceki				[case=den]
 Prep -> beneath | below | under	: alt! PossSuf -dAki    [case=in]
-Prep -> beyond                  : öte PossSuf -dAki		[case=in]
-Prep -> for                     : için           
+Prep -> beyond                  : Ã¶te PossSuf -dAki		[case=in]
+Prep -> for                     : iÃ§in           
 Prep -> from | through          :    					[case=den]
-Prep -> in front of             : ön PossSuf -dAki    [case=in]
-Prep -> inside | within  	    : iç! PossSuf -dAki		[case=in]
-Prep -> into                    : iç! PossSuf -YA       [case=in]
-Prep -> onto                    : üst!  PossSuf -YA		[case=in]
-Prep -> outside   	            : dýþ  PossSuf -dAki    [case=in]
+Prep -> in front of             : Ã¶n PossSuf -dAki    [case=in]
+Prep -> inside | within  	    : iÃ§! PossSuf -dAki		[case=in]
+Prep -> into                    : iÃ§! PossSuf -YA       [case=in]
+Prep -> onto                    : Ã¼st!  PossSuf -YA		[case=in]
+Prep -> outside   	            : dÄ±ÅŸ  PossSuf -dAki    [case=in]
 Prep -> to			            :       				[case=e]
-Prep -> toward			        : doðru					[case=e]
+Prep -> toward			        : doÄŸru					[case=e]
 Prep -> with   		     								[case=li]
 Prep -> without 		 								[case=siz]
 
@@ -82,14 +82,14 @@ DG ->   a [+indef,numb=sing]
 DG ->  Det DG' : Det DG' [+def]
 DG' -> Det DG' : Det DG'
 DG' -> 
-Det -> all  : bütün
+Det -> all  : bÃ¼tÃ¼n
 Det -> both : her iki [+noplur]
 Det -> each : her bir
-Det -> most : çoðu [+noplur]
+Det -> most : Ã§oÄŸu [+noplur]
 Det -> twice : iki kat
 Det -> double : iki kat
-Det -> five times : beþ kat
-Det -> half a : yarým
+Det -> five times : beÅŸ kat
+Det -> half a : yarÄ±m
 Det -> the	 				
 Det -> this		: bu 		[numb=sing]
 Det -> these	: bu 		[numb=plur]
@@ -97,17 +97,17 @@ Det -> that		: o 		[numb=sing]
 Det -> those	: o 		[numb=plur]
 Det -> every    : her
 Det -> either   : her bir
-Det -> neither  : hiç bir   [+neg]
-Det -> no 	    : hiç 		[+noplur,+neg]
+Det -> neither  : hiÃ§ bir   [+neg]
+Det -> no 	    : hiÃ§ 		[+noplur,+neg]
 Det -> two		: iki		[numb=plur,+noplur]
 Det -> some     : biraz     [numb=sing]
-Det -> some     : bazý      [numb=plur]
-Det -> any      : herhangi bir | hiç
+Det -> some     : bazÄ±      [numb=plur]
+Det -> any      : herhangi bir | hiÃ§
 Det -> few | little       : az [+noplur]
-Det -> a few      : birkaç [+noplur]
+Det -> a few      : birkaÃ§ [+noplur]
 Det -> a little   : biraz  [+noplur]
-Det -> many | a lot of | lots of | plenty of | several	| a number of : birçok	[numb=plur,+noplur]
-Det -> much | a lot of | lots of | plenty of			: çok		[numb=sing]
+Det -> many | a lot of | lots of | plenty of | several	| a number of : birÃ§ok	[numb=plur,+noplur]
+Det -> much | a lot of | lots of | plenty of			: Ã§ok		[numb=sing]
 Det -> PossPron 
 Det -> NP() 's  : NP() -NHn     [+ng]
 
@@ -118,7 +118,7 @@ PossPron -> her   : onun  		[pnumb=sing,ppers=3]
 PossPron -> its   : onun  		[pnumb=sing,ppers=3]
 PossPron -> our   : bizim  		[pnumb=plur,ppers=1]
 PossPron -> your  : sizin  		[pnumb=plur,ppers=2]
-PossPron -> their : onlarýn  	[pnumb=plur,ppers=3,+noplur]
+PossPron -> their : onlarÄ±n  	[pnumb=plur,ppers=3,+noplur]
 
 ObjPron -> me    : ben 			[numb=sing,pers=1]
 ObjPron -> you   : sen   		[numb=sing,pers=2]
@@ -147,39 +147,39 @@ Plur ->
 
 
 NSing -> house 	: ev
-NSing -> door  	: kapý
+NSing -> door  	: kapÄ±
 NSing -> bell  	: zil
 NSing -> box   	: kutu
 NSing -> family : aile
-NSing -> tree   : aðaç
-NSing -> piece  : parça
-NSing -> front  : ön
+NSing -> tree   : aÄŸaÃ§
+NSing -> piece  : parÃ§a
+NSing -> front  : Ã¶n
 NSing -> cake   : kek!
 NSing -> book   : kitap
-NSing -> milk   : süt!
+NSing -> milk   : sÃ¼t!
 
 NPlur -> houses : ev
-NPlur -> doors  : kapý
+NPlur -> doors  : kapÄ±
 NPlur -> bells  : zil
 NPlur -> boxes  : kutu
 NPlur -> families : aile
-NPlur -> trees  : aðaç
-NPlur -> pieces : parça
+NPlur -> trees  : aÄŸaÃ§
+NPlur -> pieces : parÃ§a
 NPlur -> cakes  : kek!
 NPlur -> books  : kitap
 
 
-NCSing -> butter	: tereyað
+NCSing -> butter	: tereyaÄŸ
 NCSing -> bedroom   	: yatak oda
-NCSing -> family tree   : soyaðaç
+NCSing -> family tree   : soyaÄŸaÃ§
 
-NCPlur -> butters	: tereyað
+NCPlur -> butters	: tereyaÄŸ
 NCPlur -> bedrooms  	: yatak oda
-NCPlur -> family trees  : soyaðaç
+NCPlur -> family trees  : soyaÄŸaÃ§
 
 
 Adj -> blue	: mavi
 Adj -> white	: beyaz
-Adj -> big	: büyük
-Adj -> small	: küçük
+Adj -> big	: bÃ¼yÃ¼k
+Adj -> small	: kÃ¼Ã§Ã¼k
 Adj -> happy	: mutlu

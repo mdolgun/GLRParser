@@ -1,0 +1,670 @@
+
+the man i trusted with the car @ arabayı emanet ettiğim adam
+
+i trusted the man with the car @ adama arabayı emanet ettim
+i saw the man i trusted with the car @ arabayı emanet ettiğim adamı gördüm
+i like the car i trusted the man with @ adama emanet ettiğim arabadan hoşlanıyorum
+
+he sleeps @ uyur
+we sleep @ uyuruz
+you sleep @ uyursunuz
+they sleep @ uyurlar
+
+he slept @ uyudu
+we slept @ uyuduk
+you slept @ uyudunuz
+they slept @ uyudular
+
+he has slept @ uyudu
+we have slept @ uyuduk
+you have slept @ uyudunuz
+they have slept @ uyudular
+
+he will sleep @ uyuyacak
+we will sleep @ uyuyacağız
+you will sleep @ uyuyacaksınız
+they will sleep @ uyuyacaklar
+
+
+# simple tenses
+i sleep @ uyurum
+i don't sleep @ uyumam
+do i sleep @ uyur muyum
+don't i sleep @ uyumaz mıyım
+
+i slept @ uyudum
+i didn't sleep @ uyumadım
+did i sleep @ uyudum mu
+didn't i sleep @ uyumadım mı
+
+i will sleep @ uyuyacağım
+i won't sleep @ uyumayacağım
+will i sleep @ uyuyacak mıyım
+won't i sleep @ uyumayacak mıyım
+
+i would sleep @ uyuyacaktım | uyurdum
+i wouldn't sleep @ uyumayacaktım | uyumazdım
+would i sleep @ uyuyacak mıydım | uyur muydum
+wouldn't i sleep @ uyumayacak mıydım | uyumaz mıydım
+
+i can sleep @ uyuyabilirim
+i can't sleep @ uyuyamam
+can i sleep @ uyuyabilir miyim
+can't i sleep @ uyuyamaz mıyım
+
+i could sleep @ uyuyabilirdim
+i couldn't sleep @ uyuyamazdım
+could i sleep @ uyuyabilir miydim
+couldn't i sleep @ uyuyamaz mıydım
+
+i may sleep @ uyuyabilirim
+i mayn't sleep @ uyumayabilirim
+may i sleep @ uyuyabilir miyim
+mayn't i sleep @ uyumayabilir miyim
+
+i might sleep @ uyuyabilirdim
+i mightn't sleep @ uyumayabilirdim
+might i sleep @ uyuyabilir miydim
+mightn't i sleep @ uyumayabilir miydim
+
+i should sleep @ uyumalıyım
+i shouldn't sleep @ uyumamalıyım
+i must sleep @ uyumalıyım
+i mustn't sleep @ uyumamalıyım
+
+# perfect tenses
+i have slept @ uyudum
+i haven't slept @ uyumadım
+have i slept @ uyudum mu
+haven't i slept @ uyumadım mı
+
+i had slept @ uyumuştum
+i hadn't slept @ uyumamıştım
+had i slept @ uyumuş muydum
+hadn't i slept @ uyumamış mıydım
+
+i will have slept @ uyumuş olacağım
+i won't have slept @ uyumuş olmayacağım
+will i have slept @ uyumuş olacak mıyım
+won't i have slept @ uyumuş olmayacak mıyım
+
+i would have slept @ uyumuş olacaktım | uyumuş olurdum
+i wouldn't have slept @ uyumuş olmayacaktım | uyumuş olmazdım
+would i have slept @ uyumuş olacak mıydım | uyumuş olur muydum
+wouldn't i have slept @ uyumuş olmayacak mıydım | uyumuş olmaz mıydım
+
+i can have slept @ uyumuş olabilirim
+i can't have slept @ uyumuş olamam
+can i have slept @ uyumuş olabilir miyim
+can't i have slept @ uyumuş olamaz mıyım
+
+i could have slept @ uyumuş olabilirdim
+i couldn't have slept @ uyumuş olamazdım
+could i have slept @ uyumuş olabilir miydim
+couldn't i have slept @ uyumuş olamaz mıydım
+
+i may have slept @ uyumuş olabilirim
+i mayn't have slept @ uyumuş olmayabilirim
+may i have slept @ uyumuş olabilir miyim
+mayn't i have slept @ uyumuş olmayabilir miyim
+
+i might have slept @ uyumuş olabilirdim
+i mightn't have slept @ uyumuş olmayabilirdim
+might i have slept @ uyumuş olabilir miydim
+mightn't i have slept @ uyumuş olmayabilir miydim
+
+i should have slept @ uyumuş olmalıyım
+i shouldn't have slept @ uyumuş olmamalıyım
+should i have slept @ uyumuş olmalı mıyım
+shouldn't i have slept @ uyumuş olmamalı mıyım
+
+i must have slept @ uyumuş olmalıyım
+i mustn't have slept @ uyumuş olmamalıyım
+must i have slept @ uyumuş olmalı mıyım
+mustn't i have slept @ uyumuş olmamalı mıyım
+
+# progressive tenses
+i am sleeping @ uyuyorum
+i am not sleeping @ uyumuyorum
+am i sleeping @ uyuyor muyum
+am i not sleeping @ uyumuyor muyum
+
+i was sleeping @ uyuyordum
+i wasn't sleeping @ uyumuyordum
+was i sleeping @ uyuyor muydum
+wasn't i sleeping @ uyumuyor muydum
+
+i will be sleeping @ uyuyor olacağım
+i won't be sleeping @ uyuyor olmayacağım
+will i be sleeping @ uyuyor olacak mıyım
+won't i be sleeping @ uyuyor olmayacak mıyım
+
+i would be sleeping @ uyuyor olacaktım | uyuyor olurdum
+i wouldn't be sleeping @ uyuyor olmayacaktım | uyuyor olmazdım
+would i be sleeping @ uyuyor olacak mıydım | uyuyor olur muydum
+wouldn't i be sleeping @ uyuyor olmayacak mıydım | uyuyor olmaz mıydım
+
+i can be sleeping @ uyuyor olabilirim
+i can't be sleeping @ uyuyor olamam
+can i be sleeping @ uyuyor olabilir miyim
+can't i be sleeping @ uyuyor olamaz mıyım
+
+i could be sleeping @ uyuyor olabilirdim
+i couldn't be sleeping @ uyuyor olamazdım
+could i be sleeping @ uyuyor olabilir miydim
+couldn't i be sleeping @ uyuyor olamaz mıydım
+
+i may be sleeping @ uyuyor olabilirim
+i mayn't be sleeping @ uyuyor olmayabilirim
+may i be sleeping @ uyuyor olabilir miyim
+mayn't i be sleeping @ uyuyor olmayabilir miyim
+
+i might be sleeping @ uyuyor olabilirdim
+i mightn't be sleeping @ uyuyor olmayabilirdim
+might i be sleeping @ uyuyor olabilir miydim
+mightn't i be sleeping @ uyuyor olmayabilir miydim
+
+i should be sleeping @ uyuyor olmalıyım
+i shouldn't be sleeping @ uyuyor olmamalıyım
+should i be sleeping @ uyuyor olmalı mıyım
+shouldn't i be sleeping @ uyuyor olmamalı mıyım
+
+i must be sleeping @ uyuyor olmalıyım
+i mustn't be sleeping @ uyuyor olmamalıyım
+must i be sleeping @ uyuyor olmalı mıyım
+mustn't i be sleeping @ uyuyor olmamalı mıyım
+
+# perfect progressive tenses
+i have been sleeping @ uyuyorum
+i haven't been sleeping @ uyumuyorum
+have i been sleeping @ uyuyor muyum
+haven't i been sleeping @ uyumuyor muyum
+
+i had been sleeping @ uyuyordum
+i hadn't been sleeping @ uyumuyordum
+had i been sleeping @ uyuyor muydum
+hadn't i been sleeping @ uyumuyor muydum
+
+i will have been sleeping @ uyuyor olacağım
+i won't have been sleeping @ uyuyor olmayacağım
+will i have been sleeping @ uyuyor olacak mıyım
+won't i have been sleeping @ uyuyor olmayacak mıyım
+
+i would have been sleeping @ uyuyor olacaktım | uyuyor olurdum
+i wouldn't have been sleeping @ uyuyor olmayacaktım | uyuyor olmazdım
+would i have been sleeping @ uyuyor olacak mıydım | uyuyor olur muydum
+wouldn't i have been sleeping @ uyuyor olmayacak mıydım | uyuyor olmaz mıydım
+
+i can have been sleeping @ uyuyor olabilirim
+i can't have been sleeping @ uyuyor olamam
+can i have been sleeping @ uyuyor olabilir miyim
+can't i have been sleeping @ uyuyor olamaz mıyım
+
+i could have been sleeping @ uyuyor olabilirdim
+i couldn't have been sleeping @ uyuyor olamazdım
+could i have been sleeping @ uyuyor olabilir miydim
+couldn't i have been sleeping @ uyuyor olamaz mıydım
+
+i may have been sleeping @ uyuyor olabilirim
+i mayn't have been sleeping @ uyuyor olmayabilirim
+may i have been sleeping @ uyuyor olabilir miyim
+mayn't i have been sleeping @ uyuyor olmayabilir miyim
+
+i might have been sleeping @ uyuyor olabilirdim
+i might not have been sleeping @ uyuyor olmayabilirdim
+might i have been sleeping @ uyuyor olabilir miydim
+might i not have been sleeping @ uyuyor olmayabilir miydim
+
+i should have been sleeping @ uyuyor olmalıyım
+i shouldn't have been sleeping @ uyuyor olmamalıyım
+should i have been sleeping @ uyuyor olmalı mıyım
+shouldn't i have been sleeping @ uyuyor olmamalı mıyım
+
+i must have been sleeping @ uyuyor olmalıyım
+i mustn't have been sleeping @ uyuyor olmamalıyım
+must i have been sleeping @ uyuyor olmalı mıyım
+mustn't i have been sleeping @ uyuyor olmamalı mıyım
+
+# simple tenses be
+i am happy @ mutluyum
+i am not happy @ mutlu değilim
+am i happy @ mutlu muyum
+am i not happy @ mutlu değil miyim
+
+i was happy @ mutluydum
+i wasn't happy @ mutlu değildim
+was i happy @ mutlu muydum
+wasn't i happy @ mutlu değil miydim
+
+# simple tenses be 3rd person
+i am a man @ bir adamım
+he is a man @ o bir adam
+he is men @ o adamlar
+they are a man @ onlar bir adam
+they are men @ onlar adamlar
+
+# perfect tenses be
+i have been happy @ mutlu oldum
+i haven't been happy @ mutlu olmadım
+have i been happy @ mutlu oldum mu
+haven't i been happy @ mutlu olmadım mı
+
+i had been happy @ mutlu olmuştum
+i hadn't been happy @ mutlu olmamıştım
+had i been happy @ mutlu olmuş muydum
+hadn't i been happy @ mutlu olmamış mıydım
+
+# progressive tenses be
+i am being happy @ mutlu oluyorum
+i am not being happy @ mutlu olmuyorum
+am i being happy @ mutlu oluyor muyum
+am i not being happy @ mutlu olmuyor muyum
+
+i was being happy @ mutlu oluyordum
+i wasn't being happy @ mutlu olmuyordum
+was i being happy @ mutlu oluyor muydum
+wasn't i being happy @ mutlu olmuyor muydum
+
+# modal be
+i will be happy @ mutlu olacağım
+will i be happy @ mutlu olacak mıyım
+i won't be happy @ mutlu olmayacağım
+won't i be happy @ mutlu olmayacak mıyım
+
+i would be happy @ mutlu olacaktım | mutlu olurdum
+i wouldn't be happy @ mutlu olmayacaktım | mutlu olmazdım
+would i be happy @ mutlu olacak mıydım | mutlu olur muydum
+wouldn't i be happy @ mutlu olmayacak mıydım | mutlu olmaz mıydım
+
+i can be happy @ mutlu olabilirim
+i can't be happy @ mutlu olamam
+can i be happy @ mutlu olabilir miyim
+can't i be happy @ mutlu olamaz mıyım
+
+i could be happy @ mutlu olabilirdim
+i couldn't be happy @ mutlu olamazdım
+could i be happy @ mutlu olabilir miydim
+couldn't i be happy @ mutlu olamaz mıydım
+
+i may be happy @ mutlu olabilirim
+i mayn't be happy @ mutlu olmayabilirim
+may i be happy @ mutlu olabilir miyim
+mayn't i be happy @ mutlu olmayabilir miyim
+
+i might be happy @ mutlu olabilirdim
+i mightn't be happy @ mutlu olmayabilirdim
+might i be happy @ mutlu olabilir miydim
+mightn't i be happy @ mutlu olmayabilir miydim
+
+i must be happy@ mutlu olmalıyım
+i mustn't be happy @ mutlu olmamalıyım
+must i be happy @ mutlu olmalı mıyım
+mustn't i be happy @ mutlu olmamalı mıyım
+
+# used to
+i used to sleep @ uyurdum
+i didn't use to sleep @ uyumazdım
+did i use to sleep @ uyur muydum
+didn't i use to sleep @ uyumaz mıydım
+
+# would like
+i would like a book @ bir kitap isterim
+i wouldn't like a book @ bir kitap istemem
+would i like a book @ bir kitap ister miyim
+wouldn't i like a book @ bir kitap istemez miyim
+
+# would like to
+i would like to sleep @ uyumak isterim
+i wouldn't like to sleep@ uyumak istemem
+would i like to sleep @ uyumak ister miyim
+wouldn't i like to sleep @ uyumak istemez miyim
+
+# had better
+i had better sleep @ uyusam iyi olur
+i had better not sleep @ uyumasam iyi olur
+had i better sleep @ uyusam iyi olur mu
+had i better not sleep @ uyumasam iyi olur mu
+
+# have to
+i have to sleep @ uyumak zorundayım
+i don't have to sleep @ uyumak zorunda değilim
+do i have to sleep @ uyumak zorunda mıyım
+don't i have to sleep @ uyumak zorunda değil miyim
+
+i had to sleep @ uyumak zorundaydım
+i didn't have to sleep @ uyumak zorunda değildim
+did i have to sleep @ uyumak zorunda mıydım
+didn't i have to sleep @ uyumak zorunda değil miydim
+
+i will have to sleep @ uyumak zorunda olacağım
+i won't have to sleep @ uyumak zorunda olmayacağım
+will i have to sleep @ uyumak zorunda olacak mıyım
+won't i have to sleep @ uyumak zorunda olmayacak mıyım
+
+i have to be happy @ mutlu olmak zorundayım
+i don't have to be happy @ mutlu olmak zorunda değilim
+do i have to be happy @ mutlu olmak zorunda mıyım
+don't i have to be happy @ mutlu olmak zorunda değil miyim
+
+# have
+i have a car @ bir arabaya sahibim | bir arabam var
+i don't have a car @ bir arabaya sahip değilim | bir arabam yok
+do i have a car @ bir arabaya sahip miyim | bir arabam var mı
+don't i have a car @  bir arabaya sahip değil miyim | bir arabam yok mu
+the man has a car @ adam bir arabaya sahip | adamın bir arabası var
+he has a car @ bir arabaya sahip | bir arabası var
+they have a car @ onlar bir arabaya sahip | onların bir arabası var
+
+i had a car @ bir arabaya sahiptim | bir arabam vardı
+i didn't have a car @ bir arabaya sahip değildim | bir arabam yoktu
+did i have a car @ bir arabaya sahip miydim | bir arabam var mıydı
+didn't i have a car @  bir arabaya sahip değil miydim | bir arabam yok muydu
+
+# able to
+i am able to sleep @ uyuyabilirim
+i was able to sleep @ uyuyabilirdim
+i have been able to sleep @ uyuyabildim
+i had been able to sleep @ uyuyabilmiştim
+i will be able to sleep @ uyuyabileceğim
+i would be able to sleep @ uyuyabilecektim | uyuyabilirdim
+i must be able to sleep @ uyuyabilmeliyim
+
+# able to be
+i am able to be happy @ mutlu olabilirim
+i was able to be happy @ mutlu olabilirdim
+i have been able to be happy @ mutlu olabildim
+i had been able to be happy @ mutlu olabilmiştim
+i will be able to be happy @ mutlu olabileceğim
+i would be able to be happy @ mutlu olabilecektim | mutlu olabilirdim
+i must be able to be happy @ mutlu olabilmeliyim
+
+# passive
+i am watched @ seyredilirim
+i was watched @ seyredildim
+i am being watched @ seyrediliyorum
+i was being watched @ seyrediliyordum
+i have been watched @ seyredildim
+i had been watched @ seyredilmiştim
+i will be watched @ seyredileceğim
+i can be watched @ seyredilebilirim
+i must be watched @ seyredilmeliyim
+
+
+i am hated @ nefret ediliyorum | benden nefret ediliyor
+i am being hated @ nefret ediliyorum | benden nefret ediliyor
+i was hated @ nefret ediliyordum | benden nefret edildi
+i was being hated @ nefret ediliyordum | benden nefret ediliyordu
+i will be hated @ nefret edileceğim | benden nefret edilecek
+i will have been hated @ nefret edilmiş olacağım | benden nefret edilmiş olacak
+
+# subject-relative 
+the man who sleeps sleeps @ uyuyan adam uyur
+the man who doesn't sleep doesn't sleep @ uyumayan adam uyumaz
+the man who slept slept @ uyuyan adam uyudu | uyumuş olan adam uyudu
+the man who didn't sleep didn't sleep @ uyumayan adam uyumadı | uyumamış olan adam uyumadı
+the man who is sleeping is sleeping @ uyuyan adam uyuyor | uyuyor olan adam uyuyor
+the man who isn't sleeping isn't sleeping @ uyumayan adam uyumuyor | uyumuyor olan adam uyumuyor
+the man who was sleeping was sleeping @ uyuyan adam uyuyordu | uyuyor olan adam uyuyordu
+the man who wasn't sleeping wasn't sleeping @ uyumayan adam uyumuyordu | uyumuyor olan adam uyumuyordu
+the man who has slept has slept @ uyuyan adam uyudu | uyumuş olan adam uyudu 
+the man who hasn't slept hasn't slept @ uyumayan adam uyumadı | uyumamış olan adam uyumadı
+the man who had slept had slept @ uyumuş olan adam uyumuştu
+the man who hadn't slept hadn't slept @ uyumamış olan adam uyumamıştı
+the man who will sleep will sleep @ uyuyacak adam uyuyacak 
+the man who won't sleep won't sleep @ uyumayacak adam uyumayacak
+the man who can sleep can sleep @ uyuyabilen adam uyuyabilir
+the man who can't sleep can't sleep @ uyuyamayan adam uyuyamaz
+the man who must sleep must sleep @ uyumak zorunda olan adam uyumalı
+the man who mustn't sleep mustn't sleep @ uyumamak zorunda olan adam uyumamalı
+
+# subject-relative be
+the man who is happy is happy @ mutlu olan adam mutlu
+the man who isn't happy isn't happy @ mutlu olmayan adam mutlu değil
+the man who was happy was happy @ mutlu olan adam mutluydu
+the man who wasn't happy wasn't happy @ mutlu olmayan adam mutlu değildi
+
+# object-relative
+the man whom i watch watches me @ seyrettiğim adam beni seyreder
+the man whom i don't watch doesn't watch me @ seyretmediğim adam beni seyretmez
+the man whom i watched watched me @ seyrettiğim adam beni seyretti
+the man whom i didn't watch didn't watch me @ seyretmediğim adam beni seyretmedi
+the man whom i am watching is watching me @ seyrettiğim adam beni seyrediyor | seyrediyor olduğum adam beni seyrediyor
+the man whom i am not watching isn't watching me @ seyretmediğim adam beni seyretmiyor | seyretmiyor olduğum adam beni seyretmiyor
+the man whom i was watching was watching me @ seyrettiğim adam beni seyrediyordu | seyrediyor olduğum adam beni seyrediyordu
+the man whom i wasn't watching wasn't watching me @ seyretmediğim adam beni seyretmiyordu | seyretmiyor olduğum adam beni seyretmiyordu
+the man whom i have watched has watched me @ seyrettiğim adam beni seyretti | seyretmiş olduğum adam beni seyretti 
+the man whom i haven't watched hasn't watched me @ seyretmediğim adam beni seyretmedi | seyretmemiş olduğum adam beni seyretmedi
+the man whom i had watched had watched me @ seyretmiş olduğum adam beni seyretmişti
+the man whom i hadn't watched hadn't watched me @ seyretmemiş olduğum adam beni seyretmemişti
+the man whom i will watch will watch me @ seyredeceğim adam beni seyredecek 
+the man whom i won't watch won't watch me @ seyretmeyeceğim adam beni seyretmeyecek
+the man whom i can watch can watch me @ seyredebildiğim adam beni seyredebilir
+the man whom i can't watch can't watch me @ seyredemediğim adam beni seyredemez
+the man whom i must watch must watch me @ seyretmek zorunda olduğum adam beni seyretmeli
+the man whom i mustn't watch mustn't watch me @ seyretmemek zorunda olduğum adam beni seyretmemeli
+
+# if
+if i sleep he sleeps @ uyursam uyur
+if i slept he would sleep @ uyusaydım uyurdu
+if i am sleeping he will sleep @ uyuyorsam uyuyacak
+if i was sleeping he would sleep @ uyuyor olsaydım uyurdu
+if i have slept he would sleep @ uyuduysam uyurdu
+if i had slept he would have slept @ uyumuş olsaydım uyumuş olurdu
+
+if i am happy he is happy @ mutluysam o mutlu
+if i was happy he would be happy @ mutlu olsaydım mutlu olurdu
+if i am being happy he is happy @ mutlu oluyorsam o mutlu
+if i was being happy he would be happy @ mutlu oluyor olsaydım mutlu olurdu
+if i have been happy he would be happy @ mutlu olduysam mutlu olurdu
+if i had been happy he would have been happy @ mutlu olmuş olsaydım mutlu olmuş olurdu
+
+# whether
+i don't know if he sleeps @ uyuyup uyumadığını bilmiyorum
+i don't know if he slept @ uyuyup uyumadığını bilmiyorum
+i don't know if he is sleeping @ uyuyup uyumadığını bilmiyorum
+i don't know if he was sleeping @ uyuyup uyumadığını bilmiyorum
+i don't know if he has slept @ uyuyup uyumadığını bilmiyorum
+i don't know if he had slept @ uyumuş olup olmadığını bilmiyorum
+i don't know if he will sleep @ uyuyup uyumayacağını bilmiyorum
+i don't know if he can sleep @ uyuyup uyuyamadığını bilmiyorum
+i don't know if he may sleep @ uyuyup uyumayabildiğini bilmiyorum
+i don't know if he must sleep @ uyumak zorunda olup olmadığını bilmiyorum
+
+i don't know if he can be happy @ mutlu olup olamadığını bilmiyorum
+i don't know if he is happy @ mutlu olup olmadığını bilmiyorum
+i don't know if he was happy @ mutlu olup olmadığını bilmiyorum
+i don't know if he is being happy @ mutlu olup olmadığını bilmiyorum
+i don't know if he was being happy @ mutlu olup olmadığını bilmiyorum
+i don't know if he has been happy @ mutlu olup olmadığını bilmiyorum
+i don't know if he had been happy @ mutlu olmuş olup olmadığını bilmiyorum
+i don't know if he will be happy @ mutlu olup olmayacağını bilmiyorum
+i don't know if he can be happy @ mutlu olup olamadığını bilmiyorum
+i don't know if he may be happy @ mutlu olup olmayabildiğini bilmiyorum
+i don't know if he must be happy @ mutlu olmak zorunda olup olmadığını bilmiyorum
+
+# while
+while i sleep he sleeps @ ben uyurken uyur
+while i slept he slept @ ben uyurken uyudu
+while i am sleeping he is sleeping @ ben uyuyorken uyuyor
+while i was sleeping he was sleeping @ ben uyuyorken uyuyordu
+while i have slept he would sleep @ ben uyumuşken uyurdu
+while i had slept he would have slept @ ben uyumuşken uyumuş olurdu
+
+# other conns
+as long as she is happy i will be happy @ mutlu olduğu sürece mutlu olacağım | o mutlu olduğu sürece mutlu olacağım
+when she is happy i will be happy @ mutlu olduğunda mutlu olacağım | o mutlu olduğunda mutlu olacağım
+as soon as she gives me a book i will read it @ bana bir kitap verir vermez onu okuyacağım | o bana bir kitap verir vermez onu okuyacağım
+
+i hate the car which is hated @ nefret edilen arabadan nefret ediyorum
+i hate the car which was hated @ nefret edilen arabadan nefret ediyorum
+i hate the car which is being hated@ nefret edilen arabadan nefret ediyorum
+i hate the car which has been hated@ nefret edilen arabadan nefret ediyorum | nefret edilmiş olan arabadan nefret ediyorum
+i hate the man who is hating me @ benden nefret eden adamdan nefret ediyorum
+i hate the man who is hated @ nefret edilen adamdan nefret ediyorum
+i hate the man who is hating me @ benden nefret eden adamdan nefret ediyorum
+i hate the man who is turning @ dönen adamdan nefret ediyorum 
+i hate opening doors @ kapılar açmaktan nefret ediyorum
+
+i hate the car i am afraid of @ korktuğum arabadan nefret ediyorum | korkuyor olduğum arabadan nefret ediyorum
+i hate the car i am afraid to turn on @ açmaktan korktuğum arabadan nefret ediyorum | açmaktan korkuyor olduğum arabadan nefret ediyorum
+
+#pred2verb
+i am afraid to turn @ dönmekten korkuyorum
+i am afraid @ korkuyorum
+i am afraid of the car @ arabadan korkuyorum
+i am afraid of cars @ arabalardan korkuyorum
+i will be afraid of cars @ arabalardan korkacağım
+i can be afraid of cars @ arabalardan korkabilirim
+i must be afraid of cars @ arabalardan korkmalıyım
+
+#pred2pred
+i am used to cars @ arabalara alışkınım
+i was used to cars @ arabalara alışkındım
+i have been used to cars @ arabalara alışkındım | arabalara alışkın oldum
+i will be used to cars @ arabalara alışkın olacağım
+i can be used to cars @ arabalara alışkın olabilirim
+i must be used to cars @ arabalara alışkın olmalıyım
+
+#verb2pred
+i agree with you @ sizinle aynı fikirdeyim
+i agreed with you @ sizinle aynı fikirdeydim
+i have agreed with you @ sizinle aynı fikirdeydim | sizinle aynı fikirde oldum
+i had agreed with you @ sizinle aynı fikirde olmuştum
+i will agree with you @ sizinle aynı fikirde olacağım
+i must agree with you @ sizinle aynı fikirde olmalıyım
+
+
+i want the car which she likes @ hoşlandığı arabayı istiyorum
+what do you think they want @ ne istediklerini düşünüyorsunuz
+who do you think you are @ kim olduğunuzu düşünüyorsunuz
+
+i am a man @ bir adamım
+they are good @ onlar iyi
+who are you @ kimsiniz
+what is it @ o ne
+
+the car is turned on @ araba açılır
+the man is stared at @ adama göz dikilir
+i am stared at @ bana göz dikilir
+
+i want the car that the man turns on @ adamın açtığı arabayı istiyorum
+i like the car that you stare at @ gözünüzü diktiğiniz arabadan hoşlanırım | gözünüzü diktiğiniz arabadan hoşlanıyorum
+what do you stare at @ neye gözünüzü dikersiniz
+i stare at him @ ona gözümü dikerim
+i want the car that i want to turn @ çevirmek istediğim arabayı istiyorum
+
+i want the car that i turn on @ açtığım arabayı istiyorum
+i want the car that i turn @ çevirdiğim arabayı istiyorum
+turn the car on @ arabayı aç
+what do you order me to turn @ bana neyi çevirmemi emredersiniz
+i want to turn @ dönmek istiyorum
+trust the man with the car @ adama arabayı emanet et
+i think that they like the car @ arabadan hoşlandıklarını düşünüyorum
+i want the car that i like @ hoşlandığım arabayı istiyorum
+
+
+what do you order me to turn @ bana neyi çevirmemi emredersiniz
+i order you to turn @ size dönmenizi emrederim
+i want the car that i turn @ çevirdiğim arabayı istiyorum
+the car that i give you turns @ size verdiğim araba döner
+the car that i turn on turns @ açtığım araba döner
+who do you order to turn @ kime dönmesini emredersiniz
+whom do they put up with @ kime katlanırlar
+give me a car @ bana bir araba ver
+what do you give me @ bana ne verirsiniz
+who do you put up with @ kime katlanırsınız
+put up with the man @ adama katlan
+who do you put up with the man @ *
+
+turn the car @ arabayı çevir
+turn on the car @ arabayı aç
+turn the car off @ arabayı kapa
+turn off the car @ arabayı kapa
+turn them back @ onları geri çevir
+turn back @ geri dön
+i turn @ dönerim
+put the car on @ arabayı giy
+trust the man with the car @ adama arabayı emanet et
+give the man the car @ adama arabayı ver
+put up with the man @ adama katlan
+
+stop the car @ arabayı durdur
+sleep @ uyu
+stop @ dur
+turn the car on @ arabayı aç
+turn on the car @ arabayı aç
+turn the car off @ arabayı kapa
+turn off the car @ arabayı kapa
+turn the car @ arabayı çevir
+hate me @ benden nefret et
+look at me @ bana bak
+look for a car @ bir araba ara
+look for the car @ arabayı ara
+want a car @ bir araba iste
+want to sleep @ uyumak iste
+want me to sleep @ uyumamı iste
+want me to stop the car @ arabayı durdurmamı iste
+i see a car @ bir araba görüyorum
+i saw the car @ arabayı gördüm
+i saw you @ sizi gördüm
+see a car @ bir araba gör
+see the car @ arabayı gör
+see me @ beni gör
+turn them away @ onları geri çevir
+turn back @ geri dön
+
+i turned the car off @ arabayı kapadım
+locate the car @ arabanın yerini sapta
+i located the man @ adamın yerini saptadım
+she stared at the man @ adama gözünü dikti
+
+i confused him @ kafasını karıştırdım
+i wanted to sleep @ uyumak istedim | uyumak istiyordum
+i wanted him to sleep @ uyumasını istedim | uyumasını istiyordum
+i like watching television @ televizyon seyretmekten hoşlanıyorum
+
+tell a story @ bir hikaye söyle
+tell me a story @ bana bir hikaye söyle
+tell him to stop the car @ ona arabayı durdurmasını söyle
+i know you @ sizi biliyorum
+i knew you @ sizi biliyordum | sizi bildim
+you like cars @ arabalardan hoşlanıyorsunuz
+i know that you like cars @ arabalardan hoşlandığınızı biliyorum
+
+it is good to see you @ sizi görmek iyi
+it is good for him to see you @ sizi görmesi iyi
+it is good that he will see you @ sizi görecek olması iyi
+
+i need to sleep @ uyumaya ihtiyacım var | uyumam lazım
+
+#find
+i found a book @ bir kitap buldum
+i found that he was a liar @ onun bir yalancı olduğunu buldum
+i found her a taxi @ ona bir taksi buldum
+they found his blood to contain poison @ kanının zehir içerdiğini buldular
+he finds her beautiful @ onu güzel bulur
+i found him sleeping @ onu uyurken buldum
+i found it easy to solve the problems @ problemleri çözmeyi kolay buldum
+i find it sad that he has lost all his children @ bütün çocuklarını kaybetmiş olmasını üzücü bulurum
+
+#seem
+he seems happy @ mutlu görünüyor
+he seems to read a book @ bir kitap okuyor gibi görünüyor
+he seems to have a car @ arabası var gibi görünüyor
+he seems to be happy @ mutlu görünüyor | mutlu olduğu görünüyor | mutlu gibi görünüyor | mutluymuş gibi görünüyor
+he seems an angry parent @ kızgın bir ebeveyn gibi görünüyor
+
+#need
+i need sleeping @ uyumaya ihtiyacım var | uyumam gerekiyor
+this shirt needs washing @ bu gömleğin yıkanmaya ihtiyacı var | bu gömleğin yıkanması gerekiyor
+this shirt needs to be washed @ bu gömleğin yıkanmaya ihtiyacı var | bu gömleğin yıkanması gerekiyor
+i need to eat something @ birşey yemeye ihtiyacım var | bir şey yemem gerekiyor
+i need some coffee @ biraz kahveye ihtiyacım var
+
+
+
+
+
+
+
+
