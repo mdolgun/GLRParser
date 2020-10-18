@@ -9,8 +9,35 @@ GLRParser is not just a parser. It's
 * Unification Engine which handles unification of features
 * Translation Engine for Syntax-Based Translation of Natural Languages
 
-For detailed information, you can refer to wiki page: https://github.com/mdolgun/GLRParser/wiki
+For a quick start, you can use following commands to install and run an interactive demo for English to Turkish Translation:
 
+::
+
+	pip install GLRParser
+	python -m GLRParser.main
+	
+In interactive demo, you can enter an English sentence to get Turkish translation(s):
+
+::
+
+	Grammar load time: 806,295 mics
+	Number of rules: 24915
+	Number of states: 28047
+	Number of symbols: 5738
+	Number of NonTerm symbols: 159
+	Enter Sent> who do you think you are
+	kim olduğunuzu düşünüyorsunuz
+	Enter Sent> as long as she is happy i will be happy
+	mutlu olduğu sürece mutlu olacağım
+	Enter Sent> his sudden departure had demonstrated how unreliable he was
+	ani ayrılışı ne kadar güvenilmez olduğunu göstermişti
+	Enter Sent> attacks were threatening to destabilize the government
+	saldırılar yönetimi istikrarsızlaştırmakla tehdit ediyordu
+	Enter Sent> if i had come early she wouldn't have missed her bus
+	erken gelmiş olsaydım otobüsünü kaçırmış olmazdı
+	erken gelmiş olsaydım otobüsünü özlemiş olmazdı
+
+For detailed information, you can refer to wiki page: https://github.com/mdolgun/GLRParser/wiki
 
 Sample code for parsing and translation should be like:
 
@@ -21,7 +48,7 @@ Sample code for parsing and translation should be like:
 	try:
 		parser = Parser() # initialize parser object
 
-		parser.load_grammar("GLRParser\grm\simple_trans.grm") # load grammar from a file
+		parser.parse_grammar("GLRParser\grm\simple_trans.grm") # load grammar from a file
 		sent = "i saw the man in the house with the telescope" # sentence to parse
 
 		parser.compile() # constructs parsing tables
@@ -80,5 +107,3 @@ The semantic interpretations are:
     3. saw(in the house) house(with the telescope)
     4. man(in the house) man(with the telescope)
     5. man(in the house) house(with the telescope)
-
-
