@@ -36,8 +36,10 @@ In interactive demo, you can enter an English sentence to get Turkish translatio
 	Enter Sent> if i had come early she wouldn't have missed her bus
 	erken gelmiş olsaydım otobüsünü kaçırmış olmazdı
 	erken gelmiş olsaydım otobüsünü özlemiş olmazdı
+	
+For a list of sample translations check the file: https://github.com/mdolgun/GLRParser/blob/master/GLRParser/grm/main.out.txt
 
-For detailed information, you can refer to wiki page: https://github.com/mdolgun/GLRParser/wiki
+For detailed information about the features and the grammar syntax, you can refer to wiki page: https://github.com/mdolgun/GLRParser/wiki
 
 Sample code for parsing and translation should be like:
 
