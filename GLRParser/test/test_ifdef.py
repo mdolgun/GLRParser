@@ -52,14 +52,14 @@ S -> in : out
         self.maxDiff = None
         for define,exp_rules in zip(self.defines,self.rule_sets):
             parser = Parser()       
-            parser.load_grammar(text=define+self.grammar)            
+            parser.parse_grammar(text=define+self.grammar)            
             with self.subTest(rules=parser.rules,exp_rules=exp_rules):
                 self.assertEqual(parser.rules, exp_rules)
 
 def genTestMacro():
     for define,exp_rules in zip(TestIfdef.defines,TestIfdef.rule_sets):
         parser = Parser()       
-        parser.load_grammar(text=define+TestIfdef.grammar)
+        parser.parse_grammar(text=define+TestIfdef.grammar)
         print(define)
         print(parser.rules)
         print("==============================")

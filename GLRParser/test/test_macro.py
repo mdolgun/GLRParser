@@ -9,9 +9,9 @@ S -> Vs   : Vs
 S -> Ving : Ving 
 S -> Ved  : Ved  
 S -> Ven  : Ven 
-%macro V -> V,Vs,Ving,Ved,Ven
-%form  V -> turn,turns,turning,turned,turned
-%form  V -> go,goes,going,went,gone
+%macro V V,Vs,Ving,Ved,Ven
+%form  V turn,turns,turning,turned,turned
+%form  V go,goes,going,went,gone
 $V -> $turn : dön
 $V -> $go   : git
 """
@@ -36,7 +36,7 @@ $V -> $go   : git
     def setUp(self):
         parser = Parser()
         
-        parser.load_grammar(text=self.grammar)
+        parser.parse_grammar(text=self.grammar)
         parser.compile()
         self.parser = parser
         #self.maxDiff = None
@@ -48,7 +48,7 @@ $V -> $go   : git
 
 def genTestMacro():
     parser = Parser()
-    parser.load_grammar(text=TestMacro.grammar)
+    parser.parse_grammar(text=TestMacro.grammar)
     for rule in parser.rules:
         print(rule)
  

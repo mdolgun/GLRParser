@@ -6,7 +6,7 @@ class TestCost:
     def setUp(self):
         parser = Parser()
         
-        parser.load_grammar(text=self.grammar,reverse=self.reverse)
+        parser.parse_grammar(text=self.grammar,reverse=self.reverse)
         parser.compile()
         self.parser = parser
         #self.maxDiff = None
@@ -147,7 +147,7 @@ class TestCost3(TestCost,unittest.TestCase):
 
 def genTestCost(cls):
     parser = Parser()
-    parser.load_grammar(text=cls.grammar,reverse=cls.reverse)
+    parser.parse_grammar(text=cls.grammar,reverse=cls.reverse)
     parser.compile()
     for sent in cls.sents:
         parser.parse(sent)

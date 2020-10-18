@@ -267,7 +267,7 @@ class TestParseSimple(unittest.TestCase):
         parser = Parser()
         grammar = textwrap.dedent(self.grammar)
 
-        parser.load_grammar(text=grammar)
+        parser.parse_grammar(text=grammar)
         sent = "i saw the man in the house with the telescope"
 
         parser.compile()
@@ -707,7 +707,7 @@ class TestParseSimpleEmpty(unittest.TestCase):
         parser = Parser()
         grammar = textwrap.dedent(self.grammar)
 
-        parser.load_grammar(text=grammar)
+        parser.parse_grammar(text=grammar)
         sent = "i saw man in apt with tel"
 
         parser.compile()
@@ -766,7 +766,7 @@ class TestParseMiddleEmpty(unittest.TestCase):
         parser = Parser()
         grammar = textwrap.dedent(self.grammar)
 
-        parser.load_grammar(text=grammar)
+        parser.parse_grammar(text=grammar)
         sent = "c"
 
         parser.compile()
@@ -793,7 +793,7 @@ def gen_TestParseSimple():
     parser = Parser()
     grammar = textwrap.dedent(TestParseSimple.grammar)
 
-    parser.load_grammar(text=grammar)
+    parser.parse_grammar(text=grammar)
     sent = "i saw the man in the house with the telescope"
 
     parser.compile()
@@ -808,7 +808,7 @@ def gen_TestParseSimpleEmpty():
     parser = Parser()
     grammar = textwrap.dedent(TestParseSimpleEmpty.grammar)
 
-    parser.load_grammar(text=grammar)
+    parser.parse_grammar(text=grammar)
     sent = "i saw man in apt with tel"
 
     parser.compile()
@@ -823,7 +823,7 @@ def gen_TestParseMiddleEmpty():
     parser = Parser()
     grammar = textwrap.dedent(TestParseMiddleEmpty.grammar)
 
-    parser.load_grammar(text=grammar)
+    parser.parse_grammar(text=grammar)
     sent = "c"
 
     parser.compile()

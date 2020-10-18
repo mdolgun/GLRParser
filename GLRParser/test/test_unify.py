@@ -76,7 +76,7 @@ class TestUnifyBinary(unittest.TestCase):
     def setUp(self):
         parser = Parser()
 
-        parser.load_grammar(text=self.grammar)
+        parser.parse_grammar(text=self.grammar)
         parser.compile()
         self.parser = parser
         self.maxDiff = None
@@ -216,10 +216,10 @@ class TestUnify(unittest.TestCase):
                 )
             )
             """ ),
-        ("me am watching you", "Unify precheck error feat=case src=acc param=nom super=S#1 sub=NP#9"),
-        ("she is watching i", "Unify precheck error feat=case src=nom param=acc super=S#1 sub=NP#2"),
-        ("two man is watching it", "Unify error feat=numb src=sing param=plur super=NP#16 sub=Noun#23"),
-        ("a man watch us","Unify error feat=pers src=1 param=3 super=S#1 sub=VP#31"),
+        ("me am watching you", "UnifyU precheck error feat=case src=acc param=nom super=S#1 sub=NP#9"),
+        ("she is watching i", "UnifyU precheck error feat=case src=nom param=acc super=S#1 sub=NP#2"),
+        ("two man is watching it", "UnifyU error feat=numb src=sing dst=plur super=NP#16 sub=Noun#23"),
+        ("a man watch us","UnifyU error feat=pers src=1 dst=3 super=S#1 sub=VP#31"),
         ("they watch us","""\
             S(
             #1[numb=plur,pers=3]
@@ -268,13 +268,13 @@ class TestUnify(unittest.TestCase):
                 )
             )
             """ ),
-        ("he watches a men","Unify error feat=numb src=plur param=sing super=NP#16 sub=Noun#24")
+        ("he watches a men","UnifyU error feat=numb src=plur dst=sing super=NP#16 sub=Noun#24")
         ]
 
     def setUp(self):
         parser = Parser()
 
-        parser.load_grammar(text=self.grammar)
+        parser.parse_grammar(text=self.grammar)
         parser.compile()
         self.parser = parser
         self.maxDiff = None
@@ -296,7 +296,7 @@ class TestUnify(unittest.TestCase):
 def gen_TestUnify():
     parser = Parser()
 
-    parser.load_grammar(text=TestUnify.grammar)
+    parser.parse_grammar(text=TestUnify.grammar)
     parser.compile()
     sents = ["i am watching her", "she is watching me", "these men are watching us", "me am watching you", "she is watching i", "two man is watching it",
              "a man watch us", "they watch us", "he watches the men", "he watches a men", "i watch him"]
@@ -315,7 +315,7 @@ def gen_TestUnify():
 def gen_TestUnifyBinary():
     parser = Parser()
 
-    parser.load_grammar(text=TestUnifyBinary.grammar)
+    parser.parse_grammar(text=TestUnifyBinary.grammar)
     parser.compile()
     sents = [ "a0 b0", "a0 b1", "a1 b0", "a1 b1" ]
 

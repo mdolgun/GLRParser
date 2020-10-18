@@ -94,7 +94,7 @@ class TestTrans(unittest.TestCase):
         parser = Parser()
         grammar = textwrap.dedent(self.grammar)
 
-        parser.load_grammar(text=grammar)
+        parser.parse_grammar(text=grammar)
         
 
         parser.compile()
@@ -134,7 +134,7 @@ class TestTransUnify(unittest.TestCase):
         parser = Parser("EN","TR")
         grammar = textwrap.dedent(self.grammar)
 
-        parser.load_grammar(text=grammar)
+        parser.parse_grammar(text=grammar)
 
         parser.compile()
         parser.parse(self.sent)
@@ -148,7 +148,7 @@ def genTrans():
     # used for data generation
 
     parser = Parser()
-    parser.load_grammar(text=TestTrans.grammar)
+    parser.parse_grammar(text=TestTrans.grammar)
 
     parser.compile()
 
@@ -168,7 +168,7 @@ def genTransUnify():
     # used for data generation
 
     parser = Parser()
-    parser.load_grammar(text=TestTransUnify.grammar)
+    parser.parse_grammar(text=TestTransUnify.grammar)
 
     parser.compile()
 

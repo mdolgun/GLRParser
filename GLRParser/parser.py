@@ -7,7 +7,7 @@ This file define classes:
     ParserError,UnifyError: exceptions thrown when parsing or unification fails
       
 """
-import logging, re, copy
+import logging, re, copy, pickle
 from collections import defaultdict
 
 if __name__ == "__main__":
@@ -230,8 +230,28 @@ class Parser:
         if logging.getLogger().isEnabledFor(logging.DEBUG):
             for stateno,stateset in enumerate(states):
                 logging.debug("%s : %s REDUCE: %s EREDUCE: %s", stateno, self.get_items(stateset), self.get_items(reduce.get(stateno,set())), self.get_items(ereduce.get(stateno,set())))
+
+    def save_grammar(self,fname):
+        with open(fname,"wb") as fout:
+            pickle.dump(self.rules, fout)
+            pickle.dump(self.trie, fout)
+            pickle.dump(self.post_processor.suff_dict, fout)
+            pickle.dump(self.dfa, fout)
+            pickle.dump(self.reduce, fout)
+            pickle.dump(self.ereduce, fout)
+            pickle.dump(self.ruledict, fout)
+
+    def load_grammar(self,fname):
+        with open(fname,"rb") as fin:
+            self.rules = pickle.load(fin)
+            self.trie = pickle.load(fin)
+            self.post_processor.suff_dict = pickle.load(fin)
+            self.dfa = pickle.load(fin)
+            self.reduce = pickle.load(fin)
+            self.ereduce = pickle.load(fin)
+            self.ruledict = pickle.load(fin)
    
-    def load_grammar(self,fname=None,reverse=False,text=None,defines=None):
+    def parse_grammar(self,fname=None,reverse=False,text=None,defines=None):
         """ loads a grammar file and parse it """
         grammar = Grammar.load_grammar(fname,reverse,text,defines)
         self.rules,self.trie = grammar.rules,grammar.trie

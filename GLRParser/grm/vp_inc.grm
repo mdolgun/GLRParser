@@ -1,0 +1,152 @@
+
+%suffix aç+aor açar
+%suffix bak+aor bakar
+%suffix dik+aor diker
+%suffix dön+aor döner
+%suffix emret?+aor emreder
+%suffix et?+aor eder
+%suffix git+aor gider
+%suffix giy+aor giyer
+%suffix kork+aor korkar
+%suffix sev+aor sever
+%suffix seyret?+aor seyreder
+%suffix sık+aor sıkar
+%suffix yap+aor yapar
+
+
+%macro N NSing,NPlur
+
+%form N car,cars
+%form N door,doors
+%form N man,men
+%form N book,books
+%form N story,stories
+%form N television,televisions
+
+$N -> $car : araba
+$N -> $book : kitap?
+$N -> $door : kapı
+$N -> $man : adam
+$N -> $story : hikaye
+$N -> $television : televizyon
+
+%macro V V,Vs,Ving,Ved,Ven
+
+%form V agree,agrees,agreeing,agreed,agreed
+%form V bore,bores,boring,bored,bored
+%form V buy,buys,buying,bought,bought
+%form V confuse,confuses,confusing,confused,confused
+%form V do,does,doing,did,done
+%form V give,gives,giving,gave,given
+%form V go,goes,going,went,gone
+%form V have,has,having,had,had
+%form V hate,hates,hating,hated,hated
+%form V make,makes,making,made,made
+%form V know,knows,knowing,knew,known
+%form V like,likes,liking,liked,liked
+%form V listen,listens,listening,listened,listened
+%form V locate,locates,locating,located,located
+%form V look,looks,looking,looked,looked
+%form V open,opens,opening,opened,opened
+%form V order,orders,ordering,ordered,ordered
+%form V put,puts,putting,put,put
+%form V read,reads,reading,read,read
+%form V say,says,saying,said,said
+%form V see,sees,seeing,saw,seen
+%form V sleep,sleeps,sleeping,slept,slept
+%form V stop,stops,stopping,stopped,stopped
+%form V stare,stares,staring,stared,stared
+%form V tell,tells,telling,told,told
+%form V think,thinks,thinking,thought,thought
+%form V trust,trusts,trusting,trusted,trusted
+%form V turn,turns,turning,turned,turned
+%form V use,uses,using,used,used
+%form V want,wants,wanting,wanted,wanted
+%form V watch,watches,watching,watched,watched
+
+$V -> $agree with Obj'        : Obj' aynı fikirde [case=+le,+pred]
+#$V -> $bore Obj'             : Obj' can ObjPoss +i sık  [case=+in]
+$V -> $bore Obj'              : Obj' sık  [case=+i]
+$V -> $confuse Obj'           : Obj' kafa ObjPoss +i karıştır [case=+in]
+$V -> $go                     : git? [-gap]
+$V -> $have Inf(gap)          : Inf(gapw) zorunda [+pred,+prog]
+$V -> $have Obj'              : Obj' SubjPoss [+pred,+exist,scase=+in,+pron3]
+$V -> $hate Inf(gap)          : Inf(gapw) nefret et? [case=+den,+prog,+pprog]
+$V -> $hate Obj'              : Obj' nefret et? [case=+den,+prog,+pprog]
+$V -> $hate Ger               : Ger nefret et? [case=+den,+prog,+pprog]
+$V -> $give ObjObj            : ObjObj ver [case1=+e,case2=Acc]
+$V -> $know SWhether'         : SWhether' +i bil [+prog,+pprog]
+$V -> $know SThat'            : SThat' +i bil [+prog,+pprog]
+$V -> $know Obj'              : Obj' bil [case=+i,+prog,+pprog]
+$V -> $like Inf(gap)          :  Inf(gapw) hoşlan [case=+den,+prog]
+$V -> $like Ger               : Ger hoşlan [case=+den,+prog]
+$V -> $like Obj'              : Obj' hoşlan [case=+den,+prog]
+$V -> $locate Obj'            : Obj' yer ObjPoss +i sapta [case=+in]
+$V -> $look at Obj'           : Obj' bak [case=+e]
+$V -> $look for Obj'          : Obj' ara [case=Acc]
+$V -> $look like Obj'         : Obj' benze [case=+e]
+$V -> $open                   : açıl [-gap]
+$V -> $open Obj'              : Obj' aç [case=Acc]
+$V -> $order Obj'             : Obj' sipariş et? [case=Acc]
+$V -> $order ObjInf           : ObjInf +i emret? [case=+e]
+$V -> $put Obj on             : Obj giy [-gap,case=+i]
+$V -> $put on Obj'            : Obj' giy [case=+i]
+$V -> $put up with Obj'       : Obj' katlan [case=+e]
+$V -> $read Obj'              : Obj' oku [case=Acc]
+$V -> $see Obj'               : Obj' gör [case=Acc,+prog]
+$V -> $sleep                  : uyu [-gap]
+$V -> $stare at Obj'          : Obj' göz SubjPoss +i dik [case=+e]
+$V -> $stop                   : dur [-gap]
+$V -> $stop Obj'              : Obj' durdur [case=+i]
+$V -> $tell ObjObj            : ObjObj söyle [case1=+e,case2=Acc]
+$V -> $tell Obj'              : Obj' söyle [case=Acc]
+$V -> $tell SWhether'         : SWhether' +i söyle
+$V -> $tell SThat'            : SThat' +i söyle
+$V -> $tell ObjInf            : ObjInf +i söyle [case=+e]
+$V -> $think SThat'           : SThat' +i düşün [+prog]
+$V -> $turn                   : dön [-gap]
+$V -> $turn back              : geri dön [-gap]
+$V -> $turn Obj'              : Obj' çevir [case=+i]
+$V -> $turn on Obj'           : Obj' aç [case=+i]
+$V -> $turn Obj on            : Obj aç [-gap,case=+i] 
+$V -> $turn off Obj'          : Obj' kapa [case=+i]
+$V -> $turn Obj off           : Obj kapa [-gap,case=+i]
+$V -> $turn back Obj'         : Obj' geri çevir [case=+i]
+$V -> $turn Obj back          : Obj geri çevir [-gap,case=+i]
+$V -> $turn away Obj'         : Obj' geri çevir [case=+i]
+$V -> $turn Obj away          : Obj geri çevir [-gap,case=+i]
+$V -> $trust Obj'             : Obj' güven [case=+e,+prog]
+$V -> $trust Obj1 with Obj2   : Obj1 Obj2 emanet et? [case1=+e,case2=+i]
+$V -> $want ObjInf            : ObjInf +i iste [+prog,case=+in]
+$V -> $want Obj'              : Obj' iste [case=Acc,+prog]
+$V -> $want Inf(gap)          : Inf(gapw) iste [+prog]
+$V -> $watch Obj'             : Obj' seyret? [case=Acc]
+
+Vpass -> bored      : sıkıl  
+Vpass -> turned     : çevril     
+Vpass -> turned on  : açıl       
+Vpass -> given Obj' : Obj' veril            [scase=+e,+pron]
+Vpass -> stared at  : göz dikil             [scase=+e,+pron]
+#Vpass -> bored      : can SubjPoss sıkıl    [scase=+in]
+Vpass -> hated      : nefret edil           [+prog,+pprog]
+Vpass -> watched    : seyredil
+#Vpass -> hated      : nefret edil          [scase=+den,+pron]
+Vpass -> located    : yer SubjPoss saptan   [scase=+in]
+
+PredVerb -> afraid : kork [-gap,+prog,+pprog]
+PredVerb -> afraid of Obj' : Obj' kork [case=+den,+prog,+pprog]
+PredVerb -> afraid Inf : Inf kork [case=+den,+prog,+pprog]
+PredVerb -> afraid of Ger : Ger kork [case=+den,+prog,+pprog]
+PredVerb -> afraid SThat' : SThat' kork [case=+den,+prog,+pprog]
+
+PredVerb -> proud of Obj' : Obj' gurur duy [case=+le,+prog,+pprog]
+
+
+Pred -> angry with Obj' : Obj' kızgın [case=+e]
+Pred -> aware of Obj' : Obj' farkında [case=+in]
+Pred -> used to Obj' : Obj' alışkın [case=+e]
+
+Adj -> good : iyi
+Adj -> better : daha iyi
+Adj -> best : en iyi
+Adj -> happy : mutlu

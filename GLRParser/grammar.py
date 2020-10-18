@@ -22,7 +22,7 @@ class Rule:
     """ Definition of  a grammar rule """
     __slots__ = ('head', 'left', 'right', 'feat', 'checklist', 'lparam', 'rparam', 'cost', 'cut')
 
-    def __init__(self, head, left=empty_list, right=empty_list, feat=empty_dict, checklist=empty_list, lparam=empty_list, rparam=empty_list, cost=0, cut=None):
+    def __init__(self, head, left=empty_list, right=empty_list, feat=empty_dict, checklist=empty_dict, lparam=empty_list, rparam=empty_list, cost=0, cut=None):
         self.head = head
         self.left = left
         self.right = right
@@ -113,8 +113,6 @@ class Trie:
 
 
 class Grammar:
-    enable_trie = False
-
     INTEGER = re.compile('-?[1-9][0-9]*') # 
     re_NONTERM = r"\$?[_A-Z][-_A-Za-z0-9$]*'*"
     re_FEAT_NAME = "[a-z0-9_]+"
@@ -141,11 +139,11 @@ class Grammar:
         self.forms = dict()
         self.defines = set() if defines is None else defines
         self.process = True
-        self.if_stack = []
-        self.parse_rule("S' -> S() : S()")
+        self.if_stack = []  
         self.suff_dict = dict()
         self.auto_dict = False
         self.include_stack = []
+        self.parse_rule("S' -> S() : S()")
         #self.suff_dict_names = dict()
         #self.suff_idxs = dict()
         #self.suff_dict_list = []
@@ -273,7 +271,7 @@ class Grammar:
             llist,rlist = rlist,llist
 
         for left,lparam,lcost,lmacro,lcut in llist:
-            term_only = self.enable_trie and len(lparam)>0 and all(map(lambda x:x is False,lparam))
+            term_only = self.auto_dict is not False and len(lparam)>0 and all(map(lambda x:x is False,lparam))
 
             for right,rparam,rcost,rmacro,rcut in rlist:      
                 # following cross-references right with left, removing referencing suffixes
