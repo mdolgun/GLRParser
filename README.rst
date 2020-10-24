@@ -26,16 +26,16 @@ In interactive demo, you can enter an English sentence to get Turkish translatio
 	Number of symbols: 5738
 	Number of NonTerm symbols: 159
 	Enter Sent> who do you think you are
-	kim olduğunuzu düşünüyorsunuz
+	  kim olduğunuzu düşünüyorsunuz
 	Enter Sent> as long as she is happy i will be happy
-	mutlu olduğu sürece mutlu olacağım
+	  mutlu olduğu sürece mutlu olacağım
 	Enter Sent> his sudden departure had demonstrated how unreliable he was
-	ani ayrılışı ne kadar güvenilmez olduğunu göstermişti
+	  ani ayrılışı ne kadar güvenilmez olduğunu göstermişti
 	Enter Sent> attacks were threatening to destabilize the government
-	saldırılar yönetimi istikrarsızlaştırmakla tehdit ediyordu
+	  saldırılar yönetimi istikrarsızlaştırmakla tehdit ediyordu
 	Enter Sent> if i had come early she wouldn't have missed her bus
-	erken gelmiş olsaydım otobüsünü kaçırmış olmazdı
-	erken gelmiş olsaydım otobüsünü özlemiş olmazdı
+	  erken gelmiş olsaydım otobüsünü kaçırmış olmazdı
+	  erken gelmiş olsaydım otobüsünü özlemiş olmazdı
 	
 For a list of sample translations check the file: https://github.com/mdolgun/GLRParser/blob/master/GLRParser/grm/main.out.txt
 
