@@ -138,6 +138,7 @@ def trans_file(grm_fname, io_fname, ignore_exp_error=False):
 
 def interact(grm_fname, single_translation=False):
     parser = Parser("EN","TR")
+    params = {}
 
     if grm_fname.endswith(".grmc"):
         start = timer()
@@ -167,19 +168,26 @@ def interact(grm_fname, single_translation=False):
             logging.getLogger().setLevel(logging.DEBUG)
         elif sent == "%debug=0":
             logging.getLogger().setLevel(logging.CRITICAL)
+        elif sent.startswith("%"):
+            key,val = sent[1:].split("=")
+            params[key] = int(val)
         else:
-            trans_list = parser.trans_sent(sent)
+            trans_list = parser.trans_sent(sent, params.get("show_tree",0))
             if type(trans_list) == str:
-                print(trans_list)
+                print(" ", trans_list)
             else:
-                if single_translation:
-                    print(trans_list[0][0]) # print only least cost translation
-                else:
+                show_alternate = params.get("show_alternate",1)
+                if show_alternate == 0:
+                    print(" ", trans_list[0][0]) # print only least cost translation
+                elif show_alternate == 1:
                     least_cost = trans_list[0][1]
                     for sent,cost in trans_list:
                         if cost != least_cost:
                             break
-                        print(sent)
+                        print(" ", sent)
+                elif show_alternate == 2:
+                    for sent,cost in trans_list:
+                        print(" ", sent, cost)
         sent = input("Enter Sent> ")
 
 def save(grm_fname):
@@ -192,7 +200,7 @@ def save(grm_fname):
         grm_fname = grm_fname + ".grm"
 
     start = timer()
-    parser.parse_grammar(grm_fname)
+    parser.parse_grammar(grm_fname,defines={"PARSE_DICT"})
     end = timer()    
     print("Grammar parse time:",  timer_delta(start,end), "mics")
 
@@ -214,6 +222,7 @@ if __name__ == "__main__":
         if sys.argv[2] == "-i":
             interact(sys.argv[1])
         elif sys.argv[2] == "-s":
+            os.chdir(os.path.join(os.path.dirname(__file__), 'grm'))
             save(sys.argv[1])
         else:
             trans_file(sys.argv[1], sys.argv[2])

@@ -1,0 +1,141 @@
+Card1 -> two : iki
+Card1 -> three : üç
+Card1 -> four : dört
+Card1 -> five : beş
+Card1 -> six : altı
+Card1 -> seven : yedi
+Card1 -> eight : sekiz
+Card1 -> nine : dokuz
+
+CardTeen -> ten : on
+CardTeen -> eleven : on bir
+CardTeen -> twelve : on iki
+CardTeen -> thirteen : on üç
+CardTeen -> fourteen : on dört
+CardTeen -> fifteen : on beş
+CardTeen -> sixteen : on altı
+CardTeen -> seventeen : on yedi
+CardTeen -> eighteen : on sekiz
+CardTeen -> nineteen : on dokuz
+
+CardTens -> twenty : yirmi
+CardTens -> thirty : otuz
+CardTens -> forty : kırk
+CardTens -> fifty : elli
+CardTens -> sixty : altmış
+CardTens -> seventy : yetmiş
+CardTens -> eighty : seksen
+CardTens -> ninety : doksan
+
+Card2 -> CardTens : CardTens
+Card2 -> CardTens one : CardTens bir
+Card2 -> CardTens Card1 : CardTens Card1
+Card2 -> CardTeen : CardTeen
+Card2 -> Card1 : Card1
+
+AOne -> a
+AOne -> one
+AOne ->
+
+Card3 -> AOne hundred : yüz
+Card3 -> Card1 hundred : Card1 yüz
+Card3 -> AOne hundred And Card2 : yüz Card2
+Card3 -> AOne hundred And one : yüz bir
+Card3 -> Card1 hundred And Card2 : Card1 yüz Card2
+Card3 -> Card1 hundred And one : Card1 yüz bir
+Card3 -> Card2 : Card2
+
+Card6 -> AOne thousand : bin
+Card6 -> Card3 thousand : Card3 bin
+Card6 -> one thousand Card3 : bin Card3
+Card6 -> one thousand one : bin bir
+Card6 -> Card3-1 thousand Card3-2 : Card3-1 bin Card3-2
+Card6 -> Card3 thousand one : Card3 bin bir
+
+Card9 -> AOne million : bir milyon
+Card9 -> Card3 million : Card3 milyon
+Card9 -> one million Card6 : bir milyon Card6
+Card9 -> Card3 million Card6 : Card3 milyon Card6
+
+Card12 -> AOne billion : bir milyar
+Card12 -> Card3 billion : Card3 milyar
+Card12 -> one billion Card9 : bir milyar Card9
+Card12 -> Card3 billion Card9 : Card3 milyar Card9
+
+Card15 -> AOne trillion : bir trilyon
+Card15 -> Card3 trillion : Card3 trilyon
+Card15 -> one trillion Card12 : bir trilyon Card12
+Card15 -> Card3 trillion Card12 : Card3 trilyon Card12
+
+CardinalNumber -> one : bir
+CardinalNumber -> Card3 : Card3
+CardinalNumber -> Card6 : Card6
+CardinalNumber -> Card9 : Card9
+CardinalNumber -> Card12 : Card12
+CardinalNumber -> Card15 : Card15
+
+And ->  | and
+
+Ord1 -> first : birinci
+Ord1 -> second : ikinci
+Ord1 -> third : üçüncü
+Ord1 -> fourth : dördüncü
+Ord1 -> fifth : beşinci
+Ord1 -> sixth : altıncı
+Ord1 -> seventh : yedinci
+Ord1 -> eighth : sekizinci
+Ord1 -> ninth : dokuzuncu
+
+OrdTeen -> tenth : onuncu
+OrdTeen -> eleventh : on birinci
+OrdTeen -> twelfth : on ikinci
+OrdTeen -> thirteenth : on üçüncü
+OrdTeen -> fourteenth : on dördüncü
+OrdTeen -> fifteenth : on beşinci
+OrdTeen -> sixteenth : on altıncı
+OrdTeen -> seventeenth : on yedinci
+OrdTeen -> eighteenth : on sekizinci
+OrdTeen -> nineteenth : on dokuzuncu
+OrdTens -> twentieth : yirminci
+OrdTens -> thirtieth : otuzuncu
+OrdTens -> fortieth : kırkıncı
+OrdTens -> fiftieth : ellinci
+OrdTens -> sixtieth : altmışıncı
+OrdTens -> seventieth : yetmişinci
+OrdTens -> eightieth : sekseninci
+OrdTens -> ninetieth : doksanıncı
+
+Ord2 -> OrdTens : OrdTens
+Ord2 -> CardTens Ord1 : CardTens Ord1
+Ord2 -> OrdTeen : OrdTeen
+Ord2 -> Ord1 : Ord1
+
+Ord3 -> AOne hundredth : yüzüncü
+Ord3 -> Card1 hundredth : Card1 yüzüncü
+Ord3 -> one hundred And Ord2 : yüz Ord2
+Ord3 -> Card1 hundred And Ord2  : Card1 yüz Ord2
+Ord3 -> Ord2 : Ord2
+
+Ord6 -> AOne thousandth : bininci
+Ord6 -> Card3 thousandth : Card3 bininci
+Ord6 -> one thousand Ord3  : bin Ord3
+Ord6 -> Card3 thousand Ord3  : Card3 bin Ord3
+
+Ord9 -> AOne millionth : bir milyonuncu
+Ord9 -> Card3 millionth : Card3 milyonuncu
+Ord9 -> one million Ord6 : bir milyon Ord6 
+Ord9 -> Card3 million Ord6 : Card3 milyon Ord6 
+
+Ord12 -> AOne billionth  : bir milyarıncı
+Ord12 -> Card billionth  : Card milyarıncı
+Ord12 -> AOne billion Ord9  : bir milyar Ord9
+Ord12 -> Card3 billion Ord9  : Card3 milyar Ord9
+
+Ord15 -> AOne trillion Ord12  : bir trilyon Ord12
+Ord15 -> Card3 trillion Ord12  : Card3 trilyon Ord12
+
+OrdinalNumber -> Ord3 : Ord3
+OrdinalNumber -> Ord6 : Ord6
+OrdinalNumber -> Ord9 : Ord9
+OrdinalNumber -> Ord12 : Ord12
+OrdinalNumber -> Ord15 : Ord15

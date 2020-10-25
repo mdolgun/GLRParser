@@ -253,7 +253,7 @@ class Parser:
    
     def parse_grammar(self,fname=None,reverse=False,text=None,defines=None):
         """ loads a grammar file and parse it """
-        grammar = Grammar.load_grammar(fname,reverse,text,defines)
+        grammar = Grammar.parse_grammar(fname,reverse,text,defines)
         self.rules,self.trie = grammar.rules,grammar.trie
         #self.post_processor.suff_idxs,self.post_processor.suff_dict_list =  grammar.suff_idxs,grammar.suff_dict_list
         self.post_processor.suff_dict = grammar.suff_dict
@@ -748,14 +748,20 @@ class Parser:
                             edges[nedge].append([rule]+rule.left)
                             #logging.debug("appending edge %s to %s", Parser.format_edge_item(ptree), self.format_edge(nedge))
 
-    def trans_sent(self,sent):
+    def trans_sent(self,sent,show_tree=0):
         """ translates a sentence, returns a list of possible translations or an error """
         try:
             sent = self.pre_processor(sent)
             self.parse(sent)
             tree = self.make_tree()
+            if show_tree:
+                print(tree.pformat_ext())
             tree2 = self.unify_tree(tree)
+            if show_tree:
+                print(tree2.pformat_ext())
             tree3 = self.trans_tree(tree2)
+            if show_tree:
+                print(tree3.pformatr_ext())
 
             result = [(self.post_processor(trans),cost) for trans,cost in tree3.enumx()]
             result.sort(key=lambda item:item[1])

@@ -1,7 +1,19 @@
-#%load_dict main.dict
-%include vp_inc.grm
-%auto_dict false
+%auto_dict true
 %include numbers.grm
+
+%ifdef PARSE_DICT
+	%include adj.out
+	%include adv.out
+	%include noun.out
+	%include verb.out
+%else
+	%ifdef LOAD_DICT
+		%load_dict main.dict
+	%else
+		%include vp_inc.grm
+	%endif
+%endif
+
 
 %macro V' V',Vs',Ving',Ved',Ven'
 
@@ -182,6 +194,17 @@ BaseModal -> have been Ving     : Ving -Vyor ol
 BaseModal -> have been Pred     : Pred olmuş ol
 BaseModal -> have been Vpass    : Vpass -mHş ol
 BaseModal -> V                  : V PredBe
+
+InfTense -> to be Ving            : Ving -Vyor        # seems to be sleeping       @ uyuyor görünüyor
+InfTense -> to be Pred            : Pred              # seems to be happy          @ mutlu görünüyor
+InfTense -> to be PredVerb        : PredVerb -Vyor    # seems to be afraid of it   @ ondan korkuyor görünüyor
+InfTense -> to be Vpass           : Vpass -Vyor       # seems to be loved          @ seviliyor görünüyor
+InfTense -> to have Ven           : Ven -mHş          # seems to have gone         @ gitmiş görünüyor
+InfTense -> to have been Ving     : Ving -Vyor        # seems to have been crying  @ ağlıyor görünüyor
+InfTense -> to have been Pred     : Pred olmuş        # seems to have been happy   @ mutlu olmuş görünüyor
+InfTense -> to have been Vpass    : Vpass -mHş        # seems to have been loved   @ sevilmiş görünüyor
+InfTense -> to V                  : V -Vyor [!pred]   # seems to feel tired        @ yorgun hissediyor görünüyor
+InfTense -> to V                  : V       [?pred]   # seems to have a car        @ (arabası var|arabaya sahip) görünüyor
 
 BaseGerund -> being Pred        : Pred ol
 BaseGerund -> being PredVerb    : PredVerb
@@ -514,7 +537,7 @@ NP -> NP1 : NP1 # the door of house
 NP -> NP1 of NP(-nodef) : NP() +in_nopro NP1 [+ng] # the door of house of the house of doors : kapılar evinin ev kapısı
 NP -> NP1 PP() : PP(+np) NP1
 NP -> NP1 of ObjPron(per=*pper,num=*pnum) : ObjPron() +in_nopro NP1 # a big house of me : büyük bir evim
-NP -> Pron1 : Pron1 [+def]
+#NP -> Pron1 : Pron1 [+def]
 
 PropN -> U : U
 PropN -> PropN U : PropN U
@@ -660,6 +683,8 @@ NP' -> NP OptWhich SThatObj()   : SThatObj() NP         # the book i am reading
 NP' -> NP Which SThatSubj(num)  : SThatSubj() NP        # the man who is reading the book
 NP' -> NP Ving(-gap)  : Ving() -YAn NP  {100}               # the man reading the book
 NP' -> NP Vpass(-gap) : Vpass() -An NP  {100}               # the man killed in the war
+NP' -> Pron1 : Pron1 [+def]
+
 
 Acc -> : +i [?def]
 Acc -> :    [!def]
@@ -998,5 +1023,7 @@ PrepWith -> : +le  [!np]
 
 %suffix +aor -Hr
 %suffix +caus -DHr
+
+%suffix +yormuş -Vyor
 
 #%major S,SentNorm,SentInv,SentImp,V,Vs,Ving,Ved,Ven,Obj,AdjP,NP,Adv

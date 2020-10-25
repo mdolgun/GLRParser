@@ -5,7 +5,7 @@
 Source for parsing input grammar, defines classes GrammarError,Rule,Trie and Grammar
 
 """
-import re, pickle
+import re, pickle, sys
 
 class GrammarError(Exception):
     """ Raised when a grammar cannot be parsed """
@@ -96,7 +96,7 @@ class Trie:
                 for val in curr_dict.get(self.leaf,[]):
                     result.append((idx+1,val))
             except KeyError:
-                pass
+                break
         return result
 
     def list(self):
@@ -202,9 +202,9 @@ class Grammar:
         if match:
             self.pos = match.end()
             if match.group(1):
-                return match.group(1),0
+                return sys.intern(match.group(1)),0
             if match.group(2):
-                return match.group(2).strip('"'),1
+                return sys.intern(match.group(2).strip('"')),1
         if ensure:
             raise GrammarError("Line:%d Pos:%d Symbol expected but found: %s" % (self.line_no,self.pos,self.get_rest()))
         return None,None
@@ -439,19 +439,19 @@ class Grammar:
         self.get_token(')')
         return fdict
 
-    def load_grammar(fname=None,reverse=False,text=None,defines=None):
+    def parse_grammar(fname=None,reverse=False,text=None,defines=None):
         """ loads a grammar file and parse it """
         if bool(fname) == bool(text):
-            raise GrammarError("load_grammar: either fname or text should be provided")
+            raise GrammarError("parse_grammar: either fname or text should be provided")
         grammar = Grammar(reverse,defines)
         if text is None:
             grammar.fname = fname
             with open(fname, "r", encoding="utf-8") as f:
-                grammar.parse_grammar(f)
+                grammar.parse_grammar_int(f)
                 return grammar
         else:
             grammar.fname = ""
-            grammar.parse_grammar(text.split('\n'))
+            grammar.parse_grammar_int(text.split('\n'))
             return grammar
 
     def parse_nonterm_list(self):
@@ -505,8 +505,10 @@ class Grammar:
 
     def parse_ifdef(self):
         """ %ifdef Token """
-        item = self.get_term()
-        self.if_stack.append(item in self.defines)
+        params = self.buf.split(maxsplit=1)
+        if len(params) != 2:
+            raise GrammarError("Line:%d ifdef requires an argument" % (line_no,self.buf))
+        self.if_stack.append(params[1].strip('"') in self.defines)
         self.process = all(self.if_stack)
         
     def parse_else(self):
@@ -524,7 +526,7 @@ class Grammar:
         fname = self.get_term()
         self.include_stack.append({"fname":self.fname, "line_no":self.line_no, "auto_dict":self.auto_dict})
         with open(fname,"rt",encoding="utf-8") as f:
-            self.parse_grammar(f)
+            self.parse_grammar_int(f)
         params = self.include_stack.pop()
         self.fname = params["fname"]
         self.line_no = params["line_no"]
@@ -671,7 +673,7 @@ class Grammar:
 #        "save_suffixes" : save_suffixes,
 #        "load_suffixes" : load_suffixes,
     }
-    def parse_grammar(self,iterator):
+    def parse_grammar_int(self,iterator):
         for line in iterator:
             self.line_no += 1
             line = line.strip()
