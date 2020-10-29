@@ -7,17 +7,17 @@ This file define classes:
     ParserError,UnifyError: exceptions thrown when parsing or unification fails
       
 """
-import logging, re, copy, pickle
+import logging, re, copy, pickle, sys
 from collections import defaultdict
 
 if __name__ == "__main__":
     from morpher import TurkishPostProcessor,PostProcessError
     from grammar import Grammar,GrammarError,Rule,format_feat,format_fparam,Trie
-    from tree import Tree,uid
+    from tree import *
 else:
     from .morpher import TurkishPostProcessor,PostProcessError
     from .grammar import Grammar,GrammarError,Rule,format_feat,format_fparam,Trie
-    from .tree import Tree,uid
+    from .tree import *
 
 empty_dict = dict()
 empty_set = set()
@@ -748,7 +748,7 @@ class Parser:
                             edges[nedge].append([rule]+rule.left)
                             #logging.debug("appending edge %s to %s", Parser.format_edge_item(ptree), self.format_edge(nedge))
 
-    def trans_sent(self,sent,show_tree=0):
+    def trans_sent(self,sent,show_tree=0,show_expr=0):
         """ translates a sentence, returns a list of possible translations or an error """
         try:
             sent = self.pre_processor(sent)
@@ -762,7 +762,12 @@ class Parser:
             tree3 = self.trans_tree(tree2)
             if show_tree:
                 print(tree3.pformatr_ext())
-
+            if show_expr:
+                opt_list,_cost = tree3.option_list()
+                results = []
+                combine_suffixes_lst(opt_list, 0, [], results)
+                post_process([results], self.post_processor)
+                print_items_cost([results], sys.stdout); print()
             result = [(self.post_processor(trans),cost) for trans,cost in tree3.enumx()]
             result.sort(key=lambda item:item[1])
             return result

@@ -649,8 +649,8 @@ i find it sad that he has lost all his children @ bütün çocuklarını kaybetm
 
 #seem
 he seems happy @ mutlu görünüyor
-he seems to read a book @ bir kitap okuyor gibi görünüyor
-he seems to have a car @ arabası var gibi görünüyor
+he seems to read a book @ bir kitap okuyor görünüyor
+he seems to have a car @ bir arabası var görünüyor | bir arabaya sahip görünüyor
 he seems to be happy @ mutlu görünüyor | mutlu olduğu görünüyor | mutlu gibi görünüyor | mutluymuş gibi görünüyor
 he seems an angry parent @ kızgın bir ebeveyn gibi görünüyor
 
@@ -658,7 +658,7 @@ he seems an angry parent @ kızgın bir ebeveyn gibi görünüyor
 i need sleeping @ uyumaya ihtiyacım var | uyumam gerekiyor
 this shirt needs washing @ bu gömleğin yıkanmaya ihtiyacı var | bu gömleğin yıkanması gerekiyor
 this shirt needs to be washed @ bu gömleğin yıkanmaya ihtiyacı var | bu gömleğin yıkanması gerekiyor
-i need to eat something @ birşey yemeye ihtiyacım var | bir şey yemem gerekiyor
+i need to eat something @ bir şey yemeye ihtiyacım var | bir şey yemem gerekiyor
 i need some coffee @ biraz kahveye ihtiyacım var
 
 

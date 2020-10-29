@@ -6,8 +6,8 @@ This file is defines a main program to test a grammar using a batch input file o
 
 Command Line Usage:
 
-USAGE1: python test_file.py <grammar_file> <input_file>
-    e.g. python test_file.py main.grm main   
+USAGE1:  python -m GLRParser.main <grammar_file> <input_file>
+    e.g. python -m GLRParser.main main.grm main   
         * Loads and compiles the grammar file "main.grm"
         * Loads the input file "main.in.txt"
         * Translates each sentence in the input files and compares with the expected translation
@@ -17,27 +17,23 @@ USAGE1: python test_file.py <grammar_file> <input_file>
         only-whitespace lines or lines starting with "#" are ignored
     e.g. a glass of water @ bir bardak su | bir su bardağı
 
-USAGE2: python test_grm.py <grammar_file> -i
-    e.g. python test_file.py main.grm -i
+USAGE2:  python -m GLRParser.main -i <grammar_file>
+    e.g. python -m GLRParser.main -i main.grm
         * Loads and compiles the grammar file "main.grm"
         * Gets a sentence from the standard input
         * Translates the sentence and write translation to the standard out
         * Exits on empty input
 
-USAGE3: python test_grm.py <grammar_file> -s
-    e.g. python test_file.py main.grm -s
+USAGE3:  python -m GLRParser.main -s <grammar_file>
+    e.g. python -m GLRParser.main -s main.grm
         * Loads and compiles the grammar file "main.grm"
         * Saves the compiled grammar "main.grmc"
-  
+
+OPTIONAL PARAMETERS:
+    -g  Loads grammar files from the "grm" directory within the package
 """
 import sys,logging,os
 import os.path 
-
-#sys.path.append(".")
-#if __name__ == "__main__":
-#    from parser import Parser 
-#else:
-#    from .parser import Parser
 
 if os.path.dirname(__file__) == os.getcwd(): # file is run directly from the source directory
     sys.path.append(os.path.join(os.path.dirname(__file__),".."))
@@ -172,7 +168,7 @@ def interact(grm_fname, single_translation=False):
             key,val = sent[1:].split("=")
             params[key] = int(val)
         else:
-            trans_list = parser.trans_sent(sent, params.get("show_tree",0))
+            trans_list = parser.trans_sent(sent, params.get("show_tree",0), params.get("show_expr",1))
             if type(trans_list) == str:
                 print(" ", trans_list)
             else:
@@ -216,19 +212,32 @@ def save(grm_fname):
 
     parser.save_grammar(grmc_fname)
 
-if __name__ == "__main__":
+def print_usage():
+        print("USAGE1: python -m GLRParser.main [-g] <grammar_file> <input_file>")
+        print("USAGE2: python -m GLRParser.main [-g] -i <grammar_file>")
+        print("USAGE3: python -m GLRParser.main [-g] -s <grammar_file>")
 
-    if len(sys.argv) == 3:
-        if sys.argv[2] == "-i":
-            interact(sys.argv[1])
-        elif sys.argv[2] == "-s":
-            os.chdir(os.path.join(os.path.dirname(__file__), 'grm'))
-            save(sys.argv[1])
+if __name__ == "__main__":
+    import getopt
+    optlist,args = getopt.getopt(sys.argv[1:],"gis")
+    flags = {opt[0] for opt in optlist}
+    if '-g' in flags:
+        os.chdir(os.path.join(os.path.dirname(__file__), 'grm'))
+    if '-i' in flags:
+        if len(args) == 1:
+            interact(args[0])
         else:
-            trans_file(sys.argv[1], sys.argv[2])
-    elif len(sys.argv) == 1:
-        interact(os.path.join(os.path.dirname(__file__), 'grm', 'main.grmc'))
+            print_usage()
+    elif '-s' in flags:
+        if len(args) == 1:
+            save(args[0])
+        else:
+            print_usage()
     else:
-        print("USAGE1: python test_file.py <grammar_file> <input_file>")
-        print("USAGE2: python test_grm.py <grammar_file> -i")
-        print("USAGE3: python test_grm.py <grammar_file> -s")
+        if len(args) == 0:
+            interact(os.path.join(os.path.dirname(__file__), 'grm', 'main.grmc'))
+        elif len(args) == 2:
+            trans_file(args[0], args[1])
+        else:
+            print_usage()
+

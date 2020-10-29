@@ -6,8 +6,8 @@ the man i trusted with the car @ arabayı emanet ettiğim adam
 
 i trusted the man with the car @ adama arabayı emanet ettim
   *adama arabayı emanet ettim {0}
-  *arabalı adama güvendim {100}
   *arabayla adama güvendim {100}
+  *arabalı adama güvendim {100}
   OK
 
 i saw the man i trusted with the car @ arabayı emanet ettiğim adamı gördüm
@@ -150,6 +150,7 @@ wouldn't i sleep @ uyumayacak mıydım | uyumaz mıydım
 
 i can sleep @ uyuyabilirim
   *uyuyabilirim {0}
+  *uykuyu konservelerim {100}
   OK
 
 i can't sleep @ uyuyamam
@@ -1365,8 +1366,8 @@ the man who sleeps sleeps @ uyuyan adam uyur
   OK
 
 the man who doesn't sleep doesn't sleep @ uyumayan adam uyumaz
-  *uyumayan adam uyuma {0}
-  NOK
+  *uyumayan adam uyumaz {0}
+  OK
 
 the man who slept slept @ uyuyan adam uyudu | uyumuş olan adam uyudu
   *uyuyan adam uyudu {0}
@@ -1433,8 +1434,8 @@ the man who can sleep can sleep @ uyuyabilen adam uyuyabilir
   OK
 
 the man who can't sleep can't sleep @ uyuyamayan adam uyuyamaz
-  *uyuyamayan adam uyuyama {0}
-  NOK
+  *uyuyamayan adam uyuyamaz {0}
+  OK
 
 the man who must sleep must sleep @ uyumak zorunda olan adam uyumalı
   *uyumak zorunda olan adam uyumalı {0}
@@ -1465,8 +1466,8 @@ the man whom i watch watches me @ seyrettiğim adam beni seyreder
   OK
 
 the man whom i don't watch doesn't watch me @ seyretmediğim adam beni seyretmez
-  *seyretmediğim adam beni seyretme {0}
-  NOK
+  *seyretmediğim adam beni seyretmez {0}
+  OK
 
 the man whom i watched watched me @ seyrettiğim adam beni seyretti
   *seyrettiğim adam beni seyretti {0}
@@ -1521,8 +1522,8 @@ the man whom i can watch can watch me @ seyredebildiğim adam beni seyredebilir
   OK
 
 the man whom i can't watch can't watch me @ seyredemediğim adam beni seyredemez
-  *seyredemediğim adam beni seyredeme {0}
-  NOK
+  *seyredemediğim adam beni seyredemez {0}
+  OK
 
 the man whom i must watch must watch me @ seyretmek zorunda olduğum adam beni seyretmeli
   *seyretmek zorunda olduğum adam beni seyretmeli {0}
@@ -1777,10 +1778,10 @@ i hate the car i am afraid of @ korktuğum arabadan nefret ediyorum | korkuyor o
 
 i hate the car i am afraid to turn on @ açmaktan korktuğum arabadan nefret ediyorum | açmaktan korkuyor olduğum arabadan nefret ediyorum
   *çevirmekten korktuğum arabadan nefret ediyorum {0}
-  *sırt çevirmekten korktuğum arabadan nefret ediyorum {0}
+  *açmaktan korktuğum arabadan nefret ediyorum {0}
   *heyecanlandırmaktan korktuğum arabadan nefret ediyorum {0}
   *çevirmekten korktuğum arabadan nefret ediyorum {0}
-  *açmaktan korktuğum arabadan nefret ediyorum {0}
+  *sırt çevirmekten korktuğum arabadan nefret ediyorum {0}
   OK
 
 i am afraid to turn @ dönmekten korkuyorum
@@ -1869,8 +1870,8 @@ i want the car which she likes @ hoşlandığı arabayı istiyorum
   OK
 
 what do you think they want @ ne istediklerini düşünüyorsunuz
-  *ne istediğini düşünüyorsunuz {0}
-  NOK
+  *ne istediklerini düşünüyorsunuz {0}
+  OK
 
 who do you think you are @ kim olduğunuzu düşünüyorsunuz
   *kim olduğunuzu düşünüyorsunuz {0}
@@ -1907,10 +1908,10 @@ i am stared at @ bana göz dikilir
 
 i want the car that the man turns on @ adamın açtığı arabayı istiyorum
   *adamın çevirdiği arabayı istiyorum {0}
-  *adamın çevirdiği arabayı istiyorum {0}
   *adamın heyecanlandırdığı arabayı istiyorum {0}
-  *adamın sırt çevirdiği arabayı istiyorum {0}
+  *adamın çevirdiği arabayı istiyorum {0}
   *adamın açtığı arabayı istiyorum {0}
+  *adamın sırt çevirdiği arabayı istiyorum {0}
   OK
 
 i like the car that you stare at @ gözünüzü diktiğiniz arabadan hoşlanırım | gözünüzü diktiğiniz arabadan hoşlanıyorum
@@ -1930,8 +1931,8 @@ i want the car that i want to turn @ çevirmek istediğim arabayı istiyorum
   *istediğim arabanın dönmesini istiyorum {0}
   *çevirmek istediğim arabayı istiyorum {0}
   *dönmesini istediğim arabayı istiyorum {0}
-  *dönmek için istediğim arabayı istiyorum {100}
   *çevirmek için istediğim arabayı istiyorum {100}
+  *dönmek için istediğim arabayı istiyorum {100}
   *dönüşe istediğim arabayı istiyorum {100}
   *sıraya istediğim arabayı istiyorum {100}
   *dönüşe istediğim arabayı istiyorum {100}
@@ -1940,10 +1941,10 @@ i want the car that i want to turn @ çevirmek istediğim arabayı istiyorum
 
 i want the car that i turn on @ açtığım arabayı istiyorum
   *çevirdiğim arabayı istiyorum {0}
+  *sırt çevirdiğim arabayı istiyorum {0}
+  *açtığım arabayı istiyorum {0}
   *heyecanlandırdığım arabayı istiyorum {0}
   *çevirdiğim arabayı istiyorum {0}
-  *açtığım arabayı istiyorum {0}
-  *sırt çevirdiğim arabayı istiyorum {0}
   OK
 
 i want the car that i turn @ çevirdiğim arabayı istiyorum
@@ -1951,9 +1952,9 @@ i want the car that i turn @ çevirdiğim arabayı istiyorum
   OK
 
 turn the car on @ arabayı aç
+  *arabayı aç {0}
   *arabayı heyecanlandır {0}
   *arabayı çevir {0}
-  *arabayı aç {0}
   OK
 
 what do you order me to turn @ bana neyi çevirmemi emredersiniz
@@ -1973,8 +1974,8 @@ trust the man with the car @ adama arabayı emanet et
   OK
 
 i think that they like the car @ arabadan hoşlandıklarını düşünüyorum
-  *arabadan hoşlandığını düşünüyorum {0}
-  NOK
+  *arabadan hoşlandıklarını düşünüyorum {0}
+  OK
 
 i want the car that i like @ hoşlandığım arabayı istiyorum
   *hoşlandığım arabayı istiyorum {0}
@@ -1988,10 +1989,10 @@ what do you order me to turn @ bana neyi çevirmemi emredersiniz
 
 i order you to turn @ size dönmenizi emrederim
   *size dönmenizi emrederim {0}
-  *dönmek için sizi emrederim {100}
   *çevirmek için sizi emrederim {100}
-  *dönmek için sizi sipariş ederim {100}
+  *dönmek için sizi emrederim {100}
   *çevirmek için sizi sipariş ederim {100}
+  *dönmek için sizi sipariş ederim {100}
   *dönüşe sizi emrederim {100}
   *sıraya sizi emrederim {100}
   *dönüşe sizi sipariş ederim {100}
@@ -2007,10 +2008,10 @@ the car that i give you turns @ size verdiğim araba döner
   OK
 
 the car that i turn on turns @ açtığım araba döner
-  *sırt çevirdiğim araba döner {0}
+  *açtığım araba döner {0}
   *heyecanlandırdığım araba döner {0}
   *çevirdiğim araba döner {0}
-  *açtığım araba döner {0}
+  *sırt çevirdiğim araba döner {0}
   *dönüşler açtığım araba {0}
   *sıralar açtığım araba {0}
   *dönüşleri heyecanlandırdığım araba {0}
@@ -2028,13 +2029,13 @@ who do you order to turn @ kime dönmesini emredersiniz
   OK
 
 whom do they put up with @ kime katlanırlar
-  *birlikte kimi yerleştirirler {0}
-  *birlikte kimi asarlar {0}
-  *birlikte kimi ortaya koyarlar {0}
-  *birlikte kimi asarlar {0}
-  *birlikte kimi yerleştirirler {0}
-  *birlikte kimi ortaya koyarlar {0}
   *kime katlanırlar {0}
+  *birlikte kimi asarlar {0}
+  *birlikte kimi yerleştirirler {0}
+  *birlikte kimi ortaya koyarlar {0}
+  *birlikte kimi ortaya koyarlar {0}
+  *birlikte kimi yerleştirirler {0}
+  *birlikte kimi asarlar {0}
   OK
 
 give me a car @ bana bir araba ver
@@ -2046,13 +2047,13 @@ what do you give me @ bana ne verirsiniz
   OK
 
 who do you put up with @ kime katlanırsınız
-  *birlikte kimi yerleştirirsiniz {0}
-  *birlikte kimi asarsınız {0}
-  *birlikte kimi ortaya koyarsınız {0}
-  *birlikte kimi asarsınız {0}
-  *birlikte kimi yerleştirirsiniz {0}
-  *birlikte kimi ortaya koyarsınız {0}
   *kime katlanırsınız {0}
+  *birlikte kimi asarsınız {0}
+  *birlikte kimi yerleştirirsiniz {0}
+  *birlikte kimi ortaya koyarsınız {0}
+  *birlikte kimi ortaya koyarsınız {0}
+  *birlikte kimi yerleştirirsiniz {0}
+  *birlikte kimi asarsınız {0}
   OK
 
 put up with the man @ adama katlan
@@ -2061,12 +2062,12 @@ put up with the man @ adama katlan
   OK
 
 who do you put up with the man @ *
-  *adamla kimi yerleştirirsiniz {100}
-  *adamla kimi asarsınız {100}
-  *adamla kimi ortaya koyarsınız {100}
   *adamla kimi asarsınız {100}
   *adamla kimi yerleştirirsiniz {100}
   *adamla kimi ortaya koyarsınız {100}
+  *adamla kimi ortaya koyarsınız {100}
+  *adamla kimi yerleştirirsiniz {100}
+  *adamla kimi asarsınız {100}
   NOK
 
 turn the car @ arabayı çevir
@@ -2095,8 +2096,8 @@ turn off the car @ arabayı kapa
   OK
 
 turn them back @ onları geri çevir
-  *onları geri çevir {0}
   *geri onları çevir {0}
+  *onları geri çevir {0}
   OK
 
 turn back @ geri dön
@@ -2116,10 +2117,10 @@ i turn @ dönerim
   OK
 
 put the car on @ arabayı giy
-  *arabayı giy {0}
   *arabayı sergile {0}
-  *arabayı aç {0}
   *arabayı tak {0}
+  *arabayı aç {0}
+  *arabayı giy {0}
   *arabayı koy {0}
   OK
 
@@ -2153,9 +2154,9 @@ stop @ dur
   OK
 
 turn the car on @ arabayı aç
+  *arabayı aç {0}
   *arabayı heyecanlandır {0}
   *arabayı çevir {0}
-  *arabayı aç {0}
   OK
 
 turn on the car @ arabayı aç
@@ -2310,8 +2311,8 @@ tell him to stop the car @ ona arabayı durdurmasını söyle
   OK
 
 i know you @ sizi biliyorum
-  *sizi biliyorum {0}
   *sizi tanırım {0}
+  *sizi biliyorum {0}
   OK
 
 i knew you @ sizi biliyordum | sizi bildim
@@ -2343,8 +2344,8 @@ it is good that he will see you @ sizi görecek olması iyi
   OK
 
 i need to sleep @ uyumaya ihtiyacım var | uyumam lazım
-  *uyumağa ihtiyacım var {0}
-  NOK
+  *uyumaya ihtiyacım var {0}
+  OK
 
 i found a book @ bir kitap buldum
   *bir kitap buldum {0}
@@ -2360,42 +2361,46 @@ i found her a taxi @ ona bir taksi buldum
   OK
 
 they found his blood to contain poison @ kanının zehir içerdiğini buldular
+  *kanının zehir içerdiğini buldular {0}
+  *kanının zehri kontrol altına aldığını buldular {0}
   *zehir içermek için kanını buldular {100}
+  *zehri kontrol altına almak için kanını buldular {100}
   *zehir içermek için kanını kurarlar {100}
-  NOK
+  *zehri kontrol altına almak için kanını kurarlar {100}
+  OK
 
 he finds her beautiful @ onu güzel bulur
   *onu güzel bulur {0}
   OK
 
 i found him sleeping @ onu uyurken buldum
+  *onu uyurken buldum {0}
   *ona uyuma buldum {100}
-  NOK
+  OK
 
 i found it easy to solve the problems @ problemleri çözmeyi kolay buldum
-  *problemleri çözmeği kolay buldum {0}
+  *problemleri çözmeyi kolay buldum {0}
   *problemleri çözmek için onu kolay buldum {100}
-  NOK
+  OK
 
 i find it sad that he has lost all his children @ bütün çocuklarını kaybetmiş olmasını üzücü bulurum
-  *bütün çocuklarını kaybetmiş olduğunu üzücü bulurum {0}
-  NOK
+  ParseError: No production rule defined for symbol: SubPoss
 
 he seems happy @ mutlu görünüyor
   *mutlu görünüyor {0}
   OK
 
-he seems to read a book @ bir kitap okuyor gibi görünüyor
-  *bir kitap okuyor gibi görünüyor {0}
+he seems to read a book @ bir kitap okuyor görünüyor
+  *bir kitap okuyor görünüyor {0}
   OK
 
-he seems to have a car @ arabası var gibi görünüyor
-  *bir arabaya sahip gibi görünüyor {0}
-  *bir araba alıyor gibi görünüyor {10}
-  NOK
+he seems to have a car @ bir arabası var görünüyor | bir arabaya sahip görünüyor
+  *bir arabaya sahip görünüyor {0}
+  *bir araba alıyor görünüyor {10}
+  OK
 
 he seems to be happy @ mutlu görünüyor | mutlu olduğu görünüyor | mutlu gibi görünüyor | mutluymuş gibi görünüyor
-  *mutlu gibi görünüyor {0}
+  *mutlu görünüyor {0}
   OK
 
 he seems an angry parent @ kızgın bir ebeveyn gibi görünüyor
@@ -2403,24 +2408,24 @@ he seems an angry parent @ kızgın bir ebeveyn gibi görünüyor
   OK
 
 i need sleeping @ uyumaya ihtiyacım var | uyumam gerekiyor
-  *uyumağa ihtiyacım var {0}
+  *uyumaya ihtiyacım var {0}
   *uyumaya ihtiyacım var {100}
   OK
 
 this shirt needs washing @ bu gömleğin yıkanmaya ihtiyacı var | bu gömleğin yıkanması gerekiyor
-  *bu gömleğin yıkanmağa ihtiyacı var {0}
-  NOK
+  *bu gömleğin yıkanmaya ihtiyacı var {0}
+  OK
 
 this shirt needs to be washed @ bu gömleğin yıkanmaya ihtiyacı var | bu gömleğin yıkanması gerekiyor
-  *bu gömleğin yıkanmağa ihtiyacı var {0}
-  NOK
+  *bu gömleğin yıkanmaya ihtiyacı var {0}
+  OK
 
-i need to eat something @ birşey yemeye ihtiyacım var | bir şey yemem gerekiyor
-  *bir şey yemeğe ihtiyacım var {0}
-  NOK
+i need to eat something @ bir şey yemeye ihtiyacım var | bir şey yemem gerekiyor
+  *bir şey yemeye ihtiyacım var {0}
+  OK
 
 i need some coffee @ biraz kahveye ihtiyacım var
   *biraz kahveye ihtiyacım var {0}
   OK
 
-input=524, translated=523, matched=502 exp_err=0 ignored=0 success=%95
+input=524, translated=522, matched=516 exp_err=0 ignored=0 success=%98

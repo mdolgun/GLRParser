@@ -28,7 +28,92 @@ def uid(obj):
     uid_dict[_id] = uid_cnt
     return uid_cnt
 
-#Rule = namedtuple('Rule', 'head, left, lparam, right') # (head,left,lparam,[(right,rparam,feat,checklist,cost)+])
+from io import StringIO
+def str_items_cost(items):
+    out = StringIO()
+    print_items_cost(items, out)
+    return out.getvalue()
+
+def print_items_cost(items,out):
+    first_item = True
+    for item in items:
+        if first_item:
+            first_item = False
+        else:
+            print(" ", end="", file=out)
+        if type(item)==str:
+            print(item, end="", file=out)
+        else:
+            print("(", end="", file=out)
+            first = True
+            for alt,cost in item:
+                if first:
+                    first = False
+                else:
+                    print("|", end="", file=out)
+                if cost:
+                    print("{", cost, "}", sep="", end="", file=out)
+                print_items_cost(alt, out)
+            print(")", end="", file=out)
+
+def is_suffix(node):
+    if type(node) == str:
+        if node[0] in "+-":
+            return True
+    else:
+        for alt,cost in node:
+            if alt and is_suffix(alt[0]):
+                return True
+    return False
+
+def combine_suffixes_lst(nodes,cost,out,new_options):
+    for node in nodes:
+        combine_suffixes(node, out)
+    if len(out)==1 and type(out[0])!=str:
+        for sub_nodes,sub_cost in out[0]:
+            new_options.append((sub_nodes,cost+sub_cost))
+    else:
+        new_options.append((out,cost))
+
+def combine_suffixes(node,out):
+    prev_node = out[-1] if out else None
+    if type(node)==str: # if current node is a terminal
+        if prev_node and is_suffix(node):
+            if type(prev_node)==str:
+                out[-1] += " " + node
+            else:
+                for prev_nodes,cost in prev_node:
+                    combine_suffixes(node, prev_nodes)
+        else:
+            out.append(node)
+    elif prev_node and is_suffix(node): # there is a previous word, there multiple options, of which at least one starts with a suffix
+        if type(prev_node)==str: # previous item is a terminal
+            new_options = []
+            for sub_nodes,cost in node:
+                new_nodes = [prev_node]
+                combine_suffixes_lst(sub_nodes,cost,new_nodes,new_options)
+            out[-1] = new_options
+        else: # previous item is a list of alternatives
+            new_options = []
+            for sub_nodes,cost in node:
+                for prev_sub_nodes,prev_sub_cost in prev_node:
+                    new_nodes = prev_sub_nodes.copy();
+                    combine_suffixes_lst(sub_nodes,cost+prev_sub_cost,new_nodes,new_options)
+            out[-1] = new_options
+    else: # current node is an option list with no suffixes or prev_node is None
+        new_options = []
+        for sub_nodes,cost in node:
+            new_nodes = []
+            combine_suffixes_lst(sub_nodes,cost,new_nodes,new_options)
+        out.append(new_options)
+
+def post_process(option_list, post_processor):
+    for idx,item in enumerate(option_list):
+        if type(item)==str:
+            option_list[idx] = post_processor(item)
+        else:
+            for alt,_cost in item:
+                post_process(alt, post_processor)
 class Tree:
     if not new_unify:
         __slots__ = ('head', 'rule', 'ruleno', 'left', 'right', 'feat', 'cost') 
@@ -123,6 +208,38 @@ class Tree:
             else:
                 out.append([alt.list_formatr() for alt in item])
         return out
+
+    #def option_list(self):
+    #    out = []
+    #    for item in self.right:
+    #        if type(item)==str:
+    #            out.append(item)
+    #        elif len(item)==1:
+    #            out.extend(item[0].option_list())
+    #        else:
+    #            out.append([(alt.option_list(),alt.cost) for alt in item])
+    #    return out
+
+    def option_list(self):
+        out = []
+        cost = self.cost
+        for item in self.right:
+            if type(item)==str:
+                out.append(item)
+            elif len(item)==1:
+                option,option_cost = item[0].option_list()
+                cost += option_cost
+                out.extend(option)
+            else:
+                options = []
+                for alt in item:
+                    option,option_cost = alt.option_list()
+                    if len(option)==1 and type(option[0])!=str:
+                        options.extend(option[0])
+                    else:
+                        options.append((option,option_cost))
+                out.append(options)
+        return out,cost
 
     indenter = "    "
     def pformat(self,level=0):

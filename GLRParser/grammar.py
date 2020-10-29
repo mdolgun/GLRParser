@@ -157,7 +157,7 @@ class Grammar:
         if self.pos == len(self.buf) or self.buf[self.pos] == '#':
             return True
         if ensure:
-            raise GrammarError("Line:%d Pos:%d EOF expected but found: %s..." % (self.line_no,self.pos,self.get_rest()))
+            raise GrammarError("File:%s Line:%d Pos:%d EOF expected but found: %s..." % (self.fname, self.line_no,self.pos,self.get_rest()))
 
     def get_token(self,token,ensure=True,skip_ws=True):
         if skip_ws:
@@ -166,7 +166,7 @@ class Grammar:
             self.pos += len(token)
             return True
         if ensure:
-            raise GrammarError("Line:%d Pos:%d '%s' expected but found: %s..." % (self.line_no,self.pos,token,self.get_rest()))
+            raise GrammarError("File:%s Line:%d Pos:%d '%s' expected but found: %s..." % (self.fname, self.line_no,self.pos,token,self.get_rest()))
 
     def get_char_list(self,char_list,ensure=True,skip_ws=True):
         if skip_ws:
@@ -176,7 +176,7 @@ class Grammar:
             self.pos += 1
             return char
         if ensure:
-            raise GrammarError("Line:%d Pos:%d '%s' expected but found: %s..." % (self.line_no,self.pos,char_list,self.get_rest()))
+            raise GrammarError("File:%s Line:%d Pos:%d '%s' expected but found: %s..." % (self.fname, self.line_no,self.pos,char_list,self.get_rest()))
 
     def get_token_list(self,token_list,ensure=True,skip_ws=True):
         if skip_ws:
@@ -186,7 +186,7 @@ class Grammar:
                 self.pos += len(token)
                 return token
         if ensure:
-            raise GrammarError("Line:%d Pos:%d '%s' expected but found: %s..." % (self.line_no,self.pos,token_list,self.get_rest()))
+            raise GrammarError("File:%s Line:%d Pos:%d '%s' expected but found: %s..." % (self.fname, self.line_no,self.pos,token_list,self.get_rest()))
 
     def skip_ws(self):
         try:
@@ -206,7 +206,7 @@ class Grammar:
             if match.group(2):
                 return sys.intern(match.group(2).strip('"')),1
         if ensure:
-            raise GrammarError("Line:%d Pos:%d Symbol expected but found: %s" % (self.line_no,self.pos,self.get_rest()))
+            raise GrammarError("File:%s Line:%d Pos:%d Symbol expected but found: %s" % (self.fname, self.line_no,self.pos,self.get_rest()))
         return None,None
 
     def get_nonterm(self,ensure=True,skip_ws=True):
@@ -214,14 +214,14 @@ class Grammar:
         if stype == 0:
             return symbol
         if ensure:
-            raise GrammarError("Line:%d Pos:%d NonTerm expected but found: '%s'" % (self.line_no,self.pos,symbol))
+            raise GrammarError("File:%s Line:%d Pos:%d NonTerm expected but found: '%s'" % (self.fname, self.line_no,self.pos,symbol))
 
     def get_term(self,ensure=True,skip_ws=True):
         symbol,stype = self.get_symbol(ensure,skip_ws)
         if stype == 1:
             return symbol
         if ensure:
-            raise GrammarError("Line:%d Pos:%d Term expected but found: '%s'" % (self.line_no,self.pos,symbol))
+            raise GrammarError("File:%s Line:%d Pos:%d Term expected but found: '%s'" % (self.fname, self.line_no,self.pos,symbol))
 
     def get_re(self,regexp,ensure=True,skip_ws=True):
         if skip_ws:
@@ -231,7 +231,7 @@ class Grammar:
             self.pos = match.end()
             return match.group()
         if ensure:
-            raise GrammarError("Line:%d Pos:%d %s expected but found %s" % (self.line_no,self.pos,regexp,self.get_rest()))
+            raise GrammarError("File:%s Line:%d Pos:%d %s expected but found %s" % (self.fname, self.line_no,self.pos,regexp,self.get_rest()))
 
     def get_integer(self,ensure=True,skip_ws=True):
         if skip_ws:
@@ -241,7 +241,7 @@ class Grammar:
             self.pos = match.end()
             return int(match.group())
         if ensure:
-            raise GrammarError("Line:%d Pos:%d FeatId expected but found %s" % (self.line_no,self.pos,self.get_rest()))
+            raise GrammarError("File:%s Line:%d Pos:%d FeatId expected but found %s" % (self.fname, self.line_no,self.pos,self.get_rest()))
 
     def parse_rule(self,buf):
         """ parses a rule and return an object of type Rule """
@@ -292,17 +292,17 @@ class Grammar:
                         try:
                             feat[key] = left.index(val[1:])
                         except ValueError:
-                            raise GrammarError("Line:%d No matching NonTerminal found for reference feature %s=%s" % (self.line_no,key,val))
+                            raise GrammarError("File:%s Line:%d No matching NonTerminal found for reference feature %s=%s" % (self.fname,self.line_no,key,val))
 
                 for idx,(symbol,param) in enumerate(zip(left,lparam)):
                     if param is not False: # NonTerminal
                         left[idx] = symbol.split('-')[0]
                 if macro_name:
                     if not lmacro:
-                        raise GrammarError("Line:%d No form substitution defined for macro %s" % (self.line_no,self.buf))
+                        raise GrammarError("File:%s Line:%d No form substitution defined for macro %s" % (self.fname,self.line_no,self.buf))
                     idx,word = lmacro
                     if word not in self.forms[macro_name]:
-                        raise GrammarError("Line:%d No form defined for word '%s': %s" % (self.line_no,word,self.buf))
+                        raise GrammarError("File:%s Line:%d No form defined for word '%s': %s" % (self.fname,self.line_no,word,self.buf))
                     for _head,form in zip(head,self.forms[macro_name][word]):
                         for altform in form:
                             _left = left.copy()
@@ -331,7 +331,7 @@ class Grammar:
         if macro:
             macro_name = symbol
             if symbol not in self.macros:
-                raise GrammarError("Line:%d Macro %s not defined: %s" % (self.line_no,macro_name,self.buf))
+                raise GrammarError("File:%s Line:%d Macro %s not defined: %s" % (self.fname,self.line_no,macro_name,self.buf))
             head = self.macros[symbol]
         else:
             macro_name = None
@@ -525,6 +525,7 @@ class Grammar:
         """ %include "file name" """
         fname = self.get_term()
         self.include_stack.append({"fname":self.fname, "line_no":self.line_no, "auto_dict":self.auto_dict})
+        self.fname = fname
         with open(fname,"rt",encoding="utf-8") as f:
             self.parse_grammar_int(f)
         params = self.include_stack.pop()

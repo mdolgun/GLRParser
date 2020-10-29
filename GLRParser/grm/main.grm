@@ -14,20 +14,6 @@
 	%endif
 %endif
 
-
-%macro V' V',Vs',Ving',Ved',Ven'
-
-%form V' go,goes,going,went,gone
-%form V' have,has,having,had,had
-%form V' come,comes,coming,came,come
-
-$V' -> $go BInf1(gap) : gidip BInf1(gapw) [-gap]
-$V' -> $come BInf1(gap) : gelip BInf1(gapw) [-gap]
-#$V' -> $have Obj() Ven'(gap) : Obj() +i Ven'(gapw) +caus
-V' -> have Obj() Ven'(gap) : Obj() +i Ven'(gapw) +caus
-
-#V' -> need Obj() : Obj() +e ihtiyaç? SubjPoss [+pred,+exist,scase=+in]
-
 S -> AdvCl() SentNorm       : AdvCl() SentNorm      [-gap]
 S -> SentNorm AdvCl()       : AdvCl() SentNorm      [-gap]
 S -> AdvP SentNorm          : AdvP SentNorm         [-gap]
@@ -69,9 +55,9 @@ AdvCl -> before BaseGerund(-gap) : BaseGerund() -mAdAn önce
 AdvCl -> while BaseGerund(-gap) : BaseGerund() +aor -ken
 
 AdvCl -> ForObjInf(-gap) : ForObjInf için {100}
-AdvCl -> Inf1 : Inf1 +mek için {100}
+AdvCl -> Inf : Inf +mek için {100}
 AdvCl -> in order ForObjInf(-gap) : ForObjInf için
-AdvCl -> in order Inf1 : Inf1 +mek için 
+AdvCl -> in order Inf : Inf +mek için 
 
 Then -> then
 Then ->
@@ -89,9 +75,9 @@ Modal -> ModalPos Not
 Modal -> ModalCont Not
 Modal -> ModalNeg [+neg]
 
-IntrPred -> AdjP Inf(gap)              : Inf(gapw) AdjP                         [-gap]
+IntrPred -> AdjP Inf(gap)              : Inf(gapw) +mek AdjP                         [-gap]
 IntrPred -> AdjP ForObjInf(gap)        : ForObjInf(gapw) AdjP                   [-gap]
-IntrPred -> AdjP Ger(gap)              : Ger(gapw) AdjP                         [-gap]
+IntrPred -> AdjP Ger(gap)              : Ger(gapw) +mek AdjP                         [-gap]
 IntrPred -> AdjP that SentNorm(gap)    : SentNorm(conn=me,scase=+in) AdjP       [-gap]
 
 SentNorm -> it AuxBe IntrPred          : IntrPred PredTense     [num=sing,per=3]
@@ -149,11 +135,7 @@ SentImp -> don't VBe        : VBe -mA   [neg=1]
 SentImp -> do Not VBe       : VBe Neg
 SentImp -> let 's Not VBe   : VBe Neg -YAlHm
 
-#VBe -> V : V
-#VBe -> be Pred : Pred ol
-#VBe -> be Vpass : Vpass
-VBe -> V : V       [!pred]
-VBe -> V : V ol    [?pred]
+VBe -> V : V PredBe
 VBe -> be Pred : Pred ol 
 VBe -> be PredVerb : PredVerb
 VBe -> be Vpass : Vpass
@@ -215,7 +197,7 @@ BaseGerund -> having been Pred  : Pred olmuş ol
 BaseGerund -> having been Vpass : Vpass -mHş ol
 BaseGerund -> Ving              : Ving PredBe
 
-StModal -> BaseModal            : BaseModal ModalTense
+StModal -> BaseModal(-,pred)    : BaseModal ModalTense
 StModal -> be able to V         : V NegAbil AbilTense Quest PresPast
 StModal -> be able to be Pred   : Pred ol NegAbil AbilTense Quest PresPast
 StModal -> like to V            : V -mAk iste PresTense   [modal=will,tense=past]
@@ -288,11 +270,12 @@ AbilTense -> :             [modal=may]  # ?he may be able to
 PresPast -> : Pers1'      [tense=pres]
 PresPast -> : -YDH Pers2' [tense=past]
 
-SimpTense' -> : Pres [!pred,tense=pres,!prog]
-SimpTense' -> : Prog [!pred,tense=pres,?prog]
-SimpTense' -> : Past [!pred,tense=past,!pprog]
-SimpTense' -> : Prog [!pred,tense=past,?pprog]
-SimpTense' -> : PredTense [?pred]
+SimpTense' -> : PredTense ! [?pred]
+SimpTense' -> : Past ! [tense=?past]
+SimpTense' -> : Prog ! [?vprog]
+SimpTense' -> : Past ! [?vpast]
+SimpTense' -> : Pres
+
 
 PredBe -> :     [!pred]
 PredBe -> : ol  [?pred]
@@ -351,7 +334,7 @@ PresTense -> : -mAz mH Pers1'             [?neg,?quest]
 PresSuf -> : +aor [!neg]
 PresSuf -> : -mAz [?neg]
 
-PastTense -> : Neg -DH Pers2' Quest       
+PastTense -> : Neg -DH Pers2' Quest
 
 PerfTense -> : Neg -DH Pers2' Quest       [tense=pres]
 PerfTense -> : Neg -mHş Quest -YDH Pers2' [tense=past]
@@ -366,7 +349,7 @@ Quest -> :    [!quest]
 Pred -> Obj'              : Obj'              [+pred,case=+0]
 Pred -> AdjP              : AdjP              [+pred,-gap]
 Pred -> PP                : PP                [+pred,-gap]
-Pred -> PPGap             : PPGap             [+pred,+gap,+pred]
+Pred -> PPGap             : PPGap             [+pred,+gap]
 Pred -> AdvAdjComp AdjComp than Obj' : Obj' daha AdvAdjComp AdjComp [+pred,case=+den,-gap]
 Pred -> AdjComp than Obj' : Obj' daha AdjComp [+pred,case=+den,-gap]
 Pred -> as Adj as Obj     : Obj kadar Adj     [+pred,-gap,case=+in_pro]
@@ -441,19 +424,19 @@ Obj' ->                      : GapW(gapw,case) [+gap]
 GapW -> :        [!gapw]
 GapW -> : *gapw  [?gapw]
 
-ObjInf -> Obj(oper,onum,neg) Inf1(gap)   : Obj(case) Inf1(gapw) -mA ObjPoss 
-ObjInf -> Inf1(-gap)                     : GapW(gapw,case) Inf1() -mA ObjPoss(oper=3,onum=sing) [+gap]
+ObjInf -> Obj(oper,onum,neg) Inf(gap)   : Obj(case) Inf(gapw) -mA ObjPoss 
+ObjInf -> Inf(-gap)                     : GapW(gapw,case) Inf() -mA ObjPoss(oper=3,onum=sing) [+gap]
 
-ObjInfDik -> Obj(oper,onum,neg) Inf1(gap)   : Obj(case) Inf1(gapw) -DHk? ObjPoss 
-ObjInfDik -> Inf1(-gap)                     : GapW(gapw,case) Inf1() -DHk? ObjPoss(oper=3,onum=sing) [+gap]
+ObjInfDik -> Obj(oper,onum,neg) Inf(gap)   : Obj(case) Inf(gapw) -DHk? ObjPoss 
+ObjInfDik -> Inf(-gap)                     : GapW(gapw,case) Inf() -DHk? ObjPoss(oper=3,onum=sing) [+gap]
 
-ObjBInf -> Obj(oper,onum,neg) BInf1(gap) : Obj(case) BInf1(gapw) -mA ObjPoss 
+ObjBInf -> Obj(oper,onum,neg) BInf(gap) : Obj(case) BInf(gapw) -mA ObjPoss 
 
-ObjGer -> Obj(oper,onum,neg) Ger1(gap)   : Obj(case) Ger1(gapw) -mA ObjPoss 
-ObjGer -> Ger1(-gap)                     : GapW(gapw,case) Ger1() -mA ObjPoss(oper=3,onum=sing) [+gap]
+ObjGer -> Obj(oper,onum,neg) Ger(gap)   : Obj(case) Ger(gapw) -mA ObjPoss 
+ObjGer -> Ger(-gap)                     : GapW(gapw,case) Ger() -mA ObjPoss(oper=3,onum=sing) [+gap]
 
-ObjGerKen -> Obj(oper,onum,neg) Ger1(gap)   : Obj(case) Ger1(gapw) +aor -ken
-ObjGerKen -> Ger1(-gap)                     : GapW(gapw,case) Ger1() +aor -ken [+gap]
+ObjGerKen -> Obj(oper,onum,neg) Ger(gap)   : Obj(case) Ger(gapw) +aor -ken
+ObjGerKen -> Ger(-gap)                     : GapW(gapw,case) Ger() +aor -ken [+gap]
 
 ObjThat -> Obj(oper,onum,neg) SThat'(gap) : Obj(case) SThat'(gapw)
 ObjThat -> SThat'(-gap) : SThat'() [+gap]
@@ -466,22 +449,13 @@ ObjWh -> Wh(-gap) : Wh() [+gap]
 
 PassInf -> to Not BaseModal(gap) : BaseModal(gapw) -mA SubjPoss
 
-Inf -> Not to BaseModal(gap) : BaseModal(gapw) Neg CaseInf
-BInf -> Not BaseModal(gap)   : BaseModal(gapw) Neg CaseInf
-Ger -> Not BaseGerund(gap)   : BaseGerund(gapw) Neg CaseInf
+InfDik ->  Not to BaseModal(gap) : BaseModal(gapw) Neg -DHk? SubjPoss
 
-Inf1 -> Not to BaseModal : BaseModal Neg
-BInf1 -> Not BaseModal   : BaseModal Neg
-Ger1 -> Not BaseGerund  : BaseGerund Neg
+Inf  -> Not to BaseModal : BaseModal Neg
+BInf -> Not BaseModal    : BaseModal Neg
+Ger  -> Not BaseGerund   : BaseGerund Neg
 
 ForObjInf -> for Obj(oper,onum,neg) Not to BaseModal(-gap) : Obj(case=+in) BaseModal() Neg -mA ObjPoss
-
-CaseInf -> : -mAk?    [!case]
-CaseInf -> : -mAk?    [case=?+0]
-CaseInf -> : -mAyH   [case=?+i]
-CaseInf -> : -mAyA   [case=?+e]
-CaseInf -> : -mAktA  [case=?+de]
-CaseInf -> : -mAktAn [case=?+den]
 
 Not -> not  [+neg]
 Not ->
@@ -507,6 +481,7 @@ SWhether' -> Whether SentNorm(gap) : SentNorm(gapw,conn=ip_medik,scase=+in)
 SWhether' -> whether to V() : V() +copy -YHp +paste -mAdHk? SubjPoss
 
 SThat' -> That SentNorm(gap) : SentNorm(gapw,conn=dik,scase=+in)
+SThatMe' -> That SentNorm(gap) : SentNorm(gapw,conn=me,scase=+in)
 
 Wh -> WhCase SentNorm(+gap) : SentNorm(gapw,conn=dik,scase=+in)  [gapw=*WhCase]
 Wh -> what to V() : ne V(+gap) -mA SubjPoss gerektiğiN
@@ -575,6 +550,9 @@ Pron2 -> everything : her şey      [+def]
 Pron2 -> everyone   : herkes       [+def]
 Pron2 -> everybody  : herkes       [+def]
 
+DetPron -> the other : diğeriN
+DetPron -> the others : diğerleriN
+DetPron -> another : bir başkasıN
 DetPron -> all   : hep 
 DetPron -> both  : her iki 
 DetPron -> each | either : her bir 
@@ -639,6 +617,7 @@ DG -> PreDet PostDets         : PreDet PostDets
 DG -> PostDet PostDets        : PostDet PostDets        
 DG ->          {1} [+nodef]
 DG ->   a | an {1} [+indef,num=sing]
+DG -> another : bir başka [num=sing]
 DG -> half a | half an : yarım  [+indef,+noa,num=sing]
 
 PostDets -> PostDet PostDets : PostDet PostDets
@@ -766,9 +745,9 @@ ObjPoss -> : -lArHN          [oper=3,onum=plur]
 SubjPoss -> : -Hm             [per=1,num=sing]
 SubjPoss -> : -HmHz           [per=1,num=plur]
 SubjPoss -> : -HnHz           [per=2,num=plur]
-#SubjPoss -> : -ZHN            [per=3,num=sing]
-#SubjPoss -> : -lArHN          [per=3,num=plur]
-SubjPoss -> : -ZHN            [per=3]
+SubjPoss -> : -ZHN            [per=3,num=sing]
+SubjPoss -> : -lArHN          [per=3,num=plur]
+#SubjPoss -> : -ZHN            [per=3]
 
 PossSuf -> : -Hm    [pnum=sing,pper=1]
 PossSuf -> : -HmHz  [pnum=plur,pper=1]
@@ -842,8 +821,8 @@ Pers2' -> :     ! [?scase]
 Pers2' -> :     ! [?pron3,per=?3]
 Pers2' -> : Pers2
 
-Pers3' -> :     ! [?scase]
-Pers3' -> :     ! [?pron3,per=?3]
+Pers3' -> : -z   ! [?scase]
+Pers3' -> : -z   ! [?pron3,per=?3]
 Pers3' -> : Pers3
 
 Pers1 -> : -YHm     [num=sing,per=1]

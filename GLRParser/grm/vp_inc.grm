@@ -93,6 +93,7 @@ $V -> $put Obj on             : Obj giy [-gap,case=+i]
 $V -> $put on Obj'            : Obj' giy [case=+i]
 $V -> $put up with Obj'       : Obj' katlan [case=+e]
 $V -> $read Obj'              : Obj' oku [case=Acc]
+$V -> $say SThat'             : SThat' +i söyle
 $V -> $see Obj'               : Obj' gör [case=Acc,+prog]
 $V -> $sleep                  : uyu [-gap]
 $V -> $stare at Obj'          : Obj' göz SubjPoss +i dik [case=+e]
