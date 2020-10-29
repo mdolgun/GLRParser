@@ -140,12 +140,6 @@ VBe -> be Pred : Pred ol
 VBe -> be PredVerb : PredVerb
 VBe -> be Vpass : Vpass
 
-#StBeX -> Ving : Ving -Vyor  [!pred]
-#StBeX -> Ving : Ving oluyor [?pred]
-#StBeX -> Pred : Pred ol
-#StBeX -> PredVerb : PredVerb
-#StBeX -> be Vpass : Vpass
-
 StBe    -> going to StModal : StModal            [modal=will]
 StBe    -> gonna StModal    : StModal            [modal=will]
 StBe    -> Ving             : Ving ProgTense'
@@ -348,6 +342,7 @@ Quest -> :    [!quest]
 
 Pred -> Obj'              : Obj'              [+pred,case=+0]
 Pred -> AdjP              : AdjP              [+pred,-gap]
+Pred ->                   : *reladv           [+pred,-gap]
 Pred -> PP                : PP                [+pred,-gap]
 Pred -> PPGap             : PPGap             [+pred,+gap]
 Pred -> AdvAdjComp AdjComp than Obj' : Obj' daha AdvAdjComp AdjComp [+pred,case=+den,-gap]
