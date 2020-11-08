@@ -371,7 +371,7 @@ class Parser:
 
         stack = [(fdict,[])]
         for item,fparam in zip(tree.left,rule.lparam):
-            if type(item)==str:
+            if isinstance(item, str):
                 for fdict,seq in stack:
                     seq.append(item)
             else:

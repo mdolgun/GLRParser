@@ -41,7 +41,7 @@ def print_items_cost(items,out):
             first_item = False
         else:
             print(" ", end="", file=out)
-        if type(item)==str:
+        if isinstance(item, str):
             print(item, end="", file=out)
         else:
             print("(", end="", file=out)
@@ -57,7 +57,7 @@ def print_items_cost(items,out):
             print(")", end="", file=out)
 
 def is_suffix(node):
-    if type(node) == str:
+    if isinstance(node, str):
         if node[0] in "+-":
             return True
     else:
@@ -69,7 +69,7 @@ def is_suffix(node):
 def combine_suffixes_lst(nodes,cost,out,new_options):
     for node in nodes:
         combine_suffixes(node, out)
-    if len(out)==1 and type(out[0])!=str:
+    if len(out)==1 and not isinstance(out[0], str):
         for sub_nodes,sub_cost in out[0]:
             new_options.append((sub_nodes,cost+sub_cost))
     else:
@@ -77,9 +77,9 @@ def combine_suffixes_lst(nodes,cost,out,new_options):
 
 def combine_suffixes(node,out):
     prev_node = out[-1] if out else None
-    if type(node)==str: # if current node is a terminal
+    if isinstance(node, str): # if current node is a terminal
         if prev_node and is_suffix(node):
-            if type(prev_node)==str:
+            if isinstance(prev_node, str):
                 out[-1] += " " + node
             else:
                 for prev_nodes,cost in prev_node:
@@ -87,7 +87,7 @@ def combine_suffixes(node,out):
         else:
             out.append(node)
     elif prev_node and is_suffix(node): # there is a previous word, there multiple options, of which at least one starts with a suffix
-        if type(prev_node)==str: # previous item is a terminal
+        if isinstance(prev_node, str): # previous item is a terminal
             new_options = []
             for sub_nodes,cost in node:
                 new_nodes = [prev_node]
@@ -109,7 +109,7 @@ def combine_suffixes(node,out):
 
 def post_process(option_list, post_processor):
     for idx,item in enumerate(option_list):
-        if type(item)==str:
+        if isinstance(item, str):
             option_list[idx] = post_processor(item)
         else:
             for alt,_cost in item:
@@ -138,7 +138,7 @@ class Tree:
     def format(self):
         """ returnes single-line formatted string representation of a tree """
         return " ".join(
-            item if type(item)==str
+            item if isinstance(item, str)
             else "{}({})".format(item[0].head, "|".join(alt.format() for alt in item))
             for item in self.left
         )
@@ -146,14 +146,14 @@ class Tree:
         def formatr(self):
             """ returnes single-line formatted string representation of a tree """
             return " ".join(
-                item if type(item)==str
+                item if isinstance(item, str)
                 else "{}({})".format(item[0].head, "|".join(alt.formatr() for alt in item))
                 for item in self.right
             )
     else:
         def formatr(self):
             return " ".join(
-                item if type(item)==str
+                item if isinstance(item, str)
                 else "{}({})".format(item[0].head, "|".join(
                     alt.formatr() for alt in item
                 ))
@@ -163,7 +163,7 @@ class Tree:
     def str_format(self):
         """ return string representation of terminals where alternative strings are in the form: (alt1|alt2|...) """
         return " ".join(
-            item if type(item)==str 
+            item if isinstance(item, str)
             else item[0].str_format() if len(item)==1
             else "("+"|".join(alt.str_format() for alt in item)+")"
             for item in self.left
@@ -171,7 +171,7 @@ class Tree:
     def str_formatr(self):
         """ return string representation of terminals where alternative strings are in the form: (alt1|alt2|...) """
         return " ".join(
-            item if type(item)==str 
+            item if isinstance(item, str)
             else item[0].str_formatr() if len(item)==1
             else "("+"|".join(alt.str_formatr() for alt in item)+")"
             for item in self.right
@@ -189,7 +189,7 @@ class Tree:
         """ return a list formatted left tree """
         out = []
         for item in self.left:
-            if type(item)==str:
+            if isinstance(item, str):
                 out.append(item)
             elif len(item)==1:
                 out.extend(item[0].list_format())
@@ -201,7 +201,7 @@ class Tree:
         """ return a list formatted right tree """
         out = []
         for item in self.right:
-            if type(item)==str:
+            if isinstance(item, str):
                 out.append(item)
             elif len(item)==1:
                 out.extend(item[0].list_formatr())
@@ -224,7 +224,7 @@ class Tree:
         out = []
         cost = self.cost
         for item in self.right:
-            if type(item)==str:
+            if isinstance(item, str):
                 out.append(item)
             elif len(item)==1:
                 option,option_cost = item[0].option_list()
@@ -234,7 +234,7 @@ class Tree:
                 options = []
                 for alt in item:
                     option,option_cost = alt.option_list()
-                    if len(option)==1 and type(option[0])!=str:
+                    if len(option)==1 and not isinstance(option[0], str):
                         options.extend(option[0])
                     else:
                         options.append((option,option_cost))
@@ -246,12 +246,12 @@ class Tree:
         """ return prety formatted (indented multiline) string representation of a tree """
         indent = self.indenter*level
         return "".join(
-            "{}{}\n".format(indent,item) if type(item)==str
+            "{}{}\n".format(indent,item) if isinstance(item, str)
             else "{indent}{head}({body})\n".format(
                 indent=indent,
                 head=item[0].head,
                 body=" ".join(item[0].left)    
-            ) if len(item)==1 and all(map(lambda x:type(x)==str,item[0].left))
+            ) if len(item)==1 and all(map(lambda x:isinstance(x,str),item[0].left))
             else "{indent}{head}(\n{body}{indent})\n".format(
                 indent=indent,
                 head=item[0].head,
@@ -263,12 +263,12 @@ class Tree:
         """ return prety formatted (indented multiline) string representation of a tree """
         indent = self.indenter*level
         return "".join(
-            "{}{}\n".format(indent,item) if type(item)==str
+            "{}{}\n".format(indent,item) if isinstance(item, str)
             else "{indent}{head}({body})\n".format(
                 indent=indent,
                 head=item[0].head,
                 body=" ".join(item[0].right)    
-            ) if len(item)==1 and all(map(lambda x:type(x)==str,item[0].right))
+            ) if len(item)==1 and all(map(lambda x:isinstance(x,str),item[0].right))
             else "{indent}{head}(\n{body}{indent})\n".format(
                 indent=indent,
                 head=item[0].head,
@@ -283,10 +283,10 @@ class Tree:
         prod = self.left
         if len(prod)==0: # empty production
             return ""
-        if all(map(lambda x:type(x)==str,prod)): # terminal-only production
+        if all(map(lambda x:isinstance(x,str),prod)): # terminal-only production
             return  indent+" ".join(prod)+"\n"
         return "".join([
-            "{}{}\n".format(indent,item) if type(item)==str
+            "{}{}\n".format(indent,item) if isinstance(item,str)
             else "{indent}{head}(\n{body}{indent})\n".format(
                 indent=indent,
                 head=item[0].head,
@@ -310,10 +310,10 @@ class Tree:
         prod = self.right
         if len(prod)==0: # empty production
             return ""
-        if all(map(lambda x:type(x)==str,prod)): # terminal-only production
+        if all(map(lambda x:isinstance(x,str),prod)): # terminal-only production
             return  indent+" ".join(prod)+"\n"
         return "".join([
-            "{}{}\n".format(indent,item) if type(item)==str
+            "{}{}\n".format(indent,item) if isinstance(item,str)
             else "{indent}{head}(\n{body}{indent})\n".format(
                 indent=indent,
                 head=item[0].head,
@@ -337,10 +337,10 @@ class Tree:
         prod = self.left
         if len(prod)==0: # empty production
             return ""
-        if all(map(lambda x:type(x)==str,prod)): # terminal-only production
+        if all(map(lambda x:isinstance(x,str),prod)): # terminal-only production
             return  indent+" ".join(prod)+"\n"
         return "".join([
-            "{}{}\n".format(indent,item) if type(item)==str
+            "{}{}\n".format(indent,item) if isinstance(item,str)
             else "{indent}{head}({id})(\n{body}{indent})\n".format(
                 indent=indent,
                 head=item[0].head,
@@ -366,10 +366,10 @@ class Tree:
         prod = self.right
         if len(prod)==0: # empty production
             return ""
-        if all(map(lambda x:type(x)==str,prod)): # terminal-only production
+        if all(map(lambda x:isinstance(x,str),prod)): # terminal-only production
             return  indent+" ".join(prod)+"\n"
         return "".join([
-            "{}{}\n".format(indent,item) if type(item)==str
+            "{}{}\n".format(indent,item) if isinstance(item,str)
             else "{indent}{head}({id})(\n{body}{indent})\n".format(
                 indent=indent,
                 head=item[0].head,
@@ -416,7 +416,7 @@ class Tree:
             yield ""
             return
         for rest in tree.enum(idx+1):
-            if type(item)==str:
+            if isinstance(item, str):
                 if rest:
                     yield item + " " + rest
                 else:
@@ -437,7 +437,7 @@ class Tree:
             yield "",tree.cost
             return
         for rest,cost in tree.enumx(idx+1):
-            if type(item)==str:
+            if isinstance(item, str):
                 if rest:
                     yield item + " " + rest, cost
                 else:

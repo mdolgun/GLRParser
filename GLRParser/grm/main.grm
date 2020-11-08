@@ -284,7 +284,7 @@ PerfTense' -> : PredBe Neg -DHysA Pers2'                  [conn=?if,tense=?pres]
 PerfTense' -> : PredBe Neg -mHş olsaydı Pers2'            [conn=?if,tense=?past]
 PerfTense' -> : PredBe Neg -mHşken                        [conn=?ken]
 PerfTense' -> : PredBe Neg -mHş olmadık?                  [conn=?medik]
-PerfTense' -> : PredBe Neg -mHş olma SubPoss              [conn=?me]
+PerfTense' -> : PredBe Neg -mHş olma SubjPoss             [conn=?me]
 PerfTense' -> : PredBe +copy -YHp +paste -mADHk? SubjPoss [conn=?ip_medik,tense=?pres]
 PerfTense' -> : PredBe -mHş olup olmadık? SubjPoss        [conn=?ip_medik,tense=?past]
 
@@ -336,8 +336,8 @@ PerfTense -> : Neg -mHş Quest -YDH Pers2' [tense=past]
 Neg -> : -mA [?neg]
 Neg -> :     [!neg]
 
-Quest -> : mH [?quest]
-Quest -> :    [!quest]
+Quest -> : "- mH" [?quest]
+Quest -> :        [!quest]
 
 
 Pred -> Obj'              : Obj'              [+pred,case=+0]
@@ -478,12 +478,12 @@ SWhether' -> whether to V() : V() +copy -YHp +paste -mAdHk? SubjPoss
 SThat' -> That SentNorm(gap) : SentNorm(gapw,conn=dik,scase=+in)
 SThatMe' -> That SentNorm(gap) : SentNorm(gapw,conn=me,scase=+in)
 
-Wh -> WhCase SentNorm(+gap) : SentNorm(gapw,conn=dik,scase=+in)  [gapw=*WhCase]
+Wh -> WhCase SentNorm(+gap) : SentNorm(gapw,conn=dik,scase=+in)  [gapw=*WhCase] # what he is reading
 Wh -> what to V() : ne V(+gap) -mA SubjPoss gerektiğiN
 Wh -> where to V() : nerede V() -mA SubjPoss gerektiğiN
 Wh -> how to V() : nasıl V() -mA SubjPoss gerektiğiN
 Wh -> why to V() : niçin V() -mA SubjPoss gerektiğiN 
-Wh -> RelAdv SentNorm() : RelAdv SentNorm(conn=dik)
+Wh -> RelAdv SentNorm() : RelAdv SentNorm(conn=dik) # how he is reading a book
 
 RelAdv -> how    : nasıl
 RelAdv -> where  : nerede
@@ -582,8 +582,18 @@ Unit -> cup     : fincan [num=sing]
 Unit -> cups    : fincan [num=plur]
 Unit -> couple  : çift   [num=sing]
 Unit -> couples : çift   [num=plur]
+Unit -> pair    : çift   [num=sing]
+Unit -> pairs   : çift   [num=plur]
 Unit -> dozen   : düzine [num=sing]
 Unit -> dozens  : düzine [num=plur]
+Unit -> meter  | metre  : metre [num=sing]
+Unit -> meters | metres : metre [num=plur]
+Unit -> liter  | litre  : litre [num=sing]
+Unit -> liters | litres : litre [num=plur]
+Unit -> gram   | gramme  : gram [num=sing]
+Unit -> grams  | grammes : gram [num=plur]
+Unit -> kilogram  | kilogramme  : kilogram [num=sing]
+Unit -> kilograms | kilogrammes : kilogram [num=plur]
 
 OfNG -> AG NG : AG Bir NG
 OfNG -> AG NG of OfNG() : AG Bir OfNG() NG [+ng]
@@ -604,16 +614,20 @@ PreDet -> all             : bütün
 PreDet -> both            : her iki  [+noplur]
 PreDet -> twice | double  : iki kat
 PreDet -> CardinalNumber() times : CardinalNumber() kat  # beş kat
-PreDet -> one-third      : üçte bir
+PreDet -> one-third       : üçte bir
+
+PreDet1 -> such            : böyle
+PreDet1 -> quite           : oldukça
+PreDet1 ->
 
 DG -> PreDet Det PostDets     : PreDet Det PostDets     [+def]
 DG -> Det PostDets            : Det PostDets            [+def]
-DG -> PreDet PostDets         : PreDet PostDets         
-DG -> PostDet PostDets        : PostDet PostDets        
-DG ->          {1} [+nodef]
-DG ->   a | an {1} [+indef,num=sing]
-DG -> another : bir başka [num=sing]
-DG -> half a | half an : yarım  [+indef,+noa,num=sing]
+DG -> PreDet PostDets         : PreDet PostDets
+DG -> PostDet PostDets        : PostDet PostDets
+DG -> PreDet1                 : PreDet1 {100} [+nodef] 
+DG -> PreDet1 a | PreDet1 an  : PreDet1 [+indef,num=sing]
+DG -> another                 : bir başka [num=sing]
+DG -> half a | half an        : yarım  [+indef,+noa,num=sing]
 
 PostDets -> PostDet PostDets : PostDet PostDets
 PostDets -> 
@@ -875,6 +889,7 @@ AdvP -> Adv : Adv
 AdvP ->
 
 Adv -> on WeekDay : WeekDay günü
+Adv -> on WeekDayPlur : WeekDayPlur günleri
 WeekDay -> monday    : pazartesi
 WeekDay -> tuesday   : salı
 WeekDay -> wednesday : çarşamba
@@ -882,6 +897,9 @@ WeekDay -> thursday  : perşembe
 WeekDay -> friday    : cuma
 WeekDay -> saturday  : cumartesi
 WeekDay -> sunday    : pazar
+Adv -> on Month : Month ayında
+Month -> january  : ocak
+Month -> february : şubat
 
 PP -> Prep PPObj : PPObj Prep {100}
 
