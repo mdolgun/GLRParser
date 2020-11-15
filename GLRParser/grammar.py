@@ -18,6 +18,9 @@ empty_list = list()
 empty_dict = dict()
 empty_fparam = FParam()
 
+class Symbol(str):
+    pass
+
 class Rule:
     """ Definition of  a grammar rule """
     __slots__ = ('head', 'left', 'right', 'feat', 'checklist', 'lparam', 'rparam', 'cost', 'cut')
@@ -272,6 +275,7 @@ class Grammar:
 
         for left,lparam,lcost,lmacro,lcut in llist:
             term_only = self.auto_dict is not False and len(lparam)>0 and all(map(lambda x:x is False,lparam))
+            # term_only = self.auto_dict is not False and len(left)>0 and all(map(lambda symbol:type(symbol)==str))
 
             for right,rparam,rcost,rmacro,rcut in rlist:      
                 # following cross-references right with left, removing referencing suffixes
@@ -294,9 +298,14 @@ class Grammar:
                         except ValueError:
                             raise GrammarError("File:%s Line:%d No matching NonTerminal found for reference feature %s=%s" % (self.fname,self.line_no,key,val))
 
+                #for idx,symbol in enumerate(left):
                 for idx,(symbol,param) in enumerate(zip(left,lparam)):
+                    #if type(symbol)==Symbol:
                     if param is not False: # NonTerminal
                         left[idx] = symbol.split('-')[0]
+                        #sym_params = symbol.split('-')
+                        #left[idx] = sym_params[0] ???
+                        #left[idx].suffix = sym_params[1]
                 if macro_name:
                     if not lmacro:
                         raise GrammarError("File:%s Line:%d No form substitution defined for macro %s" % (self.fname,self.line_no,self.buf))

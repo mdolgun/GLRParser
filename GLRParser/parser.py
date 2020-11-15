@@ -37,15 +37,13 @@ class EnglishPreProcessor:
     Rules:
     1. all punctuation symbols (except - and ') and whitespace is replaced with single space 
     2. all ' symbols except ending with t are seperated from root e.g "we're" -> "we 're", "house's" -> "house 's", "houses's" -> "houses '",  "isn't" -> "isn't"
-    3. all letters are converted to lowercase
-
     """
     
     def __init__(self):
         self.regex = re.compile("[ ,.?:;()]+|(?='(?:[^t]|$))")
         
     def __call__(self,sent):
-        return self.regex.sub(' ',sent).strip().lower()
+        return self.regex.sub(' ',sent).strip()
 
 class EnglishPostProcessor:
     """ Currently only handles combining apostrophe(')   e.g "we 're" -> "we're",  "house 's" -> "house's"
@@ -542,7 +540,7 @@ class Parser:
         """ internal: print parse tables after parse """
         indent = 7
         space = " "*indent
-        for pos,token in enumerate(self.instr):
+        for pos,token in enumerate(self.words):
             print(str(pos).rjust(2,"-"),token.center(indent-2,"-"),sep="",end="")
         print()
         for (epos,estate,symbol),startset in sorted(self.nodes.items()):
@@ -612,16 +610,28 @@ class Parser:
         ereduce = self.ereduce
         logging.info("input=%s", instr)
 
-        instr = instr.split(" ")
-        instr.append("$")
-        inlen = len(instr)
+        cases = []
+        words = []
+        for word in instr.split(" "):
+            if word.isdigit():
+                cases.append(3)
+            elif word.islower():
+                cases.append(0)
+            elif word.isupper():
+                cases.append(2)
+            else:
+                cases.append(1)
+            words.append(word.lower())
+        words.append("$")
+
+        inlen = len(words)
         nodes = defaultdict(set) # maps (pos,state,symbol) to set of (oldpos,oldstate) (i.e adds an arc from (pos,state) to (oldpos,oldstate) labeled with symbol)
         edges = defaultdict(list) # maps an edge to sub-edges of a production e.g. (p0,s0,S,p2,s2') -> [ (p0,s0,NP,p1,s1), (p1,s1,VP,p2,s2) ] where s0,S->s2'
         fstate = dfa[0,"S"]
         
         self.nodes = nodes
         self.edges = edges
-        self.instr = instr
+        self.words = words
         self.top_edge = (0,0,"S",inlen-1,fstate)
 
         act_states = [set() for i in range(inlen)] # active set of states for each position
@@ -631,7 +641,7 @@ class Parser:
 
         
         for pos in range(inlen):
-            token = instr[pos]
+            token = words[pos]
              
             rlist = list(act_edges[pos])
             active = act_states[pos]
@@ -708,14 +718,14 @@ class Parser:
                 else:
                     while not act_states[pos]:
                         pos -= 1
-                    error = "Parse is not possible at position %s: %s [* %s *] %s" % (pos, " ".join(instr[0:pos]),instr[pos]," ".join(instr[pos+1:-1]))
+                    error = "Parse is not possible at position %s: %s [* %s *] %s" % (pos, " ".join(words[0:pos]),words[pos]," ".join(words[pos+1:-1]))
                     logging.error(error)
                     raise ParseError(error)
             else:
                 if not active:
                     continue
                     #logging.error("not active, %s",active)
-                    #raise ParseError("Cannot shift %s<< %s" % (" ".join(instr[0:pos])," ".join(instr[pos:])))
+                    #raise ParseError("Cannot shift %s<< %s" % (" ".join(words[0:pos])," ".join(words[pos:])))
 
                 for state in active:
                     nstate = dfa.get((state,token),-1)
@@ -724,13 +734,16 @@ class Parser:
                         logging.debug("add nodes[%s] = %s",(pos+1,nstate,token),(pos,state)) 
                         nodes[pos+1,nstate,token].add((pos,state))
                         logging.debug("shift %s = %s", (pos+1,nstate,token,pos,state),token)
-                    
+
                         act_edges[pos+1].add((pos,state,token,pos+1,nstate))
                         act_states[pos+1].add(nstate)
 
-                items = self.trie.search(instr[pos:])
+                items = self.trie.search(words[pos:])
                 logging.debug("Shift pos: %d items: %s", pos, items)
-                #items.append((1,(token,[],[]))
+                if cases[pos] == 3: # numeric
+                    items.append((1,Rule('CardinalNumber', left=[token], right=[token], lparam=[False], rparam=[False])))
+                elif cases[pos] != 0: # not all-lower case
+                    items.append((1,Rule('U', left=[token], right=[token], lparam=[False], rparam=[False], cost=100)))
                 for input_len,rule in items:
                     token = rule.head
                     nextpos = pos + input_len

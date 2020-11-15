@@ -33,22 +33,24 @@ S -> neither AuxHavePos Subj : Subj "- dA" değil [+pron]
 S -> neither AuxDoPos Subj   : Subj "- dA" değil [+pron]
 S -> neither ModalPos Subj   : Subj "- dA" değil [+pron]
 
-AdvCl -> as if SentNorm        : sanki SentNorm gibi   [conn=mis,-gap]
-AdvCl -> if SentNorm Then      : SentNorm              [conn=if,-gap]
-AdvCl -> while SentNorm        : SentNorm              [conn=ken,-gap,+pron]
-AdvCl -> as SentNorm           : SentNorm              [conn=ken,-gap,+pron]
-AdvCl -> when SentNorm         : SentNorm -DA          [conn=dik,-gap]
-AdvCl -> because SentNorm      : SentNorm için         [conn=dik,-gap]
-AdvCl -> as long as SentNorm   : SentNorm sürece       [conn=dik,-gap]
-AdvCl -> as soon as SentNorm   : SentNorm              [conn=ir_mez,-gap,+pron]
-AdvCl -> until SentNorm        : SentNorm +e kadar     [conn=en,-gap,+pron]
-AdvCl -> after SentNorm        : SentNorm +den sonra   [conn=me,-gap]
-AdvCl -> before SentNorm       : SentNorm +den önce    [conn=me,-gap]
-AdvCl -> unless SentNorm       : SentNorm -çA          [conn=medik,-gap,+pron]
-AdvCl -> although SentNorm     : SentNorm +e rağmen    [conn=me,-gap]
-AdvCl -> even though SentNorm  : SentNorm +e rağmen    [conn=me,-gap]
-AdvCl -> as much as SentNorm   : SentNorm +e rağmen    [conn=me,-gap]
-AdvCl -> much as SentNorm      : SentNorm +e rağmen    [conn=me,-gap]
+AdvCl -> as if SentNorm         : sanki SentNorm gibi   [conn=mis,-gap]
+AdvCl -> if SentNorm Then       : SentNorm              [conn=if,-gap]
+AdvCl -> while SentNorm         : SentNorm              [conn=ken,-gap,+pron]
+AdvCl -> as SentNorm            : SentNorm              [conn=ken,-gap,+pron]
+AdvCl -> when SentNorm          : SentNorm -DA          [conn=dik,-gap]
+AdvCl -> now that SentNorm      : şimdi SentNorm için   [conn=dik,-gap]
+AdvCl -> provided that SentNorm : SentNorm koşuluyla   [conns=me,-gap]
+AdvCl -> because SentNorm       : SentNorm için         [conn=dik,-gap]
+AdvCl -> as long as SentNorm    : SentNorm sürece       [conn=dik,-gap]
+AdvCl -> as soon as SentNorm    : SentNorm              [conn=ir_mez,-gap,+pron]
+AdvCl -> until SentNorm         : SentNorm +e kadar     [conn=en,-gap,+pron]
+AdvCl -> after SentNorm         : SentNorm +den sonra   [conn=me,-gap]
+AdvCl -> before SentNorm        : SentNorm +den önce    [conn=me,-gap]
+AdvCl -> unless SentNorm        : SentNorm -çA          [conn=medik,-gap,+pron]
+AdvCl -> although SentNorm      : SentNorm +e rağmen    [conn=me,-gap]
+AdvCl -> even though SentNorm   : SentNorm +e rağmen    [conn=me,-gap]
+AdvCl -> as much as SentNorm    : SentNorm +e rağmen    [conn=me,-gap]
+AdvCl -> much as SentNorm       : SentNorm +e rağmen    [conn=me,-gap]
 
 AdvCl -> after BaseGerund(-gap) : BaseGerund() -DHktAn sonra
 AdvCl -> before BaseGerund(-gap) : BaseGerund() -mAdAn önce
@@ -511,6 +513,20 @@ NP -> NP1 of ObjPron(per=*pper,num=*pnum) : ObjPron() +in_nopro NP1 # a big hous
 
 PropN -> U : U
 PropN -> PropN U : PropN U
+Title -> mr | mister : bay
+Title -> mrs : bayan
+Title -> ms | miss : bayan
+Title -> sir : sör
+Title -> president : başkan
+Title -> vice president : başkan yardımcısı
+Title -> senator : senatör
+Title -> representative : temsilci
+Title -> governor : vali
+Title -> congressman : kongre üyesi
+Title -> prof | professor : profesör
+Title -> dr | doctor : doktor
+Title -> 
+Title -> NP1: NP1
 
 NP1 -> OfDet OfNG : OfDet OfNG
 NP1 -> OfUnit() OfNG : OfUnit() OfNG
@@ -520,7 +536,7 @@ NP1 -> DetPron : DetPron NGSuf [+ng,+def]
 NP1 -> Pron2 : Pron2
 NP1 -> Pron2 else : başka Pron2
 NP1 -> Pron2 AdjP : AdjP Pron2
-NP1 -> PropN : PropN [+def]
+NP1 -> Title PropN : Title PropN [+def,num=sing]
 
 One -> one
 One ->
@@ -601,6 +617,8 @@ OfNG -> AG NG of OfNG() : AG Bir OfNG() NG [+ng]
 NG -> N : N NGSuf
 NG -> NG() N : NG() N NGSuf  [+ng]
 
+NG -> PropN NG() : PropN NG(+ng) # Arizona Governor
+
 Bir -> : ! [!indef]
 Bir -> : ! [?noa]
 Bir -> : bir  
@@ -618,13 +636,14 @@ PreDet -> one-third       : üçte bir
 
 PreDet1 -> such            : böyle
 PreDet1 -> quite           : oldukça
-PreDet1 ->
 
 DG -> PreDet Det PostDets     : PreDet Det PostDets     [+def]
 DG -> Det PostDets            : Det PostDets            [+def]
 DG -> PreDet PostDets         : PreDet PostDets
 DG -> PostDet PostDets        : PostDet PostDets
-DG -> PreDet1                 : PreDet1 {100} [+nodef] 
+DG ->                         : {100} [+nodef] 
+DG -> a | an                  : [+indef,num=sing]
+DG -> PreDet1                 : PreDet1 [+nodef] 
 DG -> PreDet1 a | PreDet1 an  : PreDet1 [+indef,num=sing]
 DG -> another                 : bir başka [num=sing]
 DG -> half a | half an        : yarım  [+indef,+noa,num=sing]
@@ -663,7 +682,7 @@ PostDet -> a little          : biraz  [+noplur]
 #Det -> much | a lot of | lots of | plenty of            : çok       [num=sing]
 PostDet -> many | several : birçok  [num=plur,+noplur]
 PostDet -> much           : çok     [num=sing]
-PostDet -> CardinalNumber : CardinalNumber
+PostDet -> CardinalNumber : CardinalNumber [+noplur]
 PostDet -> OrdinalNumber  : OrdinalNumber
 
 NP' -> NP                    : NP
