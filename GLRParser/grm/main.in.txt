@@ -352,7 +352,7 @@ i don't have a car @ bir arabaya sahip değilim | bir arabam yok
 do i have a car @ bir arabaya sahip miyim | bir arabam var mı
 don't i have a car @  bir arabaya sahip değil miyim | bir arabam yok mu
 the man has a car @ adam bir arabaya sahip | adamın bir arabası var
-he has a car @ bir arabaya sahip | bir arabası var
+he has a car @ o bir arabaya sahip | onun bir arabası var
 they have a car @ onlar bir arabaya sahip | onların bir arabası var
 
 i had a car @ bir arabaya sahiptim | bir arabam vardı
@@ -459,28 +459,28 @@ if i have been happy he would be happy @ mutlu olduysam mutlu olurdu
 if i had been happy he would have been happy @ mutlu olmuş olsaydım mutlu olmuş olurdu
 
 # whether
-i don't know if he sleeps @ uyuyup uyumadığını bilmiyorum
-i don't know if he slept @ uyuyup uyumadığını bilmiyorum
-i don't know if he is sleeping @ uyuyup uyumadığını bilmiyorum
-i don't know if he was sleeping @ uyuyup uyumadığını bilmiyorum
-i don't know if he has slept @ uyuyup uyumadığını bilmiyorum
-i don't know if he had slept @ uyumuş olup olmadığını bilmiyorum
-i don't know if he will sleep @ uyuyup uyumayacağını bilmiyorum
-i don't know if he can sleep @ uyuyup uyuyamadığını bilmiyorum
-i don't know if he may sleep @ uyuyup uyumayabildiğini bilmiyorum
-i don't know if he must sleep @ uyumak zorunda olup olmadığını bilmiyorum
+i don't know if he sleeps @ onun uyuyup uyumadığını bilmiyorum
+i don't know if he slept @ onun uyuyup uyumadığını bilmiyorum
+i don't know if he is sleeping @ onun uyuyup uyumadığını bilmiyorum
+i don't know if he was sleeping @ onun uyuyup uyumadığını bilmiyorum
+i don't know if he has slept @ onun uyuyup uyumadığını bilmiyorum
+i don't know if he had slept @ onun uyumuş olup olmadığını bilmiyorum
+i don't know if he will sleep @ onun uyuyup uyumayacağını bilmiyorum
+i don't know if he can sleep @ onun uyuyup uyuyamadığını bilmiyorum
+i don't know if he may sleep @ onun uyuyup uyumayabildiğini bilmiyorum
+i don't know if he must sleep @ onun uyumak zorunda olup olmadığını bilmiyorum
 
-i don't know if he can be happy @ mutlu olup olamadığını bilmiyorum
-i don't know if he is happy @ mutlu olup olmadığını bilmiyorum
-i don't know if he was happy @ mutlu olup olmadığını bilmiyorum
-i don't know if he is being happy @ mutlu olup olmadığını bilmiyorum
-i don't know if he was being happy @ mutlu olup olmadığını bilmiyorum
-i don't know if he has been happy @ mutlu olup olmadığını bilmiyorum
-i don't know if he had been happy @ mutlu olmuş olup olmadığını bilmiyorum
-i don't know if he will be happy @ mutlu olup olmayacağını bilmiyorum
-i don't know if he can be happy @ mutlu olup olamadığını bilmiyorum
-i don't know if he may be happy @ mutlu olup olmayabildiğini bilmiyorum
-i don't know if he must be happy @ mutlu olmak zorunda olup olmadığını bilmiyorum
+i don't know if he can be happy @ onun mutlu olup olamadığını bilmiyorum
+i don't know if he is happy @ onun mutlu olup olmadığını bilmiyorum
+i don't know if he was happy @ onun mutlu olup olmadığını bilmiyorum
+i don't know if he is being happy @ onun mutlu olup olmadığını bilmiyorum
+i don't know if he was being happy @ onun mutlu olup olmadığını bilmiyorum
+i don't know if he has been happy @ onun mutlu olup olmadığını bilmiyorum
+i don't know if he had been happy @ onun mutlu olmuş olup olmadığını bilmiyorum
+i don't know if he will be happy @ onun mutlu olup olmayacağını bilmiyorum
+i don't know if he can be happy @ onun mutlu olup olamadığını bilmiyorum
+i don't know if he may be happy @ onun mutlu olup olmayabildiğini bilmiyorum
+i don't know if he must be happy @ onun mutlu olmak zorunda olup olmadığını bilmiyorum
 
 # while
 while i sleep he sleeps @ ben uyurken uyur
@@ -534,8 +534,8 @@ i will agree with you @ sizinle aynı fikirde olacağım
 i must agree with you @ sizinle aynı fikirde olmalıyım
 
 
-i want the car which she likes @ hoşlandığı arabayı istiyorum
-what do you think they want @ ne istediklerini düşünüyorsunuz
+i want the car which she likes @ onun hoşlandığı arabayı istiyorum
+what do you think they want @ onların ne istediklerini düşünüyorsunuz
 who do you think you are @ kim olduğunuzu düşünüyorsunuz
 
 i am a man @ bir adamım
@@ -559,7 +559,7 @@ turn the car on @ arabayı aç
 what do you order me to turn @ bana neyi çevirmemi emredersiniz
 i want to turn @ dönmek istiyorum
 trust the man with the car @ adama arabayı emanet et
-i think that they like the car @ arabadan hoşlandıklarını düşünüyorum
+i think that they like the car @ onların arabadan hoşlandıklarını düşünüyorum
 i want the car that i like @ hoşlandığım arabayı istiyorum
 
 
@@ -633,7 +633,7 @@ i know that you like cars @ arabalardan hoşlandığınızı biliyorum
 
 it is good to see you @ sizi görmek iyi
 it is good for him to see you @ sizi görmesi iyi
-it is good that he will see you @ sizi görecek olması iyi
+it is good that he will see you @ onun sizi görecek olması iyi
 
 i need to sleep @ uyumaya ihtiyacım var | uyumam lazım
 
@@ -645,7 +645,7 @@ they found his blood to contain poison @ kanının zehir içerdiğini buldular
 he finds her beautiful @ onu güzel bulur
 i found him sleeping @ onu uyurken buldum
 i found it easy to solve the problems @ problemleri çözmeyi kolay buldum
-i find it sad that he has lost all his children @ bütün çocuklarını kaybetmiş olmasını üzücü bulurum
+i find it sad that he has lost all his children @ onun bütün çocuklarını kaybetmiş olmasını üzücü bulurum
 
 #seem
 he seems happy @ mutlu görünüyor

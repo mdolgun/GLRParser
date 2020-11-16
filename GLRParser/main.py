@@ -33,12 +33,14 @@ OPTIONAL PARAMETERS:
     -g  Loads grammar files from the "grm" directory within the package
 """
 import sys,logging,os
-import os.path 
+import os.path
+from collections import defaultdict
 
 if os.path.dirname(__file__) == os.getcwd(): # file is run directly from the source directory
     sys.path.append(os.path.join(os.path.dirname(__file__),".."))
-from GLRParser.parser import Parser
 
+from GLRParser.parser import Parser,ParseError,UnifyError,PostProcessError
+from GLRParser.tree import *
 
 if sys.version_info >= (3, 7):
     from time import perf_counter_ns as timer
@@ -168,22 +170,49 @@ def interact(grm_fname, single_translation=False):
             key,val = sent[1:].split("=")
             params[key] = int(val)
         else:
-            trans_list = parser.trans_sent(sent, params.get("show_tree",0), params.get("show_expr",1))
-            if type(trans_list) == str:
-                print(" ", trans_list)
-            else:
-                show_alternate = params.get("show_alternate",1)
-                if show_alternate == 0:
-                    print(" ", trans_list[0][0]) # print only least cost translation
-                elif show_alternate == 1:
+            show_tree = params.get("show_tree",0)
+            show_expr = params.get("show_expr",1)
+            show_alternate = params.get("show_alternate",1)
+            try:
+                sent = parser.pre_processor(sent)
+                parser.parse(sent)
+                tree = parser.make_tree()
+                if show_tree:
+                    print(tree.pformat_ext())
+                tree2 = parser.unify_tree(tree)
+                if show_tree:
+                    print(tree2.pformat_ext())
+                tree3 = parser.trans_tree(tree2)
+                if show_tree:
+                    print(tree3.pformatr_ext())
+                if show_expr:
+                    opt_list,_cost = tree3.option_list()
+                    results = []
+                    combine_suffixes_lst(opt_list, 0, [], results)
+                    post_process([results], parser.post_processor)
+                    print_items_cost([results], sys.stdout); print()
+                trans_dict = defaultdict(list)
+                for sent,cost in tree3.enumx():
+                    trans_dict[parser.post_processor(sent)].append(cost)
+                trans_list = [(sent,min(costs)) for sent,costs in trans_dict.items()]
+                trans_list.sort(key=lambda item:item[1])
+                if show_alternate == 0: # print only first least cost translation
+                    print(" ", trans_list[0][0])
+                elif show_alternate == 1: # print all least cost translations
                     least_cost = trans_list[0][1]
                     for sent,cost in trans_list:
                         if cost != least_cost:
                             break
                         print(" ", sent)
-                elif show_alternate == 2:
+                elif show_alternate == 2: # print all translations
                     for sent,cost in trans_list:
                         print(" ", sent, cost)
+            except ParseError as pe:
+                print("  ParseError: "+str(pe))
+            except UnifyError as ue:
+                print("UnifyError: "+str(ue))
+            except PostProcessError as ppe:
+                print("PostProcessError: "+str(ppe))
         sent = input("Enter Sent> ")
 
 def save(grm_fname):

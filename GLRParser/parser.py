@@ -612,7 +612,8 @@ class Parser:
 
         cases = []
         words = []
-        for word in instr.split(" "):
+        orig_words = instr.split(" ")
+        for word in orig_words:
             if word.isdigit():
                 cases.append(3)
             elif word.islower():
@@ -761,26 +762,14 @@ class Parser:
                             edges[nedge].append([rule]+rule.left)
                             #logging.debug("appending edge %s to %s", Parser.format_edge_item(ptree), self.format_edge(nedge))
 
-    def trans_sent(self,sent,show_tree=0,show_expr=0):
+    def trans_sent(self,sent):
         """ translates a sentence, returns a list of possible translations or an error """
         try:
             sent = self.pre_processor(sent)
             self.parse(sent)
             tree = self.make_tree()
-            if show_tree:
-                print(tree.pformat_ext())
             tree2 = self.unify_tree(tree)
-            if show_tree:
-                print(tree2.pformat_ext())
             tree3 = self.trans_tree(tree2)
-            if show_tree:
-                print(tree3.pformatr_ext())
-            if show_expr:
-                opt_list,_cost = tree3.option_list()
-                results = []
-                combine_suffixes_lst(opt_list, 0, [], results)
-                post_process([results], self.post_processor)
-                print_items_cost([results], sys.stdout); print()
             result = [(self.post_processor(trans),cost) for trans,cost in tree3.enumx()]
             result.sort(key=lambda item:item[1])
             return result

@@ -148,7 +148,7 @@ StBe    -> Ving             : Ving ProgTense'
 StBe    -> being Pred       : Pred ProgTense'
 StBe    -> being Vpass      : Vpass ProgTense' 
 StBe    -> Vpass            : Vpass SimpTense'
-StBe    -> Pred             : Pred PredTense [+pron3]
+StBe    -> Pred             : Pred PredTense
 StBe    -> XPred            : XPred
 StBe    -> PredVerb         : PredVerb SimpTense'
 StBe    -> able to V        : V ModalTense       [modal=can]
@@ -380,7 +380,7 @@ Obj -> ObjPron   : ObjPron ObjCase   [+def,case=!+in]
 PPObj -> NP'(num=*onum,def) : NP'() ObjCase   [oper=3]
 PPObj -> ObjPron : ObjPron
 
-Subj -> NP'      : NP' SubjCase De [per=3,+pron3]
+Subj -> NP'      : NP' SubjCase De [per=3]
 Subj -> SubjPron : Pron' De
 
 De -> : "- dA"  [?also]
@@ -391,7 +391,8 @@ Cok -> :     [!much]
 
 Pron' -> : Pron SubjCase ! [?pron]
 Pron' -> : Pron SubjCase ! [scase=!+in]
-Pron' -> : Pron SubjCase ! [?pron3,!conn,per=?3]
+Pron' -> : Pron SubjCase ! [scase=?+in,per=?3]
+Pron' -> : Pron SubjCase ! [?pred,per=?3]
 Pron' -> :  
 
 ObjCase -> :       [!case]
@@ -841,16 +842,15 @@ ModalNeg -> shouldn't [modal=must,tense=pres]
 
 Pers1' -> :     ! [?scase]
 Pers1' -> :     ! [?pred,per=?3]
-Pers1' -> :     ! [?pron3,per=?3]
 Pers1' -> : Pers1
 
 
 Pers2' -> :     ! [?scase]
-Pers2' -> :     ! [?pron3,per=?3]
+Pers2' -> :     ! [?pred,per=?3]
 Pers2' -> : Pers2
 
 Pers3' -> : -z   ! [?scase]
-Pers3' -> : -z   ! [?pron3,per=?3]
+Pers3' -> : -z   ! [?pred,per=?3]
 Pers3' -> : Pers3
 
 Pers1 -> : -YHm     [num=sing,per=1]

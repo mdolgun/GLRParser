@@ -150,7 +150,7 @@ wouldn't i sleep @ uyumayacak mıydım | uyumaz mıydım
 
 i can sleep @ uyuyabilirim
   *uyuyabilirim {0}
-  *uykuyu konservelerim {100}
+  *uykuyu konservelerim {200}
   OK
 
 i can't sleep @ uyuyamam
@@ -271,10 +271,10 @@ i won't have slept @ uyumuş olmayacağım
 
 will i have slept @ uyumuş olacak mıyım
   *uyumuş olacak mıyım {0}
-  *sahip olduğum irade uyudu {90}
-  *aldığım irade uyudu {100}
-  *sahip olduğum vasiyet uyudu {100}
-  *aldığım vasiyet uyudu {110}
+  *sahip olduğum irade uyudu {190}
+  *aldığım irade uyudu {200}
+  *sahip olduğum vasiyet uyudu {200}
+  *aldığım vasiyet uyudu {210}
   OK
 
 won't i have slept @ uyumuş olmayacak mıyım
@@ -306,9 +306,9 @@ i can't have slept @ uyumuş olamam
   OK
 
 can i have slept @ uyumuş olabilir miyim
-  *sahip olduğum teneke kutu uyudu {0}
   *uyumuş olabilir miyim {0}
-  *aldığım teneke kutu uyudu {10}
+  *sahip olduğum teneke kutu uyudu {100}
+  *aldığım teneke kutu uyudu {110}
   OK
 
 can't i have slept @ uyumuş olamaz mıyım
@@ -397,402 +397,402 @@ mustn't i have slept @ uyumuş olmamalı mıyım
 
 i am sleeping @ uyuyorum
   *uyuyorum {0}
-  *uyumayım {100}
+  *uyumayım {200}
   OK
 
 i am not sleeping @ uyumuyorum
   *uyumuyorum {0}
-  *uyuma değilim {100}
+  *uyuma değilim {200}
   OK
 
 am i sleeping @ uyuyor muyum
   *uyuyor muyum {0}
-  *uyuma mıyım {100}
+  *uyuma mıyım {200}
   OK
 
 am i not sleeping @ uyumuyor muyum
   *uyumuyor muyum {0}
-  *uyuma değil miyim {100}
+  *uyuma değil miyim {200}
   OK
 
 i was sleeping @ uyuyordum
   *uyuyordum {0}
-  *uyumaydım {100}
+  *uyumaydım {200}
   OK
 
 i wasn't sleeping @ uyumuyordum
   *uyumuyordum {0}
-  *uyuma değildim {100}
+  *uyuma değildim {200}
   OK
 
 was i sleeping @ uyuyor muydum
   *uyuyor muydum {0}
-  *uyuma mıydım {100}
+  *uyuma mıydım {200}
   OK
 
 wasn't i sleeping @ uyumuyor muydum
   *uyumuyor muydum {0}
-  *uyuma değil miydim {100}
+  *uyuma değil miydim {200}
   OK
 
 i will be sleeping @ uyuyor olacağım
   *uyuyor olacağım {0}
-  *uyuma olacağım {100}
+  *uyuma olacağım {200}
   OK
 
 i won't be sleeping @ uyuyor olmayacağım
   *uyuyor olmayacağım {0}
-  *uyuma olmayacağım {100}
+  *uyuma olmayacağım {200}
   OK
 
 will i be sleeping @ uyuyor olacak mıyım
   *uyuyor olacak mıyım {0}
-  *uyuma olacak mıyım {100}
+  *uyuma olacak mıyım {200}
   OK
 
 won't i be sleeping @ uyuyor olmayacak mıyım
   *uyuyor olmayacak mıyım {0}
-  *uyuma olmayacak mıyım {100}
+  *uyuma olmayacak mıyım {200}
   OK
 
 i would be sleeping @ uyuyor olacaktım | uyuyor olurdum
   *uyuyor olurdum {0}
-  *uyuma olurdum {100}
+  *uyuma olurdum {200}
   OK
 
 i wouldn't be sleeping @ uyuyor olmayacaktım | uyuyor olmazdım
   *uyuyor olmazdım {0}
-  *uyuma olmazdım {100}
+  *uyuma olmazdım {200}
   OK
 
 would i be sleeping @ uyuyor olacak mıydım | uyuyor olur muydum
   *uyuyor olur muydum {0}
-  *uyuma olur muydum {100}
+  *uyuma olur muydum {200}
   OK
 
 wouldn't i be sleeping @ uyuyor olmayacak mıydım | uyuyor olmaz mıydım
   *uyuyor olmaz mıydım {0}
-  *uyuma olmaz mıydım {100}
+  *uyuma olmaz mıydım {200}
   OK
 
 i can be sleeping @ uyuyor olabilirim
   *uyuyor olabilirim {0}
-  *uyuma olabilirim {100}
+  *uyuma olabilirim {200}
   OK
 
 i can't be sleeping @ uyuyor olamam
   *uyuyor olamam {0}
-  *uyuma olamam {100}
+  *uyuma olamam {200}
   OK
 
 can i be sleeping @ uyuyor olabilir miyim
   *uyuyor olabilir miyim {0}
-  *uyuma olabilir miyim {100}
+  *uyuma olabilir miyim {200}
   OK
 
 can't i be sleeping @ uyuyor olamaz mıyım
   *uyuyor olamaz mıyım {0}
-  *uyuma olamaz mıyım {100}
+  *uyuma olamaz mıyım {200}
   OK
 
 i could be sleeping @ uyuyor olabilirdim
   *uyuyor olabilirdim {0}
-  *uyuma olabilirdim {100}
+  *uyuma olabilirdim {200}
   OK
 
 i couldn't be sleeping @ uyuyor olamazdım
   *uyuyor olamazdım {0}
-  *uyuma olamazdım {100}
+  *uyuma olamazdım {200}
   OK
 
 could i be sleeping @ uyuyor olabilir miydim
   *uyuyor olabilir miydim {0}
-  *uyuma olabilir miydim {100}
+  *uyuma olabilir miydim {200}
   OK
 
 couldn't i be sleeping @ uyuyor olamaz mıydım
   *uyuyor olamaz mıydım {0}
-  *uyuma olamaz mıydım {100}
+  *uyuma olamaz mıydım {200}
   OK
 
 i may be sleeping @ uyuyor olabilirim
   *uyuyor olabilirim {0}
-  *uyuma olabilirim {100}
+  *uyuma olabilirim {200}
   OK
 
 i mayn't be sleeping @ uyuyor olmayabilirim
   *uyuyor olmayabilirim {0}
-  *uyuma olmayabilirim {100}
+  *uyuma olmayabilirim {200}
   OK
 
 may i be sleeping @ uyuyor olabilir miyim
   *uyuyor olabilir miyim {0}
-  *uyuma olabilir miyim {100}
+  *uyuma olabilir miyim {200}
   OK
 
 mayn't i be sleeping @ uyuyor olmayabilir miyim
   *uyuyor olmayabilir miyim {0}
-  *uyuma olmayabilir miyim {100}
+  *uyuma olmayabilir miyim {200}
   OK
 
 i might be sleeping @ uyuyor olabilirdim
   *uyuyor olabilirdim {0}
-  *uyuma olabilirdim {100}
+  *uyuma olabilirdim {200}
   OK
 
 i mightn't be sleeping @ uyuyor olmayabilirdim
   *uyuyor olmayabilirdim {0}
-  *uyuma olmayabilirdim {100}
+  *uyuma olmayabilirdim {200}
   OK
 
 might i be sleeping @ uyuyor olabilir miydim
   *uyuyor olabilir miydim {0}
-  *uyuma olabilir miydim {100}
+  *uyuma olabilir miydim {200}
   OK
 
 mightn't i be sleeping @ uyuyor olmayabilir miydim
   *uyuyor olmayabilir miydim {0}
-  *uyuma olmayabilir miydim {100}
+  *uyuma olmayabilir miydim {200}
   OK
 
 i should be sleeping @ uyuyor olmalıyım
   *uyuyor olmalıyım {0}
-  *uyuma olmalıyım {100}
+  *uyuma olmalıyım {200}
   OK
 
 i shouldn't be sleeping @ uyuyor olmamalıyım
   *uyuyor olmamalıyım {0}
-  *uyuma olmamalıyım {100}
+  *uyuma olmamalıyım {200}
   OK
 
 should i be sleeping @ uyuyor olmalı mıyım
   *uyuyor olmalı mıyım {0}
-  *uyuma olmalı mıyım {100}
+  *uyuma olmalı mıyım {200}
   OK
 
 shouldn't i be sleeping @ uyuyor olmamalı mıyım
   *uyuyor olmamalı mıyım {0}
-  *uyuma olmamalı mıyım {100}
+  *uyuma olmamalı mıyım {200}
   OK
 
 i must be sleeping @ uyuyor olmalıyım
   *uyuyor olmalıyım {0}
-  *uyuma olmalıyım {100}
+  *uyuma olmalıyım {200}
   OK
 
 i mustn't be sleeping @ uyuyor olmamalıyım
   *uyuyor olmamalıyım {0}
-  *uyuma olmamalıyım {100}
+  *uyuma olmamalıyım {200}
   OK
 
 must i be sleeping @ uyuyor olmalı mıyım
   *uyuyor olmalı mıyım {0}
-  *uyuma olmalı mıyım {100}
+  *uyuma olmalı mıyım {200}
   OK
 
 mustn't i be sleeping @ uyuyor olmamalı mıyım
   *uyuyor olmamalı mıyım {0}
-  *uyuma olmamalı mıyım {100}
+  *uyuma olmamalı mıyım {200}
   OK
 
 i have been sleeping @ uyuyorum
   *uyuyorum {0}
-  *uyuma oldum {100}
+  *uyuma oldum {200}
   OK
 
 i haven't been sleeping @ uyumuyorum
   *uyumuyorum {0}
-  *uyuma olmadım {100}
+  *uyuma olmadım {200}
   OK
 
 have i been sleeping @ uyuyor muyum
   *uyuyor muyum {0}
-  *uyuma oldum mu {100}
+  *uyuma oldum mu {200}
   OK
 
 haven't i been sleeping @ uyumuyor muyum
   *uyumuyor muyum {0}
-  *uyuma olmadım mı {100}
+  *uyuma olmadım mı {200}
   OK
 
 i had been sleeping @ uyuyordum
   *uyuyordum {0}
-  *uyuma olmuştum {100}
+  *uyuma olmuştum {200}
   OK
 
 i hadn't been sleeping @ uyumuyordum
   *uyumuyordum {0}
-  *uyuma olmamıştım {100}
+  *uyuma olmamıştım {200}
   OK
 
 had i been sleeping @ uyuyor muydum
   *uyuyor muydum {0}
-  *uyuma olmuş muydum {100}
+  *uyuma olmuş muydum {200}
   OK
 
 hadn't i been sleeping @ uyumuyor muydum
   *uyumuyor muydum {0}
-  *uyuma olmamış mıydım {100}
+  *uyuma olmamış mıydım {200}
   OK
 
 i will have been sleeping @ uyuyor olacağım
   *uyuyor olacağım {0}
-  *uyuma olmuş olacağım {100}
+  *uyuma olmuş olacağım {200}
   OK
 
 i won't have been sleeping @ uyuyor olmayacağım
   *uyuyor olmayacağım {0}
-  *uyuma olmuş olmayacağım {100}
+  *uyuma olmuş olmayacağım {200}
   OK
 
 will i have been sleeping @ uyuyor olacak mıyım
   *uyuyor olacak mıyım {0}
-  *uyuma olmuş olacak mıyım {100}
+  *uyuma olmuş olacak mıyım {200}
   OK
 
 won't i have been sleeping @ uyuyor olmayacak mıyım
   *uyuyor olmayacak mıyım {0}
-  *uyuma olmuş olmayacak mıyım {100}
+  *uyuma olmuş olmayacak mıyım {200}
   OK
 
 i would have been sleeping @ uyuyor olacaktım | uyuyor olurdum
   *uyuyor olurdum {0}
-  *uyuma olmuş olurdum {100}
+  *uyuma olmuş olurdum {200}
   OK
 
 i wouldn't have been sleeping @ uyuyor olmayacaktım | uyuyor olmazdım
   *uyuyor olmazdım {0}
-  *uyuma olmuş olmazdım {100}
+  *uyuma olmuş olmazdım {200}
   OK
 
 would i have been sleeping @ uyuyor olacak mıydım | uyuyor olur muydum
   *uyuyor olur muydum {0}
-  *uyuma olmuş olur muydum {100}
+  *uyuma olmuş olur muydum {200}
   OK
 
 wouldn't i have been sleeping @ uyuyor olmayacak mıydım | uyuyor olmaz mıydım
   *uyuyor olmaz mıydım {0}
-  *uyuma olmuş olmaz mıydım {100}
+  *uyuma olmuş olmaz mıydım {200}
   OK
 
 i can have been sleeping @ uyuyor olabilirim
   *uyuyor olabilirim {0}
-  *uyuma olmuş olabilirim {100}
+  *uyuma olmuş olabilirim {200}
   OK
 
 i can't have been sleeping @ uyuyor olamam
   *uyuyor olamam {0}
-  *uyuma olmuş olamam {100}
+  *uyuma olmuş olamam {200}
   OK
 
 can i have been sleeping @ uyuyor olabilir miyim
   *uyuyor olabilir miyim {0}
-  *uyuma olmuş olabilir miyim {100}
+  *uyuma olmuş olabilir miyim {200}
   OK
 
 can't i have been sleeping @ uyuyor olamaz mıyım
   *uyuyor olamaz mıyım {0}
-  *uyuma olmuş olamaz mıyım {100}
+  *uyuma olmuş olamaz mıyım {200}
   OK
 
 i could have been sleeping @ uyuyor olabilirdim
   *uyuyor olabilirdim {0}
-  *uyuma olmuş olabilirdim {100}
+  *uyuma olmuş olabilirdim {200}
   OK
 
 i couldn't have been sleeping @ uyuyor olamazdım
   *uyuyor olamazdım {0}
-  *uyuma olmuş olamazdım {100}
+  *uyuma olmuş olamazdım {200}
   OK
 
 could i have been sleeping @ uyuyor olabilir miydim
   *uyuyor olabilir miydim {0}
-  *uyuma olmuş olabilir miydim {100}
+  *uyuma olmuş olabilir miydim {200}
   OK
 
 couldn't i have been sleeping @ uyuyor olamaz mıydım
   *uyuyor olamaz mıydım {0}
-  *uyuma olmuş olamaz mıydım {100}
+  *uyuma olmuş olamaz mıydım {200}
   OK
 
 i may have been sleeping @ uyuyor olabilirim
   *uyuyor olabilirim {0}
-  *uyuma olmuş olabilirim {100}
+  *uyuma olmuş olabilirim {200}
   OK
 
 i mayn't have been sleeping @ uyuyor olmayabilirim
   *uyuyor olmayabilirim {0}
-  *uyuma olmuş olmayabilirim {100}
+  *uyuma olmuş olmayabilirim {200}
   OK
 
 may i have been sleeping @ uyuyor olabilir miyim
   *uyuyor olabilir miyim {0}
-  *uyuma olmuş olabilir miyim {100}
+  *uyuma olmuş olabilir miyim {200}
   OK
 
 mayn't i have been sleeping @ uyuyor olmayabilir miyim
   *uyuyor olmayabilir miyim {0}
-  *uyuma olmuş olmayabilir miyim {100}
+  *uyuma olmuş olmayabilir miyim {200}
   OK
 
 i might have been sleeping @ uyuyor olabilirdim
   *uyuyor olabilirdim {0}
-  *uyuma olmuş olabilirdim {100}
+  *uyuma olmuş olabilirdim {200}
   OK
 
 i might not have been sleeping @ uyuyor olmayabilirdim
   *uyuyor olmayabilirdim {0}
-  *uyuma olmuş olmayabilirdim {100}
+  *uyuma olmuş olmayabilirdim {200}
   OK
 
 might i have been sleeping @ uyuyor olabilir miydim
   *uyuyor olabilir miydim {0}
-  *uyuma olmuş olabilir miydim {100}
+  *uyuma olmuş olabilir miydim {200}
   OK
 
 might i not have been sleeping @ uyuyor olmayabilir miydim
   *uyuyor olmayabilir miydim {0}
-  *uyuma olmuş olmayabilir miydim {100}
+  *uyuma olmuş olmayabilir miydim {200}
   OK
 
 i should have been sleeping @ uyuyor olmalıyım
   *uyuyor olmalıyım {0}
-  *uyuma olmuş olmalıyım {100}
+  *uyuma olmuş olmalıyım {200}
   OK
 
 i shouldn't have been sleeping @ uyuyor olmamalıyım
   *uyuyor olmamalıyım {0}
-  *uyuma olmuş olmamalıyım {100}
+  *uyuma olmuş olmamalıyım {200}
   OK
 
 should i have been sleeping @ uyuyor olmalı mıyım
   *uyuyor olmalı mıyım {0}
-  *uyuma olmuş olmalı mıyım {100}
+  *uyuma olmuş olmalı mıyım {200}
   OK
 
 shouldn't i have been sleeping @ uyuyor olmamalı mıyım
   *uyuyor olmamalı mıyım {0}
-  *uyuma olmuş olmamalı mıyım {100}
+  *uyuma olmuş olmamalı mıyım {200}
   OK
 
 i must have been sleeping @ uyuyor olmalıyım
   *uyuyor olmalıyım {0}
-  *uyuma olmuş olmalıyım {100}
+  *uyuma olmuş olmalıyım {200}
   OK
 
 i mustn't have been sleeping @ uyuyor olmamalıyım
   *uyuyor olmamalıyım {0}
-  *uyuma olmuş olmamalıyım {100}
+  *uyuma olmuş olmamalıyım {200}
   OK
 
 must i have been sleeping @ uyuyor olmalı mıyım
   *uyuyor olmalı mıyım {0}
-  *uyuma olmuş olmalı mıyım {100}
+  *uyuma olmuş olmalı mıyım {200}
   OK
 
 mustn't i have been sleeping @ uyuyor olmamalı mıyım
   *uyuyor olmamalı mıyım {0}
-  *uyuma olmuş olmamalı mıyım {100}
+  *uyuma olmuş olmamalı mıyım {200}
   OK
 
 i am happy @ mutluyum
@@ -836,7 +836,7 @@ he is a man @ o bir adam
   OK
 
 he is men @ o adamlar
-  *o adamlar {0}
+  *o adamlar {100}
   OK
 
 they are a man @ onlar bir adam
@@ -844,7 +844,7 @@ they are a man @ onlar bir adam
   OK
 
 they are men @ onlar adamlar
-  *onlar adamlar {0}
+  *onlar adamlar {100}
   OK
 
 i have been happy @ mutlu oldum
@@ -1082,16 +1082,16 @@ wouldn't i like to sleep @ uyumak istemez miyim
 
 i had better sleep @ uyusam iyi olur
   *uyusam iyi olur {0}
-  *daha iyisi uykusuna sahiptim {0}
-  *daha iyi uykuya sahiptim {0}
-  *daha iyisine uyumasını aldım {10}
-  *daha iyisi uykusu aldım {10}
-  *daha iyi uyku aldım {10}
+  *daha iyisi uykusuna sahiptim {100}
+  *daha iyi uykuya sahiptim {100}
+  *daha iyisine uyumasını aldım {110}
+  *daha iyisi uykusu aldım {110}
+  *daha iyi uyku aldım {110}
   OK
 
 i had better not sleep @ uyumasam iyi olur
   *uyumasam iyi olur {0}
-  *daha iyisine uyumamasını aldım {10}
+  *daha iyisine uyumamasını aldım {110}
   OK
 
 had i better sleep @ uyusam iyi olur mu
@@ -1144,12 +1144,12 @@ i won't have to sleep @ uyumak zorunda olmayacağım
 
 will i have to sleep @ uyumak zorunda olacak mıyım
   *uyumak zorunda olacak mıyım {0}
-  *uyumasını aldığım irade {100}
-  *uyumasını aldığım vasiyet {110}
-  *uykuya sahip olduğum irade {190}
-  *uykuya aldığım irade {200}
-  *uykuya sahip olduğum vasiyet {200}
-  *uykuya aldığım vasiyet {210}
+  *uyumasını aldığım irade {200}
+  *uyumasını aldığım vasiyet {210}
+  *uykuya sahip olduğum irade {390}
+  *uykuya aldığım irade {400}
+  *uykuya sahip olduğum vasiyet {400}
+  *uykuya aldığım vasiyet {410}
   OK
 
 won't i have to sleep @ uyumak zorunda olmayacak mıyım
@@ -1197,15 +1197,15 @@ the man has a car @ adam bir arabaya sahip | adamın bir arabası var
   *adam bir araba alır {10}
   OK
 
-he has a car @ bir arabaya sahip | bir arabası var
-  *bir arabaya sahip {0}
+he has a car @ o bir arabaya sahip | onun bir arabası var
+  *o bir arabaya sahip {0}
   *bir araba alır {10}
   OK
 
 they have a car @ onlar bir arabaya sahip | onların bir arabası var
-  *bir arabaya sahip {0}
+  *onlar bir arabaya sahip {0}
   *bir araba alırlar {10}
-  NOK
+  OK
 
 i had a car @ bir arabaya sahiptim | bir arabam vardı
   *bir arabaya sahiptim {0}
@@ -1307,12 +1307,12 @@ i was watched @ seyredildim
 
 i am being watched @ seyrediliyorum
   *seyrediliyorum {0}
-  *seyredilen varoluşum {100}
+  *seyredilen varoluşum {200}
   OK
 
 i was being watched @ seyrediliyordum
   *seyrediliyordum {0}
-  *seyredilen varoluştum {100}
+  *seyredilen varoluştum {200}
   OK
 
 i have been watched @ seyredildim
@@ -1341,7 +1341,7 @@ i am hated @ nefret ediliyorum | benden nefret ediliyor
 
 i am being hated @ nefret ediliyorum | benden nefret ediliyor
   *benden nefret ediliyor {0}
-  *nefret edilen varoluşum {100}
+  *nefret edilen varoluşum {200}
   OK
 
 i was hated @ nefret ediliyordum | benden nefret edildi
@@ -1350,7 +1350,7 @@ i was hated @ nefret ediliyordum | benden nefret edildi
 
 i was being hated @ nefret ediliyordum | benden nefret ediliyordu
   *benden nefret ediliyordu {0}
-  *nefret edilen varoluştum {100}
+  *nefret edilen varoluştum {200}
   OK
 
 i will be hated @ nefret edileceğim | benden nefret edilecek
@@ -1379,30 +1379,30 @@ the man who didn't sleep didn't sleep @ uyumayan adam uyumadı | uyumamış olan
 
 the man who is sleeping is sleeping @ uyuyan adam uyuyor | uyuyor olan adam uyuyor
   *uyuyan adam uyuyor {0}
-  *uyuma olan adam uyuyor {100}
-  *uyuyan adam uyuma {100}
-  *uyuma olan adam uyuma {200}
+  *uyuma olan adam uyuyor {200}
+  *uyuyan adam uyuma {200}
+  *uyuma olan adam uyuma {400}
   OK
 
 the man who isn't sleeping isn't sleeping @ uyumayan adam uyumuyor | uyumuyor olan adam uyumuyor
   *uyumayan adam uyumuyor {0}
-  *uyuma olmayan adam uyumuyor {100}
-  *uyumayan adam uyuma değil {100}
-  *uyuma olmayan adam uyuma değil {200}
+  *uyuma olmayan adam uyumuyor {200}
+  *uyumayan adam uyuma değil {200}
+  *uyuma olmayan adam uyuma değil {400}
   OK
 
 the man who was sleeping was sleeping @ uyuyan adam uyuyordu | uyuyor olan adam uyuyordu
   *uyuyan adam uyuyordu {0}
-  *uyuma olan adam uyuyordu {100}
-  *uyuyan adam uyumaydı {100}
-  *uyuma olan adam uyumaydı {200}
+  *uyuma olan adam uyuyordu {200}
+  *uyuyan adam uyumaydı {200}
+  *uyuma olan adam uyumaydı {400}
   OK
 
 the man who wasn't sleeping wasn't sleeping @ uyumayan adam uyumuyordu | uyumuyor olan adam uyumuyordu
   *uyumayan adam uyumuyordu {0}
-  *uyuma olmayan adam uyumuyordu {100}
-  *uyumayan adam uyuma değildi {100}
-  *uyuma olmayan adam uyuma değildi {200}
+  *uyuma olmayan adam uyumuyordu {200}
+  *uyumayan adam uyuma değildi {200}
+  *uyuma olmayan adam uyuma değildi {400}
   OK
 
 the man who has slept has slept @ uyuyan adam uyudu | uyumuş olan adam uyudu
@@ -1543,12 +1543,12 @@ if i slept he would sleep @ uyusaydım uyurdu
 
 if i am sleeping he will sleep @ uyuyorsam uyuyacak
   *uyuyorsam uyuyacak {0}
-  *uyumaysam uyuyacak {100}
+  *uyumaysam uyuyacak {200}
   OK
 
 if i was sleeping he would sleep @ uyuyor olsaydım uyurdu
   *uyuyor olsaydım uyurdu {0}
-  *uyuma olsaydım uyurdu {100}
+  *uyuma olsaydım uyurdu {200}
   OK
 
 if i have slept he would sleep @ uyuduysam uyurdu
@@ -1583,113 +1583,113 @@ if i had been happy he would have been happy @ mutlu olmuş olsaydım mutlu olmu
   *mutlu olmuş olsaydım mutlu olmuş olurdu {0}
   OK
 
-i don't know if he sleeps @ uyuyup uyumadığını bilmiyorum
+i don't know if he sleeps @ onun uyuyup uyumadığını bilmiyorum
   *uyursa bilmiyorum {0}
-  *uyuyup uyumadığını bilmiyorum {0}
+  *onun uyuyup uyumadığını bilmiyorum {0}
   OK
 
-i don't know if he slept @ uyuyup uyumadığını bilmiyorum
+i don't know if he slept @ onun uyuyup uyumadığını bilmiyorum
   *uyusaydı bilmiyorum {0}
-  *uyuyup uyumadığını bilmiyorum {0}
+  *onun uyuyup uyumadığını bilmiyorum {0}
   OK
 
-i don't know if he is sleeping @ uyuyup uyumadığını bilmiyorum
+i don't know if he is sleeping @ onun uyuyup uyumadığını bilmiyorum
   *uyuyorsa bilmiyorum {0}
-  *uyuyup uyumadığını bilmiyorum {0}
-  *uyumaysa bilmiyorum {100}
-  *uyuma olup olmadığını bilmiyorum {100}
+  *onun uyuyup uyumadığını bilmiyorum {0}
+  *o uyumaysa bilmiyorum {200}
+  *onun uyuma olup olmadığını bilmiyorum {200}
   OK
 
-i don't know if he was sleeping @ uyuyup uyumadığını bilmiyorum
+i don't know if he was sleeping @ onun uyuyup uyumadığını bilmiyorum
   *uyuyor olsaydı bilmiyorum {0}
-  *uyuyup uyumadığını bilmiyorum {0}
-  *uyuma olsaydı bilmiyorum {100}
-  *uyuma olup olmadığını bilmiyorum {100}
+  *onun uyuyup uyumadığını bilmiyorum {0}
+  *o uyuma olsaydı bilmiyorum {200}
+  *onun uyuma olup olmadığını bilmiyorum {200}
   OK
 
-i don't know if he has slept @ uyuyup uyumadığını bilmiyorum
+i don't know if he has slept @ onun uyuyup uyumadığını bilmiyorum
   *uyuduysa bilmiyorum {0}
-  *uyuyup uyumadığını bilmiyorum {0}
+  *onun uyuyup uyumadığını bilmiyorum {0}
   OK
 
-i don't know if he had slept @ uyumuş olup olmadığını bilmiyorum
+i don't know if he had slept @ onun uyumuş olup olmadığını bilmiyorum
   *uyumuş olsaydı bilmiyorum {0}
-  *uyumuş olup olmadığını bilmiyorum {0}
+  *onun uyumuş olup olmadığını bilmiyorum {0}
   OK
 
-i don't know if he will sleep @ uyuyup uyumayacağını bilmiyorum
+i don't know if he will sleep @ onun uyuyup uyumayacağını bilmiyorum
   *uyuyacaksa bilmiyorum {0}
-  *uyuyup uyumayacağını bilmiyorum {0}
+  *onun uyuyup uyumayacağını bilmiyorum {0}
   OK
 
-i don't know if he can sleep @ uyuyup uyuyamadığını bilmiyorum
+i don't know if he can sleep @ onun uyuyup uyuyamadığını bilmiyorum
   *uyuyabilirse bilmiyorum {0}
-  *uyuyup uyuyamadığını bilmiyorum {0}
+  *onun uyuyup uyuyamadığını bilmiyorum {0}
   OK
 
-i don't know if he may sleep @ uyuyup uyumayabildiğini bilmiyorum
+i don't know if he may sleep @ onun uyuyup uyumayabildiğini bilmiyorum
   *uyuyabilirse bilmiyorum {0}
-  *uyuyup uyumayabildiğini bilmiyorum {0}
+  *onun uyuyup uyumayabildiğini bilmiyorum {0}
   OK
 
-i don't know if he must sleep @ uyumak zorunda olup olmadığını bilmiyorum
+i don't know if he must sleep @ onun uyumak zorunda olup olmadığını bilmiyorum
   *uyumalıysa bilmiyorum {0}
-  *uyumak zorunda olup olmadığını bilmiyorum {0}
+  *onun uyumak zorunda olup olmadığını bilmiyorum {0}
   OK
 
-i don't know if he can be happy @ mutlu olup olamadığını bilmiyorum
+i don't know if he can be happy @ onun mutlu olup olamadığını bilmiyorum
   *mutlu olabilirse bilmiyorum {0}
-  *mutlu olup olamadığını bilmiyorum {0}
+  *onun mutlu olup olamadığını bilmiyorum {0}
   OK
 
-i don't know if he is happy @ mutlu olup olmadığını bilmiyorum
-  *mutluysa bilmiyorum {0}
-  *mutlu olup olmadığını bilmiyorum {0}
+i don't know if he is happy @ onun mutlu olup olmadığını bilmiyorum
+  *o mutluysa bilmiyorum {0}
+  *onun mutlu olup olmadığını bilmiyorum {0}
   OK
 
-i don't know if he was happy @ mutlu olup olmadığını bilmiyorum
-  *mutlu olsaydı bilmiyorum {0}
-  *mutlu olup olmadığını bilmiyorum {0}
+i don't know if he was happy @ onun mutlu olup olmadığını bilmiyorum
+  *o mutlu olsaydı bilmiyorum {0}
+  *onun mutlu olup olmadığını bilmiyorum {0}
   OK
 
-i don't know if he is being happy @ mutlu olup olmadığını bilmiyorum
-  *mutlu oluyorsa bilmiyorum {0}
-  *mutlu olup olmadığını bilmiyorum {0}
+i don't know if he is being happy @ onun mutlu olup olmadığını bilmiyorum
+  *o mutlu oluyorsa bilmiyorum {0}
+  *onun mutlu olup olmadığını bilmiyorum {0}
   OK
 
-i don't know if he was being happy @ mutlu olup olmadığını bilmiyorum
-  *mutlu oluyor olsaydı bilmiyorum {0}
-  *mutlu olup olmadığını bilmiyorum {0}
+i don't know if he was being happy @ onun mutlu olup olmadığını bilmiyorum
+  *o mutlu oluyor olsaydı bilmiyorum {0}
+  *onun mutlu olup olmadığını bilmiyorum {0}
   OK
 
-i don't know if he has been happy @ mutlu olup olmadığını bilmiyorum
-  *mutlu olduysa bilmiyorum {0}
-  *mutlu olup olmadığını bilmiyorum {0}
+i don't know if he has been happy @ onun mutlu olup olmadığını bilmiyorum
+  *o mutlu olduysa bilmiyorum {0}
+  *onun mutlu olup olmadığını bilmiyorum {0}
   OK
 
-i don't know if he had been happy @ mutlu olmuş olup olmadığını bilmiyorum
-  *mutlu olmuş olsaydı bilmiyorum {0}
-  *mutlu olmuş olup olmadığını bilmiyorum {0}
+i don't know if he had been happy @ onun mutlu olmuş olup olmadığını bilmiyorum
+  *o mutlu olmuş olsaydı bilmiyorum {0}
+  *onun mutlu olmuş olup olmadığını bilmiyorum {0}
   OK
 
-i don't know if he will be happy @ mutlu olup olmayacağını bilmiyorum
+i don't know if he will be happy @ onun mutlu olup olmayacağını bilmiyorum
   *mutlu olacaksa bilmiyorum {0}
-  *mutlu olup olmayacağını bilmiyorum {0}
+  *onun mutlu olup olmayacağını bilmiyorum {0}
   OK
 
-i don't know if he can be happy @ mutlu olup olamadığını bilmiyorum
+i don't know if he can be happy @ onun mutlu olup olamadığını bilmiyorum
   *mutlu olabilirse bilmiyorum {0}
-  *mutlu olup olamadığını bilmiyorum {0}
+  *onun mutlu olup olamadığını bilmiyorum {0}
   OK
 
-i don't know if he may be happy @ mutlu olup olmayabildiğini bilmiyorum
+i don't know if he may be happy @ onun mutlu olup olmayabildiğini bilmiyorum
   *mutlu olabilirse bilmiyorum {0}
-  *mutlu olup olmayabildiğini bilmiyorum {0}
+  *onun mutlu olup olmayabildiğini bilmiyorum {0}
   OK
 
-i don't know if he must be happy @ mutlu olmak zorunda olup olmadığını bilmiyorum
+i don't know if he must be happy @ onun mutlu olmak zorunda olup olmadığını bilmiyorum
   *mutlu olmalıysa bilmiyorum {0}
-  *mutlu olmak zorunda olup olmadığını bilmiyorum {0}
+  *onun mutlu olmak zorunda olup olmadığını bilmiyorum {0}
   OK
 
 while i sleep he sleeps @ ben uyurken uyur
@@ -1702,16 +1702,16 @@ while i slept he slept @ ben uyurken uyudu
 
 while i am sleeping he is sleeping @ ben uyuyorken uyuyor
   *ben uyuyorken uyuyor {0}
-  *ben uyumaken uyuyor {100}
-  *ben uyuyorken o uyuma {100}
-  *ben uyumaken o uyuma {200}
+  *ben uyumaken uyuyor {200}
+  *ben uyuyorken o uyuma {200}
+  *ben uyumaken o uyuma {400}
   OK
 
 while i was sleeping he was sleeping @ ben uyuyorken uyuyordu
   *ben uyuyorken uyuyordu {0}
-  *ben uyumaken uyuyordu {100}
-  *ben uyuyorken o uyumaydı {100}
-  *ben uyumaken o uyumaydı {200}
+  *ben uyumaken uyuyordu {200}
+  *ben uyuyorken o uyumaydı {200}
+  *ben uyumaken o uyumaydı {400}
   OK
 
 while i have slept he would sleep @ ben uyumuşken uyurdu
@@ -1723,11 +1723,11 @@ while i had slept he would have slept @ ben uyumuşken uyumuş olurdu
   OK
 
 as long as she is happy i will be happy @ mutlu olduğu sürece mutlu olacağım | o mutlu olduğu sürece mutlu olacağım
-  *mutlu olduğu sürece mutlu olacağım {0}
+  *o mutlu olduğu sürece mutlu olacağım {0}
   OK
 
 when she is happy i will be happy @ mutlu olduğunda mutlu olacağım | o mutlu olduğunda mutlu olacağım
-  *mutlu olduğunda mutlu olacağım {0}
+  *o mutlu olduğunda mutlu olacağım {0}
   OK
 
 as soon as she gives me a book i will read it @ bana bir kitap verir vermez onu okuyacağım | o bana bir kitap verir vermez onu okuyacağım
@@ -1744,7 +1744,7 @@ i hate the car which was hated @ nefret edilen arabadan nefret ediyorum
 
 i hate the car which is being hated @ nefret edilen arabadan nefret ediyorum
   *nefret edilen arabadan nefret ediyorum {0}
-  *nefret edilen varoluş olan arabadan nefret ediyorum {100}
+  *nefret edilen varoluş olan arabadan nefret ediyorum {200}
   OK
 
 i hate the car which has been hated @ nefret edilen arabadan nefret ediyorum | nefret edilmiş olan arabadan nefret ediyorum
@@ -1768,8 +1768,8 @@ i hate the man who is turning @ dönen adamdan nefret ediyorum
   OK
 
 i hate opening doors @ kapılar açmaktan nefret ediyorum
-  *açılış kapılarından nefret ediyorum {0}
-  *kapılar açmaktan nefret ediyorum {0}
+  *açılış kapılarından nefret ediyorum {100}
+  *kapılar açmaktan nefret ediyorum {100}
   OK
 
 i hate the car i am afraid of @ korktuğum arabadan nefret ediyorum | korkuyor olduğum arabadan nefret ediyorum
@@ -1778,10 +1778,10 @@ i hate the car i am afraid of @ korktuğum arabadan nefret ediyorum | korkuyor o
 
 i hate the car i am afraid to turn on @ açmaktan korktuğum arabadan nefret ediyorum | açmaktan korkuyor olduğum arabadan nefret ediyorum
   *çevirmekten korktuğum arabadan nefret ediyorum {0}
-  *çevirmekten korktuğum arabadan nefret ediyorum {0}
-  *heyecanlandırmaktan korktuğum arabadan nefret ediyorum {0}
-  *sırt çevirmekten korktuğum arabadan nefret ediyorum {0}
   *açmaktan korktuğum arabadan nefret ediyorum {0}
+  *heyecanlandırmaktan korktuğum arabadan nefret ediyorum {0}
+  *çevirmekten korktuğum arabadan nefret ediyorum {0}
+  *sırt çevirmekten korktuğum arabadan nefret ediyorum {0}
   OK
 
 i am afraid to turn @ dönmekten korkuyorum
@@ -1796,49 +1796,49 @@ i am afraid of the car @ arabadan korkuyorum
   OK
 
 i am afraid of cars @ arabalardan korkuyorum
-  *arabalardan korkuyorum {0}
+  *arabalardan korkuyorum {100}
   OK
 
 i will be afraid of cars @ arabalardan korkacağım
-  *arabalardan korkacağım {0}
+  *arabalardan korkacağım {100}
   OK
 
 i can be afraid of cars @ arabalardan korkabilirim
-  *arabalardan korkabilirim {0}
+  *arabalardan korkabilirim {100}
   OK
 
 i must be afraid of cars @ arabalardan korkmalıyım
-  *arabalardan korkmalıyım {0}
+  *arabalardan korkmalıyım {100}
   OK
 
 i am used to cars @ arabalara alışkınım
-  *arabalara alışkınım {0}
-  *arabalara kullanılırım {100}
+  *arabalara alışkınım {100}
+  *arabalara kullanılırım {200}
   OK
 
 i was used to cars @ arabalara alışkındım
-  *arabalara alışkındım {0}
-  *arabalara kullanıldım {100}
+  *arabalara alışkındım {100}
+  *arabalara kullanıldım {200}
   OK
 
 i have been used to cars @ arabalara alışkındım | arabalara alışkın oldum
-  *arabalara alışkındım {0}
-  *arabalara kullanıldım {100}
+  *arabalara alışkındım {100}
+  *arabalara kullanıldım {200}
   OK
 
 i will be used to cars @ arabalara alışkın olacağım
-  *arabalara alışkın olacağım {0}
-  *arabalara kullanılacağım {100}
+  *arabalara alışkın olacağım {100}
+  *arabalara kullanılacağım {200}
   OK
 
 i can be used to cars @ arabalara alışkın olabilirim
-  *arabalara alışkın olabilirim {0}
-  *arabalara kullanılabilirim {100}
+  *arabalara alışkın olabilirim {100}
+  *arabalara kullanılabilirim {200}
   OK
 
 i must be used to cars @ arabalara alışkın olmalıyım
-  *arabalara alışkın olmalıyım {0}
-  *arabalara kullanılmalıyım {100}
+  *arabalara alışkın olmalıyım {100}
+  *arabalara kullanılmalıyım {200}
   OK
 
 i agree with you @ sizinle aynı fikirdeyim
@@ -1865,12 +1865,12 @@ i must agree with you @ sizinle aynı fikirde olmalıyım
   *sizinle aynı fikirde olmalıyım {0}
   OK
 
-i want the car which she likes @ hoşlandığı arabayı istiyorum
-  *hoşlandığı arabayı istiyorum {0}
+i want the car which she likes @ onun hoşlandığı arabayı istiyorum
+  *onun hoşlandığı arabayı istiyorum {0}
   OK
 
-what do you think they want @ ne istediklerini düşünüyorsunuz
-  *ne istediklerini düşünüyorsunuz {0}
+what do you think they want @ onların ne istediklerini düşünüyorsunuz
+  *onların ne istediklerini düşünüyorsunuz {0}
   OK
 
 who do you think you are @ kim olduğunuzu düşünüyorsunuz
@@ -1909,9 +1909,9 @@ i am stared at @ bana göz dikilir
 i want the car that the man turns on @ adamın açtığı arabayı istiyorum
   *adamın çevirdiği arabayı istiyorum {0}
   *adamın sırt çevirdiği arabayı istiyorum {0}
+  *adamın açtığı arabayı istiyorum {0}
   *adamın heyecanlandırdığı arabayı istiyorum {0}
   *adamın çevirdiği arabayı istiyorum {0}
-  *adamın açtığı arabayı istiyorum {0}
   OK
 
 i like the car that you stare at @ gözünüzü diktiğiniz arabadan hoşlanırım | gözünüzü diktiğiniz arabadan hoşlanıyorum
@@ -1931,20 +1931,20 @@ i want the car that i want to turn @ çevirmek istediğim arabayı istiyorum
   *istediğim arabanın dönmesini istiyorum {0}
   *çevirmek istediğim arabayı istiyorum {0}
   *dönmesini istediğim arabayı istiyorum {0}
-  *çevirmek için istediğim arabayı istiyorum {100}
   *dönmek için istediğim arabayı istiyorum {100}
-  *dönüşe istediğim arabayı istiyorum {100}
-  *sıraya istediğim arabayı istiyorum {100}
-  *dönüşe istediğim arabayı istiyorum {100}
-  *sıraya istediğim arabayı istiyorum {100}
+  *çevirmek için istediğim arabayı istiyorum {100}
+  *dönüşe istediğim arabayı istiyorum {200}
+  *sıraya istediğim arabayı istiyorum {200}
+  *dönüşe istediğim arabayı istiyorum {200}
+  *sıraya istediğim arabayı istiyorum {200}
   OK
 
 i want the car that i turn on @ açtığım arabayı istiyorum
   *çevirdiğim arabayı istiyorum {0}
-  *açtığım arabayı istiyorum {0}
-  *heyecanlandırdığım arabayı istiyorum {0}
   *çevirdiğim arabayı istiyorum {0}
+  *heyecanlandırdığım arabayı istiyorum {0}
   *sırt çevirdiğim arabayı istiyorum {0}
+  *açtığım arabayı istiyorum {0}
   OK
 
 i want the car that i turn @ çevirdiğim arabayı istiyorum
@@ -1959,8 +1959,8 @@ turn the car on @ arabayı aç
 
 what do you order me to turn @ bana neyi çevirmemi emredersiniz
   *bana neyi çevirmemi emredersiniz {0}
-  *dönüşe bana ne emredersiniz {100}
-  *sıraya bana ne emredersiniz {100}
+  *dönüşe bana ne emredersiniz {200}
+  *sıraya bana ne emredersiniz {200}
   OK
 
 i want to turn @ dönmek istiyorum
@@ -1969,12 +1969,12 @@ i want to turn @ dönmek istiyorum
 
 trust the man with the car @ adama arabayı emanet et
   *adama arabayı emanet et {0}
-  *arabayla adama güven {100}
   *arabalı adama güven {100}
+  *arabayla adama güven {100}
   OK
 
-i think that they like the car @ arabadan hoşlandıklarını düşünüyorum
-  *arabadan hoşlandıklarını düşünüyorum {0}
+i think that they like the car @ onların arabadan hoşlandıklarını düşünüyorum
+  *onların arabadan hoşlandıklarını düşünüyorum {0}
   OK
 
 i want the car that i like @ hoşlandığım arabayı istiyorum
@@ -1983,20 +1983,20 @@ i want the car that i like @ hoşlandığım arabayı istiyorum
 
 what do you order me to turn @ bana neyi çevirmemi emredersiniz
   *bana neyi çevirmemi emredersiniz {0}
-  *dönüşe bana ne emredersiniz {100}
-  *sıraya bana ne emredersiniz {100}
+  *dönüşe bana ne emredersiniz {200}
+  *sıraya bana ne emredersiniz {200}
   OK
 
 i order you to turn @ size dönmenizi emrederim
   *size dönmenizi emrederim {0}
-  *çevirmek için sizi emrederim {100}
   *dönmek için sizi emrederim {100}
-  *çevirmek için sizi sipariş ederim {100}
+  *çevirmek için sizi emrederim {100}
   *dönmek için sizi sipariş ederim {100}
-  *dönüşe sizi emrederim {100}
-  *sıraya sizi emrederim {100}
-  *dönüşe sizi sipariş ederim {100}
-  *sıraya sizi sipariş ederim {100}
+  *çevirmek için sizi sipariş ederim {100}
+  *dönüşe sizi emrederim {200}
+  *sıraya sizi emrederim {200}
+  *dönüşe sizi sipariş ederim {200}
+  *sıraya sizi sipariş ederim {200}
   OK
 
 i want the car that i turn @ çevirdiğim arabayı istiyorum
@@ -2008,34 +2008,34 @@ the car that i give you turns @ size verdiğim araba döner
   OK
 
 the car that i turn on turns @ açtığım araba döner
+  *sırt çevirdiğim araba döner {0}
   *açtığım araba döner {0}
   *heyecanlandırdığım araba döner {0}
   *çevirdiğim araba döner {0}
-  *sırt çevirdiğim araba döner {0}
-  *dönüşler açtığım araba {0}
-  *sıralar açtığım araba {0}
-  *dönüşleri heyecanlandırdığım araba {0}
-  *sıraları heyecanlandırdığım araba {0}
-  *dönüşlerde çevirdiğim araba {100}
-  *sıralarda çevirdiğim araba {100}
+  *dönüşler açtığım araba {100}
+  *sıralar açtığım araba {100}
+  *dönüşleri heyecanlandırdığım araba {100}
+  *sıraları heyecanlandırdığım araba {100}
+  *dönüşlerde çevirdiğim araba {200}
+  *sıralarda çevirdiğim araba {200}
   OK
 
 who do you order to turn @ kime dönmesini emredersiniz
   *kime dönmesini emredersiniz {0}
-  *dönüşe kim sipariş edersiniz {100}
-  *sıraya kim sipariş edersiniz {100}
-  *dönüşe kim emredersiniz {100}
-  *sıraya kim emredersiniz {100}
+  *dönüşe kim sipariş edersiniz {200}
+  *sıraya kim sipariş edersiniz {200}
+  *dönüşe kim emredersiniz {200}
+  *sıraya kim emredersiniz {200}
   OK
 
 whom do they put up with @ kime katlanırlar
-  *birlikte kimi ortaya koyarlar {0}
-  *birlikte kimi yerleştirirler {0}
-  *birlikte kimi asarlar {0}
-  *birlikte kimi asarlar {0}
-  *birlikte kimi yerleştirirler {0}
-  *birlikte kimi ortaya koyarlar {0}
   *kime katlanırlar {0}
+  *birlikte kimi ortaya koyarlar {0}
+  *birlikte kimi asarlar {0}
+  *birlikte kimi yerleştirirler {0}
+  *birlikte kimi asarlar {0}
+  *birlikte kimi ortaya koyarlar {0}
+  *birlikte kimi yerleştirirler {0}
   OK
 
 give me a car @ bana bir araba ver
@@ -2047,13 +2047,13 @@ what do you give me @ bana ne verirsiniz
   OK
 
 who do you put up with @ kime katlanırsınız
-  *birlikte kimi ortaya koyarsınız {0}
-  *birlikte kimi yerleştirirsiniz {0}
-  *birlikte kimi asarsınız {0}
-  *birlikte kimi asarsınız {0}
-  *birlikte kimi yerleştirirsiniz {0}
-  *birlikte kimi ortaya koyarsınız {0}
   *kime katlanırsınız {0}
+  *birlikte kimi ortaya koyarsınız {0}
+  *birlikte kimi asarsınız {0}
+  *birlikte kimi yerleştirirsiniz {0}
+  *birlikte kimi asarsınız {0}
+  *birlikte kimi ortaya koyarsınız {0}
+  *birlikte kimi yerleştirirsiniz {0}
   OK
 
 put up with the man @ adama katlan
@@ -2063,11 +2063,11 @@ put up with the man @ adama katlan
 
 who do you put up with the man @ *
   *adamla kimi ortaya koyarsınız {100}
-  *adamla kimi yerleştirirsiniz {100}
-  *adamla kimi asarsınız {100}
   *adamla kimi asarsınız {100}
   *adamla kimi yerleştirirsiniz {100}
+  *adamla kimi asarsınız {100}
   *adamla kimi ortaya koyarsınız {100}
+  *adamla kimi yerleştirirsiniz {100}
   NOK
 
 turn the car @ arabayı çevir
@@ -2075,13 +2075,13 @@ turn the car @ arabayı çevir
   OK
 
 turn on the car @ arabayı aç
-  *araba aç {0}
+  *arabayı aç {0}
   *arabayı heyecanlandır {0}
   *arabaya sırt çevir {0}
-  *arabadaki dönüş {100}
-  *arabadaki sıra {100}
   *arabada dön {100}
-  NOK
+  *arabadaki dönüş {200}
+  *arabadaki sıra {200}
+  OK
 
 turn the car off @ arabayı kapa
   *arabayı kapa {0}
@@ -2090,9 +2090,9 @@ turn the car off @ arabayı kapa
 turn off the car @ arabayı kapa
   *arabayı kapa {0}
   *arabayı kapa {0}
-  *arabadan dönüş {100}
-  *arabadan sıra {100}
   *arabadan dön {100}
+  *arabadan dönüş {200}
+  *arabadan sıra {200}
   OK
 
 turn them back @ onları geri çevir
@@ -2104,12 +2104,12 @@ turn back @ geri dön
   *geri dön {0}
   *arkaya dön {0}
   *geri dön {0}
-  *arkayı çevir {0}
-  *dönüş arkası {0}
-  *sıra arkası {0}
-  *sırtı çevir {10}
-  *dönüş sırtı {10}
-  *sıra sırtı {10}
+  *arkayı çevir {100}
+  *dönüş arkası {100}
+  *sıra arkası {100}
+  *sırtı çevir {110}
+  *dönüş sırtı {110}
+  *sıra sırtı {110}
   OK
 
 i turn @ dönerim
@@ -2118,16 +2118,16 @@ i turn @ dönerim
 
 put the car on @ arabayı giy
   *arabayı koy {0}
-  *arabayı sergile {0}
-  *arabayı tak {0}
-  *arabayı aç {0}
   *arabayı giy {0}
+  *arabayı sergile {0}
+  *arabayı aç {0}
+  *arabayı tak {0}
   OK
 
 trust the man with the car @ adama arabayı emanet et
   *adama arabayı emanet et {0}
-  *arabayla adama güven {100}
   *arabalı adama güven {100}
+  *arabayla adama güven {100}
   OK
 
 give the man the car @ adama arabayı ver
@@ -2145,12 +2145,12 @@ stop the car @ arabayı durdur
 
 sleep @ uyu
   *uyu {0}
-  *uyku {0}
+  *uyku {100}
   OK
 
 stop @ dur
   *dur {0}
-  *durak {0}
+  *durak {100}
   OK
 
 turn the car on @ arabayı aç
@@ -2160,13 +2160,13 @@ turn the car on @ arabayı aç
   OK
 
 turn on the car @ arabayı aç
-  *araba aç {0}
+  *arabayı aç {0}
   *arabayı heyecanlandır {0}
   *arabaya sırt çevir {0}
-  *arabadaki dönüş {100}
-  *arabadaki sıra {100}
   *arabada dön {100}
-  NOK
+  *arabadaki dönüş {200}
+  *arabadaki sıra {200}
+  OK
 
 turn the car off @ arabayı kapa
   *arabayı kapa {0}
@@ -2175,9 +2175,9 @@ turn the car off @ arabayı kapa
 turn off the car @ arabayı kapa
   *arabayı kapa {0}
   *arabayı kapa {0}
-  *arabadan dönüş {100}
-  *arabadan sıra {100}
   *arabadan dön {100}
+  *arabadan dönüş {200}
+  *arabadan sıra {200}
   OK
 
 turn the car @ arabayı çevir
@@ -2190,20 +2190,20 @@ hate me @ benden nefret et
 
 look at me @ bana bak
   *bana bak {0}
-  *bendeki bakış {100}
   *bende bak {100}
+  *bendeki bakış {200}
   OK
 
 look for a car @ bir araba ara
   *bir araba ara {0}
-  *bir araba için bakış {100}
   *bir araba için bak {100}
+  *bir araba için bakış {200}
   OK
 
 look for the car @ arabayı ara
   *arabayı ara {0}
-  *araba için bakış {100}
   *araba için bak {100}
+  *araba için bakış {200}
   OK
 
 want a car @ bir araba iste
@@ -2216,7 +2216,7 @@ want to sleep @ uyumak iste
 
 want me to sleep @ uyumamı iste
   *uyumamı iste {0}
-  *uykuya beni iste {100}
+  *uykuya beni iste {200}
   OK
 
 want me to stop the car @ arabayı durdurmamı iste
@@ -2255,12 +2255,12 @@ turn back @ geri dön
   *geri dön {0}
   *arkaya dön {0}
   *geri dön {0}
-  *arkayı çevir {0}
-  *dönüş arkası {0}
-  *sıra arkası {0}
-  *sırtı çevir {10}
-  *dönüş sırtı {10}
-  *sıra sırtı {10}
+  *arkayı çevir {100}
+  *dönüş arkası {100}
+  *sıra arkası {100}
+  *sırtı çevir {110}
+  *dönüş sırtı {110}
+  *sıra sırtı {110}
   OK
 
 i turned the car off @ arabayı kapadım
@@ -2291,11 +2291,11 @@ i wanted to sleep @ uyumak istedim | uyumak istiyordum
 i wanted him to sleep @ uyumasını istedim | uyumasını istiyordum
   *uyumasını istedim {0}
   *uyumak için onu istedim {100}
-  *uykuya onu istedim {100}
+  *uykuya onu istedim {200}
   OK
 
 i like watching television @ televizyon seyretmekten hoşlanıyorum
-  *televizyon seyretmekten hoşlanıyorum {0}
+  *televizyon seyretmekten hoşlanıyorum {100}
   OK
 
 tell a story @ bir hikaye söyle
@@ -2311,8 +2311,8 @@ tell him to stop the car @ ona arabayı durdurmasını söyle
   OK
 
 i know you @ sizi biliyorum
-  *sizi tanırım {0}
   *sizi biliyorum {0}
+  *sizi tanırım {0}
   OK
 
 i knew you @ sizi biliyordum | sizi bildim
@@ -2321,11 +2321,11 @@ i knew you @ sizi biliyordum | sizi bildim
   OK
 
 you like cars @ arabalardan hoşlanıyorsunuz
-  *arabalardan hoşlanıyorsunuz {0}
+  *arabalardan hoşlanıyorsunuz {100}
   OK
 
 i know that you like cars @ arabalardan hoşlandığınızı biliyorum
-  *arabalardan hoşlandığınızı biliyorum {0}
+  *arabalardan hoşlandığınızı biliyorum {100}
   OK
 
 it is good to see you @ sizi görmek iyi
@@ -2339,8 +2339,8 @@ it is good for him to see you @ sizi görmesi iyi
   *sizi görmek için o oldukça onun için {200}
   OK
 
-it is good that he will see you @ sizi görecek olması iyi
-  *sizi görecek olması iyi {0}
+it is good that he will see you @ onun sizi görecek olması iyi
+  *onun sizi görecek olması iyi {0}
   OK
 
 i need to sleep @ uyumaya ihtiyacım var | uyumam lazım
@@ -2353,20 +2353,20 @@ i found a book @ bir kitap buldum
   OK
 
 i found that he was a liar @ onun bir yalancı olduğunu buldum
-  *bir yalancı olduğunu buldum {0}
-  NOK
+  *onun bir yalancı olduğunu buldum {0}
+  OK
 
 i found her a taxi @ ona bir taksi buldum
   *ona bir taksi buldum {0}
   OK
 
 they found his blood to contain poison @ kanının zehir içerdiğini buldular
-  *kanının zehir içerdiğini buldular {0}
-  *kanının zehri kontrol altına aldığını buldular {0}
-  *zehir içermek için kanını buldular {100}
-  *zehri kontrol altına almak için kanını buldular {100}
-  *zehir içermek için kanını kurarlar {100}
-  *zehri kontrol altına almak için kanını kurarlar {100}
+  *kanının zehri kontrol altına aldığını buldular {100}
+  *kanının zehir içerdiğini buldular {100}
+  *zehri kontrol altına almak için kanını buldular {200}
+  *zehir içermek için kanını buldular {200}
+  *zehri kontrol altına almak için kanını kurarlar {200}
+  *zehir içermek için kanını kurarlar {200}
   OK
 
 he finds her beautiful @ onu güzel bulur
@@ -2375,7 +2375,7 @@ he finds her beautiful @ onu güzel bulur
 
 i found him sleeping @ onu uyurken buldum
   *onu uyurken buldum {0}
-  *ona uyuma buldum {100}
+  *ona uyuma buldum {200}
   OK
 
 i found it easy to solve the problems @ problemleri çözmeyi kolay buldum
@@ -2383,8 +2383,9 @@ i found it easy to solve the problems @ problemleri çözmeyi kolay buldum
   *problemleri çözmek için onu kolay buldum {100}
   OK
 
-i find it sad that he has lost all his children @ bütün çocuklarını kaybetmiş olmasını üzücü bulurum
-  ParseError: No production rule defined for symbol: SubPoss
+i find it sad that he has lost all his children @ onun bütün çocuklarını kaybetmiş olmasını üzücü bulurum
+  *onun bütün çocuklarını kaybetmiş olmasını üzücü bulurum {0}
+  OK
 
 he seems happy @ mutlu görünüyor
   *mutlu görünüyor {0}
@@ -2409,7 +2410,7 @@ he seems an angry parent @ kızgın bir ebeveyn gibi görünüyor
 
 i need sleeping @ uyumaya ihtiyacım var | uyumam gerekiyor
   *uyumaya ihtiyacım var {0}
-  *uyumaya ihtiyacım var {100}
+  *uyumaya ihtiyacım var {200}
   OK
 
 this shirt needs washing @ bu gömleğin yıkanmaya ihtiyacı var | bu gömleğin yıkanması gerekiyor
@@ -2428,4 +2429,4 @@ i need some coffee @ biraz kahveye ihtiyacım var
   *biraz kahveye ihtiyacım var {0}
   OK
 
-input=524, translated=522, matched=516 exp_err=0 ignored=0 success=%98
+input=524, translated=523, matched=521 exp_err=0 ignored=0 success=%99
