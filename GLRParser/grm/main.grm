@@ -400,7 +400,7 @@ ObjCase -> : *case [?case]
 SubjCase -> :        [!scase]
 SubjCase -> : *scase [?scase] 
 
-RObj -> NP'(num=*onum)   : NP'() *case [oper=3]
+RObj -> NP'(num=*onum,def,neg) : NP'() *case [oper=3]
 
 Objs -> NP'(num=*onum) 's : NP'() [oper=3]
 Objs -> PossPron(pper=*oper,pnum=*onum) : Pron
