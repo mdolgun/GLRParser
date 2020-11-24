@@ -76,7 +76,7 @@ def trans_file(grm_fname, io_fname, ignore_exp_error=False):
             print("Grammar load time:",  timer_delta(start,end), "mics")
         else:
             start = timer()
-            parser.parse_grammar(grm_fname)
+            parser.parse_grammar(grm_fname,defines=defines)
             end = timer()
             print("Grammar parse time:",  timer_delta(start,end), "mics")
 
@@ -145,7 +145,7 @@ def interact(grm_fname, single_translation=False):
         print("Grammar load time:",  timer_delta(start,end), "mics")
     else:
         start = timer()
-        parser.parse_grammar(grm_fname)
+        parser.parse_grammar(grm_fname,defines=defines)
         end = timer()    
         print("Grammar parse time:",  timer_delta(start,end), "mics")
 
@@ -247,11 +247,17 @@ def print_usage():
         print("USAGE3: python -m GLRParser.main [-g] -s <grammar_file>")
 
 if __name__ == "__main__":
+    defines = set()
     import getopt
     optlist,args = getopt.getopt(sys.argv[1:],"gis")
     flags = {opt[0] for opt in optlist}
     if '-g' in flags:
         os.chdir(os.path.join(os.path.dirname(__file__), 'grm'))
+    elif '-D' in flags:
+        if len(args) == 1:
+            defines.union(args[0].split(","))
+        else:
+            print_usage()
     if '-i' in flags:
         if len(args) == 1:
             interact(args[0])

@@ -16,6 +16,7 @@
 
 %macro N NSing,NPlur
 
+%form N school,schools
 %form N car,cars
 %form N door,doors
 %form N man,men
@@ -29,6 +30,7 @@ $N -> $door : kapı
 $N -> $man : adam
 $N -> $story : hikaye
 $N -> $television : televizyon
+$N -> $school : okul
 
 %macro V V,Vs,Ving,Ved,Ven
 

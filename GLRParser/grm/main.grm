@@ -341,9 +341,9 @@ Neg -> :     [!neg]
 Quest -> : "- mH" [?quest]
 Quest -> :        [!quest]
 
-
 Pred -> Obj'              : Obj'              [+pred,case=+0]
-Pred -> AdjP              : AdjP              [+pred,-gap]
+Pred -> AdjP PP           : PP AdjP           [+pred,-gap]
+Pred -> AdjP PPGap        : PPGap AdjP        [+pred,+gap]
 Pred ->                   : *reladv           [+pred,-gap]
 Pred -> PP                : PP                [+pred,-gap]
 Pred -> PPGap             : PPGap             [+pred,+gap]
@@ -352,8 +352,6 @@ Pred -> AdjComp than Obj' : Obj' daha AdjComp [+pred,case=+den,-gap]
 Pred -> as Adj as Obj     : Obj kadar Adj     [+pred,-gap,case=+in_pro]
 Pred -> so Adj as Obj     : Obj kadar Adj     [+pred,-gap,case=+in_pro]
 XPred -> so Adj that SentNorm(gap)   : o kadar Adj PredTense ki SentNorm(gapw)  [+pred,-gap] ###!!!check for other tenses
-
-
 
 NegPred -> : değil  [!exist,?neg]
 NegPred -> :        [!exist,!neg]
@@ -510,7 +508,20 @@ NP -> NP1 : NP1 # the door of house
 NP -> NP1 of NP(-nodef) : NP() +in_nopro NP1 [+ng] # the door of house of the house of doors : kapılar evinin ev kapısı
 NP -> NP1 PP() : PP(+np) NP1
 NP -> NP1 of ObjPron(per=*pper,num=*pnum) : ObjPron() +in_nopro NP1 # a big house of me : büyük bir evim
+NP -> the NThat that SentNorm(-gap) : SentNorm(conn=dik,scase=+in) NThat +poss3 # the fact that he is alive
+NP -> Det NInf Inf() : Det Inf() -mA NInf NGSuf # the/his attempt to mend the car 
+#NP -> DG OfNG Inf() : Inf() -mAk için DG OfNG
+#NP -> DG OfNG SentNorm(-gap) : SentNorm(conn=dik,scase=+in) +e dair DG OfNG
 #NP -> Pron1 : Pron1 [+def]
+
+NThat -> fact : gerçek?
+NThat -> possibility : olasılık?
+NThat -> idea : fik@ir
+NThat -> day : gün
+
+NInf -> attempt : girişim
+NInf -> opportunity : fırsat
+NInf -> call : çağrı
 
 PropN -> U : U
 PropN -> PropN U : PropN U
