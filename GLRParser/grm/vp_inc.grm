@@ -32,7 +32,7 @@ $N -> $story : hikaye
 $N -> $television : televizyon
 $N -> $school : okul
 
-%macro V V,Vs,Ving,Ved,Ven
+%macro V V',Vs',Ving',Ved',Ven'
 
 %form V agree,agrees,agreeing,agreed,agreed
 %form V bore,bores,boring,bored,bored
@@ -71,17 +71,17 @@ $V -> $agree with Obj'        : Obj' aynı fikirde [case=+le,+pred]
 $V -> $bore Obj'              : Obj' sık  [case=+i]
 $V -> $confuse Obj'           : Obj' kafa ObjPoss +i karıştır [case=+in]
 $V -> $go                     : git? [-gap]
-$V -> $have Inf(gap)          : Inf(gapw) zorunda [+pred,+prog]
+$V -> $have Inf(gap)          : Inf(gapw) -mAk zorunda [+pred,+prog]
 $V -> $have Obj'              : Obj' SubjPoss [+pred,+exist,scase=+in,+pron3]
 $V -> $hate Inf(gap)          : Inf(gapw) nefret et? [case=+den,+prog,+pprog]
 $V -> $hate Obj'              : Obj' nefret et? [case=+den,+prog,+pprog]
-$V -> $hate Ger               : Ger nefret et? [case=+den,+prog,+pprog]
+$V -> $hate Ger               : Ger -mAktAn nefret et? [+prog,+pprog]
 $V -> $give ObjObj            : ObjObj ver [case1=+e,case2=Acc]
 $V -> $know SWhether'         : SWhether' +i bil [+prog,+pprog]
 $V -> $know SThat'            : SThat' +i bil [+prog,+pprog]
 $V -> $know Obj'              : Obj' bil [case=+i,+prog,+pprog]
-$V -> $like Inf(gap)          :  Inf(gapw) hoşlan [case=+den,+prog]
-$V -> $like Ger               : Ger hoşlan [case=+den,+prog]
+$V -> $like Inf(gap)          : Inf(gapw) -mAktAn hoşlan [+prog]
+$V -> $like Ger               : Ger -mAktAn hoşlan [+prog]
 $V -> $like Obj'              : Obj' hoşlan [case=+den,+prog]
 $V -> $locate Obj'            : Obj' yer ObjPoss +i sapta [case=+in]
 $V -> $look at Obj'           : Obj' bak [case=+e]
@@ -122,7 +122,7 @@ $V -> $trust Obj'             : Obj' güven [case=+e,+prog]
 $V -> $trust Obj1 with Obj2   : Obj1 Obj2 emanet et? [case1=+e,case2=+i]
 $V -> $want ObjInf            : ObjInf +i iste [+prog,case=+in]
 $V -> $want Obj'              : Obj' iste [case=Acc,+prog]
-$V -> $want Inf(gap)          : Inf(gapw) iste [+prog]
+$V -> $want Inf(gap)          : Inf(gapw) -mAk iste [+prog]
 $V -> $watch Obj'             : Obj' seyret? [case=Acc]
 
 Vpass -> bored      : sıkıl  
@@ -148,8 +148,22 @@ PredVerb -> proud of Obj' : Obj' gurur duy [case=+le,+prog,+pprog]
 Pred -> angry with Obj' : Obj' kızgın [case=+e]
 Pred -> aware of Obj' : Obj' farkında [case=+in]
 Pred -> used to Obj' : Obj' alışkın [case=+e]
+Pred -> likely Inf(gap) : Inf(gapw) -mA SubjPoss muhtemel
 
 Adj -> good : iyi
-Adj -> better : daha iyi
-Adj -> best : en iyi
+AdjComp -> better : iyi
+AdjSup -> best : iyi
 Adj -> happy : mutlu
+AdjComp -> happier : mutlu
+AdjSup -> happiest : mutlu
+
+Adv -> slowly : yavaşça
+Adv -> quickly : hızla
+Adv -> angrily : öfkeyle
+Adv -> often : sık sık
+Adv -> sometimes : bazen
+
+AdvComp -> more slowly : yavaşça
+AdvComp -> more quickly : hızlı
+AdvComp -> more angrily : öfkeli
+AdvComp -> more often : sık

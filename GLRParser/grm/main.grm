@@ -16,12 +16,13 @@
 
 S -> AdvCl() SentNorm       : AdvCl() SentNorm      [-gap]
 S -> SentNorm AdvCl()       : AdvCl() SentNorm      [-gap]
-S -> AdvP SentNorm          : AdvP SentNorm         [-gap]
+S -> AdvStart SentNorm      : AdvStart SentNorm     [-gap]
 S -> SentInv                : SentInv               [+quest,-gap]
 S -> WhCase() SentInv       : SentInv               [+gap,gapw=*WhCase]
 S -> RelAdv SentInv         : SentInv               [-gap,reladv=*RelAdv]
 S -> SentImp                : SentImp               [-gap]
 S -> NP'                    : NP'
+
 
 
 S -> so AuxBePos Subj        : Subj "- dA" öyle  [+pron]
@@ -104,27 +105,27 @@ SentInv -> AuxHaveNeg there been Obj PPS(-gap)     : PPS() Obj ol PerfTense'  [+
 SentInv -> ModalPos there Not be Obj PPS(-gap)     : PPS() Obj ol ModalTense  [+exist,+pred,num=sing,per=3]
 SentInv -> ModalNeg there be Obj PPS(-gap)         : PPS() Obj ol ModalTense  [+exist,+pred,num=sing,per=3,+neg]
 
-VPNorm -> AuxBe AdvP StBe             : AdvP StBe
-VPNorm -> AuxHave AdvP StHave         : AdvP StHave
-VPNorm -> Modal AdvP StModal          : AdvP StModal
-VPNorm -> AuxDoPos Not AdvP StDo      : AdvP StDo 
-VPNorm -> AuxDoNeg AdvP StDo          : AdvP StDo               [+neg]
-VPNorm -> AdvP Vs                     : AdvP Vs SimpTense'      [tense=pres,num=sing,per=3]
-VPNorm -> AdvP V                      : AdvP V SimpTense'       [tense=pres,num=sing,per=1]
-VPNorm -> AdvP V                      : AdvP V SimpTense'       [tense=pres,num=plur]
-VPNorm -> AdvP Ved                    : AdvP Ved SimpTense'     [tense=past]
+VPNorm -> AuxBe AdvEnd StBe             : AdvEnd StBe
+VPNorm -> AuxHave AdvEnd StHave         : AdvEnd StHave
+VPNorm -> Modal AdvEnd StModal          : AdvEnd StModal
+VPNorm -> AuxDoPos Not AdvEnd StDo      : AdvEnd StDo 
+VPNorm -> AuxDoNeg AdvEnd StDo          : AdvEnd StDo               [+neg]
+VPNorm -> AdvEnd Vs                     : AdvEnd Vs SimpTense'      [tense=pres,num=sing,per=3]
+VPNorm -> AdvEnd V                      : AdvEnd V SimpTense'       [tense=pres,num=sing,per=1]
+VPNorm -> AdvEnd V                      : AdvEnd V SimpTense'       [tense=pres,num=plur]
+VPNorm -> AdvEnd Ved                    : AdvEnd Ved SimpTense'     [tense=past]
 VPNorm -> used to V              : V +aor -dH Pers2
 VPNorm -> would rather Not V     : V Neg -mAyH tercih eder Pers1
 
 # question
-SentInv -> AuxBePos Subj Not AdvP StBe      : Subj AdvP StBe 
-SentInv -> AuxBeNeg Subj AdvP StBe          : Subj AdvP StBe    [+neg]
-SentInv -> AuxHavePos Subj Not AdvP StHave  : Subj AdvP StHave 
-SentInv -> AuxHaveNeg Subj AdvP StHave      : Subj AdvP StHave  [+neg]
-SentInv -> AuxDoPos Subj Not AdvP StDo      : Subj AdvP StDo 
-SentInv -> AuxDoNeg Subj AdvP StDo          : Subj AdvP StDo    [+neg]
-SentInv -> ModalPos Subj Not AdvP StModal   : Subj AdvP StModal   
-SentInv -> ModalNeg Subj AdvP StModal       : Subj AdvP StModal [+neg]
+SentInv -> AuxBePos Subj Not AdvEnd StBe      : Subj AdvEnd StBe 
+SentInv -> AuxBeNeg Subj AdvEnd StBe          : Subj AdvEnd StBe    [+neg]
+SentInv -> AuxHavePos Subj Not AdvEnd StHave  : Subj AdvEnd StHave 
+SentInv -> AuxHaveNeg Subj AdvEnd StHave      : Subj AdvEnd StHave  [+neg]
+SentInv -> AuxDoPos Subj Not AdvEnd StDo      : Subj AdvEnd StDo 
+SentInv -> AuxDoNeg Subj AdvEnd StDo          : Subj AdvEnd StDo    [+neg]
+SentInv -> ModalPos Subj Not AdvEnd StModal   : Subj AdvEnd StModal   
+SentInv -> ModalNeg Subj AdvEnd StModal       : Subj AdvEnd StModal [+neg]
 SentInv -> shall we Not V              : V Neg -YAlHm mH
 SentInv -> would Subj rather Not V     : Subj Neg -mAyH mH tercih eder Pers1
 #SentInv -> would Subj like to V        : Subj V -mAk ister mi Pers1
@@ -341,16 +342,14 @@ Neg -> :     [!neg]
 Quest -> : "- mH" [?quest]
 Quest -> :        [!quest]
 
-Pred -> Obj'              : Obj'              [+pred,case=+0]
-Pred -> AdjP PP           : PP AdjP           [+pred,-gap]
-Pred -> AdjP PPGap        : PPGap AdjP        [+pred,+gap]
-Pred ->                   : *reladv           [+pred,-gap]
-Pred -> PP                : PP                [+pred,-gap]
-Pred -> PPGap             : PPGap             [+pred,+gap]
+Pred -> Obj'              : Obj'               [+pred,case=+0]
+Pred -> AdjP PPS          : PPS AdjP           [+pred]
+Pred ->                   : *reladv            [+pred,-gap]
+Pred -> PPS               : PPS                [+pred]
 Pred -> AdvAdjComp AdjComp than Obj' : Obj' daha AdvAdjComp AdjComp [+pred,case=+den,-gap]
-Pred -> AdjComp than Obj' : Obj' daha AdjComp [+pred,case=+den,-gap]
-Pred -> as Adj as Obj     : Obj kadar Adj     [+pred,-gap,case=+in_pro]
-Pred -> so Adj as Obj     : Obj kadar Adj     [+pred,-gap,case=+in_pro]
+Pred -> AdjComp than Obj' : Obj' daha AdjComp  [+pred,case=+den,-gap]
+#Pred -> as Adj as Obj     : Obj kadar Adj     [+pred,-gap,case=+in_pro]
+#Pred -> so Adj as Obj     : Obj kadar Adj     [+pred,-gap,case=+in_pro]
 XPred -> so Adj that SentNorm(gap)   : o kadar Adj PredTense ki SentNorm(gapw)  [+pred,-gap] ###!!!check for other tenses
 
 NegPred -> : değil  [!exist,?neg]
@@ -510,6 +509,7 @@ NP -> NP1 PP() : PP(+np) NP1
 NP -> NP1 of ObjPron(per=*pper,num=*pnum) : ObjPron() +in_nopro NP1 # a big house of me : büyük bir evim
 NP -> the NThat that SentNorm(-gap) : SentNorm(conn=dik,scase=+in) NThat +poss3 # the fact that he is alive
 NP -> Det NInf Inf() : Det Inf() -mA NInf NGSuf # the/his attempt to mend the car 
+NP -> the NGer of Ger : Ger() -mA NGer +poss3 # the convention of delivering a concession speech
 #NP -> DG OfNG Inf() : Inf() -mAk için DG OfNG
 #NP -> DG OfNG SentNorm(-gap) : SentNorm(conn=dik,scase=+in) +e dair DG OfNG
 #NP -> Pron1 : Pron1 [+def]
@@ -522,6 +522,9 @@ NThat -> day : gün
 NInf -> attempt : girişim
 NInf -> opportunity : fırsat
 NInf -> call : çağrı
+
+NGer -> convention : gelenek
+NGer -> act : eylem
 
 PropN -> U : U
 PropN -> PropN U : PropN U
@@ -885,29 +888,29 @@ Pers3 -> : -yHz     [num=plur,per=1]
 Pers3 -> : -zsHnHz  [num=plur,per=2]
 Pers3 -> : -zlAr    [num=plur,per=3]
 
-V -> V'(+,+gap) PPS(-gap) AdvP : PPS() AdvP V'                  [+gap]
-V -> V'(+,-gap) PPS(+gap) AdvP : PPS(gapw) AdvP V'              [+gap]
-V -> V'(+,-gap) PPS(-gap) AdvP : PPS() TRelAdv AdvP V'          [-gap]
+V -> V'(+,+gap) PPS(-gap) AdvEnd : PPS() AdvEnd V'                  [+gap]
+V -> V'(+,-gap) PPS(+gap) AdvEnd : PPS(gapw) AdvEnd V'              [+gap]
+V -> V'(+,-gap) PPS(-gap) AdvEnd : PPS() TRelAdv AdvEnd V'          [-gap]
 
-Vs -> Vs'(+,+gap) PPS(-gap) AdvP : PPS() AdvP Vs'               [+gap]
-Vs -> Vs'(+,-gap) PPS(+gap) AdvP : PPS(gapw) AdvP Vs'           [+gap]
-Vs -> Vs'(+,-gap) PPS(-gap) AdvP : PPS() TRelAdv AdvP Vs'       [-gap]
+Vs -> Vs'(+,+gap) PPS(-gap) AdvEnd : PPS() AdvEnd Vs'               [+gap]
+Vs -> Vs'(+,-gap) PPS(+gap) AdvEnd : PPS(gapw) AdvEnd Vs'           [+gap]
+Vs -> Vs'(+,-gap) PPS(-gap) AdvEnd : PPS() TRelAdv AdvEnd Vs'       [-gap]
 
-Ving -> Ving'(+,+gap) PPS(-gap) AdvP : PPS() AdvP Ving'         [+gap]
-Ving -> Ving'(+,-gap) PPS(+gap) AdvP : PPS(gapw) AdvP Ving'     [+gap]
-Ving -> Ving'(+,-gap) PPS(-gap) AdvP : PPS() TRelAdv AdvP Ving' [-gap]
+Ving -> Ving'(+,+gap) PPS(-gap) AdvEnd : PPS() AdvEnd Ving'         [+gap]
+Ving -> Ving'(+,-gap) PPS(+gap) AdvEnd : PPS(gapw) AdvEnd Ving'     [+gap]
+Ving -> Ving'(+,-gap) PPS(-gap) AdvEnd : PPS() TRelAdv AdvEnd Ving' [-gap]
 
-Ved -> Ved'(+,+gap) PPS(-gap) AdvP : PPS() AdvP Ved'            [+gap]
-Ved -> Ved'(+,-gap) PPS(+gap) AdvP : PPS(gapw) AdvP Ved'        [+gap]
-Ved -> Ved'(+,-gap) PPS(-gap) AdvP : PPS() TRelAdv AdvP Ved'    [-gap]
+Ved -> Ved'(+,+gap) PPS(-gap) AdvEnd : PPS() AdvEnd Ved'            [+gap]
+Ved -> Ved'(+,-gap) PPS(+gap) AdvEnd : PPS(gapw) AdvEnd Ved'        [+gap]
+Ved -> Ved'(+,-gap) PPS(-gap) AdvEnd : PPS() TRelAdv AdvEnd Ved'    [-gap]
 
-Ven -> Ven'(+,+gap) PPS(-gap) AdvP : PPS() AdvP Ven'            [+gap]
-Ven -> Ven'(+,-gap) PPS(+gap) AdvP : PPS(gapw) AdvP Ven'        [+gap]
-Ven -> Ven'(+,-gap) PPS(-gap) AdvP : PPS() TRelAdv AdvP Ven'    [-gap]
+Ven -> Ven'(+,+gap) PPS(-gap) AdvEnd : PPS() AdvEnd Ven'            [+gap]
+Ven -> Ven'(+,-gap) PPS(+gap) AdvEnd : PPS(gapw) AdvEnd Ven'        [+gap]
+Ven -> Ven'(+,-gap) PPS(-gap) AdvEnd : PPS() TRelAdv AdvEnd Ven'    [-gap]
 
-Vpass -> Vpass'(+,+gap) By() PPS(-gap) AdvP : PPS() By() AdvP Vpass'(gapw)     [+gap]
-Vpass -> Vpass'(+,-gap) By() PPS(+gap) AdvP : PPS(gapw) By() AdvP Vpass'()     [+gap]
-Vpass -> Vpass'(+,-gap) By() PPS(-gap) AdvP : PPS() By() TRelAdv AdvP Vpass'() [-gap]
+Vpass -> Vpass'(+,+gap) By() PPS(-gap) AdvEnd : PPS() By() AdvEnd Vpass'(gapw)     [+gap]
+Vpass -> Vpass'(+,-gap) By() PPS(+gap) AdvEnd : PPS(gapw) By() AdvEnd Vpass'()     [+gap]
+Vpass -> Vpass'(+,-gap) By() PPS(-gap) AdvEnd : PPS() By() TRelAdv AdvEnd Vpass'() [-gap]
 
 By -> by PPObj : PPObj taraf ObjPoss -dAn
 By ->
@@ -915,8 +918,18 @@ By ->
 TRelAdv -> : *reladv [?reladv]
 TRelAdv -> :         [!reladv]
 
-AdvP -> Adv : Adv
-AdvP ->
+AdvStart -> AdvP AdvStart : AdvP AdvStart
+AdvStart -> PP AdvStart : PP AdvStart
+AdvStart ->
+
+AdvEnd -> Adv : Adv
+AdvEnd ->
+
+AdvP -> Adv : Adv # slowly, fast
+AdvP -> AdvComp : daha AdvComp # more slowly, faster
+AdvP -> AdvSup : en AdvSup # most slowly, fastest
+AdvP -> AdvAdj Adv : AdvAdj Adv # very slowly, pretty fast
+AdvP -> AdvAdjComp AdvComp : AdvAdjComp daha AdvComp # much slowly, too much fast
 
 Adv -> on WeekDay : WeekDay günü
 Adv -> on WeekDayPlur : WeekDayPlur günleri
@@ -932,6 +945,9 @@ Month -> january  : ocak
 Month -> february : şubat
 
 PP -> Prep PPObj : PPObj Prep {100}
+PP -> as Pred : Pred olarak {100}
+PP -> as Adj as PPObj : PPObj +in_pro kadar Adj
+PP -> for Ger : Ger -mAk için
 
 PPS -> PP() PPS : PP() PPS
 PPS -> PPGap() PPS(-gap) : PPGap() PPS(gapw)
@@ -940,29 +956,49 @@ PPS -> [-gap]
 Prep -> about                   : +in_pro3 hak+ ObjPoss -dA Ki
 Prep -> above | over            : +in_nopro üst ObjPoss -dA Ki
 Prep -> across                  : +in_nopro karşı ObjPoss -dA Ki
-Prep -> after                   : +den sonra Ki
+Prep -> after | following       : +den sonra Ki
 Prep -> against                 : +e karşı
-Prep -> along                   : boyunca Olan
-Prep -> among | between         : +in_nopro ara ObjPoss -dA Ki
+Prep -> along | throughout      : boyunca Olan
+Prep -> alongside | beside | by | next to : +in_nopro yan ObjPoss -dA Ki 
+Prep -> among | amongst | between : +in_nopro ara ObjPoss -dA Ki
 Prep -> around                  : +in_nopro etraf ObjPoss -dA Ki
-Prep -> as                      : olarak
+#Prep -> as                      : olarak
 Prep -> at | in | on            : +de Ki
 Prep -> because of              : +den dolayı Olan
 Prep -> before                  : +den önce Ki
-Prep -> beneath | below | under : +in_nopro alt ObjPoss -dA Ki
+Prep -> beneath | below | under | underneath : +in_nopro alt ObjPoss -dA Ki
 Prep -> beyond                  : +in_nopro öte ObjPoss -dA Ki
 Prep -> behind                  : +in_nopro arka ObjPoss -dA Ki
+Prep -> despite | notwithstanding : +e rağmen
+Prep -> down                    : +den aşağı
+Prep -> during                  : sırasında
+Prep -> except | except for | save | saving | barring : +in_pro hariç? ObjPoss -dA
 Prep -> for                     : +in_pro için 
 Prep -> from | through | off    : +den
 Prep -> inside | within         : +in_nopro iç ObjPoss -dA Ki
 Prep -> into                    : +in_nopro iç ObjPoss -YA Olan
+Prep -> in front of             : +in_nopro ön ObjPoss -dA Ki
+Prep -> in spite of             : +e rağmen
+Prep -> instead of              : yerine
 Prep -> like                    : +in_pro gibi
-Prep -> onto                    : +in_nopro ObjPoss -YA Olan
+Prep -> amid | midst            : +in_nopro orta ObjPoss -dA Ki
+Prep -> onto                    : +in_nopro üst ObjPoss -YA Olan
 Prep -> outside | out of        : +in_nopro dış ObjPoss -dA Ki
+Prep -> regarding               : +le ilgili
+Prep -> regardless of           : +den bağımsız olarak
+Prep -> since                   : +den beri
 Prep -> to                      : +e
-Prep -> toward                  : +e doğru
+Prep -> toward | towards        : +e doğru
+Prep -> through                 : boyunca
+Prep -> till | until            : +e kadar
+Prep -> up                      : +den yukarı
+Prep -> upon | atop             : +in_nopro üst ObjPoss -dA Ki
+Prep -> unlike                  : +in_nopro aksine
+Prep -> via                     : +in_pro üzerinden
+Prep -> within                  : +in_pro iç ObjPoss -dA Ki
 Prep -> with                    : PrepWith
 Prep -> without                 : +siz [+noa]
+Prep -> per                     : +dA
 
 PPGap -> at | in | on | for | to | from
 PPGap -> about                   : hakkında
