@@ -134,7 +134,7 @@ class TurkishPostProcessor:
         inp = text.replace(' -','').translate(self.intab) 
         result = self.rx.sub(self.handle_match, inp)
         result = TurkishPostProcessor.vowel_harmony(result)
-        result = result.translate(self.outtab)
+        result = result.translate(self.outtab).replace("' "," ")
         return result
 
 def main():

@@ -174,7 +174,7 @@ def interact(grm_fname, single_translation=False):
             show_expr = params.get("show_expr",1)
             show_alternate = params.get("show_alternate",1)
             try:
-                sent = parser.pre_processor(sent)
+                #sent = parser.pre_processor(sent)
                 parser.parse(sent)
                 tree = parser.make_tree()
                 if show_tree:

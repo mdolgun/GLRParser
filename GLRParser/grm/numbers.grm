@@ -1,6 +1,6 @@
 Card1 -> two : iki
 Card1 -> three : üç
-Card1 -> four : dört
+Card1 -> four : dört?
 Card1 -> five : beş
 Card1 -> six : altı
 Card1 -> seven : yedi
@@ -11,7 +11,7 @@ CardTeen -> ten : on
 CardTeen -> eleven : on bir
 CardTeen -> twelve : on iki
 CardTeen -> thirteen : on üç
-CardTeen -> fourteen : on dört
+CardTeen -> fourteen : on dört?
 CardTeen -> fifteen : on beş
 CardTeen -> sixteen : on altı
 CardTeen -> seventeen : on yedi
@@ -76,58 +76,58 @@ CardinalNumber -> Card15 : Card15
 
 And ->  | and
 
-Ord1 -> first : birinci
-Ord1 -> second : ikinci
-Ord1 -> third : üçüncü
-Ord1 -> fourth : dördüncü
-Ord1 -> fifth : beşinci
-Ord1 -> sixth : altıncı
-Ord1 -> seventh : yedinci
-Ord1 -> eighth : sekizinci
-Ord1 -> ninth : dokuzuncu
+Ord1 -> first : bir
+Ord1 -> second : iki
+Ord1 -> third : üç
+Ord1 -> fourth : dört?
+Ord1 -> fifth : beş
+Ord1 -> sixth : altı
+Ord1 -> seventh : yedi
+Ord1 -> eighth : sekiz
+Ord1 -> ninth : dokuz
 
-OrdTeen -> tenth : onuncu
-OrdTeen -> eleventh : on birinci
-OrdTeen -> twelfth : on ikinci
-OrdTeen -> thirteenth : on üçüncü
-OrdTeen -> fourteenth : on dördüncü
-OrdTeen -> fifteenth : on beşinci
-OrdTeen -> sixteenth : on altıncı
-OrdTeen -> seventeenth : on yedinci
-OrdTeen -> eighteenth : on sekizinci
-OrdTeen -> nineteenth : on dokuzuncu
-OrdTens -> twentieth : yirminci
-OrdTens -> thirtieth : otuzuncu
-OrdTens -> fortieth : kırkıncı
-OrdTens -> fiftieth : ellinci
-OrdTens -> sixtieth : altmışıncı
-OrdTens -> seventieth : yetmişinci
-OrdTens -> eightieth : sekseninci
-OrdTens -> ninetieth : doksanıncı
+OrdTeen -> tenth : on
+OrdTeen -> eleventh : on bir
+OrdTeen -> twelfth : on iki
+OrdTeen -> thirteenth : on üç
+OrdTeen -> fourteenth : on dört?
+OrdTeen -> fifteenth : on beş
+OrdTeen -> sixteenth : on alt
+OrdTeen -> seventeenth : on yedi
+OrdTeen -> eighteenth : on sekiz
+OrdTeen -> nineteenth : on dokuz
+OrdTens -> twentieth : yirmi
+OrdTens -> thirtieth : otuz
+OrdTens -> fortieth : kırk
+OrdTens -> fiftieth : elli
+OrdTens -> sixtieth : altmış
+OrdTens -> seventieth : yetmiş
+OrdTens -> eightieth : seksen
+OrdTens -> ninetieth : doksan
 
 Ord2 -> OrdTens : OrdTens
 Ord2 -> CardTens Ord1 : CardTens Ord1
 Ord2 -> OrdTeen : OrdTeen
 Ord2 -> Ord1 : Ord1
 
-Ord3 -> AOne hundredth : yüzüncü
-Ord3 -> Card1 hundredth : Card1 yüzüncü
+Ord3 -> AOne hundredth : yüz
+Ord3 -> Card1 hundredth : Card1 yüz
 Ord3 -> one hundred And Ord2 : yüz Ord2
 Ord3 -> Card1 hundred And Ord2  : Card1 yüz Ord2
 Ord3 -> Ord2 : Ord2
 
-Ord6 -> AOne thousandth : bininci
-Ord6 -> Card3 thousandth : Card3 bininci
+Ord6 -> AOne thousandth : bin
+Ord6 -> Card3 thousandth : Card3 bin
 Ord6 -> one thousand Ord3  : bin Ord3
 Ord6 -> Card3 thousand Ord3  : Card3 bin Ord3
 
-Ord9 -> AOne millionth : bir milyonuncu
-Ord9 -> Card3 millionth : Card3 milyonuncu
+Ord9 -> AOne millionth : bir milyon
+Ord9 -> Card3 millionth : Card3 milyon
 Ord9 -> one million Ord6 : bir milyon Ord6 
 Ord9 -> Card3 million Ord6 : Card3 milyon Ord6 
 
-Ord12 -> AOne billionth  : bir milyarıncı
-Ord12 -> Card billionth  : Card milyarıncı
+Ord12 -> AOne billionth  : bir milyar
+Ord12 -> Card billionth  : Card milyar
 Ord12 -> AOne billion Ord9  : bir milyar Ord9
 Ord12 -> Card3 billion Ord9  : Card3 milyar Ord9
 

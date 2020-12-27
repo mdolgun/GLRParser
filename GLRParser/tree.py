@@ -446,7 +446,34 @@ class Tree:
                 for alt in item:
                     for first,fcost in alt.enumx():
                         if first and rest:
-                            yield first + " " + rest, cost+fcost
+                            yield first + " " + rest, cost+fcost+1 # 1 for penalizing deep trees
                         else:
-                            yield first or rest, cost+fcost
+                            yield first or rest, cost+fcost+1 # 1 for penalizing deep trees
+
+    #def enum_results(nodes):
+    #    results = []
+    #    stack = []
+    #    out = []
+    #    stack.append((nodes,0))
+    #    backtrack = []
+    #    backtrack.append((stack,out))
+    #    while backtrack:
+    #        stack, out = backtrack.pop()
+    #        while stack:
+    #            nodes, pos = stack.pop()
+    #            while pos < len(nodes):
+    #                node = nodes[pos]
+    #                pos += 1
+    #                if type(node) == str:
+    #                    out.append(node)
+    #                else:
+    #                    stack.append((nodes,pos))
+    #                    for alt in node[1:]:
+    #                        alt_stack = stack.copy()
+    #                        alt_stack.append((alt,0))
+    #                        backtrack.append((alt_stack,out.copy()))
+    #                    nodes = node[0]
+    #                    pos = 0
+    #        results.append(out)
+    #    return results
 

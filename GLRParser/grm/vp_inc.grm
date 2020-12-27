@@ -13,8 +13,8 @@
 %suffix sık+aor sıkar
 %suffix yap+aor yapar
 
-
 %macro N NSing,NPlur
+%macro NHead NHeadSing,NHeadPlur
 
 %form N school,schools
 %form N car,cars
@@ -23,6 +23,11 @@
 %form N book,books
 %form N story,stories
 %form N television,televisions
+%form N note,notes
+
+
+%form NHead american,americans
+%form NHead white,whites
 
 $N -> $car : araba
 $N -> $book : kitap?
@@ -31,6 +36,12 @@ $N -> $man : adam
 $N -> $story : hikaye
 $N -> $television : televizyon
 $N -> $school : okul
+$N -> $note : not
+
+$NHead -> $american : amerikalı
+
+NMod -> american : amerikan
+Adj -> white : beyaz
 
 %macro V V',Vs',Ving',Ved',Ven'
 
@@ -149,6 +160,7 @@ Pred -> angry with Obj' : Obj' kızgın [case=+e]
 Pred -> aware of Obj' : Obj' farkında [case=+in]
 Pred -> used to Obj' : Obj' alışkın [case=+e]
 Pred -> likely Inf(gap) : Inf(gapw) -mA SubjPoss muhtemel
+
 
 Adj -> good : iyi
 AdjComp -> better : iyi

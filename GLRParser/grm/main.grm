@@ -502,7 +502,11 @@ WhP -> how Adj : ne kadar Adj
 WhP -> how old : kaç yaşında
 WhP -> what N : ne N
 
-
+NP -> NP-1() and NP-2() : NP-1() ve NP-2()  [num=plur,per=3]
+NP -> NP-1() or NP-2() : NP-1() veya NP-2() [num=plur,per=3]
+NP -> both NP-1() and NP-2() : hem NP-1() hem de NP-2() [num=plur,per=3]
+NP -> either NP-1() or NP-2() : ya NP-1() ya da NP-2() [num=plur,per=3]
+NP -> neither NP-1() nor NP-2() : ne NP-1() ne de NP-2() [num=plur,per=3,+neg]
 NP -> NP1 : NP1 # the door of house
 NP -> NP1 of NP(-nodef) : NP() +in_nopro NP1 [+ng] # the door of house of the house of doors : kapılar evinin ev kapısı
 NP -> NP1 PP() : PP(+np) NP1
@@ -518,15 +522,19 @@ NThat -> fact : gerçek?
 NThat -> possibility : olasılık?
 NThat -> idea : fik@ir
 NThat -> day : gün
+NThat -> insistence : ısrar
 
 NInf -> attempt : girişim
 NInf -> opportunity : fırsat
 NInf -> call : çağrı
+NInf -> insistence : ısrar
 
 NGer -> convention : gelenek
 NGer -> act : eylem
+NGer -> insistence : ısrar
 
-PropN -> U : U
+
+PropN -> U : U {100}
 PropN -> PropN U : PropN U
 Title -> mr | mister : bay
 Title -> mrs : bayan
@@ -551,7 +559,7 @@ NP1 -> DetPron : DetPron NGSuf [+ng,+def]
 NP1 -> Pron2 : Pron2
 NP1 -> Pron2 else : başka Pron2
 NP1 -> Pron2 AdjP : AdjP Pron2
-NP1 -> Title PropN : Title PropN [+def,num=sing]
+NP1 -> Title PropN : Title PropN -' [+def,num=sing]
 
 One -> one
 One ->
@@ -593,15 +601,19 @@ DetPron -> some : bir kıs@ım
 DetPron -> many | several : birçok? 
 DetPron -> a few : biraz 
 DetPron -> few | the few: çok az 
-DetPron -> CardinalNumber | the CardinalNumber : CardinalNumber 
-DetPron -> OrdinalNumber CardinalNumber| the OrdinalNumber CardinalNumber : OrdinalNumber CardinalNumber 
-DetPron -> OrdinalNumber | the OrdinalNumber : OrdinalNumber 
+DetPron -> CardinalNumber | the CardinalNumber : CardinalNumber  # (the) two
+DetPron -> OrdinalNumber CardinalNumber| the OrdinalNumber CardinalNumber : OrdinalNumber -HncH CardinalNumber # (the) first two
+DetPron -> OrdinalNumber | the OrdinalNumber : OrdinalNumber -HncH # (the) first
+DetPron -> CardinalNumber OrdinalNumber | the CardinalNumber OrdinalNumber : OrdinalNumber +de CardinalNumber # one third, two fifths !!!Currently plural suffix not supported!!!
 DetPron -> last | the last : sonuncu 
 DetPron -> first | the first : ilk
 DetPron -> enough : yeteri kadar
 
 OfDet -> a lot of | lots of | a number of | plenty of : birçok [num=plur,+noplur]
 OfDet -> a lot of | lots of | plenty of : çok                  [num=sing]
+OfDet -> thousands of : binlerce   [num=plur,+noplur]
+OfDet -> hundreds of : yüzlerce    [num=plur,+noplur]
+OfDet -> millions of : milyonlarca [num=plur,+noplur] 
 
 OfUnit -> DG AG Unit of : DG AG Bir Unit
 
@@ -626,13 +638,14 @@ Unit -> grams  | grammes : gram [num=plur]
 Unit -> kilogram  | kilogramme  : kilogram [num=sing]
 Unit -> kilograms | kilogrammes : kilogram [num=plur]
 
-OfNG -> AG NG : AG Bir NG
-OfNG -> AG NG of OfNG() : AG Bir OfNG() NG [+ng]
+OfNG -> AG NG : AG Bir NG NGSuf
+OfNG -> AG NG of OfNG() : AG Bir OfNG() NG NGSuf [+ng]
 
-NG -> N : N NGSuf
-NG -> NG() N : NG() N NGSuf  [+ng]
-
-NG -> PropN NG() : PropN NG(+ng) # Arizona Governor
+NG -> N : N
+NG -> NHead : NHead
+NG -> N NG : N NG [+ng] # suicide note : intihar notu
+NG -> NMod NG : NMod NG [+ng] # suicidal note : intihar notu
+NG -> PropN NG : PropN NG [+ng] # Arizona Governor
 
 Bir -> : ! [!indef]
 Bir -> : ! [?noa]
@@ -647,7 +660,7 @@ PreDet -> all             : bütün
 PreDet -> both            : her iki  [+noplur]
 PreDet -> twice | double  : iki kat
 PreDet -> CardinalNumber() times : CardinalNumber() kat  # beş kat
-PreDet -> one-third       : üçte bir
+#PreDet -> one-third       : üçte bir
 
 PreDet1 -> such            : böyle
 PreDet1 -> quite           : oldukça
@@ -685,20 +698,24 @@ PostDet -> every             : her
 PostDet -> either            : her bir
 PostDet -> neither           : hiç bir   [+neg]
 PostDet -> no                : hiç       [+noplur,+neg]
-
+PostDet -> any               : Any
 PostDet -> some              : biraz     [num=sing]
 PostDet -> some              : bazı      [num=plur]
-PostDet -> any               : herhangi bir | hiç
+#PostDet -> any               : herhangi bir | hiç
 PostDet -> few | little      : az [+noplur]
 PostDet -> a few             : birkaç [num=plur,+noplur]
 PostDet -> a few             : biraz  [num=sing]
 PostDet -> a little          : biraz  [+noplur]
+
+Any -> : herhangi bir ! [!neg,!quest]
+Any -> : hiç   
+
 #Det -> many | a lot of | lots of | plenty of | several  | a numer of : birçok  [num=plur,+noplur]
 #Det -> much | a lot of | lots of | plenty of            : çok       [num=sing]
 PostDet -> many | several : birçok  [num=plur,+noplur]
 PostDet -> much           : çok     [num=sing]
 PostDet -> CardinalNumber : CardinalNumber [+noplur]
-PostDet -> OrdinalNumber  : OrdinalNumber
+PostDet -> OrdinalNumber  : OrdinalNumber -HncH
 
 NP' -> NP                    : NP
 NP' -> NP OptWhich SThatObj()   : SThatObj() NP         # the book i am reading
@@ -711,6 +728,10 @@ NP' -> Pron1 : Pron1 [+def]
 Acc -> : +i [?def]
 Acc -> :    [!def]
 
+NHead -> NHeadSing  : NHeadSing         [num=sing]
+NHead -> NHeadPlur  : NHeadPlur Plur    [num=plur]
+NHead -> NCHeadSing : NCHeadSing        [num=sing,+ng]
+NHead -> NCHeadPlur : NCHeadPlur Plur   [num=plur,+ng]
 N -> NSing  : NSing         [num=sing]
 N -> NPlur  : NPlur Plur    [num=plur]
 N -> NCSing : NCSing        [num=sing,+ng]
@@ -892,25 +913,37 @@ V -> V'(+,+gap) PPS(-gap) AdvEnd : PPS() AdvEnd V'                  [+gap]
 V -> V'(+,-gap) PPS(+gap) AdvEnd : PPS(gapw) AdvEnd V'              [+gap]
 V -> V'(+,-gap) PPS(-gap) AdvEnd : PPS() TRelAdv AdvEnd V'          [-gap]
 
+#V -> V-1 and V-2 : V-1 ve V-2
+
 Vs -> Vs'(+,+gap) PPS(-gap) AdvEnd : PPS() AdvEnd Vs'               [+gap]
 Vs -> Vs'(+,-gap) PPS(+gap) AdvEnd : PPS(gapw) AdvEnd Vs'           [+gap]
 Vs -> Vs'(+,-gap) PPS(-gap) AdvEnd : PPS() TRelAdv AdvEnd Vs'       [-gap]
+
+#Vs -> Vs-1 and Vs-2 : Vs-1 ve Vs-2
 
 Ving -> Ving'(+,+gap) PPS(-gap) AdvEnd : PPS() AdvEnd Ving'         [+gap]
 Ving -> Ving'(+,-gap) PPS(+gap) AdvEnd : PPS(gapw) AdvEnd Ving'     [+gap]
 Ving -> Ving'(+,-gap) PPS(-gap) AdvEnd : PPS() TRelAdv AdvEnd Ving' [-gap]
 
+#Ving -> Ving-1 and Ving-2 : Ving-1 ve Ving-2
+
 Ved -> Ved'(+,+gap) PPS(-gap) AdvEnd : PPS() AdvEnd Ved'            [+gap]
 Ved -> Ved'(+,-gap) PPS(+gap) AdvEnd : PPS(gapw) AdvEnd Ved'        [+gap]
 Ved -> Ved'(+,-gap) PPS(-gap) AdvEnd : PPS() TRelAdv AdvEnd Ved'    [-gap]
+
+#Ved -> Ved-1 and Ved-2 : Ved-1 ve Ved-2
 
 Ven -> Ven'(+,+gap) PPS(-gap) AdvEnd : PPS() AdvEnd Ven'            [+gap]
 Ven -> Ven'(+,-gap) PPS(+gap) AdvEnd : PPS(gapw) AdvEnd Ven'        [+gap]
 Ven -> Ven'(+,-gap) PPS(-gap) AdvEnd : PPS() TRelAdv AdvEnd Ven'    [-gap]
 
+#Ven -> Ven-1 and Ven-2 : Ven-1 ve Ven-2
+
 Vpass -> Vpass'(+,+gap) By() PPS(-gap) AdvEnd : PPS() By() AdvEnd Vpass'(gapw)     [+gap]
 Vpass -> Vpass'(+,-gap) By() PPS(+gap) AdvEnd : PPS(gapw) By() AdvEnd Vpass'()     [+gap]
 Vpass -> Vpass'(+,-gap) By() PPS(-gap) AdvEnd : PPS() By() TRelAdv AdvEnd Vpass'() [-gap]
+
+#Vpass -> Vpass-1 and Vpass-2 : Vpass-1 ve Vpass-2
 
 By -> by PPObj : PPObj taraf ObjPoss -dAn
 By ->
@@ -972,6 +1005,7 @@ Prep -> behind                  : +in_nopro arka ObjPoss -dA Ki
 Prep -> despite | notwithstanding : +e rağmen
 Prep -> down                    : +den aşağı
 Prep -> during                  : sırasında
+Prep -> due to                  : +in_pro yüz ObjPoss -dAn Olan
 Prep -> except | except for | save | saving | barring : +in_pro hariç? ObjPoss -dA
 Prep -> for                     : +in_pro için 
 Prep -> from | through | off    : +den
@@ -979,6 +1013,8 @@ Prep -> inside | within         : +in_nopro iç ObjPoss -dA Ki
 Prep -> into                    : +in_nopro iç ObjPoss -YA Olan
 Prep -> in front of             : +in_nopro ön ObjPoss -dA Ki
 Prep -> in spite of             : +e rağmen
+Prep -> in the thick of         : +in_nopro orta ObjPoss -dA Ki
+Prep -> in the middle of        : +in_nopro orta ObjPoss -dA Ki
 Prep -> instead of              : yerine
 Prep -> like                    : +in_pro gibi
 Prep -> amid | midst            : +in_nopro orta ObjPoss -dA Ki
