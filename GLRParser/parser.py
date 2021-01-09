@@ -614,7 +614,7 @@ class Parser:
         tokens = self.re_word_split.split(instr)
         tokens.append('$')
         puncts = [tokens[i] for i in range(0,len(tokens),2)]
-        orig_words = [tokens[i] for i in range(1,len(tokens),2)]
+        orig_words = [tokens[i].replace("’","'") for i in range(1,len(tokens),2)]
 
         logging.info("words=%s, puncts=%s","|".join(orig_words),"|".join(puncts))
 
@@ -626,19 +626,6 @@ class Parser:
             else 1
             for word in orig_words]
         words = [words.lower() for words in orig_words]
-        #words = []
-        #orig_words = instr.split(" ")
-        #for word in orig_words:
-        #    if word.isdigit():
-        #        cases.append(3)
-        #    elif word.islower():
-        #        cases.append(0)
-        #    elif word.isupper():
-        #        cases.append(2)
-        #    else:
-        #        cases.append(1)
-        #    words.append(word.lower())
-        #words.append("$")
 
         inlen = len(words)
         nodes = defaultdict(set) # maps (pos,state,symbol) to set of (oldpos,oldstate) (i.e adds an arc from (pos,state) to (oldpos,oldstate) labeled with symbol)

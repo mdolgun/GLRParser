@@ -614,6 +614,8 @@ OfDet -> a lot of | lots of | plenty of : çok                  [num=sing]
 OfDet -> thousands of : binlerce   [num=plur,+noplur]
 OfDet -> hundreds of : yüzlerce    [num=plur,+noplur]
 OfDet -> millions of : milyonlarca [num=plur,+noplur] 
+OfDet -> dozens of : düzinelerce [num=plur,+noplur]
+OfDet -> tonnes of | tons of : tonlarca [num=plur,+noplur] 
 
 OfUnit -> DG AG Unit of : DG AG Bir Unit
 
@@ -675,6 +677,7 @@ DG -> PreDet1                 : PreDet1 [+nodef]
 DG -> PreDet1 a | PreDet1 an  : PreDet1 [+indef,num=sing]
 DG -> another                 : bir başka [num=sing]
 DG -> half a | half an        : yarım  [+indef,+noa,num=sing]
+DG -> a OrdinalNumber         : OrdinalNumber [+indef,num=sing] # a second car
 
 PostDets -> PostDet PostDets : PostDet PostDets
 PostDets -> 
@@ -939,9 +942,9 @@ Ven -> Ven'(+,-gap) PPS(-gap) AdvEnd : PPS() TRelAdv AdvEnd Ven'    [-gap]
 
 #Ven -> Ven-1 and Ven-2 : Ven-1 ve Ven-2
 
-Vpass -> Vpass'(+,+gap) By() PPS(-gap) AdvEnd : PPS() By() AdvEnd Vpass'(gapw)     [+gap]
-Vpass -> Vpass'(+,-gap) By() PPS(+gap) AdvEnd : PPS(gapw) By() AdvEnd Vpass'()     [+gap]
-Vpass -> Vpass'(+,-gap) By() PPS(-gap) AdvEnd : PPS() By() TRelAdv AdvEnd Vpass'() [-gap]
+Vpass -> Vpass'(+,+gap) By() PPS(-gap) AdvEnd : PPS() By() AdvEnd Vpass'         [+gap]
+Vpass -> Vpass'(+,-gap) By() PPS(+gap) AdvEnd : PPS(gapw) By() AdvEnd Vpass'     [+gap]
+Vpass -> Vpass'(+,-gap) By() PPS(-gap) AdvEnd : PPS() By() TRelAdv AdvEnd Vpass' [-gap]
 
 #Vpass -> Vpass-1 and Vpass-2 : Vpass-1 ve Vpass-2
 

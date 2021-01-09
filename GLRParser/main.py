@@ -161,8 +161,12 @@ def interact(grm_fname, single_translation=False):
 
     sent = input("Enter Sent> ")
     while sent:
-        if sent == "%debug=1":
+        if sent == "%rules":
             print(parser.format_rules())
+        elif sent == "%dict":
+            for item in parser.trie.list():
+                print(item)
+        elif sent == "%debug=1":
             logging.getLogger().setLevel(logging.DEBUG)
         elif sent == "%debug=0":
             logging.getLogger().setLevel(logging.CRITICAL)
@@ -271,6 +275,8 @@ if __name__ == "__main__":
     else:
         if len(args) == 0:
             interact(os.path.join(os.path.dirname(__file__), 'grm', 'main.grmc'))
+            #os.chdir(os.path.join(os.path.dirname(__file__), 'grm'))
+            #interact('main.grm')
         elif len(args) == 2:
             trans_file(args[0], args[1])
         else:
