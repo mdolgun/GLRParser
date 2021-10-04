@@ -123,7 +123,7 @@ class Grammar:
     re_TERM = r'''"([^"]*)"|(\$?[^|{:[_A-Z#!"][^|{:[#!\s]*)'''
 
     #re_FEAT_VALUE = r"\*{}|\*{}|{}".format(re_NONTERM, re_FEAT_NAME ,re_TERM)
-    re_FEAT_VALUE = r"{}|\*{}|\*{}|[?!]?[-+]?{}".format(re_NONTERM, re_NONTERM, re_FEAT_NAME ,re_FEAT_NAME)
+    re_FEAT_VALUE = r"{}|\*{}|\*{}|[?!~]?[-+]?{}".format(re_NONTERM, re_NONTERM, re_FEAT_NAME ,re_FEAT_NAME)
     re_SYMBOL = r'({}|\*{})|({})'.format(re_NONTERM, re_FEAT_NAME, re_TERM)
 
     SYMBOL = re.compile(re_SYMBOL)

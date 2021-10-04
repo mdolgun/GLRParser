@@ -76,6 +76,34 @@ class TestUnifyBasic(unittest.TestCase):
     # [conn=!if]<- <-[]   up: [] down: None
         ({"conn":"!if"},None,{}, {},None),
 
+    # [conn=~if]<- <-[conn=if]   up: X down: X
+        ({"conn":"~if"},None,{"conn":"if"}, None, None),
+    # [conn=~if]<- <-[conn=while]   up: [conn=while] down: [conn=while]
+        ({"conn":"~if"},None,{"conn":"while"}, {"conn":"while"},{"conn":"while"}),
+    # [conn=~if]<- <-[]   up: [conn=~if] down: [conn=~if]
+        ({"conn":"~if"},None,{}, {"conn":"~if"},{"conn":"~if"}),
+    # [conn=if]<- <-[conn=~if]   up: X down: X
+        ({"conn":"if"},None,{"conn":"~if"}, None,None),
+    # [conn=while]<- <-[conn=~if]   up: [conn=while] down: [conn=while]
+        ({"conn":"while"},None,{"conn":"~if"}, {"conn":"while"},{"conn":"while"}),
+
+    # [conn=~if]<- [conn=if] <-[]  up: [conn=~if] down: X
+        ({"conn":"~if"},{"conn":"if"},{}, {"conn":"~if"}, None),
+    # []<- [conn=if] <-[conn=~if]  up: X down: [conn=if]
+        ({},{"conn":"if"},{"conn":"~if"}, None, {"conn":"if"}),
+    # [conn=~if]<- [conn=while] <-[]  up: [conn=~if] down: [conn=while]
+        ({"conn":"~if"},{"conn":"while"},{}, {"conn":"~if"}, {"conn":"while"}),
+    # []<- [conn=while] <-[conn=~if]  up: [] down: [conn=while]
+        ({}, {"conn":"while"},{"conn":"~if"}, {}, {"conn":"while"}),
+    # [conn=if]<- [conn=~if] <-[]  up: X down: X
+        ({"conn":"if"},{"conn":"~if"},{}, {"conn":"if"}, None),
+    # []<- [conn=~if] <-[conn=if]  up: X down: [conn=~if]
+        ({},{"conn":"~if"},{"conn":"if"}, None,{"conn":"~if"}),
+    # [conn=while]<- [conn=~if] <-[]  up: [conn=while] down: [conn=while]
+        ({"conn":"while"},{"conn":"~if"},{}, {"conn":"while"}, {"conn":"while"}),
+    # []<- [conn=~if] <-[conn=while]  up: [] down: [conn=while]
+        ({},{"conn":"~if"},{"conn":"while"}, {}, {"conn":"~if"}),
+
         ({"gap":"+"},{"gap":"-"},{"gap":"-"}, {"gap":"+"},None),
     ]
 

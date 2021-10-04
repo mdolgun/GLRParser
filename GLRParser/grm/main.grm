@@ -39,8 +39,9 @@ AdvCl -> if SentNorm Then       : SentNorm              [conn=if,-gap]
 AdvCl -> while SentNorm         : SentNorm              [conn=ken,-gap,+pron]
 AdvCl -> as SentNorm            : SentNorm              [conn=ken,-gap,+pron]
 AdvCl -> when SentNorm          : SentNorm -DA          [conn=dik,-gap]
+AdvCl -> by the time SentNorm   : SentNorm -DA          [conn=dik,-gap]
 AdvCl -> now that SentNorm      : şimdi SentNorm için   [conn=dik,-gap]
-AdvCl -> provided that SentNorm : SentNorm koşuluyla   [conns=me,-gap]
+AdvCl -> provided that SentNorm : SentNorm koşuluyla    [conn=me,-gap]
 AdvCl -> because SentNorm       : SentNorm için         [conn=dik,-gap]
 AdvCl -> as long as SentNorm    : SentNorm sürece       [conn=dik,-gap]
 AdvCl -> as soon as SentNorm    : SentNorm              [conn=ir_mez,-gap,+pron]
@@ -345,7 +346,7 @@ Quest -> :        [!quest]
 Pred -> Obj'              : Obj'               [+pred,case=+0]
 Pred -> AdjP PPS          : PPS AdjP           [+pred]
 Pred ->                   : *reladv            [+pred,-gap]
-Pred -> PPS               : PPS                [+pred]
+Pred -> PP PPS            : PP PPS             [+pred]
 Pred -> AdvAdjComp AdjComp than Obj' : Obj' daha AdvAdjComp AdjComp [+pred,case=+den,-gap]
 Pred -> AdjComp than Obj' : Obj' daha AdjComp  [+pred,case=+den,-gap]
 #Pred -> as Adj as Obj     : Obj kadar Adj     [+pred,-gap,case=+in_pro]
@@ -645,7 +646,7 @@ OfNG -> AG NG of OfNG() : AG Bir OfNG() NG NGSuf [+ng]
 
 NG -> N : N
 NG -> NHead : NHead
-NG -> N NG : N NG [+ng] # suicide note : intihar notu
+NG -> N() NG : N() NG [+ng] # suicide note : intihar notu
 NG -> NMod NG : NMod NG [+ng] # suicidal note : intihar notu
 NG -> PropN NG : PropN NG [+ng] # Arizona Governor
 
@@ -1021,6 +1022,7 @@ Prep -> in the middle of        : +in_nopro orta ObjPoss -dA Ki
 Prep -> instead of              : yerine
 Prep -> like                    : +in_pro gibi
 Prep -> amid | midst            : +in_nopro orta ObjPoss -dA Ki
+Prep -> on behalf of            : +in_pro ad ObjPoss +e Olan
 Prep -> onto                    : +in_nopro üst ObjPoss -YA Olan
 Prep -> outside | out of        : +in_nopro dış ObjPoss -dA Ki
 Prep -> regarding               : +le ilgili

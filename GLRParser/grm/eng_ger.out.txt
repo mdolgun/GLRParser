@@ -1,0 +1,134 @@
+
+I give a father a book @ ich gebe einem vater ein buch
+  *ich gebe einem vater ein buch {12}
+  OK
+
+I give the father the book @ ich gebe dem vater das buch
+  *ich gebe dem vater das buch {12}
+  OK
+
+I give the fathers the book @ ich gebe den vätern das buch
+  *ich gebe den vätern das buch {12}
+  OK
+
+I give a woman a book @ ich gebe einer frau ein buch
+  *ich gebe einer frau ein buch {12}
+  OK
+
+I give the woman the book @ ich gebe der frau das buch
+  *ich gebe der frau das buch {12}
+  OK
+
+I give the women the book @ ich gebe den frauen das buch
+  *ich gebe den frauen das buch {12}
+  OK
+
+I give a child a book @ ich gebe einem kind ein buch
+  *ich gebe einem kind ein buch {12}
+  OK
+
+I give the child the book @ ich gebe dem kind das buch
+  *ich gebe dem kind das buch {12}
+  OK
+
+I give the children the book @ ich gebe den kindern das buch
+  *ich gebe den kindern das buch {12}
+  OK
+
+I see a man @ ich sehe einen mann
+  *ich sehe einen mann {9}
+  OK
+
+I see the man @ ich sehe den mann
+  *ich sehe den mann {9}
+  OK
+
+I see the men @ ich sehe die männer
+  *ich sehe die männer {9}
+  OK
+
+I see a woman @ ich sehe eine frau
+  *ich sehe eine frau {9}
+  OK
+
+I see the woman @ ich sehe die frau
+  *ich sehe die frau {9}
+  OK
+
+I see the women @ ich sehe die frauen
+  *ich sehe die frauen {9}
+  OK
+
+I see a child @ ich sehe ein kind
+  *ich sehe ein kind {9}
+  OK
+
+I see the child @ ich sehe das kind
+  *ich sehe das kind {9}
+  OK
+
+I see the children @ ich sehe die kinder
+  *ich sehe die kinder {9}
+  OK
+
+the book of the man @ das buch des mannes
+  *das buch des mannes {8}
+  OK
+
+the book of the men @ das buch der männer
+  *das buch der männer {8}
+  OK
+
+the book of the woman @ das buch der frau
+  *das buch der frau {8}
+  OK
+
+the book of the women @ das buch der frauen
+  *das buch der frauen {8}
+  OK
+
+the book of the child @ das buch des kindes
+  *das buch des kindes {8}
+  OK
+
+the book of the children @ das buch der kinder
+  *das buch der kinder {8}
+  OK
+
+I see the children of the woman @ ich sehe die kinder der frau
+  *ich sehe die kinder der frau {13}
+  *ich sehe die kinder von der frau {15}
+  OK
+
+this is your man @ das ist dein mann
+  *das ist ihr mann {9}
+  *der ist ihr mann {9}
+  *die ist ihr mann {9}
+  *das ist euer mann {9}
+  *der ist euer mann {9}
+  *die ist euer mann {9}
+  *das ist dein mann {9}
+  *der ist dein mann {9}
+  *die ist dein mann {9}
+  OK
+
+these are my children @ die sind meine kinder
+  *die sind meine kinder {9}
+  OK
+
+i have seen the mothers of these children @ ich habe die mütter dieser kinder gesehen
+  *ich habe die mütter dieser kinder gesehen {14}
+  *ich habe die mütter von diesen kindern gesehen {16}
+  OK
+
+he has slept in the house @ er hat im haus geschlafen
+  *er hat im haus geschlafen {12}
+  *er hat in dem haus geschlafen {13}
+  OK
+
+she went into the house @ sie ging ins haus
+  *sie ging ins haus {11}
+  *sie ging in das haus {12}
+  OK
+
+input=30, translated=30, matched=30 exp_err=0 ignored=0 success=%100

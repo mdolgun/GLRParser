@@ -294,15 +294,17 @@ class Parser:
             
         for key,val in check_keys:
             src_val = src[key]
-            if src_val != val:
+            if src_val != val and not (src_val.startswith('~') and src_val[1:] != val) and not (val.startswith('~') and val[1:] != src_val):
                 raise UnifyError("UnifyU precheck error feat=%s src=%s param=%s" % (key, src_val, val))
 
         new_items = {}
         for src_key,dst_key in copy_keys:
             src_val = src[src_key]
             dst_val = dst.get(dst_key)
-            if dst_val is None:
+            if dst_val is None or dst_val.startswith('~') and dst_val[1:] != src_val:
                 new_items[dst_key] = src_val
+            elif src_val.startswith('~') and src_val[1:] != dst_val:
+                pass
             elif src_val != dst_val:
                 raise UnifyError("UnifyU error feat=%s src=%s dst=%s" % (dst_key, src_val, dst_val))
 
@@ -312,38 +314,56 @@ class Parser:
 
         return dst
 
-    ### IMPORTANT Currently default copying types +- are ignored in Down Propagation
     def unify_down(dst,param,src,checklist):
         """ unification of "src" features into "dst" features, using filtering of "param", if unification fails raises UnifyError
 
         if param is None, src is directly unified into dst
         otherwise param contains a pre-condition dict and a filter set,
-        dst is unified against pre-condition dict and filtered src
+        src is checked against pre-condition dict and then filtered with filter set and unified into dst
 
         """
-        if param is None:
-            pdict = src
+        if hasattr(param,'param_type'):
+            param_type = param.param_type
         else:
-            pdict = dict()
-            for key in param.keys():
-                if param[key] is None:
-                    if key in src:
-                        pdict[key] = src[key]
-                else:
-                    val = param[key]
-                    if val[0] == '*':
-                        val = src.get(val[1:])
-                    if val:
-                        pdict[key] = val
+            param_type = None
 
-        for key in pdict.keys() & dst.keys():
-            if pdict[key] != dst[key]:
-                raise UnifyError("UnifyD error feat=%s src=%s param=%s" % (key, pdict[key], dst[key]))
+        if param is None:
+            check_keys = []
+            copy_keys = [(key,key) for key in src.keys()]
+        else:
+            check_keys =  [(key,val) for key,val in param.items() if val is not None and not val.startswith('*')]
+            if param_type == '-':
+                copy_keys = [(key,key) for key in src.keys() if key not in param]
+            else:
+                copy_keys = [(key if val is None else val[1:],key) for key,val in param.items() if val is None or val.startswith('*')]
+                if param_type == '+':
+                    copy_keys.extend((key,key) for key in src.keys() if key not in param)
+            
+        new_items = {}
+        for src_key,dst_key in copy_keys:
+            src_val = src.get(src_key)
+            if src_val is None:
+                continue
+            dst_val = dst.get(dst_key)
+            if dst_val is None or dst_val.startswith('~') and dst_val[1:] != src_val:
+                new_items[dst_key] = src_val
+            elif src_val.startswith('~') and src_val[1:] != dst_val:
+                pass
+            elif src_val != dst_val:
+                raise UnifyError("UnifyU error feat=%s src=%s dst=%s" % (dst_key, src_val, dst_val))
 
-        newkeys = pdict.keys() - dst.keys()
-        if newkeys:
+        for dst_key,src_val in check_keys:
+            dst_val = dst.get(dst_key)
+            if dst_val is None or dst_val.startswith('~') and dst_val[1:] != src_val:
+                new_items[dst_key] = src_val
+            elif  src_val.startswith('~') and src_val[1:] != dst_val:
+                pass
+            elif src_val != dst_val:
+                raise UnifyError("UnifyU error feat=%s src=%s dst=%s" % (dst_key, src_val, dst_val))
+
+        if new_items:
             dst = dst.copy()
-            dst.update(pdict)
+            dst.update(new_items)
 
         for key,val in checklist.items():
             if val == "?":
@@ -358,7 +378,6 @@ class Parser:
             elif val.startswith("!"):
                 if key not in dst or val[1:] == dst[key]:
                     raise UnifyError("UnifyD check error feat matches %s" % key)
-
         return dst
 
     def unify_tree(self,tree):

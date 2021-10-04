@@ -1,0 +1,110 @@
+
+Ich gebe dem Vater das Buch @ i give the father the book
+  *i give the father the book {12}
+  OK
+
+Ich gebe den Vätern das Buch @ i give the fathers the book
+  *i give the fathers the book {12}
+  OK
+
+Ich gebe der Frau das Buch @ i give the woman the book
+  *i give the woman the book {12}
+  OK
+
+Ich gebe den Frauen das Buch @ i give the women the book
+  *i give the women the book {12}
+  OK
+
+Ich gebe dem Kind das Buch @ i give the child the book
+  *i give the child the book {12}
+  OK
+
+Ich gebe den Kindern das Buch @ i give the children the book
+  *i give the children the book {12}
+  OK
+
+Ich sehe einen Mann @ i see a man
+  *i see a man {9}
+  OK
+
+Ich sehe den Mann @ i see the man
+  *i see the man {9}
+  OK
+
+Ich sehe die Männer @ i see the men
+  *i see the men {9}
+  OK
+
+Ich sehe eine Frau @ i see a woman
+  *i see a woman {9}
+  OK
+
+Ich sehe die Frau @ i see the woman
+  *i see the woman {9}
+  OK
+
+Ich sehe die Frauen @ i see the women
+  *i see the women {9}
+  OK
+
+Ich sehe ein Kind @ i see a child
+  *i see a child {9}
+  OK
+
+Ich sehe das Kind @ i see the child
+  *i see the child {9}
+  OK
+
+Ich sehe die Kinder @ i see the children
+  *i see the children {9}
+  OK
+
+das Buch des Mannes @ the book of the man
+  *the book of the man {8}
+  OK
+
+das Buch der Männer @ the book of the men
+  *the book of the men {8}
+  OK
+
+das Buch der Frau @ the book of the woman
+  *the book of the woman {8}
+  OK
+
+das Buch der Frauen @ the book of the women
+  *the book of the women {8}
+  OK
+
+das Buch des Kindes @ the book of the child
+  *the book of the child {8}
+  OK
+
+das Buch der Kinder @ the book of the children
+  *the book of the children {8}
+  OK
+
+Ich sehe die Kinder der Frau @ i see the children of the woman
+  *i see the children of the woman {13}
+  OK
+
+Das ist dein mann @ this is your man
+  *this is your man {9}
+  OK
+
+Die sind meine Kinder @ these are my children
+  *these are my children {9}
+  OK
+
+Ich habe die Mütter dieser Kinder gesehen @ i have seen the mothers of these children
+  *i have seen the mothers of these children {14}
+  OK
+
+er hat im Haus geschlafen @ he has slept in the house
+  *he has slept in the house {12}
+  OK
+
+sie ging ins haus @ she went into the house
+  *she went into the house {11}
+  OK
+
+input=27, translated=27, matched=27 exp_err=0 ignored=0 success=%100

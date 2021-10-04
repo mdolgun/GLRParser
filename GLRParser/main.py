@@ -54,7 +54,7 @@ else:
 #logging.basicConfig(level=logging.ERROR,filename="parser.log",filemode="w")
 logging.getLogger().setLevel(logging.CRITICAL)
 
-def trans_file(grm_fname, io_fname, ignore_exp_error=False):
+def trans_file(grm_fname, io_fname, ignore_exp_error=False, defines=set(),reverse=False):
     """ parses all sentences in infile. Each line should be in the form: InputSentence [ "@" ExpectedTranslation ( "|" AlternateTranslation )* ]
     input and corresponding translations are written to output file. The file is appended by statistics (InputCount,TranslatedCount,MatchedCount,ExpectedErrorCount,IgnoredCount)
     """
@@ -76,7 +76,7 @@ def trans_file(grm_fname, io_fname, ignore_exp_error=False):
             print("Grammar load time:",  timer_delta(start,end), "mics")
         else:
             start = timer()
-            parser.parse_grammar(grm_fname,defines=defines)
+            parser.parse_grammar(grm_fname,defines=defines,reverse=reverse)
             end = timer()
             print("Grammar parse time:",  timer_delta(start,end), "mics")
 
@@ -99,7 +99,7 @@ def trans_file(grm_fname, io_fname, ignore_exp_error=False):
             parts = line.split('@')
             sent = parts[0]
             if len(parts) == 2: # input file contains the expected translation
-                trans = [tsent.strip() for tsent in parts[1].split('|')]
+                trans = [tsent.strip().lower() for tsent in parts[1].split('|')]
             else:
                 trans = []
 
@@ -134,7 +134,7 @@ def trans_file(grm_fname, io_fname, ignore_exp_error=False):
         print("input={}, translated={}, matched={} exp_err={} ignored={} success=%{}".format(input_cnt,trans_cnt,match_cnt,experr_cnt,ignore_cnt,(match_cnt+experr_cnt+ignore_cnt)*100//input_cnt),file=fout)        
 
 
-def interact(grm_fname, single_translation=False):
+def interact(grm_fname, single_translation=False, defines=set(), reverse=False):
     parser = Parser("EN","TR")
     params = {}
 
@@ -145,7 +145,7 @@ def interact(grm_fname, single_translation=False):
         print("Grammar load time:",  timer_delta(start,end), "mics")
     else:
         start = timer()
-        parser.parse_grammar(grm_fname,defines=defines)
+        parser.parse_grammar(grm_fname,defines=defines,reverse=reverse)
         end = timer()    
         print("Grammar parse time:",  timer_delta(start,end), "mics")
 
@@ -246,39 +246,46 @@ def save(grm_fname):
     parser.save_grammar(grmc_fname)
 
 def print_usage():
-        print("USAGE1: python -m GLRParser.main [-g] <grammar_file> <input_file>")
-        print("USAGE2: python -m GLRParser.main [-g] -i <grammar_file>")
-        print("USAGE3: python -m GLRParser.main [-g] -s <grammar_file>")
+        print("USAGE1: python -m GLRParser.main [-gr] <grammar_file> <input_file>")
+        print("USAGE2: python -m GLRParser.main [-gr] -i <grammar_file>")
+        print("USAGE3: python -m GLRParser.main [-gr] -s <grammar_file>")
+
+def main(argv):
+    defines = set()
+    reverse = False
+
+    import getopt
+    optlist,args = getopt.getopt(argv[1:],"gri:s:D:")
+
+    for opt,arg in optlist:
+        if opt == '-g':
+            os.chdir(os.path.join(os.path.dirname(__file__), 'grm'))
+        elif opt == '-D':
+            defines.union(arg.split(","))
+        elif opt == '-i':
+            if args:
+                print_usage()
+            else:
+                interact(arg, defines=defines, reverse=reverse)
+            return
+        elif opt == '-s':
+            if args:
+                print_usage()
+            else:
+                save(arg)
+            return
+        elif opt == '-r':
+            reverse = True
+
+    if len(args) == 0:
+        interact(os.path.join(os.path.dirname(__file__), 'grm', 'main.grmc'))
+        #os.chdir(os.path.join(os.path.dirname(__file__), 'grm'))
+        #interact('main.grm')
+    elif len(args) == 2:
+        trans_file(args[0], args[1], defines=defines, reverse=reverse)
+    else:
+        print_usage()
 
 if __name__ == "__main__":
-    defines = set()
-    import getopt
-    optlist,args = getopt.getopt(sys.argv[1:],"gis")
-    flags = {opt[0] for opt in optlist}
-    if '-g' in flags:
-        os.chdir(os.path.join(os.path.dirname(__file__), 'grm'))
-    elif '-D' in flags:
-        if len(args) == 1:
-            defines.union(args[0].split(","))
-        else:
-            print_usage()
-    if '-i' in flags:
-        if len(args) == 1:
-            interact(args[0])
-        else:
-            print_usage()
-    elif '-s' in flags:
-        if len(args) == 1:
-            save(args[0])
-        else:
-            print_usage()
-    else:
-        if len(args) == 0:
-            interact(os.path.join(os.path.dirname(__file__), 'grm', 'main.grmc'))
-            #os.chdir(os.path.join(os.path.dirname(__file__), 'grm'))
-            #interact('main.grm')
-        elif len(args) == 2:
-            trans_file(args[0], args[1])
-        else:
-            print_usage()
+    main(sys.argv)
 

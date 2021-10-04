@@ -1,0 +1,669 @@
+# Sample German Grammar (c) 2021 by Mehmet Dolgun m.dolgun@yahoo.com
+# For german->english translation run "python -m GLRParser.main -gi german.grm"
+# For english->german translation run "python -m GLRParser.main -gri german.grm"
+# e.g.  I have seen the mothers of these children <-> ich habe die Mütter dieser Kinder gesehen
+# e.g   he gave the man a book <-> er gab der Frau ein Buch
+
+S -> NP(case=nom) : NP()
+S -> NP(case=nom,num,per) VP : NP() VP
+
+BNP -> N                     : N              [per=3]
+BNP -> AdjW N                : AdjW N         [per=3]     
+
+NP -> Det N                  : Det N          [per=3]
+NP -> Det AdjW N             : Det AdjW N     [per=3]
+NP -> Indef N                : Indef N        [per=3]
+NP -> Indef AdjM N           : Indef AdjM N   [per=3]
+NP -> AdjS N                 : AdjS N         [per=3]
+NP -> Pron                   : Pron 
+NP -> DemPron                : DemPron        [per=3]
+NP -> NP-1 NP-2(case=gen)    : NP-1 of NP-2() [per=3]
+
+
+VP -> V PPS : V PPS
+VP -> V NP(case=acc) PPS : V NP() PPS
+VP -> V NP-1(case=dat) NP-2(case=acc) PPS : V NP-1() NP-2() PPS
+
+VP -> Will PPS Vinf : Will Vinf PPS
+VP -> Will NP(case=acc) PPS Vinf: Will Vinf NP() PPS
+VP -> Will NP-1(case=dat) NP-2(case=acc) PPS Vinf: Will Vinf  NP-1() NP-2() PPS
+
+VP -> Have PPS Vpp : Have Vpp PPS
+VP -> Have NP(case=acc) PPS Vpp : Have Vpp NP() PPS 
+VP -> Have NP-1(case=dat) NP-2(case=acc) PPS Vpp : Have Vpp NP-1() NP-2() PPS 
+
+VP -> Vsein NP(case=nom) PPS : Vsein NP() PPS
+VP -> Vsein PP() PPS : Vsein PP() PPS 
+
+PP -> Prep NP : Prep NP
+PP -> PrepDet BNP : PrepDet BNP
+
+PPS -> PP() PPS : PP() PPS
+PPS ->
+
+Det -> der : the [num=sng,case=nom,gen=mas]
+Det -> das : the [num=sng,case=nom,gen=neu]
+Det -> die : the [num=sng,case=nom,gen=fem]
+Det -> die : the [num=plr,case=nom]
+
+Det -> den : the [num=sng,case=acc,gen=mas]
+Det -> das : the [num=sng,case=acc,gen=neu]
+Det -> die : the [num=sng,case=acc,gen=fem]
+Det -> die : the [num=plr,case=acc]
+
+Det -> dem : the [num=sng,case=dat,gen=mas]
+Det -> dem : the [num=sng,case=dat,gen=neu]
+Det -> der : the [num=sng,case=dat,gen=fem]
+Det -> den : the [num=plr,case=dat]
+
+Det -> des : the [num=sng,case=gen,gen=mas]
+Det -> des : the [num=sng,case=gen,gen=neu]
+Det -> der : the [num=sng,case=gen,gen=fem]
+Det -> der : the [num=plr,case=gen]
+
+
+
+Det -> dieser : this   [num=sng,case=nom,gen=mas]
+Det -> dieses : this   [num=sng,case=nom,gen=neu]
+Det -> diese  : this   [num=sng,case=nom,gen=fem]
+Det -> diese  : these  [num=plr,case=nom]
+
+Det -> diesen : this   [num=sng,case=acc,gen=mas]
+Det -> dieses : this   [num=sng,case=acc,gen=neu]
+Det -> diese  : this   [num=sng,case=acc,gen=fem]
+Det -> diese  : these  [num=plr,case=acc]
+
+Det -> diesem : this   [num=sng,case=dat,gen=mas]
+Det -> diesem : this   [num=sng,case=dat,gen=neu]
+Det -> dieser : this   [num=sng,case=dat,gen=fem]
+Det -> diesen : these  [num=plr,case=dat]
+
+Det -> dieses : this   [num=sng,case=gen,gen=mas]
+Det -> dieses : this   [num=sng,case=gen,gen=neu]
+Det -> dieser : this   [num=sng,case=gen,gen=fem]
+Det -> dieser : these  [num=plr,case=gen]
+
+
+DemPron -> der    : this  [num=sng,case=nom,gen=mas]
+DemPron -> das    : this  [num=sng,case=nom,gen=neu]
+DemPron -> die    : this  [num=sng,case=nom,gen=fem]
+DemPron -> die    : these [num=plr,case=nom]
+
+DemPron -> den    : this  [num=sng,case=acc,gen=mas]
+DemPron -> das    : this  [num=sng,case=acc,gen=neu]
+DemPron -> die    : this  [num=sng,case=acc,gen=fem]
+DemPron -> die    : these [num=plr,case=acc]
+
+DemPron -> dem    : this  [num=sng,case=dat,gen=mas]
+DemPron -> dem    : this  [num=sng,case=dat,gen=neu]
+DemPron -> der    : this  [num=sng,case=dat,gen=fem]
+DemPron -> denen  : these [num=plr,case=dat]
+
+DemPron -> dessen : this  [num=sng,case=gen,gen=mas]
+DemPron -> dessen : this  [num=sng,case=gen,gen=neu]
+DemPron -> deren  : this  [num=sng,case=gen,gen=fem]
+DemPron -> deren  : these [num=plr,case=gen]
+
+
+Indef -> ein    : a     [num=sng,case=nom,gen=mas]
+Indef -> ein    : a     [num=sng,case=nom,gen=neu]
+Indef -> eine   : a     [num=sng,case=nom,gen=fem]
+Indef -> eine   : a     [num=plr,case=nom]
+
+Indef -> einen  : a     [num=sng,case=acc,gen=mas]
+Indef -> ein    : a     [num=sng,case=acc,gen=neu]
+Indef -> eine   : a     [num=sng,case=acc,gen=fem]
+Indef -> eine   : a     [num=plr,case=acc]
+
+Indef -> einem  : a     [num=sng,case=dat,gen=mas]
+Indef -> einem  : a     [num=sng,case=dat,gen=neu]
+Indef -> einer  : a     [num=sng,case=dat,gen=fem]
+Indef -> einen  : a     [num=plr,case=dat]
+
+Indef -> eines  : a     [num=sng,case=gen,gen=mas]
+Indef -> eines  : a     [num=sng,case=gen,gen=neu]
+Indef -> einer  : a     [num=sng,case=gen,gen=fem]
+Indef -> einer  : a     [num=plr,case=gen]
+
+Indef -> kein   : no     [num=sng,case=nom,gen=mas]
+Indef -> kein   : no     [num=sng,case=nom,gen=neu]
+Indef -> keine  : no     [num=sng,case=nom,gen=fem]
+Indef -> keine  : no     [num=plr,case=nom]
+
+Indef -> keinen : no     [num=sng,case=acc,gen=mas]
+Indef -> kein   : no     [num=sng,case=acc,gen=neu]
+Indef -> keine  : no     [num=sng,case=acc,gen=fem]
+Indef -> keine  : no     [num=plr,case=acc]
+
+Indef -> keinem : no     [num=sng,case=dat,gen=mas]
+Indef -> keinem : no     [num=sng,case=dat,gen=neu]
+Indef -> keiner : no     [num=sng,case=dat,gen=fem]
+Indef -> keinen : no     [num=plr,case=dat]
+
+Indef -> keines : no     [num=sng,case=gen,gen=mas]
+Indef -> keines : no     [num=sng,case=gen,gen=neu]
+Indef -> keiner : no     [num=sng,case=gen,gen=fem]
+Indef -> keiner : no     [num=plr,case=gen]
+
+
+Pron -> ich    : i     [num=sng,per=1,case=nom]
+Pron -> mich   : me    [num=sng,per=1,case=acc]
+Pron -> mir    : me    [num=sng,per=1,case=dat]
+
+Pron -> du     : you   [num=sng,per=2,case=nom]
+Pron -> dich   : you   [num=sng,per=2,case=acc]
+Pron -> dir    : you   [num=sng,per=2,case=dat]
+
+Pron -> er     : he    [num=sng,per=3,case=nom]
+Pron -> ihn    : him   [num=sng,per=3,case=acc]
+Pron -> ihm    : him   [num=sng,per=3,case=dat]
+
+Pron -> sie    : she   [num=sng,per=3,case=nom]
+Pron -> sie    : her   [num=sng,per=3,case=acc]
+Pron -> ihr    : her   [num=sng,per=3,case=dat]
+
+Pron -> es     : it    [num=sng,per=3,case=nom]
+Pron -> es     : it    [num=sng,per=3,case=acc]
+Pron -> ihm    : it    [num=sng,per=3,case=dat]
+
+Pron -> wir    : we    [num=plr,per=1,case=nom]
+Pron -> uns    : us    [num=plr,per=1,case=acc]
+Pron -> uns    : us    [num=plr,per=1,case=dat]
+
+Pron -> ihr    : you   [num=plr,per=2,case=nom]
+Pron -> euch   : you   [num=plr,per=2,case=acc]
+Pron -> euch   : you   [num=plr,per=2,case=dat]
+
+Pron -> sie    : you   [num=plr,per=3,case=nom]
+Pron -> sie    : you   [num=plr,per=3,case=acc]
+Pron -> ihnen  : you   [num=plr,per=3,case=dat]
+
+
+Pron -> meiner  : mine  [num=sng,case=nom,gen=mas]
+Pron -> meins   : mine  [num=sng,case=nom,gen=neu]
+Pron -> meine   : mine  [num=sng,case=nom,gen=fem]
+Pron -> meine   : mine  [num=plr,case=nom]
+
+Pron -> meinen  : mine  [num=sng,case=acc,gen=mas]
+Pron -> meins   : mine  [num=sng,case=acc,gen=neu]
+Pron -> meine   : mine  [num=sng,case=acc,gen=fem]
+Pron -> meine   : mine  [num=plr,case=acc]
+
+Pron -> meinem  : mine  [num=sng,case=dat,gen=mas]
+Pron -> meinem  : mine  [num=sng,case=dat,gen=neu]
+Pron -> meiner  : mine  [num=sng,case=dat,gen=fem]
+Pron -> meinen  : mine  [num=plr,case=dat]
+
+Pron -> deiner  : yours [num=sng,case=nom,gen=mas]
+Pron -> deins   : yours [num=sng,case=nom,gen=neu]
+Pron -> deine   : yours [num=sng,case=nom,gen=fem]
+Pron -> deine   : yours [num=plr,case=nom]
+
+Pron -> deinen  : yours [num=sng,case=acc,gen=mas]
+Pron -> deins   : yours [num=sng,case=acc,gen=neu]
+Pron -> deine   : yours [num=sng,case=acc,gen=fem]
+Pron -> deine   : yours [num=plr,case=acc]
+
+Pron -> deinem  : yours [num=sng,case=dat,gen=mas]
+Pron -> deinem  : yours [num=sng,case=dat,gen=neu]
+Pron -> deiner  : yours [num=sng,case=dat,gen=fem]
+Pron -> deinen  : yours [num=plr,case=dat]
+
+Pron -> seiner  : his   [num=sng,case=nom,gen=mas]
+Pron -> seins   : his   [num=sng,case=nom,gen=neu]
+Pron -> seine   : his   [num=sng,case=nom,gen=fem]
+Pron -> seine   : his   [num=plr,case=nom]
+
+Pron -> seinen  : his   [num=sng,case=acc,gen=mas]
+Pron -> seins   : his   [num=sng,case=acc,gen=neu]
+Pron -> seine   : his   [num=sng,case=acc,gen=fem]
+Pron -> seine   : his   [num=plr,case=acc]
+
+Pron -> seinem  : his   [num=sng,case=dat,gen=mas]
+Pron -> seinem  : his   [num=sng,case=dat,gen=neu]
+Pron -> seiner  : his   [num=sng,case=dat,gen=fem]
+Pron -> seinen  : his   [num=plr,case=dat]
+
+Pron -> ihrer   : hers  [num=sng,case=nom,gen=mas]
+Pron -> ihrs    : hers  [num=sng,case=nom,gen=neu]
+Pron -> ihre    : hers  [num=sng,case=nom,gen=fem]
+Pron -> ihre    : hers  [num=plr,case=nom]
+
+Pron -> ihren   : hers  [num=sng,case=acc,gen=mas]
+Pron -> ihrs    : hers  [num=sng,case=acc,gen=neu]
+Pron -> ihre    : hers  [num=sng,case=acc,gen=fem]
+Pron -> ihre    : hers  [num=plr,case=acc]
+
+Pron -> ihrem   : hers  [num=sng,case=dat,gen=mas]
+Pron -> ihrem   : hers  [num=sng,case=dat,gen=neu]
+Pron -> ihrer   : hers  [num=sng,case=dat,gen=fem]
+Pron -> ihren   : hers  [num=plr,case=dat]
+
+
+
+Indef -> mein   : my    [num=sng,case=nom,gen=mas]
+Indef -> mein   : my    [num=sng,case=nom,gen=neu]
+Indef -> meine  : my    [num=sng,case=nom,gen=fem]
+Indef -> meine  : my    [num=plr,case=nom]
+
+Indef -> meinen : my    [num=sng,case=acc,gen=mas]
+Indef -> mein   : my    [num=sng,case=acc,gen=neu]
+Indef -> meine  : my    [num=sng,case=acc,gen=fem]
+Indef -> meine  : my    [num=plr,case=acc]
+
+Indef -> meinem : my    [num=sng,case=dat,gen=mas]
+Indef -> meinem : my    [num=sng,case=dat,gen=neu]
+Indef -> meiner : my    [num=sng,case=dat,gen=fem]
+Indef -> meinen : my    [num=plr,case=dat]
+
+Indef -> meines : my    [num=sng,case=gen,gen=mas]
+Indef -> meines : my    [num=sng,case=gen,gen=neu]
+Indef -> meiner : my    [num=sng,case=gen,gen=fem]
+Indef -> meiner : my    [num=plr,case=gen]
+
+Indef -> dein   : your  [num=sng,case=nom,gen=mas]
+Indef -> dein   : your  [num=sng,case=nom,gen=neu]
+Indef -> deine  : your  [num=sng,case=nom,gen=fem]
+Indef -> deine  : your  [num=plr,case=nom]
+
+Indef -> deinen : your  [num=sng,case=acc,gen=mas]
+Indef -> dein   : your  [num=sng,case=acc,gen=neu]
+Indef -> deine  : your  [num=sng,case=acc,gen=fem]
+Indef -> deine  : your  [num=plr,case=acc]
+
+Indef -> deinem : your  [num=sng,case=dat,gen=mas]
+Indef -> deinem : your  [num=sng,case=dat,gen=neu]
+Indef -> deiner : your  [num=sng,case=dat,gen=fem]
+Indef -> deinen : your  [num=plr,case=dat]
+
+Indef -> deines : your  [num=sng,case=gen,gen=mas]
+Indef -> deines : your  [num=sng,case=gen,gen=neu]
+Indef -> deiner : your  [num=sng,case=gen,gen=fem]
+Indef -> deiner : your  [num=plr,case=gen]
+
+
+Indef -> sein   : his | its  [num=sng,case=nom,gen=mas]
+Indef -> sein   : his | its  [num=sng,case=nom,gen=neu]
+Indef -> seine  : his | its  [num=sng,case=nom,gen=fem]
+Indef -> seine  : his | its  [num=plr,case=nom]
+
+Indef -> seinen : his | its  [num=sng,case=acc,gen=mas]
+Indef -> sein   : his | its  [num=sng,case=acc,gen=neu]
+Indef -> seine  : his | its  [num=sng,case=acc,gen=fem]
+Indef -> seine  : his | its  [num=plr,case=acc]
+
+Indef -> seinem : his | its  [num=sng,case=dat,gen=mas]
+Indef -> seinem : his | its  [num=sng,case=dat,gen=neu]
+Indef -> seiner : his | its  [num=sng,case=dat,gen=fem]
+Indef -> seinen : his | its  [num=plr,case=dat]
+
+Indef -> seines : his | its  [num=sng,case=gen,gen=mas]
+Indef -> seines : his | its  [num=sng,case=gen,gen=neu]
+Indef -> seiner : his | its  [num=sng,case=gen,gen=fem]
+Indef -> seiner : his | its  [num=plr,case=gen]
+
+Indef -> ihr    : her | your | their [num=sng,case=nom,gen=mas]
+Indef -> ihr    : her | your | their [num=sng,case=nom,gen=neu]
+Indef -> ihre   : her | your | their [num=sng,case=nom,gen=fem]
+Indef -> ihre   : her | your | their [num=plr,case=nom]
+
+Indef -> ihren  : her | your | their [num=sng,case=acc,gen=mas]
+Indef -> ihr    : her | your | their [num=sng,case=acc,gen=neu]
+Indef -> ihre   : her | your | their [num=sng,case=acc,gen=fem]
+Indef -> ihre   : her | your | their [num=plr,case=acc]
+
+Indef -> ihrem  : her | your | their [num=sng,case=dat,gen=mas]
+Indef -> ihrem  : her | your | their [num=sng,case=dat,gen=neu]
+Indef -> ihrer  : her | your | their [num=sng,case=dat,gen=fem]
+Indef -> ihren  : her | your | their [num=plr,case=dat]
+
+Indef -> ihres  : her | your [num=sng,case=gen,gen=mas]
+Indef -> ihres  : her | your [num=sng,case=gen,gen=neu]
+Indef -> ihrer  : her | your [num=sng,case=gen,gen=fem]
+Indef -> ihrer  : her | your [num=plr,case=gen]
+
+Indef -> unser    : our        [num=sng,case=nom,gen=mas]
+Indef -> unser    : our        [num=sng,case=nom,gen=neu]
+Indef -> unsere   : our        [num=sng,case=nom,gen=fem]
+Indef -> unsere   : our        [num=plr,case=nom]
+
+Indef -> unseren  : our        [num=sng,case=acc,gen=mas]
+Indef -> unser    : our        [num=sng,case=acc,gen=neu]
+Indef -> unsere   : our        [num=sng,case=acc,gen=fem]
+Indef -> unsere   : our        [num=plr,case=acc]
+
+Indef -> unserem  : our        [num=sng,case=dat,gen=mas]
+Indef -> unserem  : our        [num=sng,case=dat,gen=neu]
+Indef -> unserer  : our        [num=sng,case=dat,gen=fem]
+Indef -> unseren  : our        [num=plr,case=dat]
+
+Indef -> unseres  : our        [num=sng,case=gen,gen=mas]
+Indef -> unseres  : our        [num=sng,case=gen,gen=neu]
+Indef -> unserer  : our        [num=sng,case=gen,gen=fem]
+Indef -> unserer  : our        [num=plr,case=gen]
+
+Indef -> euer     : your        [num=sng,case=nom,gen=mas]
+Indef -> euer     : your        [num=sng,case=nom,gen=neu]
+Indef -> euere    : your        [num=sng,case=nom,gen=fem]
+Indef -> euere    : your        [num=plr,case=nom]
+
+Indef -> eueren   : your        [num=sng,case=acc,gen=mas]
+Indef -> euer     : your        [num=sng,case=acc,gen=neu]
+Indef -> euere    : your        [num=sng,case=acc,gen=fem]
+Indef -> euere    : your        [num=plr,case=acc]
+
+Indef -> euerem   : your        [num=sng,case=dat,gen=mas]
+Indef -> euerem   : your        [num=sng,case=dat,gen=neu]
+Indef -> euerer   : your        [num=sng,case=dat,gen=fem]
+Indef -> eueren   : your        [num=plr,case=dat]
+
+Indef -> eueres   : your        [num=sng,case=gen,gen=mas]
+Indef -> eueres   : your        [num=sng,case=gen,gen=neu]
+Indef -> euerer   : your        [num=sng,case=gen,gen=fem]
+Indef -> euerer   : your        [num=plr,case=gen]
+
+N -> mann    : man       [num=sng,gen=mas,case=~gen]
+N -> männer  : men       [num=plr,case=~dat]
+N -> mannes  : man       [num=sng,gen=mas,case=gen]
+N -> männern : men       [num=plr,case=dat]
+
+N -> vater   : father    [num=sng,gen=mas,case=~gen]
+N -> väter   : fathers   [num=plr,case=~dat]
+N -> vaters  : father    [num=sng,gen=mas,case=gen]
+N -> vätern  : fathers   [num=plr,case=dat]
+
+N -> frau    : woman     [num=sng,gen=fem]
+N -> frauen  : women     [num=plr]
+
+N -> mutter  : mother    [num=sng,gen=fem]
+N -> mütter  : mothers   [num=plr]
+
+N -> kind    : child     [num=sng,gen=neu,case=~gen]
+N -> kinder  : children  [num=plr,case=~dat]
+N -> kindes  : child     [num=sng,gen=neu,case=gen]
+N -> kindern : children  [num=plr,case=dat]
+
+N -> buch    : book	 [num=sng,gen=neu,case=~gen]
+N -> bücher  : books	 [num=plr,case=~dat]
+N -> buches  : book      [num=sng,gen=neu,case=gen]
+N -> büchern : books     [num=plr,case=dat]
+
+N -> haus    : house     [num=sng,gen=neu,case=~gen]
+N -> häuser  : houses	 [num=plr,case=~dat]
+N -> hauses  : house     [num=sng,gen=neu,case=gen]
+N -> häusern : houses    [num=plr,case=dat]
+
+Will -> werde   : will   [num=sng,per=1,tense=pres]
+Will -> wirst   : will   [num=sng,per=2,tense=pres]
+Will -> wird    : will   [num=sng,per=3,tense=pres]
+Will -> werden  : will   [num=plr,per=1,tense=pres]
+Will -> werdet  : will   [num=plr,per=2,tense=pres]
+Will -> werden  : will   [num=plr,per=3,tense=pres]
+
+Will -> wurde   : would  [num=sng,per=1,tense=past]
+Will -> wurdest : would  [num=sng,per=2,tense=past]
+Will -> wurde   : would  [num=sng,per=3,tense=past]
+Will -> wurden  : would  [num=plr,per=1,tense=past]
+Will -> wurdet  : would  [num=plr,per=2,tense=past]
+Will -> wurden  : would  [num=plr,per=3,tense=past]
+
+
+Vsein -> bin  : am  [num=sng,per=1,tense=pres]
+Vsein -> bist : are [num=sng,per=2,tense=pres]
+Vsein -> ist  : is  [num=sng,per=3,tense=pres]
+Vsein -> sind : are [num=plr,per=1,tense=pres]
+Vsein -> seid : are [num=plr,per=2,tense=pres]
+Vsein -> sind : are [num=plr,per=3,tense=pres]
+
+Vsein -> war    : was    [num=sng,per=1,tense=past]
+Vsein -> warst  : were   [num=sng,per=2,tense=past]
+Vsein -> war    : was    [num=sng,per=3,tense=past]
+Vsein -> waren  : were   [num=plr,per=1,tense=past]
+Vsein -> wart   : were   [num=plr,per=2,tense=past]
+Vsein -> waren  : were   [num=plr,per=3,tense=past]
+
+Have -> habe    : have   [num=sng,per=1,tense=pres]
+Have -> hast    : have   [num=sng,per=2,tense=pres]
+Have -> hat     : has    [num=sng,per=3,tense=pres]
+Have -> haben   : have   [num=plr,per=1,tense=pres]
+Have -> habt    : have   [num=plr,per=2,tense=pres]
+Have -> haben   : have   [num=plr,per=3,tense=pres]
+
+Have -> hatte   : had    [num=sng,per=1,tense=past]
+Have -> hattest : had    [num=sng,per=2,tense=past]
+Have -> hatte   : had    [num=sng,per=3,tense=past]
+Have -> hatten  : had    [num=plr,per=1,tense=past]
+Have -> hatte   : had    [num=plr,per=2,tense=past]
+Have -> hatten  : had    [num=plr,per=3,tense=past]
+
+
+Vinf -> haben  : have
+Vpp  -> gehabt : had
+
+
+V -> gehe    : go     [num=sng,per=1,tense=pres]
+V -> gehst   : go     [num=sng,per=2,tense=pres]
+V -> geht    : goes   [num=sng,per=3,tense=pres]
+V -> gehen   : go     [num=plr,per=1,tense=pres]
+V -> geht    : go     [num=plr,per=2,tense=pres]
+V -> gehen   : go     [num=plr,per=3,tense=pres]
+
+V -> ging    : went   [num=sng,per=1,tense=past]
+V -> gingst  : went   [num=sng,per=2,tense=past]
+V -> ging    : went   [num=sng,per=3,tense=past]
+V -> gingen  : went   [num=plr,per=1,tense=past] 
+V -> gingt   : went   [num=plr,per=2,tense=past]
+V -> gingen  : went   [num=plr,per=3,tense=past]
+
+Vinf -> gehen    : go
+Vpp  -> gegangen : gone
+
+V -> komme   : come   [num=sng,per=1,tense=pres]
+V -> kommst  : come   [num=sng,per=2,tense=pres]
+V -> kommt   : comes  [num=sng,per=3,tense=pres]
+V -> kommen  : come   [num=plr,per=1,tense=pres]
+V -> kommt   : come   [num=plr,per=2,tense=pres]
+V -> kommen  : come   [num=plr,per=3,tense=pres]
+
+V -> kam     : came   [num=sng,per=1,tense=past]
+V -> kamst   : came   [num=sng,per=2,tense=past]
+V -> kam     : came   [num=sng,per=3,tense=past]
+V -> kamen   : came   [num=plr,per=1,tense=past]
+V -> kamt    : came   [num=plr,per=2,tense=past]
+V -> kamen   : came   [num=plr,per=3,tense=past]
+
+Vinf -> kommen   : come
+Vpp  -> gekommen : come
+
+V -> schlafe   : sleep    [num=sng,per=1,tense=pres]
+V -> schläfst  : sleep    [num=sng,per=2,tense=pres]
+V -> schläft   : sleeps   [num=sng,per=3,tense=pres]
+V -> schlafen  : sleep    [num=plr,per=1,tense=pres]
+V -> schlaft   : sleep    [num=plr,per=2,tense=pres]
+V -> schlafen  : sleep    [num=plr,per=3,tense=pres]
+
+V -> schlief   : slept    [num=sng,per=1,tense=past]
+V -> schliefst : slept    [num=sng,per=2,tense=past]
+V -> schlief   : slept    [num=sng,per=3,tense=past]
+V -> schliefen : slept    [num=plr,per=1,tense=past]
+V -> schlieft  : slept    [num=plr,per=2,tense=past]
+V -> schliefen : slept    [num=plr,per=3,tense=past]
+
+Vinf -> schlafen : sleep
+Vpp -> geschlafen : slept
+
+V -> sehe      : see      [num=sng,per=1,tense=pres]
+V -> siehst    : see      [num=sng,per=2,tense=pres]
+V -> sieht     : sees     [num=sng,per=3,tense=pres]
+V -> sehen     : see      [num=plr,per=1,tense=pres]
+V -> seht      : see      [num=plr,per=2,tense=pres]
+V -> sehen     : see      [num=plr,per=3,tense=pres]
+
+V -> sah       : saw      [num=sng,per=1,tense=past]
+V -> sahst     : saw      [num=sng,per=2,tense=past]
+V -> sah       : saw      [num=sng,per=3,tense=past]
+V -> sahen     : saw      [num=plr,per=1,tense=past]
+V -> saht      : saw      [num=plr,per=2,tense=past]
+V -> sahen     : saw      [num=plr,per=3,tense=past]
+
+Vinf -> sehen   : see
+Vpp  -> gesehen : seen
+
+
+V -> gebe      : give     [num=sng,per=1,tense=pres]
+V -> gibst     : give     [num=sng,per=2,tense=pres]
+V -> gibt      : gives    [num=sng,per=3,tense=pres]
+V -> geben     : give     [num=plr,per=1,tense=pres]
+V -> gebt      : give     [num=plr,per=2,tense=pres]
+V -> geben     : give     [num=plr,per=3,tense=pres]
+
+V -> gab       : gave     [num=sng,per=1,tense=past]
+V -> gabst     : gave     [num=sng,per=2,tense=past]
+V -> gab       : gave     [num=sng,per=3,tense=past]
+V -> gaben     : gave     [num=plr,per=1,tense=past]
+V -> gabt      : gave     [num=plr,per=2,tense=past]
+V -> gaben     : gave     [num=plr,per=3,tense=past]
+
+Vinf -> geben   : give
+Vpp  -> gegeben : given 
+
+Prep -> für       : for     [case=acc]
+Prep -> ohne      : without [case=acc]
+
+Prep -> aus       : from    [case=dat]
+Prep -> von       : of      [case=dat]
+Prep -> bei       : by      [case=dat]
+Prep -> zu        : to      [case=dat]
+Prep -> mit       : with    [case=dat]
+
+Prep -> oberhalb  : above   [case=gen]
+Prep -> unterhalb : beneath [case=gen]
+Prep -> außerhalb : outside [case=gen]
+Prep -> innerhalb : inside  [case=gen]
+Prep -> wegen     : because [case=gen]
+
+Prep -> an        : at      [case=acc]
+Prep -> an        : at      [case=dat]
+Prep -> in        : into    [case=acc]
+Prep -> in        : in      [case=dat]
+Prep -> auf       : onto    [case=acc]
+Prep -> auf       : on      [case=dat]
+
+ 
+PrepDet -> am  : at the    [num=sng,case=dat,gen=mas]
+PrepDet -> am  : at the    [num=sng,case=dat,gen=neu]
+PrepDet -> im  : in the    [num=sng,case=dat,gen=mas]
+PrepDet -> im  : in the    [num=sng,case=dat,gen=neu]
+PrepDet -> ans : at the    [num=sng,case=acc,gen=neu]
+PrepDet -> ins : into the  [num=sng,case=acc,gen=neu]
+PrepDet -> zum : to the    [num=sng,case=dat,gen=mas]
+PrepDet -> zum : to the    [num=sng,case=dat,gen=neu]
+PrepDet -> zur : to the    [num=sng,case=dat,gen=fem]
+
+#an dem : am
+#in dem : im
+#bei dem : beim
+#von dem : vom
+#zu dem : zum
+#zu der : zur
+#an das : ans
+#auf das : aufs
+#für das : fürs
+#in das : ins
+#um das : ums
+
+
+AdjS -> kleiner : small [num=sng,case=nom,gen=mas] #der
+AdjS -> kleines : small [num=sng,case=nom,gen=neu] #das
+AdjS -> kleine  : small [num=sng,case=nom,gen=fem] #die
+AdjS -> kleine  : small [num=plr,case=nom]         #die
+
+AdjS -> kleinen : small [num=sng,case=acc,gen=mas] #den  
+AdjS -> kleines : small [num=sng,case=acc,gen=neu] #das
+AdjS -> kleine  : small [num=sng,case=acc,gen=fem] #die
+AdjS -> kleine  : small [num=plr,case=acc]         #die
+
+AdjS -> kleinem : small [num=sng,case=dat,gen=mas] #dem
+AdjS -> kleinem : small [num=sng,case=dat,gen=neu] #dem
+AdjS -> kleiner : small [num=sng,case=dat,gen=fem] #der
+AdjS -> kleinen : small [num=plr,case=dat]         #den
+
+AdjS -> kleinen : small [num=sng,case=gen,gen=mas] #des
+AdjS -> kleinen : small [num=sng,case=gen,gen=neu] #des
+AdjS -> kleiner : small [num=sng,case=gen,gen=fem] #der
+AdjS -> kleiner : small [num=plr,case=gen]         #der
+
+AdjW -> kleine  : small [num=sng,case=nom,gen=mas] #der
+AdjW -> kleine  : small [num=sng,case=nom,gen=neu] #das
+AdjW -> kleine  : small [num=sng,case=nom,gen=fem] #die
+AdjW -> kleinen : small [num=plr,case=nom]         #die
+
+AdjW -> kleinen : small [num=sng,case=acc,gen=mas] #den  
+AdjW -> kleine  : small [num=sng,case=acc,gen=neu] #das
+AdjW -> kleine  : small [num=sng,case=acc,gen=fem] #die
+AdjW -> kleinen : small [num=plr,case=acc]         #die
+
+AdjW -> kleinen : small [case=dat]
+AdjW -> kleinen : small [case=gen]
+
+AdjM -> kleiner : small [num=sng,case=nom,gen=mas] #der
+AdjM -> kleines : small [num=sng,case=nom,gen=neu] #das
+AdjM -> kleine  : small [num=sng,case=nom,gen=fem] #die
+AdjM -> kleinen : small [num=plr,case=nom]         #die
+
+AdjM -> kleinen : small [num=sng,case=acc,gen=mas] #den  
+AdjM -> kleines : small [num=sng,case=acc,gen=neu] #das
+AdjM -> kleine  : small [num=sng,case=acc,gen=fem] #die
+AdjM -> kleinen : small [num=plr,case=acc]         #die
+
+AdjM -> kleinen : small [case=dat]
+AdjM -> kleinen : small [case=gen]
+
+
+AdjS -> guter   : good  [num=sng,case=nom,gen=mas] #der
+AdjS -> gutes   : good  [num=sng,case=nom,gen=neu] #das
+AdjS -> gute    : good  [num=sng,case=nom,gen=fem] #die
+AdjS -> gute    : good  [num=plr,case=nom]         #die
+
+AdjS -> guten   : good  [num=sng,case=acc,gen=mas] #den  
+AdjS -> gutes   : good  [num=sng,case=acc,gen=neu] #das
+AdjS -> gute    : good  [num=sng,case=acc,gen=fem] #die
+AdjS -> gute    : good  [num=plr,case=acc]         #die
+
+AdjS -> gutem   : good  [num=sng,case=dat,gen=mas] #dem
+AdjS -> gutem   : good  [num=sng,case=dat,gen=neu] #dem
+AdjS -> guter   : good  [num=sng,case=dat,gen=fem] #der
+AdjS -> guten   : good  [num=plr,case=dat]         #den
+
+AdjS -> guten   : good  [num=sng,case=gen,gen=mas] #des
+AdjS -> guten   : good  [num=sng,case=gen,gen=neu] #des
+AdjS -> guter   : good  [num=sng,case=gen,gen=fem] #der
+AdjS -> guter   : good  [num=plr,case=gen]         #der
+
+AdjW -> gute    : good  [num=sng,case=nom,gen=mas] #der
+AdjW -> gute    : good  [num=sng,case=nom,gen=neu] #das
+AdjW -> gute    : good  [num=sng,case=nom,gen=fem] #die
+AdjW -> guten   : good  [num=plr,case=nom]         #die
+
+AdjW -> guten   : good  [num=sng,case=acc,gen=mas] #den  
+AdjW -> gute    : good  [num=sng,case=acc,gen=neu] #das
+AdjW -> gute    : good  [num=sng,case=acc,gen=fem] #die
+AdjW -> guten   : good  [num=plr,case=acc]         #die
+
+AdjW -> guten   : good  [case=dat]
+AdjW -> guten   : good  [case=gen]
+
+
+AdjM -> guter   : good  [num=sng,case=nom,gen=mas] #der
+AdjM -> gutes   : good  [num=sng,case=nom,gen=neu] #das
+AdjM -> gute    : good  [num=sng,case=nom,gen=fem] #die
+AdjM -> guten   : good  [num=plr,case=nom]         #die
+
+AdjM -> guten   : good  [num=sng,case=acc,gen=mas] #den  
+AdjM -> gutes   : good  [num=sng,case=acc,gen=neu] #das
+AdjM -> gute    : good  [num=sng,case=acc,gen=fem] #die
+AdjM -> guten   : good  [num=plr,case=acc]         #die
+
+AdjM -> guten   : good  [case=dat]
+AdjM -> guten   : good  [case=gen] 
+
