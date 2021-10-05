@@ -301,9 +301,9 @@ class Parser:
         for src_key,dst_key in copy_keys:
             src_val = src[src_key]
             dst_val = dst.get(dst_key)
-            if dst_val is None or dst_val.startswith('~') and dst_val[1:] != src_val:
+            if dst_val is None or type(dst_val)==str and dst_val.startswith('~') and dst_val[1:] != src_val:
                 new_items[dst_key] = src_val
-            elif src_val.startswith('~') and src_val[1:] != dst_val:
+            elif type(src_val)==str and src_val.startswith('~') and src_val[1:] != dst_val:
                 pass
             elif src_val != dst_val:
                 raise UnifyError("UnifyU error feat=%s src=%s dst=%s" % (dst_key, src_val, dst_val))
@@ -345,9 +345,9 @@ class Parser:
             if src_val is None:
                 continue
             dst_val = dst.get(dst_key)
-            if dst_val is None or dst_val.startswith('~') and dst_val[1:] != src_val:
+            if dst_val is None or type(dst_val)==str and dst_val.startswith('~') and dst_val[1:] != src_val:
                 new_items[dst_key] = src_val
-            elif src_val.startswith('~') and src_val[1:] != dst_val:
+            elif type(src_val)==str and src_val.startswith('~') and src_val[1:] != dst_val:
                 pass
             elif src_val != dst_val:
                 raise UnifyError("UnifyU error feat=%s src=%s dst=%s" % (dst_key, src_val, dst_val))
