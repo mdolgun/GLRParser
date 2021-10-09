@@ -537,10 +537,20 @@ i must agree with you @ sizinle aynı fikirde olmalıyım
 i want the car which she likes @ onun hoşlandığı arabayı istiyorum
 what do you think they want @ onların ne istediklerini düşünüyorsunuz
 who do you think you are @ kim olduğunuzu düşünüyorsunuz
+i know what you did last summer @ geçen yaz ne yaptığınızı biliyorum
+Judges appear increasingly frustrated with Trump's legal claims about election @ yargıçlar seçim hakkındaki Trump'un yasal iddialarıyla artan bir şekilde hüsrana uğramışa görünüyorlar
+police used tear gas to try to disperse protesters @ protestocular dağıtmayı denemek için polis gözyaşartıcı gaz kullandı
+i'm tired of society's unrealistic beauty standards @ topluluğun gerçekçi olmayan güzellik standartlarından bıktım
+members of the flight crew started going over safety instructions @ uçuş ekibinin üyeleri güvenlik talimatlarının üzerlerinden geçmeye başladılar
+his sudden departure had demonstrated how unreliable he was @ ani ayrılışı onun ne kadar güvenilmez olduğunu göstermişti
+attacks were threatening to destabilize the government @ saldırılar yönetimi istikrarsızlaştırmakla tehdit ediyordular
+After I devoured the pancakes I went to the garage @ krepleri yiyip bitirmemden sonra garaja gittim
 
 i am a man @ bir adamım
 they are good @ onlar iyi
 who are you @ kimsiniz
+how are you @ nasılsınız
+where is he @ o nerede
 what is it @ o ne
 
 the car is turned on @ araba açılır
@@ -660,6 +670,8 @@ this shirt needs washing @ bu gömleğin yıkanmaya ihtiyacı var | bu gömleği
 this shirt needs to be washed @ bu gömleğin yıkanmaya ihtiyacı var | bu gömleğin yıkanması gerekiyor
 i need to eat something @ bir şey yemeye ihtiyacım var | bir şey yemem gerekiyor
 i need some coffee @ biraz kahveye ihtiyacım var
+
+
 
 
 

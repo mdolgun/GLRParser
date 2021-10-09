@@ -1787,9 +1787,9 @@ i hate the car i am afraid of @ korktuğum arabadan nefret ediyorum | korkuyor o
   OK
 
 i hate the car i am afraid to turn on @ açmaktan korktuğum arabadan nefret ediyorum | açmaktan korkuyor olduğum arabadan nefret ediyorum
+  *sırt çevirmekten korktuğum arabadan nefret ediyorum {61}
   *açmaktan korktuğum arabadan nefret ediyorum {61}
   *heyecanlandırmaktan korktuğum arabadan nefret ediyorum {61}
-  *sırt çevirmekten korktuğum arabadan nefret ediyorum {61}
   *çevirmekten korktuğum arabadan nefret ediyorum {63}
   *çevirmekten korktuğum arabadan nefret ediyorum {63}
   OK
@@ -1893,6 +1893,122 @@ who do you think you are @ kim olduğunuzu düşünüyorsunuz
   *kim olduğunuzu düşünüyorsunuz {35}
   OK
 
+i know what you did last summer @ geçen yaz ne yaptığınızı biliyorum
+  *geçen yaz ne yaptığınızı biliyorum {45}
+  *geçen yaz ne yaptığınızı biliyorum {45}
+  OK
+
+Judges appear increasingly frustrated with Trump's legal claims about election @ yargıçlar seçim hakkındaki trump'un yasal iddialarıyla artan bir şekilde hüsrana uğramışa görünüyorlar
+  *yargıçlar seçim hakkındaki trump'un yasal iddialarıyla artan bir şekilde hüsrana uğramışa görünüyorlar {681}
+  *yargıçlar seçim hakkındaki trump'un yasal iddialarıyla artan bir şekilde yılmışa görünüyorlar {681}
+  *yargıçlar trump'un yasal iddialarıyla seçim hakkında artan bir şekilde hüsrana uğramışa görünüyorlar {682}
+  *yargıçlar trump'un yasal iddialarıyla seçim hakkında artan bir şekilde yılmışa görünüyorlar {682}
+  *yargıçlar seçim hakkındaki trump'un yasal talepleriyle artan bir şekilde hüsrana uğramışa görünüyorlar {691}
+  *yargıçlar seçim hakkındaki trump'un yasal talepleriyle artan bir şekilde yılmışa görünüyorlar {691}
+  *yargıçlar trump'un yasal talepleriyle seçim hakkında artan bir şekilde hüsrana uğramışa görünüyorlar {692}
+  *yargıçlar trump'un yasal talepleriyle seçim hakkında artan bir şekilde yılmışa görünüyorlar {692}
+  *hakemler seçim hakkındaki trump'un yasal iddialarıyla artan bir şekilde hüsrana uğramışa görünüyorlar {731}
+  *hakemler seçim hakkındaki trump'un yasal iddialarıyla artan bir şekilde yılmışa görünüyorlar {731}
+  *hakemler trump'un yasal iddialarıyla seçim hakkında artan bir şekilde hüsrana uğramışa görünüyorlar {732}
+  *hakemler trump'un yasal iddialarıyla seçim hakkında artan bir şekilde yılmışa görünüyorlar {732}
+  *hakemler seçim hakkındaki trump'un yasal talepleriyle artan bir şekilde hüsrana uğramışa görünüyorlar {741}
+  *hakemler seçim hakkındaki trump'un yasal talepleriyle artan bir şekilde yılmışa görünüyorlar {741}
+  *hakemler trump'un yasal talepleriyle seçim hakkında artan bir şekilde hüsrana uğramışa görünüyorlar {742}
+  *hakemler trump'un yasal talepleriyle seçim hakkında artan bir şekilde yılmışa görünüyorlar {742}
+  OK
+
+police used tear gas to try to disperse protesters @ protestocular dağıtmayı denemek için polis gözyaşartıcı gaz kullandı
+  *protestocular dağıtmayı denemek için polis gözyaşartıcı gaz kullandı {483}
+  *protestocular dağıtmayı denemek için polisler gözyaşartıcı gaz kullandılar {484}
+  *protestocular dağıtmayı denemek için polis yırtık gazı kullandı {486}
+  *protestocular dağıtmayı denemek için polis gözyaş gazı kullandı {486}
+  *protestocular dağıtmayı denemek için polisler yırtık gazı kullandılar {487}
+  *protestocular dağıtmayı denemek için polisler gözyaş gazı kullandılar {487}
+  *protestocular dağıtmayı denemek için polis yırtık benzini kullandı {506}
+  *protestocular dağıtmayı denemek için polis gözyaş benzini kullandı {506}
+  *protestocular dağıtmayı denemek için polisler yırtık benzini kullandılar {507}
+  *protestocular dağıtmayı denemek için polisler gözyaş benzini kullandılar {507}
+  *protestocular dağıtmayı denemek için kullanılan polisler gazı yırtarlar {589}
+  *protestocular dağıtmayı denemek için kullanılan polisler benzini yırtarlar {609}
+  *protestocular dağıtmak için polis denemeye gözyaşartıcı gaz kullandı {688}
+  *protestocular dağıtmak için polisler denemeye gözyaşartıcı gaz kullandılar {689}
+  *protestocular dağıtmak için polis denemeye gözyaşartıcı gaz kullandı {689}
+  *protestocular dağıtmak için polisler denemeye gözyaşartıcı gaz kullandılar {690}
+  *protestocular dağıtmak için polis denemeye yırtık gazı kullandı {691}
+  *protestocular dağıtmak için polis denemeye gözyaş gazı kullandı {691}
+  *protestocular dağıtmak için polisler denemeye yırtık gazı kullandılar {692}
+  *protestocular dağıtmak için polisler denemeye gözyaş gazı kullandılar {692}
+  *protestocular dağıtmak için polis denemeye yırtık gazı kullandı {692}
+  *protestocular dağıtmak için polis denemeye gözyaş gazı kullandı {692}
+  *protestocular dağıtmak için polisler denemeye yırtık gazı kullandılar {693}
+  *protestocular dağıtmak için polisler denemeye gözyaş gazı kullandılar {693}
+  *protestocular dağıtmak için polis denemeye yırtık benzini kullandı {711}
+  *protestocular dağıtmak için polis denemeye gözyaş benzini kullandı {711}
+  *protestocular dağıtmak için polisler denemeye yırtık benzini kullandılar {712}
+  *protestocular dağıtmak için polisler denemeye gözyaş benzini kullandılar {712}
+  *protestocular dağıtmak için polis denemeye yırtık benzini kullandı {712}
+  *protestocular dağıtmak için polis denemeye gözyaş benzini kullandı {712}
+  *protestocular dağıtmak için polisler denemeye yırtık benzini kullandılar {713}
+  *protestocular dağıtmak için polisler denemeye gözyaş benzini kullandılar {713}
+  *protestocular dağıtmak için kullanılan polisler denemeye gazı yırtarlar {794}
+  *protestocular dağıtmak için kullanılan polisler denemeye gazı yırtarlar {795}
+  *protestocular dağıtmak için kullanılan polisler denemeye benzini yırtarlar {814}
+  *protestocular dağıtmak için kullanılan polisler denemeye benzini yırtarlar {815}
+  OK
+
+i'm tired of society's unrealistic beauty standards @ topluluğun gerçekçi olmayan güzellik standartlarından bıktım
+  *topluluğun gerçekçi olmayan güzellik standartlarından bıktım {151}
+  OK
+
+members of the flight crew started going over safety instructions @ uçuş ekibinin üyeleri güvenlik talimatlarının üzerlerinden geçmeye başladılar
+  *uçuş ekibinin üyeleri güvenlik talimatlarının üzerlerinden geçmeye başladılar {277}
+  *uçuş tayfasının üyeleri güvenlik talimatlarının üzerlerinden geçmeye başladılar {277}
+  *uçuş ekibinin üyeleri güvenlik talimatlarının üzerlerinden geçmeyi başlattılar {277}
+  *uçuş tayfasının üyeleri güvenlik talimatlarının üzerlerinden geçmeyi başlattılar {277}
+  *uçuş ekibinin organları güvenlik talimatlarının üzerlerinden geçmeye başladılar {327}
+  *uçuş tayfasının organları güvenlik talimatlarının üzerlerinden geçmeye başladılar {327}
+  *uçuş ekibinin organları güvenlik talimatlarının üzerlerinden geçmeyi başlattılar {327}
+  *uçuş tayfasının organları güvenlik talimatlarının üzerlerinden geçmeyi başlattılar {327}
+  *uçuş ekibinin üyeleri güvenlik talimatlarının üstlerinde gitmeye başladılar {380}
+  *uçuş tayfasının üyeleri güvenlik talimatlarının üstlerinde gitmeye başladılar {380}
+  *uçuş ekibinin üyeleri güvenlik talimatlarının üstlerinde gitmeyi başlattılar {380}
+  *uçuş tayfasının üyeleri güvenlik talimatlarının üstlerinde gitmeyi başlattılar {380}
+  *uçuş ekibinin üyeleri güvenlik talimatlarının üstlerinde gitmeye başladılar {380}
+  *uçuş tayfasının üyeleri güvenlik talimatlarının üstlerinde gitmeye başladılar {380}
+  *uçuş ekibinin üyeleri güvenlik talimatlarının üstlerinde gitmeyi başlattılar {380}
+  *uçuş tayfasının üyeleri güvenlik talimatlarının üstlerinde gitmeyi başlattılar {380}
+  *uçuş ekibinin organları güvenlik talimatlarının üstlerinde gitmeye başladılar {430}
+  *uçuş tayfasının organları güvenlik talimatlarının üstlerinde gitmeye başladılar {430}
+  *uçuş ekibinin organları güvenlik talimatlarının üstlerinde gitmeyi başlattılar {430}
+  *uçuş tayfasının organları güvenlik talimatlarının üstlerinde gitmeyi başlattılar {430}
+  *uçuş ekibinin organları güvenlik talimatlarının üstlerinde gitmeye başladılar {430}
+  *uçuş tayfasının organları güvenlik talimatlarının üstlerinde gitmeye başladılar {430}
+  *uçuş ekibinin organları güvenlik talimatlarının üstlerinde gitmeyi başlattılar {430}
+  *uçuş tayfasının organları güvenlik talimatlarının üstlerinde gitmeyi başlattılar {430}
+  OK
+
+his sudden departure had demonstrated how unreliable he was @ ani ayrılışı onun ne kadar güvenilmez olduğunu göstermişti
+  *ani ayrılışı onun ne olduğunu göstermişti {58}
+  *sahip olunan ani ayrılışı onun ne olduğunu gösterdi {164}
+  *alınan ani ayrılışı onun ne olduğunu gösterdi {174}
+  NOK
+
+attacks were threatening to destabilize the government @ saldırılar yönetimi istikrarsızlaştırmakla tehdit ediyordular
+  *saldırılar yönetimi istikrarsızlaştırmakla tehdit ediyordular {161}
+  *saldırılar hükümeti istikrarsızlaştırmakla tehdit ediyordular {211}
+  OK
+
+After I devoured the pancakes I went to the garage @ krepleri yiyip bitirmemden sonra garaja gittim
+  *krepleri yiyip bitirmemden sonra garaja gittim {172}
+  *krepleri yiyip bitirmemden sonra tamirhaneye gittim {222}
+  *i krepleri yiyip bitirmesinden sonra garaja gittim {378}
+  *krepleri yiyip bitirmemden sonra i garaja gitti {378}
+  *i krepleri yiyip bitirmesinden sonra tamirhaneye gittim {428}
+  *krepleri yiyip bitirmemden sonra i tamirhaneye gitti {428}
+  *i krepleri yiyip bitirmesinden sonra i garaja gitti {584}
+  *i krepleri yiyip bitirmesinden sonra i tamirhaneye gitti {634}
+  OK
+
 i am a man @ bir adamım
   *bir adamım {30}
   OK
@@ -1903,6 +2019,14 @@ they are good @ onlar iyi
 
 who are you @ kimsiniz
   *kimsiniz {18}
+  OK
+
+how are you @ nasılsınız
+  *nasılsınız {15}
+  OK
+
+where is he @ o nerede
+  *o nerede {16}
   OK
 
 what is it @ o ne
@@ -1923,8 +2047,8 @@ i am stared at @ bana göz dikilir
   OK
 
 i want the car that the man turns on @ adamın açtığı arabayı istiyorum
-  *adamın heyecanlandırdığı arabayı istiyorum {68}
   *adamın açtığı arabayı istiyorum {68}
+  *adamın heyecanlandırdığı arabayı istiyorum {68}
   *adamın sırt çevirdiği arabayı istiyorum {68}
   *adamın çevirdiği arabayı istiyorum {70}
   *adamın çevirdiği arabayı istiyorum {70}
@@ -2024,9 +2148,9 @@ the car that i give you turns @ size verdiğim araba döner
   OK
 
 the car that i turn on turns @ açtığım araba döner
+  *heyecanlandırdığım araba döner {50}
   *sırt çevirdiğim araba döner {50}
   *açtığım araba döner {50}
-  *heyecanlandırdığım araba döner {50}
   *çevirdiğim araba döner {52}
   *dönüşleri heyecanlandırdığım araba {142}
   *sıraları heyecanlandırdığım araba {142}
@@ -2038,20 +2162,20 @@ the car that i turn on turns @ açtığım araba döner
 
 who do you order to turn @ kime dönmesini emredersiniz
   *kime dönmesini emredersiniz {33}
-  *dönüşe kim sipariş edersiniz {239}
-  *sıraya kim sipariş edersiniz {239}
   *dönüşe kim emredersiniz {239}
   *sıraya kim emredersiniz {239}
+  *dönüşe kim sipariş edersiniz {239}
+  *sıraya kim sipariş edersiniz {239}
   OK
 
 whom do they put up with @ kime katlanırlar
   *kime katlanırlar {22}
+  *birlikte kimi ortaya koyarlar {24}
+  *birlikte kimi yerleştirirler {24}
+  *birlikte kimi asarlar {24}
   *birlikte kimi yerleştirirler {24}
   *birlikte kimi ortaya koyarlar {24}
   *birlikte kimi asarlar {24}
-  *birlikte kimi asarlar {24}
-  *birlikte kimi ortaya koyarlar {24}
-  *birlikte kimi yerleştirirler {24}
   OK
 
 give me a car @ bana bir araba ver
@@ -2064,12 +2188,12 @@ what do you give me @ bana ne verirsiniz
 
 who do you put up with @ kime katlanırsınız
   *kime katlanırsınız {22}
+  *birlikte kimi ortaya koyarsınız {24}
+  *birlikte kimi yerleştirirsiniz {24}
+  *birlikte kimi asarsınız {24}
   *birlikte kimi yerleştirirsiniz {24}
   *birlikte kimi ortaya koyarsınız {24}
   *birlikte kimi asarsınız {24}
-  *birlikte kimi asarsınız {24}
-  *birlikte kimi ortaya koyarsınız {24}
-  *birlikte kimi yerleştirirsiniz {24}
   OK
 
 put up with the man @ adama katlan
@@ -2078,12 +2202,12 @@ put up with the man @ adama katlan
   OK
 
 who do you put up with the man @ *
+  *adamla kimi ortaya koyarsınız {141}
+  *adamla kimi yerleştirirsiniz {141}
+  *adamla kimi asarsınız {141}
   *adamla kimi yerleştirirsiniz {141}
   *adamla kimi ortaya koyarsınız {141}
   *adamla kimi asarsınız {141}
-  *adamla kimi asarsınız {141}
-  *adamla kimi ortaya koyarsınız {141}
-  *adamla kimi yerleştirirsiniz {141}
   NOK
 
 turn the car @ arabayı çevir
@@ -2135,8 +2259,8 @@ i turn @ dönerim
 put the car on @ arabayı giy
   *arabayı aç {27}
   *arabayı giy {27}
-  *arabayı tak {27}
   *arabayı sergile {27}
+  *arabayı tak {27}
   *arabayı koy {29}
   OK
 
@@ -2446,4 +2570,4 @@ i need some coffee @ biraz kahveye ihtiyacım var
   *biraz kahveye ihtiyacım var {37}
   OK
 
-input=524, translated=523, matched=521 exp_err=0 ignored=0 success=%99
+input=534, translated=533, matched=530 exp_err=0 ignored=0 success=%99
