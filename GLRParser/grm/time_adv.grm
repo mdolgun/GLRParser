@@ -1,0 +1,56 @@
+WeekDay -> monday    : pazartesi
+WeekDay -> tuesday   : salı
+WeekDay -> wednesday : çarşamba
+WeekDay -> thursday  : perşembe
+WeekDay -> friday    : cuma
+WeekDay -> saturday  : cumartesi
+WeekDay -> sunday    : pazar
+
+WeekDays -> mondays    : pazartesi
+WeekDays -> tuesdays   : salı
+WeekDays -> wednesdays : çarşamba
+WeekDays -> thursdays  : perşembe
+WeekDays -> fridays    : cuma
+WeekDays -> saturdays  : cumartesi
+WeekDays -> sundays    : pazar
+
+Month -> january   : ocak
+Month -> february  : şubat
+Month -> march     : mart
+Month -> april     : nisan
+Month -> may       : mayıs
+Month -> june      : haziran
+Month -> july      : temmuz
+Month -> august    : ağustos
+Month -> september : eylül
+Month -> october   : ekim
+Month -> november  : kasım
+Month -> december  : aralık
+
+TimePrefix -> next | the next : sonraki
+TimePrefix -> last | the last : geçen
+TimePrefix -> previous | the previous : önceki
+TimePrefix -> following | the following : ertesi
+TimePrefix -> every : her
+TimePrefix -> all | all the : bütün
+TimePrefix -> this : bu
+TimePrefix -> that : o
+
+Time -> time      : sefer
+Time -> second    : saniye
+Time -> minute    : dakika
+Time -> hour      : saat
+Time -> week      : hafta
+Time -> month     : ay
+Time -> year      : yıl
+Time -> morning   : sabah
+Time -> afternoon : öğleden sonra
+Time -> evening   : akşam
+Time -> night     : gece
+Time -> noon      : öğle
+Time -> midnight  : geceyarısı
+Time -> spring    : ilkbahar
+Time -> summer    : yaz
+Time -> fall | autumn : sonbahar
+Time -> winter    : kış
+

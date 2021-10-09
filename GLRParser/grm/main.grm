@@ -1,5 +1,6 @@
 %auto_dict true
 %include numbers.grm
+%include time_adv.grm
 
 %ifdef PARSE_DICT
 	%include adj.out
@@ -22,7 +23,6 @@ S -> WhCase() SentInv       : SentInv               [+gap,gapw=*WhCase]
 S -> RelAdv SentInv         : SentInv               [-gap,reladv=*RelAdv]
 S -> SentImp                : SentImp               [-gap]
 S -> NP'                    : NP'
-
 
 
 S -> so AuxBePos Subj        : Subj "- dA" öyle  [+pron]
@@ -962,24 +962,19 @@ AdvStart ->
 AdvEnd -> Adv : Adv
 AdvEnd ->
 
-AdvP -> Adv : Adv # slowly, fast
-AdvP -> AdvComp : daha AdvComp # more slowly, faster
-AdvP -> AdvSup : en AdvSup # most slowly, fastest
+AdvP -> Adv        : Adv # slowly, fast
+AdvP -> AdvComp    : daha AdvComp # more slowly, faster
+AdvP -> AdvSup     : en AdvSup # most slowly, fastest
 AdvP -> AdvAdj Adv : AdvAdj Adv # very slowly, pretty fast
 AdvP -> AdvAdjComp AdvComp : AdvAdjComp daha AdvComp # much slowly, too much fast
 
-Adv -> on WeekDay : WeekDay günü
+Adv -> on WeekDay     : WeekDay günü
 Adv -> on WeekDayPlur : WeekDayPlur günleri
-WeekDay -> monday    : pazartesi
-WeekDay -> tuesday   : salı
-WeekDay -> wednesday : çarşamba
-WeekDay -> thursday  : perşembe
-WeekDay -> friday    : cuma
-WeekDay -> saturday  : cumartesi
-WeekDay -> sunday    : pazar
-Adv -> on Month : Month ayında
-Month -> january  : ocak
-Month -> february : şubat
+Adv -> on Month       : Month ayında
+
+Adv -> TimePrefix WeekDay : TimePrefix WeekDay # next/this/every etc. monday
+Adv -> TimePrefix Month   : TimePrefix Month   # next/this/every etc. january
+Adv -> TimePrefix Time    : TimePrefix Time    # next/this/every etc. time, hour, week, morning, summer etc.
 
 PP -> Prep PPObj : PPObj Prep {100}
 PP -> as Pred : Pred olarak {100}
