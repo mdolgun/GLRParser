@@ -3,9 +3,21 @@
 %include time_adv.grm
 
 %ifdef PARSE_DICT
+	%macro V V',Vs',Ving',Ved',Ven'
+	%macro N NSing,NPlur
+	%macro NHead NHeadSing,NHeadPlur
+	%macro NC NCSing,NCPlur
+	%macro NCHead NCHeadSing,NCHeadPlur
+	%macro Adj Adj,AdjComp,AdjSup
+	%include_form V "MWALD_verb.txt"
+	%include_form N "MWALD_noun.txt"
+	%include_form NC "MWALD_noun.txt"
+	%include_form NHead "MWALD_noun.txt"
+	%include_form NCHead "MWALD_noun.txt"
+	%include_form Adj "MWALD_adj.txt"
+	%include noun.out
 	%include adj.out
 	%include adv.out
-	%include noun.out
 	%include verb.out
 %else
 	%ifdef LOAD_DICT
@@ -426,7 +438,11 @@ ObjInf -> Inf(-gap)                     : GapW(gapw,case) Inf() -mA ObjPoss(oper
 ObjInfDik -> Obj(oper,onum,neg) Inf(gap)   : Obj(case) Inf(gapw) -DHk? ObjPoss 
 ObjInfDik -> Inf(-gap)                     : GapW(gapw,case) Inf() -DHk? ObjPoss(oper=3,onum=sing) [+gap]
 
-ObjBInf -> Obj(oper,onum,neg) BInf(gap) : Obj(case) BInf(gapw) -mA ObjPoss 
+ObjBInf -> Obj(oper,onum,neg) BInf(gap) : Obj(case) BInf(gapw) -mA ObjPoss # they helped me do it
+ThatBInf -> That Subj Should BInf(gap) : Subj BInf(gapw) -mA SubjPoss [scase=+in] # they demanded (that) he resign
+
+Should -> should
+Should ->
 
 ObjGer -> Obj(oper,onum,neg) Ger(gap)   : Obj(case) Ger(gapw) -mA ObjPoss 
 ObjGer -> Ger(-gap)                     : GapW(gapw,case) Ger() -mA ObjPoss(oper=3,onum=sing) [+gap]
@@ -917,37 +933,37 @@ V -> V'(+,+gap) PPS(-gap) AdvEnd : PPS() AdvEnd V'                  [+gap]
 V -> V'(+,-gap) PPS(+gap) AdvEnd : PPS(gapw) AdvEnd V'              [+gap]
 V -> V'(+,-gap) PPS(-gap) AdvEnd : PPS() TRelAdv AdvEnd V'          [-gap]
 
-#V -> V-1 and V-2 : V-1 ve V-2
+V -> V-1 and V-2 : V-1 ve V-2
 
 Vs -> Vs'(+,+gap) PPS(-gap) AdvEnd : PPS() AdvEnd Vs'               [+gap]
 Vs -> Vs'(+,-gap) PPS(+gap) AdvEnd : PPS(gapw) AdvEnd Vs'           [+gap]
 Vs -> Vs'(+,-gap) PPS(-gap) AdvEnd : PPS() TRelAdv AdvEnd Vs'       [-gap]
 
-#Vs -> Vs-1 and Vs-2 : Vs-1 ve Vs-2
+Vs -> Vs-1 and Vs-2 : Vs-1 ve Vs-2
 
 Ving -> Ving'(+,+gap) PPS(-gap) AdvEnd : PPS() AdvEnd Ving'         [+gap]
 Ving -> Ving'(+,-gap) PPS(+gap) AdvEnd : PPS(gapw) AdvEnd Ving'     [+gap]
 Ving -> Ving'(+,-gap) PPS(-gap) AdvEnd : PPS() TRelAdv AdvEnd Ving' [-gap]
 
-#Ving -> Ving-1 and Ving-2 : Ving-1 ve Ving-2
+Ving -> Ving-1 and Ving-2 : Ving-1 ve Ving-2
 
 Ved -> Ved'(+,+gap) PPS(-gap) AdvEnd : PPS() AdvEnd Ved'            [+gap]
 Ved -> Ved'(+,-gap) PPS(+gap) AdvEnd : PPS(gapw) AdvEnd Ved'        [+gap]
 Ved -> Ved'(+,-gap) PPS(-gap) AdvEnd : PPS() TRelAdv AdvEnd Ved'    [-gap]
 
-#Ved -> Ved-1 and Ved-2 : Ved-1 ve Ved-2
+Ved -> Ved-1 and Ved-2 : Ved-1 ve Ved-2
 
 Ven -> Ven'(+,+gap) PPS(-gap) AdvEnd : PPS() AdvEnd Ven'            [+gap]
 Ven -> Ven'(+,-gap) PPS(+gap) AdvEnd : PPS(gapw) AdvEnd Ven'        [+gap]
 Ven -> Ven'(+,-gap) PPS(-gap) AdvEnd : PPS() TRelAdv AdvEnd Ven'    [-gap]
 
-#Ven -> Ven-1 and Ven-2 : Ven-1 ve Ven-2
+Ven -> Ven-1 and Ven-2 : Ven-1 ve Ven-2
 
 Vpass -> Vpass'(+,+gap) By() PPS(-gap) AdvEnd : PPS() By() AdvEnd Vpass'         [+gap]
 Vpass -> Vpass'(+,-gap) By() PPS(+gap) AdvEnd : PPS(gapw) By() AdvEnd Vpass'     [+gap]
 Vpass -> Vpass'(+,-gap) By() PPS(-gap) AdvEnd : PPS() By() TRelAdv AdvEnd Vpass' [-gap]
 
-#Vpass -> Vpass-1 and Vpass-2 : Vpass-1 ve Vpass-2
+Vpass -> Vpass-1 and Vpass-2 : Vpass-1 ve Vpass-2
 
 By -> by PPObj : PPObj taraf ObjPoss -dAn
 By ->

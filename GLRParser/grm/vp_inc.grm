@@ -49,6 +49,7 @@ Adj -> white : beyaz
 %form V bore,bores,boring,bored,bored
 %form V buy,buys,buying,bought,bought
 %form V confuse,confuses,confusing,confused,confused
+%form V demand,demands,demanding,demanded,demanded
 %form V do,does,doing,did,done
 %form V give,gives,giving,gave,given
 %form V go,goes,going,went,gone
@@ -81,6 +82,7 @@ $V -> $agree with Obj'        : Obj' aynı fikirde [case=+le,+pred]
 #$V -> $bore Obj'             : Obj' can ObjPoss +i sık  [case=+in]
 $V -> $bore Obj'              : Obj' sık  [case=+i]
 $V -> $confuse Obj'           : Obj' kafa ObjPoss +i karıştır [case=+in]
+$V -> $demand ThatBInf(gap)   : ThatBInf(gapw) +i talep et
 $V -> $go                     : git? [-gap]
 $V -> $have Inf(gap)          : Inf(gapw) -mAk zorunda [+pred,+prog]
 $V -> $have Obj'              : Obj' SubjPoss [+pred,+exist,scase=+in,+pron3]
