@@ -120,7 +120,7 @@ class Grammar:
     re_NONTERM = r"\$?[_A-Z][-_A-Za-z0-9$]*'*"
     re_FEAT_NAME = "[a-z0-9_]+"
     re_FPARAM_NAME = r"@?{}|@?\*".format(re_FEAT_NAME)
-    re_TERM = r'''"([^"]*)"|(\$?[^|{:[_A-Z#!"][^|{:[#!\s]*)'''
+    re_TERM = r'''\$?"[^"]*"|\$?[^|{:[_A-Z#!"][^|{:[#!\s]*'''
 
     #re_FEAT_VALUE = r"\*{}|\*{}|{}".format(re_NONTERM, re_FEAT_NAME ,re_TERM)
     re_FEAT_VALUE = r"{}|\*{}|\*{}|[?!~]?[-+]?{}".format(re_NONTERM, re_NONTERM, re_FEAT_NAME ,re_FEAT_NAME)
@@ -315,7 +315,8 @@ class Grammar:
                     for _head,form in zip(head,self.forms[macro_name][word]):
                         for altform in form:
                             _left = left.copy()
-                            _left[idx] = left[idx].replace('$'+word, altform)
+                            #_left[idx] = left[idx].replace('$'+word, altform) # MD 19.03.2022
+                            _left = _left[:idx] + altform.split("-") + _left[idx+1:] # MD 19.03.2022
                             if term_only:
                                 self.trie.add(_left, Rule(_head,_left,right,feat,checklist,lparam,rparam,rcost,rcut) )
                                 #!self.trie.add(left, Rule(head,left,lparam,[(right,rparam,feat,checklist,rcost)]) )
@@ -494,7 +495,7 @@ class Grammar:
         #macro_name = self.get_nonterm()
         #self.get_token('->')
 
-        _,macro_name,items = self.buf.split()
+        _,macro_name,items = self.buf.split(maxsplit=2)
         if macro_name not in self.macros:
             raise GrammarError("Line:%d Macro not defined: %s" % (self.line_no,macro_name))
         cnt = len(self.macros[macro_name])

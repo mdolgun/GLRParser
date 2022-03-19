@@ -626,8 +626,8 @@ DetPron -> last | the last : sonuncu
 DetPron -> first | the first : ilk
 DetPron -> enough : yeteri kadar
 
-OfDet -> a lot of | lots of | a number of | plenty of : birçok [num=plur,+noplur]
-OfDet -> a lot of | lots of | plenty of : çok                  [num=sing]
+OfDet -> a lot of | lots of | heaps of | a raft of | plenty of | a number of : birçok [num=plur,+noplur]
+OfDet -> a lot of | lots of | heaps of | a raft of | plenty of : çok                  [num=sing]
 OfDet -> thousands of : binlerce   [num=plur,+noplur]
 OfDet -> hundreds of : yüzlerce    [num=plur,+noplur]
 OfDet -> millions of : milyonlarca [num=plur,+noplur] 

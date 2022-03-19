@@ -1,3 +1,13 @@
+%macro V V',Vs',Ving',Ved',Ven'
+%macro N NSing,NPlur
+%macro NHead NHeadSing,NHeadPlur
+%macro NC NCSing,NCPlur
+%macro NCHead NCHeadSing,NCHeadPlur
+%macro Adj Adj,AdjComp,AdjSup
+
+
+%form Adj up-to-date,more up-to-date,most up-to-date
+$Adj -> $up-to-date : güncel
 
 %suffix aç+aor açar
 %suffix bak+aor bakar
@@ -13,8 +23,6 @@
 %suffix sık+aor sıkar
 %suffix yap+aor yapar
 
-%macro N NSing,NPlur
-%macro NHead NHeadSing,NHeadPlur
 
 %form N school,schools
 %form N car,cars
@@ -43,7 +51,6 @@ $NHead -> $american : amerikalı
 NMod -> american : amerikan
 Adj -> white : beyaz
 
-%macro V V',Vs',Ving',Ved',Ven'
 
 %form V agree,agrees,agreeing,agreed,agreed
 %form V bore,bores,boring,bored,bored
@@ -162,6 +169,7 @@ Pred -> angry with Obj' : Obj' kızgın [case=+e]
 Pred -> aware of Obj' : Obj' farkında [case=+in]
 Pred -> used to Obj' : Obj' alışkın [case=+e]
 Pred -> likely Inf(gap) : Inf(gapw) -mA SubjPoss muhtemel
+
 
 
 Adj -> good : iyi
