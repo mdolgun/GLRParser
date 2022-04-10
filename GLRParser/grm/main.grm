@@ -33,7 +33,7 @@ S -> AdvStart SentNorm      : AdvStart SentNorm     [-gap]
 S -> SentInv                : SentInv               [+quest,-gap]
 S -> WhCase() SentInv       : SentInv               [+gap,gapw=*WhCase]
 S -> RelAdv SentInv         : SentInv               [-gap,reladv=*RelAdv]
-S -> SentImp                : SentImp               [-gap]
+S -> AdvStart SentImp       : AdvStart SentImp      [-gap]
 S -> NP'                    : NP'
 
 
@@ -50,6 +50,7 @@ AdvCl -> as if SentNorm         : sanki SentNorm gibi   [conn=mis,-gap]
 AdvCl -> if SentNorm Then       : SentNorm              [conn=if,-gap]
 AdvCl -> while SentNorm         : SentNorm              [conn=ken,-gap,+pron]
 AdvCl -> as SentNorm            : SentNorm              [conn=ken,-gap,+pron]
+AdvCl -> once SentNorm          : SentNorm -DA          [conn=dik,-gap]
 AdvCl -> when SentNorm          : SentNorm -DA          [conn=dik,-gap]
 AdvCl -> by the time SentNorm   : SentNorm -DA          [conn=dik,-gap]
 AdvCl -> now that SentNorm      : şimdi SentNorm için   [conn=dik,-gap]
@@ -58,22 +59,30 @@ AdvCl -> because SentNorm       : SentNorm için         [conn=dik,-gap]
 AdvCl -> as long as SentNorm    : SentNorm sürece       [conn=dik,-gap]
 AdvCl -> as soon as SentNorm    : SentNorm              [conn=ir_mez,-gap,+pron]
 AdvCl -> until SentNorm         : SentNorm +e kadar     [conn=en,-gap,+pron]
+
 AdvCl -> after SentNorm         : SentNorm +den sonra   [conn=me,-gap]
 AdvCl -> before SentNorm        : SentNorm +den önce    [conn=me,-gap]
 AdvCl -> unless SentNorm        : SentNorm -çA          [conn=medik,-gap,+pron]
+AdvCl -> though SentNorm        : SentNorm +e rağmen    [conn=me,-gap]
 AdvCl -> although SentNorm      : SentNorm +e rağmen    [conn=me,-gap]
 AdvCl -> even though SentNorm   : SentNorm +e rağmen    [conn=me,-gap]
 AdvCl -> as much as SentNorm    : SentNorm +e rağmen    [conn=me,-gap]
 AdvCl -> much as SentNorm       : SentNorm +e rağmen    [conn=me,-gap]
 
+AdvCl -> without BaseGerund(-gap) : BaseGerund() -mAdAn
 AdvCl -> after BaseGerund(-gap) : BaseGerund() -DHktAn sonra
 AdvCl -> before BaseGerund(-gap) : BaseGerund() -mAdAn önce
 AdvCl -> while BaseGerund(-gap) : BaseGerund() +aor -ken
+AdvCl -> when BaseGerund(-gap) : BaseGerund() +aor -ken
+AdvCl -> by BaseGerund(-gap) : BaseGerund() -YArAk
+AdvCl -> BaseGerund(-gap) : BaseGerund() -YArAk {100}
 
 AdvCl -> ForObjInf(-gap) : ForObjInf için {100}
 AdvCl -> Inf : Inf +mek için {100}
 AdvCl -> in order ForObjInf(-gap) : ForObjInf için
 AdvCl -> in order Inf : Inf +mek için 
+
+AdvCl -> based on Obj : Obj +e dayanarak
 
 Then -> then
 Then ->
@@ -150,6 +159,7 @@ SentImp -> VBe              : VBe
 SentImp -> don't VBe        : VBe -mA   [neg=1]
 SentImp -> do Not VBe       : VBe Neg
 SentImp -> let 's Not VBe   : VBe Neg -YAlHm
+SentImp -> let us Not VBe   : VBe Neg -YAlHm
 
 VBe -> V : V PredBe
 VBe -> be Pred : Pred ol 
@@ -565,10 +575,9 @@ Title -> governor : vali
 Title -> congressman : kongre üyesi
 Title -> prof | professor : profesör
 Title -> dr | doctor : doktor
-Title -> 
 Title -> NP1: NP1
+Title -> AG : AG # ruthless Putin
 
-NP1 -> OfDet OfNG : OfDet OfNG
 NP1 -> OfUnit() OfNG : OfUnit() OfNG
 NP1 -> DG OfNG : DG OfNG
 NP1 -> half NP(-nodef) : NP() +in_nopro yarısı
@@ -602,7 +611,7 @@ Pron2 -> everyone   : herkes       [+def]
 Pron2 -> everybody  : herkes       [+def]
 
 DetPron -> the other : diğeriN
-DetPron -> the others : diğerleriN
+DetPron -> the others | others : diğerleriN
 DetPron -> another : bir başkasıN
 DetPron -> all   : hep 
 DetPron -> both  : her iki 
@@ -618,44 +627,20 @@ DetPron -> some : bir kıs@ım
 DetPron -> many | several : birçok? 
 DetPron -> a few : biraz 
 DetPron -> few | the few: çok az 
-DetPron -> CardinalNumber | the CardinalNumber : CardinalNumber  # (the) two
-DetPron -> OrdinalNumber CardinalNumber| the OrdinalNumber CardinalNumber : OrdinalNumber -HncH CardinalNumber # (the) first two
-DetPron -> OrdinalNumber | the OrdinalNumber : OrdinalNumber -HncH # (the) first
-DetPron -> CardinalNumber OrdinalNumber | the CardinalNumber OrdinalNumber : OrdinalNumber +de CardinalNumber # one third, two fifths !!!Currently plural suffix not supported!!!
+DetPron -> CardinalAdv CardinalNumber               : CardinalAdv CardinalNumber  # (the) two
+DetPron -> CardinalAdv OrdinalNumber CardinalNumber : CardinalAdv OrdinalNumber -HncH CardinalNumber # (the) first two
+DetPron -> CardinalAdv OrdinalNumber                : CardinalAdv OrdinalNumber -HncH # (the) first
+DetPron -> CardinalAdv CardinalNumber OrdinalNumber : CardinalAdv OrdinalNumber +de CardinalNumber # one third, two fifths !!!Currently plural suffix not supported!!!
 DetPron -> last | the last : sonuncu 
 DetPron -> first | the first : ilk
 DetPron -> enough : yeteri kadar
 
-OfDet -> a lot of | lots of | heaps of | a raft of | plenty of | a number of : birçok [num=plur,+noplur]
-OfDet -> a lot of | lots of | heaps of | a raft of | plenty of : çok                  [num=sing]
-OfDet -> thousands of : binlerce   [num=plur,+noplur]
-OfDet -> hundreds of : yüzlerce    [num=plur,+noplur]
-OfDet -> millions of : milyonlarca [num=plur,+noplur] 
-OfDet -> dozens of : düzinelerce [num=plur,+noplur]
-OfDet -> tonnes of | tons of : tonlarca [num=plur,+noplur] 
+CardinalAdv -> about : yaklaşık 
+CardinalAdv -> roughly : yaklaşık
+CardinalAdv -> the
+CardinalAdv ->
 
 OfUnit -> DG AG Unit of : DG AG Bir Unit
-
-Unit -> piece   : parça  [num=sing]
-Unit -> pieces  : parça  [num=plur]
-Unit -> glass   : bardak [num=sing]
-Unit -> glasses : bardak [num=plur]
-Unit -> cup     : fincan [num=sing]
-Unit -> cups    : fincan [num=plur]
-Unit -> couple  : çift   [num=sing]
-Unit -> couples : çift   [num=plur]
-Unit -> pair    : çift   [num=sing]
-Unit -> pairs   : çift   [num=plur]
-Unit -> dozen   : düzine [num=sing]
-Unit -> dozens  : düzine [num=plur]
-Unit -> meter  | metre  : metre [num=sing]
-Unit -> meters | metres : metre [num=plur]
-Unit -> liter  | litre  : litre [num=sing]
-Unit -> liters | litres : litre [num=plur]
-Unit -> gram   | gramme  : gram [num=sing]
-Unit -> grams  | grammes : gram [num=plur]
-Unit -> kilogram  | kilogramme  : kilogram [num=sing]
-Unit -> kilograms | kilogrammes : kilogram [num=plur]
 
 OfNG -> AG NG : AG Bir NG NGSuf
 OfNG -> AG NG of OfNG() : AG Bir OfNG() NG NGSuf [+ng]
@@ -695,6 +680,9 @@ DG -> PreDet1 a | PreDet1 an  : PreDet1 [+indef,num=sing]
 DG -> another                 : bir başka [num=sing]
 DG -> half a | half an        : yarım  [+indef,+noa,num=sing]
 DG -> a OrdinalNumber         : OrdinalNumber [+indef,num=sing] # a second car
+DG -> Quant                   : Quant   # a lot of money,books
+DG -> QuantU                  : QuantU [num=sing] # a great deal of water
+DG -> QuantC                  : QuantC [num=plur,+noplur] # a great number of people
 
 PostDets -> PostDet PostDets : PostDet PostDets
 PostDets -> 
@@ -730,8 +718,6 @@ PostDet -> a little          : biraz  [+noplur]
 Any -> : herhangi bir ! [!neg,!quest]
 Any -> : hiç   
 
-#Det -> many | a lot of | lots of | plenty of | several  | a numer of : birçok  [num=plur,+noplur]
-#Det -> much | a lot of | lots of | plenty of            : çok       [num=sing]
 PostDet -> many | several : birçok  [num=plur,+noplur]
 PostDet -> much           : çok     [num=sing]
 PostDet -> CardinalNumber : CardinalNumber [+noplur]
@@ -775,6 +761,9 @@ AdjP -> AdjComp : daha AdjComp
 AdjP -> AdjSup : en AdjSup
 AdjP -> AdvAdj Adj : AdvAdj Adj
 AdjP -> AdvAdjComp AdjComp : AdvAdjComp daha AdjComp
+
+AdjComp -> less Adj : daha az Adj
+AdjSup -> least Adj : en az Adj
 
 Ones -> PossPron(pper=*per,pnum=*num)
 
@@ -991,6 +980,20 @@ Adv -> on Month       : Month ayında
 Adv -> TimePrefix WeekDay : TimePrefix WeekDay # next/this/every etc. monday
 Adv -> TimePrefix Month   : TimePrefix Month   # next/this/every etc. january
 Adv -> TimePrefix Time    : TimePrefix Time    # next/this/every etc. time, hour, week, morning, summer etc.
+Adv -> early WeekDay : WeekDay erken saatlerde
+Adv -> late WeekDay : WeekDay geç saatlerde
+Adv -> early Month : Month başı
+Adv -> late Month : Month sonu
+Adv -> early morning : sabah erken
+Adv -> late night : gece geç
+Adv -> late summer : yaz sonu
+Adv -> early summer : yaz başı
+Adv -> late fall : sonbahar sonu
+Adv -> early fall : sonbahar başı
+Adv -> late winter : kış sonu
+Adv -> early winter : kış başı
+Adv -> late spring : ilkbahar sonu
+Adv -> early spring : ilkbahar başı
 
 PP -> Prep PPObj : PPObj Prep {100}
 PP -> as Pred : Pred olarak {100}
