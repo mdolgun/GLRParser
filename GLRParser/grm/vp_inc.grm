@@ -23,7 +23,7 @@ $Adj -> $up-to-date : güncel
 %suffix sık+aor sıkar
 %suffix yap+aor yapar
 
-
+%form N house,houses
 %form N school,schools
 %form N car,cars
 %form N door,doors
@@ -37,6 +37,7 @@ $Adj -> $up-to-date : güncel
 %form NHead american,americans
 %form NHead white,whites
 
+$N -> $house : houses
 $N -> $car : araba
 $N -> $book : kitap?
 $N -> $door : kapı
@@ -45,6 +46,7 @@ $N -> $story : hikaye
 $N -> $television : televizyon
 $N -> $school : okul
 $N -> $note : not
+$N -> boarding $school : yatılı okul
 
 $NHead -> $american : amerikalı
 
@@ -164,11 +166,18 @@ PredVerb -> afraid SThat' : SThat' kork [case=+den,+prog,+pprog]
 
 PredVerb -> proud of Obj' : Obj' gurur duy [case=+le,+prog,+pprog]
 
+PredVerb -> late : Cok gecik  [-gap]
+PredVerb -> DGTime() late : DGTime() Cok gecik  [-gap]
 
-Pred -> angry with Obj' : Obj' kızgın [case=+e]
-Pred -> aware of Obj' : Obj' farkında [case=+in]
-Pred -> used to Obj' : Obj' alışkın [case=+e]
-Pred -> likely Inf(gap) : Inf(gapw) -mA SubjPoss muhtemel
+Time -> week : hafta  [num=sing]
+Time -> weeks : hafta  [num=plur]
+Time -> hour : saat  [num=sing]
+Time -> hours : saat  [num=plur]
+
+Pred' -> angry with Obj' : Obj' kızgın [case=+e]
+Pred' -> aware of Obj' : Obj' farkında [case=+in]
+Pred' -> used to Obj' : Obj' alışkın [case=+e]
+Pred' -> likely Inf(gap) : Inf(gapw) -mA SubjPoss muhtemel
 
 
 

@@ -552,7 +552,7 @@ class Grammar:
         cnt = len(self.macros[macro_name])
         with open(fname,"rt",encoding="utf-8") as f:
             for line_no,line in enumerate(f):
-                line = line.strip()
+                line = line.strip().lower()
                 if line and not line.startswith("#"):
                     items = line.split(",")
                     if len(items) != cnt:
