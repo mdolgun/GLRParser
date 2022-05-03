@@ -602,7 +602,9 @@ class Parser:
                 left = [self.make_tree_int(sub_edge) for sub_edge in alt_edge[1:]],
                 right = rule.right,#.copy(),
                 feat = rule.feat,
-                cost = rule.cost
+                cost = rule.cost,
+                start = edge[0],
+                end = edge[3]
             ) )
         return alt
 
@@ -655,6 +657,7 @@ class Parser:
         self.edges = edges
         self.words = words
         self.top_edge = (0,0,"S",inlen-1,fstate)
+        Tree.words = words
 
         act_states = [set() for i in range(inlen)] # active set of states for each position
         act_edges  = [set() for i in range(inlen)] # active set of edges for each position
