@@ -116,8 +116,8 @@ def post_process(option_list, post_processor):
                 post_process(alt, post_processor)
 class Tree:
     if not new_unify:
-        __slots__ = ('head', 'rule', 'ruleno', 'left', 'right', 'feat', 'cost') 
-        def __init__(self, head, rule, ruleno=None, left=empty_list, right=empty_list, feat=empty_dict, cost=0):
+        __slots__ = ('head', 'rule', 'ruleno', 'left', 'right', 'feat', 'cost','start','end') 
+        def __init__(self, head, rule, ruleno=None, left=empty_list, right=empty_list, feat=empty_dict, cost=0, start=0, end=0):
             self.head = head
             self.rule = rule
             self.ruleno = ruleno
@@ -125,6 +125,8 @@ class Tree:
             self.right = right
             self.feat = feat
             self.cost = cost
+            self.start = start
+            self.end = end
     else:
         __slots__ = ('head', 'rule', 'ruleno', 'left', 'right') # (head, rule, ruleno, left, [(right, feat, cost)])
         def __init__(self, head, rule, ruleno=None, left=empty_list, right=empty_list, feat=empty_dict, cost=0):
@@ -136,15 +138,66 @@ class Tree:
 
 
     def format(self):
-        """ returnes single-line formatted string representation of a tree """
+        """ return single-line formatted string representation of a tree """
         return " ".join(
             item if isinstance(item, str)
             else "{}({})".format(item[0].head, "|".join(alt.format() for alt in item))
             for item in self.left
         )
+
+    def dot_format_int(self,left=True):
+        """ return single-line formatted string representation of a tree """
+        return "\n".join(
+            '{} [label="{}"]\n{} -> {}'.format(id(item),item,id(self),id(item)) if isinstance(item, str)
+            else "\n".join(alt.dot_format_int(left) for alt in item) + "\n"
+                + "\n".join('{} [label="#{}",tooltip="{}"]\n{} -> {}'.format(
+                        id(alt), alt.ruleno,str(alt.rule).replace('"','')+"\\n"+format_feat(alt.feat), id(item), id(alt)
+                    ) for alt in item) + "\n"
+                + '{} [label="{}[{}:{}]",tooltip="{}"]\n{} -> {}'.format(id(item),item[0].head,item[0].start,item[0].end," ".join(Tree.words[item[0].start:item[0].end]),id(self),id(item))
+            for item in (self.left if left else self.right)
+        )
+
+    def dot_format(self):
+        return "digraph {{\n{}\n}}".format(self.dot_format_int())
+
+    def dot_formatr(self):
+        return "digraph {{\n{}\n}}".format(self.dot_format_int(False))
+
+    def min_format(self):
+        """ return single-line formatted string representation of a tree """
+        items = [
+            (item,None) if isinstance(item, str)
+            else (item[0].min_format(),item[0].head) if len(item)==1
+            else ("|".join(alt.min_format() for alt in item),item[0].head)
+            for item in self.left
+        ]
+        items = [item for item in items if item[0]]
+        if not items:
+            return ""
+        if len(items) > 1:
+            return " ".join("{}({})".format(item[1],item[0]) if item[1] else item[0] for item in items)
+        else:
+            return " ".join(item[0] for item in items)
+
+    def min_formatr(self):
+        """ return single-line formatted string representation of a tree """
+        items = [
+            (item,None) if isinstance(item, str)
+            else (item[0].min_formatr(),item[0].head) if len(item)==1
+            else ("|".join(alt.min_formatr() for alt in item),item[0].head)
+            for item in self.right
+        ]
+        items = [item for item in items if item[0]]
+        if not items:
+            return ""
+        if len(items) > 1:
+            return " ".join("{}({})".format(item[1],item[0]) if item[1] else item[0] for item in items)
+        else:
+            return " ".join(item[0] for item in items)
+
     if not new_unify:
         def formatr(self):
-            """ returnes single-line formatted string representation of a tree """
+            """ return single-line formatted string representation of a tree """
             return " ".join(
                 item if isinstance(item, str)
                 else "{}({})".format(item[0].head, "|".join(alt.formatr() for alt in item))
@@ -267,7 +320,7 @@ class Tree:
             else "{indent}{head}({body})\n".format(
                 indent=indent,
                 head=item[0].head,
-                body=" ".join(item[0].right)    
+                body=" ".join(item[0].right)
             ) if len(item)==1 and all(map(lambda x:isinstance(x,str),item[0].right))
             else "{indent}{head}(\n{body}{indent})\n".format(
                 indent=indent,
@@ -384,11 +437,11 @@ class Tree:
                         cost = "{%d}" % alt.cost if alt.cost!=0 else ""
                     )
                     for alt in item
-                ])    
+                ])
             )
             for item in prod
         ])
-    
+
     formats = {
         'f' : format,
         'fr': formatr,
@@ -400,7 +453,11 @@ class Tree:
         'lr': list_formatr,
         's' : str_format,
         'sr': str_formatr,
-        }
+        'm' : min_format,
+        'mr': min_formatr,
+        'd' : dot_format,
+        'dr': dot_formatr,
+    }
 
     def __format__(self,format_spec):
         return self.formats[format_spec](self)

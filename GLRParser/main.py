@@ -161,34 +161,51 @@ def interact(grm_fname, single_translation=False, defines=set(), reverse=False):
 
     sent = input("Enter Sent> ")
     while sent:
-        if sent == "%rules":
-            print(parser.format_rules())
-        elif sent == "%dict":
-            for item in parser.trie.list():
-                print(item)
-        elif sent == "%debug=1":
-            logging.getLogger().setLevel(logging.DEBUG)
-        elif sent == "%debug=0":
-            logging.getLogger().setLevel(logging.CRITICAL)
-        elif sent.startswith("%"):
-            key,val = sent[1:].split("=")
-            params[key] = int(val)
+        if sent.startswith("%"):
+            if sent == "%help":
+                print("%rules                 prints rules")
+                print("%dict                  prints dictionary")
+                print("%debug=1|0             turns debug on/off (def:0)")
+                print("%show_expr=1|0         turns expression on/off (def:1)")
+                print("%show_expr=1|0         turns alternatives on/off (def:1)")
+                print("%format=0|f|p|x|l|s    prints parse tree in given format (def:0)")
+                print("%file=0|filename       appends output to \"filename\" (def:0)")
+            elif sent == "%rules":
+                print(parser.format_rules())
+            elif sent == "%dict":
+                for item in parser.trie.list():
+                    print(item)
+            elif sent == "%debug=1":
+                logging.getLogger().setLevel(logging.DEBUG)
+            elif sent == "%debug=0":
+                logging.getLogger().setLevel(logging.CRITICAL)
+            elif sent.startswith("%"):
+                key,val = sent[1:].split("=")
+                params[key] = int(val) if val.isnumeric() else val
         else:
-            show_tree = params.get("show_tree",0)
+            format_spec = params.get("format",0)
             show_expr = params.get("show_expr",1)
             show_alternate = params.get("show_alternate",1)
+            file_name = params.get("file",0)
+            if file_name:
+                fout = open(file_name,"at", encoding="utf8")
+            else:
+                fout = sys.stdout
             try:
                 #sent = parser.pre_processor(sent)
                 parser.parse(sent)
                 tree = parser.make_tree()
-                if show_tree:
-                    print(tree.pformat_ext())
+                #print(tree.min_format())
+                if format_spec:
+                    print(format(tree,format_spec),file=fout)
                 tree2 = parser.unify_tree(tree)
-                if show_tree:
-                    print(tree2.pformat_ext())
+                #print(tree2.list_format())
+                if format_spec:
+                    print(format(tree2,format_spec),file=fout)
                 tree3 = parser.trans_tree(tree2)
-                if show_tree:
-                    print(tree3.pformatr_ext())
+                #print(tree3.list_formatr())
+                if format_spec:
+                    print(format(tree3,format_spec+"r"),file=fout)
                 if show_expr:
                     opt_list,_cost = tree3.option_list()
                     results = []
@@ -217,6 +234,9 @@ def interact(grm_fname, single_translation=False, defines=set(), reverse=False):
                 print("UnifyError: "+str(ue))
             except PostProcessError as ppe:
                 print("PostProcessError: "+str(ppe))
+            finally:
+                if file_name:
+                    fout.close()
         sent = input("Enter Sent> ")
 
 def save(grm_fname):
