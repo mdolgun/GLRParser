@@ -367,7 +367,7 @@ Quest -> :        [!quest]
 
 Pred -> Pred'             : Pred'
 Pred -> Obj'              : Obj'               [+pred,case=+0]
-Pred -> AdjP PPS          : PPS AdjP           [+pred]
+Pred -> AG PPS            : PPS AG           [+pred]
 Pred ->                   : *reladv            [+pred,-gap]
 Pred -> PP PPS            : PP PPS             [+pred]
 Pred -> AdvAdjComp AdjComp than Obj' : Obj' daha AdvAdjComp AdjComp [+pred,case=+den,-gap]
@@ -515,6 +515,7 @@ Wh -> RelAdv SentNorm() : RelAdv SentNorm(conn=dik) # how he is reading a book
 
 RelAdv -> how    : nasıl
 RelAdv -> where  : nerede
+RelAdv -> when   : ne zaman
 RelAdv -> why    : niçin
 RelAdv -> how many times : kaç kere
 RelAdv -> how Adv : ne kadar Adv
@@ -563,7 +564,6 @@ NGer -> convention : gelenek
 NGer -> act : eylem
 NGer -> insistence : ısrar
 
-
 PropN -> U : U {100}
 PropN -> PropN U : PropN U
 Title -> mr | mister : bay
@@ -577,7 +577,7 @@ Title -> representative : temsilci
 Title -> governor : vali
 Title -> congressman : kongre üyesi
 Title -> prof | professor : profesör
-Title -> judge : yargıç
+Title -> judge | justice : yargıç
 Title -> dr | doctor : doktor
 Title -> NP1: NP1
 Title -> AG : AG # ruthless Putin
@@ -589,15 +589,18 @@ NP1 -> DetPron : DetPron NGSuf [+ng,+def]
 NP1 -> Pron2 : Pron2 [num=sing]
 NP1 -> Pron2 else : başka Pron2
 NP1 -> Pron2 AdjP : AdjP Pron2
-NP1 -> Title PropN : Title PropN -' [+def,num=sing]
+NP1 -> Title PropN : Title PropN -' {10} [+def,num=sing]
 
 One -> one
 One ->
 
-Pron1 -> this One        : buN
-Pron1 -> that One        : oN
-Pron1 -> these           : bunlar      [num=plur]
-Pron1 -> those           : onlar       [num=plur]
+Ones -> ones
+Ones ->
+
+Pron1 -> this One        : buN		   [num=sing]
+Pron1 -> that One        : oN          [num=sing]
+Pron1 -> these Ones      : bunlar      [num=plur]
+Pron1 -> those Ones      : onlar       [num=plur]
 Pron1 -> the AdjP One    : AdjP olan
 Pron1 -> the AdjP ones   : AdjP olanlar
 
@@ -735,6 +738,8 @@ CardComp -> much less : çok daha az
 PreCardDegree -> roughly | approximately | nearly : yaklaşık
 PreCardDegree -> almost : hemen hemen
 PostCardDegree -> as much as | around | about : kadar
+PostCardDegree -> at most : en fazla
+PostCardDegree -> at least : en az
 
 
 NP' -> NP                       : NP
@@ -764,6 +769,10 @@ Plur ->
 
 AG ->
 AG -> AdjP AG : AdjP AG
+AG -> AdjP and AG : AdjP ve AG
+AG -> AdjP or AG : AdjP veya AG
+AG -> either AdjP or AG : ya AdjP ya da AG
+AG -> neither AdjP nor AG : ne AdjP ne de AG
 
 AdvAdj -> very : çok
 AdvAdj -> too : fazla
@@ -1003,6 +1012,11 @@ AdvP -> AdvAdjComp AdvComp : AdvAdjComp daha AdvComp # much slowly, too much fas
 Adv -> on WeekDay     : WeekDay günü
 Adv -> on WeekDayPlur : WeekDayPlur günleri
 Adv -> on Month       : Month ayında
+Adv -> on Month CardinalNumber : CardinalNumber Month +de # on January 2
+Adv -> on Month OrdinalNumber : OrdinalNumber Month +de # on January 2nd
+Adv -> on Month CardinalNumber-1 CardinalNumber-2 : CardinalNumber-1 Month CardinalNumber-2 -' +de # on January 2, 1968
+Adv -> on Month OrdinalNumber CardinalNumber : OrdinalNumber Month CardinalNumber -' +de # on January 2nd, 1968
+Adv -> at CardinalNumber o 'clock : saat CardinalNumber -' +de # at 5 o'clock
 
 DGTime -> DG Time : DG Time
 
@@ -1013,6 +1027,7 @@ Adv -> for DGTime() : DGTime() boyunca
 Adv -> TimePrefix WeekDay : TimePrefix WeekDay # next/this/every etc. monday
 Adv -> TimePrefix Month   : TimePrefix Month   # next/this/every etc. january
 Adv -> TimePrefix Time    : TimePrefix Time    # next/this/every etc. time, hour, week, morning, summer etc.
+Adv -> TimePrefix CardinalNumber Time : TimePrefix CardinalNumber Time [+noplur] # every four years
 Adv -> early WeekDay : WeekDay erken saatlerde
 Adv -> late WeekDay : WeekDay geç saatlerde
 Adv -> early Month : Month başı
@@ -1045,7 +1060,7 @@ Prep -> after | following       : +den sonra Ki
 Prep -> against                 : +e karşı
 Prep -> along | throughout      : boyunca Olan
 Prep -> alongside | beside | by | next to : +in_nopro yan ObjPoss -dA Ki 
-Prep -> among | amongst | between : +in_nopro ara ObjPoss -dA Ki
+Prep -> among | amongst | between | amid | amidst : +in_nopro ara ObjPoss -dA Ki
 Prep -> around                  : +in_nopro etraf ObjPoss -dA Ki
 #Prep -> as                      : olarak
 Prep -> at | in | on            : +de Ki
@@ -1060,6 +1075,7 @@ Prep -> during                  : sırasında
 Prep -> due to                  : +in_pro yüz ObjPoss -dAn Olan
 Prep -> except | except for | save | saving | barring : +in_pro hariç? ObjPoss -dA
 Prep -> for                     : +in_pro için 
+Prep -> from within             : +in_nopro iç ObjPoss -dAn
 Prep -> from | through | off    : +den
 Prep -> inside | within         : +in_nopro iç ObjPoss -dA Ki
 Prep -> into                    : +in_nopro iç ObjPoss -YA Olan
@@ -1080,6 +1096,7 @@ Prep -> to                      : +e
 Prep -> toward | towards        : +e doğru
 Prep -> through                 : boyunca
 Prep -> till | until            : +e kadar
+Prep -> until after             : +den sonraya kadar
 Prep -> up | upward | upwards   : +den yukarı
 Prep -> upon | atop             : +in_nopro üst ObjPoss -dA Ki
 Prep -> unlike                  : +in_nopro aksine
@@ -1153,6 +1170,7 @@ PrepWith -> : +le  [!np]
 %suffix oN+le onunla
 %suffix biz+le bizimle
 %suffix siz+le sizinle
+%suffix buN+le bununla
 
 # for me: benim için, for him: onun için, for them: onlar için, for the book: kitap için
 %suffix +in_pro -
@@ -1162,6 +1180,8 @@ PrepWith -> : +le  [!np]
 %suffix biz+in_pro bizim
 %suffix siz+in_pro sizin 
 %suffix onlar+in_pro onlar
+%suffix buN+in_pro bunun
+%suffix bunlar+in_pro bunlar
 
 # about me: hakkımda, about him: onun hakkında, about them: onlar hakkında, about the book: kitap hakkında
 %suffix +in_pro3 -
@@ -1171,6 +1191,8 @@ PrepWith -> : +le  [!np]
 %suffix biz+in_pro3 -
 %suffix siz+in_pro3 - 
 %suffix onlar+in_pro3 onlar
+%suffix buN+in_pro3 bunun
+%suffix bunlar+in_pro3 bunlar
 
 # under me: altımda, under him: onun altında, under them: onların altında, under the book: kitabın altında
 %suffix +in_nopro -NHn

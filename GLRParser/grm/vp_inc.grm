@@ -22,6 +22,7 @@ $Adj -> $up-to-date : güncel
 %suffix seyret?+aor seyreder
 %suffix sık+aor sıkar
 %suffix yap+aor yapar
+%suffix duy+aor duyar
 
 %form N house,houses
 %form N school,schools
@@ -32,7 +33,9 @@ $Adj -> $up-to-date : güncel
 %form N story,stories
 %form N television,televisions
 %form N note,notes
-
+%form N breakfast,breakfasts
+%form NC dinner,dinners
+%form NC lunch,lunches
 
 %form NHead american,americans
 %form NHead white,whites
@@ -47,6 +50,10 @@ $N -> $television : televizyon
 $N -> $school : okul
 $N -> $note : not
 $N -> boarding $school : yatılı okul
+
+$N -> $breakfast : kahvaltı   [head=breakfast]
+$NC -> $dinner : akşam yemek?  [head=dinner]
+$NC -> $lunch : öğle yemek?    [head=lunch]
 
 $NHead -> $american : amerikalı
 
@@ -93,8 +100,12 @@ $V -> $bore Obj'              : Obj' sık  [case=+i]
 $V -> $confuse Obj'           : Obj' kafa ObjPoss +i karıştır [case=+in]
 $V -> $demand ThatBInf(gap)   : ThatBInf(gapw) +i talep et
 $V -> $go                     : git? [-gap]
+$V -> $have nothing to do with Obj' : Obj' ilgi SubjPoss [+pred,+exist,+neg,scase=+in,case=+le]
 $V -> $have Inf(gap)          : Inf(gapw) -mAk zorunda [+pred,+prog]
-$V -> $have Obj'              : Obj' SubjPoss [+pred,+exist,scase=+in,+pron3]
+$V -> $have Obj'              : Obj' SubjPoss {100} [+pred,+exist,scase=+in,+pron3] 
+$V -> $have Obj'              : Obj' yap [head=breakfast]
+$V -> $have Obj'              : Obj' ye  [head=dinner]
+$V -> $have Obj'              : Obj' ye  [head=lunch]
 $V -> $hate Inf(gap)          : Inf(gapw) nefret et? [case=+den,+prog,+pprog]
 $V -> $hate Obj'              : Obj' nefret et? [case=+den,+prog,+pprog]
 $V -> $hate Ger               : Ger -mAktAn nefret et? [+prog,+pprog]

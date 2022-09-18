@@ -269,6 +269,10 @@ def print_usage():
         print("USAGE1: python -m GLRParser.main [-gr] <grammar_file> <input_file>")
         print("USAGE2: python -m GLRParser.main [-gr] -i <grammar_file>")
         print("USAGE3: python -m GLRParser.main [-gr] -s <grammar_file>")
+        print("    -g: directory is set to 'grm' directory under 'GLRParser' package")
+        print("    -r: reverse compile the grammar")
+        print("    -D <str1>[,<str2>]*: define <str1>,<str2>...")
+        print("    -s <name.grmc>: save compiled grammar as <name.grmc>")
 
 def main(argv):
     defines = set()
