@@ -30,10 +30,12 @@
 S -> AdvCl() SentNorm          : AdvCl() SentNorm            [-gap]
 S -> AdvStart SentNorm AdvCl() : AdvStart AdvCl() SentNorm   [-gap]
 S -> AdvStart SentNorm         : AdvStart SentNorm     	     [-gap]
+S -> AdvCl() SentImp           : AdvCl() SentImp             [-gap]
+S -> AdvStart SentImp AdvCl()  : AdvStart AdvCl() SentImp    [-gap]
+S -> AdvStart SentImp          : AdvStart SentImp            [-gap]
 S -> SentInv                   : SentInv                     [+quest,-gap]
 S -> WhCase() SentInv          : SentInv                     [+gap,gapw=*WhCase]
 S -> RelAdv SentInv            : SentInv                     [-gap,reladv=*RelAdv]
-S -> AdvStart SentImp          : AdvStart SentImp            [-gap]
 S -> NP'                       : NP'
 
 
@@ -540,7 +542,7 @@ NP -> either NP-1() or NP-2() : ya NP-1() ya da NP-2() [num=plur,per=3]
 NP -> neither NP-1() nor NP-2() : ne NP-1() ne de NP-2() [num=plur,per=3,+neg]
 NP -> NP1 : NP1 # the door of house
 NP -> NP1 of NP(-nodef) : NP() +in_nopro NP1 [+ng] # the door of house of the house of doors : kapılar evinin ev kapısı
-NP -> NP1 PP() : PP(+np) NP1
+NP -> NP1 PP() : PP(+np) NP1 [+def] # a man in a house
 NP -> NP1 of ObjPron(per=*pper,num=*pnum) : ObjPron() +in_nopro NP1 # a big house of me : büyük bir evim
 NP -> the NThat that SentNorm(-gap) : SentNorm(conn=dik,scase=+in) NThat +poss3 # the fact that he is alive
 NP -> Det NInf Inf() : Det Inf() -mA NInf NGSuf # the/his attempt to mend the car 
@@ -597,7 +599,7 @@ One ->
 Ones -> ones
 Ones ->
 
-Pron1 -> this One        : buN		   [num=sing]
+Pron1 -> this One        : buN         [num=sing]
 Pron1 -> that One        : oN          [num=sing]
 Pron1 -> these Ones      : bunlar      [num=plur]
 Pron1 -> those Ones      : onlar       [num=plur]
@@ -645,10 +647,10 @@ DetPron -> enough : yeteri kadar
 The -> the
 The ->
 
-OfUnit -> DG AG Unit of : DG AG Bir Unit
+OfUnit -> DG AGS Unit of : DG AGS Bir Unit
 
-OfNG -> AG NG : AG Bir NG NGSuf
-OfNG -> AG NG of OfNG() : AG Bir OfNG() NG NGSuf [+ng]
+OfNG -> AGS NG : AGS Bir NG NGSuf
+OfNG -> AGS NG of OfNG() : AGS Bir OfNG() NG NGSuf [+ng]
 
 NG -> N : N
 NG -> NHead : NHead
@@ -767,8 +769,11 @@ N -> NCPlur : NCPlur Plur   [num=plur,+ng]
 Plur -> : -lAr ! [num=?plur,!noplur]
 Plur ->
 
-AG ->
-AG -> AdjP AG : AdjP AG
+AGS ->
+AGS -> AG : AG
+
+AG -> AdjP
+AG -> AdjP AG
 AG -> AdjP and AG : AdjP ve AG
 AG -> AdjP or AG : AdjP veya AG
 AG -> either AdjP or AG : ya AdjP ya da AG
@@ -803,6 +808,13 @@ ObjPron -> him | her | it : oN    [oper=3,onum=sing]
 ObjPron -> us             : biz   [oper=1,onum=plur]
 ObjPron -> you            : siz   [oper=2,onum=plur]
 ObjPron -> them           : onlar [oper=3,onum=plur]
+
+ObjPron -> myself                     : kendim     [oper=3,onum=sing]
+ObjPron -> himself | herself | itself : kendisiN   [oper=3,onum=sing]
+ObjPron -> ourselves                  : kendimiz   [oper=3,onum=plur]
+ObjPron -> yourself | yourselves      : kendiniz   [oper=3,onum=plur]
+ObjPron -> themselves                 : kendileriN [oper=3,onum=plur]
+
 
 SubjPron -> i             : ben   [per=1,num=sing]
 SubjPron -> he | she      : oN    [per=3,num=sing]

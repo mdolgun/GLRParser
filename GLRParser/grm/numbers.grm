@@ -33,19 +33,29 @@ Card2 -> CardTens Card1 : CardTens Card1
 Card2 -> CardTeen : CardTeen
 Card2 -> Card1 : Card1
 
+AOneOpt -> a
+AOneOpt -> one
+AOneOpt ->
+
 AOne -> a
 AOne -> one
-AOne ->
 
-Card3 -> AOne hundred : yüz
+CardDozen -> AOne dozen : bir düzine
+CardDozen -> Card1 dozen : Card1 düzine
+CardDozen -> AOne dozen And Card2 : bir düzine ve Card2
+CardDozen -> AOne dozen And one : bir düzine ve bir
+CardDozen -> Card1 dozen And Card2 : Card1 düzine ve Card2
+CardDozen -> Card1 dozen And one : Card1 düzine ve bir
+
+Card3 -> AOneOpt hundred : yüz
 Card3 -> Card1 hundred : Card1 yüz
-Card3 -> AOne hundred And Card2 : yüz Card2
-Card3 -> AOne hundred And one : yüz bir
+Card3 -> AOneOpt hundred And Card2 : yüz Card2
+Card3 -> AOneOpt hundred And one : yüz bir
 Card3 -> Card1 hundred And Card2 : Card1 yüz Card2
 Card3 -> Card1 hundred And one : Card1 yüz bir
 Card3 -> Card2 : Card2
 
-Card6 -> AOne thousand : bin
+Card6 -> AOneOpt thousand : bin
 Card6 -> Card3 thousand : Card3 bin
 Card6 -> one thousand Card3 : bin Card3
 Card6 -> one thousand one : bin bir
@@ -67,6 +77,7 @@ Card15 -> Card3 trillion : Card3 trilyon
 Card15 -> one trillion Card12 : bir trilyon Card12
 Card15 -> Card3 trillion Card12 : Card3 trilyon Card12
 
+CardinalNumber -> CardDozen : CardDozen
 CardinalNumber -> one : bir
 CardinalNumber -> Card3 : Card3
 CardinalNumber -> Card6 : Card6
@@ -110,13 +121,13 @@ Ord2 -> CardTens Ord1 : CardTens Ord1
 Ord2 -> OrdTeen : OrdTeen
 Ord2 -> Ord1 : Ord1
 
-Ord3 -> AOne hundredth : yüz
+Ord3 -> AOneOpt hundredth : yüz
 Ord3 -> Card1 hundredth : Card1 yüz
 Ord3 -> one hundred And Ord2 : yüz Ord2
 Ord3 -> Card1 hundred And Ord2  : Card1 yüz Ord2
 Ord3 -> Ord2 : Ord2
 
-Ord6 -> AOne thousandth : bin
+Ord6 -> AOneOpt thousandth : bin
 Ord6 -> Card3 thousandth : Card3 bin
 Ord6 -> one thousand Ord3  : bin Ord3
 Ord6 -> Card3 thousand Ord3  : Card3 bin Ord3

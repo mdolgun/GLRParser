@@ -487,7 +487,7 @@ class Parser:
         return ntree
 
     def trans_alts(self,subtrees,fdict,param):
-        assert type(subtrees) == list
+        assert type(subtrees) == list, f"Expected list but found {subtrees}"
         alts = []
         for alt in subtrees:
             try:
