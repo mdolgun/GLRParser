@@ -37,7 +37,7 @@ In interactive demo, you can enter an English sentence to get Turkish translatio
 	  erken gelmiş olsaydım otobüsünü kaçırmış olmazdı
 	  erken gelmiş olsaydım otobüsünü özlemiş olmazdı
 	
-You can also visit following url to try interactive translations: https://glrparser.herokuapp.com/
+You can also visit following url to try interactive translations: https://mdolgun.pythonanywhere.com/
 
 For a list of sample translations check the file: https://github.com/mdolgun/GLRParser/blob/master/GLRParser/grm/main.out.txt
 
