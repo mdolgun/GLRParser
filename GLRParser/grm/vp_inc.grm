@@ -24,6 +24,7 @@ $Adj -> $up-to-date : güncel
 %suffix yap+aor yapar
 %suffix duy+aor duyar
 
+%form N decision,decisions
 %form N house,houses
 %form N school,schools
 %form N car,cars
@@ -40,7 +41,8 @@ $Adj -> $up-to-date : güncel
 %form NHead american,americans
 %form NHead white,whites
 
-$N -> $house : houses
+$N -> $decision : karar
+$N -> $house : ev
 $N -> $car : araba
 $N -> $book : kitap?
 $N -> $door : kapı
@@ -77,12 +79,14 @@ Adj -> white : beyaz
 %form V listen,listens,listening,listened,listened
 %form V locate,locates,locating,located,located
 %form V look,looks,looking,looked,looked
+%form V make,makes,making,made,made
 %form V open,opens,opening,opened,opened
 %form V order,orders,ordering,ordered,ordered
 %form V put,puts,putting,put,put
 %form V read,reads,reading,read,read
 %form V say,says,saying,said,said
 %form V see,sees,seeing,saw,seen
+%form V seem,seems,seeming,seemed,seemed
 %form V sleep,sleeps,sleeping,slept,slept
 %form V stop,stops,stopping,stopped,stopped
 %form V stare,stares,staring,stared,stared
@@ -120,6 +124,8 @@ $V -> $locate Obj'            : Obj' yer ObjPoss +i sapta [case=+in]
 $V -> $look at Obj'           : Obj' bak [case=+e]
 $V -> $look for Obj'          : Obj' ara [case=Acc]
 $V -> $look like Obj'         : Obj' benze [case=+e]
+$V -> $make Obj'              : Obj' yap [case=Acc]
+$V -> $make Obj'              : Obj' ver {-100} [head=decision,case=Acc]
 $V -> $open                   : açıl [-gap]
 $V -> $open Obj'              : Obj' aç [case=Acc]
 $V -> $order Obj'             : Obj' sipariş et? [case=Acc]
@@ -157,6 +163,8 @@ $V -> $want ObjInf            : ObjInf +i iste [+prog,case=+in]
 $V -> $want Obj'              : Obj' iste [case=Acc,+prog]
 $V -> $want Inf(gap)          : Inf(gapw) -mAk iste [+prog]
 $V -> $watch Obj'             : Obj' seyret? [case=Acc]
+$V -> $seem InfTense          : InfTense görün [+prog]
+$V -> $seem Adj               : Adj görün [+prog]
 
 Vpass -> bored      : sıkıl  
 Vpass -> turned     : çevril     

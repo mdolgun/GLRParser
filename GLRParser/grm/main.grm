@@ -198,17 +198,21 @@ BaseModal -> have been Ving     : Ving -Vyor ol
 BaseModal -> have been Pred     : Pred olmuş ol
 BaseModal -> have been Vpass    : Vpass -mHş ol
 BaseModal -> V                  : V PredBe
+BaseModal -> be able to V       : V -YAbil
+BaseModal -> be unable to V     : V -YAmA
 
-InfTense -> to be Ving            : Ving -Vyor        # seems to be sleeping       @ uyuyor görünüyor
-InfTense -> to be Pred            : Pred              # seems to be happy          @ mutlu görünüyor
-InfTense -> to be PredVerb        : PredVerb -Vyor    # seems to be afraid of it   @ ondan korkuyor görünüyor
-InfTense -> to be Vpass           : Vpass -Vyor       # seems to be loved          @ seviliyor görünüyor
-InfTense -> to have Ven           : Ven -mHş          # seems to have gone         @ gitmiş görünüyor
-InfTense -> to have been Ving     : Ving -Vyor        # seems to have been crying  @ ağlıyor görünüyor
-InfTense -> to have been Pred     : Pred olmuş        # seems to have been happy   @ mutlu olmuş görünüyor
-InfTense -> to have been Vpass    : Vpass -mHş        # seems to have been loved   @ sevilmiş görünüyor
-InfTense -> to V                  : V -Vyor [!pred]   # seems to feel tired        @ yorgun hissediyor görünüyor
-InfTense -> to V                  : V       [?pred]   # seems to have a car        @ (arabası var|arabaya sahip) görünüyor
+InfTense -> to be Ving            : Ving -Vyor        # seems to be sleeping        @ uyuyor görünüyor
+InfTense -> to be Pred            : Pred              # seems to be happy           @ mutlu görünüyor
+InfTense -> to be PredVerb        : PredVerb -Vyor    # seems to be afraid of it    @ ondan korkuyor görünüyor
+InfTense -> to be Vpass           : Vpass -Vyor       # seems to be loved           @ seviliyor görünüyor
+InfTense -> to have Ven           : Ven -mHş          # seems to have gone          @ gitmiş görünüyor
+InfTense -> to have been Ving     : Ving -Vyor        # seems to have been crying   @ ağlıyor görünüyor
+InfTense -> to have been Pred     : Pred olmuş        # seems to have been happy    @ mutlu olmuş görünüyor
+InfTense -> to have been Vpass    : Vpass -mHş        # seems to have been loved    @ sevilmiş görünüyor
+InfTense -> to V                  : V -Vyor [!pred]   # seems to feel tired         @ yorgun hissediyor görünüyor
+InfTense -> to V                  : V       [?pred]   # seems to have a car         @ (arabası var|arabaya sahip) görünüyor
+InfTense -> to be able to V       : V -YAbilir        # seems to be able to sleep   @ uyuyabilir görünüyor
+InfTense -> to be unable to V     : V -YAmAz          # seems to be unable to sleep @ uyuyamaz görünüyor
 
 BaseGerund -> being Pred        : Pred ol
 BaseGerund -> being PredVerb    : PredVerb
@@ -218,6 +222,8 @@ BaseGerund -> having been Ving  : Ving -Vyor ol
 BaseGerund -> having been Pred  : Pred olmuş ol
 BaseGerund -> having been Vpass : Vpass -mHş ol
 BaseGerund -> Ving              : Ving PredBe
+BaseGerund -> being able to V   : V -YAbil
+BaseGerund -> being unable to V : V -YAmA
 
 StModal -> BaseModal(-,pred)    : BaseModal ModalTense
 StModal -> be able to V         : V NegAbil AbilTense Quest PresPast
@@ -772,8 +778,8 @@ Plur ->
 AGS ->
 AGS -> AG : AG
 
-AG -> AdjP
-AG -> AdjP AG
+AG -> AdjP : AdjP
+AG -> AdjP AG : AdjP AG
 AG -> AdjP and AG : AdjP ve AG
 AG -> AdjP or AG : AdjP veya AG
 AG -> either AdjP or AG : ya AdjP ya da AG
