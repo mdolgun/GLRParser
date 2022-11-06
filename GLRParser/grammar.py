@@ -119,11 +119,12 @@ class Grammar:
     INTEGER = re.compile('-?[1-9][0-9]*') # 
     re_NONTERM = r"\$?[_A-Z][-_A-Za-z0-9$]*'*"
     re_FEAT_NAME = "[a-z0-9_]+"
+    re_FEAT_VALUE = "[-A-Za-z0-9_']+"
     re_FPARAM_NAME = r"@?{}|@?\*".format(re_FEAT_NAME)
-    re_TERM = r'''\$?"[^"]*"|\$?[^|{:[_A-Z#!"][^|{:[#!\s]*'''
+    re_TERM = r'''\$?"[^"]*"|\$?[^]|{:[_A-Z#!"][^]|{:[#!\s]*'''
 
     #re_FEAT_VALUE = r"\*{}|\*{}|{}".format(re_NONTERM, re_FEAT_NAME ,re_TERM)
-    re_FEAT_VALUE = r"{}|\*{}|\*{}|[?!~]?[-+]?{}".format(re_NONTERM, re_NONTERM, re_FEAT_NAME ,re_FEAT_NAME)
+    re_FEAT_VALUE = r"{}|\*{}|\*{}|[?!~]?[-+]?{}".format(re_FEAT_VALUE, re_NONTERM, re_FEAT_NAME ,re_FEAT_NAME)
     re_SYMBOL = r'({}|\*{})|({})'.format(re_NONTERM, re_FEAT_NAME, re_TERM)
 
     SYMBOL = re.compile(re_SYMBOL)
@@ -232,7 +233,7 @@ class Grammar:
         match = regexp.match(self.buf,self.pos)
         if match:
             self.pos = match.end()
-            return match.group()
+            return sys.intern(match.group())
         if ensure:
             raise GrammarError("File:%s Line:%d Pos:%d %s expected but found %s" % (self.fname, self.line_no,self.pos,regexp,self.get_rest()))
 

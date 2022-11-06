@@ -167,7 +167,8 @@ def interact(grm_fname, single_translation=False, defines=set(), reverse=False):
                 print("%dict                  prints dictionary")
                 print("%debug=1|0             turns debug on/off (def:0)")
                 print("%show_expr=1|0         turns expression on/off (def:1)")
-                print("%show_expr=1|0         turns alternatives on/off (def:1)")
+                print("%show_alternate=1|0    turns alternatives on/off (def:1)")
+                print("%show_time=1|0         shows timing of each stage (def:0)")
                 print("%format=0|f|p|x|l|s    prints parse tree in given format (def:0)")
                 print("%file=0|filename       appends output to \"filename\" (def:0)")
             elif sent == "%rules":
@@ -186,6 +187,7 @@ def interact(grm_fname, single_translation=False, defines=set(), reverse=False):
             format_spec = params.get("format",0)
             show_expr = params.get("show_expr",1)
             show_alternate = params.get("show_alternate",1)
+            show_time = params.get("show_time",0)
             file_name = params.get("file",0)
             if file_name:
                 fout = open(file_name,"at", encoding="utf8")
@@ -194,29 +196,46 @@ def interact(grm_fname, single_translation=False, defines=set(), reverse=False):
             try:
                 #sent = parser.pre_processor(sent)
                 parser.parse(sent)
+                start = timer()
                 tree = parser.make_tree()
-                #print(tree.min_format())
+                end = timer()
+                if show_time:
+                    print("Parse time:",  timer_delta(start,end), "mics")
                 if format_spec:
                     print(format(tree,format_spec),file=fout)
+                start = timer()
                 tree2 = parser.unify_tree(tree)
-                #print(tree2.list_format())
+                end = timer()
+                if show_time:
+                    print("Unification time:",  timer_delta(start,end), "mics")
                 if format_spec:
                     print(format(tree2,format_spec),file=fout)
+                start = timer()
                 tree3 = parser.trans_tree(tree2)
-                #print(tree3.list_formatr())
+                end = timer()
+                if show_time:
+                    print("Translate time:",  timer_delta(start,end), "mics")
                 if format_spec:
                     print(format(tree3,format_spec+"r"),file=fout)
                 if show_expr:
+                    start = timer()
                     opt_list,_cost = tree3.option_list()
                     results = []
                     combine_suffixes_lst(opt_list, 0, [], results)
                     post_process([results], parser.post_processor)
                     print_items_cost([results], sys.stdout); print()
+                    end = timer()
+                    if show_time:
+                        print("Expression generate time:",  timer_delta(start,end), "mics")
+                start = timer()
                 trans_dict = defaultdict(list)
                 for sent,cost in tree3.enumx():
-                    trans_dict[parser.post_processor(sent)].append(cost)
+                    trans_dict[parser.post_processor(sent)].append(cost)              
                 trans_list = [(sent,min(costs)) for sent,costs in trans_dict.items()]
                 trans_list.sort(key=lambda item:item[1])
+                end = timer()
+                if show_time:
+                    print("Enumerate & sort time:",  timer_delta(start,end), "mics")
                 if show_alternate == 0: # print only first least cost translation
                     print(" ", trans_list[0][0])
                 elif show_alternate == 1: # print all least cost translations
@@ -269,6 +288,7 @@ def print_usage():
         print("USAGE1: python -m GLRParser.main [-gr] <grammar_file> <input_file>")
         print("USAGE2: python -m GLRParser.main [-gr] -i <grammar_file>")
         print("USAGE3: python -m GLRParser.main [-gr] -s <grammar_file>")
+        print("    -d <dir>: change directory to <dir>")
         print("    -g: directory is set to 'grm' directory under 'GLRParser' package")
         print("    -r: reverse compile the grammar")
         print("    -D <str1>[,<str2>]*: define <str1>,<str2>...")
@@ -279,11 +299,13 @@ def main(argv):
     reverse = False
 
     import getopt
-    optlist,args = getopt.getopt(argv[1:],"gri:s:D:")
+    optlist,args = getopt.getopt(argv,"gri:s:D:d:")
 
     for opt,arg in optlist:
         if opt == '-g':
             os.chdir(os.path.join(os.path.dirname(__file__), 'grm'))
+        elif opt == '-d':
+            os.chdir(arg)
         elif opt == '-D':
             defines.union(arg.split(","))
         elif opt == '-i':
@@ -310,6 +332,11 @@ def main(argv):
     else:
         print_usage()
 
-if __name__ == "__main__":
-    main(sys.argv)
+if __name__ == "__main__":   
+    if os.path.exists("argv.txt"):
+        with open("argv.txt","rt") as f:
+            argv = f.read().split()
+    else:
+        argv = sys.argv[1:]
+    main(argv)
 

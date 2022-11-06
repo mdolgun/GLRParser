@@ -27,15 +27,15 @@
 	%endif
 %endif
 
-S -> AdvCl() SentNorm          : AdvCl() SentNorm            [-gap]
-S -> AdvStart SentNorm AdvCl() : AdvStart AdvCl() SentNorm   [-gap]
-S -> AdvStart SentNorm         : AdvStart SentNorm     	     [-gap]
-S -> AdvCl() SentImp           : AdvCl() SentImp             [-gap]
-S -> AdvStart SentImp AdvCl()  : AdvStart AdvCl() SentImp    [-gap]
-S -> AdvStart SentImp          : AdvStart SentImp            [-gap]
-S -> SentInv                   : SentInv                     [+quest,-gap]
-S -> WhCase() SentInv          : SentInv                     [+gap,gapw=*WhCase]
-S -> RelAdv SentInv            : SentInv                     [-gap,reladv=*RelAdv]
+S -> AdvCl() SentNorm          : AdvCl() SentNorm            [-gap,-cond]
+S -> AdvStart SentNorm AdvCl() : AdvStart AdvCl() SentNorm   [-gap,-cond]
+S -> AdvStart SentNorm         : AdvStart SentNorm     	     [-gap,-cond]
+S -> AdvCl() SentImp           : AdvCl() SentImp             [-gap,-cond]
+S -> AdvStart SentImp AdvCl()  : AdvStart AdvCl() SentImp    [-gap,-cond]
+S -> AdvStart SentImp          : AdvStart SentImp            [-gap,-cond]
+S -> SentInv                   : SentInv                     [+quest,-gap,-cond]
+S -> WhCase() SentInv          : SentInv                     [+gap,gapw=*WhCase,-cond]
+S -> RelAdv SentInv            : SentInv                     [-gap,reladv=*RelAdv,-cond]
 S -> NP'                       : NP'
 
 
@@ -48,28 +48,30 @@ S -> neither AuxHavePos Subj : Subj "- dA" değil [+pron]
 S -> neither AuxDoPos Subj   : Subj "- dA" değil [+pron]
 S -> neither ModalPos Subj   : Subj "- dA" değil [+pron]
 
-AdvCl -> as if SentNorm         : sanki SentNorm gibi   [conn=mis,-gap]
-AdvCl -> if SentNorm Then       : SentNorm              [conn=if,-gap]
-AdvCl -> while SentNorm         : SentNorm              [conn=ken,-gap,+pron]
-AdvCl -> as SentNorm            : SentNorm              [conn=ken,-gap,+pron]
-AdvCl -> once SentNorm          : SentNorm -DA          [conn=dik,-gap]
-AdvCl -> when SentNorm          : SentNorm -DA          [conn=dik,-gap]
-AdvCl -> by the time SentNorm   : SentNorm -DA          [conn=dik,-gap]
-AdvCl -> now that SentNorm      : şimdi SentNorm için   [conn=dik,-gap]
-AdvCl -> provided that SentNorm : SentNorm koşuluyla    [conn=me,-gap]
-AdvCl -> because SentNorm       : SentNorm için         [conn=dik,-gap]
-AdvCl -> as long as SentNorm    : SentNorm sürece       [conn=dik,-gap]
-AdvCl -> as soon as SentNorm    : SentNorm              [conn=ir_mez,-gap,+pron]
-AdvCl -> until SentNorm         : SentNorm +e kadar     [conn=en,-gap,+pron]
+AsIf -> as if SentNorm          : SentNorm gibi         [conn=mis,-gap,+cond]
+AsIf -> as though SentNorm      : SentNorm gibi         [conn=mis,-gap,+cond]
+AdvCl -> as if SentNorm         : sanki SentNorm gibi   [conn=mis,-gap,+cond]
+AdvCl -> if SentNorm Then       : SentNorm              [conn=if,-gap,+cond]
+AdvCl -> while SentNorm         : SentNorm              [conn=ken,-gap,+pron,-cond]
+AdvCl -> as SentNorm            : SentNorm              [conn=ken,-gap,+pron,-cond]
+AdvCl -> once SentNorm          : SentNorm -DA          [conn=dik,-gap,-cond]
+AdvCl -> when SentNorm          : SentNorm -DA          [conn=dik,-gap,-cond]
+AdvCl -> by the time SentNorm   : SentNorm -DA          [conn=dik,-gap,-cond]
+AdvCl -> now that SentNorm      : şimdi SentNorm için   [conn=dik,-gap,-cond]
+AdvCl -> provided that SentNorm : SentNorm koşuluyla    [conn=me,-gap,-cond]
+AdvCl -> because SentNorm       : SentNorm için         [conn=dik,-gap,-cond]
+AdvCl -> as long as SentNorm    : SentNorm sürece       [conn=dik,-gap,-cond]
+AdvCl -> as soon as SentNorm    : SentNorm              [conn=ir_mez,-gap,+pron,-cond]
+AdvCl -> until SentNorm         : SentNorm +e kadar     [conn=en,-gap,+pron,-cond]
 
-AdvCl -> after SentNorm         : SentNorm +den sonra   [conn=me,-gap]
-AdvCl -> before SentNorm        : SentNorm +den önce    [conn=me,-gap]
-AdvCl -> unless SentNorm        : SentNorm -çA          [conn=medik,-gap,+pron]
-AdvCl -> though SentNorm        : SentNorm +e rağmen    [conn=me,-gap]
-AdvCl -> although SentNorm      : SentNorm +e rağmen    [conn=me,-gap]
-AdvCl -> even though SentNorm   : SentNorm +e rağmen    [conn=me,-gap]
-AdvCl -> as much as SentNorm    : SentNorm +e rağmen    [conn=me,-gap]
-AdvCl -> much as SentNorm       : SentNorm +e rağmen    [conn=me,-gap]
+AdvCl -> after SentNorm         : SentNorm +den sonra   [conn=me,-gap,-cond]
+AdvCl -> before SentNorm        : SentNorm +den önce    [conn=me,-gap,-cond]
+AdvCl -> unless SentNorm        : SentNorm -çA          [conn=medik,-gap,+pron,-cond]
+AdvCl -> though SentNorm        : SentNorm +e rağmen    [conn=me,-gap,-cond]
+AdvCl -> although SentNorm      : SentNorm +e rağmen    [conn=me,-gap,-cond]
+AdvCl -> even though SentNorm   : SentNorm +e rağmen    [conn=me,-gap,-cond]
+AdvCl -> as much as SentNorm    : SentNorm +e rağmen    [conn=me,-gap,-cond]
+AdvCl -> much as SentNorm       : SentNorm +e rağmen    [conn=me,-gap,-cond]
 
 AdvCl -> without BaseGerund(-gap) : BaseGerund() -mAdAn
 AdvCl -> after BaseGerund(-gap) : BaseGerund() -DHktAn sonra
@@ -430,7 +432,7 @@ ObjCase -> : *case [?case]
 SubjCase -> :        [!scase]
 SubjCase -> : *scase [?scase] 
 
-RObj -> NP'(num=*onum,def,neg) : NP'() *case [oper=3]
+RObj -> NP'(num=*onum,def,neg,head) : NP'() *case [oper=3]
 
 Objs -> NP'(num=*onum) 's : NP'() [oper=3]
 Objs -> PossPron(pper=*oper,pnum=*onum) : Pron
@@ -445,8 +447,8 @@ Obj1 ->          : GapW(gapw,case=*case1) [+gap,-gap1]
 Obj2 -> Obj(neg) : Obj(case=*case2)       [-gap1]
 Obj2 ->          : GapW(gapw,case=*case2) [+gap1]
 
-Obj' -> Obj(onum,oper,neg)   : Obj(case)       [-gap]
-Obj' ->                      : GapW(gapw,case) [+gap]
+Obj' -> Obj(onum,oper,neg,head)   : Obj(case)       [-gap]
+Obj' ->                           : GapW(gapw,case) [+gap]
 
 GapW -> :        [!gapw]
 GapW -> : *gapw  [?gapw]
@@ -504,6 +506,7 @@ OptWhich ->
 
 SThatSubj -> VPNorm : VPNorm            [conn=en,-gap,per=3]
 SThatObj  -> Subj VPNorm : Subj VPNorm  [conn=dik,+gap,scase=+in]
+SThatAdv  -> Subj VPNorm : Subj VPNorm  [conn=dik,-gap,scase=+in]
 
 Whether -> if
 Whether -> whether
@@ -578,6 +581,7 @@ Title -> mr | mister : bay
 Title -> mrs : bayan
 Title -> ms | miss : bayan
 Title -> sir : sör
+Title -> lady : leydi
 Title -> president : başkan
 Title -> vice president : başkan yardımcısı
 Title -> senator : senatör
@@ -587,8 +591,10 @@ Title -> congressman : kongre üyesi
 Title -> prof | professor : profesör
 Title -> judge | justice : yargıç
 Title -> dr | doctor : doktor
+Title -> master : efendi
 Title -> NP1: NP1
 Title -> AG : AG # ruthless Putin
+
 
 NP1 -> OfUnit() OfNG : OfUnit() OfNG
 NP1 -> DG OfNG : DG OfNG
@@ -598,6 +604,7 @@ NP1 -> Pron2 : Pron2 [num=sing]
 NP1 -> Pron2 else : başka Pron2
 NP1 -> Pron2 AdjP : AdjP Pron2
 NP1 -> Title PropN : Title PropN -' {10} [+def,num=sing]
+NP1 -> PropN : PropN -' {10} [+def,num=sing]
 
 One -> one
 One ->
@@ -751,6 +758,7 @@ PostCardDegree -> at least : en az
 
 
 NP' -> NP                       : NP
+NP' -> NP where SThatAdv()      : SThatAdv() NP             # the city where i live
 NP' -> NP OptWhich SThatObj()   : SThatObj() NP             # the book i am reading
 NP' -> NP Which SThatSubj(num)  : SThatSubj() NP            # the man who is reading the book
 NP' -> NP Ving(-gap)            : Ving() -YAn NP     {100}  # the man reading the book
@@ -876,6 +884,7 @@ AuxBePos   -> are     [tense=pres,num=plur]
 AuxBePos   -> was     [tense=past,num=sing,per=1]
 AuxBePos   -> was     [tense=past,num=sing,per=3]
 AuxBePos   -> were    [tense=past,num=plur]
+AuxBePos   -> were    [tense=past,num=sing,+cond]
 AuxBeCont  -> 'm      [tense=pres,per=1,num=sing]
 AuxBeCont  -> 's      [tense=pres,per=3,num=sing]
 AuxBeCont  -> 're     [tense=pres,num=plur]
@@ -1023,6 +1032,7 @@ AdvMid ->
 
 AdvP -> Adv        : Adv # slowly, fast
 AdvP -> AdvComp    : daha AdvComp # more slowly, faster
+AdvP -> AdvComp than Obj() : Obj(case=den) AdvComp # more slowly than a turtle, faster than light
 AdvP -> AdvSup     : en AdvSup # most slowly, fastest
 AdvP -> AdvAdj Adv : AdvAdj Adv # very slowly, pretty fast
 AdvP -> AdvAdjComp AdvComp : AdvAdjComp daha AdvComp # much slowly, too much fast
